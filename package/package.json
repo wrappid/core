@@ -1,0 +1,59 @@
+{
+  "name": "@wrappid/core",
+  "version": "0.0.1",
+  "description": "Multi platform app builder core package.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://techoneel: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@github.com/wrappid/core.git"
+  },
+  "keywords": [
+    "wrappid",
+    "react",
+    "react-native",
+    "styled-components",
+    "material-ui",
+    "react-native-paper",
+    "redux"
+  ],
+  "author": "wrappid",
+  "bugs": {
+    "url": "https://github.com/wrappid/core/issues"
+  },
+  "homepage": "https://github.com/wrappid/core#readme",
+  "peerDependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mdi/font": "^7.0.96",
+    "@mui/icons-material": "^5.10.2",
+    "@mui/material": "^5.10.2",
+    "@mui/x-date-pickers": "^5.0.8",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.3.4",
+    "formik": "^2.2.9",
+    "jodit-react": "^1.3.39",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-otp-input": "^2.4.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.8.2",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
+    "sweetalert": "^2.1.2",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.0.2"
+  }
+}

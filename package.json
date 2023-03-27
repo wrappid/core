@@ -1,0 +1,30 @@
+{
+  "name": "@wrappid/core",
+  "version": "0.0.1",
+  "description": "Multi platform app builder core package.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://techoneel: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@github.com/wrappid/core.git"
+  },
+  "keywords": [
+    "wrappid",
+    "react",
+    "react-native",
+    "styled-components",
+    "material-ui",
+    "react-native-paper",
+    "redux"
+  ],
+  "author": "wrappid",
+  "bugs": {
+    "url": "https://github.com/wrappid/core/issues"
+  },
+  "homepage": "https://github.com/wrappid/core#readme"
+}
