@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { componentMap } from "../../../utils/componentMap";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
 import CoreTabs from "../CoreTabs";

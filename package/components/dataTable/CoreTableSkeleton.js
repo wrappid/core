@@ -1,5 +1,5 @@
 import React from "react";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreTable from "../dataDisplay/CoreTable";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";

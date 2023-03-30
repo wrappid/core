@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreBadge from "../dataDisplay/CoreBadge";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -10,7 +10,7 @@ import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 
-export default function CoreImagePicker  (props) {
+export default function CoreImagePicker(props) {
   const inputRef = useRef(null);
   const handleFileOpen = () => {
     console.log("adasd");
@@ -95,4 +95,4 @@ export default function CoreImagePicker  (props) {
       <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
     </CoreFormControl>
   );
-};
+}

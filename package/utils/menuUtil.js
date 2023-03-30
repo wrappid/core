@@ -6,7 +6,7 @@ import CoreListItemText from "../components/dataDisplay/CoreListItemText";
 import CoreIconButton from "../components/inputs/CoreIconButton";
 import CoreLink from "../components/navigation/CoreLink";
 import CoreMenuItem from "../components/navigation/CoreMenuItem";
-import CoreClasses from "../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import { theme } from "../styles/theme/theme";
 import {
   MENU_HEADER_ITEM,

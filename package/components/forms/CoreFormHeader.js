@@ -1,6 +1,6 @@
 import React from "react";
 import { viewString } from "../../utils/formUtils";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";

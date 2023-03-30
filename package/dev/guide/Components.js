@@ -1,5 +1,5 @@
 import CoreLink from "../../components/navigation/CoreLink";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreAvatar from "../../components/dataDisplay/CoreAvatar";
 import CoreDivider from "../../components/dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../../components/dataDisplay/CoreIcon";
@@ -117,7 +117,11 @@ const getLinkComponentSamples = () => {
         <CoreDivider />
 
         <CoreBox gridProps={{ gridSize: 3 }}>
-          <CoreLink href="#" title="The tooltip for the link" titlePlacement="right">
+          <CoreLink
+            href="#"
+            title="The tooltip for the link"
+            titlePlacement="right"
+          >
             Link with right Tooltip
           </CoreLink>
         </CoreBox>
@@ -136,12 +140,22 @@ const getAvatarComponentSamples = () => {
     <>
       {getTopicHeading("Avatar")}
       <CoreStack direction="row" spacing={2}>
-        <CoreAvatar styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}></CoreAvatar>
+        <CoreAvatar
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
+        ></CoreAvatar>
         <CoreAvatar></CoreAvatar>
-        <CoreAvatar styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}></CoreAvatar>
-        <CoreAvatar styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}></CoreAvatar>
-        <CoreAvatar styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XLARGE]}></CoreAvatar>
-        <CoreAvatar styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE]}></CoreAvatar>
+        <CoreAvatar
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
+        ></CoreAvatar>
+        <CoreAvatar
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
+        ></CoreAvatar>
+        <CoreAvatar
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XLARGE]}
+        ></CoreAvatar>
+        <CoreAvatar
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE]}
+        ></CoreAvatar>
       </CoreStack>
     </>
   );
@@ -164,7 +178,8 @@ const getIconComponentSamples = () => {
     <>
       {getTopicHeading("Icon")}
       <CoreTypographyBody1>
-        The CoreIcon component supports multiple Icon libraries. Presently supported libraries are:
+        The CoreIcon component supports multiple Icon libraries. Presently
+        supported libraries are:
         <pre>
           MATERIAL_ICON: "MATERIAL_ICON", // Default support of MUI
           <br />
@@ -176,10 +191,11 @@ const getIconComponentSamples = () => {
           <br />
           RXICON_V1_REGULAR_ICON: "RXICON_V1_REGULAR_ICON"
         </pre>
-        <b>Note:</b> In MATERIAL only DEFAULT and OUTLINED are supported. In FONTAWESOME only V5
-        SOLID and REGULAR are supported.
-        <br /> Our own icon library RXICON_V1_REGULAR . The repo for building our own icons whenever
-        necessary. <CoreLink>https://github.com/Rxefy/rxefy-icons</CoreLink>
+        <b>Note:</b> In MATERIAL only DEFAULT and OUTLINED are supported. In
+        FONTAWESOME only V5 SOLID and REGULAR are supported.
+        <br /> Our own icon library RXICON_V1_REGULAR . The repo for building
+        our own icons whenever necessary.{" "}
+        <CoreLink>https://github.com/Rxefy/rxefy-icons</CoreLink>
       </CoreTypographyBody1>
       <CoreGrid>
         <CoreBox
@@ -202,8 +218,12 @@ const getIconComponentSamples = () => {
         >
           dashboard
         </CoreIcon>
-        <code gridProps={{ gridSize: 5 }}>&lt;CoreIcon&gt;dashboard&lt;/CoreIcon&gt;</code>
-        <CoreBox gridProps={{ gridSize: 5 }}>Default MATERIAL_ICON is being used here.</CoreBox>
+        <code gridProps={{ gridSize: 5 }}>
+          &lt;CoreIcon&gt;dashboard&lt;/CoreIcon&gt;
+        </code>
+        <CoreBox gridProps={{ gridSize: 5 }}>
+          Default MATERIAL_ICON is being used here.
+        </CoreBox>
 
         <CoreDivider />
         <CoreIcon
@@ -213,10 +233,12 @@ const getIconComponentSamples = () => {
           }}
           icon="dashboard"
         />
-        <code gridProps={{ gridSize: 5 }}>&lt;CoreIcon icon="dashboard" /&gt;</code>
+        <code gridProps={{ gridSize: 5 }}>
+          &lt;CoreIcon icon="dashboard" /&gt;
+        </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          Default MATERIAL_ICON is being used here. The arguments are passed as properties{" "}
-          <code>icon</code>.
+          Default MATERIAL_ICON is being used here. The arguments are passed as
+          properties <code>icon</code>.
         </CoreBox>
 
         <CoreDivider />
@@ -232,8 +254,8 @@ const getIconComponentSamples = () => {
           {`<CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="dashboard" />`}
         </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          MATERIAL_OUTLINED_ICON is being used here. The arguments are passed as properties{" "}
-          <code>type</code> & <code>icon</code>.
+          MATERIAL_OUTLINED_ICON is being used here. The arguments are passed as
+          properties <code>type</code> & <code>icon</code>.
         </CoreBox>
 
         <CoreDivider />
@@ -249,8 +271,8 @@ const getIconComponentSamples = () => {
           {`<CoreIcon type={__IconTypes.FONTAWESOME_V5_SOLID_ICON} icon="fa-plus-circle" />`}
         </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          FONTAWESOME_V5_SOLID_ICON is being used here. The arguments are passed as properties{" "}
-          <code>type</code> & <code>icon</code>.
+          FONTAWESOME_V5_SOLID_ICON is being used here. The arguments are passed
+          as properties <code>type</code> & <code>icon</code>.
         </CoreBox>
 
         <CoreDivider />
@@ -266,8 +288,8 @@ const getIconComponentSamples = () => {
           {`<CoreIcon type={__IconTypes.FONTAWESOME_V5_REGULAR_ICON} icon="fa-user-circle" />`}
         </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          FONTAWESOME_V5_REGULAR_ICON is being used here. The arguments are passed as properties{" "}
-          <code>type</code> & <code>icon</code>.
+          FONTAWESOME_V5_REGULAR_ICON is being used here. The arguments are
+          passed as properties <code>type</code> & <code>icon</code>.
         </CoreBox>
 
         <CoreDivider />
@@ -283,8 +305,8 @@ const getIconComponentSamples = () => {
           {`<CoreIcon type={__IconTypes.RXICON_V1_REGULAR_ICON} icon="rxi-alchohol-caution" />`}
         </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          RXICON_V1_REGULAR_ICON is being used here. The arguments are passed as properties{" "}
-          <code>type</code> & <code>icon</code>.
+          RXICON_V1_REGULAR_ICON is being used here. The arguments are passed as
+          properties <code>type</code> & <code>icon</code>.
         </CoreBox>
 
         <CoreDivider />
@@ -302,8 +324,8 @@ const getIconComponentSamples = () => {
           {`<CoreIcon options={{type: __IconTypes.RXICON_V1_REGULAR_ICON, icon: "rxi-alchohol-consult-doctor"}} />`}
         </code>
         <CoreBox gridProps={{ gridSize: 5 }}>
-          RXICON_V1_REGULAR_ICON is being used here. The arguments are passed as a JSON in a
-          property called <code>options</code>.
+          RXICON_V1_REGULAR_ICON is being used here. The arguments are passed as
+          a JSON in a property called <code>options</code>.
         </CoreBox>
       </CoreGrid>
     </>
@@ -331,41 +353,47 @@ const getTypographyComponentSamples = () => {
       <CoreH6>CoreH6. Heading</CoreH6>
       <CoreDivider />
       <CoreTypographySubtitle1>
-        CoreTypographySubtitle1. Fusce mattis egestas risus, in euismod odio tincidunt in. Maecenas
-        ut ultricies quam.
+        CoreTypographySubtitle1. Fusce mattis egestas risus, in euismod odio
+        tincidunt in. Maecenas ut ultricies quam.
       </CoreTypographySubtitle1>
       <CoreDivider />
       <CoreTypographySubtitle2>
-        CoreTypographySubtitle2. Fusce mattis egestas risus, in euismod odio tincidunt in. Maecenas
-        ut ultricies quam.
+        CoreTypographySubtitle2. Fusce mattis egestas risus, in euismod odio
+        tincidunt in. Maecenas ut ultricies quam.
       </CoreTypographySubtitle2>
       <CoreDivider />
       <CoreTypographyBody1>
-        CoreTypographyBody1. Fusce mattis egestas risus, in euismod odio tincidunt in. Maecenas ut
-        ultricies quam. Curabitur sit amet diam a magna rhoncus posuere quis eu sem. Donec nec
-        convallis ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus nulla, eu
+        CoreTypographyBody1. Fusce mattis egestas risus, in euismod odio
+        tincidunt in. Maecenas ut ultricies quam. Curabitur sit amet diam a
+        magna rhoncus posuere quis eu sem. Donec nec convallis ipsum. Donec
+        euismod, ex vel maximus tincidunt, lacus libero faucibus nulla, eu
         scelerisque nisi metus at mi. Phasellus luctus in magna id finibus.
       </CoreTypographyBody1>
       <CoreDivider />
       <CoreTypographyBody1 limitChars="100">
-        CoreTypographyBody1 with limitChars. Fusce mattis egestas risus, in euismod odio tincidunt
-        in. Maecenas ut ultricies quam. Curabitur sit amet diam a magna rhoncus posuere quis eu sem.
-        Donec nec convallis ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus
-        nulla, eu scelerisque nisi metus at mi. Phasellus luctus in magna id finibus.
+        CoreTypographyBody1 with limitChars. Fusce mattis egestas risus, in
+        euismod odio tincidunt in. Maecenas ut ultricies quam. Curabitur sit
+        amet diam a magna rhoncus posuere quis eu sem. Donec nec convallis
+        ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus
+        nulla, eu scelerisque nisi metus at mi. Phasellus luctus in magna id
+        finibus.
       </CoreTypographyBody1>
       <CoreDivider />
       <CoreTypographyBody2>
-        CoreTypographyBody2. Fusce mattis egestas risus, in euismod odio tincidunt in. Maecenas ut
-        ultricies quam. Curabitur sit amet diam a magna rhoncus posuere quis eu sem. Donec nec
-        convallis ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus nulla, eu
+        CoreTypographyBody2. Fusce mattis egestas risus, in euismod odio
+        tincidunt in. Maecenas ut ultricies quam. Curabitur sit amet diam a
+        magna rhoncus posuere quis eu sem. Donec nec convallis ipsum. Donec
+        euismod, ex vel maximus tincidunt, lacus libero faucibus nulla, eu
         scelerisque nisi metus at mi. Phasellus luctus in magna id finibus.
       </CoreTypographyBody2>
       <CoreDivider />
       <CoreTypographyBody2 limitChars="100">
-        CoreTypographyBody2 with limitChars. Fusce mattis egestas risus, in euismod odio tincidunt
-        in. Maecenas ut ultricies quam. Curabitur sit amet diam a magna rhoncus posuere quis eu sem.
-        Donec nec convallis ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus
-        nulla, eu scelerisque nisi metus at mi. Phasellus luctus in magna id finibus.
+        CoreTypographyBody2 with limitChars. Fusce mattis egestas risus, in
+        euismod odio tincidunt in. Maecenas ut ultricies quam. Curabitur sit
+        amet diam a magna rhoncus posuere quis eu sem. Donec nec convallis
+        ipsum. Donec euismod, ex vel maximus tincidunt, lacus libero faucibus
+        nulla, eu scelerisque nisi metus at mi. Phasellus luctus in magna id
+        finibus.
       </CoreTypographyBody2>
       <CoreDivider />
       <CoreTypographyButton>CoreTypographyButton</CoreTypographyButton>
@@ -381,9 +409,15 @@ const getDataTableComponentSamples = () => {
   return (
     <>
       <CoreBox
-        styleClasses={[CoreClasses.BG.BG_WHITE, CoreClasses.PADDING.P2, CoreClasses.MARGIN.MB5]}
+        styleClasses={[
+          CoreClasses.BG.BG_WHITE,
+          CoreClasses.PADDING.P2,
+          CoreClasses.MARGIN.MB5,
+        ]}
       >
-        <CoreH6 styleClasses={[CoreClasses.MARGIN.MB1, CoreClasses.COLOR.TEXT_INFO]}>
+        <CoreH6
+          styleClasses={[CoreClasses.MARGIN.MB1, CoreClasses.COLOR.TEXT_INFO]}
+        >
           CoreDataTable Component
         </CoreH6>
       </CoreBox>
@@ -409,9 +443,9 @@ const getBackgroundColorUtilitySamples = () => {
     <>
       {getTopicHeading("Background color")}
       <CoreTypographyBody1>
-        Similar to the contextual text color classes, set the background of an element to any
-        contextual class. Background utilities do not set color, so in some cases you’ll want to use
-        .text-*
+        Similar to the contextual text color classes, set the background of an
+        element to any contextual class. Background utilities do not set color,
+        so in some cases you’ll want to use .text-*
       </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.BG).map((bgClass) => {
@@ -439,8 +473,8 @@ const getBorderUtilitySamples = () => {
       {getTopicHeading("Border")}
 
       <CoreTypographyBody1>
-        In the examples the border-width is forcefully given 2px, so that examples are easily
-        visible.
+        In the examples the border-width is forcefully given 2px, so that
+        examples are easily visible.
       </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.BORDER).map((borderClass) => {
@@ -469,7 +503,9 @@ const getColorUtilitySamples = () => {
   return (
     <>
       {getTopicHeading("Color")}
-      <CoreTypographyBody1>Colorize text with text color utilities.</CoreTypographyBody1>
+      <CoreTypographyBody1>
+        Colorize text with text color utilities.
+      </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.COLOR).map((colorClass) => {
           return (
@@ -516,7 +552,9 @@ const getTextUtilitySamples = () => {
 
 const getHeading = (headingText) => {
   return (
-    <CoreH4 styleClasses={[CoreClasses.MARGIN.MB3, CoreClasses.COLOR.TEXT_PRIMARY]}>
+    <CoreH4
+      styleClasses={[CoreClasses.MARGIN.MB3, CoreClasses.COLOR.TEXT_PRIMARY]}
+    >
       {headingText}
     </CoreH4>
   );
@@ -538,7 +576,9 @@ const getSubHeading = (subHeadingText) => {
 
 const getTopicHeading = (topicHeadingText) => {
   return (
-    <CoreH6 styleClasses={[CoreClasses.MARGIN.MY1, CoreClasses.COLOR.TEXT_INFO]}>
+    <CoreH6
+      styleClasses={[CoreClasses.MARGIN.MY1, CoreClasses.COLOR.TEXT_INFO]}
+    >
       {topicHeadingText}
     </CoreH6>
   );

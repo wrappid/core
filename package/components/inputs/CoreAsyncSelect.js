@@ -21,7 +21,7 @@ import CoreFormHelperText from "./CoreFormHelperText";
 import { componentMap } from "../../utils/componentMap";
 import { createFilterOptions } from "@mui/material/Autocomplete";
 import { useNavigate } from "react-router-dom";
-import CoreClasses from "./../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 
 const filter = createFilterOptions();
 //TODO:

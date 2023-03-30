@@ -1,6 +1,6 @@
 import React from "react";
 import { getLabel } from "../../../../utils/stringUtils";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
@@ -38,9 +38,11 @@ export default function FilterColumn(props) {
           return (
             !auditColumnsKey.includes(tblCol?.id?.toLocaleLowerCase()) &&
             (tblCol?.label?.toLocaleLowerCase().includes(tmpSearchString) ||
-              getLabel(tblCol?.id)?.toLocaleLowerCase().includes(tmpSearchString))
+              getLabel(tblCol?.id)
+                ?.toLocaleLowerCase()
+                .includes(tmpSearchString))
           );
-        })}`,
+        })}`
       );
       console.log("########################");
       setSearchedColumns(
@@ -48,16 +50,21 @@ export default function FilterColumn(props) {
           return (
             !auditColumnsKey.includes(tblCol?.id?.toLocaleLowerCase()) &&
             (tblCol?.label?.toLocaleLowerCase().includes(tmpSearchString) ||
-              getLabel(tblCol?.id)?.toLocaleLowerCase().includes(tmpSearchString))
+              getLabel(tblCol?.id)
+                ?.toLocaleLowerCase()
+                .includes(tmpSearchString))
           );
-        }),
+        })
       );
     } else {
     }
   }, [searchString]);
 
   React.useEffect(() => {
-    if (tableColumns.length === auditColumnsKey.length + filteredColumns.length) {
+    if (
+      tableColumns.length ===
+      auditColumnsKey.length + filteredColumns.length
+    ) {
       set_selectAllColumn(true);
     } else {
       set_selectAllColumn(false);
@@ -119,7 +126,9 @@ export default function FilterColumn(props) {
           searchedColumns &&
           searchedColumns?.length > 0
             ? searchedColumns
-            : tableColumns?.filter((tblCol) => !auditColumnsKey.includes(tblCol.id))
+            : tableColumns?.filter(
+                (tblCol) => !auditColumnsKey.includes(tblCol.id)
+              )
           )?.map((col) => {
             return (
               !auditColumnsKey.includes(col.id) && (

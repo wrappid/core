@@ -2,7 +2,7 @@ import React from "react";
 
 import { useRef } from "react";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
@@ -12,7 +12,7 @@ import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 
-export default function CoreFilePicker  (props)  {
+export default function CoreFilePicker(props) {
   const inputRef = useRef(null);
   const handleFileOpen = () => {
     console.log("adasd");
@@ -88,4 +88,4 @@ export default function CoreFilePicker  (props)  {
       <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
     </CoreFormControl>
   );
-};
+}

@@ -20,7 +20,7 @@ import { apiRequestAction } from "../../store/action/appActions";
 import CoreFormHeader from "./CoreFormHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
 import CoreBox from "../layouts/CoreBox";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import {
   createApiMeta,
   forReloadCheck,

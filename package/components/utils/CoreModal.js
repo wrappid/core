@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../../store/action/modalAction";
 import { SCModal } from "../../styledComponents/utils/SCModal";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreH6 from "../dataDisplay/heading/CoreH6";
 import CoreIconButton from "../inputs/CoreIconButton";
@@ -49,7 +49,9 @@ export default function CoreModal(props) {
           }
           id="modal-modal-title"
         >
-          <CoreBox>{<CoreH6>{modalData?.heading ? modalData.heading : ""}</CoreH6>}</CoreBox>
+          <CoreBox>
+            {<CoreH6>{modalData?.heading ? modalData.heading : ""}</CoreH6>}
+          </CoreBox>
           <CoreIconButton onClick={HandleModalClose}>
             <CoreIcon>close</CoreIcon>
           </CoreIconButton>

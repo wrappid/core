@@ -20,7 +20,7 @@ import CoreGrid from "../../components/layouts/CoreGrid";
 import CoreSection from "../../components/layouts/CoreSection";
 import CoreStack from "../../components/layouts/CoreStack";
 import CoreLink from "../../components/navigation/CoreLink";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function StyleUtilities() {
   return getUtilitySamples();
@@ -46,9 +46,9 @@ const getBackgroundColorUtilitySamples = () => {
     <>
       {getTopicHeading("Background color")}
       <CoreTypographyBody1>
-        Similar to the contextual text color classes, set the background of an element to any
-        contextual class. Background utilities do not set color, so in some cases you’ll want to use
-        .text-*
+        Similar to the contextual text color classes, set the background of an
+        element to any contextual class. Background utilities do not set color,
+        so in some cases you’ll want to use .text-*
       </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.BG).map((bgClass) => {
@@ -76,8 +76,8 @@ const getBorderUtilitySamples = () => {
       {getTopicHeading("Border")}
 
       <CoreTypographyBody1>
-        In the examples the border-width is forcefully given 2px, so that examples are easily
-        visible.
+        In the examples the border-width is forcefully given 2px, so that
+        examples are easily visible.
       </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.BORDER).map((borderClass) => {
@@ -106,7 +106,9 @@ const getColorUtilitySamples = () => {
   return (
     <>
       {getTopicHeading("Color")}
-      <CoreTypographyBody1>Colorize text with text color utilities.</CoreTypographyBody1>
+      <CoreTypographyBody1>
+        Colorize text with text color utilities.
+      </CoreTypographyBody1>
       <CoreGrid>
         {Object.keys(CoreClasses.COLOR).map((colorClass) => {
           return (
@@ -153,7 +155,9 @@ const getTextUtilitySamples = () => {
 
 const getHeading = (headingText) => {
   return (
-    <CoreH4 styleClasses={[CoreClasses.MARGIN.MY2, CoreClasses.COLOR.TEXT_PRIMARY]}>
+    <CoreH4
+      styleClasses={[CoreClasses.MARGIN.MY2, CoreClasses.COLOR.TEXT_PRIMARY]}
+    >
       {headingText}
     </CoreH4>
   );
@@ -175,7 +179,9 @@ const getSubHeading = (subHeadingText) => {
 
 const getTopicHeading = (topicHeadingText) => {
   return (
-    <CoreH6 styleClasses={[CoreClasses.MARGIN.MY1, CoreClasses.COLOR.TEXT_INFO]}>
+    <CoreH6
+      styleClasses={[CoreClasses.MARGIN.MY1, CoreClasses.COLOR.TEXT_INFO]}
+    >
       {topicHeadingText}
     </CoreH6>
   );

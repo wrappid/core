@@ -1,6 +1,6 @@
 import * as React from "react";
 import CoreTable from "../dataDisplay/CoreTable";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDataTableHead from "./CoreDataTableHead";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "../../store/action/appActions";

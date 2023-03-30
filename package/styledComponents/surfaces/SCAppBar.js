@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import CoreClasses from "../../styles/CoreClasses";
-import { getEffectiveStyle } from "../../styles/CoreUtil";
+import { CoreClasses } from "@wrappid/styles";
+import { getEffectiveStyle } from "@wrappid/styles";
 
 const defaultStyleClasses = [CoreClasses.SC.SURFACES.APP_BAR];
 

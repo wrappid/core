@@ -1,7 +1,7 @@
 import { element } from "prop-types";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreChip from "../../dataDisplay/CoreChip";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
@@ -25,7 +25,11 @@ function multiLevelSerch(id, data, parentIndices) {
     for (var j = 0; j < data.length; j++) {
       if (data[j].__children && data[j].__children.length > 0) {
         parentIndices.push(j);
-        [f, parentIndices] = multiLevelSerch(id, data[j].__children, parentIndices);
+        [f, parentIndices] = multiLevelSerch(
+          id,
+          data[j].__children,
+          parentIndices
+        );
         if (f) {
           return [f, parentIndices];
         }
@@ -59,7 +63,12 @@ function setChildProps(parentOb, element, finalVal, level, path, id, rootFlag) {
       console.log("\t CHILD: Setting data:", element, finalVal);
       parentOb.__children[k][element] = finalVal;
     } else {
-      console.log("\t CHILD: Not Setting data, level: ", level, "rootNodeLevel:", rootNodeLevel);
+      console.log(
+        "\t CHILD: Not Setting data, level: ",
+        level,
+        "rootNodeLevel:",
+        rootNodeLevel
+      );
     }
 
     parentOb.__children[k] = setChildProps(
@@ -69,7 +78,7 @@ function setChildProps(parentOb, element, finalVal, level, path, id, rootFlag) {
       level + 1,
       path,
       id,
-      rootFlag ? rootFlag : path[level + 1] === k,
+      rootFlag ? rootFlag : path[level + 1] === k
     );
   }
 
@@ -86,14 +95,16 @@ function setDataValue(id, data, el, finalVal) {
     0,
     path,
     id,
-    Number(data[path[0]].id) === Number(id),
+    Number(data[path[0]].id) === Number(id)
   );
   return data;
 }
 
 export default function ParentChildMap(props) {
   const [formData, setFormData] = useState([]);
-  const tempData = useSelector((state) => (state?.api ? state?.api[props.editId]?.data : null));
+  const tempData = useSelector((state) =>
+    state?.api ? state?.api[props.editId]?.data : null
+  );
   const data = tempData?.rows[props.id];
   console.log("props", formData);
 
@@ -107,7 +118,8 @@ export default function ParentChildMap(props) {
     let parts = e.target.id.split("-");
     let id = parts[0];
     let element = parts[1];
-    let finalVal = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let finalVal =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     console.log("id", id, "element", element, "val", finalVal);
     let temp = [...formData];
     console.log("DATA", temp);
@@ -134,7 +146,10 @@ export default function ParentChildMap(props) {
           ]}
         >
           <CoreGrid
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.MARGIN.ML0]}
+            styleClasses={[
+              CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+              CoreClasses.MARGIN.ML0,
+            ]}
           >
             <CoreBox gridProps={{ gridSize: 10 }}>
               <CoreCheckbox
@@ -144,12 +159,15 @@ export default function ParentChildMap(props) {
                     <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.M0]}>
                       {parentOb?.name}
                     </CoreTypographyBody1>
-                    {parentOb?.__children && parentOb?.__children?.length > 0 && (
-                      <CoreChip
-                        label={"has " + parentOb?.__children?.length + " children"}
-                        size="small"
-                      />
-                    )}
+                    {parentOb?.__children &&
+                      parentOb?.__children?.length > 0 && (
+                        <CoreChip
+                          label={
+                            "has " + parentOb?.__children?.length + " children"
+                          }
+                          size="small"
+                        />
+                      )}
                   </CoreStack>
                 }
                 onChange={handleChange}

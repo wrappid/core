@@ -1,10 +1,10 @@
 import React from "react";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 import CoreCheckbox from "../CoreCheckbox";
-import  CoreInput  from "../CoreInput";
+import CoreInput from "../CoreInput";
 
 export default function ChildMap({ parentOb, handleChange, formData, label }) {
   return parentOb?.__children?.map((childOb, j) => (

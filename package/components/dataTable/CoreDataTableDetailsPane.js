@@ -2,7 +2,7 @@ import React from "react";
 import config from "../../config/config";
 import { ENV_PROD_MODE } from "../../config/constants";
 import { getLabel } from "../../utils/stringUtils";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreH1 from "../dataDisplay/heading/CoreH1";

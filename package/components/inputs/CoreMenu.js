@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreStack from "../layouts/CoreStack";
 
 export default function CoreMenu(props) {
@@ -44,4 +44,4 @@ export default function CoreMenu(props) {
       )}
     </CoreStack>
   );
-};
+}

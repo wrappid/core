@@ -1,12 +1,12 @@
 import React from "react";
 import OtpInput from "react-otp-input";
 import config from "../../config/config";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreBox from "../layouts/CoreBox";
-import CoreFormErrorText  from "./CoreFormErrorText";
-import CoreFormHelperText  from "./CoreFormHelperText";
+import CoreFormErrorText from "./CoreFormErrorText";
+import CoreFormHelperText from "./CoreFormHelperText";
 
-export default function CoreOtpInput (props) {
+export default function CoreOtpInput(props) {
   console.log("ADSDASDA");
   return (
     <CoreBox styleClasses={[CoreClasses.MARGIN.MB2]}>
@@ -45,4 +45,4 @@ export default function CoreOtpInput (props) {
       </CoreFormHelperText>
     </CoreBox>
   );
-};
+}

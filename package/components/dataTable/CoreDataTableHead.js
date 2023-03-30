@@ -6,7 +6,7 @@ import { getLabel } from "../../utils/stringUtils";
 import CoreCheckbox from "../inputs/CoreCheckbox";
 import CoreTableSortLabel from "../dataDisplay/CoreTableSortLabel";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function CoreDataTableHead(props) {
   const {

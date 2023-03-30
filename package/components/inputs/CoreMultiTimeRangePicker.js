@@ -1,6 +1,6 @@
 import React from "react";
-import CoreFormHelperText  from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
+import CoreFormHelperText from "./CoreFormHelperText";
+import { CoreClasses } from "@wrappid/styles";
 import CoreBox from "../layouts/CoreBox";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreGrid from "../layouts/CoreGrid";

@@ -1,6 +1,6 @@
 import React from "react";
 import { SCCheckbox } from "../../styledComponents/inputs/SCCheckbox";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
 
 export default function CoreCheckbox(props) {

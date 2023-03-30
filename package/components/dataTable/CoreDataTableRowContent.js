@@ -1,7 +1,7 @@
 import React from "react";
 import CoreTableCell from "./../dataDisplay/CoreTableCell";
 import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
-import CoreClasses from "./../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
 import {
   getColumnLabel,

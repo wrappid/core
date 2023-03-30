@@ -1,6 +1,6 @@
 import React from "react";
 import { getUUID } from "../../../../utils/appUtils";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import { CoreSelect } from "../../inputs/CoreSelect";

@@ -1,8 +1,8 @@
 import { styled } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import config from "../../config/config";
-import CoreClasses from "../../styles/CoreClasses";
-import { getEffectiveStyle } from "../../styles/CoreUtil";
+import { CoreClasses } from "@wrappid/styles";
+import { getEffectiveStyle } from "@wrappid/styles";
 
 const openedMixin = (theme) => ({
   ...getEffectiveStyle(CoreClasses.APP.APPBAR_HEIGHT),

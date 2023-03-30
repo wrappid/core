@@ -2,7 +2,7 @@ import React from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreIconButton from "./CoreIconButton";
 import CoreInput from "./CoreInput";
 import CoreInputAdornment from "./CoreInputAdornment";
@@ -40,4 +40,4 @@ export default function CoreInputPassword(props) {
       }
     />
   );
-};
+}

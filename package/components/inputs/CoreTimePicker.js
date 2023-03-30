@@ -3,7 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import CoreTextField from "./CoreTextField";
 import CoreFormHelperText from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
 import moment from "moment";
 

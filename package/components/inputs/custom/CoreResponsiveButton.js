@@ -1,7 +1,7 @@
 import React from "react";
 import CoreButton from "../CoreButton";
 import CoreIconButton from "./../CoreIconButton";
-import CoreClasses from "./../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import { isJson } from "../../../utils/stringUtils";
 

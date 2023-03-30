@@ -1,7 +1,7 @@
 import React from "react";
 import { getStatusTextColorClass } from "../../../utils/tableUtils";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreClasses from "./../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function StatusText(props) {
   const { status } = props;

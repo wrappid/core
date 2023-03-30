@@ -15,7 +15,7 @@ import {
   __TableLeftPanelGridSize,
   __TableRightPanelGridSize,
 } from "../../utils/tableUtils";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";

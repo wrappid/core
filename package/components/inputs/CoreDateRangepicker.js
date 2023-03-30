@@ -2,9 +2,9 @@ import React from "react";
 import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-import  CoreTextField  from "./CoreTextField";
-import  CoreFormHelperText  from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
+import CoreTextField from "./CoreTextField";
+import CoreFormHelperText from "./CoreFormHelperText";
+import { CoreClasses } from "@wrappid/styles";
 import moment from "moment";
 
 export default function CoreDateRangepicker(props) {

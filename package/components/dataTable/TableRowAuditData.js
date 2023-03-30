@@ -1,6 +1,6 @@
 import React from "react";
 import UserChip from "../dataDisplay/custom/UserChip";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreAlert from "../feedback/CoreAlert";
 import CoreBox from "../layouts/CoreBox";

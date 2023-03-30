@@ -1,12 +1,12 @@
 import React from "react";
 import { getLabel } from "../../../utils/stringUtils";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import CoreInputAdornment from "../../inputs/CoreInputAdornment";
-import CoreTextField  from "../../inputs/CoreTextField";
+import CoreTextField from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
 

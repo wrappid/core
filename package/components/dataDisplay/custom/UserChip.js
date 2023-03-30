@@ -7,7 +7,7 @@ import { getFullName } from "../../../utils/helper";
 import CoreAvatar from "../CoreAvatar";
 import CoreChip from "../CoreChip";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function UserChip(props) {
   const {

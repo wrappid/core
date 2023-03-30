@@ -5,8 +5,14 @@ import config from "../config/config";
 import { ENV_DEV_MODE } from "../config/constants";
 import Error404 from "../error/Error404";
 import { RESET_LOADING } from "../store/types/appTypes";
-import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
-import { UPDATE_HELPER_FLAG, UPDATE_HELPER_TEXT_VIEW } from "../store/types/formTypes";
+import {
+  SAVE_EXPIRED_SESSION,
+  SESSION_RECALLED,
+} from "../store/types/authTypes";
+import {
+  UPDATE_HELPER_FLAG,
+  UPDATE_HELPER_TEXT_VIEW,
+} from "../store/types/formTypes";
 import {
   DocumentMetaDescription,
   DocumentMetaKeywords,
@@ -17,14 +23,16 @@ import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
-import CoreClasses from "../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 // import { ComponentRegistry } from "./../config/ComponentRegistry";
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = useLocation();
   const auth = useSelector((state) => state.auth);
-  const { showHelperText = true, helperButtonFlag = true } = useSelector((state) => state.forms);
+  const { showHelperText = true, helperButtonFlag = true } = useSelector(
+    (state) => state.forms
+  );
 
   const { route = { Page: { schema: {}, appComponent: "" } } } = props;
 
@@ -69,7 +77,10 @@ export default function PageContainer(props) {
   }, []);
 
   React.useEffect(() => {
-    console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
+    console.log(
+      "Current state of page container's helperButtonFlag = ",
+      helperButtonFlag
+    );
   }, [helperButtonFlag]);
 
   React.useEffect(() => {}, [route]);
@@ -82,13 +93,17 @@ export default function PageContainer(props) {
 
   return (
     <>
-      {route?.title && <DocumentTitle title={route?.title || "NO TITLE PROVIDED"} />}
+      {route?.title && (
+        <DocumentTitle title={route?.title || "NO TITLE PROVIDED"} />
+      )}
       {route?.description && (
         <DocumentMetaDescription
           metaDescription={route?.description || "NO DESCRIPTION PROVIDED"}
         />
       )}
-      {route?.keywords && <DocumentMetaKeywords metaKeywords={route?.keywords || ""} />}
+      {route?.keywords && (
+        <DocumentMetaKeywords metaKeywords={route?.keywords || ""} />
+      )}
       {/* ---------------------------------------------------- */}
       <CoreBox styleClasses={[CoreClasses.LAYOUT.PAGE_CONTAINER]}>
         <CoreModal />

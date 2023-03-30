@@ -24,7 +24,7 @@ import {
   FORM_XS_DEFAULT_GRID_SIZE,
 } from "../components/forms/coreFormConstants";
 import config from "../config/config";
-import CoreClasses from "../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import { FORM_VALIDATION_MAP } from "./fromValidationMap";
 import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
 // import { store } from "../store/CoreProvider";

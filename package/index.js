@@ -131,8 +131,8 @@ import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 import StatusText from "./components/dataDisplay/custom/StatusText";
 import UserChip from "./components/dataDisplay/custom/UserChip";
 
-import {createFullStore} from "./store/store";
-import apiRequestAction from "./store/action/appActions";
+import { createFullStore } from "./store/store";
+import { apiRequestAction } from "./store/action/appActions";
 
 export {
   CoreAppDiv,

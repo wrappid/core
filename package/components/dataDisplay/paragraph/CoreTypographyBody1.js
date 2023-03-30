@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import CoreClasses from "../../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreSpan from "../../layouts/CoreSpan";
 import CoreLink from "../../navigation/CoreLink";
 import CoreTypography from "../CoreTypography";
@@ -22,7 +22,10 @@ export default function CoreTypographyBody1(props) {
           : props?.children}
       </CoreSpan>
       {!hideSeeMore && limitChars < props?.children?.length && (
-        <CoreLink styleClasses={[CoreClasses.MARGIN.ML1]} onClick={toggleSeeMore}>
+        <CoreLink
+          styleClasses={[CoreClasses.MARGIN.ML1]}
+          onClick={toggleSeeMore}
+        >
           {seeMore ? "See more" : "See less"}
         </CoreLink>
       )}
@@ -38,7 +41,7 @@ export default function CoreTypographyBody1(props) {
  * Sumanta's Code below
  */
 // import { useState } from "react";
-// import CoreClasses from "../../../styles/CoreClasses";
+// import {CoreClasses} from "@wrappid/styles";;
 // import CoreLink from "../../navigation/CoreLink";
 // import CoreTypography from "../CoreTypography";
 

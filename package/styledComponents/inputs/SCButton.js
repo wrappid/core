@@ -1,6 +1,6 @@
 import { Button, styled } from "@mui/material";
-import CoreClasses from "../../styles/CoreClasses";
-import { getEffectiveStyle } from "../../styles/CoreUtil";
+import { CoreClasses } from "@wrappid/styles";
+import { getEffectiveStyle } from "@wrappid/styles";
 
 const defaultStyleClasses = [
   CoreClasses.SC.INPUTS.BUTTON, // specific styled components classes const goes in StyledComponentsClasses.js
@@ -9,7 +9,10 @@ const defaultStyleClasses = [
 
 export const SCButton = styled(
   Button,
-  {},
+  {}
 )((props) => ({
-  ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]),
+  ...getEffectiveStyle([
+    ...defaultStyleClasses,
+    ...(props?.styleClasses || []),
+  ]),
 }));

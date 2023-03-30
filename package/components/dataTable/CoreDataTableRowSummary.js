@@ -1,5 +1,5 @@
 import React from "react";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreStack from "../layouts/CoreStack";
 import CoreCardHeader from "../surfaces/CoreCardHeader";

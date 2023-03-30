@@ -5,7 +5,7 @@ import CoreTableCell from "../dataDisplay/CoreTableCell";
 import CoreForm from "../forms/CoreForm";
 import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import TableRowAuditData from "./TableRowAuditData";
-import CoreClasses from "../../styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
 export default function CoreTableCollapsible({
