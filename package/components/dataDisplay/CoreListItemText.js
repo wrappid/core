@@ -1,5 +1,5 @@
 import React from "react";
-import { SCListItemText } from "../../styledComponents/dataDisplay/SCListItemText";
+import { SCListItemText } from "@wrappid/styled-components";
 
 export default function CoreListItemText(props) {
   return <SCListItemText {...props} />;

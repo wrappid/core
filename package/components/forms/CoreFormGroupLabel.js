@@ -1,4 +1,4 @@
-import { SCFormControlLabel } from "../../styledComponents/inputs/SCFormControlLabel";
+import { SCFormControlLabel } from "@wrappid/styled-components";
 
 export default function CoreFormControlLabel(props) {
   return <SCFormControlLabel {...props}>{props.children}</SCFormControlLabel>;

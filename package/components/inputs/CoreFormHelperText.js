@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { SCFormHelperText } from "../../styledComponents/inputs/SCFormHelperText";
+import { SCFormHelperText } from "@wrappid/styled-components";
 
 export default function CoreFormHelperText(props) {
   const { showHelperText = true } = useSelector((state) => state.forms);
@@ -9,4 +9,4 @@ export default function CoreFormHelperText(props) {
       {showHelperText && props.children}
     </SCFormHelperText>
   );
-};
+}

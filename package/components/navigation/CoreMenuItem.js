@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SCMenuItem } from "../../styledComponents/navigation/SCMenuItem";
+import { SCMenuItem } from "@wrappid/styled-components";
 
 export default function CoreMenuItem(props) {
   return (

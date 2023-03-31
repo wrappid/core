@@ -1,5 +1,5 @@
 import React from "react";
-import { SCCheckbox } from "../../styledComponents/inputs/SCCheckbox";
+import { SCCheckbox } from "@wrappid/styled-components";
 import { CoreClasses } from "@wrappid/styles";
 import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
 

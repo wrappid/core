@@ -1,7 +1,7 @@
 import React from "react";
 import { Children } from "react";
 import { getGridSizeProps } from "../../utils/componentUtil";
-import { SCGrid } from "../../styledComponents/layouts/SCGrid";
+import { SCGrid } from "@wrappid/styled-components";
 // import { DEFAULT_SPACING } from "../../styles/default/DefaultCoreStyles";
 import { getUUID } from "../../utils/appUtils";
 

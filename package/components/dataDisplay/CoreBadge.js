@@ -1,5 +1,5 @@
 import React from "react";
-import { SCBadge } from "../../styledComponents/dataDisplay/SCBadge";
+import { SCBadge } from "@wrappid/styled-components";
 
 export default function CoreBadge(props) {
   return <SCBadge {...props} />;

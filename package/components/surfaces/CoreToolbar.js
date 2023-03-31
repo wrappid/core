@@ -1,5 +1,5 @@
 import React from "react";
-import { SCToolbar } from "../../styledComponents/utils/SCToolbar";
+import { SCToolbar } from "@wrappid/styled-components";
 
 export default function CoreToolBar(props) {
   return <SCToolbar {...props}>{props.children}</SCToolbar>;

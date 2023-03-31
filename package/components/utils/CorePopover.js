@@ -1,6 +1,6 @@
 import React from "react";
 import { getUUID } from "../../utils/appUtils";
-import { SCPopover } from "../../styledComponents/utils/SCPopover";
+import { SCPopover } from "@wrappid/styled-components";
 
 export default function CorePopover(props) {
   const {

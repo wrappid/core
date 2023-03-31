@@ -1,16 +1,18 @@
 import React from "react";
 import { useRef } from "react";
-import { SCRichTextEditor } from "../../../styledComponents/inputs/custom/SCRichTextEditor";
+import { SCRichTextEditor } from "@wrappid/styled-components";
 import CoreInputLabel from "../CoreInputLabel";
 
-export default function CoreRichTextEditor (props) {
+export default function CoreRichTextEditor(props) {
   const ref = useRef(null);
 
   return (
     <>
       <CoreInputLabel
         shrink={true}
-        error={props.touched && props.error && props.error.length > 0 ? true : false}
+        error={
+          props.touched && props.error && props.error.length > 0 ? true : false
+        }
         htmlFor={props.id}
       >
         {props.label}
@@ -37,4 +39,4 @@ export default function CoreRichTextEditor (props) {
       />
     </>
   );
-};
+}

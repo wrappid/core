@@ -1,6 +1,6 @@
 import React from "react";
 import { getUUID } from "../../utils/appUtils";
-import { SCTable } from "../../styledComponents/dataDisplay/SCTable";
+import { SCTable } from "@wrappid/styled-components";
 
 export default function CoreTable(props) {
   let _uuid = getUUID();

@@ -1,5 +1,5 @@
 import React from "react";
-import { SCTableCell } from "../../styledComponents/dataDisplay/SCTableCell";
+import { SCTableCell } from "@wrappid/styled-components";
 
 export default function CoreTableCell(props) {
   const { children, ...restProps } = props;

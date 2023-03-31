@@ -9,7 +9,6 @@ import CoreOutlinedButton from "./package/components/inputs/CoreOutlinedButton";
 import CoreProvider from "./package/store/CoreProvider";
 import CoreThemeProvider from "./package/theme/CoreThemeProvider";
 import rootReducer from "./store/reducers/rootReducer";
-import axios from "sumanta";
 
 function App() {
   const clickFun = async () => {
@@ -24,7 +23,7 @@ function App() {
         {/* <CoreOutlinedButton label="Home" onClick={clickFun} />
       <CoreContainedButton label="Home" onClick={clickFun} /> */}
         <CoreForm formId={"testLogin"} mode={"edit"} authenticated={false} />
-        {/* <CoreForm formId={FORM_IDS.__PROFILE_EDUCATION} authenticated={true} />; */}
+        <CoreForm formId={FORM_IDS.__PROFILE_EDUCATION} authenticated={true} />;
       </CoreContainer>
     </CoreProvider>
   );

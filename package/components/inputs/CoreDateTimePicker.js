@@ -4,7 +4,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import CoreTextField from "./CoreTextField";
 import CoreFormHelperText from "./CoreFormHelperText";
 import { CoreClasses } from "@wrappid/styles";
-import { SCDateTimePicker } from "../../styledComponents/inputs/SCDateTimePicker";
+import { SCDateTimePicker } from "@wrappid/styled-components";
 
 export default function CoreDateTimePicker(props) {
   const { label, onChange, value, formik } = props;

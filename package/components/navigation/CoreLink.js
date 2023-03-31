@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SCLink } from "../../styledComponents/navigation/SCLink";
+import { SCLink } from "@wrappid/styled-components";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 
 export default function CoreLink(props) {

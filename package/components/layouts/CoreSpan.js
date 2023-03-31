@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SCBox } from "../../styledComponents/layouts/SCBox";
+import { SCBox } from "@wrappid/styled-components";
 
 export default function CoreSpan(props) {
   return (

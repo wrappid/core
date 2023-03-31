@@ -1,11 +1,11 @@
 import React from "react";
 import { getUUID } from "../../utils/appUtils";
-import { SCSelect } from "../../styledComponents/inputs/SCSelect";
+import { SCSelect } from "@wrappid/styled-components";
 import CoreFormControl from "./CoreFormControl";
 import CoreInputLabel from "./CoreInputLabel";
 import CoreMenuItem from "./CoreMenuItem";
 
-export default function CoreSelect (props) {
+export default function CoreSelect(props) {
   const { label, selectID, value, handleChange, options } = props;
 
   return (
@@ -31,4 +31,4 @@ export default function CoreSelect (props) {
       </SCSelect>
     </CoreFormControl>
   );
-};
+}

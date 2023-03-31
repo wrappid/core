@@ -1,12 +1,12 @@
 import React from "react";
 import { getUUID } from "../../utils/appUtils";
-import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { SCInput } from "@wrappid/styled-components";
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreInputLabel from "./CoreInputLabel";
 
-export default function CoreInput (props) {
+export default function CoreInput(props) {
   const { coreId = getUUID() } = props;
   return (
     <CoreFormControl coreId={`core-formControl-${coreId}`}>
@@ -58,4 +58,4 @@ export default function CoreInput (props) {
       <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
     </CoreFormControl>
   );
-};
+}

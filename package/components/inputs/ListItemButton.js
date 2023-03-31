@@ -1,5 +1,5 @@
 import React from "react";
-import { SCListItemButton } from "../../styledComponents/inputs/SCListItemButton";
+import { SCListItemButton } from "@wrappid/styled-components";
 
 export default function CoreListItemButton(props) {
   return <SCListItemButton {...props} />;

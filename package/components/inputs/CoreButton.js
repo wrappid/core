@@ -1,5 +1,5 @@
 import React from "react";
-import { SCButton } from "../../styledComponents/inputs/SCButton";
+import { SCButton } from "@wrappid/styled-components";
 
 export default function CoreButton(props) {
   const {

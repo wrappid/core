@@ -1,5 +1,5 @@
 import React from "react";
-import { SCTypography } from "../../styledComponents/dataDisplay/SCTypography";
+import { SCTypography } from "@wrappid/styled-components";
 
 export default function CoreTypography(props) {
   //Do not use this directly use CoreParagraph

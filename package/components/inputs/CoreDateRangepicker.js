@@ -1,5 +1,5 @@
 import React from "react";
-import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import { SCDatePicker } from "@wrappid/styled-components";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import CoreTextField from "./CoreTextField";

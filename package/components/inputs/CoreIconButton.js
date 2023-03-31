@@ -1,5 +1,5 @@
 import React from "react";
-import { SCIconButton } from "../../styledComponents/inputs/SCIconButton";
+import { SCIconButton } from "@wrappid/styled-components";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 
 export default function CoreIconButton(props) {

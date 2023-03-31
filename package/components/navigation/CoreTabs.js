@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SCTabs } from "../../styledComponents/navigation/SCTabs";
+import { SCTabs } from "@wrappid/styled-components";
 
 export default function CoreTabs(props) {
   return <SCTabs {...props}>{props.children}</SCTabs>;

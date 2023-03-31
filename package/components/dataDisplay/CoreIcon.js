@@ -1,5 +1,5 @@
 import React from "react";
-import { SCIcon } from "../../styledComponents/dataDisplay/SCIcon";
+import { SCIcon } from "@wrappid/styled-components";
 
 export const __IconTypes = {
   MATERIAL_ICON: "MATERIAL_ICON", // Default support of MUI
@@ -55,7 +55,12 @@ export default function CoreIcon(props) {
         );
       case __IconTypes.MATERIAL_OUTLINED_ICON:
         return (
-          <SCIcon baseClassName="material-icons-outlined" sx={sx} size="small" {...restProps}>
+          <SCIcon
+            baseClassName="material-icons-outlined"
+            sx={sx}
+            size="small"
+            {...restProps}
+          >
             {tmpIcon}
           </SCIcon>
         );

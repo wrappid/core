@@ -1,8 +1,8 @@
 import React from "react";
 
-import { SCTextField } from "../../styledComponents/inputs/SCTextField";
+import { SCTextField } from "@wrappid/styled-components";
 
-export default function CoreConfirmPasswordField (props) {
+export default function CoreConfirmPasswordField(props) {
   return (
     <SCTextField
       id={props.id}
@@ -81,4 +81,4 @@ export default function CoreConfirmPasswordField (props) {
     //     }
     // </span>
   );
-};
+}

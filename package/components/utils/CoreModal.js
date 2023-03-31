@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalState } from "../../store/action/modalAction";
-import { SCModal } from "../../styledComponents/utils/SCModal";
+import { SCModal } from "@wrappid/styled-components";
 import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreH6 from "../dataDisplay/heading/CoreH6";
