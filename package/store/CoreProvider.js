@@ -1,6 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux/es/exports";
+import CoreThemeProvider from "../theme/CoreThemeProvider";
 import { createFullStore } from "./store";
+import theme from "../utils/themeUtil";
 
 export default function CoreProvider(props) {
   /**
@@ -19,5 +21,9 @@ export default function CoreProvider(props) {
    */
   let { store, persistor } = createFullStore(props.appReducer);
 
-  return <Provider store={store}>{props.children}</Provider>;
+  return (
+    <Provider store={store}>
+      <CoreThemeProvider theme={theme}>{props.children}</CoreThemeProvider>
+    </Provider>
+  );
 }

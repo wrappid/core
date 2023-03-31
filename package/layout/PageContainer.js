@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import config from "../config/config";
 import { ENV_DEV_MODE } from "../config/constants";
 import Error404 from "../error/Error404";
@@ -128,7 +128,7 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )}
-        {ComponentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
+        {/* {ComponentRegistry[route?.Page?.appComponent]?.comp || <Error404 />} */}
       </CoreBox>
     </>
   );

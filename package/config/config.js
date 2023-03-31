@@ -4,7 +4,7 @@ import { ENV_PROD_MODE } from "./constants";
 
 var config = {
   // environment: ENV_DEV_MODE,
-  environment: ENV_STAGE_MODE,
+  // environment: ENV_STAGE_MODE,
   // environment: ENV_PROD_MODE,
 
   // Dev URL

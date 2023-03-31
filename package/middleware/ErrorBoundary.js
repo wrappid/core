@@ -7,7 +7,7 @@ import CoreBox from "../core/components/layouts/CoreBox";
 import CoreAccordion from "../core/components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "../core/components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../core/components/surfaces/CoreAccordionSummary";
-import CoreClasses from "./../core/styles/CoreClasses";
+import { CoreClasses } from "@wrappid/styles";
 import ReportIssueForm from "./../module/support/ReportIssueForm";
 
 class ErrorBoundary extends React.Component {
@@ -56,19 +56,29 @@ class ErrorBoundary extends React.Component {
         <CoreBox styleClasses={[CoreClasses.MARGIN.M1]}>
           <CoreAccordion>
             <CoreAccordionSummary>
-              <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>Error Reported</CoreH6>
+              <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
+                Error Reported
+              </CoreH6>
             </CoreAccordionSummary>
             <CoreAccordionDetail>
-              <CoreTypographyBody1 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
+              <CoreTypographyBody1
+                styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
+              >
                 Message: {this.state.error?.message}
               </CoreTypographyBody1>
-              <CoreTypographyBody1 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
+              <CoreTypographyBody1
+                styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
+              >
                 Stacktrace:
               </CoreTypographyBody1>
-              <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
+              <CoreTypographyCaption
+                styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
+              >
                 <pre>{this.state.error?.stack}</pre>
               </CoreTypographyCaption>
-              <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
+              <CoreTypographyCaption
+                styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
+              >
                 <pre>{this.state.errorInfo?.componentStack}</pre>
               </CoreTypographyCaption>
             </CoreAccordionDetail>
@@ -78,7 +88,11 @@ class ErrorBoundary extends React.Component {
             labels={[{ label: "Bug" }]}
             title={this.state.error?.message}
             isStacktrace={false}
-            stackTrace={this.state.error?.stack + "\n\n" + this.state.errorInfo?.componentStack}
+            stackTrace={
+              this.state.error?.stack +
+              "\n\n" +
+              this.state.errorInfo?.componentStack
+            }
           />
         </CoreBox>
       );

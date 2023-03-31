@@ -7,7 +7,6 @@ import CoreIconButton from "../components/inputs/CoreIconButton";
 import CoreLink from "../components/navigation/CoreLink";
 import CoreMenuItem from "../components/navigation/CoreMenuItem";
 import { CoreClasses } from "@wrappid/styles";
-import { theme } from "../styles/theme/theme";
 import {
   MENU_HEADER_ITEM,
   MENU_ITEM,
@@ -19,6 +18,7 @@ import {
   MENU_SEPERATOR,
 } from "../config/menuConstants";
 import { isJson } from "./stringUtils";
+import { getCoreTheme } from "./themeUtil";
 
 export function createMultiLevelMenu(
   menu,
@@ -144,6 +144,7 @@ function getMenuItem(
   /**
    * @todo review required for using core menu item instead of core List Item
    */
+  const theme = getCoreTheme();
   return menuItem.type === MENU_SEPERATOR ? (
     <CoreDivider />
   ) : open ? (

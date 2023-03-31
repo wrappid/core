@@ -1,7 +1,7 @@
 import React from "react";
 import { getLabel } from "../../utils/stringUtils";
 import { CoreClasses } from "@wrappid/styles";
-import { theme } from "../../styles/theme/theme";
+import { theme } from "../../theme/theme";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";

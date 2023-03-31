@@ -2,7 +2,7 @@ import React from "react";
 import { Children } from "react";
 import { getGridSizeProps } from "../../utils/componentUtil";
 import { SCGrid } from "../../styledComponents/layouts/SCGrid";
-import { DEFAULT_SPACING } from "../../styles/default/DefaultCoreStyles";
+// import { DEFAULT_SPACING } from "../../styles/default/DefaultCoreStyles";
 import { getUUID } from "../../utils/appUtils";
 
 export default function CoreGrid(props) {
@@ -15,7 +15,7 @@ export default function CoreGrid(props) {
       styleClasses={props?.styleClasses}
       container={props?.container || true}
       item={props?.item || false}
-      spacing={props?.spacing || DEFAULT_SPACING}
+      spacing={props?.spacing || 1}
       {...props}
     >
       {props?.item
