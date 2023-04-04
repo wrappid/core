@@ -67,7 +67,6 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.8.3",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
     "@babel/polyfill": "^7.12.1",
