@@ -29,7 +29,12 @@
     "url": "https://github.com/wrappid/core/issues"
   },
   "homepage": "https://github.com/wrappid/core#readme",
-  "peerDependencies": {
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mdi/font": "^7.0.96",
@@ -68,5 +73,12 @@
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6"
   }
 }
