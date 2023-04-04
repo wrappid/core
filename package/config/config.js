@@ -2,7 +2,7 @@ import { ENV_DEV_MODE } from "./constants";
 import { ENV_STAGE_MODE } from "./constants";
 import { ENV_PROD_MODE } from "./constants";
 
-var config = {
+var coreConfig = {
   // environment: ENV_DEV_MODE,
   // environment: ENV_STAGE_MODE,
   // environment: ENV_PROD_MODE,
@@ -43,5 +43,22 @@ var config = {
     labelColor: "#b3b3b3",
   },
 };
+
+let customConfig = null;
+
+try {
+  let p = "../../../config.json";
+  console.log("PATH ", p);
+  customConfig = require(p);
+} catch (err) {
+  console.warn("User config not found");
+}
+
+let config = customConfig
+  ? {
+      ...coreConfig,
+      ...customConfig,
+    }
+  : coreConfig;
 
 export default config;

@@ -24,7 +24,7 @@ import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
 import { CoreClasses } from "@wrappid/styles";
-// import { ComponentRegistry } from "./../config/ComponentRegistry";
+import ComponentRegistry from "./../config/ComponentRegistry";
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
@@ -128,7 +128,7 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )}
-        {/* {ComponentRegistry[route?.Page?.appComponent]?.comp || <Error404 />} */}
+        {ComponentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
       </CoreBox>
     </>
   );
