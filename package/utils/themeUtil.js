@@ -42,7 +42,8 @@ export function getCoreTheme(customThemme) {
 let theme = null;
 
 try {
-  let config = require("../../../../" + "config.json");
+  let p = "../../../../src/config.json";
+  let config = require(p);
   if (config?.theme) {
     theme = getCoreTheme(config?.theme);
   } else {

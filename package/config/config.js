@@ -47,7 +47,7 @@ var coreConfig = {
 let customConfig = null;
 
 try {
-  let p = "../../../../config.json";
+  let p = "../../../../src/config.json";
   console.log("PATH ", p);
   customConfig = require(p);
 } catch (err) {
