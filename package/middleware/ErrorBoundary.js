@@ -1,12 +1,12 @@
 import React from "react";
-import CoreDivider from "../core/components/dataDisplay/CoreDivider";
-import CoreH6 from "../core/components/dataDisplay/heading/CoreH6";
-import CoreTypographyBody1 from "../core/components/dataDisplay/paragraph/CoreTypographyBody1";
-import CoreTypographyCaption from "../core/components/dataDisplay/paragraph/CoreTypographyCaption";
-import CoreBox from "../core/components/layouts/CoreBox";
-import CoreAccordion from "../core/components/surfaces/CoreAccordion";
-import CoreAccordionDetail from "../core/components/surfaces/CoreAccordionDetail";
-import CoreAccordionSummary from "../core/components/surfaces/CoreAccordionSummary";
+import CoreDivider from "../components/dataDisplay/CoreDivider";
+import CoreH6 from "../components/dataDisplay/heading/CoreH6";
+import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyCaption from "../components/dataDisplay/paragraph/CoreTypographyCaption";
+import CoreBox from "../components/layouts/CoreBox";
+import CoreAccordion from "../components/surfaces/CoreAccordion";
+import CoreAccordionDetail from "../components/surfaces/CoreAccordionDetail";
+import CoreAccordionSummary from "../components/surfaces/CoreAccordionSummary";
 import { CoreClasses } from "@wrappid/styles";
 import ReportIssueForm from "./../module/support/ReportIssueForm";
 

@@ -2,17 +2,22 @@ import React, { useState } from "react";
 
 import { CssBaseline } from "@mui/material";
 
-import ErrorBoundary from "./../../middleware/ErrorBoundary";
+import ErrorBoundary from "../middleware/ErrorBoundary";
 import { CoreClasses } from "@wrappid/styles";
 import CoreBox from "../components/layouts/CoreBox";
 
 function AppContainer(props) {
-    return (
-        <>
-            <CoreBox styleClasses={[CoreClasses.LAYOUT.FULL_HEIGHT, CoreClasses.LAYOUT.FLEXBOX]}>
-                <CssBaseline />
+  return (
+    <>
+      <CoreBox
+        styleClasses={[
+          CoreClasses.LAYOUT.FULL_HEIGHT,
+          CoreClasses.LAYOUT.FLEXBOX,
+        ]}
+      >
+        <CssBaseline />
 
-                {/* {auth.uid && (
+        {/* {auth.uid && (
                     <>
                         <RxAppBar handleDrawer={handleDrawer} />
 
@@ -24,25 +29,25 @@ function AppContainer(props) {
                     </>
                 )} */}
 
-                <CoreBox
-                    component="main"
-                    styleClasses={
-                        auth?.uid
-                            ? [CoreClasses.LAYOUT.CONTENT_CONTAINER]
-                            : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
-                    }
-                >
-                    {/* <RxDrawerRight open={false} /> */}
+        <CoreBox
+          component="main"
+          styleClasses={
+            auth?.uid
+              ? [CoreClasses.LAYOUT.CONTENT_CONTAINER]
+              : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
+          }
+        >
+          {/* <RxDrawerRight open={false} /> */}
 
-                    <ErrorBoundary hasError={hasError} setHasError={setHasError}>
-                        {props.children}
-                    </ErrorBoundary>
+          <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+            {props.children}
+          </ErrorBoundary>
 
-                    {/* <RxFooter /> */}
-                </CoreBox>
-            </CoreBox>
-        </>
-    );
+          {/* <RxFooter /> */}
+        </CoreBox>
+      </CoreBox>
+    </>
+  );
 }
 
 export default AppContainer;
