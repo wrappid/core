@@ -133,8 +133,14 @@ import UserChip from "./components/dataDisplay/custom/UserChip";
 
 import { createFullStore } from "./store/store";
 import { apiRequestAction } from "./store/action/appActions";
+import CoreProvider from './store/CoreProvider';
+import CoreApp from './CoreApp';
+
+
 
 export {
+  CoreApp,
+  CoreProvider,
   CoreAppDiv,
   CoreBox,
   CoreContainer,
