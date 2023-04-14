@@ -1,5 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux/es/exports";
+import { Provider } from "react-redux";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
 import theme from "../utils/themeUtil";
 import { configureStore } from "@reduxjs/toolkit";
