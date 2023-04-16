@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { CoreMenu } from "../inputs/CoreMenu";
+import CoreMenu from "../inputs/CoreMenu";
 import { SCDrawer } from "@wrappid/styled-components";
 import { CoreClasses, getEffectiveStyle } from "@wrappid/styles";
 import { toggleMenuItemState } from "../../store/action/menuAction";
@@ -38,14 +38,14 @@ export default function CoreDrawer(props) {
             },
           }}
         >
-          {/* <CoreMenu
+          <CoreMenu
             menu={menu}
             miniDrawer={true}
             multiLevel={true}
             open={open}
             openCollapse={collapse || {}}
             OnMenuClick={OnMenuClick}
-          /> */}
+          />
         </SCDrawer>
       )}
     </>
