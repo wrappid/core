@@ -133,10 +133,9 @@ import UserChip from "./components/dataDisplay/custom/UserChip";
 
 import { createFullStore } from "./store/store";
 import { apiRequestAction } from "./store/action/appActions";
-import CoreProvider from './store/CoreProvider';
-import CoreApp from './CoreApp';
-
-
+import CoreProvider from "./store/CoreProvider";
+import CoreApp from "./CoreApp";
+import { ComponentRegistryContext } from "./config/contextHandler";
 
 export {
   CoreApp,
@@ -263,4 +262,5 @@ export {
   UserChip,
   createFullStore,
   apiRequestAction,
+  ComponentRegistryContext,
 };

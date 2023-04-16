@@ -6,6 +6,7 @@ import selectOptionsReducer from "./selectOptionsReducer";
 import authReducer from "./authReducer";
 import mdmReducer from "./mdmReducer";
 import modalReducer from "./modalReducer";
+import routeReducer from "./routeReducer";
 
 const coreReducer = {
   data: dataReducer,
@@ -15,6 +16,7 @@ const coreReducer = {
   auth: authReducer,
   mdm: mdmReducer,
   modal: modalReducer,
+  route: routeReducer,
 };
 
 export default coreReducer;

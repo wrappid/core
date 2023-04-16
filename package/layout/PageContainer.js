@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import config from "../config/config";
@@ -24,11 +24,13 @@ import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
 import { CoreClasses } from "@wrappid/styles";
-import ComponentRegistry from "./../config/ComponentRegistry";
+import { ComponentRegistryContext } from "../config/contextHandler";
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = useLocation();
+  const componentRegistry = useContext(ComponentRegistryContext);
+  console.log("componentRegistry", componentRegistry);
   const auth = useSelector((state) => state.auth);
   const { showHelperText = true, helperButtonFlag = true } = useSelector(
     (state) => state.forms
@@ -128,7 +130,7 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )}
-        {ComponentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
+        {componentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
       </CoreBox>
     </>
   );
