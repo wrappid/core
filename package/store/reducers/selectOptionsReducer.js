@@ -27,36 +27,39 @@ const selectOptionsReducer = (state = initState, action) => {
     case SELECT_OPTION_SUCCESS:
       return {
         ...state,
-        options: action?.payload?.data[0]?.Children
-          ? {
-              ...state.options,
-              [action?.payload?.data[0].name]: {
-                loading: false,
-                success: true,
-                error: false,
-                data: action?.payload?.data[0].Children || [],
+        options:
+          action?.payload?.data && action?.payload?.data[0]?.Children
+            ? {
+                ...state.options,
+                [action?.payload?.data[0].name]: {
+                  loading: false,
+                  success: true,
+                  error: false,
+                  data: action?.payload?.data
+                    ? action?.payload?.data[0]?.Children || []
+                    : [],
+                },
+              }
+            : action?.payload?.data?.rows
+            ? {
+                ...state.options,
+                [action.payload?.key]: {
+                  loading: false,
+                  success: true,
+                  error: false,
+                  total: action?.payload?.data?.totalRecords,
+                  data: action?.payload?.data?.rows,
+                },
+              }
+            : {
+                ...state.options,
+                [action.payload?.key]: {
+                  loading: false,
+                  success: true,
+                  error: false,
+                  data: action?.payload?.data,
+                },
               },
-            }
-          : action?.payload?.data?.rows
-          ? {
-              ...state.options,
-              [action.payload?.key]: {
-                loading: false,
-                success: true,
-                error: false,
-                total: action?.payload?.data?.totalRecords,
-                data: action?.payload?.data?.rows,
-              },
-            }
-          : {
-              ...state.options,
-              [action.payload?.key]: {
-                loading: false,
-                success: true,
-                error: false,
-                data: action?.payload?.data,
-              },
-            },
       };
     case SELECT_OPTION_ERROR:
       return {

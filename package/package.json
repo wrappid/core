@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "directories": {
@@ -35,7 +35,6 @@
     "@mdi/font": "^7.0.96",
     "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
-    "@mui/x-date-pickers": "^5.0.8",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -45,7 +44,6 @@
     "axios": "^1.1.3",
     "d3": "^7.6.1",
     "formik": "^2.2.9",
-    "jodit-react": "^1.3.39",
     "jquery": "^3.6.0",
     "mdi": "^2.2.43",
     "moment": "^2.29.4",
@@ -63,7 +61,6 @@
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.9",
     "sweetalert": "^2.1.2",
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",

@@ -22,6 +22,7 @@ var coreConfig = {
   // backendUrl: "http://prescription-env.eba-4nj3rccj.ap-southeast-1.elasticbeanstalk.com",
 
   webUrl: "webapp.rxefy.com/",
+  footerText: "Rxefy Tech Pvt. Ltd. | Copyright &copy; 2022",
 
   // snack message
   drawerWidth: 240,

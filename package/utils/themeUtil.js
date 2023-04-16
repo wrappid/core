@@ -5,14 +5,17 @@ const WEB_PLATFORM = "web";
 const APP_PLATFORM = "web";
 
 function createWebTheme(customThemme) {
+  console.log("Getting web theme");
   return createTheme({ ...coreTheme, ...customThemme });
 }
 
 function createNativeTheme(customThemme) {
+  console.log("Getting app theme");
   return { ...coreTheme, ...customThemme };
 }
 
 export function detectPlatform(document, navigator) {
+  console.log("platform detection", document, navigator);
   if (typeof document !== "undefined") {
     // I'm on the web!
     return WEB_PLATFORM;

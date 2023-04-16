@@ -30,7 +30,7 @@ export default function CoreMenu(props) {
         ]
       }
     >
-      {createMultiLevelMenu(
+      {/* {createMultiLevelMenu(
         menu,
         0,
         OnMenuClick,
@@ -41,7 +41,7 @@ export default function CoreMenu(props) {
         selectedID,
         setSelectedID,
         location.pathname
-      )}
+      )} */}
     </CoreStack>
   );
 }

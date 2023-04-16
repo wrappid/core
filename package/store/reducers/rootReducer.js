@@ -4,6 +4,8 @@ import apiReducer from "./apiReducer";
 import formReducer from "./formReducer";
 import selectOptionsReducer from "./selectOptionsReducer";
 import authReducer from "./authReducer";
+import mdmReducer from "./mdmReducer";
+import modalReducer from "./modalReducer";
 
 const coreReducer = {
   data: dataReducer,
@@ -11,6 +13,8 @@ const coreReducer = {
   selectOptions: selectOptionsReducer,
   api: apiReducer,
   auth: authReducer,
+  mdm: mdmReducer,
+  modal: modalReducer,
 };
 
 export default coreReducer;

@@ -1,3 +1,5 @@
+import React from "react";
+
 import CoreH from "./CoreH";
 
 export default function CoreH4(props) {

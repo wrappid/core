@@ -7,15 +7,12 @@ import Error500 from "./error/Error500";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "./store/action/appActions";
 import { HTTP_GET } from "./config/constants";
-import {
-  GET_ROUTE_FAILURE,
-  GET_ROUTE_SUCCESS,
-} from "./store/types/appTypes";
+import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
 export default function CoreNavigation() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state?.auth);
-  const _routes = useSelector((state) => state.app.routes);
+  const _routes = useSelector((state) => state?.app?.routes);
   let authenticated = auth?.uid ? true : false;
 
   React.useEffect(() => {
