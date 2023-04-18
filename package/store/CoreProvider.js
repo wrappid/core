@@ -11,7 +11,7 @@ import config from "../config/config";
 import { ENV_PROD_MODE } from "../config/constants";
 import coreReducer from "./reducers/rootReducer";
 
-function createFullStore(appReducer) {
+function createFullStore(appReducer, persistFlag = true) {
   var keys = Object.keys(coreReducer);
 
   let finalReducer = {};
@@ -23,6 +23,18 @@ function createFullStore(appReducer) {
       },
       coreReducer[keys[i]]
     );
+  }
+
+  if (persistFlag === true) {
+    for (var i = 0; i < keys.length; i++) {
+      appReducer[keys[i]] = persistReducer(
+        {
+          key: keys[i],
+          storage,
+        },
+        appReducer[keys[i]]
+      );
+    }
   }
 
   finalReducer = { ...finalReducer, ...appReducer };
@@ -53,7 +65,7 @@ export default function CoreProvider(props) {
    *  ...
    * }
    */
-  let { store, persistor } = createFullStore(props.appReducer);
+  let { store, persistor } = createFullStore(props.appReducer, props?.persistFlag);
 
   return (
     <Provider store={store}>
