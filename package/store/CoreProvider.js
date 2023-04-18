@@ -26,13 +26,14 @@ function createFullStore(appReducer, persistFlag = true) {
   }
 
   if (persistFlag === true) {
-    for (var i = 0; i < keys.length; i++) {
-      appReducer[keys[i]] = persistReducer(
+    let appReducerKeys = Object.keys(appReducer);
+    for (var i = 0; i < appReducerKeys.length; i++) {
+      appReducer[appReducerKeys[i]] = persistReducer(
         {
-          key: keys[i],
+          key: appReducerKeys[i],
           storage,
         },
-        appReducer[keys[i]]
+        appReducer[appReducerKeys[i]]
       );
     }
   }
