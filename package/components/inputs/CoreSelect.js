@@ -1,34 +1,15 @@
 import React from "react";
-import { getUUID } from "../../utils/appUtils";
-import { SCSelect } from "@wrappid/styled-components";
 import CoreFormControl from "./CoreFormControl";
 import CoreInputLabel from "./CoreInputLabel";
-import CoreMenuItem from "./CoreMenuItem";
+import { NativeSelect } from "@wrappid/styled-components";
 
 export default function CoreSelect(props) {
-  const { label, selectID, value, handleChange, options } = props;
+  const { label } = props;
 
   return (
-    <CoreFormControl fullWidth>
+    <CoreFormControl>
       <CoreInputLabel id="demo-simple-select-label">{label}</CoreInputLabel>
-      <SCSelect
-        labelId={selectID || `core-select-${getUUID()}`}
-        id="demo-simple-select"
-        value={value}
-        label={label}
-        onChange={handleChange}
-      >
-        {options.map((option, index) => {
-          return (
-            <CoreMenuItem
-              key={option?.id || index}
-              value={option?.id || option?.label || index}
-            >
-              {option?.label || `Option ${index}`}
-            </CoreMenuItem>
-          );
-        })}
-      </SCSelect>
+      <NativeSelect {...props} />
     </CoreFormControl>
   );
 }

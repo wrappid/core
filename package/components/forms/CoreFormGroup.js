@@ -1,5 +1,6 @@
-import { SCFormGroup } from "@wrappid/styled-components";
+import React from "react";
+import { NativeFormGroup } from "@wrappid/styled-components";
 
 export default function CoreFormGroup(props) {
-  return <SCFormGroup {...props}>{props.children}</SCFormGroup>;
+  return <NativeFormGroup {...props} />;
 }

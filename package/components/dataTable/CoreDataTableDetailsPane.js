@@ -1,27 +1,26 @@
-import React from "react";
-import config from "../../config/config";
-import { ENV_PROD_MODE } from "../../config/constants";
-import { getLabel } from "../../utils/stringUtils";
-import { CoreClasses } from "@wrappid/styles";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreH1 from "../dataDisplay/heading/CoreH1";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreForm from "../forms/CoreForm";
-import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreStack from "../layouts/CoreStack";
-import CoreAccordion from "../surfaces/CoreAccordion";
-import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
-import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
-import CoreCard from "../surfaces/CoreCard";
-import CoreCardContent from "../surfaces/CoreCardContent";
-import CoreCardHeader from "../surfaces/CoreCardHeader";
-import CoreTableAction from "./CoreTableAction";
-import TableRowAuditData from "./TableRowAuditData";
-import StatusText from "../dataDisplay/custom/StatusText";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
-import swal from "sweetalert";
+import React from 'react';
+import config from '../../config/config';
+import {ENV_PROD_MODE} from '../../config/constants';
+import {getLabel} from '../../utils/stringUtils';
+import {CoreClasses} from '@wrappid/styles';
+import CoreDivider from '../dataDisplay/CoreDivider';
+import CoreIcon from '../dataDisplay/CoreIcon';
+import CoreH1 from '../dataDisplay/heading/CoreH1';
+import CoreTypographyBody1 from '../dataDisplay/paragraph/CoreTypographyBody1';
+import CoreForm from '../forms/CoreForm';
+import {FORM_EDIT_MODE, FORM_VIEW_MODE} from '../forms/coreFormConstants';
+import CoreIconButton from '../inputs/CoreIconButton';
+import CoreStack from '../layouts/CoreStack';
+import CoreAccordion from '../surfaces/CoreAccordion';
+import CoreAccordionDetail from '../surfaces/CoreAccordionDetail';
+import CoreAccordionSummary from '../surfaces/CoreAccordionSummary';
+import CoreCard from '../surfaces/CoreCard';
+import CoreCardContent from '../surfaces/CoreCardContent';
+import CoreCardHeader from '../surfaces/CoreCardHeader';
+import CoreTableAction from './CoreTableAction';
+import TableRowAuditData from './TableRowAuditData';
+import StatusText from '../dataDisplay/custom/StatusText';
+import CoreTypographyCaption from '../dataDisplay/paragraph/CoreTypographyCaption';
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -59,17 +58,17 @@ export default function CoreDataTableDetailsPane(props) {
             <>
               <CoreStack direction="row" spacing={1}>
                 <CoreTypographyCaption>
-                  {"ID: " + detailedRowData["id"]}
+                  {'ID: ' + detailedRowData['id']}
                 </CoreTypographyCaption>
-                {detailedRowData.hasOwnProperty("id") &&
-                  detailedRowData.hasOwnProperty("_status") && (
+                {detailedRowData.hasOwnProperty('id') &&
+                  detailedRowData.hasOwnProperty('_status') && (
                     <CoreDivider
                       orientation="vertical"
                       variant="middle"
                       flexItem
                     />
                   )}
-                <StatusText status={detailedRowData["_status"]} />
+                <StatusText status={detailedRowData['_status']} />
               </CoreStack>
             </>
           ) : (
@@ -90,12 +89,11 @@ export default function CoreDataTableDetailsPane(props) {
               />
             )}
             <CoreIconButton
-              onClick={(e) => {
+              onClick={e => {
                 set_showDetailsPane(false);
                 setDetailedRowId(null);
                 setDetailedRowData(null);
-              }}
-            >
+              }}>
               <CoreIcon>clear</CoreIcon>
             </CoreIconButton>
           </CoreStack>
@@ -109,8 +107,7 @@ export default function CoreDataTableDetailsPane(props) {
                 expanded={_expandedDevJSONSchema}
                 onChange={() => {
                   set_expandedDevJSONSchema(!_expandedDevJSONSchema);
-                }}
-              >
+                }}>
                 <CoreAccordionSummary>JSON Schema</CoreAccordionSummary>
                 <CoreAccordionDetail>
                   <pre>{JSON.stringify(detailedRowData, null, 2)}</pre>
@@ -131,7 +128,7 @@ export default function CoreDataTableDetailsPane(props) {
                 <>
                   <CoreDivider />
                   <CoreForm
-                    apiMode={"edit"}
+                    apiMode={'edit'}
                     onMountRead={false}
                     formId={updateFormID}
                     mode={formMode}
@@ -146,57 +143,57 @@ export default function CoreDataTableDetailsPane(props) {
                     }}
                     afterEditSuccess={() => {
                       // do something
-                      swal({
-                        icon: "success",
-                        title: "Updated Successfully",
-                        text: `${getLabel(updateFormID)} updated successfully`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        set_showDetailsPane(false);
-                        filterData();
-                      });
+                      // swal({
+                      //   icon: 'success',
+                      //   title: 'Updated Successfully',
+                      //   text: `${getLabel(updateFormID)} updated successfully`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   set_showDetailsPane(false);
+                      //   filterData();
+                      // });
                     }}
                     afterDeleteSuccess={() => {
                       // do something
-                      swal({
-                        icon: "success",
-                        title: "Deleted Successfully",
-                        text: `${getLabel(updateFormID)} deleted successfully`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        set_showDetailsPane(false);
-                        filterData();
-                      });
+                      // swal({
+                      //   icon: 'success',
+                      //   title: 'Deleted Successfully',
+                      //   text: `${getLabel(updateFormID)} deleted successfully`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   set_showDetailsPane(false);
+                      //   filterData();
+                      // });
                     }}
                     afterEditError={() => {
-                      swal({
-                        icon: "error",
-                        title: "Updated Failure",
-                        text: `${getLabel(createFormID)} updated failure`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        // set_showDetailsPane(false);
-                        // filterData();
-                      });
+                      // swal({
+                      //   icon: 'error',
+                      //   title: 'Updated Failure',
+                      //   text: `${getLabel(createFormID)} updated failure`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   // set_showDetailsPane(false);
+                      //   // filterData();
+                      // });
                     }}
                     afterDeleteError={() => {
-                      swal({
-                        icon: "error",
-                        title: "Deleted Failure",
-                        text: `${getLabel(createFormID)} delete failure`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        // set_showDetailsPane(false);
-                        // filterData();
-                      });
+                      // swal({
+                      //   icon: 'error',
+                      //   title: 'Deleted Failure',
+                      //   text: `${getLabel(createFormID)} delete failure`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   // set_showDetailsPane(false);
+                      //   // filterData();
+                      // });
                     }}
                   />
                 </>
@@ -233,7 +230,7 @@ export default function CoreDataTableDetailsPane(props) {
               createFormID && (
                 <>
                   <CoreForm
-                    apiMode={"create"}
+                    apiMode={'create'}
                     onMountRead={false}
                     formId={createFormID}
                     mode={FORM_EDIT_MODE}
@@ -246,30 +243,30 @@ export default function CoreDataTableDetailsPane(props) {
                     }}
                     afterCreateSuccess={() => {
                       // do something
-                      swal({
-                        icon: "success",
-                        title: "Created Successfully",
-                        text: `${getLabel(createFormID)} created successfully`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        set_showDetailsPane(false);
-                        filterData();
-                      });
+                      // swal({
+                      //   icon: 'success',
+                      //   title: 'Created Successfully',
+                      //   text: `${getLabel(createFormID)} created successfully`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   set_showDetailsPane(false);
+                      //   filterData();
+                      // });
                     }}
                     afterCreateError={() => {
-                      swal({
-                        icon: "error",
-                        title: "Create Failure",
-                        text: `${getLabel(createFormID)} create failure`,
-                        buttons: {
-                          confirm: "Ok",
-                        },
-                      }).then((data) => {
-                        // set_showDetailsPane(false);
-                        // filterData();
-                      });
+                      // swal({
+                      //   icon: 'error',
+                      //   title: 'Create Failure',
+                      //   text: `${getLabel(createFormID)} create failure`,
+                      //   buttons: {
+                      //     confirm: 'Ok',
+                      //   },
+                      // }).then(data => {
+                      //   // set_showDetailsPane(false);
+                      //   // filterData();
+                      // });
                     }}
                   />
                 </>
@@ -280,7 +277,7 @@ export default function CoreDataTableDetailsPane(props) {
             {postRender_CreateData_DetailsPaneComponent && (
               <>
                 {React.createElement(
-                  postRender_CreateData_DetailsPaneComponent
+                  postRender_CreateData_DetailsPaneComponent,
                 )}
               </>
             )}

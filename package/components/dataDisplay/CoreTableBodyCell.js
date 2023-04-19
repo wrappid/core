@@ -1,13 +1,6 @@
-import React from "react";
-import CoreTableCell from "./CoreTableCell";
+import React from 'react';
+import CoreTableCell from './CoreTableCell';
 
-/**
- * @todo
- * after ellipsis support review
- *
- * @param {*} props
- * @returns
- */
 export default function CoreTableBodyCell(props) {
   return (
     <CoreTableCell {...props}>

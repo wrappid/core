@@ -1,6 +1,6 @@
 import React from "react";
-import { SCDivider } from "@wrappid/styled-components";
+import NativeDivider from "@wrappid/styled-components";
 
 export default function CoreDivider(props) {
-  return <SCDivider {...props}>{props.children}</SCDivider>;
+  return <NativeDivider {...props} />;
 }

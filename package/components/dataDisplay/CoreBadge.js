@@ -1,6 +1,6 @@
 import React from "react";
-import { SCBadge } from "@wrappid/styled-components";
+import { NativeBadge } from "../../nativeComponents/inputs";
 
 export default function CoreBadge(props) {
-  return <SCBadge {...props} />;
+  return <NativeBadge {...props} />;
 }

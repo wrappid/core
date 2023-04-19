@@ -1,7 +1,7 @@
-import React from "react";
-import CoreInput from "./CoreInput";
+import React from 'react';
+import CoreInput from './CoreInput';
 
-export default function CoreTextarea (props) {
+export default function CoreTextarea(props) {
   return (
     <CoreInput
       {...props}
@@ -10,9 +10,9 @@ export default function CoreTextarea (props) {
       maxRows={6}
       inputProps={{
         style: {
-          resize: "vertical",
+          resize: 'vertical',
         },
       }}
     />
   );
-};
+}

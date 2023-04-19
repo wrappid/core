@@ -1,6 +1,6 @@
 import React from "react";
-import { SCListItemText } from "@wrappid/styled-components";
+import { NativeListItemText } from "@wrappid/styled-components";
 
 export default function CoreListItemText(props) {
-  return <SCListItemText {...props} />;
+  return <NativeListItemText {...props} />;
 }

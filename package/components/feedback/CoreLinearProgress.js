@@ -1,6 +1,6 @@
-import React from "react";
-import { SCLinearProgress } from "@wrappid/styled-components";
+import React from 'react';
+import NativeLinearProgress from '../../nativeComponents/feedback/NativeLinearProgress';
 
 export default function CoreLinearProgress(props) {
-  return <SCLinearProgress {...props}>{props.children}</SCLinearProgress>;
+  return <NativeLinearProgress {...props} />;
 }

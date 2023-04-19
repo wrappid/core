@@ -1,5 +1,5 @@
-import React from "react";
-import CoreTypography from "../CoreTypography";
+import React from 'react';
+import CoreTypography from '../CoreTypography';
 
 export default function CoreTypographySubtitle1(props) {
   return (

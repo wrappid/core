@@ -1,7 +1,6 @@
 import React from "react";
-
-import { SCTab } from "@wrappid/styled-components";
+import { NativeTab } from "@wrappid/styled-components";
 
 export default function CoreTab(props) {
-  return <SCTab {...props}>{props.children}</SCTab>;
+  return <NativeTab {...props} />;
 }

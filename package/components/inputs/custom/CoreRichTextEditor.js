@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
-import { SCRichTextEditor } from "@wrappid/styled-components";
 import CoreInputLabel from "../CoreInputLabel";
+import { SCRichTextEditor } from "@wrappid/styled-components";
 
 export default function CoreRichTextEditor(props) {
   const ref = useRef(null);
