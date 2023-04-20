@@ -1,5 +1,5 @@
-import React from 'react';
-import CoreH from './CoreH';
+import React from "react";
+import CoreH from "./CoreH";
 
 export default function CoreH6(props) {
   return (

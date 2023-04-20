@@ -18,7 +18,7 @@ import CoreTabPanel from "./components/navigation/CoreTabPanel";
 import CoreTabs from "./components/navigation/CoreTabs";
 import CoreCustomTabs from "./components/navigation/custom/CoreCustomTabs";
 
-import CoreNavigation from "./CoreNavigation";
+// import CoreNavigation from "./CoreNavigation";
 
 import CoreForm from "./components/forms/CoreForm";
 
@@ -160,7 +160,7 @@ export {
   CoreTabPanel,
   CoreTabs,
   CoreCustomTabs,
-  CoreNavigation,
+  // CoreNavigation,
   CoreFade,
   CoreModal,
   CorePopover,
