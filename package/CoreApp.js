@@ -1,18 +1,18 @@
 import React from "react";
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import AppContainer from "./layout/AppContainer";
-import CoreNavigation from "./CoreNavigation";
-import { BrowserRouter } from "react-router-dom";
+import CoreNavigation from "./components/navigation/CoreNavigation";
+import CoreRoutes from "./CoreRoutes";
 
 export default function CoreApp() {
   return (
     <React.StrictMode>
       <CoreAppDiv>
-        <BrowserRouter>
+        <CoreNavigation>
           <AppContainer>
-            <CoreNavigation />
+            <CoreRoutes />
           </AppContainer>
-        </BrowserRouter>
+        </CoreNavigation>
       </CoreAppDiv>
     </React.StrictMode>
   );

@@ -134,15 +134,15 @@ import StatusText from "./components/dataDisplay/custom/StatusText";
 
 import { createFullStore } from "./store/store";
 // import { apiRequestAction } from "./store/action/appActions";
-// import CoreProvider from "./store/CoreProvider";
-// import CoreApp from "./CoreApp";
-// import { ComponentRegistryContext } from "./config/contextHandler";
-// import { __IconTypes } from "./components/dataDisplay/CoreIcon";
+import CoreProvider from "./store/CoreProvider";
+import CoreApp from "./CoreApp";
+import { ComponentRegistryContext } from "./config/contextHandler";
+import { __IconTypes } from "./components/dataDisplay/CoreIcon";
 
 export {
-  // __IconTypes,
-  // CoreApp,
-  // CoreProvider,
+  __IconTypes,
+  CoreApp,
+  CoreProvider,
   // CoreAppDiv,
   CoreBox,
   // CoreContainer,
@@ -266,5 +266,5 @@ export {
   // UserChip,
   createFullStore,
   // apiRequestAction,
-  // ComponentRegistryContext,
+  ComponentRegistryContext,
 };

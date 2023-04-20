@@ -9,7 +9,7 @@ import { apiRequestAction } from "./store/action/appActions";
 import { HTTP_GET } from "./config/constants";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
-export default function CoreNavigation() {
+export default function CoreRoutes() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state?.auth);
   const _routes = useSelector((state) => state?.route?.routes);
