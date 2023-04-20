@@ -132,16 +132,16 @@ import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 // import UserChip from "./components/dataDisplay/custom/UserChip";
 
 import { createFullStore } from "./store/store";
-// import { apiRequestAction } from "./store/action/appActions";
-// import CoreProvider from "./store/CoreProvider";
+import { apiRequestAction } from "./store/action/appActions";
+import CoreProvider from "./store/CoreProvider";
 // import CoreApp from "./CoreApp";
-// import { ComponentRegistryContext } from "./config/contextHandler";
+import { ComponentRegistryContext } from "./config/contextHandler";
 // import { __IconTypes } from "./components/dataDisplay/CoreIcon";
 
 export {
   // __IconTypes,
   // CoreApp,
-  // CoreProvider,
+  CoreProvider,
   // CoreAppDiv,
   // CoreBox,
   // CoreContainer,
@@ -263,6 +263,6 @@ export {
   // StatusText,
   // UserChip,
   createFullStore,
-  // apiRequestAction,
-  // ComponentRegistryContext,
+  apiRequestAction,
+  ComponentRegistryContext,
 };

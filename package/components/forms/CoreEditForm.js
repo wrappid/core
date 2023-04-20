@@ -12,11 +12,12 @@ import {
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreContainedButton from "../inputs/CoreContainedButton";
-import CoreInput  from "../inputs/CoreInput";
+import CoreInput from "../inputs/CoreInput";
 import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreFormButton from "./CoreFormButton";
+import CoreFormContainer from "./CoreFormContainer";
 
 export const FormContext = React.createContext();
 
@@ -61,7 +62,7 @@ export default function CoreEditForm(props) {
       innerRef={formRef}
     >
       {(formikprops) => (
-        <form onSubmit={formikprops.handleSubmit}>
+        <CoreFormContainer onSubmit={formikprops.handleSubmit}>
           <CoreGrid coreId="coreEditForm">
             {/* Showing Form Elements */}
             {forms[formId]?.formElements?.map((element, elementIndex) =>
@@ -147,7 +148,7 @@ export default function CoreEditForm(props) {
               </CoreBox>
             ) : null}
           </CoreGrid>
-        </form>
+        </CoreFormContainer>
       )}
     </Formik>
   ) : (

@@ -1,14 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
-import CoreThemeProvider from "../theme/CoreThemeProvider";
-import theme from "../utils/themeUtil";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-import config from "../config/config";
-import { ENV_PROD_MODE } from "../config/constants";
 import coreReducer from "./reducers/rootReducer";
 
 function createFullStore(appReducer, persistFlag = true) {
@@ -42,7 +38,7 @@ function createFullStore(appReducer, persistFlag = true) {
 
   const store = configureStore({
     reducer: combineReducers(finalReducer),
-    devTools: config.environment !== ENV_PROD_MODE,
+    devTools: false,
     middleware: [thunk],
   });
 
@@ -66,13 +62,12 @@ export default function CoreProvider(props) {
    *  ...
    * }
    */
-  let { store, persistor } = createFullStore(props.appReducer, props?.persistFlag);
-
-  return (
-    <Provider store={store}>
-      <CoreThemeProvider theme={theme}>{props.children}</CoreThemeProvider>
-    </Provider>
+  let { store, persistor } = createFullStore(
+    props.appReducer,
+    props?.persistFlag
   );
+
+  return <Provider store={store}>{props.children}</Provider>;
 }
 
 export { createFullStore };

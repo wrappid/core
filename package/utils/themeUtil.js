@@ -32,7 +32,19 @@ export function detectPlatform(document, navigator) {
 }
 
 export function getCoreTheme(customThemme) {
-  let runTime = detectPlatform(document, navigator);
+  let d = null;
+  let n = null;
+  try {
+    d = document;
+  } catch (err) {
+    console.log("Document not find");
+  }
+  try {
+    n = navigator;
+  } catch (err) {
+    console.log("navigator not find");
+  }
+  let runTime = detectPlatform(d, n);
   if (runTime === WEB_PLATFORM) {
     return createWebTheme(customThemme);
   } else if (runTime === APP_PLATFORM) {
