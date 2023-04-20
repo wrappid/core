@@ -1,6 +1,4 @@
 import React from "react";
-import { getUUID } from "../../utils/appUtils";
-import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import { NativeInput } from "@wrappid/styled-components";

@@ -1,6 +1,7 @@
-import React from 'react';
-import CoreBox from '../layouts/CoreBox';
+import React from "react";
+import CoreBox from "../layouts/CoreBox";
+import { NativeAsyncSelect } from "@wrappid/styled-components";
 
 export default function CoreAsyncSelect(props) {
-  return <CoreBox>{props.children}</CoreBox>;
+  return <NativeAsyncSelect {...props} />;
 }
