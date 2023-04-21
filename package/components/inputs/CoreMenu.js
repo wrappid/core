@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import { CoreClasses } from "@wrappid/styles";
-import { NativeStack } from "@wrappid/styled-components";
+import CoreStack from "../layouts/CoreStack";
 
 export default function NativeMenu(props) {
   const location = useLocation();
@@ -20,7 +20,7 @@ export default function NativeMenu(props) {
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
 
   return (
-    <NativeStack
+    <CoreStack
       direction="column"
       styleClasses={
         miniDrawer &&
@@ -30,7 +30,7 @@ export default function NativeMenu(props) {
         ]
       }
     >
-      {createMultiLevelMenu(
+      {/* {createMultiLevelMenu(
         menu,
         0,
         OnMenuClick,
@@ -41,7 +41,7 @@ export default function NativeMenu(props) {
         selectedID,
         setSelectedID,
         location.pathname
-      )}
-    </NativeStack>
+      )} */}
+    </CoreStack>
   );
 }

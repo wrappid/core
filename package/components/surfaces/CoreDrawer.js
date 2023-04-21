@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CoreClasses, getEffectiveStyle } from "@wrappid/styles";
-import { CoreMenu } from "../inputs/CoreMenu";
+import CoreMenu from "../inputs/CoreMenu";
 import { NativeDrawer } from "@wrappid/styled-components";
 
 export default function CoreDrawer(props) {

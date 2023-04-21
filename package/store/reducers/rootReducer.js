@@ -7,6 +7,7 @@ import authReducer from "./authReducer";
 import mdmReducer from "./mdmReducer";
 import modalReducer from "./modalReducer";
 import routeReducer from "./routeReducer";
+import menuReducer from "./menuReducer";
 
 const coreReducer = {
   data: dataReducer,
@@ -17,6 +18,7 @@ const coreReducer = {
   mdm: mdmReducer,
   modal: modalReducer,
   route: routeReducer,
+  menu: menuReducer,
 };
 
 export default coreReducer;
