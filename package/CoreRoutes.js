@@ -1,5 +1,9 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import {
+  NativeDomRoutes,
+  NativeDomRoute,
+  NativeDomNavigate,
+} from "@wrappid/styled-components";
 import { urls } from "./config/constants";
 import Error404 from "./error/Error404";
 import PageContainer from "./layout/PageContainer";
@@ -56,9 +60,9 @@ export default function CoreRoutes() {
   }, [_routes]);
 
   return (
-    <Routes>
+    <NativeDomRoutes>
       {/* {Object.keys(routes).map((key) => (
-        <Route
+        <NativeDomRoute
           key={key}
           exact
           path={"/" + key}
@@ -67,7 +71,7 @@ export default function CoreRoutes() {
       ))} */}
       {_routes?.map((route) => {
         return (
-          <Route
+          <NativeDomRoute
             key={route.url}
             exact
             path={"/" + route.url}
@@ -75,13 +79,13 @@ export default function CoreRoutes() {
           />
         );
       })}
-      <Route
+      <NativeDomRoute
         exact
         path="/"
-        element={<Navigate to={"/" + urls.LOGIN_ROUTE} />}
+        element={<NativeDomNavigate to={"/" + urls.LOGIN_ROUTE} />}
       />
       {/* Error 500 */}
-      <Route
+      <NativeDomRoute
         path="/error"
         element={
           <PageContainer
@@ -93,7 +97,7 @@ export default function CoreRoutes() {
         }
       />
       {/* Not Found */}
-      <Route
+      <NativeDomRoute
         path="*"
         element={
           <PageContainer
@@ -104,49 +108,49 @@ export default function CoreRoutes() {
           />
         }
       />
-      {/* <Route exact path="/" element={<AuthContainer page="signin" />} /> */}
-      {/* <Route
+      {/* <NativeDomRoute exact path="/" element={<AuthContainer page="signin" />} /> */}
+      {/* <NativeDomRoute
         path="/enterPassword"
         element={<AuthContainer page="password" />}
       />
-      <Route path="/enterOTP" element={<AuthContainer page="otp" />} />
-      <Route
+      <NativeDomRoute path="/enterOTP" element={<AuthContainer page="otp" />} />
+      <NativeDomRoute
         path="/resetPassword"
         element={<AuthContainer page="resetPassword" />}
       />
-      <Route path="/signUp" element={<AuthContainer page="resetPassword" />} />
-      <Route path={`/${urls.DASHBOARD}`} element={<Dashboard />} />
+      <NativeDomRoute path="/signUp" element={<AuthContainer page="resetPassword" />} />
+      <NativeDomRoute path={`/${urls.DASHBOARD}`} element={<Dashboard />} />
 
-      <Route path="/createDoctor" element={<CreateUser />} />
-      <Route path="/createAssistant" element={<CreateUser />} />
-      <Route path="/createPatient" element={<CreateUser />} />
-      <Route path="/createSystemAdmin" element={<CreateUser />} />
-      <Route path="/createSalesForce" element={<CreateUser />} />
-      <Route path="/createBackOffice" element={<CreateUser />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/manageAppointment" element={<ManageAppointment />} />
-      <Route path="/prescription" element={<Prescription />} />
-      <Route path="/schedulePatient" element={<SchedulePatient />} />
-      <Route path="/followUps" element={<FollowUps />} />
-      <Route path="/manageAssistant" element={<ManageAssistant />} />
-      <Route path="/managePatient" element={<ManagePatient />} />
-      <Route path="/viewPrescription" element={<ViewPrescriptionDetails />} />
-      <Route path="/baseChemicalMapping" element={<BaseChemicalMapping />} />
-      <Route
+      <NativeDomRoute path="/createDoctor" element={<CreateUser />} />
+      <NativeDomRoute path="/createAssistant" element={<CreateUser />} />
+      <NativeDomRoute path="/createPatient" element={<CreateUser />} />
+      <NativeDomRoute path="/createSystemAdmin" element={<CreateUser />} />
+      <NativeDomRoute path="/createSalesForce" element={<CreateUser />} />
+      <NativeDomRoute path="/createBackOffice" element={<CreateUser />} />
+      <NativeDomRoute path="/profile" element={<Profile />} />
+      <NativeDomRoute path="/manageAppointment" element={<ManageAppointment />} />
+      <NativeDomRoute path="/prescription" element={<Prescription />} />
+      <NativeDomRoute path="/schedulePatient" element={<SchedulePatient />} />
+      <NativeDomRoute path="/followUps" element={<FollowUps />} />
+      <NativeDomRoute path="/manageAssistant" element={<ManageAssistant />} />
+      <NativeDomRoute path="/managePatient" element={<ManagePatient />} />
+      <NativeDomRoute path="/viewPrescription" element={<ViewPrescriptionDetails />} />
+      <NativeDomRoute path="/baseChemicalMapping" element={<BaseChemicalMapping />} />
+      <NativeDomRoute
         path="/chemicalCompositionMapping"
         element={<ChemicalCompositionMapping />}
       />
-      <Route path="/chemicalCompositionMappingDetail" element={<ChemicalCompositionMappingDetail/>} />
+      <NativeDomRoute path="/chemicalCompositionMappingDetail" element={<ChemicalCompositionMappingDetail/>} />
 
-      <Route path="/masterDataManagement" element={<MasterDataManagement />} />
-      <Route path="/verifyUser" element={<Verifications />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route
+      <NativeDomRoute path="/masterDataManagement" element={<MasterDataManagement />} />
+      <NativeDomRoute path="/verifyUser" element={<Verifications />} />
+      <NativeDomRoute path="/settings" element={<Settings />} />
+      <NativeDomRoute
         path="/PrescriptionPreview"
         element={<ViewPrescriptionDetails />}
       />
-      <Route path="/assistantRequest" element={<AssistantRequest />} />
-      <Route path="/manageUser" element={<UserManagement />} /> */}
-    </Routes>
+      <NativeDomRoute path="/assistantRequest" element={<AssistantRequest />} />
+      <NativeDomRoute path="/manageUser" element={<UserManagement />} /> */}
+    </NativeDomRoutes>
   );
 }

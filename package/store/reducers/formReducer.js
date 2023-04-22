@@ -1,4 +1,4 @@
-import swal from "sweetalert";
+// import swal from "sweetalert";
 import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   ADD_FORM,
@@ -151,7 +151,7 @@ const formReducer = (state = initState, action) => {
         typeof action?.payload?.data?.message === "string"
           ? action?.payload?.data?.message
           : "Unwanted error";
-      swal("Sorry!", m, "error");
+      alert("Sorry!", m, "error");
       return {
         ...state,
         formSubmitError: {

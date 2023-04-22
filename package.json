@@ -9,6 +9,7 @@
   "scripts": {
     "test": "exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
+    "build-app": "npx babel package --out-dir ../test/wrappid-mobile/node_modules/@wrappid/core --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
@@ -42,12 +43,8 @@
     "@mui/material": "^5.10.2",
     "@mui/x-date-pickers": "^5.0.8",
     "@reduxjs/toolkit": "^1.9.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
     "@wrappid/styles": "^0.0.2",
     "axios": "^1.1.3",
-    "d3": "^7.6.1",
     "formik": "^2.2.9",
     "mdi": "^2.2.43",
     "moment": "^2.29.4",
@@ -59,13 +56,10 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-select": "^5.4.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "sweetalert": "^2.1.2",
     "uuidv4": "^6.2.13",
-    "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {

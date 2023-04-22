@@ -1,22 +1,22 @@
-import axios from "axios";
-import moment from "moment";
-import swal from "sweetalert";
-import {
-  LOGIN_WITH_OTP_API,
-  LOGIN_WITH_PASSWORD_API,
-  REFRESH_TOKEN_API,
-} from "../config/api";
-import config from "../config/config";
-import { store } from "../store/store";
-import {
-  LOGOUT_SUCCESS,
-  SESSION_EXPIRED,
-  TOKEN_REFRESH_SUCCESS,
-} from "../store/types/authTypes";
-import {
-  TOKEN_REJUVINATED,
-  TOKEN_REQUESTED,
-} from "../store/types/pendingRequestTypes";
+// import axios from "axios";
+// import moment from "moment";
+// import swal from "sweetalert";
+// import {
+//   LOGIN_WITH_OTP_API,
+//   LOGIN_WITH_PASSWORD_API,
+//   REFRESH_TOKEN_API,
+// } from "../config/api";
+// import config from "../config/config";
+// import { store } from "../store/store";
+// import {
+//   LOGOUT_SUCCESS,
+//   SESSION_EXPIRED,
+//   TOKEN_REFRESH_SUCCESS,
+// } from "../store/types/authTypes";
+// import {
+//   TOKEN_REJUVINATED,
+//   TOKEN_REQUESTED,
+// } from "../store/types/pendingRequestTypes";
 
 async function tempFetch(apiConfig) {
   console.log("API CALLL", apiConfig);
