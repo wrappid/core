@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@mui/material";
+import { NativeThemeProvider } from "@wrappid/styled-components";
 import React from "react";
 
 export default function CoreThemeProvider(props) {
@@ -6,6 +6,8 @@ export default function CoreThemeProvider(props) {
    * @todo should be able to handle ap and web
    */
   return (
-    <ThemeProvider theme={props.theme || {}}>{props.children}</ThemeProvider>
+    <NativeThemeProvider theme={props.theme || {}}>
+      {props.children}
+    </NativeThemeProvider>
   );
 }

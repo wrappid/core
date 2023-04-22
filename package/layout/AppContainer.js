@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import { CssBaseline } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { nativeUseLocation } from "@wrappid/styled-components";
+import {
+  nativeUseLocation,
+  NativeCssBaseline,
+} from "@wrappid/styled-components";
 
 import { ComponentRegistry } from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
@@ -143,7 +145,7 @@ function AppContainer(props) {
         CoreClasses.LAYOUT.FLEXBOX,
       ]}
     >
-      <CssBaseline />
+      <NativeCssBaseline />
 
       {auth.uid && (
         <>

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Collapse from "@mui/material/Collapse";
 import CoreTableRow from "../dataDisplay/CoreTableRow";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
 import CoreForm from "../forms/CoreForm";
@@ -7,6 +6,7 @@ import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import TableRowAuditData from "./TableRowAuditData";
 import { CoreClasses } from "@wrappid/styles";
 import { useSelector } from "react-redux";
+import CoreCollapse from "../surfaces/CoreCollapse";
 
 export default function CoreTableCollapsible({
   rowIndex,
@@ -33,7 +33,7 @@ export default function CoreTableCollapsible({
             styleClasses={[CoreClasses.PADDING.P1]}
             colSpan={columnsLength || 1}
           >
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <CoreCollapse in={open} timeout="auto" unmountOnExit>
               <CoreForm
                 apiMode={"edit"}
                 onMountRead={false}
@@ -48,7 +48,7 @@ export default function CoreTableCollapsible({
                 }}
               />
               <TableRowAuditData rowData={rowData} />
-            </Collapse>
+            </CoreCollapse>
           </CoreTableCell>
         </CoreTableRow>
       )}
