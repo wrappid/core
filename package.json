@@ -36,10 +36,7 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
     "@mdi/font": "^7.0.96",
-    "@mui/icons-material": "^5.10.2",
     "@reduxjs/toolkit": "^1.9.1",
     "@wrappid/styles": "^0.0.2",
     "axios": "^1.1.3",
