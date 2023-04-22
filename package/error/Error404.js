@@ -5,6 +5,9 @@ import CoreStack from "../components/layouts/CoreStack";
 import { CoreClasses } from "@wrappid/styles";
 
 export default function Error404() {
+  /**
+   * @todo have replace br with core component
+   */
   return (
     <CoreStack
       styleClasses={[
@@ -20,12 +23,12 @@ export default function Error404() {
         // }}
         styleClasses={[CoreClasses.APP.UC_IMG]}
       />
-      <br />
+      {/* <br /> */}
       <CoreH6 styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         Page not found!
       </CoreH6>
-      <br />
-      <br />
+      {/* <br />
+      <br /> */}
     </CoreStack>
   );
 }

@@ -13,12 +13,12 @@ import {
   UPDATE_HELPER_FLAG,
   UPDATE_HELPER_TEXT_VIEW,
 } from "../store/types/formTypes";
-import {
-  DocumentMetaDescription,
-  DocumentMetaKeywords,
-  DocumentTitle,
-  useDocumentTitle,
-} from "../utils/seoManager";
+// import {
+//   DocumentMetaDescription,
+//   DocumentMetaKeywords,
+//   DocumentTitle,
+//   useDocumentTitle,
+// } from "../utils/seoManager";
 import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
@@ -85,7 +85,7 @@ export default function PageContainer(props) {
     );
   }, [helperButtonFlag]);
 
-  React.useEffect(() => {}, [route]);
+  // React.useEffect(() => {}, [route]);
 
   // redirection if guest
   // if (!auth?.uid && route?.Page?.authRequired !== false) return <Navigate to="/" />;
@@ -95,7 +95,7 @@ export default function PageContainer(props) {
 
   return (
     <>
-      {route?.title && (
+      {/* {route?.title && (
         <DocumentTitle title={route?.title || "NO TITLE PROVIDED"} />
       )}
       {route?.description && (
@@ -105,18 +105,18 @@ export default function PageContainer(props) {
       )}
       {route?.keywords && (
         <DocumentMetaKeywords metaKeywords={route?.keywords || ""} />
-      )}
+      )} */}
       {/* ---------------------------------------------------- */}
-      <CoreBox styleClasses={[CoreClasses.LAYOUT.PAGE_CONTAINER]}>
-        <CoreModal />
+      <CoreBox>
+        {/* <CoreModal /> */}
         {/* Show Helper Text Toggle */}
-        {config.environment === ENV_DEV_MODE && helperButtonFlag && (
+        {/* {config.environment === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[
-              CoreClasses.LAYOUT.FULL_WIDTH,
-              CoreClasses.LAYOUT.HORIZONTAL_RIGHT,
-              CoreClasses.MARGIN.MB1,
+              // CoreClasses.LAYOUT.FULL_WIDTH,
+              // CoreClasses.LAYOUT.HORIZONTAL_RIGHT,
+              // CoreClasses.MARGIN.MB1,
             ]}
             action={
               <CoreSwitch
@@ -129,7 +129,7 @@ export default function PageContainer(props) {
           >
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
-        )}
+        )} */}
         {componentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
       </CoreBox>
     </>

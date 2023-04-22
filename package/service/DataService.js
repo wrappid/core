@@ -6,7 +6,16 @@ export default async function authHeader(
 ) {
   let headers = {};
   // console.log("####################1");
-  let auth = localStorage.getItem("persist:auth");
+  let auth = null;
+  try {
+    auth = localStorage.getItem("persist:auth");
+  } catch (err) {
+    console.log("Local storage not found");
+    /**
+     * @todo have to write native specific code
+     */
+    auth = JSON.stringify({});
+  }
   // console.log("####################2", auth);
   let reducer = JSON.parse(auth);
   // console.log("####################3", reducer);
