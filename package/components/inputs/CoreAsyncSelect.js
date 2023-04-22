@@ -11,7 +11,6 @@ import CoreTextField from "./CoreTextField";
 import CoreAutocomplete from "./CoreAutocomplete";
 import CoreCircularProgress from "../feedback/CoreCircularProgress";
 import CoreListItem from "../layouts/CoreListItem";
-// import InfiniteScroll from "react-infinite-scroller";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CoreIconButton from "./CoreIconButton";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -19,11 +18,13 @@ import CoreFieldButton from "../forms/CoreFieldButton";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import { componentMap } from "../../utils/componentMap";
-import { createFilterOptions } from "@mui/material/Autocomplete";
-import { useNavigate } from "react-router-dom";
+import {
+  nativeUseNavigate,
+  nativeFilterOptions,
+} from "@wrappid/styled-components";
 import { CoreClasses } from "@wrappid/styles";
 
-const filter = createFilterOptions();
+const filter = nativeFilterOptions();
 //TODO:
 // - async select
 // 	- up down arrow and enter key should work [priority: high]
@@ -34,7 +35,7 @@ const filter = createFilterOptions();
 export default function CoreAsyncSelect(props) {
   const options = useSelector((state) => state?.selectOptions?.options);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = nativeUseNavigate();
   const {
     itemKey,
     label,

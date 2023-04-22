@@ -1,11 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { nativeUseLocation } from "@wrappid/styled-components";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import { CoreClasses } from "@wrappid/styles";
 import CoreStack from "../layouts/CoreStack";
 
 export default function NativeMenu(props) {
-  const location = useLocation();
+  const location = nativeUseLocation();
 
   const {
     menu, //menu data schema

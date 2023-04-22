@@ -27,6 +27,7 @@ import {
   getForm,
   hookcallCheck,
 } from "../../utils/formUtils";
+// import swal from "sweetalert";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreSkeleton from "../feedback/CoreSkeleton";
@@ -444,19 +445,19 @@ class CoreForm extends Component {
         deleting: id,
       },
       () => {
-        // swal({
-        //   icon: 'info',
-        //   title: 'Confirm?',
-        //   text: 'Are you sure?',
-        //   buttons: {
-        //     cancel: 'Cancel',
-        //     confirm: 'Yes',
-        //   },
-        // }).then(data => {
-        //   if (data) {
-        //     this.CompleteDelete();
-        //   }
-        // });
+        swal({
+          icon: "info",
+          title: "Confirm?",
+          text: "Are you sure?",
+          buttons: {
+            cancel: "Cancel",
+            confirm: "Yes",
+          },
+        }).then((data) => {
+          if (data) {
+            this.CompleteDelete();
+          }
+        });
       }
     );
   };
@@ -597,7 +598,333 @@ class CoreForm extends Component {
     //   arrayView
     // );
 
-    return null;
+    return (
+      <>
+        {rawFormSchema && !rawFormSchema[formId]?.inlineAction && (
+          <CoreFormHeader
+            mode={
+              mode === FORM_EDIT_MODE ||
+              (editForm[formId] && editForm[formId].editing)
+            }
+            heading={rawFormSchema ? rawFormSchema[formId]?.heading : ""}
+            subHeading={rawFormSchema ? rawFormSchema[formId]?.subHeading : ""}
+            headerAction={
+              rawFormSchema &&
+              rawFormSchema[formId] &&
+              rawFormSchema[formId].headerAction
+                ? rawFormSchema[formId]?.headerAction
+                : true
+            }
+            formId={formId}
+            action={
+              arrayFlag
+                ? allowAdd !== false
+                  ? [
+                      {
+                        icon: "add",
+                        OnClick: this.OnAdd,
+                        disable: preview,
+                        title: "add",
+                      },
+                    ]
+                  : []
+                : allowEdit !== false
+                ? allowDelete !== false
+                  ? [
+                      {
+                        icon: "edit_note",
+                        OnClick: this.OnEditClick,
+                        disable: preview,
+                        title: "edit",
+                      },
+                      {
+                        icon: "delete_outline",
+                        // OnClick: () => {
+                        //   // alert("Single component delete tobe done");
+                        // },
+                        disable: preview,
+                        title: "delete",
+                        OnClick: this.OnDeleteClick,
+                      },
+                    ]
+                  : [
+                      {
+                        icon: "edit_note",
+                        OnClick: this.OnEditClick,
+                        disable: preview,
+                        title: "edit",
+                      },
+                    ]
+                : allowDelete !== false
+                ? [
+                    {
+                      icon: "delete_outline",
+                      // OnClick: () => {
+                      //   alert("Single component delete tobe done");
+                      // },
+                      title: "delete",
+                      disable: preview,
+                      OnClick: this.OnDeleteClick,
+                    },
+                  ]
+                : []
+            }
+          />
+        )}
+        <CoreGrid coreId="coreFormGrid" {...this.props.designProps}>
+          {addForm && addForm[formId] && addForm[formId].add && (
+            <CoreEditForm
+              styleClasses={this.props.styleClasses}
+              forms={addForm}
+              formId={formId}
+              handleSubmit={this.handleSubmit}
+              handleButtonCLick={this.handleButtonClick}
+              mode={true}
+              submitLoading={formSubmitLoading[formId]}
+              submitSuccess={formSubmitSuccess[formId]}
+              OnEditClick={this.OnEditClick}
+              OnCancelClick={this.OnCancel}
+              formRef={formRef}
+              formDataReadLoading={formDataReadLoading}
+              //Only add form case gets data from fom reducer
+              formData={addForm[formId]?.formInitialOb}
+              allowEdit={allowEdit}
+              preview={preview}
+            />
+          )}
+
+          {arrayFlag ? (
+            <>
+              {!initData ? (
+                <CoreTypographyBody1>No Data found</CoreTypographyBody1>
+              ) : formDataReadLoading && formDataReadLoading[formId] ? (
+                processedForms[formId]?.skeletonComp ? (
+                  React.createElement(processedForms[formId]?.skeletonComp, {})
+                ) : (
+                  <CoreSkeleton variant="rectangular" height={60} />
+                )
+              ) : Array.isArray(initData) ? (
+                <>
+                  {initData?.map((initDataOb, i) =>
+                    !arrayDataLimit ||
+                    !this.state.hideFlag ||
+                    (arrayDataLimit && i < arrayDataLimit) ? (
+                      <CoreGrid>
+                        <CoreBox gridProps={{ gridSize: 10 }}>
+                          <CoreEditForm
+                            styleClasses={this.props.styleClasses}
+                            index={i}
+                            forms={processedForms}
+                            formId={formId}
+                            handleSubmit={this.handleSubmit}
+                            handleButtonCLick={this.handleButtonClick}
+                            initData={initDataOb}
+                            submitLoading={formSubmitLoading[formId]}
+                            submitSuccess={formSubmitSuccess[formId]}
+                            mode={
+                              mode === FORM_EDIT_MODE ||
+                              (editForm[formId] &&
+                                editForm[formId].editing &&
+                                editForm[formId].formArrayId === initDataOb.id)
+                            }
+                            OnEditClick={this.OnEditClick}
+                            OnCancelClick={this.OnCancel}
+                            editFormId={initDataOb.id}
+                            formRef={formRef}
+                            formDataReadLoading={formDataReadLoading}
+                            formData={formData[formId]?.data?.rows}
+                            allowEdit={allowEdit}
+                            onFormFocus={onFormFocus}
+                            preview={preview}
+                          />
+                        </CoreBox>
+                        <CoreBox
+                          gridProps={{ gridSize: 2 }}
+                          styleClasses={[CoreClasses.LAYOUT.RIGHT_ALIGN]}
+                        >
+                          {formDataReadLoading[formId] ? null : (
+                            <CoreFormHeaderActions
+                              index={i}
+                              id={initDataOb.id}
+                              preview={preview}
+                              action={
+                                allowEdit !== false
+                                  ? allowDelete !== false
+                                    ? [
+                                        {
+                                          icon: "edit_note",
+                                          OnClick:
+                                            processedForms[formId] &&
+                                            processedForms[formId]
+                                              .arrayDataNotEditable
+                                              ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotEditable
+                                                ](initDataOb)
+                                                ? this.OnEditClick
+                                                : () => {
+                                                    swal(
+                                                      "Error",
+                                                      "Data not editable",
+                                                      "error"
+                                                    );
+                                                  }
+                                              : this.OnEditClick,
+                                          disable: preview,
+                                          title: "edit",
+                                        },
+                                        {
+                                          icon: "delete_outline",
+                                          OnClick:
+                                            processedForms[formId] &&
+                                            processedForms[formId]
+                                              .arrayDataNotDeletable
+                                              ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotDeletable
+                                                ](initDataOb)
+                                                ? this.OnDeleteClick
+                                                : () => {
+                                                    swal(
+                                                      "Error",
+                                                      "Data not deletable",
+                                                      "error"
+                                                    );
+                                                  }
+                                              : this.OnDeleteClick,
+                                          disable: preview,
+                                          title: "delete",
+                                        },
+                                      ]
+                                    : [
+                                        {
+                                          icon: "edit_note",
+                                          OnClick:
+                                            processedForms[formId] &&
+                                            processedForms[formId]
+                                              .arrayDataNotEditable
+                                              ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotEditable
+                                                ](initDataOb)
+                                                ? this.OnEditClick
+                                                : () => {
+                                                    swal(
+                                                      "Error",
+                                                      "Data not editable"
+                                                    );
+                                                  }
+                                              : this.OnEditClick,
+                                          disable: preview,
+                                          title: "edit",
+                                        },
+                                      ]
+                                  : allowDelete !== false
+                                  ? [
+                                      {
+                                        icon: "delete_outline",
+                                        OnClick:
+                                          processedForms[formId] &&
+                                          processedForms[formId]
+                                            .arrayDataNotDeletable
+                                            ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                processedForms[formId]
+                                                  .arrayDataNotDeletable
+                                              ](initDataOb)
+                                              ? this.OnDeleteClick
+                                              : () => {
+                                                  swal(
+                                                    "Error",
+                                                    "Data not deletable"
+                                                  );
+                                                }
+                                            : this.OnDeleteClick,
+                                        disable: preview,
+                                        title: "delete",
+                                      },
+                                    ]
+                                  : []
+                              }
+                            />
+                          )}
+                        </CoreBox>
+                      </CoreGrid>
+                    ) : null
+                  )}
+                  {arrayDataLimit &&
+                    initData?.length > arrayDataLimit &&
+                    this.state.hideFlag && (
+                      <CoreBox
+                        styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}
+                      >
+                        <CoreLink
+                          href={
+                            !this.props.query
+                              ? urls.SHOW_SPECIFIC.replace(":formId", formId)
+                              : urls.SHOW_SPECIFIC.replace(":formId", formId) +
+                                "?query=" +
+                                encodeURIComponent(
+                                  JSON.stringify(this.props.query)
+                                )
+                          }
+                        >
+                          <CoreTypographyCaption>
+                            Show {Number(initData?.length - arrayDataLimit)}{" "}
+                            other
+                            {Number(initData?.length - arrayDataLimit) > 1 &&
+                              "s"}
+                          </CoreTypographyCaption>
+                        </CoreLink>
+                      </CoreBox>
+                    )}
+                </>
+              ) : !initData ? (
+                <CoreTypographyBody1>No Data found</CoreTypographyBody1>
+              ) : null}
+            </>
+          ) : allowEdit === false ? (
+            <CoreEditForm
+              styleClasses={this.props.styleClasses}
+              forms={processedForms}
+              formId={formId}
+              handleSubmit={this.handleSubmit}
+              handleButtonCLick={this.handleButtonClick}
+              initData={initData}
+              mode={false}
+              formRef={formRef}
+              formDataReadLoading={formDataReadLoading}
+              formData={formData[formId]?.data?.rows}
+              allowEdit={allowEdit}
+              preview={preview}
+            />
+          ) : (
+            <CoreEditForm
+              styleClasses={this.props.styleClasses}
+              forms={processedForms}
+              formId={formId}
+              handleSubmit={this.handleSubmit}
+              handleButtonCLick={this.handleButtonClick}
+              initData={initData}
+              mode={
+                mode === FORM_EDIT_MODE ||
+                (editForm[formId] && editForm[formId].editing)
+              }
+              submitLoading={formSubmitLoading[formId]}
+              submitSuccess={formSubmitSuccess[formId]}
+              OnEditClick={this.OnEditClick}
+              OnCancelClick={this.OnCancel}
+              editFormId={formId}
+              formRef={formRef}
+              formDataReadLoading={formDataReadLoading}
+              formData={formData[formId]?.data?.rows}
+              allowEdit={allowEdit}
+              onFormFocus={onFormFocus}
+              preview={preview}
+            />
+          )}
+        </CoreGrid>
+      </>
+    );
   }
 }
 

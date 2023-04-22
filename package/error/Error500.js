@@ -4,10 +4,10 @@ import CoreCardContent from "../components/surfaces/CoreCardContent";
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
 import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
-import { useLocation } from "react-router-dom";
+import { nativeUseLocation } from "@wrappid/styled-components";
 
 export default function Error500(props) {
-  const { error = { message: "", stack: "" } } = useLocation();
+  const { error = { message: "", stack: "" } } = nativeUseLocation();
   return (
     <CoreCard>
       <CoreCardContent>

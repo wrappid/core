@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { nativeUseNavigate } from "@wrappid/styled-components";
 import CoreResponsiveButton from "../inputs/custom/CoreResponsiveButton";
 
 export default function CoreTableAction(props) {
-  const navigation = useNavigate();
+  const navigation = nativeUseNavigate();
   const { tableUUID, actions = [], rowData = {} } = props;
   return (
     <>
@@ -24,7 +24,7 @@ export default function CoreTableAction(props) {
                 }
               }}
             />
-          ),
+          )
         )}
     </>
   );

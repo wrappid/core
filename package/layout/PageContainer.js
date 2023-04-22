@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { nativeUseLocation } from "@wrappid/styled-components";
 import config from "../config/config";
 import { ENV_DEV_MODE } from "../config/constants";
 import Error404 from "../error/Error404";
@@ -28,7 +28,7 @@ import { ComponentRegistryContext } from "../config/contextHandler";
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
-  let location = useLocation();
+  let location = nativeUseLocation();
   const componentRegistry = useContext(ComponentRegistryContext);
   console.log("componentRegistry", componentRegistry);
   const auth = useSelector((state) => state.auth);

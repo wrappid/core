@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { CssBaseline } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { nativeUseLocation } from "@wrappid/styled-components";
 
 import { ComponentRegistry } from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
@@ -37,7 +37,7 @@ import { CoreClasses } from "@wrappid/styles";
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
   const dispatch = useDispatch();
-  const location = useLocation();
+  const location = nativeUseLocation();
   const auth = useSelector((state) => state?.auth);
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);

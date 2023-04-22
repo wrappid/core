@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 import CoreViewField from "./CoreViewField";
-import CoreContainer from "../layouts/CoreContainer";
 import { createAllForms } from "../../../store/action/formAction";
-import CoreGrid from "../layouts/CoreGrid";
 
 class CoreViewForm extends Component {
   state = {};
