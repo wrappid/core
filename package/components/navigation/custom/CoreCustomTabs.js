@@ -1,13 +1,13 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { componentMap } from "../../../utils/componentMap";
 import { CoreClasses } from "@wrappid/styles";
+import { nativeUseLocation } from "@wrappid/styled-components";
 import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
 import CoreTabs from "../CoreTabs";
 
 export default function CoreCustomTabs(props) {
-  const location = useLocation();
+  const location = nativeUseLocation();
   const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
   const [tabValue, setTabValue] = React.useState(tabsContent[0]?.id || 0);
 
