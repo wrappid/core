@@ -67,7 +67,7 @@ export default function CoreProvider(props) {
     props?.persistFlag
   );
 
-  return <Provider store={store}>{props.children}</Provider>;
+  return (<Provider store={store}>{props.children}</Provider>);
 }
 
 export { createFullStore };

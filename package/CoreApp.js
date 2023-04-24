@@ -9,7 +9,7 @@ import { ComponentRegistryContext } from "./config/contextHandler";
 export default function CoreApp({reducers, componentRegistry}) {
   return (
     <CoreProvider appReducer={reducers}>
-      <ComponentRegistryContext value={componentRegistry}>
+      <ComponentRegistryContext.Provider value={componentRegistry}>
         <React.StrictMode>
           <CoreAppDiv>
             <CoreNavigation>
