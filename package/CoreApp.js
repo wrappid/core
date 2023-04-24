@@ -19,7 +19,7 @@ export default function CoreApp({reducers, componentRegistry}) {
             </CoreNavigation>
           </CoreAppDiv>
         </React.StrictMode>
-      </ComponentRegistryContext>
+      </ComponentRegistryContext.Provider>
     </CoreProvider>
   );
 }
