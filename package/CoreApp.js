@@ -3,17 +3,22 @@ import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import AppContainer from "./layout/AppContainer";
 import CoreNavigation from "./components/navigation/CoreNavigation";
 import CoreRoutes from "./CoreRoutes";
+import { ComponentRegistryContext } from "./config/contextHandler";
 
-export default function CoreApp() {
+export default function CoreApp({reducers, componentRegistry}) {
   return (
-    <React.StrictMode>
-      <CoreAppDiv>
-        <CoreNavigation>
-          <AppContainer>
-            <CoreRoutes />
-          </AppContainer>
-        </CoreNavigation>
-      </CoreAppDiv>
-    </React.StrictMode>
+    <CoreProvider appReducer={reducers}>
+      <ComponentRegistryContext value={componentRegistry}>
+        <React.StrictMode>
+          <CoreAppDiv>
+            <CoreNavigation>
+              <AppContainer>
+                <CoreRoutes />
+              </AppContainer>
+            </CoreNavigation>
+          </CoreAppDiv>
+        </React.StrictMode>
+      </ComponentRegistryContext>
+    </CoreProvider>
   );
 }
