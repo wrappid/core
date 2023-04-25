@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "directories": {
@@ -10,7 +10,8 @@
     "test": "exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
     "build-app": "npx babel package --out-dir ../test/wrappid-mobile/node_modules/@wrappid/core --copy-files",
-    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
+    "publish": "npm publish ./package --registry=https://npm.pkg.github.com --scope=@wrappid",
+    "publish-old": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@wrappid/styles": "^0.0.3",
     "formik": "^2.2.9",
     "mdi": "^2.2.43",
     "moment": "^2.29.4",
