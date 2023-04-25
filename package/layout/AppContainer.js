@@ -167,7 +167,8 @@ function AppContainer(props) {
         component="main"
         styleClasses={
           auth?.uid
-            ? [CoreClasses.LAYOUT.CONTENT_CONTAINER]
+            ? //  [CoreClasses.LAYOUT.CONTENT_CONTAINER] this style causing error in react native
+              [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
             : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
         }
       >
