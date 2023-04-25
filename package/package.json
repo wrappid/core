@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.13",
+  "version": "0.0.13-alpha.0",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {
@@ -42,6 +42,5 @@
     "uuidv4": "^6.2.13",
     "yup": "^0.32.11"
   },
-  "peerDependencies": {
-  }
+  "peerDependencies": {}
 }
