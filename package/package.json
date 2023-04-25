@@ -43,6 +43,5 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@wrappid/styles": "^0.0.3"
   }
 }

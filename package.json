@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@wrappid/styles": "^0.0.3",
     "formik": "^2.2.9",
     "mdi": "^2.2.43",
     "moment": "^2.29.4",
