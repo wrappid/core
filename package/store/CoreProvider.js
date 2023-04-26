@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
 
-function createFullStore(appReducer, persistFlag = true) {
+function createFullStore(appReducer, persistFlag = true, _storage = storage) {
   var keys = Object.keys(coreReducer);
 
   let finalReducer = {};
@@ -15,7 +15,7 @@ function createFullStore(appReducer, persistFlag = true) {
     finalReducer[keys[i]] = persistReducer(
       {
         key: keys[i],
-        storage,
+        _storage,
       },
       coreReducer[keys[i]]
     );
@@ -27,7 +27,7 @@ function createFullStore(appReducer, persistFlag = true) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
           key: appReducerKeys[i],
-          storage,
+          _storage,
         },
         appReducer[appReducerKeys[i]]
       );
@@ -64,7 +64,8 @@ export default function CoreProvider(props) {
    */
   let { store, persistor } = createFullStore(
     props.appReducer,
-    props?.persistFlag
+    props?.persistFlag,
+    props?.storage
   );
 
   return (<Provider store={store}>{props.children}</Provider>);

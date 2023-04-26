@@ -6,9 +6,12 @@ import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
   let backendUrl = config.backendUrl;
-  if (endpoint.includes("http")) {
+  /**
+   * @todo @sumanta-m review required
+   */
+  /* if (endpoint.includes("http")) {
     backendUrl = "";
-  }
+  } */
 
   return method === HTTP_GET
     ? queryBuilder(backendUrl + endpoint, data)
