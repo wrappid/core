@@ -54,16 +54,17 @@ function AppContainer(props) {
   const reload = useSelector((state) => state?.settings?.reload);
 
   React.useEffect(() => {
-    dispatch(
-      apiRequestAction(
-        HTTP_GET,
-        GET_USER_SETTINGS,
-        true,
-        {},
-        GET_USER_SETTINGS_SUCCESS,
-        GET_USER_SETTINGS_ERROR
-      )
-    );
+    if (auth && auth.uid && auth.accessToken)
+      dispatch(
+        apiRequestAction(
+          HTTP_GET,
+          GET_USER_SETTINGS,
+          true,
+          {},
+          GET_USER_SETTINGS_SUCCESS,
+          GET_USER_SETTINGS_ERROR
+        )
+      );
   }, [reload]);
 
   const [hasError, setHasError] = React.useState(false);
