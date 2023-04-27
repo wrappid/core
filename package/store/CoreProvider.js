@@ -3,11 +3,11 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { nativeStorage } from "@wrappid/styled-components";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
 
-function createFullStore(appReducer, persistFlag = true, _storage = storage) {
+function createFullStore(appReducer, persistFlag = true) {
   var keys = Object.keys(coreReducer);
 
   let finalReducer = {};
@@ -15,7 +15,7 @@ function createFullStore(appReducer, persistFlag = true, _storage = storage) {
     finalReducer[keys[i]] = persistReducer(
       {
         key: keys[i],
-        _storage,
+        storage: nativeStorage,
       },
       coreReducer[keys[i]]
     );
@@ -27,7 +27,7 @@ function createFullStore(appReducer, persistFlag = true, _storage = storage) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
           key: appReducerKeys[i],
-          _storage,
+          storage: nativeStorage,
         },
         appReducer[appReducerKeys[i]]
       );
@@ -68,7 +68,7 @@ export default function CoreProvider(props) {
     props?.storage
   );
 
-  return (<Provider store={store}>{props.children}</Provider>);
+  return <Provider store={store}>{props.children}</Provider>;
 }
 
 export { createFullStore };

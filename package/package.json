@@ -25,7 +25,7 @@
     "url": "https://github.com/wrappid/core/issues"
   },
   "homepage": "https://github.com/wrappid/core#readme",
-  "dependencies": {
+  "peerDependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "formik": "^2.2.9",
     "mdi": "^2.2.43",
@@ -41,6 +41,5 @@
     "redux-thunk": "^2.4.1",
     "uuidv4": "^6.2.13",
     "yup": "^0.32.11"
-  },
-  "peerDependencies": {}
+  }
 }
