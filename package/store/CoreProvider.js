@@ -38,7 +38,7 @@ function createFullStore(appReducer, persistFlag = true, _storage = storage) {
 
   const store = configureStore({
     reducer: combineReducers(finalReducer),
-    devTools: false,
+    devTools: true,
     middleware: [thunk],
   });
 
