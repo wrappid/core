@@ -272,7 +272,6 @@ export {
   createFullStore,
   apiRequestAction,
   ComponentRegistryContext,
-  maskEmailOrPhone,
   clearAuthState,
   saveAuthData,
   saveData,
