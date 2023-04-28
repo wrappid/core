@@ -558,7 +558,7 @@ export function createTableFormJson(
 export function viewString(text, type) {
   if (text) {
     return text;
-  } else if (config.environment === ENV_DEV_MODE) {
+  } else if (process.env.REACT_APP_ENV === ENV_DEV_MODE) {
     if (type) {
       return "No " + type + " found";
     } else return "NA";
@@ -625,10 +625,11 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
+      let backendUrl = process.env.REACT_APP_BACKEND_URL || config.backendUrl;
       var url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
       var formRes = await axiosInterceptor({
         method: HTTP_GET,
-        url: config.backendUrl + url + formId,
+        url: backendUrl + url + formId,
         headers: await authHeader(auth, false),
       });
       if (formRes.status === 200) {

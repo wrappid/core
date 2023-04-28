@@ -7,10 +7,11 @@ import {
   UPDATE_DATA_LOADING,
   UPDATE_DATA_SUCCESS,
 } from "../types/dataManagementTypes";
+var backendUrl = config?.backendUrl || process.env.REACT_APP_BACKEND_URL;
 
 export const getDataByModel = (model, query, token) => {
   return (dispatch) => {
-    fetch(config.backendUrl + queryBuilder("/data/" + model, query), {
+    fetch(backendUrl + queryBuilder("/data/" + model, query), {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -44,7 +45,7 @@ export const updateDataByModel = (model, id, data, token) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_DATA_LOADING });
     console.log(data);
-    var apiUrl = config.backendUrl + queryBuilder("/data/" + model + "/" + id);
+    var apiUrl = backendUrl + queryBuilder("/data/" + model + "/" + id);
     fetch(apiUrl, {
       method: "put",
       headers: {

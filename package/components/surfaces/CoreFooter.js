@@ -15,7 +15,9 @@ export default function CoreFooter(props) {
 
       <CoreGrid styleClasses={[CoreClasses.PADDING.PT3]}>
         <CoreTypographyBody1>
-          {config?.footerText || "Wrappid Default Footer @ 2023 "}
+          {process.env.REACT_APP_FOOTER_TEXT ||
+            config?.footerText ||
+            "Wrappid Default Footer @ 2023 "}
         </CoreTypographyBody1>
 
         <CoreTypographyBody1>{/* <AppVersion /> */}</CoreTypographyBody1>

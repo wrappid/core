@@ -1,6 +1,4 @@
-import config from "../../config/config";
 import { createForm } from "../../utils/formUtils";
-import { queryBuilder } from "../../utils/helper";
 import {
   ADD_FORM,
   CANCEL_CORE_FORM_EDIT_ADD,
@@ -9,10 +7,6 @@ import {
   FORM_DATA_SAVE,
   FORM_RESET,
 } from "../types/formTypes";
-
-var scraperDBUrl = config.scraperDBUrl;
-var adminUrl = config.adminUrl;
-var backendUrl = config.backendUrl;
 
 export const createAllForms = (
   formId,

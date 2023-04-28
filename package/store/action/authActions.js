@@ -11,7 +11,7 @@ import {
 import { AUTHENTICATION_ERROR } from "../types/commonTypes";
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../types/menuTypes";
 
-var backendUrl = config.backendUrl;
+var backendUrl = config?.backendUrl || process.env.REACT_APP_BACKEND_URL;
 
 export const signIn = (credentials) => {
   return (dispatch) => {
@@ -53,7 +53,7 @@ export const signIn = (credentials) => {
               type: "LOGIN_ERROR",
               message: "Internal Error",
             });
-          }),
+          })
       )
       .catch((err) => {
         dispatch({
@@ -86,7 +86,7 @@ export const signOut = (token) => {
               type: "LOGOUT_ERROR",
             });
           }
-        }),
+        })
       )
       .catch((err) => {
         dispatch({
@@ -127,7 +127,7 @@ export const refreshToken = (token, refreshToken) => {
               type: "TOKEN_REFRESH_ERROR",
             });
           }
-        }),
+        })
       )
       .catch((err) => {
         dispatch({
@@ -193,7 +193,7 @@ export const checkLoginOrRegister = (credentials, otpFlag, page) => {
             dispatch({
               type: "CHECK_LOGIN_ERROR",
             });
-          }),
+          })
       )
       .catch((err) => {
         dispatch({
@@ -243,7 +243,7 @@ export const loginWithOtp = (credentials, reset) => {
               type: "LOGIN_ERROR",
               message: "Internal Error",
             });
-          }),
+          })
       )
       .catch((err) => {
         dispatch({
@@ -306,7 +306,7 @@ export const getRolePermission = (query, token) => {
               message: data.message,
             });
           }
-        }),
+        })
       )
       .catch((err) => {
         dispatch({

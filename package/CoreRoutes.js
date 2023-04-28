@@ -59,6 +59,7 @@ export default function CoreRoutes() {
     console.log("-----------------------------------------------");
   }, [_routes]);
 
+  console.log("PROCESS ENV ", process.env);
   return (
     <NativeDomRoutes>
       {/* {Object.keys(routes).map((key) => (

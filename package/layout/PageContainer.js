@@ -110,7 +110,7 @@ export default function PageContainer(props) {
       <CoreBox>
         {/* <CoreModal /> */}
         {/* Show Helper Text Toggle */}
-        {/* {config.environment === ENV_DEV_MODE && helperButtonFlag && (
+        {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[

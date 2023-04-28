@@ -10,7 +10,7 @@ var coreConfig = {
   // Dev URL
   // adminUrl: "http://localhost:8080",
   // scraperDBUrl: "http://localhost:5001",
-  backendUrl: "http://localhost:8080",
+  backendUrl: "http://192.168.0.103:8080",
 
   // Stage URL
   // adminUrl: "http://localhost:8080",

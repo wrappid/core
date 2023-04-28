@@ -99,8 +99,8 @@ export default function RxProfilePopOver(props) {
         OnMenuClick={OnMenuClick}
       />
 
-      {config.environment === ENV_DEV_MODE ||
-        (config.environment === ENV_STAGE_MODE && (
+      {process.env.REACT_APP_ENV === ENV_DEV_MODE ||
+        (process.env.REACT_APP_ENV === ENV_STAGE_MODE && (
           <>
             <CoreDivider />
 

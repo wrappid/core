@@ -5,7 +5,7 @@ import { HTTP_GET } from "../config/constants";
 import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
-  let backendUrl = config.backendUrl;
+  let backendUrl = process.env.REACT_APP_BACKEND_URL || config?.backendUrl;
   /**
    * @todo @sumanta-m review required
    */

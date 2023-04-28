@@ -1,22 +1,22 @@
-import React from 'react';
-import config from '../../../config/config';
-import {HTTP_GET} from '../../../config/constants';
-import axiosInterceptor from '../../../middleware/axiosInterceptor';
-import authHeader from '../../../service/DataService';
-import {getFullName} from '../../../utils/helper';
-import CoreAvatar from '../CoreAvatar';
-import CoreChip from '../CoreChip';
-import CoreTypographyCaption from '../paragraph/CoreTypographyCaption';
-import {CoreClasses} from '@wrappid/styles';
+import React from "react";
+import config from "../../../config/config";
+import { HTTP_GET } from "../../../config/constants";
+import axiosInterceptor from "../../../middleware/axiosInterceptor";
+import authHeader from "../../../service/DataService";
+import { getFullName } from "../../../utils/helper";
+import CoreAvatar from "../CoreAvatar";
+import CoreChip from "../CoreChip";
+import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function UserChip(props) {
   const {
     userid,
-    _firstName = '',
-    _middleName = '',
-    _lastName = '',
-    _email = '',
-    _photoUrl = '',
+    _firstName = "",
+    _middleName = "",
+    _lastName = "",
+    _email = "",
+    _photoUrl = "",
   } = props;
   const [firstName, setFirstName] = React.useState(_firstName);
   const [middleName, setMiddleName] = React.useState(_middleName);
@@ -26,40 +26,41 @@ export default function UserChip(props) {
 
   React.useEffect(() => {
     async function apiCall() {
+      let backendUrl = process.env.REACT_APP_BACKEND_URL || config.backendUrl;
       await axiosInterceptor({
         method: HTTP_GET,
         url:
-          config.backendUrl +
-          '/business/individual/UserBasicInfo?_defaultFilter=' +
-          encodeURIComponent(JSON.stringify({'Users.id': userid})),
+          backendUrl +
+          "/business/individual/UserBasicInfo?_defaultFilter=" +
+          encodeURIComponent(JSON.stringify({ "Users.id": userid })),
         headers: await authHeader(true),
       })
-        .then(response => {
-          setFirstName(response?.data?.data?.data['Person.firstName']);
-          setMiddleName(response?.data?.data?.data['Person.middleName']);
-          setLastName(response?.data?.data?.data['Person.lastName']);
-          setEmail(response?.data?.data?.data['email']);
-          setPhotoUrl(response?.data?.data?.data['Person.photoUrl']);
+        .then((response) => {
+          setFirstName(response?.data?.data?.data["Person.firstName"]);
+          setMiddleName(response?.data?.data?.data["Person.middleName"]);
+          setLastName(response?.data?.data?.data["Person.lastName"]);
+          setEmail(response?.data?.data?.data["email"]);
+          setPhotoUrl(response?.data?.data?.data["Person.photoUrl"]);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
     }
     if (
-      _firstName === '' &&
-      _middleName === '' &&
-      _lastName === '' &&
-      _photoUrl === ''
+      _firstName === "" &&
+      _middleName === "" &&
+      _lastName === "" &&
+      _photoUrl === ""
     ) {
       apiCall();
     }
   }, [userid]);
 
-  let displayName = '';
-  if (firstName === '' && middleName === '' && lastName === '') {
+  let displayName = "";
+  if (firstName === "" && middleName === "" && lastName === "") {
     displayName = email;
   } else {
-    displayName = getFullName({firstName, middleName, lastName});
+    displayName = getFullName({ firstName, middleName, lastName });
   }
 
   return (
@@ -68,7 +69,7 @@ export default function UserChip(props) {
       avatar={
         <CoreAvatar
           styleClasses={[CoreClasses.BORDER.BORDER_0]}
-          src={photoUrl || 'photo.jpg'}
+          src={photoUrl || "photo.jpg"}
         />
       }
       label={
