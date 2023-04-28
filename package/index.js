@@ -137,6 +137,13 @@ import CoreProvider from "./store/CoreProvider";
 import CoreApp from "./CoreApp";
 import { ComponentRegistryContext } from "./config/contextHandler";
 // import { __IconTypes } from "./components/dataDisplay/CoreIcon";
+import {
+  clearAuthState,
+  saveAuthData,
+  saveData,
+} from "./store/action/authActions";
+
+import { maskEmailOrPhone } from "./utils/stringUtils";
 
 export {
   // __IconTypes,
@@ -265,4 +272,9 @@ export {
   createFullStore,
   apiRequestAction,
   ComponentRegistryContext,
+  maskEmailOrPhone,
+  clearAuthState,
+  saveAuthData,
+  saveData,
+  maskEmailOrPhone,
 };
