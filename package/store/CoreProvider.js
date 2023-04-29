@@ -6,6 +6,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import { nativeStorage } from "@wrappid/styled-components";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
+import { PersistGate } from "redux-persist/integration/react";
 
 function createFullStore(appReducer, persistFlag = true) {
   var keys = Object.keys(coreReducer);
@@ -68,7 +69,13 @@ export default function CoreProvider(props) {
     props?.storage
   );
 
-  return <Provider store={store}>{props.children}</Provider>;
+  return (
+<Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      {props.children}
+    </PersistGate>
+</Provider>
+  );
 }
 
 export { createFullStore };
