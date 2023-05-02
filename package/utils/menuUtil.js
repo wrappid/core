@@ -9,6 +9,8 @@ import {
   MENU_PARENT_ITEM,
   MENU_SEPERATOR,
 } from "../config/menuConstants";
+import { getNativeMenuItem } from "@wrappid/styled-components";
+import { theme } from "../theme/theme";
 
 export function createMultiLevelMenu(
   menu,
@@ -25,7 +27,7 @@ export function createMultiLevelMenu(
   return menu?.map((itemData) => {
     return (
       <>
-        {getMenuItem(
+        {getNativeMenuItem(
           itemData,
           level,
           OnMenuClick,
@@ -34,6 +36,7 @@ export function createMultiLevelMenu(
           selectedID,
           setSelectedID,
           locationPathname,
+          theme,
           {
             MENU_HEADER_ITEM,
             MENU_ITEM,
@@ -59,7 +62,18 @@ export function createMultiLevelMenu(
             openCollapse,
             selectedID,
             setSelectedID,
-            locationPathname
+            locationPathname,
+            theme,
+            {
+              MENU_HEADER_ITEM,
+              MENU_ITEM,
+              MENU_ITEM_BUTTON,
+              MENU_ITEM_ICON,
+              MENU_ITEM_TEXT,
+              MENU_ITEM_WRAPPER,
+              MENU_PARENT_ITEM,
+              MENU_SEPERATOR,
+            }
           )}
       </>
     );

@@ -18,6 +18,7 @@ export default function NativeMenu(props) {
   } = props;
 
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
+  console.log("MENU", menu, openCollapse);
 
   return (
     <CoreStack
@@ -30,7 +31,7 @@ export default function NativeMenu(props) {
         ]
       }
     >
-      {/* {createMultiLevelMenu(
+      {createMultiLevelMenu(
         menu,
         0,
         OnMenuClick,
@@ -41,7 +42,7 @@ export default function NativeMenu(props) {
         selectedID,
         setSelectedID,
         location.pathname
-      )} */}
+      )}
     </CoreStack>
   );
 }

@@ -175,7 +175,7 @@ function AppContainer(props) {
         <>
           <CoreAppBar handleDrawer={handleDrawer} />
 
-          {auth.accessToken && (
+          {/* {auth.accessToken && (
             <CoreDrawer
               open={
                 windowWidth <= SMALL_WINDOW_WIDTH
@@ -183,7 +183,7 @@ function AppContainer(props) {
                   : leftMenuOpen
               }
             />
-          )}
+          )} */}
         </>
       )}
 
@@ -196,6 +196,16 @@ function AppContainer(props) {
             : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
         }
       >
+        {auth.accessToken && (
+          <CoreDrawer
+            open={
+              windowWidth <= SMALL_WINDOW_WIDTH
+                ? leftMenuOpenSmallScreen
+                : leftMenuOpen
+            }
+            toggleDrawer={handleDrawer}
+          />
+        )}
         <CoreRightDrawer open={false} />
 
         <ErrorBoundary hasError={hasError} setHasError={setHasError}>
