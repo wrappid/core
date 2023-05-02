@@ -144,6 +144,7 @@ import {
 } from "./store/action/authActions";
 
 import { maskEmailOrPhone } from "./utils/stringUtils";
+import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 
 export {
   // __IconTypes,
@@ -276,4 +277,5 @@ export {
   saveAuthData,
   saveData,
   maskEmailOrPhone,
+  getCoreAccessToken,
 };

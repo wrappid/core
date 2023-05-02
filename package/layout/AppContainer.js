@@ -12,7 +12,11 @@ import CoreAppBar from "./../components/surfaces/CoreAppBar";
 import CoreDrawer from "./../components/surfaces/CoreDrawer";
 import CoreRightDrawer from "./../components/surfaces/CoreRightDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
-import { GET_USER_SETTINGS, UPDATE_USER_SETTINGS } from "../config/api";
+import {
+  GET_ROLE_PERMISSIONS_API,
+  GET_USER_SETTINGS,
+  UPDATE_USER_SETTINGS,
+} from "../config/api";
 import {
   HTTP_GET,
   HTTP_POST,
@@ -33,6 +37,11 @@ import {
   USER_SETTINGS_UPDATE_ERROR,
   USER_SETTINGS_UPDATE_SUCCESS,
 } from "../store/types/settingsTypes";
+import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
+import {
+  GET_ROLE_PERMISSION_SUCCESS,
+  GET_ROLE_PERMISSION_ERROR,
+} from "../store/types/authTypes";
 import CoreBox from "../components/layouts/CoreBox";
 import { CoreClasses } from "@wrappid/styles";
 
@@ -66,6 +75,20 @@ function AppContainer(props) {
         )
       );
   }, [reload]);
+
+  React.useEffect(() => {
+    if (auth && auth.uid && auth.accessToken)
+      dispatch(
+        apiRequestAction(
+          HTTP_GET,
+          GET_ROLE_PERMISSIONS_API,
+          true,
+          {},
+          [BUILD_MENU_ROLE_PERMISSIONS, GET_ROLE_PERMISSION_SUCCESS],
+          GET_ROLE_PERMISSION_ERROR
+        )
+      );
+  }, [auth.uid]);
 
   const [hasError, setHasError] = React.useState(false);
 

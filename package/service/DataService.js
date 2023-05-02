@@ -1,28 +1,13 @@
-// import { store } from "../store/store";
+import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 
 export default async function authHeader(
   authRequired = true,
   includeFile = false
 ) {
   let headers = {};
-  // console.log("####################1");
-  let auth = null;
-  try {
-    auth = localStorage.getItem("persist:auth");
-  } catch (err) {
-    console.log("Local storage not found");
-    /**
-     * @todo have to write native specific code
-     */
-    auth = JSON.stringify({});
-  }
-  // console.log("####################2", auth);
-  let reducer = JSON.parse(auth);
-  // console.log("####################3", reducer);
+
   if (authRequired) {
-    let accessToken = reducer?.accessToken
-      ? JSON.parse(reducer?.accessToken)
-      : "";
+    let accessToken = await getCoreAccessToken();
     headers["Authorization"] = "Bearer " + accessToken;
   }
   if (includeFile) {
