@@ -44,6 +44,7 @@ import {
 } from "../store/types/authTypes";
 import CoreBox from "../components/layouts/CoreBox";
 import { CoreClasses } from "@wrappid/styles";
+import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
@@ -52,6 +53,7 @@ function AppContainer(props) {
   const auth = useSelector((state) => state?.auth);
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
   const currentPendingRequest = null;
   // useSelector(
   //   (state) => state.pendingRequests.pendingRequest
@@ -62,8 +64,36 @@ function AppContainer(props) {
   // user settings
   const reload = useSelector((state) => state?.settings?.reload);
 
+  /**
+   * @todo getCeesToken function and and useeffect to call that canbe removed
+   *
+   * @description
+   * this piece of code is used because of the inconsistency beteen accessToken in
+   * nativestorage and reducer. Following functionality get accesstoken from native
+   * storage and calls multiple times till it finds it.
+   */
+  const getAccessToken = async () => {
+    let t = await getCoreAccessToken();
+    if (t) {
+      console.log(
+        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN FOUND\n%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      );
+      setAccessToken(t);
+    }
+  };
+
   React.useEffect(() => {
-    if (auth && auth.uid && auth.accessToken)
+    console.log("%%%%%%%%%%%%%%%%%%%\n OUTSIDE\n%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    if (auth && auth.uid && !accessToken) {
+      console.log(
+        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN CALL\n%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      );
+      getAccessToken();
+    }
+  });
+
+  React.useEffect(() => {
+    if (accessToken)
       dispatch(
         apiRequestAction(
           HTTP_GET,
@@ -74,10 +104,10 @@ function AppContainer(props) {
           GET_USER_SETTINGS_ERROR
         )
       );
-  }, [reload]);
+  }, [reload, accessToken]);
 
   React.useEffect(() => {
-    if (auth && auth.uid && auth.accessToken)
+    if (accessToken)
       dispatch(
         apiRequestAction(
           HTTP_GET,
@@ -88,7 +118,7 @@ function AppContainer(props) {
           GET_ROLE_PERMISSION_ERROR
         )
       );
-  }, [auth.uid]);
+  }, [auth.uid, accessToken]);
 
   const [hasError, setHasError] = React.useState(false);
 

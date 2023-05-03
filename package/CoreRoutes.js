@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "./store/action/appActions";
 import { HTTP_GET } from "./config/constants";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
+import SplashComponent from "./components/navigation/custom/SplashComponent";
 
 export default function CoreRoutes() {
   const dispatch = useDispatch();
@@ -62,14 +63,7 @@ export default function CoreRoutes() {
   console.log("PROCESS ENV ", process.env);
   return (
     <NativeDomRoutes>
-      {/* {Object.keys(routes).map((key) => (
-        <NativeDomRoute
-          key={key}
-          exact
-          path={"/" + key}
-          element={<PageContainer page={routes[key]} route />}
-        />
-      ))} */}
+      {/* App related routes */}
       {_routes?.map((route) => {
         return (
           <NativeDomRoute
@@ -80,10 +74,19 @@ export default function CoreRoutes() {
           />
         );
       })}
+
+      {/* Splash cmponent or redirection component or loader page  */}
       <NativeDomRoute
         exact
         path="/"
-        element={<NativeDomNavigate to={"/" + urls.LOGIN_ROUTE} />}
+        element={
+          <PageContainer
+            page={{
+              auth: false,
+              comp: <SplashComponent />,
+            }}
+          />
+        }
       />
       {/* Error 500 */}
       <NativeDomRoute
@@ -109,49 +112,6 @@ export default function CoreRoutes() {
           />
         }
       />
-      {/* <NativeDomRoute exact path="/" element={<AuthContainer page="signin" />} /> */}
-      {/* <NativeDomRoute
-        path="/enterPassword"
-        element={<AuthContainer page="password" />}
-      />
-      <NativeDomRoute path="/enterOTP" element={<AuthContainer page="otp" />} />
-      <NativeDomRoute
-        path="/resetPassword"
-        element={<AuthContainer page="resetPassword" />}
-      />
-      <NativeDomRoute path="/signUp" element={<AuthContainer page="resetPassword" />} />
-      <NativeDomRoute path={`/${urls.DASHBOARD}`} element={<Dashboard />} />
-
-      <NativeDomRoute path="/createDoctor" element={<CreateUser />} />
-      <NativeDomRoute path="/createAssistant" element={<CreateUser />} />
-      <NativeDomRoute path="/createPatient" element={<CreateUser />} />
-      <NativeDomRoute path="/createSystemAdmin" element={<CreateUser />} />
-      <NativeDomRoute path="/createSalesForce" element={<CreateUser />} />
-      <NativeDomRoute path="/createBackOffice" element={<CreateUser />} />
-      <NativeDomRoute path="/profile" element={<Profile />} />
-      <NativeDomRoute path="/manageAppointment" element={<ManageAppointment />} />
-      <NativeDomRoute path="/prescription" element={<Prescription />} />
-      <NativeDomRoute path="/schedulePatient" element={<SchedulePatient />} />
-      <NativeDomRoute path="/followUps" element={<FollowUps />} />
-      <NativeDomRoute path="/manageAssistant" element={<ManageAssistant />} />
-      <NativeDomRoute path="/managePatient" element={<ManagePatient />} />
-      <NativeDomRoute path="/viewPrescription" element={<ViewPrescriptionDetails />} />
-      <NativeDomRoute path="/baseChemicalMapping" element={<BaseChemicalMapping />} />
-      <NativeDomRoute
-        path="/chemicalCompositionMapping"
-        element={<ChemicalCompositionMapping />}
-      />
-      <NativeDomRoute path="/chemicalCompositionMappingDetail" element={<ChemicalCompositionMappingDetail/>} />
-
-      <NativeDomRoute path="/masterDataManagement" element={<MasterDataManagement />} />
-      <NativeDomRoute path="/verifyUser" element={<Verifications />} />
-      <NativeDomRoute path="/settings" element={<Settings />} />
-      <NativeDomRoute
-        path="/PrescriptionPreview"
-        element={<ViewPrescriptionDetails />}
-      />
-      <NativeDomRoute path="/assistantRequest" element={<AssistantRequest />} />
-      <NativeDomRoute path="/manageUser" element={<UserManagement />} /> */}
     </NativeDomRoutes>
   );
 }

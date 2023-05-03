@@ -130,7 +130,8 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-        {componentRegistry[route?.Page?.appComponent]?.comp || <Error404 />}
+        {componentRegistry[route?.Page?.appComponent]?.comp ||
+          props.page?.comp || <Error404 />}
       </CoreBox>
     </>
   );
