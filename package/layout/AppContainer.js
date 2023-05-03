@@ -76,9 +76,10 @@ function AppContainer(props) {
    */
   const getAccessToken = async () => {
     let t = await getCoreAccessToken();
-    if (t) {
+    if (t && typeof t === "string" && t !== "null") {
       console.log(
-        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN FOUND\n%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN FOUND\n%%%%%%%%%%%%%%%%%%%%%%%%%%",
+        t
       );
       setAccessToken(t);
     }
