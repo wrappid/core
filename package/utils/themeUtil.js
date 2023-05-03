@@ -2,17 +2,31 @@ import { nativeCreateTheme } from "@wrappid/styled-components";
 import { theme as coreTheme } from "../theme/theme";
 
 const WEB_PLATFORM = "web";
-const APP_PLATFORM = "web";
+const APP_PLATFORM = "app";
 
-export function detectPlatform(document, navigator) {
-  console.log("platform detection", document, navigator);
-  if (typeof document !== "undefined") {
+export function detectPlatform() {
+  let doc = null;
+  let nav = null;
+
+  try {
+    doc = document;
+  } catch (err) {
+    doc = null;
+  }
+  try {
+    nav = navigator;
+  } catch (err) {
+    nav = null;
+  }
+  console.log(
+    "***************\nplatform detection\n******************",
+    doc,
+    nav
+  );
+  if (doc) {
     // I'm on the web!
     return WEB_PLATFORM;
-  } else if (
-    typeof navigator !== "undefined" &&
-    navigator.product === "ReactNative"
-  ) {
+  } else if (nav && nav?.product === "ReactNative") {
     // I'm in react-native
     return APP_PLATFORM;
   } else {
