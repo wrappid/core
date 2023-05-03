@@ -1,8 +1,8 @@
 import { nativeCreateTheme } from "@wrappid/styled-components";
 import { theme as coreTheme } from "../theme/theme";
 
-const WEB_PLATFORM = "web";
-const APP_PLATFORM = "app";
+export const WEB_PLATFORM = "web";
+export const APP_PLATFORM = "app";
 
 export function detectPlatform() {
   let doc = null;

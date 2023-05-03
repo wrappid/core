@@ -45,6 +45,7 @@ import {
 import CoreBox from "../components/layouts/CoreBox";
 import { CoreClasses } from "@wrappid/styles";
 import { getCoreAccessToken } from "../middleware/coreTokenProvider";
+import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";
 
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
@@ -54,6 +55,7 @@ function AppContainer(props) {
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
+  const [platform, setPlatform] = useState(null);
   const currentPendingRequest = null;
   // useSelector(
   //   (state) => state.pendingRequests.pendingRequest
@@ -91,6 +93,9 @@ function AppContainer(props) {
       getAccessToken();
     }
   });
+  React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
 
   React.useEffect(() => {
     if (accessToken)
@@ -205,7 +210,7 @@ function AppContainer(props) {
         <>
           <CoreAppBar handleDrawer={handleDrawer} />
 
-          {/* {auth.accessToken && (
+          {auth.accessToken && platform === WEB_PLATFORM && (
             <CoreDrawer
               open={
                 windowWidth <= SMALL_WINDOW_WIDTH
@@ -213,7 +218,7 @@ function AppContainer(props) {
                   : leftMenuOpen
               }
             />
-          )} */}
+          )}
         </>
       )}
 
@@ -226,7 +231,7 @@ function AppContainer(props) {
             : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
         }
       >
-        {auth.accessToken && (
+        {auth.accessToken && platform === APP_PLATFORM && (
           <CoreDrawer
             open={
               windowWidth <= SMALL_WINDOW_WIDTH
