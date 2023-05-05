@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { getLabel } from "../../utils/stringUtils";
 import { CoreClasses } from "@wrappid/styles";
-import { theme } from "../../theme/theme";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
@@ -15,8 +14,10 @@ import CoreStack from "../layouts/CoreStack";
 import CoreDataTableRowActionPopover from "./CoreDataTableRowActionPopover";
 import CoreDataTableRowContent from "./CoreDataTableRowContent";
 import CoreTableAction from "./CoreTableAction";
+import { ThemeContext } from "../../config/contextHandler";
 
 export default function CoreDataTableBody(props) {
+  const theme = useContext(ThemeContext);
   const {
     tableUUID,
     tableColumnsShown,

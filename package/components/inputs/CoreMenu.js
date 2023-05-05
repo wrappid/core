@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import { CoreClasses } from "@wrappid/styles";
 import CoreStack from "../layouts/CoreStack";
+import { ThemeContext } from "../../config/contextHandler";
 
 export default function NativeMenu(props) {
   const location = nativeUseLocation();
@@ -19,6 +20,7 @@ export default function NativeMenu(props) {
 
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
   console.log("MENU", menu, openCollapse);
+  const theme = useContext(ThemeContext);
 
   return (
     <CoreStack
@@ -41,7 +43,8 @@ export default function NativeMenu(props) {
         openCollapse,
         selectedID,
         setSelectedID,
-        location.pathname
+        location.pathname,
+        theme
       )}
     </CoreStack>
   );

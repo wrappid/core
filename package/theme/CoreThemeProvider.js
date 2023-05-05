@@ -1,12 +1,12 @@
 import { NativeThemeProvider } from "@wrappid/styled-components";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../config/contextHandler";
 
 export default function CoreThemeProvider(props) {
-  /**
-   * @todo should be able to handle ap and web
-   */
+  const theme = useContext(ThemeContext);
+
   return (
-    <NativeThemeProvider theme={props.theme || {}}>
+    <NativeThemeProvider theme={theme || {}}>
       {props.children}
     </NativeThemeProvider>
   );

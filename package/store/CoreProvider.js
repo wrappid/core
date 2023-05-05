@@ -7,6 +7,9 @@ import { nativeStorage } from "@wrappid/styled-components";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
 import { PersistGate } from "redux-persist/integration/react";
+import { ThemeContext } from "../config/contextHandler";
+import { overrideThemeConfiguration } from "@wrappid/styles";
+import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 function createFullStore(appReducer, persistFlag = true) {
   var keys = Object.keys(coreReducer);
@@ -70,11 +73,13 @@ export default function CoreProvider(props) {
   );
 
   return (
-<Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      {props.children}
-    </PersistGate>
-</Provider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeContext.Provider value={overrideThemeConfiguration()}>
+          <CoreThemeProvider>{props.children}</CoreThemeProvider>
+        </ThemeContext.Provider>
+      </PersistGate>
+    </Provider>
   );
 }
 

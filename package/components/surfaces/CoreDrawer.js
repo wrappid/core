@@ -12,6 +12,7 @@ export default function CoreDrawer(props) {
   const auth = useSelector((state) => state?.auth);
   const menu = useSelector((state) => state?.menu?.menu);
   const collapse = useSelector((state) => state?.menu?.collapse);
+  const theme = useContext(ThemeContext);
 
   const { open, toggleDrawer } = props;
 
@@ -39,6 +40,7 @@ export default function CoreDrawer(props) {
           anchor={props.anchor ? props.anchor : "left"}
           variant="permanent"
           open={open}
+          theme={theme}
         >
           <CoreMenu
             menu={menu}

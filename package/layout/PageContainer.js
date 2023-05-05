@@ -107,7 +107,7 @@ export default function PageContainer(props) {
         <DocumentMetaKeywords metaKeywords={route?.keywords || ""} />
       )} */}
       {/* ---------------------------------------------------- */}
-      <CoreBox>
+      <CoreBox styleClasses={[CoreClasses.LAYOUT.PAGE_CONTAINER]}>
         {/* <CoreModal /> */}
         {/* Show Helper Text Toggle */}
         {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
