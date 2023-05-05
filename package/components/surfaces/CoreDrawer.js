@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CoreClasses, getEffectiveStyle } from "@wrappid/styles";
 import CoreMenu from "../inputs/CoreMenu";
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
 import { toggleMenuItemState } from "../../store/action/menuAction";
-import { SMALL_WINDOW_WIDTH } from "../../config/constants";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();

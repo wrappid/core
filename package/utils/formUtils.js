@@ -357,10 +357,7 @@ export function createFormActionProps(element) {
   ) {
     ob["styleClasses"] = element.actionContainerStyle;
   } else {
-    ob["styleClasses"] = [];
-
-    //Right lign causin error in mobile
-    // ob["styleClasses"] = [CoreClasses.LAYOUT.RIGHT_ALIGN];
+    ob["styleClasses"] = [CoreClasses.LAYOUT.RIGHT_ALIGN];
   }
 
   // console.log("FORM ACTION PROPS BUILDRE", ob, element);
