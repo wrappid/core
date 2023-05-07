@@ -10,7 +10,7 @@ import config from "../../config/config";
 
 export default function CoreFooter(props) {
   return (
-    <CoreBox styleClasses={[CoreClasses.APP.FOOTER]}>
+    <CoreBox styleClasses={[/* CoreClasses.APP.FOOTER */]}>
       <CoreDivider />
 
       <CoreGrid styleClasses={[CoreClasses.PADDING.PT3]}>

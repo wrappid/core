@@ -21,7 +21,7 @@ export default function Error404() {
         // onClick={() => {
         //   navigate({`/${urls.DASHBOARD}`});
         // }}
-        styleClasses={[CoreClasses.APP.UC_IMG]}
+        styleClasses={[/* CoreClasses.APP.UC_IMG */]}
       />
       {/* <br /> */}
       <CoreH6 styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
