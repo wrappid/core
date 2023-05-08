@@ -20,7 +20,6 @@ import { apiRequestAction } from "../../store/action/appActions";
 import CoreFormHeader from "./CoreFormHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
 import CoreBox from "../layouts/CoreBox";
-import { CoreClasses } from "@wrappid/styles";
 import {
   createApiMeta,
   forReloadCheck,
@@ -35,6 +34,7 @@ import CoreLink from "../navigation/CoreLink";
 import { urls } from "../../config/constants";
 import { compareObject } from "../../utils/objectUtils";
 import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
+import CoreClasses from "../../styles/CoreClasses";
 
 /**
  * @TODO

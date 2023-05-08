@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 import CoreSpan from "../../layouts/CoreSpan";
 import CoreLink from "../../navigation/CoreLink";
 import CoreTypography from "../CoreTypography";
@@ -22,7 +22,7 @@ export default function CoreTypographyBody1(props) {
       </CoreSpan>
       {!hideSeeMore && limitChars < props?.children?.length && (
         <CoreLink
-          styleClasses={[CoreClasses.MARGIN.ML1]}
+          styleClasses={[UtilityClasses.MARGIN.ML1]}
           onClick={toggleSeeMore}
         >
           {seeMore ? "See more" : "See less"}

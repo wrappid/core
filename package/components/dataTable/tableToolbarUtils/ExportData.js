@@ -1,7 +1,7 @@
 import React from "react";
-import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreBox from "../../layouts/CoreBox";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function ExportData(props) {
   const {} = props;

@@ -1,10 +1,10 @@
 import React from "react";
 import UserChip from "../dataDisplay/custom/UserChip";
-import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreAlert from "../feedback/CoreAlert";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
+import CoreClasses from "../../styles/CoreClasses";
 
 const alertStyle = [
   CoreClasses.PADDING.PX1,

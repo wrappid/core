@@ -1,6 +1,5 @@
 import React from "react";
 import { getUUID } from "../../../../utils/appUtils";
-import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import { CoreSelect } from "../../inputs/CoreSelect";
@@ -8,6 +7,7 @@ import CoreTextButton from "../../inputs/CoreTextButton";
 import { CoreTextField } from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function FilterData(props) {
   const { tableUUID, columns } = props;

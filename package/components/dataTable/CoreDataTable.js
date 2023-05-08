@@ -1,6 +1,5 @@
 import * as React from "react";
 import CoreTable from "../dataDisplay/CoreTable";
-import { CoreClasses } from "@wrappid/styles";
 import CoreDataTableHead from "./CoreDataTableHead";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "../../store/action/appActions";
@@ -39,6 +38,7 @@ import {
   USER_SETTINGS_UPDATE_SUCCESS,
 } from "../../store/types/settingsTypes";
 import { compareObject } from "../../utils/objectUtils";
+import CoreClasses from "../../styles/CoreClasses";
 
 /**
  * @TODO

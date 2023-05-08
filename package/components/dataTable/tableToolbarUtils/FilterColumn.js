@@ -1,6 +1,5 @@
 import React from "react";
 import { getLabel } from "../../../../utils/stringUtils";
-import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
@@ -10,6 +9,7 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import { CoreTextField } from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function FilterColumn(props) {
   const {

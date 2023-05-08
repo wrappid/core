@@ -1,6 +1,6 @@
 import React from 'react';
-import {CoreClasses} from '@wrappid/styles';
 import CoreTableCell from './CoreTableCell';
+import CoreClasses from '../../styles/CoreClasses';
 
 export default function CoreTableHeadCell(props) {
   return (
