@@ -1,10 +1,10 @@
 import { MEDIUM_WINDOW_WIDTH, SMALL_WINDOW_WIDTH } from "../config/constants";
-import { smallSCStyles } from "../styledComponents/SmallSCStyles";
 import {
 	defaultUtilityStyles,
-	DEFAULT_PADDING
-} from "../utility/DefaultUtilityStyles";
-import { smallUtilityStyles } from "../utility/SmallUtilityStyles";
+	DEFAULT_PADDING,
+	IMPORTANT,
+	smallUtilityStyles
+} from "@wrappid/styles";
 
 const MIN_WIDTH = SMALL_WINDOW_WIDTH;
 const MAX_WIDTH = MEDIUM_WINDOW_WIDTH - 1;
@@ -13,22 +13,6 @@ const HEADING_TOP_MARGIN = "64px";
 
 export const smallCoreStyles = {
 	devBorder: { ...defaultUtilityStyles.borderError },
-
-	/**************************************************
-   * Styled Components Styles - Small Screen
-   *************************************************/
-	...smallSCStyles,
-
-	/**************************************************
-   * Utility Styles - Small Screen
-   *************************************************/
-	...smallUtilityStyles,
-
-	/**************************************************
-   * App Styles - Small Screen
-   *************************************************/
-	// ...smallAppStyles,
-
 	/**
    * Core App Bar Styles
    */

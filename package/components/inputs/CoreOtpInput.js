@@ -1,9 +1,9 @@
 import React from "react";
 import { NativeOtpInput } from "@wrappid/styled-components";
-import { CoreClasses } from "@wrappid/styles";
 import CoreBox from "../layouts/CoreBox";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreOtpInput(props) {
   return (

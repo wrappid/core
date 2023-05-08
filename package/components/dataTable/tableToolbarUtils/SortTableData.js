@@ -1,6 +1,5 @@
 import React from "react";
 import { getLabel } from "../../../utils/stringUtils";
-import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
@@ -9,6 +8,7 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import CoreTextField from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function SortTableData(props) {
   const { tableUUID, tableColumns, auditColumnsKey, order, onRequestSort } =

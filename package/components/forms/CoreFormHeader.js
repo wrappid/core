@@ -1,9 +1,9 @@
 import React from "react";
 import { viewString } from "../../utils/formUtils";
-import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreFormHeader(props) {
   const { heading, subHeading, headerAction, index, action, formId } = props;

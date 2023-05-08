@@ -1,26 +1,11 @@
-import CoreAvatar from "../../components/dataDisplay/CoreAvatar";
-import CoreDivider from "../../components/dataDisplay/CoreDivider";
-import CoreIcon, { __IconTypes } from "../../components/dataDisplay/CoreIcon";
-import CoreH1 from "../../components/dataDisplay/heading/CoreH1";
-import CoreH2 from "../../components/dataDisplay/heading/CoreH2";
-import CoreH3 from "../../components/dataDisplay/heading/CoreH3";
+import { __IconTypes } from "../../components/dataDisplay/CoreIcon";
 import CoreH4 from "../../components/dataDisplay/heading/CoreH4";
 import CoreH5 from "../../components/dataDisplay/heading/CoreH5";
 import CoreH6 from "../../components/dataDisplay/heading/CoreH6";
 import CoreTypographyBody1 from "../../components/dataDisplay/paragraph/CoreTypographyBody1";
-import CoreTypographyBody2 from "../../components/dataDisplay/paragraph/CoreTypographyBody2";
-import CoreTypographyButton from "../../components/dataDisplay/paragraph/CoreTypographyButton";
-import CoreTypographyCaption from "../../components/dataDisplay/paragraph/CoreTypographyCaption";
-import CoreTypographyOverline from "../../components/dataDisplay/paragraph/CoreTypographyOverline";
-import CoreTypographySubtitle1 from "../../components/dataDisplay/paragraph/CoreTypographySubtitle1";
-import CoreTypographySubtitle2 from "../../components/dataDisplay/paragraph/CoreTypographySubtitle2";
-import CoreDataTable from "../../components/dataTable/CoreDataTable";
 import CoreBox from "../../components/layouts/CoreBox";
 import CoreGrid from "../../components/layouts/CoreGrid";
-import CoreSection from "../../components/layouts/CoreSection";
-import CoreStack from "../../components/layouts/CoreStack";
-import CoreLink from "../../components/navigation/CoreLink";
-import { CoreClasses } from "@wrappid/styles";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function StyleUtilities() {
   return getUtilitySamples();

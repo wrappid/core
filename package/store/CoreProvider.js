@@ -7,9 +7,16 @@ import { nativeStorage } from "@wrappid/styled-components";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
 import { PersistGate } from "redux-persist/integration/react";
-import { ThemeContext } from "../config/contextHandler";
-import { overrideThemeConfiguration } from "@wrappid/styles";
+import { AppStylesContext, ThemeContext } from "../config/contextHandler";
+import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
+import CoreClasses from "../styles/CoreClasses";
+import { defaultCoreStyles } from "../styles/DefaultCoreStyles";
+import { smallCoreStyles } from "../styles/SmallCoreStyles";
+import { mediumCoreStyles } from "../styles/MediumCoreStyles";
+import { largeCoreStyles } from "../styles/LargeCoreStyles";
+import { xLargeCoreStyles } from "../styles/XLargeCoreStyles";
+import { xXLargeCoreStyles } from "../styles/XXLargeCoreStyles";
 
 function createFullStore(appReducer, persistFlag = true) {
   var keys = Object.keys(coreReducer);
@@ -72,11 +79,27 @@ export default function CoreProvider(props) {
     props?.storage
   );
 
+  let coreStyles = {
+    classes: CoreClasses,
+    styles: {
+      default: defaultCoreStyles,
+      small: smallCoreStyles,
+      medium: mediumCoreStyles,
+      large: largeCoreStyles,
+      xLarge: xLargeCoreStyles,
+      xxLarge: xXLargeCoreStyles,
+    }
+  }
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeContext.Provider value={overrideThemeConfiguration()}>
-          <CoreThemeProvider>{props.children}</CoreThemeProvider>
+          <AppStylesContext.Provider value={props.appStyles}>
+            <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
+              <CoreThemeProvider>{props.children}</CoreThemeProvider>
+            </StylesProvider>
+          </AppStylesContext.Provider>
         </ThemeContext.Provider>
       </PersistGate>
     </Provider>

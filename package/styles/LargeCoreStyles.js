@@ -1,29 +1,12 @@
 import { LARGE_WINDOW_WIDTH, X_LARGE_WINDOW_WIDTH } from "../config/constants";
-import { largeSCStyles } from "../styledComponents/LargeSCStyles";
-import { defaultUtilityStyles } from "../utility/DefaultUtilityStyles";
-import { largeUtilityStyles } from "../utility/LargeUtilityStyles";
+import { defaultUtilityStyles, DEFAULT_PADDING,
+	IMPORTANT, largeUtilityStyles } from "@wrappid/styles";
 
 const MIN_WIDTH = LARGE_WINDOW_WIDTH;
 const MAX_WIDTH = X_LARGE_WINDOW_WIDTH - 1;
 
 export const largeCoreStyles = {
 	devBorder: { ...defaultUtilityStyles.borderSuccess },
-
-	/**************************************************
-   * Styled Components Styles - Large Screen
-   *************************************************/
-	...largeSCStyles,
-
-	/**************************************************
-   * Utility Styles - Large Screen
-   *************************************************/
-	...largeUtilityStyles,
-
-	/**************************************************
-   * App Styles - Large Screen
-   *************************************************/
-	// ...largeAppStyles,
-
 	authBanner: {
 		backgroundImage   : "url(./images/welcome-bg.png)",
 		backgroundPosition: "center",

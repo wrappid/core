@@ -1,9 +1,9 @@
 import React from "react";
 import CoreButton from "../CoreButton";
 import CoreIconButton from "./../CoreIconButton";
-import { CoreClasses } from "@wrappid/styles";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import { isJson } from "../../../utils/stringUtils";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function CoreResponsiveButton(props) {
   return (

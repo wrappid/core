@@ -1,10 +1,10 @@
 import React from "react";
 import { componentMap } from "../../../utils/componentMap";
-import { CoreClasses } from "@wrappid/styles";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
 import CoreTabs from "../CoreTabs";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function CoreCustomTabs(props) {
   const location = nativeUseLocation();

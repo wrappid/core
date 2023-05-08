@@ -1,17 +1,12 @@
-import StyledComponentsClasses from "./StyledComponentsClasses";
-import UtilityClasses from "./UtilityClasses";
+import { UtilityClasses  } from "@wrappid/styles";
 
 const CoreClasses = {
-	DEV_BORDER: "devBorder",
-	SC_APP_DIV: "scAppDiv",
-	/**************************************************
-   	 * Utility Styles
-   	 *************************************************/
 	...UtilityClasses,
+	SC_APP_DIV: "scAppDiv",
 	/**************************************************
    * Layout
    **************************************************/
-	LAYOUT: {
+	LAYOUT    : {
 		/*
      * Container related classes
      */
@@ -78,8 +73,6 @@ const CoreClasses = {
 		HEADING_TOP_MARGIN: "headingTopMargin",
 		PROFILE_BAR       : "profileBar",
 	},
-	CORE_APP_BAR: { APP_BAR_LOGO: "appBarLogo" },
-	CORE_DRAWER : { PAPER_HEIGHT: "appDrawerPaperHeight" },
 	MENU        : {
 		MINI_DRAWER_LIST_ITEM_BUTTON: "miniDrawerListItemButton",
 		MINI_DRAWER_LIST_ITEM_ICON  : "miniDrawerListItemIcon",
@@ -107,11 +100,6 @@ const CoreClasses = {
 		MENU_ITEM_ICON_ITEM  : "menuItemIconItem",
 		MENU_ITEM_TEXT_ITEM  : "menuItemTextItem",
 		MENU_ITEM            : "menuItem",
-	},
-	MODAL: {
-		MODAL_CONTAINER: "modalContainer",
-		MODAL_HEADER   : "modalHeader",
-		MODAL_BODY     : "modalBody",
 	},
 	/**
    *

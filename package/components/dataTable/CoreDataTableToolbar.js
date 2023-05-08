@@ -15,7 +15,6 @@ import {
   __TableLeftPanelGridSize,
   __TableRightPanelGridSize,
 } from "../../utils/tableUtils";
-import { CoreClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";
@@ -36,6 +35,7 @@ import {
   USER_SETTINGS_UPDATE_ERROR,
   USER_SETTINGS_UPDATE_SUCCESS,
 } from "../../store/types/settingsTypes";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreDataTableToolbar(props) {
   const dispatch = useDispatch();

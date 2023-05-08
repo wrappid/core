@@ -6,9 +6,14 @@ import CoreProvider from "./store/CoreProvider";
 import CoreRoutes from "./CoreRoutes";
 import { ComponentRegistryContext } from "./config/contextHandler";
 
-export default function CoreApp({ reducers, storage, componentRegistry }) {
+export default function CoreApp({
+  reducers,
+  storage,
+  componentRegistry,
+  appStyles,
+}) {
   return (
-    <CoreProvider appReducer={reducers} storage={storage}>
+    <CoreProvider appReducer={reducers} storage={storage} appStyles={appStyles}>
       <ComponentRegistryContext.Provider value={componentRegistry}>
         <React.StrictMode>
           <CoreAppDiv>

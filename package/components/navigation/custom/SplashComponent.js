@@ -8,7 +8,6 @@ import {
 
 import { urls } from "../../../config/constants";
 import { CoreTypographyBody1, CoreBox } from "@wrappid/core";
-import { CoreClasses } from "@wrappid/styles";
 
 export default function SplashComponent() {
   const _routes = useSelector((state) => state.route.routes);
@@ -59,15 +58,7 @@ export default function SplashComponent() {
   }
 
   return (
-    <CoreBox
-    //   styleClasses={[
-    //     CoreClasses.HEIGHT.VH_100,
-    //     CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-    //     CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-    //   ]}
-    >
-      {/* <RxLoadingGif /> */}
-
+    <CoreBox>
       <CoreTypographyBody1>
         {checkAppLoadDependencies()?.message}
       </CoreTypographyBody1>

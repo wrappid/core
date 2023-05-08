@@ -7,7 +7,7 @@ import CoreBox from "../components/layouts/CoreBox";
 import CoreAccordion from "../components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "../components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../components/surfaces/CoreAccordionSummary";
-import { CoreClasses } from "@wrappid/styles";
+import CoreClasses from "../styles/CoreClasses";
 // import ReportIssueForm from "./../module/support/ReportIssueForm";
 
 class ErrorBoundary extends React.Component {

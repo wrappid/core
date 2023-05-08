@@ -43,9 +43,9 @@ import {
   GET_ROLE_PERMISSION_ERROR,
 } from "../store/types/authTypes";
 import CoreBox from "../components/layouts/CoreBox";
-import { CoreClasses } from "@wrappid/styles";
 import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";
+import CoreClasses from "../styles/CoreClasses";
 
 function AppContainer(props) {
   const windowWidth = window.innerWidth;

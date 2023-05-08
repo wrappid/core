@@ -2,7 +2,7 @@ import React from "react";
 import CoreImage from "../components/dataDisplay/CoreImage";
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
 import CoreStack from "../components/layouts/CoreStack";
-import { CoreClasses } from "@wrappid/styles";
+import CoreClasses from "../styles/CoreClasses";
 
 export default function Error404() {
   /**

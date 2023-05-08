@@ -1,6 +1,6 @@
-import { CoreClasses } from "@wrappid/styles";
 import { __EntityStatus, __TableDensity } from "../config/constants";
 import { DATA_TABLE_CONST } from "../config/dataTableConstants";
+import CoreClasses from "../styles/CoreClasses";
 import { getLabel, isJson } from "./stringUtils";
 
 export const __TableLeftPanelGridSize = 4;

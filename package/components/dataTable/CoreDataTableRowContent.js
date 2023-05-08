@@ -1,7 +1,7 @@
 import React from "react";
 import CoreTableCell from "./../dataDisplay/CoreTableCell";
 import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
 import {
   getColumnLabel,
@@ -16,6 +16,7 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import { isJson } from "../../utils/stringUtils";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import StatusText from "../dataDisplay/custom/StatusText";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreDataTableRowContent(props) {
   const {
@@ -124,7 +125,7 @@ export default function CoreDataTableRowContent(props) {
     return imageData?.column?.id?.includes("icon") ? (
       imageData?.data && (
         <CoreIcon
-          styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+          styleClasses={[UtilityClasses.COLOR.TEXT_SECONDARY_DARK]}
           options={
             isJson(imageData.data)
               ? JSON.parse(imageData.data)

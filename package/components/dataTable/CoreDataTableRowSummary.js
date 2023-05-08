@@ -1,5 +1,5 @@
 import React from "react";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreStack from "../layouts/CoreStack";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
@@ -104,7 +104,7 @@ export default function CoreDataTableRowSummary(props) {
             avatar={getImageComponent()}
             title={getTitleComponent()}
             subheader={getSubheaderComponent()}
-            styleClasses={[CoreClasses.PADDING.P0]}
+            styleClasses={[UtilityClasses.PADDING.P0]}
           />
           {
             /* hasId ?  */ <>
@@ -112,7 +112,7 @@ export default function CoreDataTableRowSummary(props) {
               <CoreStack
                 direction="row"
                 spacing={1}
-                styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+                styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
               >
                 {/* hasId &&  */ getIdComponent()}
                 {/* hasStatus &&  */ getStatusComponent()}

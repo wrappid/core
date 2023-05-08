@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
-import { CoreClasses } from "@wrappid/styles";
 import CoreStack from "../layouts/CoreStack";
 import { ThemeContext } from "../../config/contextHandler";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function NativeMenu(props) {
   const location = nativeUseLocation();

@@ -24,7 +24,6 @@ import {
   FORM_XS_DEFAULT_GRID_SIZE,
 } from "../components/forms/coreFormConstants";
 import config from "../config/config";
-import { CoreClasses } from "@wrappid/styles";
 import { FORM_VALIDATION_MAP } from "./fromValidationMap";
 import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
 // import { store } from "../store/CoreProvider";
@@ -37,6 +36,7 @@ import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import authHeader from "../service/DataService";
 import { queryBuilder } from "./helper";
+import CoreClasses from "../styles/CoreClasses";
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   var message = "";

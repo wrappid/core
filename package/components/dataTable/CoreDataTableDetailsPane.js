@@ -1,7 +1,7 @@
 import React from "react";
 import { ENV_PROD_MODE } from "../../config/constants";
 import { getLabel } from "../../utils/stringUtils";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreH1 from "../dataDisplay/heading/CoreH1";
@@ -50,7 +50,7 @@ export default function CoreDataTableDetailsPane(props) {
   } = props;
 
   return (
-    <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
+    <CoreCard styleClasses={[UtilityClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
       <CoreCardHeader
         title={
           detailedRowData ? (

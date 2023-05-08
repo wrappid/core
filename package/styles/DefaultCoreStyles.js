@@ -1,11 +1,9 @@
 import { SMALL_WINDOW_WIDTH } from "../config/constants";
-import { defaultSCStyles } from "../styledComponents/DefaultSCStyles";
-import { theme } from "../theme/theme";
 import {
 	defaultUtilityStyles,
 	DEFAULT_PADDING,
 	IMPORTANT
-} from "../utility/DefaultUtilityStyles";
+} from "@wrappid/styles";
 
 const MIN_WIDTH = 0;
 const MAX_WIDTH = SMALL_WINDOW_WIDTH - 1;
@@ -20,21 +18,6 @@ export const DEFAULT_SPACING = 1;
 export const defaultCoreStyles = {
 	devBorder: { ...defaultUtilityStyles.border },
 
-	/**************************************************
-   * Styled Components Styles - Default
-   *************************************************/
-	...defaultSCStyles,
-
-	/**************************************************
-   * Utility Styles - Default
-   *************************************************/
-	...defaultUtilityStyles,
-
-	/**************************************************
-   * App Styles - Default
-   *************************************************/
-	// ...defaultAppStyles,
-
 	/**
    * Core App Bar Styles
    */
@@ -48,7 +31,7 @@ export const defaultCoreStyles = {
 	footer: {
 		padding        : DEFAULT_PADDING,
 		textAlign      : "center",
-		backgroundColor: theme.palette.secondary.light,
+		backgroundColor: defaultUtilityStyles.bgSecondaryLight
 	},
 	ucImg        : { width: "50%" },
 	basicInfoCard: {},
@@ -88,7 +71,7 @@ export const defaultCoreStyles = {
 	avatar: {
 		borderWidth: "2px",
 		borderStyle: "solid",
-		borderColor: theme.palette.primary.light,
+		borderColor: defaultUtilityStyles.borderPrimaryLight,
 	},
 	avatarSmall  : { height: "24px" + IMPORTANT, width: "24px" + IMPORTANT },
 	avatarMedium : { height: "48px" + IMPORTANT, width: "48px" + IMPORTANT },
@@ -284,7 +267,7 @@ export const defaultCoreStyles = {
 		position: "absolute",
 		bottom  : "-16px",
 		right   : "-16px",
-		color   : theme.palette.background.default,
+		color   : defaultUtilityStyles.bgDefault,
 		fontSize: "120px",
 	},
 	counterWidgetCounterStack: { ...defaultUtilityStyles.justifyContentSpaceEvenly },
@@ -293,12 +276,12 @@ export const defaultCoreStyles = {
 		...defaultUtilityStyles.justifyContentFlexEnd,
 		...defaultUtilityStyles.alignItemsCenter,
 	},
-	counterWidgetCounterPrimary: { color: theme.palette.primary.main },
+	counterWidgetCounterPrimary: { color: defaultUtilityStyles.bgPrimary},
 	// ----------Widget Styles Ends----------------
 
 	// ---------Business Entity Comp---------------
 	includedModelCard: {
-		borderLeft : `1px solid ${theme.palette.primary.light}`,
+		borderLeft : `1px solid ${defaultUtilityStyles.bgPrimaryLight}`,
 		margin     : "8px",
 		paddingLeft: "8px",
 	},

@@ -1,6 +1,5 @@
 import React from "react";
 import CoreFormHelperText from "./CoreFormHelperText";
-import { CoreClasses } from "@wrappid/styles";
 import CoreBox from "../layouts/CoreBox";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreGrid from "../layouts/CoreGrid";
@@ -8,6 +7,7 @@ import moment from "moment";
 import CoreIconButton from "./CoreIconButton";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTimePicker from "./CoreTimePicker";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreMultiTimeRangePicker(props) {
   const { id, label, onChange, value, formik, ampm } = props;

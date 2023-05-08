@@ -23,8 +23,8 @@ import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
-import { CoreClasses } from "@wrappid/styles";
 import { ComponentRegistryContext } from "../config/contextHandler";
+import CoreClasses from "../styles/CoreClasses";
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();

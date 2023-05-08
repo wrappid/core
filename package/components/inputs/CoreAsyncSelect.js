@@ -22,7 +22,7 @@ import {
   nativeUseNavigate,
   nativeFilterOptions,
 } from "@wrappid/styled-components";
-import { CoreClasses } from "@wrappid/styles";
+import CoreClasses from "../../styles/CoreClasses";
 
 const filter = nativeFilterOptions();
 //TODO:

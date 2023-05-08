@@ -1,5 +1,4 @@
 import CoreLink from "../../components/navigation/CoreLink";
-import { CoreClasses } from "@wrappid/styles";
 import CoreAvatar from "../../components/dataDisplay/CoreAvatar";
 import CoreDivider from "../../components/dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../../components/dataDisplay/CoreIcon";
@@ -21,6 +20,7 @@ import CoreBox from "../../components/layouts/CoreBox";
 import CoreGrid from "../../components/layouts/CoreGrid";
 import CoreSection from "../../components/layouts/CoreSection";
 import CoreStack from "../../components/layouts/CoreStack";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function Components() {
   return getComponentSamples();

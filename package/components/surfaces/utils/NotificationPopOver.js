@@ -5,7 +5,7 @@ import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import CoreBox from "../../layouts/CoreBox";
-import { CoreClasses } from "@wrappid/styles";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function NotificationPopOver() {
   return (

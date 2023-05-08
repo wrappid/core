@@ -1,8 +1,8 @@
 import React from "react";
 import CoreBox from "../layouts/CoreBox";
 import CoreFormHelperText from "./CoreFormHelperText";
-import { CoreClasses } from "@wrappid/styles";
 import { NativeDateTimeRangePicker } from "@wrappid/styled-components";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreDateTimeRangePicker(props) {
   return (

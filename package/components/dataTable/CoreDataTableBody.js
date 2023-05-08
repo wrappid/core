@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { getLabel } from "../../utils/stringUtils";
-import { CoreClasses } from "@wrappid/styles";
+import {UtilityClasses} from "@wrappid/styles";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
@@ -100,7 +100,7 @@ export default function CoreDataTableBody(props) {
                           handlePopoverOpen={handlePopoverOpen}
                           handlePopoverClose={handlePopoverClose}
                         >
-                          <CoreBox styleClasses={[CoreClasses.PADDING.PR2]}>
+                          <CoreBox styleClasses={[UtilityClasses.PADDING.PR2]}>
                             <CoreStack direction="row">
                               {tableActions && tableActions.length > 0 && (
                                 <CoreTableAction
@@ -159,7 +159,7 @@ export default function CoreDataTableBody(props) {
                           <CoreTableCell
                             align={"center"}
                             sx={{ maxWidth: "32px" }}
-                            styleClasses={[CoreClasses.PADDING.P0]}
+                            styleClasses={[UtilityClasses.PADDING.P0]}
                           >
                             <CoreCheckbox
                               key={`${tableUUID}-select-row-${rowIndex}`}
@@ -200,9 +200,9 @@ export default function CoreDataTableBody(props) {
                   <CoreStack
                     direction="column"
                     styleClasses={[
-                      CoreClasses.PADDING.PY5,
-                      CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-                      CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+                      UtilityClasses.PADDING.PY5,
+                      UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+                      UtilityClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
                     ]}
                   >
                     <CoreTypographyBody1>
@@ -241,8 +241,8 @@ export default function CoreDataTableBody(props) {
               >
                 <CoreBox
                   styleClasses={[
-                    CoreClasses.PADDING.P5,
-                    CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+                    UtilityClasses.PADDING.P5,
+                    UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
                   ]}
                 >
                   Please select a column

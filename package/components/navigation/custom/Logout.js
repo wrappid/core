@@ -10,9 +10,9 @@ import { LOGOUT_API } from "../../../config/api";
 import { HTTP_POST } from "../../../config/constants";
 
 import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
-import { CoreClasses } from "@wrappid/styles";
 
 import { LOGOUT_ERROR, LOGOUT_SUCCESS } from "../../../store/types/authTypes";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function Logout() {
   const dispatch = useDispatch();

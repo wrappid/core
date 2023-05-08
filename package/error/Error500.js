@@ -2,9 +2,9 @@ import React from "react";
 import CoreCard from "../components/surfaces/CoreCard";
 import CoreCardContent from "../components/surfaces/CoreCardContent";
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
-import { CoreClasses } from "@wrappid/styles";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import { nativeUseLocation } from "@wrappid/styled-components";
+import CoreClasses from "../styles/CoreClasses";
 
 export default function Error500(props) {
   const { error = { message: "", stack: "" } } = nativeUseLocation();

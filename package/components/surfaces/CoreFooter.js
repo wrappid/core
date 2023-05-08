@@ -4,9 +4,9 @@ import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
-import { CoreClasses } from "@wrappid/styles";
 // import AppVersion from "../../module/app/AppVersion";
 import config from "../../config/config";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreFooter(props) {
   return (

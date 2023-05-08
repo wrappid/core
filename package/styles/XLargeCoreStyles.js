@@ -2,31 +2,14 @@ import {
 	XX_LARGE_WINDOW_WIDTH,
 	X_LARGE_WINDOW_WIDTH
 } from "../config/constants";
-import { xLargeSCStyles } from "../styledComponents/XLargeSCStyles";
-import { defaultUtilityStyles } from "../utility/DefaultUtilityStyles";
-import { xLargeUtilityStyles } from "../utility/XLargeUtilityStyles";
+import { defaultUtilityStyles,  xLargeUtilityStyles, DEFAULT_PADDING,
+	IMPORTANT} from "@wrappid/styles";
 
 const MIN_WIDTH = X_LARGE_WINDOW_WIDTH;
 const MAX_WIDTH = XX_LARGE_WINDOW_WIDTH - 1;
 
 export const xLargeCoreStyles = {
 	devBorder: { ...defaultUtilityStyles.borderWarning },
-
-	/**************************************************
-   * Styled Components Styles - XLarge Screen
-   *************************************************/
-	...xLargeSCStyles,
-
-	/**************************************************
-   * Utility Styles - XLarge Screen
-   *************************************************/
-	...xLargeUtilityStyles,
-
-	/**************************************************
-   * App Styles - XLarge Screen
-   *************************************************/
-	// ...xLargeAppStyles,
-
 	authBanner: {
 		backgroundImage   : "url(./images/welcome-bg.png)",
 		backgroundPosition: "center",
