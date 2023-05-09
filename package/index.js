@@ -146,6 +146,7 @@ import {
 import { maskEmailOrPhone } from "./utils/stringUtils";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import { detectPlatform } from "./utils/themeUtil";
+import CoreClasses from "./styles/CoreClasses";
 
 export {
   // __IconTypes,
@@ -280,4 +281,5 @@ export {
   maskEmailOrPhone,
   getCoreAccessToken,
   detectPlatform,
+  CoreClasses
 };
