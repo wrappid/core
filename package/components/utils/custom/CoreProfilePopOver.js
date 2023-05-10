@@ -3,22 +3,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nativeUseNavigate } from "@wrappid/styled-components";
 
-import config from "./../../config/config";
-import RxEmailLink from "./RxEmailLink";
-import RxPhoneLink from "./RxPhoneLink";
-import { ENV_STAGE_MODE, urls, ENV_DEV_MODE } from "../../config/constants";
-import { MENU_SEPERATOR } from "../../config/menuConstants";
-import CoreAvatar from "../../core/components/dataDisplay/CoreAvatar";
-import CoreDivider from "../../core/components/dataDisplay/CoreDivider";
-import CoreTypographyBody1 from "../../core/components/dataDisplay/paragraph/CoreTypographyBody1";
-import { CoreMenu } from "../../core/components/inputs/CoreMenu";
-import CoreBox from "../../core/components/layouts/CoreBox";
-import CoreGrid from "../../core/components/layouts/CoreGrid";
-import CoreClasses from "../../core../../core/styles/CoreClasses";
-import ApiVersion from "../../module/app/ApiVersion";
-import { getFullName } from "../../utils/helper";
+import { ENV_STAGE_MODE, urls, ENV_DEV_MODE } from "../../../config/constants";
+import { MENU_SEPERATOR } from "../../../config/menuConstants";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreAvatar from "../../dataDisplay/CoreAvatar";
+import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreDivider from "../../dataDisplay/CoreDivider";
+import CoreMenu from "../../inputs/CoreMenu";
+import CoreClasses from "../../../styles/CoreClasses";
 
-export default function RxProfilePopOver(props) {
+export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
@@ -53,7 +48,7 @@ export default function RxProfilePopOver(props) {
   };
 
   return (
-    <CoreBox sx={{ width: "400px" }}>
+    <CoreBox>
       <CoreGrid
         styleClasses={[
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
@@ -74,17 +69,11 @@ export default function RxProfilePopOver(props) {
           </CoreTypographyBody1>
 
           {profile?.contact?.email && profile?.contact?.email !== "" && (
-            <RxEmailLink
-              email={profile?.contact?.email}
-              verified={profile?.basic?.emailVerified}
-            />
+            <CoreTypographyBody1>{profile?.contact?.email}</CoreTypographyBody1>
           )}
 
           {profile?.contact?.phone && profile?.contact?.phone !== "" && (
-            <RxPhoneLink
-              phone={profile?.contact?.phone}
-              verified={profile?.basic?.phoneVerified}
-            />
+            <CoreTypographyBody1>{profile?.contact?.phone}</CoreTypographyBody1>
           )}
         </CoreBox>
       </CoreGrid>
@@ -98,23 +87,6 @@ export default function RxProfilePopOver(props) {
         open={true}
         OnMenuClick={OnMenuClick}
       />
-
-      {process.env.REACT_APP_ENV === ENV_DEV_MODE ||
-        (process.env.REACT_APP_ENV === ENV_STAGE_MODE && (
-          <>
-            <CoreDivider />
-
-            <CoreBox
-              styleClasses={[
-                CoreClasses.PADDING.P2,
-                CoreClasses.BG.BG_BLACK,
-                CoreClasses.COLOR.TEXT_WHITE,
-              ]}
-            >
-              <ApiVersion />
-            </CoreBox>
-          </>
-        ))}
     </CoreBox>
   );
 }

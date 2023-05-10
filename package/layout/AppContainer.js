@@ -14,6 +14,7 @@ import CoreRightDrawer from "./../components/surfaces/CoreRightDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
 import {
   GET_ROLE_PERMISSIONS_API,
+  GET_SETTINGS_META_API,
   GET_USER_SETTINGS,
   UPDATE_USER_SETTINGS,
 } from "../config/api";
@@ -32,6 +33,8 @@ import {
 } from "../store/types/pendingRequestTypes";
 import { SELECT_OPTION_SUCCESS } from "../store/types/selectOptionsTypes";
 import {
+  GET_SETTING_META_ERROR,
+  GET_SETTING_META_SUCCESS,
   GET_USER_SETTINGS_ERROR,
   GET_USER_SETTINGS_SUCCESS,
   USER_SETTINGS_UPDATE_ERROR,
@@ -99,7 +102,7 @@ function AppContainer(props) {
   }, []);
 
   React.useEffect(() => {
-    if (accessToken)
+    if (accessToken) {
       dispatch(
         apiRequestAction(
           HTTP_GET,
@@ -110,6 +113,17 @@ function AppContainer(props) {
           GET_USER_SETTINGS_ERROR
         )
       );
+      dispatch(
+        apiRequestAction(
+          HTTP_GET,
+          GET_SETTINGS_META_API,
+          true,
+          {},
+          GET_SETTING_META_SUCCESS,
+          GET_SETTING_META_ERROR
+        )
+      );
+    }
   }, [reload, accessToken]);
 
   React.useEffect(() => {
@@ -228,11 +242,10 @@ function AppContainer(props) {
         styleClasses={
           auth?.uid
             ? //this is done because CONTENT_CONTAINER has a top margin 56 for app bar in web
-            //which is not needed in app
-            platform === APP_PLATFORM?
-            [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
-            :
-            [CoreClasses.LAYOUT.CONTENT_CONTAINER] 
+              //which is not needed in app
+              platform === APP_PLATFORM
+              ? [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
+              : [CoreClasses.LAYOUT.CONTENT_CONTAINER]
             : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
         }
       >

@@ -2,9 +2,9 @@ import React from "react";
 
 import { nativeUseNavigate } from "@wrappid/styled-components";
 
-import { urls } from "./../../../config/constants";
-import { CoreMenu } from "./../../inputs/CoreMenu";
-import { MENU_SEPERATOR } from "./../../../config/menuConstants";
+import { urls } from "../../../config/constants";
+import { CoreMenu } from "../../inputs/CoreMenu";
+import { MENU_SEPERATOR } from "../../../config/menuConstants";
 
 export default function HelpAndSupportPopOver(props) {
   const navigate = nativeUseNavigate();
