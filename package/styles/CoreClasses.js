@@ -59,7 +59,6 @@ const CoreClasses = {
 		APP_BAR_LOGGED_OUT       : "appBarLoggedOut",
 		LINK_STYLE               : "linkStyle",
 		APP_BAR_ICONS_CONTAINER  : "appBarIconsContainer",
-		APP_DRAWER_TEXT          : "appDrawerText",
 		PROFILE_DETAIL           : "profileDetail",
 		PROFILE_BAR_SECTION      : "profilebarSection",
 		PROFILE_CARD_NAME        : "profileCardName",

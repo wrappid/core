@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CoreMenu from "../inputs/CoreMenu";
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
 import { toggleMenuItemState } from "../../store/action/menuAction";
+import { ThemeContext } from "../../config/contextHandler";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();

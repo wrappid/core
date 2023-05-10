@@ -227,8 +227,12 @@ function AppContainer(props) {
         component="main"
         styleClasses={
           auth?.uid
-            ? //  [CoreClasses.LAYOUT.CONTENT_CONTAINER] this style causing error in react native
-              [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
+            ? //this is done because CONTENT_CONTAINER has a top margin 56 for app bar in web
+            //which is not needed in app
+            platform === APP_PLATFORM?
+            [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
+            :
+            [CoreClasses.LAYOUT.CONTENT_CONTAINER] 
             : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
         }
       >
