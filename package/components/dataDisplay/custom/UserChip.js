@@ -26,7 +26,7 @@ export default function UserChip(props) {
 
   React.useEffect(() => {
     async function apiCall() {
-      let backendUrl = process.env.REACT_APP_BACKEND_URL || config.backendUrl;
+      let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       await axiosInterceptor({
         method: HTTP_GET,
         url:

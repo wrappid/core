@@ -75,8 +75,8 @@ function getComponentArray(formJson) {
       comp: x.hidden
         ? null
         : componentMap[x.type]
-        ? componentMap[x.type]?.comp
-        : CoreInput,
+          ? componentMap[x.type]?.comp
+          : CoreInput,
       viewComp: componentMap[x.viewComp]
         ? componentMap[x.viewComp].comp
         : CoreTypographyBody1,
@@ -370,12 +370,12 @@ export function createFormButtonProps(element, formikprops, handleButtonCLick) {
     OnClick: element.onClick
       ? typeof element.onClick === "object"
         ? () => {
-            handleButtonCLick(element.onClick);
-          }
+          handleButtonCLick(element.onClick);
+        }
         : element.onClick
       : () => {
-          alert("error in button action");
-        },
+        alert("error in button action");
+      },
     type: element.actionType === "submit" ? "submit" : "button",
     alignment: element.actionContainerStyle ? null : "end",
   };
@@ -622,7 +622,7 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
-      let backendUrl = process.env.REACT_APP_BACKEND_URL || config.backendUrl;
+      let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       var url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
       var formRes = await axiosInterceptor({
         method: HTTP_GET,
