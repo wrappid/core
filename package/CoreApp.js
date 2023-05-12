@@ -11,9 +11,15 @@ export default function CoreApp({
   storage,
   componentRegistry,
   appStyles,
+  customIcons,
 }) {
   return (
-    <CoreProvider appReducer={reducers} storage={storage} appStyles={appStyles}>
+    <CoreProvider
+      appReducer={reducers}
+      storage={storage}
+      appStyles={appStyles}
+      customIcons={customIcons}
+    >
       <ComponentRegistryContext.Provider value={componentRegistry}>
         <React.StrictMode>
           <CoreAppDiv>

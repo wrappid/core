@@ -2,20 +2,18 @@ import React, { useEffect, useState } from "react";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import { useDispatch, useSelector } from "react-redux";
 import { urls } from "../../config/constants";
-import {
-  NativeAppBar,
-  NativeToolbar,
-  NativeStack,
-  NativeIconButton,
-  NativeIcon,
-  NativeImage,
-  NativeAvatar,
-} from "@wrappid/styled-components";
+import { NativeAppBar } from "@wrappid/styled-components";
 import { UtilityClasses } from "@wrappid/styles";
 import { APP_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
 import CorePopover from "../utils/CorePopover";
+import CoreToolbar from "../utils/CoreToolbar";
+import CoreStack from "../layouts/CoreStack";
+import CoreIconButton from "../inputs/CoreIconButton";
+import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreImage from "../dataDisplay/CoreImage";
+import CoreAvatar from "../dataDisplay/CoreAvatar";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
@@ -73,30 +71,29 @@ export default function CoreAppBar(props) {
         handleDrawer={handleDrawer}
         navigateString={"/" + urls.DASHBOARD}
         auth={auth}
-        style={{ flex: 1 }}
       >
-        <NativeToolbar
+        <CoreToolbar
           styleClasses={[
             UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
             CoreClasses.FLEX.DIRECTION_ROW,
             CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           ]}
         >
-          <NativeStack
+          <CoreStack
             direction="row"
             styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
           >
-            <NativeIconButton
+            <CoreIconButton
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
               disabled={!auth?.uid}
               sx={{ marginLeft: "-16px" }}
             >
-              <NativeIcon>menu</NativeIcon>
-            </NativeIconButton>
+              <CoreIcon>menu</CoreIcon>
+            </CoreIconButton>
 
-            <NativeImage
+            <CoreImage
               src={
                 platform === APP_PLATFORM
                   ? require("../../../../../src/images/logo.png")
@@ -110,10 +107,10 @@ export default function CoreAppBar(props) {
               }}
               // styleClasses={[StyledComponentClasses.CORE_APP_BAR.APP_BAR_LOGO]}
             />
-          </NativeStack>
+          </CoreStack>
 
           {auth && auth.uid && (
-            <NativeStack
+            <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
               styleClasses={[
@@ -124,65 +121,65 @@ export default function CoreAppBar(props) {
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
-                <NativeIconButton>
-                  <NativeIcon>account_balance_wallet_outlinedIcon</NativeIcon>
-                </NativeIconButton>
+                <CoreIconButton>
+                  <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
+                </CoreIconButton>
               )}
 
               {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
                 ?.flag && (
-                <NativeIconButton
+                <CoreIconButton
                   title={"Help & Support"}
                   onClick={(e) => {
                     console.log("Help & Support clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
                   }}
                 >
-                  <NativeIcon>help_outline</NativeIcon>
-                </NativeIconButton>
+                  <CoreIcon>help_outline</CoreIcon>
+                </CoreIconButton>
               )}
 
               {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
                 ?.value?.flag && (
-                <NativeIconButton
+                <CoreIconButton
                   title={"Show Notification"}
                   onClick={(e) => {
                     console.log("Notification clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
                   }}
                 >
-                  <NativeIcon>notifications_none_outlined</NativeIcon>
-                </NativeIconButton>
+                  <CoreIcon>notifications_none_outlined</CoreIcon>
+                </CoreIconButton>
               )}
 
               {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
                 ?.flag && (
-                <NativeIconButton
+                <CoreIconButton
                   title={"Quick Menu"}
                   onClick={(e) => {
                     console.log("Quick Menu clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
                   }}
                 >
-                  <NativeIcon>add_circle_outlined</NativeIcon>
-                </NativeIconButton>
+                  <CoreIcon>add_circle_outlined</CoreIcon>
+                </CoreIconButton>
               )}
 
-              <NativeIconButton
+              <CoreIconButton
                 onClick={(e) => {
                   console.log("Profile clicked");
                   handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
                 }}
               >
-                <NativeAvatar
+                <CoreAvatar
                   src={auth?.photo || "photo.jpg"}
                   size={32}
                   // styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
                 />
-              </NativeIconButton>
-            </NativeStack>
+              </CoreIconButton>
+            </CoreStack>
           )}
-        </NativeToolbar>
+        </CoreToolbar>
       </NativeAppBar>
       {/* AppBar PopOver */}
       {_appbarContent && (

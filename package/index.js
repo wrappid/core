@@ -135,7 +135,7 @@ import { createFullStore } from "./store/store";
 import { apiRequestAction } from "./store/action/appActions";
 import CoreProvider from "./store/CoreProvider";
 import CoreApp from "./CoreApp";
-import { ComponentRegistryContext } from "./config/contextHandler";
+import { ComponentRegistryContext, IconContext } from "./config/contextHandler";
 // import { __IconTypes } from "./components/dataDisplay/CoreIcon";
 import {
   clearAuthState,
@@ -281,5 +281,6 @@ export {
   maskEmailOrPhone,
   getCoreAccessToken,
   detectPlatform,
-  CoreClasses
+  CoreClasses,
+  IconContext,
 };

@@ -7,7 +7,11 @@ import { nativeStorage } from "@wrappid/styled-components";
 import thunk from "redux-thunk";
 import coreReducer from "./reducers/rootReducer";
 import { PersistGate } from "redux-persist/integration/react";
-import { AppStylesContext, ThemeContext } from "../config/contextHandler";
+import {
+  AppStylesContext,
+  IconContext,
+  ThemeContext,
+} from "../config/contextHandler";
 import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
 import CoreClasses from "../styles/CoreClasses";
@@ -88,8 +92,8 @@ export default function CoreProvider(props) {
       large: largeCoreStyles,
       xLarge: xLargeCoreStyles,
       xxLarge: xXLargeCoreStyles,
-    }
-  }
+    },
+  };
 
   return (
     <Provider store={store}>
@@ -97,7 +101,11 @@ export default function CoreProvider(props) {
         <ThemeContext.Provider value={overrideThemeConfiguration()}>
           <AppStylesContext.Provider value={props.appStyles}>
             <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
-              <CoreThemeProvider>{props.children}</CoreThemeProvider>
+              <CoreThemeProvider>
+                <IconContext.Provider value={props.customIcons}>
+                  {props.children}
+                </IconContext.Provider>
+              </CoreThemeProvider>
             </StylesProvider>
           </AppStylesContext.Provider>
         </ThemeContext.Provider>
