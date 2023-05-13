@@ -66,12 +66,7 @@ export default function CoreAppBar(props) {
 
   return (
     <>
-      <NativeAppBar
-        {...props}
-        handleDrawer={handleDrawer}
-        navigateString={"/" + urls.DASHBOARD}
-        auth={auth}
-      >
+      <NativeAppBar {...props}>
         <CoreToolbar
           styleClasses={[
             UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
@@ -103,7 +98,7 @@ export default function CoreAppBar(props) {
               height={30}
               width={100}
               onClick={() => {
-                navigate(navigateString);
+                navigate("/" + urls.DASHBOARD);
               }}
               // styleClasses={[StyledComponentClasses.CORE_APP_BAR.APP_BAR_LOGO]}
             />
