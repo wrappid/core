@@ -27,6 +27,12 @@ export default function CoreIcon(props) {
       type={tmpType}
       name={tmpIcon}
       size={props.size}
+      childrenFlag={
+        type === __IconTypes.MATERIAL_ICON ||
+        type === __IconTypes.MATERIAL_OUTLINED_ICON
+          ? true
+          : false
+      }
       sx={
         type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }
       }
