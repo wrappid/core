@@ -28,8 +28,8 @@ export default function CoreIcon(props) {
       name={tmpIcon}
       size={props.size}
       childrenFlag={
-        type === __IconTypes.MATERIAL_ICON ||
-        type === __IconTypes.MATERIAL_OUTLINED_ICON
+        tmpType === __IconTypes.MATERIAL_ICON ||
+        tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
           : false
       }
