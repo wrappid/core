@@ -1,5 +1,5 @@
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "../types/appTypes";
-import { LOGOUT_SUCCESS } from "../types/authTypes";
+import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
 
 const initState = {
   routes: [],

@@ -8,7 +8,7 @@ import { RESET_LOADING } from "../store/types/appTypes";
 import {
   SAVE_EXPIRED_SESSION,
   SESSION_RECALLED,
-} from "../store/types/authTypes";
+} from "../modules/auth/types/authTypes";
 import {
   UPDATE_HELPER_FLAG,
   UPDATE_HELPER_TEXT_VIEW,

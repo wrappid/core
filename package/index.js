@@ -137,11 +137,6 @@ import CoreProvider from "./store/CoreProvider";
 import CoreApp from "./CoreApp";
 import { ComponentRegistryContext, IconContext } from "./config/contextHandler";
 // import { __IconTypes } from "./components/dataDisplay/CoreIcon";
-import {
-  clearAuthState,
-  saveAuthData,
-  saveData,
-} from "./store/action/authActions";
 
 import { maskEmailOrPhone } from "./utils/stringUtils";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
@@ -275,9 +270,6 @@ export {
   createFullStore,
   apiRequestAction,
   ComponentRegistryContext,
-  clearAuthState,
-  saveAuthData,
-  saveData,
   maskEmailOrPhone,
   getCoreAccessToken,
   detectPlatform,

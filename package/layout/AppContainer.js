@@ -44,7 +44,7 @@ import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
 import {
   GET_ROLE_PERMISSION_SUCCESS,
   GET_ROLE_PERMISSION_ERROR,
-} from "../store/types/authTypes";
+} from "../modules/auth/types/authTypes";
 import CoreBox from "../components/layouts/CoreBox";
 import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";

@@ -1,5 +1,5 @@
 import { prepareColumns } from "../../utils/tableUtils";
-import { LOGOUT_SUCCESS } from "../types/authTypes";
+import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
 import {
   READ_DATA_LOADING,
   READ_DATA_SUCCESS,
