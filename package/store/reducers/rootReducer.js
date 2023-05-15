@@ -7,6 +7,7 @@ import mdmReducer from "./mdmReducer";
 import modalReducer from "./modalReducer";
 import routeReducer from "./routeReducer";
 import menuReducer from "./menuReducer";
+import settingsReducer from "./settingsReducer";
 
 /**
  *  Module specific reducers
@@ -22,6 +23,7 @@ const coreReducer = {
   modal: modalReducer,
   route: routeReducer,
   menu: menuReducer,
+  settings: settingsReducer,
   ...(authReducer || {}),
 };
 
