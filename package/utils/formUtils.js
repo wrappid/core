@@ -357,7 +357,7 @@ export function createFormActionProps(element) {
   ) {
     ob["styleClasses"] = element.actionContainerStyle;
   } else {
-    ob["styleClasses"] = [CoreClasses.LAYOUT.RIGHT_ALIGN];
+    ob["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END];
   }
 
   // console.log("FORM ACTION PROPS BUILDRE", ob, element);
