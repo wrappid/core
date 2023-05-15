@@ -6,7 +6,7 @@ import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
   let backendUrl =
-    process.env.REACT_APP_backendUrl || config?.wrappid?.backendUrl;
+    process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;
   /**
    * @todo @sumanta-m review required
    */
