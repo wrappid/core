@@ -40,12 +40,6 @@ export const AuthContainer = (props) => {
                     <CoreBox
                         styleClasses={[CoreClasses?.LAYOUT?.FULL_WIDTH, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER, CoreClasses?.MARGIN?.MB5]}
                     >
-                        <CoreImage
-                            src={require("../../images/logo.png")}
-                            alt=""
-                            height={40}
-                            width={120}
-                        />
                     </CoreBox>
 
                     {props.children}

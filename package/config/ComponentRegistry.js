@@ -1,20 +1,7 @@
-// import path from "path";
+import authComponentRegistry from '../modules/auth/components.registry'
 
-let ComponentRegistry = {};
-
-let customRegistry = null;
-try {
-  let p = "../../../../src/config.json";
-  customRegistry = require(p);
-} catch (err) {
-  console.warn("User config not found");
-}
-
-ComponentRegistry = customRegistry
-  ? {
-      ...ComponentRegistry,
-      ...customRegistry,
-    }
-  : ComponentRegistry;
+let ComponentRegistry = {
+  ...authComponentRegistry
+};
 
 export default ComponentRegistry;

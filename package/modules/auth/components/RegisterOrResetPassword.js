@@ -13,19 +13,18 @@ import {
   CoreBox,
   CoreLink,
   apiRequestAction,
-  saveAuthData,
   maskEmailOrPhone,
   CoreClasses,
 } from '@wrappid/core';
 
-import {HTTP_POST} from '../../constants/constants';
-import {NAVIGATE_TO_RESET_PASSWORD_API} from '../../constants/api';
+import {HTTP_POST, urls} from '../../../config/constants';
+import {NAVIGATE_TO_RESET_PASSWORD_API} from '../../../config/api';
 import {
   CHECK_LOGIN_ERROR,
   NAVIGATE_TO_RESET_PASSWORD_SUCCESS,
-} from '../../store/types/authTypes';
+} from '../types/authTypes';
 import {AuthContainer} from './AuthContainer';
-import {urls} from '../../constants/urls';
+import { saveAuthData } from '../actions/authActions';
 
 class RegisterOrResetPassword extends Component {
   state = {};

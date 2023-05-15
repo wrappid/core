@@ -9,21 +9,21 @@ import {
   CoreTextButton,
   CoreBox,
   apiRequestAction,
-  saveAuthData,
   maskEmailOrPhone,
   CoreTypographyBody1,
   CoreClasses,
 } from '@wrappid/core';
 
 import {AuthContainer} from './AuthContainer';
-import {NAVIGATE_TO_OTP_LOGIN_API} from '../../constants/api';
+import {NAVIGATE_TO_OTP_LOGIN_API} from '../../../config/api';
 import {
   NAVIGATE_TO_OTP_LOGIN_ERROR,
   NAVIGATE_TO_OTP_LOGIN_LOADING,
   NAVIGATE_TO_OTP_LOGIN_SUCCESS,
-} from '../../store/types/authTypes';
-import {HTTP_POST} from '../../constants/constants';
-import {urls} from '../../constants/urls';
+} from '../types/authTypes';
+import {HTTP_POST} from '../../../config/constants';
+import {urls} from '../../../config/constants';
+import { saveAuthData } from '../actions/authActions';
 
 class LoginWithOtp extends Component {
   state = {otp: false};

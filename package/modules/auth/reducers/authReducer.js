@@ -1,4 +1,4 @@
-import { urls } from "../../config/constants";
+import { urls } from "../../../config/constants";
 import {
   AUTH_LOADING,
   CHECK_LOGIN_SUCCESS_REGISTERED,
