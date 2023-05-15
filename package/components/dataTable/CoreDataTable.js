@@ -186,7 +186,7 @@ export default function CoreDataTable(props) {
 
   // max row in pages
   const [maxRowsInPage, setMaxRowsInPage] = React.useState(
-    userSettings[userSettingsConstants.MAX_ROWS_IN_PAGE] ||
+    (userSettings && userSettings[userSettingsConstants.MAX_ROWS_IN_PAGE]) ||
       DATA_TABLE_CONST.MAX_ROWS_IN_PAGE
   );
 
