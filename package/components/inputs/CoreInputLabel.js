@@ -1,6 +1,6 @@
 import React from "react";
-import { SCInputLabel } from "@wrappid/styled-components";
+import { NativeInputLabel } from "@wrappid/styled-components";
 
 export default function CoreInputLabel(props) {
-  return <SCInputLabel {...props}>{props.children}</SCInputLabel>;
+  return <NativeInputLabel {...props}>{props.children}</NativeInputLabel>;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { SCSnackbar } from "@wrappid/styled-components";
+import { NativeSnackbar } from "@wrappid/styled-components";
 
 export default function CoreSnackbar(props) {
-  return <SCSnackbar {...props}>{props.children}</SCSnackbar>;
+  return <NativeSnackbar {...props}>{props.children}</NativeSnackbar>;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { SCTableSortLabel } from "@wrappid/styled-components";
+import { NativeTableSortLabel } from "@wrappid/styled-components";
 
 export default function CoreTableSortLabel(props) {
-  return <SCTableSortLabel {...props}>{props.children}</SCTableSortLabel>;
+  return <NativeTableSortLabel {...props}>{props.children}</NativeTableSortLabel>;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { SCCardActionArea } from "@wrappid/styled-components";
+import { NativeCardActionArea } from "@wrappid/styled-components";
 
 export default function CoreCardActionArea(props) {
-  return <SCCardActionArea {...props}>{props.children}</SCCardActionArea>;
+  return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;
 }

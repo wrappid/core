@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import CoreInputLabel from "../CoreInputLabel";
-import { SCRichTextEditor } from "@wrappid/styled-components";
+import { NativeRichTextEditor } from "@wrappid/styled-components";
 
 export default function CoreRichTextEditor(props) {
   const ref = useRef(null);
@@ -17,7 +17,7 @@ export default function CoreRichTextEditor(props) {
       >
         {props.label}
       </CoreInputLabel>
-      <SCRichTextEditor
+      <NativeRichTextEditor
         id={props.id}
         value={
           props.formik?.values && props.formik?.values[props.id]

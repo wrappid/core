@@ -1,6 +1,6 @@
 import React from "react";
-import { SCTableFooter } from "@wrappid/styled-components";
+import { NativeTableFooter } from "@wrappid/styled-components";
 
 export default function CoreTableFooter(props) {
-  return <SCTableFooter {...props}>{props.children}</SCTableFooter>;
+  return <NativeTableFooter {...props}>{props.children}</NativeTableFooter>;
 }
