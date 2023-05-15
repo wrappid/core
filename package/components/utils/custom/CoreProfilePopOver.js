@@ -12,13 +12,14 @@ import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreMenu from "../../inputs/CoreMenu";
 import CoreClasses from "../../../styles/CoreClasses";
+import { getFullName } from "../../../utils/helper";
 
 export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
-  const { firstName = "", middleName = "", lastName = "" } = profile?.basic;
+  const { firstName = "", middleName = "", lastName = "" } = profile?.basic||{};
   const { onClose } = props;
   const profileCardMenu = [
     {
