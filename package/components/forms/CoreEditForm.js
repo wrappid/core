@@ -65,49 +65,52 @@ export default function CoreEditForm(props) {
         <CoreFormContainer onSubmit={formikprops.handleSubmit}>
           <CoreGrid coreId="coreEditForm">
             {/* Showing Form Elements */}
-            {forms[formId]?.formElements?.map((element, elementIndex) =>
-              formDataReadLoading && formDataReadLoading[formId] ? (
-                <CoreSkeleton
-                  {...createFieldSkeletonProps(element)}
-                  key={`core-skeleton-${formId}-${elementIndex}`}
-                />
-              ) : element.comp &&
-                !checkDependencies(element, formikprops)?.hide ? (
-                React.createElement(
-                  element.comp ? element.comp : CoreInput,
-                  {
-                    key: `coreFormElement-${element.id}`,
-                    ...createFormFieldProps(element, formikprops, "edit"),
-                    coreId: "coreFormElement-" + element.id,
-                    gridProps: {
-                      gridSize: getGridSizeProps(element.gridSize, true),
+            {forms[formId]?.formElements?.map(
+              (element, elementIndex) =>
+                formDataReadLoading && formDataReadLoading[formId] ? (
+                  <CoreSkeleton
+                    {...createFieldSkeletonProps(element)}
+                    key={`core-skeleton-${formId}-${elementIndex}`}
+                  />
+                ) : (
+                  element.comp &&
+                  // !checkDependencies(element, formikprops)?.hide ? (
+                  React.createElement(
+                    element.comp ? element.comp : CoreInput,
+                    {
+                      key: `coreFormElement-${element.id}`,
+                      ...createFormFieldProps(element, formikprops, "edit"),
+                      coreId: "coreFormElement-" + element.id,
+                      gridProps: {
+                        gridSize: getGridSizeProps(element.gridSize, true),
+                      },
+                      readOnly: !props.mode || preview || element.readOnly,
+
+                      //data table
+                      entity: element.entity
+                        ? element.entity
+                        : element.getEntity
+                        ? FORM_DATA_TABLE_FUNCTION_MAP[element.getEntity](
+                            formikprops
+                          )
+                        : "",
+                      //below field are passed on for inline actions
+                      fieldActions: forms[formId]?.formActions,
+                      inlineAction: forms[formId].inlineAction,
+                      handleButtonCLick: handleButtonCLick,
+                      submitLoading: submitLoading,
+                      submitSuccess: submitSuccess,
+                      OnEditClick: OnEditClick,
+                      editId: editFormId,
+                      allowEdit: allowEdit,
+
+                      onFormFocus: onFormFocus,
+                      preview: preview,
                     },
-                    readOnly: !props.mode || preview || element.readOnly,
-
-                    //data table
-                    entity: element.entity
-                      ? element.entity
-                      : element.getEntity
-                      ? FORM_DATA_TABLE_FUNCTION_MAP[element.getEntity](
-                          formikprops
-                        )
-                      : "",
-                    //below field are passed on for inline actions
-                    fieldActions: forms[formId]?.formActions,
-                    inlineAction: forms[formId].inlineAction,
-                    handleButtonCLick: handleButtonCLick,
-                    submitLoading: submitLoading,
-                    submitSuccess: submitSuccess,
-                    OnEditClick: OnEditClick,
-                    editId: editFormId,
-                    allowEdit: allowEdit,
-
-                    onFormFocus: onFormFocus,
-                    preview: preview,
-                  },
-                  element.onlyView ? element.label : null
+                    element.onlyView ? element.label : null
+                  )
                 )
-              ) : null
+              // ) : null
             )}
 
             {/* Showing Action Elements. Inline actions are written on input components */}
