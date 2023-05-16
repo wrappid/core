@@ -603,7 +603,10 @@ export default function CoreDataTable(props) {
   }, [tableColumnsToShow]);
 
   // change of default filter
-  const [_filterQuery, set_filterQuery] = React.useState({});
+  const [_filterQuery, set_filterQuery] = React.useState({
+    filter: {},
+    order: {},
+  });
   React.useEffect(() => {
     set_filterQuery(filterQuery);
   }, []);

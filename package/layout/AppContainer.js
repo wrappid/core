@@ -58,7 +58,7 @@ function AppContainer(props) {
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
-  const [platform, setPlatform] = useState(null);
+  const [platform, setPlatform] = useState(WEB_PLATFORM);
   const currentPendingRequest = null;
   // useSelector(
   //   (state) => state.pendingRequests.pendingRequest
@@ -124,7 +124,12 @@ function AppContainer(props) {
         )
       );
     }
-  }, [reload, accessToken]);
+  }, [accessToken]);
+
+  /**
+   * @todo commenting reload dependency for now
+   */
+  // }, [reload, accessToken]);
 
   React.useEffect(() => {
     if (accessToken)
