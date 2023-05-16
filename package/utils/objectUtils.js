@@ -20,7 +20,12 @@ const compareObject = (obj1, obj2) => {
     for (var i = 0; i < keysObj1.length; i++) {
       let key = keysObj1[i];
       console.log("Key", key);
-      if (!keysObj2?.includes(key) || obj1[key] !== obj2[key]) {
+      if (
+        !keysObj2?.includes(key) ||
+        (typeof obj1[key] === typeof obj1[key] &&
+          typeof obj1[key] !== "object" &&
+          obj1[key] !== obj2[key])
+      ) {
         console.log("FOUND", obj1[key], obj2[key]);
         console.log("TRUE RETURN");
         return true;
