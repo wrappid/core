@@ -133,7 +133,7 @@ export default function PageContainer(props) {
           </CoreAlert>
         )} */}
         {mergedComponentRegistry[route?.Page?.appComponent]?.comp ||
-          props.page?.comp || <Error404 />}
+          React.createElement(props.page?.comp) || <Error404 />}
       </CoreBox>
     </>
   );

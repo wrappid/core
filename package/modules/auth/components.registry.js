@@ -5,9 +5,9 @@ import LoginWithPassword from "./components/LoginWithPassword";
 import RegisterOrResetPassword from "./components/RegisterOrResetPassword";
 
 export default {
-    checkUserExist   : { comp: <CheckUserExist /> },
-    loginWithOtp     : { comp: <LoginWithOtp /> },
-    loginWithPassword: { comp: <LoginWithPassword /> },
-    register         : { comp: <RegisterOrResetPassword /> },
-    resetPassword    : { comp: <RegisterOrResetPassword /> }
-}
+  checkUserExist: { comp: CheckUserExist },
+  loginWithOtp: { comp: LoginWithOtp },
+  loginWithPassword: { comp: LoginWithPassword },
+  register: { comp: RegisterOrResetPassword },
+  resetPassword: { comp: RegisterOrResetPassword },
+};
