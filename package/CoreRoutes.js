@@ -83,7 +83,7 @@ export default function CoreRoutes() {
           <PageContainer
             page={{
               auth: false,
-              comp: <SplashComponent />,
+              comp: SplashComponent,
             }}
           />
         }
@@ -95,7 +95,7 @@ export default function CoreRoutes() {
           <PageContainer
             page={{
               auth: false,
-              comp: <Error500 />,
+              comp: Error500,
             }}
           />
         }
@@ -107,7 +107,7 @@ export default function CoreRoutes() {
           <PageContainer
             page={{
               auth: false,
-              comp: <Error404 />,
+              comp: Error404,
             }}
           />
         }
