@@ -1,4 +1,3 @@
-import { componentMap } from "./componentMap";
 import * as yup from "yup";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreInput from "../components/inputs/CoreInput";
@@ -37,6 +36,7 @@ import axiosInterceptor from "../middleware/axiosInterceptor";
 import authHeader from "../service/DataService";
 import { queryBuilder } from "./helper";
 import CoreClasses from "../styles/CoreClasses";
+import { mergedComponentRegistry } from "../layout/PageContainer";
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   var message = "";
@@ -53,8 +53,9 @@ function getComponentArray(formJson) {
   var actionComps = [];
   var allValidations = {};
   var helperButtonFlag = false;
-  var renderComp = componentMap[formJson?.render]?.comp || null;
-  var skeletonComp = componentMap[formJson?.skeletonRender]?.comp || null;
+  var renderComp = mergedComponentRegistry[formJson?.render]?.comp || null;
+  var skeletonComp =
+    mergedComponentRegistry[formJson?.skeletonRender]?.comp || null;
 
   console.log("FORM JSON", formJson?.fields);
   if (formJson?.fields) {
@@ -74,19 +75,20 @@ function getComponentArray(formJson) {
       box: { comp: CoreBox, gridSize: x.gridSize },
       comp: x.hidden
         ? null
-        : componentMap[x.type]
-          ? componentMap[x.type]?.comp
-          : CoreInput,
-      viewComp: componentMap[x.viewComp]
-        ? componentMap[x.viewComp].comp
+        : mergedComponentRegistry[x.type]
+        ? mergedComponentRegistry[x.type]?.comp
+        : CoreInput,
+      viewComp: mergedComponentRegistry[x.viewComp]
+        ? mergedComponentRegistry[x.viewComp].comp
         : CoreTypographyBody1,
-      onlyView: componentMap[x.type]?.onlyView === true ? true : false,
+      onlyView:
+        mergedComponentRegistry[x.type]?.onlyView === true ? true : false,
       tabIndex: x.tabIndex ? x.tabIndex : i + 1,
       dependencies: x.dependencies,
     });
     allValidations[x.id] = x.required
-      ? componentMap[x.type]?.defaultValidation?.required
-      : componentMap[x.type]?.defaultValidation?.notRequired;
+      ? mergedComponentRegistry[x.type]?.defaultValidation?.required
+      : mergedComponentRegistry[x.type]?.defaultValidation?.notRequired;
 
     if (x.helperText && x.helperText !== "") {
       helperButtonFlag = true;
@@ -101,7 +103,7 @@ function getComponentArray(formJson) {
     var action = formJson.actions[actionIndex];
     actionComps.push({
       box: { comp: CoreBox },
-      comp: componentMap[x.type]?.comp,
+      comp: mergedComponentRegistry[x.type]?.comp,
       ...action,
     });
   }
@@ -370,12 +372,12 @@ export function createFormButtonProps(element, formikprops, handleButtonCLick) {
     OnClick: element.onClick
       ? typeof element.onClick === "object"
         ? () => {
-          handleButtonCLick(element.onClick);
-        }
+            handleButtonCLick(element.onClick);
+          }
         : element.onClick
       : () => {
-        alert("error in button action");
-      },
+          alert("error in button action");
+        },
     type: element.actionType === "submit" ? "submit" : "button",
     alignment: element.actionContainerStyle ? null : "end",
   };
@@ -622,7 +624,8 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
-      let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
+      let backendUrl =
+        process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       var url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
       var formRes = await axiosInterceptor({
         method: HTTP_GET,

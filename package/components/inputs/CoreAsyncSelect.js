@@ -17,12 +17,12 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreFieldButton from "../forms/CoreFieldButton";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
-import { componentMap } from "../../utils/componentMap";
 import {
   nativeUseNavigate,
   nativeFilterOptions,
 } from "@wrappid/styled-components";
 import CoreClasses from "../../styles/CoreClasses";
+import { mergedComponentRegistry } from "../../layout/PageContainer";
 
 const filter = nativeFilterOptions();
 //TODO:
@@ -368,14 +368,18 @@ export default function CoreAsyncSelect(props) {
             : []
         }
         renderOption={(optionProps, option, state) =>
-          props.optionComp && componentMap[props.optionComp]?.comp ? (
+          props.optionComp &&
+          mergedComponentRegistry[props.optionComp]?.comp ? (
             <React.Fragment>
-              {React.createElement(componentMap[props.optionComp].comp, {
-                data: option,
-                state,
-                optionProps,
-                optionCompProps,
-              })}
+              {React.createElement(
+                mergedComponentRegistry[props.optionComp].comp,
+                {
+                  data: option,
+                  state,
+                  optionProps,
+                  optionCompProps,
+                }
+              )}
             </React.Fragment>
           ) : (
             <CoreListItem {...optionProps}>

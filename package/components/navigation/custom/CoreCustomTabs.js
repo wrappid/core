@@ -1,10 +1,10 @@
 import React from "react";
-import { componentMap } from "../../../utils/componentMap";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
 import CoreTabs from "../CoreTabs";
 import CoreClasses from "../../../styles/CoreClasses";
+import { mergedComponentRegistry } from "../../../layout/PageContainer";
 
 export default function CoreCustomTabs(props) {
   const location = nativeUseLocation();
@@ -55,7 +55,9 @@ export default function CoreCustomTabs(props) {
             value={tabValue}
             index={tabContent?.id || tabIndex}
           >
-            {React.createElement(componentMap[tabContent.comp]?.comp)}
+            {React.createElement(
+              mergedComponentRegistry[tabContent.comp]?.comp
+            )}
           </CoreTabPanel>
         );
       })}

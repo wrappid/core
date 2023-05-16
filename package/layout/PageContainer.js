@@ -26,11 +26,13 @@ import CoreModal from "../components/utils/CoreModal";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
 
+export let mergedComponentRegistry = {};
+
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
-  const componentRegistry = useContext(ComponentRegistryContext);
-  console.log("componentRegistry", componentRegistry);
+  mergedComponentRegistry = useContext(ComponentRegistryContext);
+  console.log("mergedComponentRegistry", mergedComponentRegistry);
   const auth = useSelector((state) => state.auth);
   const { showHelperText = true, helperButtonFlag = true } = useSelector(
     (state) => state.forms
@@ -39,7 +41,7 @@ export default function PageContainer(props) {
   const { route = { Page: { schema: {}, appComponent: "" } } } = props;
 
   // const PageComponent = React.lazy(() =>
-  //   import("../../" + ComponentRegistry[route?.Page?.appComponent]?.path),
+  //   import("../../" + componentRegistry[route?.Page?.appComponent]?.path),
   // );
 
   const [pageComponent, setPageComponent] = React.useState();
@@ -130,7 +132,7 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-        {componentRegistry[route?.Page?.appComponent]?.comp ||
+        {mergedComponentRegistry[route?.Page?.appComponent]?.comp ||
           props.page?.comp || <Error404 />}
       </CoreBox>
     </>

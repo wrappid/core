@@ -1,7 +1,12 @@
-import authComponentRegistry from '../modules/auth/components.registry'
+import authComponentRegistry from "../modules/auth/components.registry";
+import { componentMap } from "../utils/componentMap";
 
 let ComponentRegistry = {
-  ...authComponentRegistry
+  /**
+   * componentMap is form specific map for elements
+   */
+  ...componentMap,
+  ...authComponentRegistry,
 };
 
 export default ComponentRegistry;
