@@ -132,8 +132,15 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-        {mergedComponentRegistry[route?.Page?.appComponent]?.comp ||
-          React.createElement(props.page?.comp) || <Error404 />}
+        {mergedComponentRegistry[route?.Page?.appComponent]?.comp ? (
+          React.createElement(
+            mergedComponentRegistry[route?.Page?.appComponent]?.comp
+          )
+        ) : props.page?.comp ? (
+          React.createElement(props.page?.comp, props?.page?.props, null)
+        ) : (
+          <Error404 />
+        )}
       </CoreBox>
     </>
   );
