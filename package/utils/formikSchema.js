@@ -731,3 +731,11 @@ export const testMailCommunicationTemplateSchema = {
 export const testSMSCommunicationTemplateSchema = {
   sendTo: phone.required("Phone is required"),
 };
+
+export const permissionFormSchema = { link: yup.string().nullable() };
+export const routeFormSchema = {
+  pageRef: yup.string().required("Page refference is required"),
+};
+export const pageFormSchema = {
+  appComponent: yup.string().required("App component is required"),
+};

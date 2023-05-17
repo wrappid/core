@@ -75,6 +75,7 @@ import CoreTextField from "./components/inputs/CoreTextField";
 import CoreTimePicker from "./components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "./components/inputs/CoreTimeRangePicker";
 import ListItemButton from "./components/inputs/ListItemButton";
+import CoreJSONEditor from "./components/inputs/CoreJSONEditor";
 import ChildMap from "./components/inputs/custom/ChildMap";
 import CoreFormLabelCheckbox from "./components/inputs/custom/CoreFormLabelCheckbox";
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
@@ -205,6 +206,7 @@ export {
   CoreInputLabel,
   CoreInputPassword,
   CoreJSONInput,
+  CoreJSONEditor,
   CoreMenu,
   CoreMultiTimeRangePicker,
   CoreOtpInput,
