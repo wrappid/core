@@ -152,6 +152,14 @@ import {
 
 import { LOGOUT_SUCCESS } from "./modules/auth/types/authTypes";
 
+import {
+  getFullName,
+  queryBuilder,
+  createFormData,
+  getAge,
+  viewFormattedDate,
+} from "./utils/helper";
+
 export {
   // __IconTypes,
   CoreApp,
@@ -289,4 +297,9 @@ export {
   FORM_EDIT_MODE,
   FORM_IDS,
   LOGOUT_SUCCESS,
+  getFullName,
+  queryBuilder,
+  createFormData,
+  getAge,
+  viewFormattedDate,
 };

@@ -392,12 +392,12 @@ export function createFieldSkeletonProps(element) {
 }
 
 export function createApiMeta(state, formJson, values, props) {
-  const apiMode = props.apiMode;
+  const apiMode = props?.apiMode;
   const editForm = props?.editForm?.editing;
   const addForm = props?.addForm?.add;
 
   console.log("API METa REATE", values, addForm, editForm, apiMode);
-  var ob = formJson.create;
+  var ob = formJson?.create;
   var mode = "create";
   if (apiMode && formJson && formJson[apiMode]) {
     ob = formJson[apiMode];
