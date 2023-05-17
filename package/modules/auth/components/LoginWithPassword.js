@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 import {
   CoreBox,
@@ -63,6 +63,7 @@ class LoginWithPassword extends Component {
         <CoreBox
           styleClasses={[
             CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+            CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
             CoreClasses.MARGIN.MB3,
           ]}
         >

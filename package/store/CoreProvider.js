@@ -29,7 +29,6 @@ function createFullStore(appReducer, persistFlag = true) {
   for (var i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
-        timeout: 1000,
         key: keys[i],
         storage: nativeStorage,
       },
