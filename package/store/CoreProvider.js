@@ -29,7 +29,7 @@ function createFullStore(appReducer, persistFlag = true) {
   for (var i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
-        timeout: 100,
+        timeout: 1000,
         key: keys[i],
         storage: nativeStorage,
       },
@@ -98,19 +98,19 @@ export default function CoreProvider(props) {
 
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <ThemeContext.Provider value={overrideThemeConfiguration()}>
-        <AppStylesContext.Provider value={props.appStyles}>
-          <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
-            <CoreThemeProvider>
-              <IconContext.Provider value={props.customIcons}>
-                {props.children}
-              </IconContext.Provider>
-            </CoreThemeProvider>
-          </StylesProvider>
-        </AppStylesContext.Provider>
-      </ThemeContext.Provider>
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeContext.Provider value={overrideThemeConfiguration()}>
+          <AppStylesContext.Provider value={props.appStyles}>
+            <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
+              <CoreThemeProvider>
+                <IconContext.Provider value={props.customIcons}>
+                  {props.children}
+                </IconContext.Provider>
+              </CoreThemeProvider>
+            </StylesProvider>
+          </AppStylesContext.Provider>
+        </ThemeContext.Provider>
+      </PersistGate>
     </Provider>
   );
 }
