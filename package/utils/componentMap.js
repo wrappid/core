@@ -1,8 +1,8 @@
 import { defaultValidations } from "./componentDefaultValidations";
-import CoreInputPassword  from "../components/inputs/CoreInputPassword";
-import CoreInput  from "../components/inputs/CoreInput";
-import CoreSelect  from "../components/inputs/CoreSelect";
-import CoreConfirmPassword  from "../components/inputs/CoreConfirmPassword";
+import CoreInputPassword from "../components/inputs/CoreInputPassword";
+import CoreInput from "../components/inputs/CoreInput";
+import CoreSelect from "../components/inputs/CoreSelect";
+import CoreConfirmPassword from "../components/inputs/CoreConfirmPassword";
 import CoreDatePicker from "../components/inputs/CoreDatepicker";
 import CoreTimePicker from "../components/inputs/CoreTimePicker";
 import CoreDateTimePicker from "../components/inputs/CoreDateTimePicker";
@@ -12,8 +12,8 @@ import CoreOutlinedButton from "../components/inputs/CoreOutlinedButton";
 import CoreTextButton from "../components/inputs/CoreTextButton";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreAvatar from "../components/dataDisplay/CoreAvatar";
-import CoreFilePicker  from "../components/inputs/CoreFilePicker";
-import CoreImagePicker  from "../components/inputs/CoreImagePicker";
+import CoreFilePicker from "../components/inputs/CoreFilePicker";
+import CoreImagePicker from "../components/inputs/CoreImagePicker";
 // import ClinicCard from "../module/clinic/ClinicCard";
 // import RegistrationCard from "../module/registration/RegistrationCard";
 // import EducationCard from "../module/education/EducationCard";
@@ -36,13 +36,13 @@ import CoreJSONInput from "../components/inputs/CoreJSONInput";
 // import SettingsContact from "../module/settings/SettingsContact";
 // import SettingsNotification from "../module/settings/SettingsNotification";
 // import SettingsAppearance from "../module/settings/SettingsAppearance";
-import CorePhone  from "../components/inputs/CorePhone";
+import CorePhone from "../components/inputs/CorePhone";
 // import RxEmailOrPhoneLink from "../components/rxLayout/RxEmailOrPhoneLink";
 // import SearchUserCard from "../module/prescription/SearchUserCard";
 // import GenderOption from "../module/common/GenderOption";
 import CoreSpan from "../components/layouts/CoreSpan";
 import CoreDivider from "../components/dataDisplay/CoreDivider";
-import CoreTextarea  from "../components/inputs/CoreTextarea";
+import CoreTextarea from "../components/inputs/CoreTextarea";
 // import BusinessEntityComp from "../module/builder/BusinessEntity/BusinessEntityComp";
 // import RxCashPackages from "../components/rxLayout/RxCashPackages";
 import CoreDateTimeRangePicker from "../components/inputs/CoreDateTimeRangePicker";
@@ -64,6 +64,7 @@ import ParentChildMap from "../components/inputs/custom/ParentChildMap";
 // import CurrentAppointment from "../module/appointment/CurrentAppointment";
 // import CompletedAppointment from "../module/appointment/CompletedAppointment";
 import CoreRichTextEditor from "../components/inputs/custom/CoreRichTextEditor";
+import CoreJSONEditor from "../components/inputs/CoreJSONEditor";
 
 /* com key will have component reference, 
 defaultValidation will have object with 
@@ -123,7 +124,7 @@ export const componentMap = {
     defaultValidation: defaultValidations.otp,
   },
   json: {
-    comp: CoreJSONInput,
+    comp: CoreJSONEditor,
     // defaultValidation: defaultValidations.json,
   },
   coreContainedButton: {
