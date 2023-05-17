@@ -220,7 +220,7 @@ export const apiRequestAction =
           }
         }
 
-        return Promise.reject();
+        // return Promise.reject();
       });
   };
 

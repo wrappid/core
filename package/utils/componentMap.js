@@ -124,7 +124,7 @@ export const componentMap = {
     defaultValidation: defaultValidations.otp,
   },
   json: {
-    comp: CoreJSONEditor,
+    comp: CoreJSONInput,
     // defaultValidation: defaultValidations.json,
   },
   coreContainedButton: {
