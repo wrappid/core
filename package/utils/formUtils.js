@@ -397,7 +397,7 @@ export function createApiMeta(state, formJson, values, props) {
   const addForm = props?.addForm?.add;
 
   console.log("API METa REATE", values, addForm, editForm, apiMode);
-  var ob = formJson?.create;
+  var ob = formJson?.create || {};
   var mode = "create";
   if (apiMode && formJson && formJson[apiMode]) {
     ob = formJson[apiMode];
