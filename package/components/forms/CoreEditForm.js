@@ -46,7 +46,7 @@ export default function CoreEditForm(props) {
 
   return formDataReadLoading &&
     formDataReadLoading[formId] &&
-    forms[formId].skeletonComp ? (
+    forms[formId]?.skeletonComp ? (
     React.createElement(forms[formId]?.skeletonComp, {})
   ) : !props.mode && forms[formId]?.renderComp ? (
     React.createElement(forms[formId]?.renderComp, {
