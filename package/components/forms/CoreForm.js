@@ -740,7 +740,9 @@ class CoreForm extends Component {
                         </CoreBox>
                         <CoreBox
                           gridProps={{ gridSize: 2 }}
-                          styleClasses={[CoreClasses.LAYOUT.RIGHT_ALIGN]}
+                          styleClasses={[
+                            CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+                          ]}
                         >
                           {formDataReadLoading[formId] ? null : (
                             <CoreFormHeaderActions
