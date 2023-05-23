@@ -8,7 +8,7 @@ export default function CoreInput(props) {
   return (
     <CoreBox>
       <NativeInput {...props} />
-      <CoreFormErrorText>{props.touched && props.error}</CoreFormErrorText>
+      <CoreFormErrorText>{props.error}</CoreFormErrorText>
       <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
     </CoreBox>
   );

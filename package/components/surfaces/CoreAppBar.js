@@ -168,8 +168,7 @@ export default function CoreAppBar(props) {
               >
                 <CoreAvatar
                   src={auth?.photo || "photo.jpg"}
-                  size={32}
-                  // styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
+                  styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
                 />
               </CoreIconButton>
             </CoreStack>
