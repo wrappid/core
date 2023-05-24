@@ -241,6 +241,8 @@ export default function CoreAsyncSelect(props) {
   return (
     <>
       <CoreAutocomplete
+        _topLabel={label} //required for mobile layer
+        _inputValue={inputValue} //required for mobile layer
         onBlur={props?.formik?.handleBlur(props.id)}
         multiple={props.multiple ? props.multiple : false}
         id={props.id ? props.id : `"async-select-"+${getKey()}`}
