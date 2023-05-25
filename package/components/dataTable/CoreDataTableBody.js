@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { getLabel } from "../../utils/stringUtils";
-import {UtilityClasses} from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
@@ -245,7 +245,9 @@ export default function CoreDataTableBody(props) {
                     UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
                   ]}
                 >
-                  Please select a column
+                  <CoreTypographyBody1>
+                    Please select a column
+                  </CoreTypographyBody1>
                 </CoreBox>
               </CoreTableCell>
             </CoreTableRow>

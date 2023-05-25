@@ -1,13 +1,14 @@
-import React from 'react';
-import CoreTableCell from './CoreTableCell';
-import CoreClasses from '../../styles/CoreClasses';
+import React from "react";
+import { NativeTableHeadCell } from "@wrappid/styled-components";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreTableHeadCell(props) {
   return (
-    <CoreTableCell
+    <NativeTableHeadCell
       {...props}
-      styleClasses={[CoreClasses.TABLE.TH, ...(props?.styleClasses || [])]}>
+      styleClasses={[CoreClasses.TABLE.TH, ...(props?.styleClasses || [])]}
+    >
       {props.children}
-    </CoreTableCell>
+    </NativeTableHeadCell>
   );
 }

@@ -161,9 +161,11 @@ export default function CoreDataTable(props) {
   React.useEffect(() => {
     // details pane
     if (
-      userSettings.hasOwnProperty(userSettingsConstants.DATA_TABLE_DETAILS_PANE)
+      userSettings.hasOwnProperty(
+        userSettingsConstants?.DATA_TABLE_DETAILS_PANE
+      )
     ) {
-      let open = userSettings[userSettingsConstants.DATA_TABLE_DETAILS_PANE];
+      let open = userSettings[userSettingsConstants?.DATA_TABLE_DETAILS_PANE];
       // show details pane
       _set_showDetailsPane(open);
       if (open) {
@@ -179,14 +181,14 @@ export default function CoreDataTable(props) {
       }
     }
     //max row in page
-    if (userSettings.hasOwnProperty(userSettingsConstants.MAX_ROWS_IN_PAGE)) {
-      setMaxRowsInPage(userSettings[userSettingsConstants.MAX_ROWS_IN_PAGE]);
+    if (userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)) {
+      setMaxRowsInPage(userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]);
     }
   }, []);
 
   // max row in pages
   const [maxRowsInPage, setMaxRowsInPage] = React.useState(
-    (userSettings && userSettings[userSettingsConstants.MAX_ROWS_IN_PAGE]) ||
+    (userSettings && userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]) ||
       DATA_TABLE_CONST.MAX_ROWS_IN_PAGE
   );
 

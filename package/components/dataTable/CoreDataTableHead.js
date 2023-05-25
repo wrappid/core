@@ -5,6 +5,7 @@ import CoreTableHeadCell from "../dataDisplay/CoreTableHeadCell";
 import { getLabel } from "../../utils/stringUtils";
 import CoreCheckbox from "../inputs/CoreCheckbox";
 import CoreTableSortLabel from "../dataDisplay/CoreTableSortLabel";
+import CoreTableHeadRow from "../dataDisplay/CoreTableHeadRow";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreClasses from "../../styles/CoreClasses";
 
@@ -31,7 +32,7 @@ export default function CoreDataTableHead(props) {
   return (
     <CoreTableHead {...tableHeadProps}>
       {/* Table Column Head */}
-      <CoreTableRow>
+      <CoreTableHeadRow>
         {columns &&
         columns.length > 0 &&
         tableColumnsToShow &&
@@ -115,7 +116,7 @@ export default function CoreDataTableHead(props) {
             </CoreTableHeadCell>
           </>
         )}
-      </CoreTableRow>
+      </CoreTableHeadRow>
     </CoreTableHead>
   );
 }
