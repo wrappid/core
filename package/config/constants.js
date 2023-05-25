@@ -222,3 +222,15 @@ export const communicationTypes = {
   WHATSAPP: "whatsapp",
   NOTIFICATION: "notification",
 };
+
+export const coreDialogInitValue = {
+  showDialog: false,
+  title: "Modal Dialog Box",
+  subtitle: "This is made using Context API.",
+  cancelButton: () => {
+    console.log("Cancel Pressed");
+  },
+  doneButton: () => {
+    console.log("Done Pressed");
+  },
+};

@@ -88,6 +88,13 @@ import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
+import CoreDialog from "./components/feedback/CoreDialog";
+import {
+  CoreDialogContext,
+} from "./config/contextHandler";
+import {
+  coreDialogInitValue
+} from "./config/constants";
 
 import CoreDataTable from "./components/dataTable/CoreDataTable";
 
@@ -161,6 +168,9 @@ import {
 } from "./utils/helper";
 
 export {
+  CoreDialog,
+  CoreDialogContext,
+  coreDialogInitValue,
   // __IconTypes,
   CoreApp,
   CoreProvider,
