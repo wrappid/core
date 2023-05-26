@@ -150,6 +150,7 @@ import { maskEmailOrPhone } from "./utils/stringUtils";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import { detectPlatform } from "./utils/themeUtil";
 import CoreClasses from "./styles/CoreClasses";
+import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
 
 import {
   FORM_VIEW_MODE,
@@ -171,6 +172,7 @@ export {
   CoreDialog,
   CoreDialogContext,
   coreDialogInitValue,
+  CoreGoogleButton,
   // __IconTypes,
   CoreApp,
   CoreProvider,

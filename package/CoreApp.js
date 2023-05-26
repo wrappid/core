@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import AppContainer from "./layout/AppContainer";
 import CoreNavigation from "./components/navigation/CoreNavigation";
 import CoreProvider from "./store/CoreProvider";
 import CoreRoutes from "./CoreRoutes";
-import { ComponentRegistryContext } from "./config/contextHandler";
+import {
+  ComponentRegistryContext,
+  CoreDialogContext,
+} from "./config/contextHandler";
 import CoreComponentRegistry from "./config/ComponentRegistry";
+import CoreDialog from "./components/feedback/CoreDialog";
+import { coreDialogInitValue } from "./config/constants";
 
 export default function CoreApp({
   reducers,
@@ -14,6 +19,8 @@ export default function CoreApp({
   appStyles,
   customIcons,
 }) {
+  const [dialog, setDialog] = useState(coreDialogInitValue);
+  const value = { dialog, setDialog };
   return (
     <CoreProvider
       appReducer={reducers}
@@ -21,7 +28,9 @@ export default function CoreApp({
       appStyles={appStyles}
       customIcons={customIcons}
     >
-      <ComponentRegistryContext.Provider value={{...componentRegistry, ...CoreComponentRegistry}}>
+      <ComponentRegistryContext.Provider
+        value={{ ...componentRegistry, ...CoreComponentRegistry }}
+      >
         <React.StrictMode>
           <CoreAppDiv>
             <CoreNavigation>
@@ -29,6 +38,9 @@ export default function CoreApp({
                 <CoreRoutes />
               </AppContainer>
             </CoreNavigation>
+            <CoreDialogContext.Provider value={value}>
+              <CoreDialog />
+            </CoreDialogContext.Provider>
           </CoreAppDiv>
         </React.StrictMode>
       </ComponentRegistryContext.Provider>
