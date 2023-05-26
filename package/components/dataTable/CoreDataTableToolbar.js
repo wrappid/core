@@ -92,37 +92,6 @@ export default function CoreDataTableToolbar(props) {
     : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
 
-  /**
-   * show/hide column func
-   */
-  // const showAllColumns = () => {
-  //   setFilteredColumns(
-  //     tableColumns
-  //       .filter((_tc) => !auditColumnsKey.includes(_tc.id))
-  //       .map((_tc) => {
-  //         return _tc.id;
-  //       }),
-  //   );
-  // };
-  // const hideAllColumns = () => {
-  //   setFilteredColumns([]);
-  // };
-  // handle trigger on each column checkbox
-  // const handleColumnFilter = (e, col) => {
-  //   let hidden = e.target.checked ? false : true;
-  //   let _temp_filteredColumns = [...filteredColumns];
-  //   if (hidden) {
-  //     // hide column
-  //     // remove column from filtered columns
-  //     _temp_filteredColumns = _temp_filteredColumns.filter((_temp_col) => _temp_col !== col.id);
-  //   } else {
-  //     // show column
-  //     // add column to filtered columns
-  //     _temp_filteredColumns.push(col.id);
-  //   }
-  //   setFilteredColumns(_temp_filteredColumns);
-  // };
-
   return (
     <>
       <CoreGrid
@@ -138,7 +107,7 @@ export default function CoreDataTableToolbar(props) {
         {searchable && (
           <CoreTextField
             gridProps={{ gridSize: { md: __TableLeftPanelGridSize } }}
-            styleClasses={[CoreClasses.MARGIN.MB0]}
+            // styleClasses={[CoreClasses.MARGIN.MB0]}
             value={searchValue}
             onKeyDown={(e) => {
               e.keyCode === 13 && filterData();
@@ -213,11 +182,11 @@ export default function CoreDataTableToolbar(props) {
             <CoreDivider
               orientation="vertical"
               flexItem={true}
-              styleClasses={[
-                CoreClasses.DISPLAY.NONE,
-                CoreClasses.DISPLAY.MD.BLOCK,
-                CoreClasses.MARGIN.MY0,
-              ]}
+              // styleClasses={[
+              //   CoreClasses.DISPLAY.NONE,
+              //   CoreClasses.DISPLAY.MD.BLOCK,
+              //   CoreClasses.MARGIN.MY0,
+              // ]}
             />
 
             <CoreIconButton
@@ -320,17 +289,17 @@ export default function CoreDataTableToolbar(props) {
             <CoreDivider
               flexItem={true}
               orientation="vertical"
-              styleClasses={[
-                CoreClasses.DISPLAY.NONE,
-                CoreClasses.DISPLAY.SM.BLOCK,
-                CoreClasses.MARGIN.MY1,
-              ]}
+              // styleClasses={[
+              //   CoreClasses.DISPLAY.NONE,
+              //   CoreClasses.DISPLAY.SM.BLOCK,
+              //   CoreClasses.MARGIN.MY1,
+              // ]}
             />
             <CoreTablePagination
-              styleClasses={[
-                CoreClasses.DISPLAY.NONE,
-                CoreClasses.DISPLAY.SM.BLOCK,
-              ]}
+              // styleClasses={[
+              //   CoreClasses.DISPLAY.NONE,
+              //   CoreClasses.DISPLAY.SM.BLOCK,
+              // ]}
               // showFirstButton
               // showLastButton
               count={data?.totalRecords || 0}

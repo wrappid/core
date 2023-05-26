@@ -632,16 +632,16 @@ export default function CoreDataTable(props) {
     <>
       <CoreGrid
         coreId="sam-data-table-container"
-        styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_CONTAINER]}
+        // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_CONTAINER]}
       >
         {showToolbar && (
           <CoreDataTableToolbar
             coreId="sam-data-table-toolbar"
             gridProps={{
               gridSize: 12,
-              styleClasses: [
-                CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER,
-              ],
+              // styleClasses: [
+              //   CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER,
+              // ],
             }}
             styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR]}
             tableUUID={tableUUID}
@@ -696,13 +696,13 @@ export default function CoreDataTable(props) {
                   ? __TableLeftPanelGridSize
                   : 12,
             },
-            styleClasses: [
-              enableDetailsPane && _showDetailsPane
-                ? CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
-                : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,
-            ],
+            // styleClasses: [
+            //   enableDetailsPane && _showDetailsPane
+            //     ? CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
+            //     : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,
+            // ],
           }}
-          styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE]}
+          // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE]}
           // stickyHeader
           hover={rowHover}
           coreId={tableUUID}
@@ -715,13 +715,13 @@ export default function CoreDataTable(props) {
           <CoreDataTableHead
             tableHeadProps={{
               ...tableHeadProps,
-              styleClasses: [
-                // CoreClasses.POSITION.STICKY_TOP,
-                CoreClasses.DATA_TABLE.DATA_TABLE_HEAD,
-                _showDetailsPane
-                  ? ""
-                  : CoreClasses.DATA_TABLE.DATA_TABLE_HEAD_TOP,
-              ],
+              // styleClasses: [
+              //   // CoreClasses.POSITION.STICKY_TOP,
+              //   CoreClasses.DATA_TABLE.DATA_TABLE_HEAD,
+              //   _showDetailsPane
+              //     ? ''
+              //     : CoreClasses.DATA_TABLE.DATA_TABLE_HEAD_TOP,
+              // ],
             }}
             tableUUID={tableUUID}
             tableColumnsShown={tableColumnsShown}
