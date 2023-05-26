@@ -151,6 +151,7 @@ import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import { detectPlatform } from "./utils/themeUtil";
 import CoreClasses from "./styles/CoreClasses";
 import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
+import StatusText from "./components/dataDisplay/custom/StatusText";
 
 import {
   FORM_VIEW_MODE,
@@ -169,6 +170,7 @@ import {
 } from "./utils/helper";
 
 export {
+  StatusText,
   CoreDialog,
   CoreDialogContext,
   coreDialogInitValue,
