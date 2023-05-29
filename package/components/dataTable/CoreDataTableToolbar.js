@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
-  HTTP_POST,
+  HTTP,
   tableToolbar,
   userSettingsConstants,
 } from "../../config/constants";
@@ -326,7 +326,7 @@ export default function CoreDataTableToolbar(props) {
                   });
                   dispatch(
                     apiRequestAction(
-                      HTTP_POST,
+                      HTTP.POST,
                       UPDATE_USER_SETTINGS,
                       true,
                       {
@@ -381,7 +381,7 @@ export default function CoreDataTableToolbar(props) {
               });
               dispatch(
                 apiRequestAction(
-                  HTTP_POST,
+                  HTTP.POST,
                   UPDATE_USER_SETTINGS,
                   true,
                   {

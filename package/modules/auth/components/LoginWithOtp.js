@@ -21,7 +21,7 @@ import {
   NAVIGATE_TO_OTP_LOGIN_LOADING,
   NAVIGATE_TO_OTP_LOGIN_SUCCESS,
 } from '../types/authTypes';
-import {HTTP_POST} from '../../../config/constants';
+import {HTTP} from '../../../config/constants';
 import {urls} from '../../../config/constants';
 import { saveAuthData } from '../actions/authActions';
 
@@ -140,7 +140,7 @@ const mapDispatchToProps = dispatch => {
     SendOtp: data => {
       dispatch(
         apiRequestAction(
-          HTTP_POST,
+          HTTP.POST,
           NAVIGATE_TO_OTP_LOGIN_API,
           true,
           data,

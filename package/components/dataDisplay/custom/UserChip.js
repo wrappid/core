@@ -1,6 +1,6 @@
 import React from "react";
 import config from "../../../config/config";
-import { HTTP_GET } from "../../../config/constants";
+import { HTTP } from "../../../config/constants";
 import axiosInterceptor from "../../../middleware/axiosInterceptor";
 import authHeader from "../../../service/DataService";
 import { getFullName } from "../../../utils/helper";
@@ -28,7 +28,7 @@ export default function UserChip(props) {
     async function apiCall() {
       let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       await axiosInterceptor({
-        method: HTTP_GET,
+        method: HTTP.GET,
         url:
           backendUrl +
           "/business/individual/UserBasicInfo?_defaultFilter=" +

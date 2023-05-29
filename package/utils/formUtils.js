@@ -4,10 +4,7 @@ import CoreInput from "../components/inputs/CoreInput";
 import CoreBox from "../components/layouts/CoreBox";
 import {
   ENV_DEV_MODE,
-  HTTP_GET,
-  HTTP_PATCH,
-  HTTP_POST,
-  HTTP_PUT,
+  HTTP,
 } from "../config/constants";
 import {
   DELETE_DATA_ERROR,
@@ -413,7 +410,7 @@ export function createApiMeta(state, formJson, values, props) {
   return {
     method: ob.method,
     endpoint:
-      ob.method === HTTP_GET && state.query
+      ob.method === HTTP.GET && state.query
         ? queryBuilder(ob.endpoint, state.query)
         : ob.endpoint,
     authRequired: ob.authRequired,
@@ -447,7 +444,7 @@ export function createTableFormJson(
   if (apiRoute) {
     if (mode === "create") {
       apiObject["create"] = {
-        method: HTTP_POST,
+        method: HTTP.POST,
         endpoint: apiRoute,
         authRequired: true,
         successType: successType
@@ -465,7 +462,7 @@ export function createTableFormJson(
       };
     } else if (mode === "read") {
       apiObject["read"] = {
-        method: HTTP_GET,
+        method: HTTP.GET,
         endpoint: apiRoute,
         authRequired: true,
         successType: successType
@@ -483,7 +480,7 @@ export function createTableFormJson(
       };
     } else if (mode === "edit") {
       apiObject["edit"] = {
-        method: HTTP_PUT,
+        method: HTTP.PUT,
         endpoint: apiRoute + "/" + ob.id,
         authRequired: true,
         successType: successType
@@ -501,7 +498,7 @@ export function createTableFormJson(
       };
     } else if (mode === "delete") {
       apiObject["edit"] = {
-        method: HTTP_PATCH,
+        method: HTTP.PATCH,
         endpoint: apiRoute + "/" + ob.id,
         authRequired: true,
         successType: successType
@@ -628,7 +625,7 @@ export async function getForm(formId, auth = true, formReducer) {
         process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       var url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
       var formRes = await axiosInterceptor({
-        method: HTTP_GET,
+        method: HTTP.GET,
         url: backendUrl + url + formId,
         headers: await authHeader(auth, false),
       });

@@ -7,7 +7,7 @@ import {
 } from "@wrappid/styled-components";
 
 import { LOGOUT_API } from "../../../config/api";
-import { HTTP_POST } from "../../../config/constants";
+import { HTTP } from "../../../config/constants";
 
 import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
 
@@ -25,7 +25,7 @@ export default function Logout() {
     if (location?.state?.logout !== false)
       dispatch(
         apiRequestAction(
-          HTTP_POST,
+          HTTP.POST,
           LOGOUT_API,
           true,
           {},

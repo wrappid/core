@@ -1,7 +1,7 @@
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import config from "../config/config";
 import authHeader from "./DataService";
-import { HTTP_GET } from "../config/constants";
+import { HTTP } from "../config/constants";
 import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
@@ -14,7 +14,7 @@ function getEndpoint(method, endpoint, data) {
     backendUrl = "";
   } */
 
-  return method === HTTP_GET
+  return method === HTTP.GET
     ? queryBuilder(backendUrl + endpoint, data)
     : backendUrl + endpoint;
 }
@@ -34,7 +34,7 @@ class AppService {
         url: getEndpoint(method, endpoint, data),
         headers: await authHeader(authRequired, includeFile),
         data:
-          method !== HTTP_GET
+          method !== HTTP.GET
             ? includeFile
               ? createFormData(file, data)
               : JSON.stringify(data)

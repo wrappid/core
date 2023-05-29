@@ -4,8 +4,7 @@ import CoreDataTableHead from "./CoreDataTableHead";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "../../store/action/appActions";
 import {
-  HTTP_GET,
-  HTTP_POST,
+  HTTP,
   userSettingsConstants,
   __TableDensity,
 } from "../../config/constants";
@@ -307,7 +306,7 @@ export default function CoreDataTable(props) {
     _set_showDetailsPane(open);
     dispatch(
       apiRequestAction(
-        HTTP_POST,
+        HTTP.POST,
         UPDATE_USER_SETTINGS,
         true,
         {
@@ -517,7 +516,7 @@ export default function CoreDataTable(props) {
           let _endpoint = api || "/business/all/" + entity;
           dispatch(
             apiRequestAction(
-              HTTP_GET,
+              HTTP.GET,
               _endpoint,
               true,
               prepareTableAPIQuery(

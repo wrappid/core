@@ -29,10 +29,12 @@ export const FONT_SMALL = "small";
 export const FONT_MEDIUM = "medium";
 export const FONT_LARGE = "large";
 
-export const HTTP_GET = "get";
-export const HTTP_POST = "post";
-export const HTTP_PUT = "put";
-export const HTTP_PATCH = "patch";
+export const HTTP = {
+  GET: "get",
+  POST: "post",
+  PUT: "put",
+  PATCH: "patch"
+};
 
 export const DB_CONST = {
   RXEFY_DB: "RXEFY_DB",

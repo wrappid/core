@@ -10,7 +10,7 @@ import PageContainer from "./layout/PageContainer";
 import Error500 from "./error/Error500";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestAction } from "./store/action/appActions";
-import { HTTP_GET } from "./config/constants";
+import { HTTP } from "./config/constants";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 import SplashComponent from "./components/navigation/custom/SplashComponent";
 
@@ -23,7 +23,7 @@ export default function CoreRoutes() {
   React.useEffect(() => {
     dispatch(
       apiRequestAction(
-        HTTP_GET,
+        HTTP.GET,
         "/noauth/business/all/RoutePages",
         true,
         {
@@ -40,7 +40,7 @@ export default function CoreRoutes() {
   React.useEffect(() => {
     dispatch(
       apiRequestAction(
-        HTTP_GET,
+        HTTP.GET,
         "/noauth/business/all/RoutePages",
         true,
         {

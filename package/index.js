@@ -154,7 +154,7 @@ import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
 import StatusText from "./components/dataDisplay/custom/StatusText";
 import {
   __EntityStatus,
-  HTTP_POST,
+  HTTP,
   urls,
 } from './config/constants';
 
@@ -176,7 +176,7 @@ import {
 
 export {
   __EntityStatus,
-  HTTP_POST,
+  HTTP,
   urls,
   StatusText,
   CoreDialog,

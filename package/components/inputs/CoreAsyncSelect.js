@@ -1,6 +1,6 @@
 import * as React from "react";
 import { apiRequestAction } from "../../store/action/appActions";
-import { HTTP_GET } from "../../config/constants";
+import { HTTP } from "../../config/constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
   SELECT_OPTION_ERROR,
@@ -182,7 +182,7 @@ export default function CoreAsyncSelect(props) {
       });
       dispatch(
         apiRequestAction(
-          HTTP_GET,
+          HTTP.GET,
           endpoint,
           true,
           query,

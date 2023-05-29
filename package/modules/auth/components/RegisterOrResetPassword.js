@@ -17,7 +17,7 @@ import {
   CoreClasses,
 } from '@wrappid/core';
 
-import {HTTP_POST, urls} from '../../../config/constants';
+import {HTTP, urls} from '../../../config/constants';
 import {NAVIGATE_TO_RESET_PASSWORD_API} from '../../../config/api';
 import {
   CHECK_LOGIN_ERROR,
@@ -161,7 +161,7 @@ const mapDispatchToProps = dispatch => {
     SendResetPasswordOtp: data => {
       dispatch(
         apiRequestAction(
-          HTTP_POST,
+          HTTP.POST,
           NAVIGATE_TO_RESET_PASSWORD_API,
           true,
           data,

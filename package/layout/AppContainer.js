@@ -19,8 +19,7 @@ import {
   UPDATE_USER_SETTINGS,
 } from "../config/api";
 import {
-  HTTP_GET,
-  HTTP_POST,
+  HTTP,
   SMALL_WINDOW_WIDTH,
   userSettingsConstants,
 } from "../config/constants";
@@ -105,7 +104,7 @@ function AppContainer(props) {
     if (accessToken) {
       dispatch(
         apiRequestAction(
-          HTTP_GET,
+          HTTP.GET,
           GET_USER_SETTINGS,
           true,
           {},
@@ -115,7 +114,7 @@ function AppContainer(props) {
       );
       dispatch(
         apiRequestAction(
-          HTTP_GET,
+          HTTP.GET,
           GET_SETTINGS_META_API,
           true,
           {},
@@ -135,7 +134,7 @@ function AppContainer(props) {
     if (accessToken)
       dispatch(
         apiRequestAction(
-          HTTP_GET,
+          HTTP.GET,
           GET_ROLE_PERMISSIONS_API,
           true,
           {},
@@ -160,7 +159,7 @@ function AppContainer(props) {
     } else dispatch(toggleLeftMenuState());
     dispatch(
       apiRequestAction(
-        HTTP_POST,
+        HTTP.POST,
         UPDATE_USER_SETTINGS,
         true,
         {

@@ -4,7 +4,7 @@ import {
   LOGIN_WITH_RESET_PASSWORD_API,
   LOGIN_WITH_URL_API,
 } from "../../config/api";
-import { HTTP_GET, MESSAGE_TYPE } from "../../config/constants";
+import { HTTP, MESSAGE_TYPE } from "../../config/constants";
 import AppService from "../../service/AppService";
 import { getForm } from "../../utils/formUtils";
 import {
@@ -48,13 +48,13 @@ export const apiRequestAction =
   (dispatch) => {
     dispatch({ type: loadingType });
     formId &&
-      method !== HTTP_GET &&
+      method !== HTTP.GET &&
       dispatch({
         type: FORM_SUBMIT_LOADING,
         payload: { formId },
       });
     formId &&
-      method === HTTP_GET &&
+      method === HTTP.GET &&
       dispatch({
         type: FORM_DATA_READ_LOADING,
         payload: { formId },
@@ -76,12 +76,12 @@ export const apiRequestAction =
         switch (response.status) {
           case 200:
           case 201:
-            if (method !== HTTP_GET)
+            if (method !== HTTP.GET)
               dispatch({
                 type: FORM_SUBMIT_SUCCESS,
                 payload: { formId, data: { ...reduxData, ...response.data } },
               });
-            else if (reload && method === HTTP_GET) {
+            else if (reload && method === HTTP.GET) {
               dispatch({
                 type: FORM_INIT_UPDATE,
                 payload: {
@@ -121,7 +121,7 @@ export const apiRequestAction =
             }
             break;
           case 204:
-            if (reload && method === HTTP_GET) {
+            if (reload && method === HTTP.GET) {
               dispatch({
                 type: FORM_INIT_UPDATE,
                 payload: {
