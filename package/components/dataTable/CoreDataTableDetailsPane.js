@@ -20,6 +20,8 @@ import TableRowAuditData from "./TableRowAuditData";
 import StatusText from "../dataDisplay/custom/StatusText";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreClasses from "../../styles/CoreClasses";
+import CoreTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
+import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -47,244 +49,259 @@ export default function CoreDataTableDetailsPane(props) {
     postRender_CreateData_DetailsPaneComponent,
     _expandedDevJSONSchema,
     set_expandedDevJSONSchema,
+    _showDetailsPane,
   } = props;
 
   return (
-    <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
-      <CoreCardHeader
-        title={
-          detailedRowData ? (
-            <>
-              <CoreStack direction="row" spacing={1}>
-                <CoreTypographyCaption>
-                  {"ID: " + detailedRowData["id"]}
-                </CoreTypographyCaption>
-                {detailedRowData.hasOwnProperty("id") &&
-                  detailedRowData.hasOwnProperty("_status") && (
-                    <CoreDivider
-                      orientation="vertical"
-                      variant="middle"
-                      flexItem
-                    />
-                  )}
-                <StatusText status={detailedRowData["_status"]} />
-              </CoreStack>
-            </>
-          ) : (
-            !hideForm &&
-            createFormID &&
-            (createEntityButtonText || `Create ${getLabel(tableUUID)}`)
-          )
-        }
-        action={
-          <CoreStack direction="row">
-            {detailedRowData && rowActions && rowActions.length > 0 && (
-              <CoreTableAction
-                tableUUID={tableUUID}
-                actions={rowActions}
-                columns={tableColumns}
-                rowIndex={detailedRowId}
-                rowData={detailedRowData}
-              />
-            )}
-            <CoreIconButton
-              onClick={(e) => {
-                set_showDetailsPane(false);
-                setDetailedRowId(null);
-                setDetailedRowData(null);
-              }}
-            >
-              <CoreIcon>clear</CoreIcon>
-            </CoreIconButton>
-          </CoreStack>
-        }
-      />
-      <CoreCardContent>
-        {detailedRowData ? (
-          <>
-            {process.env.REACT_APP_ENV !== ENV_PROD_MODE && (
-              <CoreAccordion
-                expanded={_expandedDevJSONSchema}
-                onChange={() => {
-                  set_expandedDevJSONSchema(!_expandedDevJSONSchema);
+    <CoreTableDetailsPaneContainer
+      open={_showDetailsPane}
+      onClose={() => {
+        set_showDetailsPane(false);
+      }}
+    >
+      <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
+        <CoreCardHeader
+          title={
+            detailedRowData ? (
+              <>
+                <CoreStack direction="row" spacing={1}>
+                  <CoreTypographyCaption>
+                    {"ID: " + detailedRowData["id"]}
+                  </CoreTypographyCaption>
+                  {detailedRowData.hasOwnProperty("id") &&
+                    detailedRowData.hasOwnProperty("_status") && (
+                      <CoreDivider
+                        orientation="vertical"
+                        variant="middle"
+                        flexItem
+                      />
+                    )}
+                  <StatusText status={detailedRowData["_status"]} />
+                </CoreStack>
+              </>
+            ) : (
+              !hideForm &&
+              createFormID &&
+              (createEntityButtonText || `Create ${getLabel(tableUUID)}`)
+            )
+          }
+          action={
+            <CoreStack direction="row">
+              {detailedRowData && rowActions && rowActions.length > 0 && (
+                <CoreTableAction
+                  tableUUID={tableUUID}
+                  actions={rowActions}
+                  columns={tableColumns}
+                  rowIndex={detailedRowId}
+                  rowData={detailedRowData}
+                />
+              )}
+              <CoreIconButton
+                onClick={(e) => {
+                  set_showDetailsPane(false);
+                  setDetailedRowId(null);
+                  setDetailedRowData(null);
                 }}
               >
-                <CoreAccordionSummary>JSON Schema</CoreAccordionSummary>
-                <CoreAccordionDetail>
-                  <pre>{JSON.stringify(detailedRowData, null, 2)}</pre>
-                </CoreAccordionDetail>
-              </CoreAccordion>
-            )}
-            {preRenderDetailsPaneComponent && (
-              <>
-                <CoreDivider />
-                {React.createElement(preRenderDetailsPaneComponent, {
-                  data: detailedRowData,
-                })}
-              </>
-            )}
-            {detailedRowId && detailedRowData ? (
-              updateFormID &&
-              !hideForm && (
+                <CoreIcon>clear</CoreIcon>
+              </CoreIconButton>
+            </CoreStack>
+          }
+        />
+        <CoreCardContent>
+          {detailedRowData ? (
+            <>
+              {process.env.REACT_APP_ENV !== ENV_PROD_MODE && (
+                <CoreAccordion
+                  expanded={_expandedDevJSONSchema}
+                  onChange={() => {
+                    set_expandedDevJSONSchema(!_expandedDevJSONSchema);
+                  }}
+                >
+                  <CoreAccordionSummary>
+                    <CoreLabel>JSON Schema</CoreLabel>
+                  </CoreAccordionSummary>
+                  <CoreAccordionDetail>
+                    {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
+                    <CoreLabel>
+                      {JSON.stringify(detailedRowData, null, 2)}
+                    </CoreLabel>
+                  </CoreAccordionDetail>
+                </CoreAccordion>
+              )}
+              {preRenderDetailsPaneComponent && (
                 <>
                   <CoreDivider />
-                  <CoreForm
-                    apiMode={"edit"}
-                    onMountRead={false}
-                    formId={updateFormID}
-                    mode={formMode}
-                    allowEdit={editable}
-                    allowDelete={deletable}
-                    initData={detailedRowData}
-                    // afterEdit={() => {
-                    //   filterData();
-                    // }}
-                    afterCancel={() => {
-                      setFormMode(FORM_VIEW_MODE);
-                    }}
-                    afterEditSuccess={() => {
-                      // do something
-                      // swal({
-                      //   icon: 'success',
-                      //   title: 'Updated Successfully',
-                      //   text: `${getLabel(updateFormID)} updated successfully`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   set_showDetailsPane(false);
-                      //   filterData();
-                      // });
-                    }}
-                    afterDeleteSuccess={() => {
-                      // do something
-                      // swal({
-                      //   icon: 'success',
-                      //   title: 'Deleted Successfully',
-                      //   text: `${getLabel(updateFormID)} deleted successfully`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   set_showDetailsPane(false);
-                      //   filterData();
-                      // });
-                    }}
-                    afterEditError={() => {
-                      // swal({
-                      //   icon: 'error',
-                      //   title: 'Updated Failure',
-                      //   text: `${getLabel(createFormID)} updated failure`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   // set_showDetailsPane(false);
-                      //   // filterData();
-                      // });
-                    }}
-                    afterDeleteError={() => {
-                      // swal({
-                      //   icon: 'error',
-                      //   title: 'Deleted Failure',
-                      //   text: `${getLabel(createFormID)} delete failure`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   // set_showDetailsPane(false);
-                      //   // filterData();
-                      // });
-                    }}
-                  />
+                  {React.createElement(preRenderDetailsPaneComponent, {
+                    data: detailedRowData,
+                  })}
                 </>
-              )
-            ) : (
-              <CoreTypographyBody1>No row selected</CoreTypographyBody1>
-            )}
-            {/**
-             * @todo check if it's available show flag ticked
-             */}
-            {postRenderDetailsPaneComponent && (
-              <>
-                <CoreDivider />
-                {React.createElement(postRenderDetailsPaneComponent, {
-                  data: detailedRowData,
-                })}
-              </>
-            )}
-            {true && (
-              <>
-                <CoreDivider />
-                <TableRowAuditData rowData={detailedRowData} />
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            {preRender_CreateData_DetailsPaneComponent && (
-              <>
-                {React.createElement(preRender_CreateData_DetailsPaneComponent)}
-              </>
-            )}
-            {enableCreateEntity ? (
-              createFormID && (
+              )}
+              {detailedRowId && detailedRowData ? (
+                updateFormID &&
+                !hideForm && (
+                  <>
+                    <CoreDivider />
+                    <CoreForm
+                      apiMode={"edit"}
+                      onMountRead={false}
+                      formId={updateFormID}
+                      mode={formMode}
+                      allowEdit={editable}
+                      allowDelete={deletable}
+                      initData={detailedRowData}
+                      // afterEdit={() => {
+                      //   filterData();
+                      // }}
+                      afterCancel={() => {
+                        setFormMode(FORM_VIEW_MODE);
+                      }}
+                      afterEditSuccess={() => {
+                        // do something
+                        // swal({
+                        //   icon: 'success',
+                        //   title: 'Updated Successfully',
+                        //   text: `${getLabel(updateFormID)} updated successfully`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   set_showDetailsPane(false);
+                        //   filterData();
+                        // });
+                      }}
+                      afterDeleteSuccess={() => {
+                        // do something
+                        // swal({
+                        //   icon: 'success',
+                        //   title: 'Deleted Successfully',
+                        //   text: `${getLabel(updateFormID)} deleted successfully`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   set_showDetailsPane(false);
+                        //   filterData();
+                        // });
+                      }}
+                      afterEditError={() => {
+                        // swal({
+                        //   icon: 'error',
+                        //   title: 'Updated Failure',
+                        //   text: `${getLabel(createFormID)} updated failure`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   // set_showDetailsPane(false);
+                        //   // filterData();
+                        // });
+                      }}
+                      afterDeleteError={() => {
+                        // swal({
+                        //   icon: 'error',
+                        //   title: 'Deleted Failure',
+                        //   text: `${getLabel(createFormID)} delete failure`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   // set_showDetailsPane(false);
+                        //   // filterData();
+                        // });
+                      }}
+                    />
+                  </>
+                )
+              ) : (
+                <CoreTypographyBody1>No row selected</CoreTypographyBody1>
+              )}
+              {/**
+               * @todo check if it's available show flag ticked
+               */}
+              {postRenderDetailsPaneComponent && (
                 <>
-                  <CoreForm
-                    apiMode={"create"}
-                    onMountRead={false}
-                    formId={createFormID}
-                    mode={FORM_EDIT_MODE}
-                    initData={{}}
-                    afterEdit={() => {
-                      filterData();
-                    }}
-                    afterCancel={() => {
-                      set_showDetailsPane(false);
-                    }}
-                    afterCreateSuccess={() => {
-                      // do something
-                      // swal({
-                      //   icon: 'success',
-                      //   title: 'Created Successfully',
-                      //   text: `${getLabel(createFormID)} created successfully`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   set_showDetailsPane(false);
-                      //   filterData();
-                      // });
-                    }}
-                    afterCreateError={() => {
-                      // swal({
-                      //   icon: 'error',
-                      //   title: 'Create Failure',
-                      //   text: `${getLabel(createFormID)} create failure`,
-                      //   buttons: {
-                      //     confirm: 'Ok',
-                      //   },
-                      // }).then(data => {
-                      //   // set_showDetailsPane(false);
-                      //   // filterData();
-                      // });
-                    }}
-                  />
+                  <CoreDivider />
+                  {React.createElement(postRenderDetailsPaneComponent, {
+                    data: detailedRowData,
+                  })}
                 </>
-              )
-            ) : (
-              <CoreH1>No data found</CoreH1>
-            )}
-            {postRender_CreateData_DetailsPaneComponent && (
-              <>
-                {React.createElement(
-                  postRender_CreateData_DetailsPaneComponent
-                )}
-              </>
-            )}
-          </>
-        )}
-      </CoreCardContent>
-    </CoreCard>
+              )}
+              {true && (
+                <>
+                  <CoreDivider />
+                  <TableRowAuditData rowData={detailedRowData} />
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              {preRender_CreateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    preRender_CreateData_DetailsPaneComponent
+                  )}
+                </>
+              )}
+              {enableCreateEntity ? (
+                createFormID && (
+                  <>
+                    <CoreForm
+                      apiMode={"create"}
+                      onMountRead={false}
+                      formId={createFormID}
+                      mode={FORM_EDIT_MODE}
+                      initData={{}}
+                      afterEdit={() => {
+                        filterData();
+                      }}
+                      afterCancel={() => {
+                        set_showDetailsPane(false);
+                      }}
+                      afterCreateSuccess={() => {
+                        // do something
+                        // swal({
+                        //   icon: 'success',
+                        //   title: 'Created Successfully',
+                        //   text: `${getLabel(createFormID)} created successfully`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   set_showDetailsPane(false);
+                        //   filterData();
+                        // });
+                      }}
+                      afterCreateError={() => {
+                        // swal({
+                        //   icon: 'error',
+                        //   title: 'Create Failure',
+                        //   text: `${getLabel(createFormID)} create failure`,
+                        //   buttons: {
+                        //     confirm: 'Ok',
+                        //   },
+                        // }).then(data => {
+                        //   // set_showDetailsPane(false);
+                        //   // filterData();
+                        // });
+                      }}
+                    />
+                  </>
+                )
+              ) : (
+                <CoreH1>No data found</CoreH1>
+              )}
+              {postRender_CreateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    postRender_CreateData_DetailsPaneComponent
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </CoreCardContent>
+      </CoreCard>
+    </CoreTableDetailsPaneContainer>
   );
 }

@@ -17,6 +17,11 @@ import { isJson } from "../../utils/stringUtils";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import StatusText from "../dataDisplay/custom/StatusText";
 import CoreClasses from "../../styles/CoreClasses";
+import {
+  APP_PLATFORM,
+  WEB_PLATFORM,
+  detectPlatform,
+} from "../../utils/themeUtil";
 
 export default function CoreDataTableRowContent(props) {
   const {
@@ -47,6 +52,8 @@ export default function CoreDataTableRowContent(props) {
   const [priority4Data, setPriority4Data] = React.useState(null);
   // const [hasPriority5, setHasPriority5] = React.useState(false);
   const [priority5Data, setPriority5Data] = React.useState(null);
+
+  const [platform, setPlatform] = React.useState(WEB_PLATFORM);
 
   React.useEffect(() => {
     /**
@@ -168,9 +175,13 @@ export default function CoreDataTableRowContent(props) {
     );
   };
 
+  React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
+
   return (
     <>
-      {enableDetailsPane && _showDetailsPane ? (
+      {(enableDetailsPane && _showDetailsPane) || platform === APP_PLATFORM ? (
         <CoreTableCell styleClasses={[CoreClasses.PADDING.PX1]}>
           <CoreDataTableRowSummary
             tableColumns={tableColumns}
