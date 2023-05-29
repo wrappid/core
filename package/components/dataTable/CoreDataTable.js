@@ -770,6 +770,9 @@ export default function CoreDataTable(props) {
             setFormMode={setFormMode}
             enableCreateEntity={enableCreateEntity}
             createEntityButtonText={createEntityButtonText}
+            //reuired in mobile as pagination happens in infinte scroll
+            setPage={setPage}
+            page={page}
           />
         </CoreTable>
         {enableDetailsPane && _showDetailsPane && (
@@ -804,6 +807,7 @@ export default function CoreDataTable(props) {
             }
             _expandedDevJSONSchema={_expandedDevJSONSchema}
             set_expandedDevJSONSchema={set_expandedDevJSONSchema}
+            _showDetailsPane={_showDetailsPane}
           />
         )}
       </CoreGrid>
