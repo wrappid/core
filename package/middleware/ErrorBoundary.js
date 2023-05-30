@@ -74,12 +74,12 @@ class ErrorBoundary extends React.Component {
               <CoreTypographyCaption
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
-                <pre>{this.state.error?.stack}</pre>
+                {this.state.error?.stack}
               </CoreTypographyCaption>
               <CoreTypographyCaption
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
-                <pre>{this.state.errorInfo?.componentStack}</pre>
+                {this.state.errorInfo?.componentStack}
               </CoreTypographyCaption>
             </CoreAccordionDetail>
           </CoreAccordion>
