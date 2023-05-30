@@ -13,6 +13,8 @@ import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreMenu from "../../inputs/CoreMenu";
 import CoreClasses from "../../../styles/CoreClasses";
 import { getFullName } from "../../../utils/helper";
+import CoreApiVersion from './CoreApiVersion';
+import CoreLoginDetails from './CoreLoginDetails';
 
 export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
@@ -87,7 +89,11 @@ export default function CoreProfilePopOver(props) {
         multiLevel={false}
         open={true}
         OnMenuClick={OnMenuClick}
+        
       />
+      {/* ApiVersion && LoginDetails */}
+      <CoreApiVersion />
+      <CoreLoginDetails />
     </CoreBox>
   );
 }
