@@ -25,6 +25,9 @@ import CoreForm from "./components/forms/CoreForm";
 import CoreFade from "./components/utils/CoreFade";
 import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
+import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
+import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
+import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
 import CoreToolbar from "./components/surfaces/CoreToolbar";
 
 import CoreAccordion from "./components/surfaces/CoreAccordion";
@@ -89,12 +92,8 @@ import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
 import CoreDialog from "./components/feedback/CoreDialog";
-import {
-  CoreDialogContext,
-} from "./config/contextHandler";
-import {
-  coreDialogInitValue
-} from "./config/constants";
+import { CoreDialogContext } from "./config/contextHandler";
+import { coreDialogInitValue } from "./config/constants";
 
 import CoreDataTable from "./components/dataTable/CoreDataTable";
 
@@ -152,11 +151,7 @@ import { detectPlatform } from "./utils/themeUtil";
 import CoreClasses from "./styles/CoreClasses";
 import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
 import StatusText from "./components/dataDisplay/custom/StatusText";
-import {
-  __EntityStatus,
-  HTTP,
-  urls,
-} from './config/constants';
+import { __EntityStatus, HTTP, urls } from "./config/constants";
 
 import {
   FORM_VIEW_MODE,
@@ -175,6 +170,9 @@ import {
 } from "./utils/helper";
 
 export {
+  CoreApiVersion,
+  CoreLoginDetails,
+  CoreProfilePopOver,
   __EntityStatus,
   HTTP,
   urls,
