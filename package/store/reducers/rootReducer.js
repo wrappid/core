@@ -1,4 +1,5 @@
 // import { combineReducers } from "redux";
+import appReducer from "./appReducer";
 import dataReducer from "./dataReducer";
 import apiReducer from "./apiReducer";
 import formReducer from "./formReducer";
@@ -15,6 +16,7 @@ import settingsReducer from "./settingsReducer";
 import { reducers as authReducer } from "../../modules/auth/reducers.registry";
 
 const coreReducer = {
+  app: appReducer,
   data: dataReducer,
   forms: formReducer,
   selectOptions: selectOptionsReducer,
