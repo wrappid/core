@@ -126,6 +126,7 @@ import CoreTypographyCaption from "./components/dataDisplay/paragraph/CoreTypogr
 import CoreTypographyOverline from "./components/dataDisplay/paragraph/CoreTypographyOverline";
 import CoreTypographySubtitle1 from "./components/dataDisplay/paragraph/CoreTypographySubtitle1";
 import CoreTypographySubtitle2 from "./components/dataDisplay/paragraph/CoreTypographySubtitle2";
+import CoreFormGroup from "./components/forms/CoreFormGroup";
 
 import CoreH from "./components/dataDisplay/heading/CoreH";
 import CoreH1 from "./components/dataDisplay/heading/CoreH1";
@@ -172,6 +173,7 @@ import {
 
 export {
   config,
+  CoreFormGroup,
   CoreApiVersion,
   CoreLoginDetails,
   CoreProfilePopOver,
