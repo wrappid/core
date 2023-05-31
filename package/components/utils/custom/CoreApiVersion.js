@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import config from "../../../config";
+import config from "../../../config/config";
 import { HTTP } from "../../../config/constants";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreBox from "../../layouts/CoreBox";
