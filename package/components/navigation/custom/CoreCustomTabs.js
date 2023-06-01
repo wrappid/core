@@ -1,6 +1,7 @@
 import React from "react";
 import { NativeCustomTabs } from "@wrappid/styled-components";
 import { mergedComponentRegistry } from "../../../layout/PageContainer";
+import CoreClasses from "../../../styles/CoreClasses";
 
 
 export default function CoreCustomTabs(props) {
