@@ -144,7 +144,7 @@ import { apiRequestAction } from "./store/action/appActions";
 import CoreProvider from "./store/CoreProvider";
 import CoreApp from "./CoreApp";
 import { ComponentRegistryContext, IconContext } from "./config/contextHandler";
-// import { __IconTypes } from "./components/dataDisplay/CoreIcon";
+import { __IconTypes } from "./components/dataDisplay/CoreIcon";
 
 import { maskEmailOrPhone } from "./utils/stringUtils";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
@@ -185,7 +185,7 @@ export {
   CoreDialogContext,
   coreDialogInitValue,
   CoreGoogleButton,
-  // __IconTypes,
+  __IconTypes,
   CoreApp,
   CoreProvider,
   // CoreAppDiv,
