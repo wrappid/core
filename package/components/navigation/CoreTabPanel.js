@@ -1,10 +1,11 @@
 import React from "react";
+import CoreBox from "../layouts/CoreBox";
 
 export default function CoreTabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
+    <CoreBox
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -12,6 +13,6 @@ export default function CoreTabPanel(props) {
       {...other}
     >
       {value === index && <>{children}</>}
-    </div>
+    </CoreBox>
   );
 }
