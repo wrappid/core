@@ -5,9 +5,13 @@ import CoreClasses from "../../../styles/CoreClasses";
 
 
 export default function CoreCustomTabs(props) {
+  const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
+
   return (
     <NativeCustomTabs
-      props={props}
+      tabsContent={tabsContent}
+      preHandleChangeHook={preHandleChangeHook}
+      postHandleChangeHook={postHandleChangeHook}
       tabsClasses={[
         CoreClasses.MARGIN.MB1,
         CoreClasses.POSITION.STICKY_TOP,
