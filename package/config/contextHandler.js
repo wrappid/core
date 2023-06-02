@@ -6,6 +6,6 @@ export const ThemeContext = createContext({});
 export const AppStylesContext = createContext({});
 export const IconContext = createContext({});
 export const CoreDialogContext = createContext({
-  dialog: coreDialogInitValue,
+  dialog: {},
   setDialog: () => {},
 });
