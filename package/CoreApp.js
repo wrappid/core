@@ -9,6 +9,7 @@ import {
   CoreDialogContext
 } from "./config/contextHandler";
 import CoreComponentRegistry from "./config/ComponentRegistry";
+import CoreDialog from "./components/feedback/CoreDialog";
 
 export default function CoreApp({
   reducers,
@@ -38,6 +39,7 @@ export default function CoreApp({
                 <CoreRoutes />
               </AppContainer>
             </CoreNavigation>
+            <CoreDialog />
             </CoreDialogContext.Provider>
           </CoreAppDiv>
         </React.StrictMode>
