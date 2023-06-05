@@ -171,6 +171,15 @@ import {
   viewFormattedDate,
 } from "./utils/helper";
 
+import {
+  CoreDomRoutes,
+  CoreDomRoute,
+  CoreDomNavigate,
+  coreUseNavigate,
+  coreUseLocation,
+  coreUseParams,
+} from "./helper/routerHelper";
+
 export {
   config,
   CoreFormGroup,
@@ -186,6 +195,15 @@ export {
   coreDialogInitValue,
   CoreGoogleButton,
   __IconTypes,
+
+  // route
+  CoreDomRoutes,
+  CoreDomRoute,
+  CoreDomNavigate,
+  coreUseNavigate,
+  coreUseLocation,
+  coreUseParams,
+
   CoreApp,
   CoreProvider,
   // CoreAppDiv,
