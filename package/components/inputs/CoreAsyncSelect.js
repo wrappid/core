@@ -459,7 +459,7 @@ export default function CoreAsyncSelect(props) {
                       )
                     )
                   ) : (
-                    params.InputProps.endAdornment
+                    params?.InputProps?.endAdornment
                   )}
                 </React.Fragment>
               ),

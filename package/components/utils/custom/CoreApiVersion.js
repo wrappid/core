@@ -6,7 +6,7 @@ import config from "../../../config/config";
 import { HTTP } from "../../../config/constants";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreBox from "../../layouts/CoreBox";
-import CoreLink from "../../navigation/CoreLink";
+// import CoreLink from "../../navigation/CoreLink";
 import CoreClasses from "../../../styles/CoreClasses";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { API_VERSION_ERROR, API_VERSION_SUCCESS } from "../../../store/types/appTypes";
@@ -36,9 +36,9 @@ export default function ApiVersion() {
                 <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
 
                 <CoreTypographyCaption>
-                    <CoreLink target="_blank" href={config.backendUrl + "/apiDocs"}>
+                    {/* <CoreLink target="_blank" href={config.backendUrl + "/apiDocs"}>
                         {config.backendUrl + "/apiDocs"}
-                    </CoreLink>
+                    </CoreLink> */}
                 </CoreTypographyCaption>
             </CoreBox>
         </>

@@ -1,3 +1,5 @@
+import { reloadToken } from "../utils/appUtils";
+
 async function tempFetch(apiConfig) {
   console.log("API CALLL", apiConfig);
   let res = await fetch(apiConfig.url, {
@@ -8,12 +10,17 @@ async function tempFetch(apiConfig) {
 
   let data = await res.json();
   if (res.status === 401 || res.status === 403) {
-    throw {
-      response: {
-        status: res.status,
-        data,
-      },
-    };
+    /**
+     * @todo
+     * 
+     */
+    // throw {
+    //   response: {
+    //     status: res.status,
+    //     data,
+    //   },
+    // };
+    reloadToken();
   } else if (res.status === 500) {
     throw {
       response: {
