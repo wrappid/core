@@ -36,7 +36,7 @@ export async function reloadToken() {
        * then get new access token
        * if not then remove access token and refresh token
       //  */
-  let authStore = nativeStorage.getItem(AUTH_STORE);
+  let authStore = await nativeStorage.getItem(AUTH_STORE);
   let refreshToken = authStore?.refreshToken;
   let accessToken = authStore?.accessToken;
   let tokenRequested = true;
