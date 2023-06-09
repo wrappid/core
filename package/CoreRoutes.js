@@ -13,6 +13,7 @@ import { apiRequestAction } from "./store/action/appActions";
 import { HTTP } from "./config/constants";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 import SplashComponent from "./components/navigation/custom/SplashComponent";
+import Logout from "./components/navigation/custom/Logout";
 
 export default function CoreRoutes() {
   const dispatch = useDispatch();
@@ -84,6 +85,20 @@ export default function CoreRoutes() {
             page={{
               auth: false,
               comp: SplashComponent,
+            }}
+          />
+        }
+      />
+
+      {/* LOGOUT PAGE  */}
+      <NativeDomRoute
+        exact
+        path="/logout"
+        element={
+          <PageContainer
+            page={{
+              auth: false,
+              comp: Logout,
             }}
           />
         }

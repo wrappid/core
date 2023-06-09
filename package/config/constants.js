@@ -33,7 +33,7 @@ export const HTTP = {
   GET: "get",
   POST: "post",
   PUT: "put",
-  PATCH: "patch"
+  PATCH: "patch",
 };
 
 export const DB_CONST = {
@@ -48,6 +48,7 @@ export const urls = {
   LOGIN_OTP_ROUTE: "enterOtp",
   RESET_PASSWORD_ROUTE: "resetPassword",
   REGISTER_ROUTE: "register",
+  LOGOUT: "logout",
 
   HOME_ROUTE: "home",
   PROFILE: "profile",

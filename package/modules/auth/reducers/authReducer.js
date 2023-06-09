@@ -20,6 +20,7 @@ import {
   SESSION_EXPIRED,
   SESSION_RECALLED,
   TOKEN_REFRESH_SUCCESS,
+  AUTHENTICATION_ERROR,
 } from "../types/authTypes";
 
 const initState = {
@@ -109,9 +110,9 @@ const authReducer = (state = initState, action) => {
         authLoading: false,
         accessToken: action.payload.accessToken,
       };
-    // case "AUTHENTICATION_ERROR":s
-    //   //console.log("HERE");
-    //   return initState;
+    case AUTHENTICATION_ERROR:
+      //console.log("HERE");
+      return initState;
     case LOGOUT_LOADING:
       //console.log("signout success");
       // window.location.reload();

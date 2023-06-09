@@ -49,56 +49,31 @@ import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";
 import CoreClasses from "../styles/CoreClasses";
 
+export var globalAccessToken = null;
+
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
   const dispatch = useDispatch();
   const location = nativeUseLocation();
   const auth = useSelector((state) => state?.auth);
+  const accessToken = useSelector((state) => state?.auth?.accessToken);
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
-  const [accessToken, setAccessToken] = useState(null);
   const [platform, setPlatform] = useState(WEB_PLATFORM);
   const currentPendingRequest = null;
-  // useSelector(
-  //   (state) => state.pendingRequests.pendingRequest
-  // );
-  // const pendingRequests = useSelector((state) => state.pendingRequests.requests);
+
   const recallState = useSelector((state) => state?.pendingRequests?.recall);
 
   // user settings
   const reload = useSelector((state) => state?.settings?.reload);
 
-  /**
-   * @todo getCeesToken function and and useeffect to call that canbe removed
-   *
-   * @description
-   * this piece of code is used because of the inconsistency beteen accessToken in
-   * nativestorage and reducer. Following functionality get accesstoken from native
-   * storage and calls multiple times till it finds it.
-   */
-  const getAccessToken = async () => {
-    let t = await getCoreAccessToken();
-    if (t && typeof t === "string" && t !== "null") {
-      console.log(
-        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN FOUND\n%%%%%%%%%%%%%%%%%%%%%%%%%%",
-        t
-      );
-      setAccessToken(t);
-    }
-  };
-
-  React.useEffect(() => {
-    console.log("%%%%%%%%%%%%%%%%%%%\n OUTSIDE\n%%%%%%%%%%%%%%%%%%%%%%%%%%");
-    if (auth && auth.uid && !accessToken) {
-      console.log(
-        "%%%%%%%%%%%%%%%%%%%\nACCESS TOKEN CALL\n%%%%%%%%%%%%%%%%%%%%%%%%%%"
-      );
-      getAccessToken();
-    }
-  });
   React.useEffect(() => {
     setPlatform(detectPlatform());
   }, []);
+
+  React.useEffect(() => {
+    globalAccessToken = accessToken;
+  }, [accessToken]);
 
   React.useEffect(() => {
     if (accessToken) {

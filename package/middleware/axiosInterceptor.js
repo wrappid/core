@@ -12,15 +12,15 @@ async function tempFetch(apiConfig) {
   if (res.status === 401 || res.status === 403) {
     /**
      * @todo
-     * 
+     *
      */
-    // throw {
-    //   response: {
-    //     status: res.status,
-    //     data,
-    //   },
-    // };
-    reloadToken();
+    throw {
+      response: {
+        status: res.status,
+        data,
+      },
+    };
+    // reloadToken();
   } else if (res.status === 500) {
     throw {
       response: {
