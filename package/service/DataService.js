@@ -16,5 +16,7 @@ export default async function authHeader(
     headers["Content-Type"] = "application/json";
   }
 
+  headers["Access-Control-Allow-Origin"] = "no-cors";
+
   return headers;
 }

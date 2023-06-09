@@ -46,7 +46,8 @@ class AppService {
       // console.log("--------------------------------------");
       return response;
     } catch (error) {
-      console.error("Service layer error", error);
+      console.error("Service layer error:", error.message);
+      console.error(error);
       const ob = {
         status: error?.response?.status,
         message: error?.response?.data?.message,
