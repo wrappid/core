@@ -8,7 +8,7 @@ import CoreAccordion from "../components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "../components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../components/surfaces/CoreAccordionSummary";
 import CoreClasses from "../styles/CoreClasses";
-// import ReportIssueForm from "./../module/support/ReportIssueForm";
+import ReportIssueForm from "../modules/support/ReportIssueForm";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -84,7 +84,7 @@ class ErrorBoundary extends React.Component {
             </CoreAccordionDetail>
           </CoreAccordion>
           <CoreDivider />
-          {/* <ReportIssueForm
+          <ReportIssueForm
             labels={[{ label: "Bug" }]}
             title={this.state.error?.message}
             isStacktrace={false}
@@ -93,7 +93,7 @@ class ErrorBoundary extends React.Component {
               "\n\n" +
               this.state.errorInfo?.componentStack
             }
-          /> */}
+          />
         </CoreBox>
       );
     }
