@@ -11,7 +11,10 @@ import { HTTP } from "../../../config/constants";
 
 import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
 
-import { LOGOUT_ERROR, LOGOUT_SUCCESS } from "../../../store/types/authTypes";
+import {
+  LOGOUT_ERROR,
+  LOGOUT_SUCCESS,
+} from "../../../modules/auth/types/authTypes";
 import CoreClasses from "../../../styles/CoreClasses";
 
 export default function Logout() {
