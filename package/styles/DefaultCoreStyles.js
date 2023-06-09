@@ -259,12 +259,12 @@ export const defaultCoreStyles = {
 
   // ----------Widget Styles Starts--------------
   // Counter Widget
-  counterWidgetCard: { position: "relative", ...defaultUtilityStyles.mb1 },
+  counterWidgetCard: { /* position: "relative",*/ ...defaultUtilityStyles.mb1 },
   counterWidgetCardHeader: { ...defaultUtilityStyles.p1 },
-  counterWidgetCardContent: { position: "inherit", ...defaultUtilityStyles.p1 },
+  counterWidgetCardContent: { /* position: "inherit", */ ...defaultUtilityStyles.p1 },
   counterWidgetCardActions: {},
   counterWidgetCardIcon: {
-    position: "absolute",
+    /* position: "absolute", */
     bottom: "-16px",
     right: "-16px",
     color: defaultUtilityStyles.bgDefault,
