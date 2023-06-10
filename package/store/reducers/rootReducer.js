@@ -9,6 +9,7 @@ import modalReducer from "./modalReducer";
 import routeReducer from "./routeReducer";
 import menuReducer from "./menuReducer";
 import settingsReducer from "./settingsReducer";
+import pendingRequestReducer from "./pendingRequestReducer";
 
 /**
  *  Module specific reducers
@@ -26,6 +27,7 @@ const coreReducer = {
   route: routeReducer,
   menu: menuReducer,
   settings: settingsReducer,
+  pendingRequests: pendingRequestReducer,
   ...(authReducer || {}),
 };
 

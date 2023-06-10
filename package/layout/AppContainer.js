@@ -25,7 +25,6 @@ import {
 } from "../config/constants";
 import { apiRequestAction } from "../store/action/appActions";
 import { toggleLeftMenuState } from "../store/action/menuAction";
-// import { RECALL_TOKEN_REJUVINDATED } from "../store/reducers/pendingRequestReducer";
 import {
   REMOVE_PENDING_REQUESTS,
   RECALL_TOKEN_REJUVINDATED,
@@ -45,11 +44,13 @@ import {
   GET_ROLE_PERMISSION_ERROR,
 } from "../modules/auth/types/authTypes";
 import CoreBox from "../components/layouts/CoreBox";
-import { getCoreAccessToken } from "../middleware/coreTokenProvider";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";
 import CoreClasses from "../styles/CoreClasses";
 
 export var globalAccessToken = null;
+export var globalRefreshToken = null;
+export var globalTokenRequested = null;
+export var globalTokenRequestTimeStamp = null;
 
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
@@ -57,11 +58,19 @@ function AppContainer(props) {
   const location = nativeUseLocation();
   const auth = useSelector((state) => state?.auth);
   const accessToken = useSelector((state) => state?.auth?.accessToken);
+  const refreshToken = useSelector((state) => state?.auth?.refreshToken);
+  const tokenRequested = useSelector(
+    (state) => state?.pendingRequests?.tokenRequested
+  );
+  const tokenRequestTimeStamp = useSelector(
+    (state) => state?.pendingRequests?.tokenRequestTimeStamp
+  );
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
   const [platform, setPlatform] = useState(WEB_PLATFORM);
-  const currentPendingRequest = null;
-
+  const currentPendingRequest = useSelector(
+    (state) => state.pendingRequests.pendingRequest
+  );
   const recallState = useSelector((state) => state?.pendingRequests?.recall);
 
   // user settings
@@ -73,7 +82,10 @@ function AppContainer(props) {
 
   React.useEffect(() => {
     globalAccessToken = accessToken;
-  }, [accessToken]);
+    globalRefreshToken = refreshToken;
+    globalTokenRequested = tokenRequested;
+    globalTokenRequestTimeStamp = tokenRequestTimeStamp;
+  }, [accessToken, refreshToken, tokenRequested, tokenRequestTimeStamp]);
 
   React.useEffect(() => {
     if (accessToken) {
@@ -146,11 +158,6 @@ function AppContainer(props) {
       )
     );
   };
-
-  /**
-   * @todo snake message ommitted as it was configured from app reducer
-   * if needed have to be configured from other reducer
-   */
 
   React.useEffect(() => {
     if (currentPendingRequest && recallState === RECALL_TOKEN_REJUVINDATED) {

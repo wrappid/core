@@ -1,8 +1,12 @@
 import moment from "moment";
 import { REFRESH_TOKEN_API } from "../config/api";
 import config from "../config/config";
-import { HTTP, urls } from "../config/constants";
-import { nativeStorage } from "@wrappid/styled-components";
+import { HTTP } from "../config/constants";
+import {
+  SESSION_EXPIRED,
+  TOKEN_REFRESH_SUCCESS,
+} from "../modules/auth/types/authTypes";
+import { TOKEN_REJUVINATED } from "../store/types/pendingRequestTypes";
 
 const AUTH_STORE = "persist:auth";
 
@@ -24,25 +28,13 @@ export const getTimestamp = () => {
   return new Date().getTime();
 };
 
-export async function reloadToken() {
-// refreshToken,
-// accessToken,
-// tokenRequested,
-// tokenRequestTimeStamp
-  /**
-       * @todo
-       * check if keep me logged in
-       * if enable keep me logged in
-       * then get new access token
-       * if not then remove access token and refresh token
-      //  */
-  let authStore = await nativeStorage.getItem(AUTH_STORE);
-  let authStoreObj = JSON.parse(authStore);
-  let refreshToken = authStoreObj?.refreshToken;
-  let accessToken = authStoreObj?.accessToken;
-  let tokenRequested = true;
-  let tokenRequestTimeStamp = moment();
-
+export async function reloadToken(
+  refreshToken,
+  accessToken,
+  tokenRequested,
+  tokenRequestTimeStamp,
+  dispatch
+) {
   var diff = moment().diff(tokenRequestTimeStamp, "seconds");
 
   console.log("__tokenRequested__", tokenRequested, diff);
@@ -52,42 +44,32 @@ export async function reloadToken() {
       method: HTTP.POST,
       headers: {
         Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json",
       },
-      body: { refreshToken },
+      body: JSON.stringify({ refreshToken }),
     })
-      .then(async (tokenResponse) => {
-        console.log("-----REJUVINATE IN INSPECTOR--------");
-        let authStore = await nativeStorage.getItem(AUTH_STORE);
-        await nativeStorage.setItem({
-          ...authStore,
-          authError: null,
-          authLoading: false,
-          accessToken: tokenResponse.data?.accessToken,
-        });
-        // store.dispatch({
-        //   type: TOKEN_REFRESH_SUCCESS,
-        //   payload: {
-        //     accessToken: tokenResponse.data?.accessToken,
-        //   },
-        // });
-        // store.dispatch({ type: TOKEN_REJUVINATED });
+      .then((tokenResponse) => {
+        tokenResponse
+          .json()
+          .then((tokenResponseParsed) => {
+            console.log("-----REJUVINATE IN RELOAD TOKEN--------");
+            dispatch({
+              type: TOKEN_REFRESH_SUCCESS,
+              payload: {
+                accessToken: tokenResponseParsed?.accessToken,
+              },
+            });
+            dispatch({ type: TOKEN_REJUVINATED });
+          })
+          .catch((err) => {
+            console.error("Error in toke response parse", err);
+            dispatch({ type: SESSION_EXPIRED });
+          });
       })
       .catch(async (err) => {
         if (err?.response?.status === 401 || err?.response?.status === 403) {
-          // store.dispatch({ type: SESSION_EXPIRED });
-          let authStore = await nativeStorage.getItem(AUTH_STORE);
-          await nativeStorage.setItem({
-            ...authStore,
-            sessionExpired: true,
-            accessToken: null,
-            refreshToken: null,
-            sessionDetail: null,
-            authNextPage: urls.LOGIN_ROUTE,
-            loginPage: null,
-            checkLoginOrRegisterSuccess: false,
-          });
+          dispatch({ type: SESSION_EXPIRED });
         }
       });
   }
-  // throw error;
 }

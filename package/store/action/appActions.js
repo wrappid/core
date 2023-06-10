@@ -5,8 +5,15 @@ import {
   LOGIN_WITH_URL_API,
 } from "../../config/api";
 import { HTTP, MESSAGE_TYPE } from "../../config/constants";
+import {
+  globalAccessToken,
+  globalRefreshToken,
+  globalTokenRequestTimeStamp,
+  globalTokenRequested,
+} from "../../layout/AppContainer";
 import { AUTHENTICATION_ERROR } from "../../modules/auth/types/authTypes";
 import AppService from "../../service/AppService";
+import { reloadToken } from "../../utils/appUtils";
 import { getForm } from "../../utils/formUtils";
 import {
   CLEAR_SNACK_MESSAGE,
@@ -164,29 +171,36 @@ export const apiRequestAction =
           endpoint !== LOGIN_WITH_URL_API &&
           endpoint !== LOGIN_WITH_RESET_PASSWORD_API
         ) {
-          dispatch({
-            type: AUTHENTICATION_ERROR,
-          });
           // dispatch({
-          //   type: SET_PENDING_REQUESTS,
-          //   payload: {
-          //     method,
-          //     endpoint,
-          //     authRequired,
-          //     data,
-          //     successType,
-          //     errorType,
-          //     localAction,
-          //     includeFile,
-          //     file,
-          //     formId,
-          //     reload,
-          //     reduxData,
-          //     pushSnack,
-          //     loadingType,
-          //     resetLoadingType,
-          //   },
+          //   type: AUTHENTICATION_ERROR,
           // });
+          reloadToken(
+            globalRefreshToken,
+            globalAccessToken,
+            globalTokenRequested,
+            globalTokenRequestTimeStamp,
+            dispatch
+          );
+          dispatch({
+            type: SET_PENDING_REQUESTS,
+            payload: {
+              method,
+              endpoint,
+              authRequired,
+              data,
+              successType,
+              errorType,
+              localAction,
+              includeFile,
+              file,
+              formId,
+              reload,
+              reduxData,
+              pushSnack,
+              loadingType,
+              resetLoadingType,
+            },
+          });
         } else {
           if (formId) {
             console.log("DISPATH REDUCER FORM ERROR");
