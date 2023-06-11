@@ -9,3 +9,4 @@ export const CoreDialogContext = createContext({
   dialog: {},
   setDialog: () => {},
 });
+export const CoreMenuContext = createContext({});

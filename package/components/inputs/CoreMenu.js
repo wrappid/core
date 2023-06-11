@@ -5,7 +5,7 @@ import CoreStack from "../layouts/CoreStack";
 import { ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 
-export default function NativeMenu(props) {
+export default function CoreMenu(props) {
   const location = nativeUseLocation();
 
   const {

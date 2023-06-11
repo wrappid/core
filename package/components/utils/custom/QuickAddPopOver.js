@@ -1,39 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { nativeUseNavigate } from "@wrappid/styled-components";
 import { urls } from "./../../../config/constants";
 import { __IconTypes } from "../../dataDisplay/CoreIcon";
-import { CoreMenu } from "../../inputs/CoreMenu";
+import CoreMenu from "../../inputs/CoreMenu";
+import { CoreMenuContext } from "../../../config/contextHandler";
 
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
+  const {quickAddMenu} = useContext(CoreMenuContext);
   const { onClose } = props;
-  const addMenu = [
-    {
-      icon: "personal_injury",
-      id: "createPatient",
-      label: "Add Patient",
-      link: urls.CREATE_PATIENT,
-    },
-    {
-      icon: {
-        icon: "fa-file-prescription",
-        type: __IconTypes.FONTAWESOME_V5_SOLID_ICON,
-      },
-      id: "createPrescription",
-      label: "Create Prescription",
-      link: urls.PRESCRIPTION,
-    },
-    {
-      icon: {
-        icon: "fa-calendar-check",
-        type: __IconTypes.FONTAWESOME_V5_SOLID_ICON,
-      },
-      id: "scheduleAppointment",
-      label: "Schedule Appointment",
-      link: urls.APPOINTMENT_SCHEDULE,
-    },
-  ];
 
   const OnMenuClick = (item) => {
     navigate(item.link);
@@ -42,7 +18,7 @@ export default function QuickAddPopOver(props) {
 
   return (
     <CoreMenu
-      menu={addMenu}
+      menu={quickAddMenu}
       miniDrawer={false}
       multiLevel={false}
       open={true}

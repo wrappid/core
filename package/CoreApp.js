@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import AppContainer from "./layout/AppContainer";
 import CoreNavigation from "./components/navigation/CoreNavigation";
@@ -6,7 +6,8 @@ import CoreProvider from "./store/CoreProvider";
 import CoreRoutes from "./CoreRoutes";
 import {
   ComponentRegistryContext,
-  CoreDialogContext
+  CoreDialogContext,
+  CoreMenuContext,
 } from "./config/contextHandler";
 import CoreComponentRegistry from "./config/ComponentRegistry";
 import CoreDialog from "./components/feedback/CoreDialog";
@@ -17,8 +18,8 @@ export default function CoreApp({
   componentRegistry,
   appStyles,
   customIcons,
+  menuRegistry,
 }) {
-
   const [dialog, setDialog] = useState({});
   const value = { dialog, setDialog };
   return (
@@ -32,16 +33,18 @@ export default function CoreApp({
         value={{ ...componentRegistry, ...CoreComponentRegistry }}
       >
         <React.StrictMode>
-          <CoreAppDiv>
-          <CoreDialogContext.Provider value={value}>
-            <CoreNavigation>
-              <AppContainer>
-                <CoreRoutes />
-              </AppContainer>
-            </CoreNavigation>
-            <CoreDialog />
-            </CoreDialogContext.Provider>
-          </CoreAppDiv>
+          <CoreMenuContext.Provider  value={menuRegistry}>
+            <CoreAppDiv>
+              <CoreDialogContext.Provider value={value}>
+                <CoreNavigation>
+                  <AppContainer>
+                    <CoreRoutes />
+                  </AppContainer>
+                </CoreNavigation>
+                <CoreDialog />
+              </CoreDialogContext.Provider>
+            </CoreAppDiv>
+          </CoreMenuContext.Provider>
         </React.StrictMode>
       </ComponentRegistryContext.Provider>
     </CoreProvider>

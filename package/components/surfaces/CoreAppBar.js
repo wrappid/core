@@ -14,6 +14,7 @@ import CoreIconButton from "../inputs/CoreIconButton";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
+import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
@@ -200,7 +201,7 @@ export default function CoreAppBar(props) {
           ) : _appbarContent === appbarPopOver.QUICK_MENU ? (
             <>
               {/* Add Popover */}
-              <CoreProfilePopOver onClose={handleAppbarPopOverClose} />
+              <QuickAddPopOver onClose={handleAppbarPopOverClose} />
             </>
           ) : _appbarContent === appbarPopOver.PROFILE ? (
             <>
