@@ -8,13 +8,13 @@ import { MENU_SEPERATOR } from "../../../config/menuConstants";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 import CoreAvatar from "../../dataDisplay/CoreAvatar";
-import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreMenu from "../../inputs/CoreMenu";
 import CoreClasses from "../../../styles/CoreClasses";
 import { getFullName } from "../../../utils/helper";
 import CoreApiVersion from './CoreApiVersion';
 import CoreLoginDetails from './CoreLoginDetails';
+import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
@@ -51,37 +51,37 @@ export default function CoreProfilePopOver(props) {
   };
 
   return (
-    <CoreBox>
+    <CoreBox styleClasses={[CoreClasses.WIDTH.W_100]}>
       <CoreGrid
         styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          // CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
-          CoreClasses.PADDING.P1,
+          // CoreClasses.PADDING.PB1,
         ]}
       >
         <CoreAvatar
-          gridProps={{ gridSize: 2 }}
-          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
+          gridProps={{ gridSize: 4 }}
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM, CoreClasses.MARGIN.MR2]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />
 
-        <CoreBox gridProps={{ gridSize: 10 }}>
-          <CoreTypographyBody1 hideSeeMore={true} limitChars={30}>
+        <CoreBox gridProps={{ gridSize: 8 }}>
+          <CoreTypographyCaption hideSeeMore={true} limitChars={30}>
             {getFullName({ firstName, lastName, middleName })}
-          </CoreTypographyBody1>
+          </CoreTypographyCaption>
 
           {profile?.contact?.email && profile?.contact?.email !== "" && (
-            <CoreTypographyBody1>{profile?.contact?.email}</CoreTypographyBody1>
+            <CoreTypographyCaption>{profile?.contact?.email}</CoreTypographyCaption>
           )}
 
           {profile?.contact?.phone && profile?.contact?.phone !== "" && (
-            <CoreTypographyBody1>{profile?.contact?.phone}</CoreTypographyBody1>
+            <CoreTypographyCaption>{profile?.contact?.phone}</CoreTypographyCaption>
           )}
         </CoreBox>
       </CoreGrid>
 
-      <CoreDivider />
+      <CoreDivider styleClasses={[CoreClasses.MARGIN.MB4]} />
 
       <CoreMenu
         menu={profileCardMenu}
