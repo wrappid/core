@@ -84,6 +84,7 @@ import CoreFormLabelCheckbox from "./components/inputs/custom/CoreFormLabelCheck
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
+import CoreMedicineSelector from "./components/inputs/custom/CoreMedicineSelector";
 
 import CoreAlert from "./components/feedback/CoreAlert";
 import CoreBackdrop from "./components/feedback/CoreBackdrop";
@@ -366,4 +367,5 @@ export {
   MENU_ITEM_BUTTON,
   MENU_ITEM_TEXT,
   MENU_ITEM_ICON,
+  CoreMedicineSelector,
 };
