@@ -1,10 +1,13 @@
-import { nativeCreateTheme } from "@wrappid/styled-components";
+import {
+  nativeCreateTheme,
+  nativeUseTheme as coreUseTheme,
+} from "@wrappid/styled-components";
 import { theme as coreTheme } from "../theme/theme";
 
 export const WEB_PLATFORM = "web";
 export const APP_PLATFORM = "app";
 
-export function detectPlatform() {
+function detectPlatform() {
   let doc = null;
   let nav = null;
 
@@ -54,3 +57,5 @@ try {
 console.log("THEME", theme);
 
 export default theme;
+
+export { coreUseTheme, detectPlatform };
