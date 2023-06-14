@@ -152,6 +152,7 @@ import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import { detectPlatform } from "./utils/themeUtil";
 import CoreClasses from "./styles/CoreClasses";
 import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
+import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInput";
 import StatusText from "./components/dataDisplay/custom/StatusText";
 import { __EntityStatus, HTTP, urls } from "./config/constants";
 import config from "./config/config";
@@ -370,4 +371,5 @@ export {
   MENU_ITEM_ICON,
   CoreMedicineSelector,
   AppService,
+  CoreReactSelectInput,
 };
