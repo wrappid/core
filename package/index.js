@@ -193,6 +193,7 @@ import {
   MENU_ITEM_TEXT,
   MENU_ITEM_ICON,
 } from "./config/menuConstants";
+import AppService from "./service/AppService";
 
 export {
   config,
@@ -368,4 +369,5 @@ export {
   MENU_ITEM_TEXT,
   MENU_ITEM_ICON,
   CoreMedicineSelector,
+  AppService,
 };
