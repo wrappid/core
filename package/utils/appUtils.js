@@ -40,36 +40,38 @@ export async function reloadToken(
   console.log("__tokenRequested__", tokenRequested, diff);
   if (!tokenRequested || diff > 60) {
     // return {reducer: true, type: TOKEN_REQUESTED };
-    fetch(config.wrappid.backendUrl + REFRESH_TOKEN_API, {
-      method: HTTP.POST,
-      headers: {
-        Authorization: "Bearer " + accessToken,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refreshToken }),
-    })
-      .then((tokenResponse) => {
-        tokenResponse
-          .json()
-          .then((tokenResponseParsed) => {
-            console.log("-----REJUVINATE IN RELOAD TOKEN--------");
-            dispatch({
-              type: TOKEN_REFRESH_SUCCESS,
-              payload: {
-                accessToken: tokenResponseParsed?.accessToken,
-              },
-            });
-            dispatch({ type: TOKEN_REJUVINATED });
-          })
-          .catch((err) => {
-            console.error("Error in toke response parse", err);
-            dispatch({ type: SESSION_EXPIRED });
-          });
+    if(config?.wrappid?.backendUrl !== undefined) {
+      fetch(config?.wrappid?.backendUrl + REFRESH_TOKEN_API, {
+        method: HTTP.POST,
+        headers: {
+          Authorization: "Bearer " + accessToken,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refreshToken }),
       })
-      .catch(async (err) => {
-        if (err?.response?.status === 401 || err?.response?.status === 403) {
-          dispatch({ type: SESSION_EXPIRED });
-        }
-      });
+        .then((tokenResponse) => {
+          tokenResponse
+            .json()
+            .then((tokenResponseParsed) => {
+              console.log("-----REJUVINATE IN RELOAD TOKEN--------");
+              dispatch({
+                type: TOKEN_REFRESH_SUCCESS,
+                payload: {
+                  accessToken: tokenResponseParsed?.accessToken,
+                },
+              });
+              dispatch({ type: TOKEN_REJUVINATED });
+            })
+            .catch((err) => {
+              console.error("Error in toke response parse", err);
+              dispatch({ type: SESSION_EXPIRED });
+            });
+        })
+        .catch(async (err) => {
+          if (err?.response?.status === 401 || err?.response?.status === 403) {
+            dispatch({ type: SESSION_EXPIRED });
+          }
+        });
+    }
   }
 }
