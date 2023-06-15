@@ -11,7 +11,7 @@ import CoreClasses from "../../../styles/CoreClasses";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { API_VERSION_ERROR, API_VERSION_SUCCESS } from "../../../store/types/appTypes";
 
-export default function ApiVersion() {
+export default function CoreApiVersion() {
     const dispatch = useDispatch();
 
     const { apiVersion } = useSelector((state) => state.app);
@@ -24,14 +24,16 @@ export default function ApiVersion() {
 
     return (
         <>
-            <CoreBox styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+            <CoreBox 
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            >
                 <CoreTypographyCaption>API Version:</CoreTypographyCaption>
 
                 <CoreTypographyCaption>{apiVersion?.version || "unknown"}</CoreTypographyCaption>
             </CoreBox>
 
             <CoreBox
-                styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
                 <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
 

@@ -7,7 +7,7 @@ import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCap
 import CoreBox from "../../layouts/CoreBox";
 import CoreClasses from "../../../styles/CoreClasses";
 
-export default function LoginDetails() {
+export default function CoreLoginDetails() {
   const role = useSelector((state) => state.auth?.role);
   const clientLoginInformation = useSelector(
     (state) => state.auth?.clientLoginInformation
@@ -18,7 +18,7 @@ export default function LoginDetails() {
   return (
     <>
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Role:</CoreTypographyCaption>
 
@@ -26,13 +26,13 @@ export default function LoginDetails() {
       </CoreBox>
 
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreLabel>Last Login Information :-</CoreLabel>
       </CoreBox>
 
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Device:</CoreTypographyCaption>
 
@@ -42,7 +42,7 @@ export default function LoginDetails() {
       </CoreBox>
 
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Last Login time:</CoreTypographyCaption>
 
@@ -53,7 +53,7 @@ export default function LoginDetails() {
       </CoreBox>
 
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Location IP:</CoreTypographyCaption>
 

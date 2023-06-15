@@ -12,8 +12,8 @@ import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreMenu from "../../inputs/CoreMenu";
 import CoreClasses from "../../../styles/CoreClasses";
 import { getFullName } from "../../../utils/helper";
-import CoreApiVersion from './CoreApiVersion';
-import CoreLoginDetails from './CoreLoginDetails';
+import CoreApiVersion from "./CoreApiVersion";
+import CoreLoginDetails from "./CoreLoginDetails";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreProfilePopOver(props) {
@@ -21,7 +21,11 @@ export default function CoreProfilePopOver(props) {
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
-  const { firstName = "", middleName = "", lastName = "" } = profile?.basic||{};
+  const {
+    firstName = "",
+    middleName = "",
+    lastName = "",
+  } = profile?.basic || {};
   const { onClose } = props;
   const profileCardMenu = [
     {
@@ -62,22 +66,29 @@ export default function CoreProfilePopOver(props) {
       >
         <CoreAvatar
           gridProps={{ gridSize: 4 }}
-          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM, CoreClasses.MARGIN.MR2]}
+          styleClasses={[
+            CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM,
+            CoreClasses.MARGIN.MR2,
+          ]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />
 
-        <CoreBox gridProps={{ gridSize: 8 }}>
+        <CoreBox
+          gridProps={{ gridSize: 8 }}
+          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+        >
           <CoreTypographyCaption hideSeeMore={true} limitChars={30}>
-            {getFullName({ firstName, lastName, middleName })}
+            {auth?.name}
           </CoreTypographyCaption>
 
-          {profile?.contact?.email && profile?.contact?.email !== "" && (
+          {/* @todo need to get it from authReducer */}
+          {/* {profile?.contact?.email && profile?.contact?.email !== "" && (
             <CoreTypographyCaption>{profile?.contact?.email}</CoreTypographyCaption>
           )}
 
           {profile?.contact?.phone && profile?.contact?.phone !== "" && (
             <CoreTypographyCaption>{profile?.contact?.phone}</CoreTypographyCaption>
-          )}
+          )} */}
         </CoreBox>
       </CoreGrid>
 
@@ -89,8 +100,8 @@ export default function CoreProfilePopOver(props) {
         multiLevel={false}
         open={true}
         OnMenuClick={OnMenuClick}
-        
       />
+
       {/* ApiVersion && LoginDetails */}
       <CoreApiVersion />
       <CoreLoginDetails />
