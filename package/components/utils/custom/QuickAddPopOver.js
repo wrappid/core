@@ -8,7 +8,7 @@ import { CoreMenuContext } from "../../../config/contextHandler";
 
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
-  const {quickAddMenu} = useContext(CoreMenuContext);
+  const menuData = useContext(CoreMenuContext);
   const { onClose } = props;
 
   const OnMenuClick = (item) => {
@@ -18,7 +18,7 @@ export default function QuickAddPopOver(props) {
 
   return (
     <CoreMenu
-      menu={quickAddMenu}
+      menu={menuData?.quickAddMenu}
       miniDrawer={false}
       multiLevel={false}
       open={true}

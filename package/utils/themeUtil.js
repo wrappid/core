@@ -1,6 +1,7 @@
 import {
   nativeCreateTheme,
   nativeUseTheme as coreUseTheme,
+  NativeCssBaseline as CoreCssBaseline,
 } from "@wrappid/styled-components";
 import { theme as coreTheme } from "../theme/theme";
 
@@ -58,4 +59,4 @@ console.log("THEME", theme);
 
 export default theme;
 
-export { coreUseTheme, detectPlatform };
+export { coreUseTheme, detectPlatform, CoreCssBaseline };

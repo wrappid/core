@@ -149,7 +149,11 @@ import { __IconTypes } from "./components/dataDisplay/CoreIcon";
 
 import { maskEmailOrPhone } from "./utils/stringUtils";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
-import { detectPlatform, coreUseTheme } from "./utils/themeUtil";
+import {
+  detectPlatform,
+  coreUseTheme,
+  CoreCssBaseline,
+} from "./utils/themeUtil";
 import CoreClasses from "./styles/CoreClasses";
 import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
 import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInput";
@@ -379,4 +383,5 @@ export {
   FORM_SANITIZATION_FUNCTION_IDS,
   FORM_SANITIZATOIN_FUNCTION_MAP,
   coreUseTheme,
+  CoreCssBaseline,
 };
