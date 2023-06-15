@@ -120,7 +120,7 @@ class RegisterOrResetPassword extends Component {
         <CoreForm
           styleClasses={CoreClasses.LAYOUT.AUTH_FORM_CONTAINER}
           formId="loginWithResetPassword"
-          mode="eidt"
+          mode="edit"
           authenticated={false}
         />
 
