@@ -147,7 +147,7 @@ export const basicIntroSchemas = yup.object({
   dob: yup
     .date()
     .min(moment().subtract(115, "years"), "MIN_AGE")
-    .max(moment().endOf("day").subtract(18, "years"), "Max age should be 18"),
+    .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
   gender: yup.string().required("Gender is required"),
 });
 
@@ -390,7 +390,7 @@ export const profileBaic = {
   dob: yup
     .date()
     .min(moment().subtract(115, "years"), "MIN_AGE")
-    .max(moment().endOf("day").subtract(18, "years"), "Max age should be 18"),
+    .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
   gender: yup.object().required("Gender is required"),
 };
 
