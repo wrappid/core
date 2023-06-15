@@ -146,12 +146,16 @@ const formReducer = (state = initState, action) => {
       };
     case FORM_SUBMIT_ERROR:
       console.log("FORM FORM_SUBMIT_ERROR REDUCER------", action);
-      var m =
-        action?.payload?.data?.message &&
-        typeof action?.payload?.data?.message === "string"
-          ? action?.payload?.data?.message
-          : "Unwanted error";
-      alert("Sorry!", m, "error");
+      
+      var errorMsg = "Something went wrong!";
+    
+      if (action?.payload?.data?.message &&
+        typeof action?.payload?.data?.message === "string") {
+        errorMsg = action?.payload?.data?.message;
+      }
+      
+      alert(errorMsg);
+      
       return {
         ...state,
         formSubmitError: {
