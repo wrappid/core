@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import {connect} from 'react-redux';
-import {NativeDomNavigate} from '@wrappid/styled-components';
+import { connect } from "react-redux";
+import { NativeDomNavigate } from "@wrappid/styled-components";
 
 import {
   CoreH1,
   CoreH2,
   CoreLabel,
   CoreTypographyBody1,
+  CoreTypographyBody2,
   CoreForm,
   CoreTextButton,
   CoreBox,
@@ -15,16 +16,17 @@ import {
   apiRequestAction,
   maskEmailOrPhone,
   CoreClasses,
-} from '@wrappid/core';
+} from "@wrappid/core";
 
-import {HTTP, urls} from '../../../config/constants';
-import {NAVIGATE_TO_RESET_PASSWORD_API} from '../../../config/api';
+import { HTTP, urls } from "../../../config/constants";
+import { NAVIGATE_TO_RESET_PASSWORD_API } from "../../../config/api";
 import {
   CHECK_LOGIN_ERROR,
   NAVIGATE_TO_RESET_PASSWORD_SUCCESS,
-} from '../types/authTypes';
-import {AuthContainer} from './AuthContainer';
-import { saveAuthData } from '../actions/authActions';
+} from "../types/authTypes";
+import { AuthContainer } from "./AuthContainer";
+import { saveAuthData } from "../actions/authActions";
+import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/CoreTypographyCaption";
 
 class RegisterOrResetPassword extends Component {
   state = {};
@@ -44,8 +46,8 @@ class RegisterOrResetPassword extends Component {
   componentDidUpdate = () => {
     if (this.state.submitFlag && this.props.auth.authError) {
       //   swal("Oops!", this.props.auth.authError, "error");
-      this.props.SaveAuthData({authError: null});
-      this.setState({submitFlag: false});
+      this.props.SaveAuthData({ authError: null });
+      this.setState({ submitFlag: false });
     }
   };
 
@@ -70,45 +72,47 @@ class RegisterOrResetPassword extends Component {
       (this.props.authNextPage !== urls.REGISTER_ROUTE ||
         this.props.authNextPage !== urls.RESET_PASSWORD_ROUTE)
     ) {
-      console.log('REDIRECT');
-      return <NativeDomNavigate to={'/' + this.props.authNextPage} />;
+      console.log("REDIRECT");
+      return <NativeDomNavigate to={"/" + this.props.authNextPage} />;
     }
 
     return (
       <AuthContainer>
         <CoreH1
           variant="h5"
-          styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}>
-          Verify your{' '}
-          {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
+          styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
+        >
+          Verify your{" "}
+          {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
         </CoreH1>
 
         {this.props.authNextPage === urls.REGISTER_ROUTE ? (
           <CoreTypographyBody1>
-            We have sent you a verification code on{' '}
+            We have sent you a verification code on{" "}
             {maskEmailOrPhone(this.props.navData.emailOrPhone)}
-            <br />
-            Please enter the One Time Password (OTP) to verify your{' '}
-            {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
+            {"\n"}
+            Please enter the One Time Password (OTP) to verify your{" "}
+            {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
           </CoreTypographyBody1>
         ) : (
           <>
             <CoreH2
               variant="h6"
-              styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}>
+              styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
+            >
               Reset Password through OTP
             </CoreH2>
 
             <CoreTypographyBody1>
-              {'We have sent you a verification code on your'}
+              {"We have sent you a verification code on your"}
 
-              {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
+              {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
 
               {maskEmailOrPhone(this.props.navData?.emailOrPhone)}
 
-              {' Please enter the One Time Password (OTP) to verify your'}
+              {" Please enter the One Time Password (OTP) to verify your"}
 
-              {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
+              {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
             </CoreTypographyBody1>
           </>
         )}
@@ -125,22 +129,31 @@ class RegisterOrResetPassword extends Component {
         />
 
         {this.props.authNextPage === urls.REGISTER_ROUTE && (
-          <CoreBox>
-            <CoreLabel>
-              <CoreTypographyBody1>
-                By signing up you agree to our
-                <CoreLink>Privacy Policy</CoreLink>&
-                <CoreLink>Terms of use</CoreLink>
-              </CoreTypographyBody1>
-            </CoreLabel>
-          </CoreBox>
+          <>
+            <CoreTypographyBody2>
+              By signing up you agree to our
+            </CoreTypographyBody2>
+            <CoreBox
+              styleClasses={[
+                CoreClasses.LAYOUT.FULL_WIDTH,
+                CoreClasses.FLEX.DIRECTION_ROW,
+                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_AROUND,
+                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+                CoreClasses.MARGIN.MT3,
+              ]}
+            >
+              <CoreLink>Privacy Policy</CoreLink>
+              <CoreTypographyBody2 component="span">&</CoreTypographyBody2>
+              <CoreLink>Terms of Use</CoreLink>
+            </CoreBox>
+          </>
         )}
       </AuthContainer>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     authNextPage: state.auth.authNextPage,
@@ -153,12 +166,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    SaveAuthData: data => {
+    SaveAuthData: (data) => {
       dispatch(saveAuthData(data));
     },
-    SendResetPasswordOtp: data => {
+    SendResetPasswordOtp: (data) => {
       dispatch(
         apiRequestAction(
           HTTP.POST,
@@ -166,8 +179,8 @@ const mapDispatchToProps = dispatch => {
           true,
           data,
           NAVIGATE_TO_RESET_PASSWORD_SUCCESS,
-          CHECK_LOGIN_ERROR,
-        ),
+          CHECK_LOGIN_ERROR
+        )
       );
     },
   };
@@ -175,5 +188,5 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(RegisterOrResetPassword);

@@ -118,15 +118,8 @@ class LoginWithPassword extends Component {
            * we need send otp to the provided email or phone
            * fix required: email or phone getting removed from store auth.navData
            */}
-          <CoreLink href="/resetPassword">
-            <CoreTypographyButton>Reset Password</CoreTypographyButton>
-          </CoreLink>
-
-          <CoreTypographyBody1 component="span">or</CoreTypographyBody1>
-
-          <CoreLink href="/enterOtp">
-            <CoreTypographyButton>Login with OTP</CoreTypographyButton>
-          </CoreLink>
+          <CoreLink href="/resetPassword">Reset Password</CoreLink>
+          <CoreLink href="/enterOtp">Login with OTP</CoreLink>
         </CoreBox>
       </AuthContainer>
     );
