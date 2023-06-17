@@ -10,9 +10,11 @@ export default function CoreInput(props) {
     <CoreBox>
       <NativeInput {...props} />
       {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
-      <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-        {props.helperText}
-      </CoreFormHelperText>
+      {props.helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {props.helperText}
+        </CoreFormHelperText>
+      )}
     </CoreBox>
   );
 }
