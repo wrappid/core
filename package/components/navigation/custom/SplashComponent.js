@@ -40,12 +40,16 @@ export default function SplashComponent() {
         return <NativeDomNavigate to={"/" + urls.DASHBOARD} />;
       }
     } else if (
-      auth?.sessionExpired &&
-      location.pathname !== "/" + urls.PASSWORD_ROUTE
+      location?.state?.sessionExpired &&
+      (location.pathname !== "/" + urls.PASSWORD_ROUTE ||
+        location.pathname !== "/")
     ) {
       console.log("&&&&&&&&&&&&&&&&&&&\n GING TO PASSWORD\n&&&&&&&&&&&&&&&&&&");
       return <NativeDomNavigate to={"/" + urls.PASSWORD_ROUTE} />;
-    } else if (location.pathname !== "/" + urls.LOGIN_ROUTE) {
+    } else if (
+      location.pathname !== "/" + urls.LOGIN_ROUTE ||
+      location.pathname !== "/"
+    ) {
       console.log(
         "&&&&&&&&&&&&&&&&&&&\n GING TO CHEK USER EXIST\n&&&&&&&&&&&&&&&&&&"
       );

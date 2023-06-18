@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import config from "../config/config";
-import { ENV_DEV_MODE } from "../config/constants";
+import { ENV_DEV_MODE, urls } from "../config/constants";
 import Error404 from "../error/Error404";
 import { RESET_LOADING } from "../store/types/appTypes";
 import {
@@ -91,10 +91,11 @@ export default function PageContainer(props) {
   // React.useEffect(() => {}, [route]);
 
   // redirection if guest
-  if (!auth?.uid && route?.authRequired !== false) {
-    console.log("NAVIGATING TO SPLASH AS PAGE NEED AUTH");
-    return <CoreDomNavigate to="/" />;
-  }
+  if (!auth?.uid && route?.authRequired !== false)
+    return <CoreDomNavigate to={"/" + urls.LOGOUT} />;
+
+  // React.useEffect(() => {
+  // }, []);
 
   return (
     <>

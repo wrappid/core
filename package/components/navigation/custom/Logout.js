@@ -39,7 +39,7 @@ export default function Logout() {
   }, []);
 
   if (!auth?.uid) {
-    if (location?.state?.sessionExpired) {
+    if (auth?.sessionExpired) {
       return <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />;
     } else {
       return <NativeDomNavigate to={"/"} />;
