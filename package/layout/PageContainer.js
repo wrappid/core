@@ -73,7 +73,11 @@ export default function PageContainer(props) {
       });
     }
 
-    if (auth.sessionExpired && !auth.uid) {
+    if (
+      auth.sessionExpired &&
+      !auth.uid &&
+      location?.pathname !== urls.PASSWORD_ROUTE
+    ) {
       navigate("/" + urls.LOGOUT);
     }
   });
