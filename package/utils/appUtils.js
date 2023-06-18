@@ -3,6 +3,7 @@ import { REFRESH_TOKEN_API } from "../config/api";
 import config from "../config/config";
 import { HTTP } from "../config/constants";
 import {
+  LOGOUT_SUCCESS,
   SESSION_EXPIRED,
   TOKEN_REFRESH_SUCCESS,
 } from "../modules/auth/types/authTypes";
@@ -56,13 +57,26 @@ export async function reloadToken(
           .json()
           .then((tokenResponseParsed) => {
             console.log("-----REJUVINATE IN RELOAD TOKEN--------");
-            dispatch({
-              type: TOKEN_REFRESH_SUCCESS,
-              payload: {
-                accessToken: tokenResponseParsed?.accessToken,
-              },
-            });
-            dispatch({ type: TOKEN_REJUVINATED });
+            if (tokenResponse.status === 200) {
+              dispatch({
+                type: TOKEN_REFRESH_SUCCESS,
+                payload: {
+                  accessToken: tokenResponseParsed?.accessToken,
+                },
+              });
+              dispatch({ type: TOKEN_REJUVINATED });
+            } else if (
+              tokenResponse.status === 401 ||
+              tokenResponse.status === 403
+            ) {
+              dispatch({
+                type: SESSION_EXPIRED,
+              });
+            } else if (tokenResponse.status === 500) {
+              dispatch({
+                type: LOGOUT_SUCCESS,
+              });
+            }
           })
           .catch((err) => {
             console.error("Error in toke response parse", err);

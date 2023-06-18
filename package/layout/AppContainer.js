@@ -81,13 +81,6 @@ function AppContainer(props) {
   }, []);
 
   React.useEffect(() => {
-    globalAccessToken = accessToken;
-    globalRefreshToken = refreshToken;
-    globalTokenRequested = tokenRequested;
-    globalTokenRequestTimeStamp = tokenRequestTimeStamp;
-  }, [accessToken, refreshToken, tokenRequested, tokenRequestTimeStamp]);
-
-  React.useEffect(() => {
     if (accessToken) {
       dispatch(
         apiRequestAction(
@@ -197,6 +190,11 @@ function AppContainer(props) {
       type: SELECT_OPTION_SUCCESS,
     });
   }, []);
+
+  globalAccessToken = accessToken;
+  globalRefreshToken = refreshToken;
+  globalTokenRequested = tokenRequested;
+  globalTokenRequestTimeStamp = tokenRequestTimeStamp;
 
   return (
     <CoreBox
