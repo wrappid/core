@@ -25,6 +25,7 @@ import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
+import { CoreDomNavigate } from "../helper/routerHelper";
 
 export let mergedComponentRegistry = {};
 
@@ -90,10 +91,8 @@ export default function PageContainer(props) {
   // React.useEffect(() => {}, [route]);
 
   // redirection if guest
-  // if (!auth?.uid && route?.Page?.authRequired !== false) return <Navigate to="/" />;
-
-  // React.useEffect(() => {
-  // }, []);
+  if (!auth?.uid && route?.Page?.authRequired !== false)
+    return <CoreDomNavigate to="/" />;
 
   return (
     <>
