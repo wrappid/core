@@ -72,14 +72,6 @@ export default function PageContainer(props) {
         type: SESSION_RECALLED,
       });
     }
-
-    if (
-      auth.sessionExpired &&
-      !auth.uid &&
-      location?.pathname !== urls.PASSWORD_ROUTE
-    ) {
-      navigate("/" + urls.LOGOUT);
-    }
   });
 
   React.useEffect(() => {
