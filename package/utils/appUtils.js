@@ -43,7 +43,7 @@ export async function reloadToken(
     const backendUrl = config?.wrappid
       ? config.wrappid.backendUrl
       : process.env.REACT_APP_WRAPPID_backendUrl;
-    // return {reducer: true, type: TOKEN_REQUESTED };
+    dispatch({ type: TOKEN_REQUESTED });
     fetch(backendUrl + REFRESH_TOKEN_API, {
       method: HTTP.POST,
       headers: {
