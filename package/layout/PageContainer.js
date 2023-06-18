@@ -73,7 +73,7 @@ export default function PageContainer(props) {
       });
     }
 
-    if (!auth.sessionExpired && auth.uid) {
+    if (auth.sessionExpired && !auth.uid) {
       navigate("/" + urls.LOGOUT);
     }
   });

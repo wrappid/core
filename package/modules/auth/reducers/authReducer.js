@@ -324,7 +324,7 @@ const authReducer = (state = initState, action) => {
         accessToken: null,
         refreshToken: null,
         sessionDetail: null,
-        authNextPage: urls.LOGIN_ROUTE,
+        authNextPage: urls.PASSWORD_ROUTE,
         loginPage: null,
         checkLoginOrRegisterSuccess: false,
       };
