@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import config from "../config/config";
-import { ENV_DEV_MODE } from "../config/constants";
+import { ENV_DEV_MODE, urls } from "../config/constants";
 import Error404 from "../error/Error404";
 import { RESET_LOADING } from "../store/types/appTypes";
 import {
@@ -25,10 +25,12 @@ import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
+import { coreUseNavigate } from "../helper/routerHelper";
 
 export let mergedComponentRegistry = {};
 
 export default function PageContainer(props) {
+  const navigate = coreUseNavigate();
   const dispatch = useDispatch();
   let location = nativeUseLocation();
   mergedComponentRegistry = useContext(ComponentRegistryContext);
@@ -69,6 +71,10 @@ export default function PageContainer(props) {
       dispatch({
         type: SESSION_RECALLED,
       });
+    }
+
+    if (!auth.sessionExpired && auth.uid) {
+      navigate("/" + urls.LOGOUT);
     }
   });
 
