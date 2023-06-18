@@ -91,7 +91,7 @@ export default function PageContainer(props) {
   // React.useEffect(() => {}, [route]);
 
   // redirection if guest
-  if (!auth?.uid && route?.Page?.authRequired !== false) {
+  if (!auth?.uid && route?.authRequired !== false) {
     console.log("NAVIGATING TO SPLASH AS PAGE NEED AUTH");
     return <CoreDomNavigate to="/" />;
   }
