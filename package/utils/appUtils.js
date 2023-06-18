@@ -7,7 +7,10 @@ import {
   SESSION_EXPIRED,
   TOKEN_REFRESH_SUCCESS,
 } from "../modules/auth/types/authTypes";
-import { TOKEN_REJUVINATED } from "../store/types/pendingRequestTypes";
+import {
+  TOKEN_REJUVINATED,
+  TOKEN_REQUESTED,
+} from "../store/types/pendingRequestTypes";
 
 const AUTH_STORE = "persist:auth";
 
