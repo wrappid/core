@@ -97,6 +97,7 @@ import { CoreDialogContext } from "./config/contextHandler";
 import { coreDialogInitValue } from "./config/constants";
 
 import CoreDataTable from "./components/dataTable/CoreDataTable";
+import CoreFlatList from "./components/dataTable/CoreFlatList";
 
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
@@ -384,4 +385,5 @@ export {
   FORM_SANITIZATOIN_FUNCTION_MAP,
   coreUseTheme,
   CoreCssBaseline,
+  CoreFlatList,
 };

@@ -51,6 +51,7 @@ export default function CoreCustomTabs(props) {
         tabIndex={tabIndex}
         tabRef={tabRef}
         currentTab={tabValue}
+        key={tabContent?.id ? "tabContent-" + tabContent?.id : tabIndex}
       />
     );
   };
@@ -87,6 +88,7 @@ export default function CoreCustomTabs(props) {
             styleClasses={props.tabPanelClasses}
             value={tabValue}
             index={tabContent?.id || tabIndex}
+            key={tabContent?.id ? "tabContent-" + tabContent?.id : tabIndex}
           >
             {React.createElement(
               mergedComponentRegistry[tabContent.comp]?.comp
