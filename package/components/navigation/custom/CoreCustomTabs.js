@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import CoreTabs from "../CoreTabs";
 import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
@@ -14,6 +14,7 @@ export default function CoreCustomTabs(props) {
     tabsContent && tabsContent.length > 0 ? tabsContent[0]?.id : 0
   );
   const mergedComponentRegistry = useContext(ComponentRegistryContext);
+  const tabRef = useRef(null);
 
   React.useEffect(() => {
     if (
@@ -28,6 +29,13 @@ export default function CoreCustomTabs(props) {
     }
   }, [tabsContent, location]);
 
+  React.useEffect(() => {
+    const initialIndex = 0; //random number
+    if (tabRef.current) {
+      tabRef.current.scrollToIndex({ index: initialIndex });
+    }
+  }, [tabRef, tabRef?.current]);
+
   const handleChange = (e, value) => {
     preHandleChangeHook && preHandleChangeHook(e, value);
     setTabValue(value);
@@ -40,6 +48,8 @@ export default function CoreCustomTabs(props) {
         onPress={handleChange}
         value={tabContent?.id}
         label={tabContent?.label}
+        tabIndex={tabIndex}
+        tabRef={tabRef}
         currentTab={tabValue}
       />
     );
@@ -49,6 +59,7 @@ export default function CoreCustomTabs(props) {
     return rowData.id;
   };
 
+  console.log("TAB REF T", tabRef);
   return (
     <>
       <CoreTabs
@@ -63,6 +74,7 @@ export default function CoreCustomTabs(props) {
         onChange={handleChange}
       >
         <CoreFlatList
+          listRef={tabRef}
           horizontal={true}
           tableData={tabsContent}
           renderItem={renderItem}
