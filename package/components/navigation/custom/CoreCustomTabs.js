@@ -45,7 +45,7 @@ export default function CoreCustomTabs(props) {
   const renderItem = (tabContent, tabIndex) => {
     return (
       <CoreTab
-        onPress={handleChange}
+        onClick={handleChange}
         value={tabContent?.id}
         label={tabContent?.label}
         tabIndex={tabIndex}
