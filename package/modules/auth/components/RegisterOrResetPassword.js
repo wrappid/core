@@ -3,20 +3,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NativeDomNavigate } from "@wrappid/styled-components";
 
-import {
-  CoreH1,
-  CoreH2,
-  CoreLabel,
-  CoreTypographyBody1,
-  CoreTypographyBody2,
-  CoreForm,
-  CoreTextButton,
-  CoreBox,
-  CoreLink,
-  apiRequestAction,
-  maskEmailOrPhone,
-  CoreClasses,
-} from "@wrappid/core";
+import CoreH1 from "../../../components/dataDisplay/heading/CoreH1";
+import CoreH2 from "../../../components/dataDisplay/heading/CoreH2";
+import CoreTypographyBody1 from "../../../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody2 from "../../../components/dataDisplay/paragraph/CoreTypographyBody2";
+import CoreForm from "../../../components/forms/CoreForm";
+import CoreTextButton from "../../../components/inputs/CoreTextButton";
+import CoreBox from "../../../components/layouts/CoreBox";
+import CoreLink from "../../../components/navigation/CoreLink";
+import { apiRequestAction } from "../../../store/action/appActions";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
+import CoreClasses from "../../../styles/CoreClasses";
 
 import { HTTP, urls } from "../../../config/constants";
 import { NAVIGATE_TO_RESET_PASSWORD_API } from "../../../config/api";
@@ -26,7 +23,6 @@ import {
 } from "../types/authTypes";
 import { AuthContainer } from "./AuthContainer";
 import { saveAuthData } from "../actions/authActions";
-import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/CoreTypographyCaption";
 
 class RegisterOrResetPassword extends Component {
   state = {};

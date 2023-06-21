@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 
-import {
-  CoreBox,
-  CoreAvatar,
-  CoreH6,
-  CoreTypographyBody2,
-  CoreTypographyBody1,
-  CoreTextButton,
-  CoreForm,
-  CoreLink,
-  CoreTypographyButton,
-  maskEmailOrPhone,
-  CoreClasses,
-} from "@wrappid/core";
+import CoreBox from "../../../components/layouts/CoreBox";
+import CoreAvatar from "../../../components/dataDisplay/CoreAvatar";
+import CoreH6 from "../../../components/dataDisplay/heading/CoreH6";
+import CoreTypographyBody2 from "../../../components/dataDisplay/paragraph/CoreTypographyBody2";
+import CoreTextButton from "../../../components/inputs/CoreTextButton";
+import CoreForm from "../../../components/forms/CoreForm";
+import CoreLink from "../../../components/navigation/CoreLink";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
+import CoreClasses from "../../../styles/CoreClasses";
+
 import { NativeDomNavigate } from "@wrappid/styled-components";
 import { connect } from "react-redux";
 

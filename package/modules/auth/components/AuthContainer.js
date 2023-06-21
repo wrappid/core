@@ -1,12 +1,10 @@
 import React from "react";
 
-import {
-  CoreBox,
-  CoreGrid,
-  CoreSection,
-  CoreImage,
-  CoreClasses,
-} from "@wrappid/core";
+import CoreBox from "../../../components/layouts/CoreBox";
+import CoreGrid from "../../../components/layouts/CoreGrid";
+import CoreSection from "../../../components/layouts/CoreSection";
+import CoreClasses from "../../../styles/CoreClasses";
+
 import { nativeUseNavigate } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 

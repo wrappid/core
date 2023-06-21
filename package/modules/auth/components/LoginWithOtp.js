@@ -3,16 +3,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {NativeDomNavigate} from '@wrappid/styled-components';
 
-import {
-  CoreH1,
-  CoreForm,
-  CoreTextButton,
-  CoreBox,
-  apiRequestAction,
-  maskEmailOrPhone,
-  CoreTypographyBody1,
-  CoreClasses,
-} from '@wrappid/core';
+import CoreH1 from '../../../components/dataDisplay/heading/CoreH1';
+import CoreForm from '../../../components/forms/CoreForm';
+import CoreBox from '../../../components/layouts/CoreBox';
+import CoreTextButton from '../../../components/inputs/CoreTextButton';
+import { apiRequestAction } from '../../../store/action/appActions';
+import { maskEmailOrPhone } from '../../../utils/stringUtils';
+import CoreTypographyBody1 from '../../../components/dataDisplay/paragraph/CoreTypographyBody1';
+import CoreClasses from '../../../styles/CoreClasses';
 
 import {AuthContainer} from './AuthContainer';
 import {NAVIGATE_TO_OTP_LOGIN_API} from '../../../config/api';
