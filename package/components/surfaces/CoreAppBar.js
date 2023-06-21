@@ -15,6 +15,8 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
+import { coreUseNavigate } from "../../helper/routerHelper";
+import CoreComponent from "../CoreComponent";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ export default function CoreAppBar(props) {
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   const [platform, setPlatform] = useState(null);
+  const navigate = coreUseNavigate();
 
   const { handleDrawer } = props;
 
@@ -89,19 +92,11 @@ export default function CoreAppBar(props) {
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
 
-            <CoreImage
-              src={
-                platform === APP_PLATFORM
-                  ? require("../../../../../src/images/logo.png")
-                  : "/images/logo.png"
-              }
-              alt="Rxefy Logo"
-              height={30}
-              width={100}
+            <CoreComponent
+              componentName={"AppLogo"}
               onClick={() => {
                 navigate("/" + urls.DASHBOARD);
               }}
-              // styleClasses={[StyledComponentClasses.CORE_APP_BAR.APP_BAR_LOGO]}
             />
           </CoreStack>
 

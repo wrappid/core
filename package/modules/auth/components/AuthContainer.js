@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import CoreBox from "../../../components/layouts/CoreBox";
 import CoreGrid from "../../../components/layouts/CoreGrid";
@@ -7,13 +7,16 @@ import CoreClasses from "../../../styles/CoreClasses";
 
 import { nativeUseNavigate } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
+import CoreComponent from "../../../components/CoreComponent";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const requestUrl = useSelector((state) => state?.manageAssistant?.requestUrl);
+  const { logo } = useContext(CoreResourceContext);
 
   React.useEffect(() => {
+    console.log("Logo: ", logo);
     if (auth.uid) {
       if (requestUrl) {
         navigate(requestUrl.requestUrl);
@@ -41,6 +44,16 @@ export const AuthContainer = (props) => {
     >
       <CoreBox gridProps={{ gridSize: { md: 3, sm: 6 } }}>
         <CoreSection>
+          <CoreBox
+            styleClasses={[
+              CoreClasses?.LAYOUT?.FULL_WIDTH,
+              CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+              CoreClasses?.MARGIN?.MB5,
+            ]}
+          ></CoreBox>
+
+          <CoreComponent componentName="AppLogo" />
+
           <CoreBox
             styleClasses={[
               CoreClasses?.LAYOUT?.FULL_WIDTH,
