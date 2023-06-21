@@ -8,6 +8,7 @@ import {
   ComponentRegistryContext,
   CoreDialogContext,
   CoreMenuContext,
+  CoreResourceContext,
 } from "./config/contextHandler";
 import CoreComponentRegistry from "./config/ComponentRegistry";
 import CoreDialog from "./components/feedback/CoreDialog";
@@ -19,6 +20,7 @@ export default function CoreApp({
   appStyles,
   customIcons,
   menuRegistry,
+  resourceRegistry,
 }) {
   const [dialog, setDialog] = useState({});
   const value = { dialog, setDialog };
@@ -33,6 +35,7 @@ export default function CoreApp({
         value={{ ...componentRegistry, ...CoreComponentRegistry }}
       >
         <React.StrictMode>
+          <CoreResourceContext.Provider value={resourceRegistry}>
           <CoreMenuContext.Provider  value={menuRegistry}>
             <CoreAppDiv>
               <CoreDialogContext.Provider value={value}>
@@ -45,6 +48,7 @@ export default function CoreApp({
               </CoreDialogContext.Provider>
             </CoreAppDiv>
           </CoreMenuContext.Provider>
+          </CoreResourceContext.Provider>
         </React.StrictMode>
       </ComponentRegistryContext.Provider>
     </CoreProvider>

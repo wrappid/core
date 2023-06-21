@@ -203,8 +203,10 @@ import {
 } from "./config/menuConstants";
 import AppService from "./service/AppService";
 import { toggleRightMenuState } from "./store/action/menuAction";
+import { CoreResourceContext } from "./config/contextHandler";
 
 export {
+  CoreResourceContext,
   config,
   CoreFormGroup,
   CoreApiVersion,
