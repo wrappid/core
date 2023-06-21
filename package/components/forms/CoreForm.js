@@ -79,7 +79,7 @@ class CoreForm extends Component {
     } else {
       //local forms supplied via props are stored in rawForm
       this.props.storeForm(GET_FORM_SUCCESS, {
-        formId,
+        formId: this.props.formId,
         localForm: true,
         data: formJson,
       });
