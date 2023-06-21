@@ -61,6 +61,7 @@ class CoreForm extends Component {
         : null;
 
     if (!formJson) {
+      //forms fetched from api ar stored
       let rawForm = this.props.rawForm;
       let rawFormStatus = this.props.rawFormStatus;
       let t = await getForm(this.props.formId, this.props.authenticated, {
@@ -75,6 +76,13 @@ class CoreForm extends Component {
       } else {
         this.props.storeForm(GET_FORM_ERROR, { formId, data: null });
       }
+    } else {
+      //local forms supplied via props are stored in rawForm
+      this.props.storeForm(GET_FORM_SUCCESS, {
+        formId,
+        localForm: true,
+        data: formJson,
+      });
     }
     return formJson;
   };

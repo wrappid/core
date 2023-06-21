@@ -146,16 +146,18 @@ const formReducer = (state = initState, action) => {
       };
     case FORM_SUBMIT_ERROR:
       console.log("FORM FORM_SUBMIT_ERROR REDUCER------", action);
-      
+
       var errorMsg = "Something went wrong!";
-    
-      if (action?.payload?.data?.message &&
-        typeof action?.payload?.data?.message === "string") {
+
+      if (
+        action?.payload?.data?.message &&
+        typeof action?.payload?.data?.message === "string"
+      ) {
         errorMsg = action?.payload?.data?.message;
       }
-      
+
       alert(errorMsg);
-      
+
       return {
         ...state,
         formSubmitError: {
@@ -224,6 +226,7 @@ const formReducer = (state = initState, action) => {
       console.log("FORM GET_FORM_SUCCESS REDUCER------", action);
       return {
         ...state,
+        localForm: action.payload.localForm || false,
         rawFormStatus: {
           ...state.rawFormStatus,
           [action.payload.formId]: {
