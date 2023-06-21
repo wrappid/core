@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { NativeDomNavigate } from "@wrappid/styled-components";
 
 import CoreH1 from "../../../components/dataDisplay/heading/CoreH1";
-import CoreH2 from "../../../components/dataDisplay/heading/CoreH2";
+// import CoreH2 from "../../../components/dataDisplay/heading/CoreH2";
 import CoreTypographyBody1 from "../../../components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyBody2 from "../../../components/dataDisplay/paragraph/CoreTypographyBody2";
 import CoreForm from "../../../components/forms/CoreForm";
@@ -76,40 +76,41 @@ class RegisterOrResetPassword extends Component {
       <AuthContainer>
         <CoreH1
           variant="h5"
-          styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
+          styleClasses={[
+            // CoreClasses.DATA_DISPLAY.TEXT_CENTER,
+            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          ]}
         >
-          Verify your{" "}
-          {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
+          {`Verify your${
+            isNaN(this.props.navData.emailOrPhone) ? " email" : " phone"
+          }`}
         </CoreH1>
 
         {this.props.authNextPage === urls.REGISTER_ROUTE ? (
-          <CoreTypographyBody1>
-            We have sent you a verification code on{" "}
-            {maskEmailOrPhone(this.props.navData.emailOrPhone)}
-            {"\n"}
-            Please enter the One Time Password (OTP) to verify your{" "}
-            {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
-          </CoreTypographyBody1>
+          <CoreTypographyBody2>
+            {`We have sent you a verification code on ${maskEmailOrPhone(
+              this.props.navData.emailOrPhone
+            )}.\nPlease enter the One Time Password (OTP) to verify your ${
+              isNaN(this.props.navData.emailOrPhone) ? " email." : " phone."
+            }`}
+          </CoreTypographyBody2>
         ) : (
           <>
-            <CoreH2
-              variant="h6"
+            <CoreTypographyBody1
               styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
             >
               Reset Password through OTP
-            </CoreH2>
-
-            <CoreTypographyBody1>
-              {"We have sent you a verification code on your"}
-
-              {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
-
-              {maskEmailOrPhone(this.props.navData?.emailOrPhone)}
-
-              {" Please enter the One Time Password (OTP) to verify your"}
-
-              {isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "}
             </CoreTypographyBody1>
+
+            <CoreTypographyBody2>
+              {`We have sent you a verification code on your ${
+                isNaN(this.props.navData.emailOrPhone) ? " email" : " phone"
+              } ${maskEmailOrPhone(
+                this.props.navData?.emailOrPhone
+              )}.\nPlease enter the One Time Password (OTP) to verify your ${
+                isNaN(this.props.navData.emailOrPhone) ? " email." : " phone."
+              }`}
+            </CoreTypographyBody2>
           </>
         )}
 

@@ -1,30 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import {connect} from 'react-redux';
-import {NativeDomNavigate} from '@wrappid/styled-components';
+import { connect } from "react-redux";
+import { NativeDomNavigate } from "@wrappid/styled-components";
 
-import CoreH1 from '../../../components/dataDisplay/heading/CoreH1';
-import CoreForm from '../../../components/forms/CoreForm';
-import CoreBox from '../../../components/layouts/CoreBox';
-import CoreTextButton from '../../../components/inputs/CoreTextButton';
-import { apiRequestAction } from '../../../store/action/appActions';
-import { maskEmailOrPhone } from '../../../utils/stringUtils';
-import CoreTypographyBody1 from '../../../components/dataDisplay/paragraph/CoreTypographyBody1';
-import CoreClasses from '../../../styles/CoreClasses';
+import CoreH1 from "../../../components/dataDisplay/heading/CoreH1";
+import CoreForm from "../../../components/forms/CoreForm";
+import CoreBox from "../../../components/layouts/CoreBox";
+import CoreTextButton from "../../../components/inputs/CoreTextButton";
+import { apiRequestAction } from "../../../store/action/appActions";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
+// import CoreTypographyBody1 from "../../../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreClasses from "../../../styles/CoreClasses";
 
-import {AuthContainer} from './AuthContainer';
-import {NAVIGATE_TO_OTP_LOGIN_API} from '../../../config/api';
+import { AuthContainer } from "./AuthContainer";
+import { NAVIGATE_TO_OTP_LOGIN_API } from "../../../config/api";
 import {
   NAVIGATE_TO_OTP_LOGIN_ERROR,
   NAVIGATE_TO_OTP_LOGIN_LOADING,
   NAVIGATE_TO_OTP_LOGIN_SUCCESS,
-} from '../types/authTypes';
-import {HTTP} from '../../../config/constants';
-import {urls} from '../../../config/constants';
-import { saveAuthData } from '../actions/authActions';
+} from "../types/authTypes";
+import { HTTP } from "../../../config/constants";
+import { urls } from "../../../config/constants";
+import { saveAuthData } from "../actions/authActions";
+import CoreTypographyBody2 from "../../../components/dataDisplay/paragraph/CoreTypographyBody2";
 
 class LoginWithOtp extends Component {
-  state = {otp: false};
+  state = { otp: false };
 
   componentDidMount = () => {
     /**
@@ -38,9 +39,9 @@ class LoginWithOtp extends Component {
       !this.props.navigateToOtpSuccess &&
       !this.state.otp
     ) {
-      console.log('OTP CALLING');
-      this.setState({otp: true}, () => {
-        this.props.SendOtp({emailOrPhone: this.props?.navData?.emailOrPhone});
+      console.log("OTP CALLING");
+      this.setState({ otp: true }, () => {
+        this.props.SendOtp({ emailOrPhone: this.props?.navData?.emailOrPhone });
       });
     }
   };
@@ -48,8 +49,8 @@ class LoginWithOtp extends Component {
   componentDidUpdate = () => {
     if (this.state.submitFlag && this.props.auth.authError) {
       //   swal("Oops!", this.props.auth.authError, "error");
-      this.props.SaveAuthData({authError: null});
-      this.setState({submitFlag: false});
+      this.props.SaveAuthData({ authError: null });
+      this.setState({ submitFlag: false });
     }
   };
 
@@ -73,32 +74,21 @@ class LoginWithOtp extends Component {
       !this.props.checkLoginOrRegisterSuccess &&
       this.props.authNextPage !== urls.LOGIN_OTP_ROUTE
     ) {
-      console.log('REDIRECT');
-      return <NativeDomNavigate to={'/' + this.props.authNextPage} />;
+      console.log("REDIRECT");
+      return <NativeDomNavigate to={"/" + this.props.authNextPage} />;
     }
     return (
       <AuthContainer>
         <CoreH1
           styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
-          variant="h5">
+          variant="h5"
+        >
           Enter OTP
         </CoreH1>
 
-        <CoreTypographyBody1>
-          {'We have sent you a verification code on your'}
-
-          {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
-
-          {maskEmailOrPhone(
-            this.props?.navData?.emailOrPhone
-              ? this.props?.navData?.emailOrPhone
-              : '',
-          )}
-
-          {' Please enter the One Time Password (OTP) to verify your'}
-
-          {isNaN(this.props.navData.emailOrPhone) ? ' email ' : ' phone '}
-        </CoreTypographyBody1>
+        <CoreTypographyBody2>
+          {`We have sent you a verification code on your ${isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "} ${maskEmailOrPhone(this.props?.navData?.emailOrPhone ? this.props?.navData?.emailOrPhone : "")}.\nPlease enter the One Time Password (OTP) to verify your ${isNaN(this.props.navData.emailOrPhone) ? " email." : " phone."}`}
+        </CoreTypographyBody2>
 
         <CoreBox styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}>
           <CoreTextButton OnClick={this.GoBack} label="Not you" />
@@ -106,8 +96,8 @@ class LoginWithOtp extends Component {
 
         <CoreForm
           styleClasses={CoreClasses.LAYOUT.AUTH_FORM_CONTAINER}
-          formId={'loginWithOtp'}
-          mode={'edit'}
+          formId={"loginWithOtp"}
+          mode={"edit"}
           authenticated={false}
         />
       </AuthContainer>
@@ -115,7 +105,7 @@ class LoginWithOtp extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // console.log(state)
   return {
     auth: state.auth,
@@ -130,12 +120,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    SaveAuthData: data => {
+    SaveAuthData: (data) => {
       dispatch(saveAuthData(data));
     },
-    SendOtp: data => {
+    SendOtp: (data) => {
       dispatch(
         apiRequestAction(
           HTTP.POST,
@@ -152,8 +142,8 @@ const mapDispatchToProps = dispatch => {
           null, //reduxData,
           null, //pushSnack,
           NAVIGATE_TO_OTP_LOGIN_LOADING, //loadingType,
-          null, //resetLoadingType,
-        ),
+          null //resetLoadingType,
+        )
       );
     },
   };
