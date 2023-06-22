@@ -1,3 +1,4 @@
+import React from "react";
 import CoreIcon from "..//CoreIcon";
 import CoreTooltip from "../CoreTooltip";
 import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
