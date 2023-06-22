@@ -1,6 +1,6 @@
 import CoreIcon from "..//CoreIcon";
 import CoreTooltip from "../CoreTooltip";
-import CoreTypographyBody2 from "../../paragraph/CoreTypographyBody2";
+import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
