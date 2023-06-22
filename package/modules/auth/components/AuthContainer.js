@@ -14,7 +14,8 @@ export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const requestUrl = useSelector((state) => state?.manageAssistant?.requestUrl);
-  const { logo } = useContext(CoreResourceContext);
+  const resourceContext = useContext(CoreResourceContext);
+  const logo = resourceContext?.logo;
 
   React.useEffect(() => {
     console.log("Logo: ", logo);
