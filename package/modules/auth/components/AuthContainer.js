@@ -8,6 +8,7 @@ import CoreClasses from "../../../styles/CoreClasses";
 import { nativeUseNavigate } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 import CoreComponent from "../../../components/CoreComponent";
+import { CoreResourceContext } from "../../../config/contextHandler";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
