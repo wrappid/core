@@ -140,6 +140,9 @@ import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 
 // import StatusText from "./components/dataDisplay/custom/StatusText";
 // import UserChip from "./components/dataDisplay/custom/UserChip";
+import CoreEmailLink from "./components/dataDisplay/custom/CoreEmailLink";
+import CorePhoneLink from "./components/dataDisplay/custom/CorePhoneLink";
+import CoreEmailOrPhoneLink from "./components/dataDisplay/custom/CoreEmailOrPhoneLink";
 
 import { createFullStore } from "./store/store";
 import { apiRequestAction } from "./store/action/appActions";
@@ -390,4 +393,7 @@ export {
   coreUseTheme,
   CoreCssBaseline,
   CoreFlatList,
+  CorePhoneLink,
+  CoreEmailLink,
+  CoreEmailOrPhoneLink,
 };
