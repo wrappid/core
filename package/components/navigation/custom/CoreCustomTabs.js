@@ -1,11 +1,9 @@
 import React, { useContext, useRef } from "react";
 import CoreTabPanel from "../CoreTabPanel";
 import { ComponentRegistryContext } from "../../../config/contextHandler";
-import { nativeUseLocation } from "@wrappid/styled-components";
 import CoreTabHead from "./CoreTabHead";
 
 export default function CoreCustomTabs(props) {
-  const location = nativeUseLocation();
   const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
   const [tabValue, setTabValue] = React.useState(
     tabsContent && tabsContent.length > 0 ? tabsContent[0]?.id : 0
@@ -13,18 +11,9 @@ export default function CoreCustomTabs(props) {
   const mergedComponentRegistry = useContext(ComponentRegistryContext);
   const tabRef = useRef(null);
 
-  React.useEffect(() => {
-    if (
-      location?.hash &&
-      tabsContent?.filter((tabContent) => {
-        return tabContent?.id === location?.hash?.replace("#", "");
-      })?.length > 0
-    ) {
-      setTabValue(location.hash?.replace("#", ""));
-    } else {
-      setTabValue(tabsContent[0]?.id);
-    }
-  }, [tabsContent, location]);
+  // React.useEffect(() => {
+  //   setTabValue(tabsContent[0]?.id);
+  // }, [tabsContent]);
 
   React.useEffect(() => {
     const initialIndex = 0; //random number
