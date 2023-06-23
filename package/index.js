@@ -17,6 +17,7 @@ import CoreTab from "./components/navigation/CoreTab";
 import CoreTabPanel from "./components/navigation/CoreTabPanel";
 import CoreTabs from "./components/navigation/CoreTabs";
 import CoreCustomTabs from "./components/navigation/custom/CoreCustomTabs";
+import CoreTabHead from "./components/navigation/custom/CoreTabHead";
 
 // import CoreNavigation from "./CoreNavigation";
 
@@ -253,6 +254,7 @@ export {
   CoreTabPanel,
   CoreTabs,
   CoreCustomTabs,
+  CoreTabHead,
   // CoreNavigation,
   CoreFade,
   CoreModal,
