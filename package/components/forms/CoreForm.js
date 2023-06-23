@@ -54,6 +54,13 @@ class CoreForm extends Component {
     prevQuery: null,
   };
 
+  componentDidMount = () => {
+    onMountLoad();
+  };
+  componentDidUpdate = () => {
+    onUpdateLoad();
+  };
+
   getAndStoreForm = async () => {
     let formJson =
       this.props.formJson && this.props.formJson[this.props.formId]
@@ -62,7 +69,7 @@ class CoreForm extends Component {
 
     if (!formJson) {
       //forms fetched from api ar stored
-      let rawForm = this.props.rawForm;
+      let rawForm = this.props.rawFormSchema;
       let rawFormStatus = this.props.rawFormStatus;
       let t = await getForm(this.props.formId, this.props.authenticated, {
         rawForm,
@@ -87,7 +94,7 @@ class CoreForm extends Component {
     return formJson;
   };
 
-  componentDidMount = async () => {
+  onMountLoad = async () => {
     // console.log("ROW FORM JSON", this.props.formJson, this.props.initData);
     this.setState({ formIdAtMount: this.props.formId });
     var formJson = await this.getAndStoreForm();
@@ -160,7 +167,8 @@ class CoreForm extends Component {
       );
     }
   };
-  componentDidUpdate = async () => {
+
+  onUpdateLoad = async () => {
     if (this.props.formId !== this.state.formIdAtMount) {
       let formJson = await this.getAndStoreForm();
       this.setState({ formIdAtMount: this.props.formId }, () => {
@@ -317,20 +325,22 @@ class CoreForm extends Component {
       }
 
       console.log("-----RELOAD", apiMeta);
-      this.props.HandleFormSubmit(
-        apiMeta.method,
-        apiMeta.endpoint,
-        apiMeta.authRequired,
-        {},
-        apiMeta.successType,
-        apiMeta.errorType,
-        apiMeta.localAction,
-        apiMeta.includeFile,
-        apiMeta.files,
-        this.props.formId,
-        true,
-        apiMeta.reduxData
-      );
+      if (apiMeta.method && apiMeta.endpoint) {
+        this.props.HandleFormSubmit(
+          apiMeta.method,
+          apiMeta.endpoint,
+          apiMeta.authRequired,
+          {},
+          apiMeta.successType,
+          apiMeta.errorType,
+          apiMeta.localAction,
+          apiMeta.includeFile,
+          apiMeta.files,
+          this.props.formId,
+          true,
+          apiMeta.reduxData
+        );
+      }
     }
   };
 
@@ -951,6 +961,7 @@ const mapStateToProps = (state) => {
     formSubmitLoading: state.forms.formSubmitLoading,
     formDataReadLoading: state.forms.formDataReadLoading,
     rawFormSchema: state.forms.rawForm,
+    rawFormStatus: state.forms.rawFormStatus,
     formData: state.api,
   };
 };
