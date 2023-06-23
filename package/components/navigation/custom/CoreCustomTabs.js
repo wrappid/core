@@ -71,8 +71,8 @@ export default function CoreCustomTabs(props) {
           // CoreClasses.OVERFLOW.OVERFLOW_X_SCROLL,
           CoreClasses.WIDTH.W_100,
         ]}
-        value={tabValue}
-        onChange={handleChange}
+        // value={tabValue}
+        // onChange={handleChange}
       >
         <CoreFlatList
           listRef={tabRef}
