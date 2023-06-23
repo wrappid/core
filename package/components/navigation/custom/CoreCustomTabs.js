@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from "react";
-import CoreTab from "../CoreTab";
 import CoreTabPanel from "../CoreTabPanel";
 import { ComponentRegistryContext } from "../../../config/contextHandler";
 import { nativeUseLocation } from "@wrappid/styled-components";
