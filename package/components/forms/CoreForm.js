@@ -55,10 +55,10 @@ class CoreForm extends Component {
   };
 
   componentDidMount = () => {
-    onMountLoad();
+    this.onMountLoad();
   };
   componentDidUpdate = () => {
-    onUpdateLoad();
+    this.onUpdateLoad();
   };
 
   getAndStoreForm = async () => {
