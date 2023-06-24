@@ -2,10 +2,7 @@ import * as yup from "yup";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreInput from "../components/inputs/CoreInput";
 import CoreBox from "../components/layouts/CoreBox";
-import {
-  ENV_DEV_MODE,
-  HTTP,
-} from "../config/constants";
+import { ENV_DEV_MODE, HTTP } from "../config/constants";
 import {
   DELETE_DATA_ERROR,
   DELETE_DATA_SUCCESS,
@@ -609,7 +606,12 @@ export function hookcallCheck(
 
 export async function getForm(formId, auth = true, formReducer) {
   if (formReducer?.rawForm && formReducer?.rawForm[formId]) {
-    return formReducer?.rawForm[formId];
+    return {
+      formJson: formReducer?.rawForm[formId],
+      success: true,
+      formId,
+      message: "Local fetch success",
+    };
   } else if (
     !formReducer?.rawFormStatus ||
     (formReducer?.rawFormStatus && !formReducer?.rawFormStatus[formId]) ||
