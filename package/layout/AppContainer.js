@@ -243,7 +243,7 @@ function AppContainer(props) {
             toggleDrawer={handleDrawer}
           />
         )}
-        <CoreRightDrawer open={false} />
+        {/* <CoreRightDrawer open={false} /> */}
 
         <ErrorBoundary hasError={hasError} setHasError={setHasError}>
           {props.children}

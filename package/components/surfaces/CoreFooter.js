@@ -14,10 +14,10 @@ export default function CoreFooter(props) {
       <CoreDivider />
 
       <CoreGrid styleClasses={[CoreClasses.PADDING.PT3]}>
-        <CoreTypographyBody1>
-          {process.env.REACT_APP_FOOTER_TEXT ||
-            config?.footerText ||
-            "Wrappid Default Footer @ 2023 "}
+        <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.TEXT_END]}>
+          {process.env.REACT_APP_WRAPPID_FOOTER_TEXT ||
+            config?.wrappid?.footerText ||
+            "Wrappid Default Footer"}{` © ${new Date().getFullYear()}`}
         </CoreTypographyBody1>
 
         <CoreTypographyBody1>{/* <AppVersion /> */}</CoreTypographyBody1>

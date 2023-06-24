@@ -9,14 +9,17 @@ export default function CoreRightDrawer(props) {
   const toggleRightDrawer = () => {
     dispatch(toggleRightMenuState());
   };
+  
   return (
-    <NativeRightDrawer
-      onOpen={toggleRightDrawer}
-      onClose={toggleRightDrawer}
-      open={rightMenuOpen}
-      {...props}
-    >
-      {props.children}
-    </NativeRightDrawer>
+    rightMenuOpen && (
+      <NativeRightDrawer
+        onOpen={toggleRightDrawer}
+        onClose={toggleRightDrawer}
+        open={rightMenuOpen}
+        {...props}
+      >
+        {props.children}
+      </NativeRightDrawer>
+    )
   );
 }
