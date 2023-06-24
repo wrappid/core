@@ -52,6 +52,12 @@ export default function PageContainer(props) {
 
   const [pageComponent, setPageComponent] = React.useState();
 
+  /**
+   * @todo change this when doing core dialog
+   * @techoneel
+   */
+  const value = {};
+
   React.useEffect(() => {
     if (auth.sessionExpired && !auth.sessionDetail) {
       dispatch({
