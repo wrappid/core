@@ -27,6 +27,13 @@ import { ComponentRegistryContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
 import { coreUseNavigate } from "../helper/routerHelper";
 
+import {
+  ComponentRegistryContext,
+  CoreDialogContext,
+} from "./config/contextHandler";
+import CoreDialog from "./components/feedback/CoreDialog";
+
+
 export let mergedComponentRegistry = {};
 
 export default function PageContainer(props) {
@@ -134,15 +141,18 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-        {mergedComponentRegistry[route?.Page?.appComponent]?.comp ? (
-          React.createElement(
-            mergedComponentRegistry[route?.Page?.appComponent]?.comp
-          )
-        ) : props.page?.comp ? (
-          React.createElement(props.page?.comp, props?.page?.props, null)
-        ) : (
-          <Error404 />
-        )}
+        <CoreDialogContext.Provider value={value}>
+          {mergedComponentRegistry[route?.Page?.appComponent]?.comp ? (
+            React.createElement(
+              mergedComponentRegistry[route?.Page?.appComponent]?.comp
+            )
+          ) : props.page?.comp ? (
+            React.createElement(props.page?.comp, props?.page?.props, null)
+          ) : (
+            <Error404 />
+          )}
+          <CoreDialog />
+        </CoreDialogContext.Provider>
       </CoreBox>
     </>
   );

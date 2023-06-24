@@ -6,12 +6,12 @@ import CoreProvider from "./store/CoreProvider";
 import CoreRoutes from "./CoreRoutes";
 import {
   ComponentRegistryContext,
-  CoreDialogContext,
+  // CoreDialogContext,
   CoreMenuContext,
   CoreResourceContext,
 } from "./config/contextHandler";
 import CoreComponentRegistry from "./config/ComponentRegistry";
-import CoreDialog from "./components/feedback/CoreDialog";
+// import CoreDialog from "./components/feedback/CoreDialog";
 
 export default function CoreApp({
   reducers,
@@ -38,14 +38,14 @@ export default function CoreApp({
           <CoreResourceContext.Provider value={resourceRegistry}>
           <CoreMenuContext.Provider  value={menuRegistry}>
             <CoreAppDiv>
-              <CoreDialogContext.Provider value={value}>
+              {/* <CoreDialogContext.Provider value={value}> */}
                 <CoreNavigation>
                   <AppContainer>
                     <CoreRoutes />
                   </AppContainer>
                 </CoreNavigation>
-                <CoreDialog />
-              </CoreDialogContext.Provider>
+                {/* <CoreDialog /> */}
+              {/* </CoreDialogContext.Provider> */}
             </CoreAppDiv>
           </CoreMenuContext.Provider>
           </CoreResourceContext.Provider>
