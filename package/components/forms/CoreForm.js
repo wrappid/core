@@ -916,6 +916,12 @@ class CoreForm extends Component {
               formData={formData[formId]?.data?.rows}
               allowEdit={allowEdit}
               preview={preview}
+              submitLoading={formSubmitLoading[formId]}
+              submitSuccess={formSubmitSuccess[formId]}
+              OnEditClick={this.OnEditClick}
+              OnCancelClick={this.OnCancel}
+              editFormId={formId}
+              onFormFocus={onFormFocus}
             />
           ) : (
             <CoreEditForm
