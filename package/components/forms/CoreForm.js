@@ -85,6 +85,14 @@ class CoreForm extends Component {
       }
     } else {
       //local forms supplied via props are stored in rawForm
+      let tempFields = null;
+      if (formJson?.fields) {
+        tempFields = formJson?.fields;
+      }
+      formJson = formJson.formJson;
+      if (tempFields) {
+        formJson = { ...formJson, fields: tempFields };
+      }
       this.props.storeForm(GET_FORM_SUCCESS, {
         formId: this.props.formId,
         localForm: true,
