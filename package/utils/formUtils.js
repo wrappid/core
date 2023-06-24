@@ -194,7 +194,11 @@ export async function createForm(
   formSchema
 ) {
   var formJson =
-    rawFormJson && rawFormJson[formId] ? rawFormJson[formId] : formSchema;
+    rawFormJson && rawFormJson[formId]
+      ? rawFormJson[formId]?.formJson
+        ? rawFormJson[formId]?.formJson
+        : rawFormJson[formId]
+      : formSchema;
   console.log("form", formJson);
   var {
     allComps,
