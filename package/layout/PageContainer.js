@@ -23,14 +23,9 @@ import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
-import { ComponentRegistryContext } from "../config/contextHandler";
+import { ComponentRegistryContext, CoreDialogContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
 import { coreUseNavigate } from "../helper/routerHelper";
-
-import {
-  ComponentRegistryContext,
-  CoreDialogContext,
-} from "./config/contextHandler";
 import CoreDialog from "./components/feedback/CoreDialog";
 
 
