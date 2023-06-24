@@ -607,7 +607,7 @@ class CoreForm extends Component {
     }
 
     // console.log("LOC STATE", initData);
-    // console.log("LOC props", this.props);
+    console.log("LOC props", this.props);
 
     // console.log(
     //   "SPECIAL ---------------",
