@@ -607,7 +607,7 @@ class CoreForm extends Component {
     }
 
     // console.log("LOC STATE", initData);
-    console.log("LOC props", this.props);
+    // console.log("LOC props", this.props);
 
     // console.log(
     //   "SPECIAL ---------------",
@@ -916,12 +916,6 @@ class CoreForm extends Component {
               formData={formData[formId]?.data?.rows}
               allowEdit={allowEdit}
               preview={preview}
-              submitLoading={formSubmitLoading[formId]}
-              submitSuccess={formSubmitSuccess[formId]}
-              OnEditClick={this.OnEditClick}
-              OnCancelClick={this.OnCancel}
-              editFormId={formId}
-              onFormFocus={onFormFocus}
             />
           ) : (
             <CoreEditForm
