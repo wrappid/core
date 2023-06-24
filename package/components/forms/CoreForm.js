@@ -355,7 +355,9 @@ class CoreForm extends Component {
   handleSubmit = async (values) => {
     var formJson =
       this.props.formJson && this.props.formJson[this.props.formId]
-        ? this.props.formJson[this.props.formId]
+        ? this.props.formJson[this.props.formId]?.formJson
+          ? this.props.formJson[this.props.formId]?.formJson
+          : this.props.formJson[this.props.formId]
         : this.props.rawFormSchema
         ? this.props.rawFormSchema[this.props.formId]
         : {};
@@ -491,7 +493,9 @@ class CoreForm extends Component {
   CompleteDelete = () => {
     var formJson =
       this.props.formJson && this.props.formJson[this.props.formId]
-        ? this.props.formJson[this.props.formId]
+        ? this.props.formJson[this.props.formId]?.formJson
+          ? this.props.formJson[this.props.formId]?.formJson
+          : this.props.formJson[this.props.formId]
         : this.props.rawFormSchema
         ? this.props.rawFormSchema[this.props.formId]
         : {};
