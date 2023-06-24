@@ -42,7 +42,7 @@ export default function CoreEditForm(props) {
     onFormFocus,
     preview,
   } = props;
-  console.log("CORE EDIT FORM DETAILS", forms[formId]?.formElements);
+  console.log("CORE EDIT FORM DETAILS", props);
 
   return formDataReadLoading &&
     formDataReadLoading[formId] &&
