@@ -6,9 +6,9 @@ import { coreDialogInitValue } from "../../config/constants";
 export default function CoreDialog(props) {
   return (
     <NativeDialog
-      {...props}
       dialogInitValue={coreDialogInitValue}
       DialogContext={CoreDialogContext}
+      props
     >
       {props.children}
     </NativeDialog>

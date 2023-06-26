@@ -22,8 +22,8 @@ export default function CoreApp({
   menuRegistry,
   resourceRegistry,
 }) {
-  const [dialog, setDialog] = useState({});
-  const value = { dialog, setDialog };
+  // const [dialog, setDialog] = useState({});
+  // const value = { dialog, setDialog };
   return (
     <CoreProvider
       appReducer={reducers}

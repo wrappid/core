@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nativeUseLocation } from "@wrappid/styled-components";
 import config from "../config/config";
@@ -56,7 +56,8 @@ export default function PageContainer(props) {
    * @todo change this when doing core dialog
    * @techoneel
    */
-  const value = {};
+  const [dialog, setDialog] = useState({});
+  const value = { dialog, setDialog };
 
   React.useEffect(() => {
     if (auth.sessionExpired && !auth.sessionDetail) {
