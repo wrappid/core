@@ -261,7 +261,9 @@ export const defaultCoreStyles = {
   // Counter Widget
   counterWidgetCard: { /* position: "relative",*/ ...defaultUtilityStyles.mb1 },
   counterWidgetCardHeader: { ...defaultUtilityStyles.p1 },
-  counterWidgetCardContent: { /* position: "inherit", */ ...defaultUtilityStyles.p1 },
+  counterWidgetCardContent: {
+    /* position: "inherit", */ ...defaultUtilityStyles.p1,
+  },
   counterWidgetCardActions: {},
   counterWidgetCardIcon: {
     /* position: "absolute", */
@@ -286,5 +288,8 @@ export const defaultCoreStyles = {
     borderLeft: `1px solid ${defaultUtilityStyles.bgPrimaryLight}`,
     margin: "8px",
     paddingLeft: "8px",
+  },
+  fitContentWidth: {
+    width: "fit-content",
   },
 };
