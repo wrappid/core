@@ -321,19 +321,38 @@ export default function CoreAsyncSelect(props) {
             navigate(props.navigateUrl, { state: { inputValue } });
           }
           if (onChangeDispatch) {
+            /**
+             * @todo
+             * if onChangeDispatch is a function 
+             *    dispatch the function
+             * else if onChangeDispatch is a string
+             *    if onChangeDispatch value is available in the asyncSelectFunction Map 
+             *      then get it from asyncSelectFunctionMap
+             *    else
+             *       dispatch with onChangeDispatch value as type(reducer type)
+             * else if it's a object
+             *       do we really need it?  
+             */
             if (typeof onChangeDispatch === "function") {
               dispatch(onChangeDispatch(values));
-            } else
+            } else if (typeof onChangeDispatch === "object") {
               dispatch({
                 type: onChangeDispatch.type,
                 payload: values,
               });
+            } else {
+              dispatch({
+                type: onChangeDispatch,
+                payload: values,
+              });
+            }
+            
           }
           if (handleChange) {
             handleChange(values);
           } else {
             if (props.getOptionValue) {
-              props.formik.setFieldValue(
+              props?.formik?.setFieldValue(
                 props.id,
                 props.getOptionValue(values)
               );
@@ -357,8 +376,8 @@ export default function CoreAsyncSelect(props) {
                   }
                 }
                 console.log("VALUE", finalValue);
-                props.formik.setFieldValue(props.id, finalValue);
-              } else props.formik.setFieldValue(props.id, values.id);
+                props?.formik?.setFieldValue(props.id, finalValue);
+              } else props?.formik?.setFieldValue(props.id, values.id);
             }
           }
         }}
@@ -433,8 +452,8 @@ export default function CoreAsyncSelect(props) {
                             <CoreIconButton
                               onClick={(e) => {
                                 props.multiple
-                                  ? props.formik.setFieldValue(props.id, [])
-                                  : props.formik.setFieldValue(props.id, {});
+                                  ? props?.formik?.setFieldValue(props.id, [])
+                                  : props?.formik?.setFieldValue(props.id, {});
 
                                 // @todo added for on clear handle change support
                                 if (handleChange) {
