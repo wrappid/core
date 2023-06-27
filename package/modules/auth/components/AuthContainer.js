@@ -44,7 +44,12 @@ export const AuthContainer = (props) => {
         CoreClasses?.HEIGHT?.VH_100,
       ]}
     >
-      <CoreSection>
+      <CoreSection
+        styleClasses={[
+          CoreClasses?.UTILS?.FIT_CONTENT_WIDTH,
+          CoreClasses?.UTILS?.FIT_CONTENT_HEIGHT,
+        ]}
+      >
         <CoreBox
           styleClasses={[
             CoreClasses?.LAYOUT?.FULL_WIDTH,
