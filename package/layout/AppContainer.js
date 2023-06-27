@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   nativeUseLocation,
-  NativeCssBaseline,
+  NativeAppContainer,
 } from "@wrappid/styled-components";
 
 import { ComponentRegistry } from "./../config/ComponentRegistry";
@@ -43,8 +43,6 @@ import {
   GET_ROLE_PERMISSION_SUCCESS,
   GET_ROLE_PERMISSION_ERROR,
 } from "../modules/auth/types/authTypes";
-import CoreBox from "../components/layouts/CoreBox";
-import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../utils/themeUtil";
 import CoreClasses from "../styles/CoreClasses";
 
 export var globalAccessToken = null;
@@ -67,7 +65,6 @@ function AppContainer(props) {
   );
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
-  const [platform, setPlatform] = useState(WEB_PLATFORM);
   const currentPendingRequest = useSelector(
     (state) => state.pendingRequests.pendingRequest
   );
@@ -75,10 +72,6 @@ function AppContainer(props) {
 
   // user settings
   const reload = useSelector((state) => state?.settings?.reload);
-
-  React.useEffect(() => {
-    setPlatform(detectPlatform());
-  }, []);
 
   React.useEffect(() => {
     if (accessToken) {
@@ -191,66 +184,43 @@ function AppContainer(props) {
     });
   }, []);
 
+  const getAppBar = () => {
+    return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} /> : null;
+  };
+
+  const getFooter = () => {
+    return <CoreFooter />;
+  };
+
+  const getLeftDrawer = () => {
+    return auth?.uid && auth?.accessToken ? (
+      <CoreDrawer
+        open={
+          windowWidth <= SMALL_WINDOW_WIDTH
+            ? leftMenuOpenSmallScreen
+            : leftMenuOpen
+        }
+      />
+    ) : null;
+  };
+
   globalAccessToken = accessToken;
   globalRefreshToken = refreshToken;
   globalTokenRequested = tokenRequested;
   globalTokenRequestTimeStamp = tokenRequestTimeStamp;
 
   return (
-    <CoreBox
-      styleClasses={[
-        CoreClasses.LAYOUT.FULL_HEIGHT,
-        CoreClasses.LAYOUT.FLEXBOX,
-      ]}
+    <NativeAppContainer
+      appBar={getAppBar}
+      leftDrawer={getLeftDrawer()}
+      footer={getFooter()}
+      coreClasses={CoreClasses}
+      uid={auth?.uid}
     >
-      <NativeCssBaseline />
-
-      {auth.uid && (
-        <>
-          <CoreAppBar handleDrawer={handleDrawer} />
-
-          {auth.accessToken && platform === WEB_PLATFORM && (
-            <CoreDrawer
-              open={
-                windowWidth <= SMALL_WINDOW_WIDTH
-                  ? leftMenuOpenSmallScreen
-                  : leftMenuOpen
-              }
-            />
-          )}
-        </>
-      )}
-
-      <CoreBox
-        component="main"
-        styleClasses={
-          auth?.uid
-            ? //this is done because CONTENT_CONTAINER has a top margin 56 for app bar in web
-              //which is not needed in app
-              platform === APP_PLATFORM
-              ? [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
-              : [CoreClasses.LAYOUT.CONTENT_CONTAINER]
-            : [CoreClasses.LAYOUT.LOGGED_OUT_CONTENT_CONTAINER]
-        }
-      >
-        {auth.accessToken && platform === APP_PLATFORM && (
-          <CoreDrawer
-            open={
-              windowWidth <= SMALL_WINDOW_WIDTH
-                ? leftMenuOpenSmallScreen
-                : leftMenuOpen
-            }
-            toggleDrawer={handleDrawer}
-          />
-        )}
-        {/* <CoreRightDrawer open={false} /> */}
-
-        <ErrorBoundary hasError={hasError} setHasError={setHasError}>
-          {props.children}
-        </ErrorBoundary>
-        <CoreFooter />
-      </CoreBox>
-    </CoreBox>
+      <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+        {props.children}
+      </ErrorBoundary>
+    </NativeAppContainer>
   );
 }
 

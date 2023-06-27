@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { nativeUseLocation } from "@wrappid/styled-components";
-import config from "../config/config";
-import { ENV_DEV_MODE, urls } from "../config/constants";
+import {
+  nativeUseLocation,
+  NativePageContainer,
+} from "@wrappid/styled-components";
 import Error404 from "../error/Error404";
 import { RESET_LOADING } from "../store/types/appTypes";
 import {
@@ -13,12 +14,6 @@ import {
   UPDATE_HELPER_FLAG,
   UPDATE_HELPER_TEXT_VIEW,
 } from "../store/types/formTypes";
-// import {
-//   DocumentMetaDescription,
-//   DocumentMetaKeywords,
-//   DocumentTitle,
-//   useDocumentTitle,
-// } from "../utils/seoManager";
 import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
@@ -46,16 +41,8 @@ export default function PageContainer(props) {
 
   const { route = { Page: { schema: {}, appComponent: "" } } } = props;
 
-  // const PageComponent = React.lazy(() =>
-  //   import("../../" + componentRegistry[route?.Page?.appComponent]?.path),
-  // );
-
   const [pageComponent, setPageComponent] = React.useState();
 
-  /**
-   * @todo change this when doing core dialog
-   * @techoneel
-   */
   const [dialog, setDialog] = useState({});
   const value = { dialog, setDialog };
 
@@ -100,32 +87,23 @@ export default function PageContainer(props) {
     );
   }, [helperButtonFlag]);
 
-  // React.useEffect(() => {}, [route]);
-
-  // redirection if guest
-  // if (!auth?.uid && route?.Page?.authRequired !== false) return <Navigate to="/" />;
-
-  // React.useEffect(() => {
-  // }, []);
+  const pageChild = () => {
+    if (mergedComponentRegistry[route?.Page?.appComponent]?.comp) {
+      return React.createElement(
+        mergedComponentRegistry[route?.Page?.appComponent]?.comp
+      );
+    } else if (props.page?.comp) {
+      return React.createElement(props.page?.comp, props?.page?.props, null);
+    } else {
+      return <Error404 />;
+    }
+  };
 
   return (
-    <>
-      {/* {route?.title && (
-        <DocumentTitle title={route?.title || "NO TITLE PROVIDED"} />
-      )}
-      {route?.description && (
-        <DocumentMetaDescription
-          metaDescription={route?.description || "NO DESCRIPTION PROVIDED"}
-        />
-      )}
-      {route?.keywords && (
-        <DocumentMetaKeywords metaKeywords={route?.keywords || ""} />
-      )} */}
-      {/* ---------------------------------------------------- */}
-      <CoreBox styleClasses={[CoreClasses.LAYOUT.PAGE_CONTAINER]}>
-        {/* <CoreModal /> */}
-        {/* Show Helper Text Toggle */}
-        {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
+    <NativePageContainer route={route} coreClasses={CoreClasses}>
+      {/* <CoreModal /> */}
+      {/* Show Helper Text Toggle */}
+      {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[
@@ -145,19 +123,10 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-        <CoreDialogContext.Provider value={value}>
-          {mergedComponentRegistry[route?.Page?.appComponent]?.comp ? (
-            React.createElement(
-              mergedComponentRegistry[route?.Page?.appComponent]?.comp
-            )
-          ) : props.page?.comp ? (
-            React.createElement(props.page?.comp, props?.page?.props, null)
-          ) : (
-            <Error404 />
-          )}
-          <CoreDialog />
-        </CoreDialogContext.Provider>
-      </CoreBox>
-    </>
+      <CoreDialogContext.Provider value={value}>
+        {pageChild()}
+        <CoreDialog />
+      </CoreDialogContext.Provider>
+    </NativePageContainer>
   );
 }
