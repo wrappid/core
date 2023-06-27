@@ -212,8 +212,8 @@ function AppContainer(props) {
   return (
     <NativeAppContainer
       appBar={getAppBar}
-      leftDrawer={getLeftDrawer()}
-      footer={getFooter()}
+      leftDrawer={getLeftDrawer}
+      footer={getFooter}
       coreClasses={CoreClasses}
       uid={auth?.uid}
     >
