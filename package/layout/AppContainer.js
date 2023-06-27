@@ -200,6 +200,7 @@ function AppContainer(props) {
             ? leftMenuOpenSmallScreen
             : leftMenuOpen
         }
+        toggleDrawer={handleDrawer}
       />
     ) : null;
   };

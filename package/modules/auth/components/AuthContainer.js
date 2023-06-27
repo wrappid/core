@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import CoreBox from "../../../components/layouts/CoreBox";
-import CoreGrid from "../../../components/layouts/CoreGrid";
 import CoreSection from "../../../components/layouts/CoreSection";
 import CoreClasses from "../../../styles/CoreClasses";
 
@@ -37,36 +36,26 @@ export const AuthContainer = (props) => {
     }
   });
   return (
-    <CoreGrid
+    <CoreBox
       styleClasses={[
         CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
         CoreClasses?.ALIGNMENT?.ALIGN_CONTENT_CENTER,
         CoreClasses?.HEIGHT?.VH_100,
       ]}
     >
-      <CoreBox gridProps={{ gridSize: { md: 3, sm: 6 } }}>
-        <CoreSection>
-          <CoreBox
-            styleClasses={[
-              CoreClasses?.LAYOUT?.FULL_WIDTH,
-              CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-              CoreClasses?.MARGIN?.MB5,
-            ]}
-          ></CoreBox>
-
+      <CoreSection>
+        <CoreBox
+          styleClasses={[
+            CoreClasses?.LAYOUT?.FULL_WIDTH,
+            CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+            CoreClasses?.MARGIN?.MB5,
+          ]}
+        >
           <CoreComponent componentName="AppLogo" />
+        </CoreBox>
 
-          <CoreBox
-            styleClasses={[
-              CoreClasses?.LAYOUT?.FULL_WIDTH,
-              CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-              CoreClasses?.MARGIN?.MB5,
-            ]}
-          ></CoreBox>
-
-          {props.children}
-        </CoreSection>
-      </CoreBox>
-    </CoreGrid>
+        {props.children}
+      </CoreSection>
+    </CoreBox>
   );
 };

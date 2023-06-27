@@ -79,15 +79,20 @@ class LoginWithOtp extends Component {
     }
     return (
       <AuthContainer>
-        <CoreH1
-          styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
-          variant="h5"
-        >
+        <CoreH1 styleClasses={[CoreClasses.TEXT.TEXT_CENTER]} variant="h5">
           Enter OTP
         </CoreH1>
 
         <CoreTypographyBody2>
-          {`We have sent you a verification code on your ${isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "} ${maskEmailOrPhone(this.props?.navData?.emailOrPhone ? this.props?.navData?.emailOrPhone : "")}.\nPlease enter the One Time Password (OTP) to verify your ${isNaN(this.props.navData.emailOrPhone) ? " email." : " phone."}`}
+          {`We have sent you a verification code on your ${
+            isNaN(this.props.navData.emailOrPhone) ? " email " : " phone "
+          } ${maskEmailOrPhone(
+            this.props?.navData?.emailOrPhone
+              ? this.props?.navData?.emailOrPhone
+              : ""
+          )}.\nPlease enter the One Time Password (OTP) to verify your ${
+            isNaN(this.props.navData.emailOrPhone) ? " email." : " phone."
+          }`}
         </CoreTypographyBody2>
 
         <CoreBox styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}>

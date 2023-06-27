@@ -74,13 +74,7 @@ class RegisterOrResetPassword extends Component {
 
     return (
       <AuthContainer>
-        <CoreH1
-          variant="h5"
-          styleClasses={[
-            // CoreClasses.DATA_DISPLAY.TEXT_CENTER,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
-        >
+        <CoreH1 variant="h5" styleClasses={[CoreClasses.TEXT.TEXT_CENTER]}>
           {`Verify your${
             isNaN(this.props.navData.emailOrPhone) ? " email" : " phone"
           }`}
@@ -96,9 +90,7 @@ class RegisterOrResetPassword extends Component {
           </CoreTypographyBody2>
         ) : (
           <>
-            <CoreTypographyBody1
-              styleClasses={[CoreClasses.DATA_DISPLAY.TEXT_CENTER]}
-            >
+            <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.TEXT_CENTER]}>
               Reset Password through OTP
             </CoreTypographyBody1>
 

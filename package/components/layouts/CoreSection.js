@@ -1,6 +1,25 @@
 import React from "react";
-import { NativeSection } from "@wrappid/styled-components";
+import CoreCard from "../surfaces/CoreCard";
+import CoreClasses from "../../styles/CoreClasses";
+import CoreCardHeader from "../surfaces/CoreCardHeader";
+import CoreCardContent from "../surfaces/CoreCardContent";
 
 export default function CoreSection(props) {
-  return <NativeSection {...props} />;
+  const { styleClasses = [] } = props;
+
+  return (
+    <CoreCard
+      styleClasses={[
+        CoreClasses.MARGIN.MB2,
+        CoreClasses.PADDING.P0,
+        ...styleClasses,
+      ]}
+    >
+      <CoreCardHeader
+        styleClasses={[CoreClasses.PADDING.P1]}
+        title={props?.heading && <CoreH5>{props?.heading}</CoreH5>}
+      />
+      <CoreCardContent styleClasses={[]}>{props?.children}</CoreCardContent>
+    </CoreCard>
+  );
 }
