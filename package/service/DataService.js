@@ -11,7 +11,7 @@ export default async function authHeader(
     headers["Authorization"] = "Bearer " + accessToken;
   }
   if (includeFile) {
-    headers["Content-Type"] = "multipart/form-data";
+    // headers["Content-Type"] = "multipart/form-data";
   } else {
     headers["Content-Type"] = "application/json";
   }
