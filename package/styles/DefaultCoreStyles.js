@@ -289,6 +289,6 @@ export const defaultCoreStyles = {
     margin: "8px",
     paddingLeft: "8px",
   },
-  fiContentWidth: { width: "fit-content" },
-  fitContentHeight: { height: "fit-content" },
+  fiContentWidth: {},
+  fitContentHeight: {},
 };
