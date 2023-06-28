@@ -36,6 +36,10 @@ import {
   USER_SETTINGS_UPDATE_SUCCESS,
 } from "../../store/types/settingsTypes";
 import CoreClasses from "../../styles/CoreClasses";
+import {
+  NativeDataTableToolBar,
+  NativeDataTableToolPopOver,
+} from "@wrappid/styled-components";
 
 export default function CoreDataTableToolbar(props) {
   const dispatch = useDispatch();
@@ -92,311 +96,325 @@ export default function CoreDataTableToolbar(props) {
     : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
 
+  const getSearchBar = () => {
+    return searchable ? (
+      <CoreTextField
+        // styleClasses={[CoreClasses.MARGIN.MB0]}
+        value={searchValue}
+        onKeyDown={(e) => {
+          e.keyCode === 13 && filterData();
+        }}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
+        InputProps={{
+          endAdornment: (
+            <CoreInputAdornment
+              position="end"
+              styleClasses={
+                [
+                  // CoreClasses.PADDING.PR1,
+                  // CoreClasses.PADDING.PB1,
+                ]
+              }
+            >
+              {searchValue &&
+                // searchValue !== "" &&
+                searchValue.length > 0 && (
+                  <CoreIconButton
+                    title="Clear search"
+                    onClick={() => {
+                      console.log("clear search clicked");
+                      setSearchValue("");
+                      clearFilterData();
+                    }}
+                  >
+                    <CoreIcon
+                      type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                      icon={"clear"}
+                    />
+                  </CoreIconButton>
+                )}
+              <CoreIconButton
+                title="Search"
+                onClick={() => {
+                  console.log("search clicked");
+                  filterData();
+                }}
+              >
+                <CoreIcon>search</CoreIcon>
+              </CoreIconButton>
+              <CoreIconButton
+                title="Advanced Search"
+                onClick={() => {
+                  console.log("Advanced Search Clicked");
+                  // filterData();
+                }}
+              >
+                <CoreIcon>tune</CoreIcon>
+              </CoreIconButton>
+            </CoreInputAdornment>
+          ),
+        }}
+      />
+    ) : null;
+  };
+
+  /**
+   *@description
+   [
+      {
+        leftPanel:{
+          grideSize: gridesizeob
+          stacks: [
+          //stack1
+          [
+            {comp: react comp or function returning comp}
+          ],
+          //stack2
+          .
+          .
+          .
+        ]} 
+        rightPanel:{}
+      },
+      .
+      .
+      multiple row
+   ]
+   * 
+   */
+
+  const allTools = [
+    {
+      leftPanel: {
+        gridSize: { md: __TableLeftPanelGridSize },
+        stacks: [{ comp: getSearchBar }],
+      },
+      rightPanel: {
+        gridSize: { md: __TableRightPanelGridSize },
+        hideInApp: true,
+        stacks: [
+          [
+            {
+              comp: <CoreDivider orientation="vertical" flexItem={true} />,
+              hideInApp: true,
+            },
+
+            {
+              comp: (
+                <CoreIconButton
+                  title={"Refresh Data"}
+                  onClick={(e) => {
+                    filterData();
+                  }}
+                >
+                  <CoreIcon>refresh</CoreIcon>
+                </CoreIconButton>
+              ),
+            },
+
+            {
+              comp: (
+                <CoreIconButton
+                  title={"Sorting"}
+                  onClick={(e) => {
+                    console.log("Sort data clicked");
+                    set_toolbarContent(tableToolbar.SORT_DATA);
+                    set_toolbarPopOverAnchorEl(e.currentTarget);
+                  }}
+                >
+                  <CoreIcon>sort </CoreIcon>
+                </CoreIconButton>
+              ),
+            },
+
+            {
+              comp: enableExport ? (
+                <CoreIconButton
+                  title="Export"
+                  onClick={(e) => {
+                    set_toolbarContent(tableToolbar.EXPORT_DATA);
+                    set_toolbarPopOverAnchorEl(e.currentTarget);
+                  }}
+                >
+                  <CoreIcon
+                    type={__IconTypes.MATERIAL_ICON}
+                    icon={"save_alt"}
+                  />
+                </CoreIconButton>
+              ) : null,
+            },
+            {
+              hideInApp: true,
+              comp: (
+                <CoreIconButton title={"More Actions"}>
+                  <CoreIcon>more_vert</CoreIcon>
+                </CoreIconButton>
+              ),
+            },
+          ],
+          [
+            {
+              comp: enableCreateEntity ? (
+                <CoreButton
+                  size="small"
+                  label={`${createEntityButtonText || getLabel(tableUUID)}`}
+                  variant="outlined"
+                  startIcon={<CoreIcon>add</CoreIcon>}
+                  OnClick={(e) => {
+                    setDetailedRowId(null);
+                    setDetailedRowData(null);
+                    set_showDetailsPane(true);
+                  }}
+                />
+              ) : null,
+            },
+            {
+              hideInApp: true,
+              comp: (
+                <CoreDivider
+                  flexItem={true}
+                  orientation="vertical"
+                  // styleClasses={[
+                  //   CoreClasses.DISPLAY.NONE,
+                  //   CoreClasses.DISPLAY.SM.BLOCK,
+                  //   CoreClasses.MARGIN.MY1,
+                  // ]}
+                />
+              ),
+            },
+            {
+              hideInApp: true,
+              comp: (
+                <CoreTablePagination
+                  // styleClasses={[
+                  //   CoreClasses.DISPLAY.NONE,
+                  //   CoreClasses.DISPLAY.SM.BLOCK,
+                  // ]}
+                  // showFirstButton
+                  // showLastButton
+                  count={data?.totalRecords || 0}
+                  page={page}
+                  rowsPerPage={maxRowInPage}
+                  onPageChange={(event, newPage) => {
+                    console.log("Change page", newPage);
+                    setPage(newPage);
+                    dispatch({
+                      type: UPDATE_QUERY_PAGE_DATA,
+                      payload: { entity: tableUUID, page: newPage },
+                    });
+                  }}
+                  onRowsPerPageChange={(event) => {
+                    console.log("Change max row in page ", event.target.value);
+                    if (event.target.value !== maxRowInPage) {
+                      setMaxRowInPage(event.target.value);
+                      dispatch({
+                        type: UPDATE_QUERY_MAXROWINPAGE_DATA,
+                        payload: {
+                          entity: tableUUID,
+                          maxRowInPage: event.target.value,
+                        },
+                      });
+                      dispatch(
+                        apiRequestAction(
+                          HTTP.POST,
+                          UPDATE_USER_SETTINGS,
+                          true,
+                          {
+                            name: userSettingsConstants.MAX_ROWS_IN_PAGE,
+                            value: event.target.value,
+                          },
+                          USER_SETTINGS_UPDATE_SUCCESS,
+                          USER_SETTINGS_UPDATE_ERROR
+                        )
+                      );
+                    }
+                  }}
+                />
+              ),
+            },
+          ],
+        ],
+      },
+    },
+    {
+      leftPanel: {
+        hideInApp: true,
+        gridSize: { md: __TableLeftPanelGridSize },
+        stacks: [
+          [
+            {
+              hideInApp: true,
+              comp: (
+                <CoreTablePagination
+                  gridProps={{
+                    gridSize: { md: __TableRightPanelGridSize },
+                    styleClasses: [
+                      CoreClasses.DISPLAY.BLOCK,
+                      CoreClasses.DISPLAY.SM.NONE,
+                    ],
+                  }}
+                  styleClasses={[
+                    // CoreClasses.DISPLAY.BLOCK,
+                    // CoreClasses.DISPLAY.SM.NONE,
+                    CoreClasses.ALIGNMENT.ALIGN_SELF_CENTER,
+                  ]}
+                  // showFirstButton
+                  // showLastButton
+                  count={data?.totalRecords || 0}
+                  page={page}
+                  rowsPerPage={maxRowInPage}
+                  onPageChange={(event, newPage) => {
+                    console.log("Change page", newPage);
+                    setPage(newPage);
+                    dispatch({
+                      type: UPDATE_QUERY_PAGE_DATA,
+                      payload: { entity: tableUUID, page: newPage },
+                    });
+                  }}
+                  onRowsPerPageChange={(event) => {
+                    console.log("Change max row in page ", event.target.value);
+                    if (event.target.value !== maxRowInPage) {
+                      setMaxRowInPage(event.target.value);
+                      dispatch({
+                        type: UPDATE_QUERY_MAXROWINPAGE_DATA,
+                        payload: {
+                          entity: tableUUID,
+                          maxRowInPage: event.target.value,
+                        },
+                      });
+                      dispatch(
+                        apiRequestAction(
+                          HTTP.POST,
+                          UPDATE_USER_SETTINGS,
+                          true,
+                          {
+                            name: userSettingsConstants.MAX_ROWS_IN_PAGE,
+                            value: event.target.value,
+                          },
+                          USER_SETTINGS_UPDATE_SUCCESS,
+                          USER_SETTINGS_UPDATE_ERROR
+                        )
+                      );
+                    }
+                  }}
+                />
+              ),
+            },
+          ],
+        ],
+      },
+    },
+  ];
+
   return (
     <>
-      <CoreGrid
-        styleClasses={[
-          props.styleClasses,
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          // CoreClasses.PADDING.PL1,
-          // CoreClasses.MARGIN.MT0,
-          // CoreClasses.MARGIN.MB1,
-        ]}
-      >
-        {searchable && (
-          <CoreTextField
-            gridProps={{ gridSize: { md: __TableLeftPanelGridSize } }}
-            // styleClasses={[CoreClasses.MARGIN.MB0]}
-            value={searchValue}
-            onKeyDown={(e) => {
-              e.keyCode === 13 && filterData();
-            }}
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-            }}
-            InputProps={{
-              endAdornment: (
-                <CoreInputAdornment
-                  position="end"
-                  styleClasses={
-                    [
-                      // CoreClasses.PADDING.PR1,
-                      // CoreClasses.PADDING.PB1,
-                    ]
-                  }
-                >
-                  {searchValue &&
-                    // searchValue !== "" &&
-                    searchValue.length > 0 && (
-                      <CoreIconButton
-                        title="Clear search"
-                        onClick={() => {
-                          console.log("clear search clicked");
-                          setSearchValue("");
-                          clearFilterData();
-                        }}
-                      >
-                        <CoreIcon
-                          type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                          icon={"clear"}
-                        />
-                      </CoreIconButton>
-                    )}
-                  <CoreIconButton
-                    title="Search"
-                    onClick={() => {
-                      console.log("search clicked");
-                      filterData();
-                    }}
-                  >
-                    <CoreIcon>search</CoreIcon>
-                  </CoreIconButton>
-                  <CoreIconButton
-                    title="Advanced Search"
-                    onClick={() => {
-                      console.log("Advanced Search Clicked");
-                      // filterData();
-                    }}
-                  >
-                    <CoreIcon>tune</CoreIcon>
-                  </CoreIconButton>
-                </CoreInputAdornment>
-              ),
-            }}
-          />
-        )}
-
-        <CoreStack
-          direction="row"
-          gridProps={{ gridSize: { md: __TableRightPanelGridSize } }}
-          styleClasses={[
-            CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
-        >
-          <CoreStack
-            direction="row"
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-          >
-            <CoreDivider
-              orientation="vertical"
-              flexItem={true}
-              // styleClasses={[
-              //   CoreClasses.DISPLAY.NONE,
-              //   CoreClasses.DISPLAY.MD.BLOCK,
-              //   CoreClasses.MARGIN.MY0,
-              // ]}
-            />
-
-            <CoreIconButton
-              title={"Refresh Data"}
-              onClick={(e) => {
-                filterData();
-              }}
-            >
-              <CoreIcon>refresh</CoreIcon>
-            </CoreIconButton>
-            <CoreIconButton
-              title={"Sorting"}
-              onClick={(e) => {
-                console.log("Sort data clicked");
-                set_toolbarContent(tableToolbar.SORT_DATA);
-                set_toolbarPopOverAnchorEl(e.currentTarget);
-              }}
-            >
-              <CoreIcon>sort </CoreIcon>
-            </CoreIconButton>
-            {/* NOT NEEDED ANY MORE AS OF NOW */}
-            {/* {!_showDetailsPane && enableColumnFilter && (
-              <CoreIconButton
-                title="Filter Columns"
-                onClick={(e) => {
-                  console.log("FILTER_COLUMN clicked");
-                  set_toolbarContent(tableToolbar.FILTER_COLUMN);
-                  set_toolbarPopOverAnchorEl(e.currentTarget);
-                }}
-              >
-                <CoreIcon>view_column</CoreIcon>
-              </CoreIconButton>
-            )} */}
-            {/* {enableDataFilter && searchable && (
-              <CoreIconButton
-                
-                label="Filters"
-                onClick={(e) => {
-                  set_toolbarContent(tableToolbar.FILTER_DATA);
-                  set_toolbarPopOverAnchorEl(e.currentTarget);
-                }}
-              >
-                <CoreIcon>filter_list</CoreIcon>
-              </CoreIconButton>
-            )} */}
-            {/* {enableTableDensity && (
-              <CoreIconButton
-                title="Table Density"
-                onClick={(e) => {
-                  set_toolbarContent(tableToolbar.TABLE_DENSITY);
-                  set_toolbarPopOverAnchorEl(e.currentTarget);
-                }}
-              >
-                <CoreIcon>{getTableDensityIconName(tableDensity)}</CoreIcon>
-              </CoreIconButton>
-            )} */}
-            {enableExport && (
-              <CoreIconButton
-                title="Export"
-                onClick={(e) => {
-                  set_toolbarContent(tableToolbar.EXPORT_DATA);
-                  set_toolbarPopOverAnchorEl(e.currentTarget);
-                }}
-              >
-                <CoreIcon type={__IconTypes.MATERIAL_ICON} icon={"save_alt"} />
-              </CoreIconButton>
-            )}
-            {/* {_showDetailsPane && (
-              <CoreIconButton
-                onClick={() => {
-                  set_showDetailsPane(!_showDetailsPane);
-                }}
-              >
-                <CoreIcon color={_showDetailsPane ? "primary" : "secondary"}>
-                  info
-                </CoreIcon>
-              </CoreIconButton>
-            )} */}
-            <CoreIconButton title={"More Actions"}>
-              <CoreIcon>more_vert</CoreIcon>
-            </CoreIconButton>
-          </CoreStack>
-          <CoreStack
-            direction="row"
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-          >
-            {enableCreateEntity && (
-              <CoreButton
-                size="small"
-                label={`${createEntityButtonText || getLabel(tableUUID)}`}
-                variant="outlined"
-                startIcon={<CoreIcon>add</CoreIcon>}
-                OnClick={(e) => {
-                  setDetailedRowId(null);
-                  setDetailedRowData(null);
-                  set_showDetailsPane(true);
-                }}
-              />
-            )}
-            <CoreDivider
-              flexItem={true}
-              orientation="vertical"
-              // styleClasses={[
-              //   CoreClasses.DISPLAY.NONE,
-              //   CoreClasses.DISPLAY.SM.BLOCK,
-              //   CoreClasses.MARGIN.MY1,
-              // ]}
-            />
-            <CoreTablePagination
-              // styleClasses={[
-              //   CoreClasses.DISPLAY.NONE,
-              //   CoreClasses.DISPLAY.SM.BLOCK,
-              // ]}
-              // showFirstButton
-              // showLastButton
-              count={data?.totalRecords || 0}
-              page={page}
-              rowsPerPage={maxRowInPage}
-              onPageChange={(event, newPage) => {
-                console.log("Change page", newPage);
-                setPage(newPage);
-                dispatch({
-                  type: UPDATE_QUERY_PAGE_DATA,
-                  payload: { entity: tableUUID, page: newPage },
-                });
-              }}
-              onRowsPerPageChange={(event) => {
-                console.log("Change max row in page ", event.target.value);
-                if (event.target.value !== maxRowInPage) {
-                  setMaxRowInPage(event.target.value);
-                  dispatch({
-                    type: UPDATE_QUERY_MAXROWINPAGE_DATA,
-                    payload: {
-                      entity: tableUUID,
-                      maxRowInPage: event.target.value,
-                    },
-                  });
-                  dispatch(
-                    apiRequestAction(
-                      HTTP.POST,
-                      UPDATE_USER_SETTINGS,
-                      true,
-                      {
-                        name: userSettingsConstants.MAX_ROWS_IN_PAGE,
-                        value: event.target.value,
-                      },
-                      USER_SETTINGS_UPDATE_SUCCESS,
-                      USER_SETTINGS_UPDATE_ERROR
-                    )
-                  );
-                }
-              }}
-            />
-          </CoreStack>
-        </CoreStack>
-        <CoreTablePagination
-          gridProps={{
-            gridSize: { md: __TableRightPanelGridSize },
-            styleClasses: [
-              CoreClasses.DISPLAY.BLOCK,
-              CoreClasses.DISPLAY.SM.NONE,
-            ],
-          }}
-          styleClasses={[
-            // CoreClasses.DISPLAY.BLOCK,
-            // CoreClasses.DISPLAY.SM.NONE,
-            CoreClasses.ALIGNMENT.ALIGN_SELF_CENTER,
-          ]}
-          // showFirstButton
-          // showLastButton
-          count={data?.totalRecords || 0}
-          page={page}
-          rowsPerPage={maxRowInPage}
-          onPageChange={(event, newPage) => {
-            console.log("Change page", newPage);
-            setPage(newPage);
-            dispatch({
-              type: UPDATE_QUERY_PAGE_DATA,
-              payload: { entity: tableUUID, page: newPage },
-            });
-          }}
-          onRowsPerPageChange={(event) => {
-            console.log("Change max row in page ", event.target.value);
-            if (event.target.value !== maxRowInPage) {
-              setMaxRowInPage(event.target.value);
-              dispatch({
-                type: UPDATE_QUERY_MAXROWINPAGE_DATA,
-                payload: {
-                  entity: tableUUID,
-                  maxRowInPage: event.target.value,
-                },
-              });
-              dispatch(
-                apiRequestAction(
-                  HTTP.POST,
-                  UPDATE_USER_SETTINGS,
-                  true,
-                  {
-                    name: userSettingsConstants.MAX_ROWS_IN_PAGE,
-                    value: event.target.value,
-                  },
-                  USER_SETTINGS_UPDATE_SUCCESS,
-                  USER_SETTINGS_UPDATE_ERROR
-                )
-              );
-            }
-          }}
-        />
-      </CoreGrid>
-      <CorePopover
+      <NativeDataTableToolBar
+        styleClasses={props.styleClasses}
+        allTools={allTools}
+      />
+      <NativeDataTableToolPopOver
         id={_toolbarID}
         open={_toolbarPopoverOpen}
         anchorEl={_toolbarPopOverAnchorEl}
@@ -409,57 +427,36 @@ export default function CoreDataTableToolbar(props) {
           horizontal: "left",
         }}
       >
-        {
-          /* {enableColumnFilter && 
-          _toolbarContent === tableToolbar.FILTER_COLUMN ? (
-            <>
-              <FilterColumn
-                tableUUID={tableUUID}
-                showAllColumns={showAllColumns}
-                hideAllColumns={hideAllColumns}
-                tableColumns={tableColumns}
-                filteredColumns={filteredColumns}
-                auditColumnsKey={auditColumnsKey}
-                handleColumnFilter={handleColumnFilter}
-                showAuditColumns={showAuditColumns}
-                setShowAuditColumns={setShowAuditColumns}
-              />
-            </>
-          ) : enableDataFilter &&
-            searchable &&
-            _toolbarContent === tableToolbar.FILTER_DATA ? (
-            <FilterData columns={tableColumns} />
-          ) :  */ enableTableDensity &&
-          _toolbarContent === tableToolbar.TABLE_DENSITY ? (
-            <TableDensity
-              tableDensity={tableDensity}
-              setTableDensity={setTableDensity}
-            />
-          ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
-            <ExportData />
-          ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
-            <SortTableData
-              tableUUID={tableUUID}
-              tableColumns={tableColumns}
-              // filteredColumns={filteredColumns}
-              auditColumnsKey={auditColumnsKey}
-              sortable={sortable}
-              order={order}
-              onRequestSort={onRequestSort}
-            />
-          ) : (
-            <></>
-          )
-        }
-      </CorePopover>
+        {enableTableDensity &&
+        _toolbarContent === tableToolbar.TABLE_DENSITY ? (
+          <TableDensity
+            tableDensity={tableDensity}
+            setTableDensity={setTableDensity}
+          />
+        ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
+          <ExportData />
+        ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
+          <SortTableData
+            tableUUID={tableUUID}
+            tableColumns={tableColumns}
+            // filteredColumns={filteredColumns}
+            auditColumnsKey={auditColumnsKey}
+            sortable={sortable}
+            order={order}
+            onRequestSort={onRequestSort}
+          />
+        ) : (
+          <></>
+        )}
+      </NativeDataTableToolPopOver>
 
-      {selectable && selected && selected.length > 0 && (
+      {/* {selectable && selected && selected.length > 0 && (
         <CoreTooltip title="Delete">
           <CoreIconButton>
             <CoreIcon>delete</CoreIcon>
           </CoreIconButton>
         </CoreTooltip>
-      )}
+      )} */}
     </>
   );
 }
