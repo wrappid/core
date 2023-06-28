@@ -3,6 +3,7 @@ import CoreCard from "../surfaces/CoreCard";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
 import CoreCardContent from "../surfaces/CoreCardContent";
+import CoreH5 from "../dataDisplay/heading/CoreH5";
 
 export default function CoreSection(props) {
   const { styleClasses = [] } = props;
