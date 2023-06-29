@@ -6,6 +6,7 @@ import CoreProvider from "./store/CoreProvider";
 import CoreRoutes from "./CoreRoutes";
 import {
   ComponentRegistryContext,
+  CoreApplicationContext,
   // CoreDialogContext,
   CoreMenuContext,
   CoreResourceContext,
@@ -20,6 +21,7 @@ export default function CoreApp({
   appStyles,
   customIcons,
   menuRegistry,
+  appVersionRegistry,
   resourceRegistry,
 }) {
   // const [dialog, setDialog] = useState({});
@@ -31,6 +33,7 @@ export default function CoreApp({
       appStyles={appStyles}
       customIcons={customIcons}
     >
+      <CoreApplicationContext.Provider value={appVersionRegistry}>
       <ComponentRegistryContext.Provider
         value={{ ...componentRegistry, ...CoreComponentRegistry }}
       >
@@ -51,6 +54,7 @@ export default function CoreApp({
           </CoreResourceContext.Provider>
         </React.StrictMode>
       </ComponentRegistryContext.Provider>
+      </CoreApplicationContext.Provider>
     </CoreProvider>
   );
 }

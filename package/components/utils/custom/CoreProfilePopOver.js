@@ -15,6 +15,7 @@ import { getFullName } from "../../../utils/helper";
 import CoreApiVersion from "./CoreApiVersion";
 import CoreLoginDetails from "./CoreLoginDetails";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
+import CoreAppVersion from './CoreAppVersion';
 
 export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
@@ -104,6 +105,7 @@ export default function CoreProfilePopOver(props) {
 
       {/* ApiVersion && LoginDetails */}
       <CoreApiVersion />
+      <CoreAppVersion />
       <CoreLoginDetails />
     </CoreBox>
   );

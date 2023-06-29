@@ -11,3 +11,6 @@ export const CoreDialogContext = createContext({
 });
 export const CoreMenuContext = createContext({});
 export const CoreResourceContext = createContext({});
+export const CoreApplicationContext = createContext({
+  version: '',
+});
