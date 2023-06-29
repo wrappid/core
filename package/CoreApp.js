@@ -21,7 +21,7 @@ export default function CoreApp({
   appStyles,
   customIcons,
   menuRegistry,
-  appVersionRegistry,
+  applicationRegistry,
   resourceRegistry,
 }) {
   // const [dialog, setDialog] = useState({});
@@ -33,7 +33,7 @@ export default function CoreApp({
       appStyles={appStyles}
       customIcons={customIcons}
     >
-      <CoreApplicationContext.Provider value={appVersionRegistry}>
+      <CoreApplicationContext.Provider value={applicationRegistry}>
       <ComponentRegistryContext.Provider
         value={{ ...componentRegistry, ...CoreComponentRegistry }}
       >
