@@ -37,8 +37,8 @@ import {
 } from "../../store/types/settingsTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import {
-  NativeDataTableToolBar,
-  NativeDataTableToolPopOver,
+  NativeDataTableToolbar,
+  NativeDataTableToolPopover,
 } from "@wrappid/styled-components";
 
 export default function CoreDataTableToolbar(props) {
@@ -96,10 +96,14 @@ export default function CoreDataTableToolbar(props) {
     : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
 
-  const getSearchBar = () => {
+  const getSearchBar = (props) => {
     return searchable ? (
       <CoreTextField
-        // styleClasses={[CoreClasses.MARGIN.MB0]}
+        styleClasses={
+          props?.fullWidth
+            ? [CoreClasses.WIDTH.W_100, CoreClasses.MARGIN.MB0]
+            : [CoreClasses.MARGIN.MB0]
+        }
         value={searchValue}
         onKeyDown={(e) => {
           e.keyCode === 13 && filterData();
@@ -189,11 +193,10 @@ export default function CoreDataTableToolbar(props) {
     {
       leftPanel: {
         gridSize: { md: __TableLeftPanelGridSize },
-        stacks: [{ comp: getSearchBar }],
+        stacks: [[{ comp: getSearchBar, propsApp: { fullWidth: true } }]],
       },
       rightPanel: {
         gridSize: { md: __TableRightPanelGridSize },
-        hideInApp: true,
         stacks: [
           [
             {
@@ -410,11 +413,11 @@ export default function CoreDataTableToolbar(props) {
 
   return (
     <>
-      <NativeDataTableToolBar
+      <NativeDataTableToolbar
         styleClasses={props.styleClasses}
         allTools={allTools}
       />
-      <NativeDataTableToolPopOver
+      <NativeDataTableToolPopover
         id={_toolbarID}
         open={_toolbarPopoverOpen}
         anchorEl={_toolbarPopOverAnchorEl}
@@ -448,7 +451,7 @@ export default function CoreDataTableToolbar(props) {
         ) : (
           <></>
         )}
-      </NativeDataTableToolPopOver>
+      </NativeDataTableToolPopover>
 
       {/* {selectable && selected && selected.length > 0 && (
         <CoreTooltip title="Delete">
