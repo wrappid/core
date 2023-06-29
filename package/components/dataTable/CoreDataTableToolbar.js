@@ -23,6 +23,7 @@ import CoreButton from "../inputs/CoreButton";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreInputAdornment from "../inputs/CoreInputAdornment";
 import CoreTextField from "../inputs/CoreTextField";
+import CoreMenu from "../inputs/CoreMenu";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreStack from "../layouts/CoreStack";
 import CorePopover from "../utils/CorePopover";
@@ -95,6 +96,15 @@ export default function CoreDataTableToolbar(props) {
     ? "toolbar-popover-" + tableUUID
     : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
+
+  const setPopover = (e, content) => {
+    set_toolbarContent(content);
+    if (e?.currentTarget) {
+      set_toolbarPopOverAnchorEl(e.currentTarget);
+    } else {
+      set_toolbarPopOverAnchorEl(e);
+    }
+  };
 
   const getSearchBar = (props) => {
     return searchable ? (
@@ -206,6 +216,10 @@ export default function CoreDataTableToolbar(props) {
             },
 
             {
+              label: "Refresh",
+              onClick: (e) => {
+                filterData();
+              },
               comp: (
                 <CoreIconButton
                   title={"Refresh Data"}
@@ -219,13 +233,15 @@ export default function CoreDataTableToolbar(props) {
             },
 
             {
+              label: "Sort",
+              onClick: (e) => {
+                setPopover(e, tableToolbar.SORT_DATA);
+              },
               comp: (
                 <CoreIconButton
                   title={"Sorting"}
                   onClick={(e) => {
-                    console.log("Sort data clicked");
-                    set_toolbarContent(tableToolbar.SORT_DATA);
-                    set_toolbarPopOverAnchorEl(e.currentTarget);
+                    setPopover(e, tableToolbar.SORT_DATA);
                   }}
                 >
                   <CoreIcon>sort </CoreIcon>
@@ -234,12 +250,17 @@ export default function CoreDataTableToolbar(props) {
             },
 
             {
+              label: "Export",
+              onClick: (e) => {
+                console.log("Sort data clicked");
+                set_toolbarContent(tableToolbar.EXPORT_DATA);
+                set_toolbarPopOverAnchorEl(e.currentTarget);
+              },
               comp: enableExport ? (
                 <CoreIconButton
                   title="Export"
                   onClick={(e) => {
-                    set_toolbarContent(tableToolbar.EXPORT_DATA);
-                    set_toolbarPopOverAnchorEl(e.currentTarget);
+                    setPopover(e, tableToolbar.EXPORT_DATA);
                   }}
                 >
                   <CoreIcon
@@ -260,6 +281,11 @@ export default function CoreDataTableToolbar(props) {
           ],
           [
             {
+              onClick: (e) => {
+                setDetailedRowId(null);
+                setDetailedRowData(null);
+                set_showDetailsPane(true);
+              },
               comp: enableCreateEntity ? (
                 <CoreButton
                   size="small"
@@ -417,6 +443,15 @@ export default function CoreDataTableToolbar(props) {
       <NativeDataTableToolbar
         styleClasses={props.styleClasses}
         allTools={allTools}
+        menuRenderFunction={(menu) => (
+          <CoreMenu
+            menu={menu}
+            miniDrawer={false}
+            multiLevel={false}
+            open={true}
+            OnMenuClick={() => {}}
+          />
+        )}
       />
       <NativeDataTableToolPopover
         id={_toolbarID}

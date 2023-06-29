@@ -6,8 +6,6 @@ import { ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreMenu(props) {
-  const location = nativeUseLocation();
-
   const {
     menu, //menu data schema
     OnMenuClick, //menu click operation
@@ -16,8 +14,18 @@ export default function CoreMenu(props) {
     open, //menu open/close state for mini drawer
     openCollapse, //item level collapse open on close
     defaultSelection = null, // this is default selection for the item to be pre select
+    noNavigation = false,
   } = props;
 
+  let location = {};
+
+  if (!noNavigation) {
+    try {
+      location = nativeUseLocation();
+    } catch (err) {
+      console.log("No navigation");
+    }
+  }
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
   console.log("MENU", menu, openCollapse);
   const theme = useContext(ThemeContext);
@@ -43,7 +51,7 @@ export default function CoreMenu(props) {
         openCollapse,
         selectedID,
         setSelectedID,
-        location.pathname,
+        location?.pathname,
         theme
       )}
     </CoreStack>
