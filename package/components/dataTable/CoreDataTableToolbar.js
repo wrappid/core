@@ -102,7 +102,7 @@ export default function CoreDataTableToolbar(props) {
     if (e?.currentTarget) {
       set_toolbarPopOverAnchorEl(e.currentTarget);
     } else {
-      set_toolbarPopOverAnchorEl(e);
+      set_toolbarPopOverAnchorEl(content);
     }
   };
 
@@ -134,22 +134,22 @@ export default function CoreDataTableToolbar(props) {
               }
             >
               {searchValue &&
-                // searchValue !== "" &&
-                searchValue.length > 0 && (
-                  <CoreIconButton
-                    title="Clear search"
-                    onClick={() => {
-                      console.log("clear search clicked");
-                      setSearchValue("");
-                      clearFilterData();
-                    }}
-                  >
-                    <CoreIcon
-                      type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                      icon={"clear"}
-                    />
-                  </CoreIconButton>
-                )}
+              // searchValue !== "" &&
+              searchValue.length > 0 ? (
+                <CoreIconButton
+                  title="Clear search"
+                  onClick={() => {
+                    console.log("clear search clicked");
+                    setSearchValue("");
+                    clearFilterData();
+                  }}
+                >
+                  <CoreIcon
+                    type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                    icon={"clear"}
+                  />
+                </CoreIconButton>
+              ) : null}
               <CoreIconButton
                 title="Search"
                 onClick={() => {
@@ -252,9 +252,7 @@ export default function CoreDataTableToolbar(props) {
             {
               label: "Export",
               onClick: (e) => {
-                console.log("Sort data clicked");
-                set_toolbarContent(tableToolbar.EXPORT_DATA);
-                set_toolbarPopOverAnchorEl(e.currentTarget);
+                setPopover(e, tableToolbar.EXPORT_DATA);
               },
               comp: enableExport ? (
                 <CoreIconButton
