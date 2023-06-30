@@ -35,6 +35,8 @@ import { urls } from "../../config/constants";
 import { compareObject } from "../../utils/objectUtils";
 import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
 import CoreClasses from "../../styles/CoreClasses";
+import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
+import CoreFormDialogs from "./CoreFormDialogs";
 
 /**
  * @TODO
@@ -52,6 +54,8 @@ class CoreForm extends Component {
     hideFlag: true,
     submitMode: null,
     prevQuery: null,
+    dialogSet: false,
+    dialogContent: null,
   };
 
   componentDidMount = () => {
@@ -468,26 +472,24 @@ class CoreForm extends Component {
   };
 
   OnDeleteClick = (id) => {
-    this.setState(
-      {
-        deleting: id,
+    this.setState({
+      deleting: id,
+      dialogSet: true,
+      dialogContent: {
+        type: CORE_DIALOG_TYPES.INFO,
+        showDialog: true,
+        title: "Confirm",
+        subtitle: "Are you Sure",
+        doneButtonLabel: "Delete",
+        doneButton: () => {
+          this.CompleteDelete();
+          this.setState({ dialogContent: null, dialogSet: false });
+        },
+        cancelButton: () => {
+          this.setState({ dialogContent: null, dialogSet: false });
+        },
       },
-      () => {
-        swal({
-          icon: "info",
-          title: "Confirm?",
-          text: "Are you sure?",
-          buttons: {
-            cancel: "Cancel",
-            confirm: "Yes",
-          },
-        }).then((data) => {
-          if (data) {
-            this.CompleteDelete();
-          }
-        });
-      }
-    );
+    });
   };
 
   CompleteDelete = () => {
@@ -630,6 +632,10 @@ class CoreForm extends Component {
 
     return (
       <>
+        <CoreFormDialogs
+          dialogset={this.state.dialogSet}
+          content={this.state.dialogContent}
+        />
         {rawFormSchema && !rawFormSchema[formId]?.inlineAction && (
           <CoreFormHeader
             mode={
