@@ -10,6 +10,7 @@ import CoreBox from "../../layouts/CoreBox";
 import CoreClasses from "../../../styles/CoreClasses";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { API_VERSION_ERROR, API_VERSION_SUCCESS } from "../../../store/types/appTypes";
+import CoreLink from "../../navigation/CoreLink";
 
 export default function CoreApiVersion() {
     const dispatch = useDispatch();
@@ -38,9 +39,9 @@ export default function CoreApiVersion() {
                 <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
 
                 <CoreTypographyCaption>
-                    {/* <CoreLink target="_blank" href={config.backendUrl + "/apiDocs"}>
-                        {config.backendUrl + "/apiDocs"}
-                    </CoreLink> */}
+                    <CoreLink target="_blank" href={config.wrappid.backendUrl + "/apiDocs"}>
+                        {config.wrappid.backendUrl + "/apiDocs"}
+                    </CoreLink>
                 </CoreTypographyCaption>
             </CoreBox>
         </>
