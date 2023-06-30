@@ -39,8 +39,8 @@ export default function CoreApiVersion() {
                 <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
 
                 <CoreTypographyCaption>
-                    <CoreLink target="_blank" href={config.wrappid.backendUrl + "/apiDocs"}>
-                        {config.wrappid.backendUrl + "/apiDocs"}
+                    <CoreLink target="_blank" href={config?.wrappid?.backendUrl + "/apiDocs"}>
+                        {config?.wrappid?.backendUrl + "/apiDocs"}
                     </CoreLink>
                 </CoreTypographyCaption>
             </CoreBox>
