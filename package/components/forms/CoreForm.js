@@ -771,6 +771,7 @@ class CoreForm extends Component {
                         <CoreBox
                           gridProps={{ gridSize: 2 }}
                           styleClasses={[
+                            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
                             CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
                           ]}
                         >

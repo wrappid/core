@@ -180,6 +180,7 @@ export default function CoreDataTableRow(props) {
           keyExtractor={keyExtractor}
           onEndReached={onPaginate}
           page={page}
+          boundingBox={true}
         />
       ) : (
         <CoreTableRow>
