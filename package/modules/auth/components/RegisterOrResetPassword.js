@@ -106,7 +106,9 @@ class RegisterOrResetPassword extends Component {
           </>
         )}
 
-        <CoreBox styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}>
+        <CoreBox
+          styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MB1]}
+        >
           <CoreTextButton OnClick={this.GoBack} label="Not You" />
         </CoreBox>
 

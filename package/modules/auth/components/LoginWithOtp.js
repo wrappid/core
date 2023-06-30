@@ -95,7 +95,9 @@ class LoginWithOtp extends Component {
           }`}
         </CoreTypographyBody2>
 
-        <CoreBox styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}>
+        <CoreBox
+          styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MB1]}
+        >
           <CoreTextButton OnClick={this.GoBack} label="Not you" />
         </CoreBox>
 
