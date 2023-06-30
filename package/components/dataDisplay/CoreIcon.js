@@ -19,7 +19,7 @@ export const __IconTypes = {
 export default function CoreIcon(props) {
   const { type, icon, options, sx, ...restProps } = props;
 
-  let tmpType = __IconTypes[type] || __IconTypes[options?.type] || __IconTypes.MATERIAL_ICON;
+  let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
   let tmpIcon = props.children || icon || options?.icon || "";
 
   return (
