@@ -244,7 +244,8 @@ export default function CoreDataTableDetailsPane(props) {
                 </>
               )}
               {enableCreateEntity ? (
-                createFormID && (
+                createFormID &&
+                !hideForm && (
                   <>
                     <CoreForm
                       apiMode={"create"}
