@@ -42,6 +42,7 @@ export const AuthContainer = (props) => {
         CoreClasses?.ALIGNMENT?.ALIGN_CONTENT_CENTER,
         CoreClasses?.FLEX?.FLEX_WRAP_WRAP,
         CoreClasses?.HEIGHT?.VH_100,
+        CoreClasses?.WIDTH?.VW_100,
       ]}
     >
       <CoreSection
