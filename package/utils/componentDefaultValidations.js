@@ -80,11 +80,11 @@ export const defaultValidations = {
   confirmPassword: {
     required: yup
       .string()
-      .oneOf([yup.ref("newPassword"), null], "Passwords must match")
+      .oneOf([yup.ref("password"), null], "Passwords must match")
       .required(),
     notRequired: yup
       .string()
-      .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
   },
   select: {
     required: yup.string().required(getFormikRequiredMessage("Select")),

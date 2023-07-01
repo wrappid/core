@@ -93,7 +93,9 @@ import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
-import CoreDialog from "./components/feedback/CoreDialog";
+import CoreDialog, {
+  CORE_DIALOG_TYPES,
+} from "./components/feedback/CoreDialog";
 import { CoreDialogContext } from "./config/contextHandler";
 import { coreDialogInitValue } from "./config/constants";
 
@@ -398,4 +400,5 @@ export {
   CorePhoneLink,
   CoreEmailLink,
   CoreEmailOrPhoneLink,
+  CORE_DIALOG_TYPES,
 };
