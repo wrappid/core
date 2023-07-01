@@ -46,7 +46,8 @@ export default function CoreCustomTabs(props) {
             key={tabContent?.id ? "tabContent-" + tabContent?.id : tabIndex}
           >
             {React.createElement(
-              mergedComponentRegistry[tabContent.comp]?.comp
+              mergedComponentRegistry[tabContent.comp]?.comp,
+              tabContent?.props
             )}
           </CoreTabPanel>
         );
