@@ -23,6 +23,7 @@ import {
 } from "../types/authTypes";
 import { AuthContainer } from "./AuthContainer";
 import { saveAuthData } from "../actions/authActions";
+import config from "../../../config/config";
 
 class RegisterOrResetPassword extends Component {
   state = {};
@@ -119,25 +120,13 @@ class RegisterOrResetPassword extends Component {
           authenticated={false}
         />
 
-        {this.props.authNextPage === urls.REGISTER_ROUTE && (
-          <>
-            <CoreTypographyBody2>
-              By signing up you agree to our
-            </CoreTypographyBody2>
-            <CoreBox
-              styleClasses={[
-                CoreClasses.LAYOUT.FULL_WIDTH,
-                CoreClasses.FLEX.DIRECTION_ROW,
-                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_AROUND,
-                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-                CoreClasses.MARGIN.MT3,
-              ]}
-            >
-              <CoreLink>Privacy Policy</CoreLink>
-              <CoreTypographyBody2 component="span">&</CoreTypographyBody2>
-              <CoreLink>Terms of Use</CoreLink>
-            </CoreBox>
-          </>
+        {this.props.authNextPage === urls.REGISTER_ROUTE && (  
+          <CoreTypographyBody2>
+            By signing up you agree to our
+            <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy Policy</CoreLink>
+            <CoreTypographyBody2 component="span">&</CoreTypographyBody2>
+            <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>{"."}
+          </CoreTypographyBody2>
         )}
       </AuthContainer>
     );

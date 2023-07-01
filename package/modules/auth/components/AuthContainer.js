@@ -10,6 +10,7 @@ import CoreComponent from "../../../components/CoreComponent";
 import { CoreResourceContext } from "../../../config/contextHandler";
 import CoreApiVersion from "../../../components/utils/custom/CoreApiVersion";
 import CoreAppVersion from "../../../components/utils/custom/CoreAppVersion";
+import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/CoreTypographyCaption";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
@@ -77,9 +78,26 @@ export const AuthContainer = (props) => {
           ]}
         >
           <CoreApiVersion />
+        </CoreBox>
+        <CoreBox
+          styleClasses={[
+            CoreClasses?.LAYOUT?.FULL_WIDTH,
+            CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
+            CoreClasses?.MARGIN?.MT5,
+          ]}
+        >
           <CoreAppVersion />
         </CoreBox>
       </CoreSection>
+      <CoreGrid>
+          <CoreTypographyCaption gridProps={{gridSize: 3}}></CoreTypographyCaption>
+          <CoreTypographyCaption gridProps={{gridSize: 3}} styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+            <CoreLink>Help</CoreLink>
+            <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy</CoreLink>
+            <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>{"."}
+          </CoreTypographyCaption>
+      </CoreGrid>
     </CoreBox>
   );
 };
