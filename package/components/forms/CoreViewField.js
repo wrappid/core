@@ -2,7 +2,7 @@ import React from "react";
 import {
   createFormFieldProps,
   createFormGridProps,
-} from "../../../utils/formUtils";
+} from "../../utils/formUtils";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreGrid from "../layouts/CoreGrid";
 

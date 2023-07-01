@@ -1,5 +1,5 @@
 import React from "react";
-import { createFormFieldProps, createFormGridProps } from "../../../utils/formUtils";
+import { createFormFieldProps, createFormGridProps } from "../../utils/formUtils";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreFormField(props) {

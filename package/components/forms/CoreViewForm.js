@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import CoreViewField from "./CoreViewField";
-import { createAllForms } from "../../../store/action/formAction";
+import { createAllForms } from "../../store/action/formAction";
 
 class CoreViewForm extends Component {
   state = {};

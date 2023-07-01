@@ -1,6 +1,5 @@
 import React from "react";
-import { getLabel } from "../../../../utils/stringUtils";
-import CoreDivider from "../../dataDisplay/CoreDivider";
+import { getLabel } from "../../../utils/stringUtils";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
 import CoreCheckbox from "../../inputs/CoreCheckbox";
