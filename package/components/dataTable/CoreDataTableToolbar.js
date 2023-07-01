@@ -365,75 +365,7 @@ export default function CoreDataTableToolbar(props) {
           ],
         ],
       },
-    },
-    {
-      leftPanel: {
-        hideInApp: true,
-        gridSize: { md: __TableLeftPanelGridSize },
-        stacks: [
-          [
-            {
-              hideInApp: true,
-              comp: (
-                <CoreTablePagination
-                  gridProps={{
-                    gridSize: { md: __TableRightPanelGridSize },
-                    styleClasses: [
-                      CoreClasses.DISPLAY.BLOCK,
-                      CoreClasses.DISPLAY.SM.NONE,
-                    ],
-                  }}
-                  styleClasses={[
-                    // CoreClasses.DISPLAY.BLOCK,
-                    // CoreClasses.DISPLAY.SM.NONE,
-                    CoreClasses.ALIGNMENT.ALIGN_SELF_CENTER,
-                  ]}
-                  // showFirstButton
-                  // showLastButton
-                  count={data?.totalRecords || 0}
-                  page={page}
-                  rowsPerPage={maxRowInPage}
-                  onPageChange={(event, newPage) => {
-                    console.log("Change page", newPage);
-                    setPage(newPage);
-                    dispatch({
-                      type: UPDATE_QUERY_PAGE_DATA,
-                      payload: { entity: tableUUID, page: newPage },
-                    });
-                  }}
-                  onRowsPerPageChange={(event) => {
-                    console.log("Change max row in page ", event.target.value);
-                    if (event.target.value !== maxRowInPage) {
-                      setMaxRowInPage(event.target.value);
-                      dispatch({
-                        type: UPDATE_QUERY_MAXROWINPAGE_DATA,
-                        payload: {
-                          entity: tableUUID,
-                          maxRowInPage: event.target.value,
-                        },
-                      });
-                      dispatch(
-                        apiRequestAction(
-                          HTTP.POST,
-                          UPDATE_USER_SETTINGS,
-                          true,
-                          {
-                            name: userSettingsConstants.MAX_ROWS_IN_PAGE,
-                            value: event.target.value,
-                          },
-                          USER_SETTINGS_UPDATE_SUCCESS,
-                          USER_SETTINGS_UPDATE_ERROR
-                        )
-                      );
-                    }
-                  }}
-                />
-              ),
-            },
-          ],
-        ],
-      },
-    },
+    }
   ];
 
   return (
