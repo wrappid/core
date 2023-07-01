@@ -15,7 +15,7 @@ export function clearValidatePhoneEmail(text) {
   if (f) {
     return f;
   } else if (!f) {
-    f = String(t).match(/[1-9][1-9][1-9][1-9][1-9][1-9][1-9][1-9][1-9][1-9]$/);
+    f = String(t).match(/^[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/);
     return f;
   }
 
