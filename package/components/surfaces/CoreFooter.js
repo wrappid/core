@@ -12,10 +12,9 @@ export default function CoreFooter(props) {
   return (
     <CoreBox styleClasses={[/* CoreClasses.APP.FOOTER */]}>
       <CoreDivider />
-
       <CoreGrid styleClasses={[CoreClasses.PADDING.PT3]}>
         <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.TEXT_END]}>
-          {process.env.REACT_APP_WRAPPID_FOOTER_TEXT ||
+          {process.env.REACT_APP_WRAPPID_footerText ||
             config?.wrappid?.footerText ||
             "Wrappid Default Footer"}{` © ${new Date().getFullYear()}`}
         </CoreTypographyBody1>
