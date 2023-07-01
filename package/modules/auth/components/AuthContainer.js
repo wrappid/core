@@ -72,35 +72,19 @@ export const AuthContainer = (props) => {
 
         {props.children}
 
-        <CoreBox
-          styleClasses={[
-            CoreClasses?.LAYOUT?.FULL_WIDTH,
-            CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
-            CoreClasses?.MARGIN?.MT5,
-          ]}
-        >
-          <CoreApiVersion />
-        </CoreBox>
-        <CoreBox
-          styleClasses={[
-            CoreClasses?.LAYOUT?.FULL_WIDTH,
-            CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
-            CoreClasses?.MARGIN?.MT5,
-          ]}
-        >
-          <CoreAppVersion />
-        </CoreBox>
-      </CoreSection>
-      <CoreGrid>
-          <CoreTypographyCaption gridProps={{gridSize: 3}}></CoreTypographyCaption>
-          <CoreTypographyCaption gridProps={{gridSize: 3}} styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+        <CoreGrid>
+          <CoreBox gridProps={{gridSize: 3}}>
+            <CoreAppVersion noTitle={true}/>
+          </CoreBox>
+          <CoreBox gridProps={{gridSize: 9}} styleClasses={[
+            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_SPACE_BETWEEN
+          ]}>
             <CoreLink>Help</CoreLink>
             <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy</CoreLink>
             <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>{"."}
-          </CoreTypographyCaption>
-      </CoreGrid>
+          </CoreBox>
+        </CoreGrid>
+      </CoreSection>
     </CoreBox>
   );
 };
