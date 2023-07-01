@@ -81,7 +81,7 @@ export const defaultValidations = {
     required: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match")
-      .required(),
+      .required(getFormikRequiredMessage("confirmPassword")),
     notRequired: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match"),
