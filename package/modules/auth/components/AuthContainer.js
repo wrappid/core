@@ -13,6 +13,7 @@ import CoreAppVersion from "../../../components/utils/custom/CoreAppVersion";
 import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/CoreTypographyCaption";
 import CoreGrid from "../../../components/layouts/CoreGrid";
 import CoreLink from "../../../components/navigation/CoreLink";
+import config from "../../../config/config";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
