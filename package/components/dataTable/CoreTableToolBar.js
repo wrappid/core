@@ -11,7 +11,7 @@ import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
 import CoreToolBar from "../utils/CoreToolbar";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
-import config from "../../../config/config";
+import config from "../../config/config";
 
 export default function CoreTableToolBar(props) {
   const { HandleColumnFilter, columns, bulkActions, selected } = props;
