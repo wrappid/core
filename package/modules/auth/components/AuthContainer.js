@@ -81,7 +81,7 @@ export const AuthContainer = (props) => {
           ]}>
             <CoreLink>Help</CoreLink>
             <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy</CoreLink>
-            <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>{"."}
+            <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>
           </CoreBox>
         </CoreGrid>
       </CoreSection>
