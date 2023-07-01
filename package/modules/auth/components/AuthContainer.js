@@ -8,6 +8,8 @@ import { nativeUseNavigate } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 import CoreComponent from "../../../components/CoreComponent";
 import { CoreResourceContext } from "../../../config/contextHandler";
+import CoreApiVersion from "../../../components/utils/custom/CoreApiVersion";
+import CoreAppVersion from "../../../components/utils/custom/CoreAppVersion";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
@@ -65,6 +67,18 @@ export const AuthContainer = (props) => {
         </CoreBox>
 
         {props.children}
+
+        <CoreBox
+          styleClasses={[
+            CoreClasses?.LAYOUT?.FULL_WIDTH,
+            CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
+            CoreClasses?.MARGIN?.MT5,
+          ]}
+        >
+          <CoreApiVersion />
+          <CoreAppVersion />
+        </CoreBox>
       </CoreSection>
     </CoreBox>
   );
