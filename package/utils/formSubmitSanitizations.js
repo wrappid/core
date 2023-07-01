@@ -52,6 +52,11 @@ export function SanClinicAddUrlChange(formData, apiMeta, state, others) {
 
 export function SanClinicEditUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
+  for (let key in formData) {
+    if (formData[key] === null) {
+      delete formData[key];
+    }
+  }
   return {
     values: formData,
     endpoint: apiMeta.endpoint.replace(":id", others.editing),
