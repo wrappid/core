@@ -73,15 +73,34 @@ export const AuthContainer = (props) => {
         {props.children}
 
         <CoreGrid>
-          <CoreBox gridProps={{gridSize: 3}}>
-            <CoreAppVersion noTitle={true}/>
+          <CoreBox gridProps={{ gridSize: 3 }}>
+            <CoreAppVersion noTitle={true} />
           </CoreBox>
-          <CoreBox gridProps={{gridSize: 9}} styleClasses={[
-            CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_SPACE_BETWEEN
-          ]}>
+          <CoreBox
+            gridProps={{ gridSize: 9 }}
+            styleClasses={[CoreClasses?.MARGIN?.MT1]}
+          >
             <CoreLink>Help</CoreLink>
-            <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy</CoreLink>
-            <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>
+            <CoreLink
+              styleClasses={[CoreClasses?.MARGIN?.ML1]}
+              href={
+                process.env?.REACT_APP_WRAPPID_privacyLink ||
+                config?.wrappid?.privacyLink ||
+                "#"
+              }
+            >
+              Privacy
+            </CoreLink>
+            <CoreLink
+              styleClasses={[CoreClasses?.MARGIN?.ML1]}
+              href={
+                process.env?.REACT_APP_WRAPPID_termsLink ||
+                config?.wrappid?.termsLink ||
+                "#"
+              }
+            >
+              Terms
+            </CoreLink>
           </CoreBox>
         </CoreGrid>
       </CoreSection>
