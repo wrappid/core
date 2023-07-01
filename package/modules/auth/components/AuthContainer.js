@@ -11,6 +11,7 @@ import { CoreResourceContext } from "../../../config/contextHandler";
 import CoreApiVersion from "../../../components/utils/custom/CoreApiVersion";
 import CoreAppVersion from "../../../components/utils/custom/CoreAppVersion";
 import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/CoreTypographyCaption";
+import CoreGrid from "../../../components/layouts/CoreGrid";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
