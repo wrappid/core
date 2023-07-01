@@ -3,6 +3,7 @@ import { NativeInputPassword } from "@wrappid/styled-components";
 import CoreBox from "../layouts/CoreBox";
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreFormErrorText from "./CoreFormErrorText";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreInputPassword(props) {
   return (
