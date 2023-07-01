@@ -95,6 +95,10 @@ export const componentMap = {
     comp: CoreInputPassword,
     defaultValidation: defaultValidations.password,
   },
+  newPassword: {
+    comp: CoreInputPassword,
+    defaultValidation: defaultValidations.password,
+  },
   confirmPassword: {
     comp: CoreConfirmPassword,
     defaultValidation: defaultValidations.confirmPassword,

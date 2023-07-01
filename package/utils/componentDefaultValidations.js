@@ -59,7 +59,7 @@ export const defaultValidations = {
       ),
   },
 
-  password: {
+  newPassword: {
     required: yup
       .string()
       .required(getFormikRequiredMessage("password"))
@@ -76,13 +76,18 @@ export const defaultValidations = {
         "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
       ),
   },
+  password: {
+    required: yup.string().required(getFormikRequiredMessage("password")),
+    notRequired: yup.string(),
+  },
   confirmPassword: {
     required: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("newPassword"), null], "Passwords must match")
+      .required(),
     notRequired: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
   },
   select: {
     required: yup.string().required(getFormikRequiredMessage("Select")),
