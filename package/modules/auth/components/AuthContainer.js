@@ -74,11 +74,12 @@ export const AuthContainer = (props) => {
 
         <CoreGrid>
           <CoreBox gridProps={{ gridSize: 3 }}>
-            v<CoreAppVersion noTitle={true} />
+            <span>v</span>
+            <CoreAppVersion noTitle={true} />
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
-            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses?.LAYOUT?.RIGHT_ALIGN]}
+            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses?.LAYOUT?.LEFT_ALIGN]}
           >
             <CoreLink>Help</CoreLink>
             <CoreLink
