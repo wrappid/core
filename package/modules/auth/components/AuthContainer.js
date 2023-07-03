@@ -14,7 +14,6 @@ import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/Cor
 import CoreGrid from "../../../components/layouts/CoreGrid";
 import CoreLink from "../../../components/navigation/CoreLink";
 import config from "../../../config/config";
-import CoreSpan from "../../../components/layouts/CoreSpan";
 import CoreDivider from "../../../components/dataDisplay/CoreDivider";
 
 export const AuthContainer = (props) => {
@@ -73,18 +72,18 @@ export const AuthContainer = (props) => {
         </CoreBox>
 
         {props.children}
-        <CoreDivider />
-        <CoreGrid styleClasses={[CoreClasses.POSITION.STICKY_BOTTOM]}>
+        <CoreDivider variant="middle" />
+        <CoreGrid styleClasses={[CoreClasses.POSITION.JUSTIFY_CONTENT_FLEX_END, CoreClasses.COLOR.TEXT_SECONDARY]}>
           <CoreBox gridProps={{ gridSize: 3 }}>
-            <CoreAppVersion noTitle={true} styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]} />
+            <CoreAppVersion noTitle={true} />
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
             styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
           >
-            <CoreLink styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]} >Help</CoreLink>
+            <CoreLink>Help</CoreLink>
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}
+              styleClasses={[CoreClasses?.MARGIN?.ML1]}
               href={
                 process.env?.REACT_APP_WRAPPID_privacyLink ||
                 config?.wrappid?.privacyLink ||
@@ -94,7 +93,7 @@ export const AuthContainer = (props) => {
               Privacy
             </CoreLink>
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}
+              styleClasses={[CoreClasses?.MARGIN?.ML1]}
               href={
                 process.env?.REACT_APP_WRAPPID_termsLink ||
                 config?.wrappid?.termsLink ||
