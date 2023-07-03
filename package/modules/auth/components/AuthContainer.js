@@ -73,7 +73,7 @@ export const AuthContainer = (props) => {
 
         {props.children}
 
-        <CoreGrid styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+        <CoreGrid>
           <CoreBox gridProps={{ gridSize: 3 }}>
             <CoreAppVersion noTitle={true} />
           </CoreBox>
