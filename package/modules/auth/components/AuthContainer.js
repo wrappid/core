@@ -15,6 +15,7 @@ import CoreGrid from "../../../components/layouts/CoreGrid";
 import CoreLink from "../../../components/navigation/CoreLink";
 import config from "../../../config/config";
 import CoreSpan from "../../../components/layouts/CoreSpan";
+import CoreDivider from "../../../components/dataDisplay/CoreDivider";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
@@ -72,18 +73,18 @@ export const AuthContainer = (props) => {
         </CoreBox>
 
         {props.children}
-
-        <CoreGrid>
+        <CoreDivider />
+        <CoreGrid styleClasses={[CoreClasses.POSITION.FIXED_BOTTOM]}>
           <CoreBox gridProps={{ gridSize: 3 }}>
-            <CoreAppVersion noTitle={true} />
+            <CoreAppVersion noTitle={true} styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]} />
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
             styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
           >
-            <CoreLink>Help</CoreLink>
+            <CoreLink styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]} >Help</CoreLink>
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1]}
+              styleClasses={[CoreClasses?.MARGIN?.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}
               href={
                 process.env?.REACT_APP_WRAPPID_privacyLink ||
                 config?.wrappid?.privacyLink ||
@@ -93,7 +94,7 @@ export const AuthContainer = (props) => {
               Privacy
             </CoreLink>
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1]}
+              styleClasses={[CoreClasses?.MARGIN?.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}
               href={
                 process.env?.REACT_APP_WRAPPID_termsLink ||
                 config?.wrappid?.termsLink ||
