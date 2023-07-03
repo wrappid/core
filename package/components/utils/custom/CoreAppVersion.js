@@ -14,7 +14,7 @@ export default function CoreAppVersion(props) {
         <CoreTypographyCaption>APP Version:</CoreTypographyCaption>
       )}
 
-      <CoreTypographyCaption>{version || "unknown"}</CoreTypographyCaption>
+      <CoreTypographyCaption>v{version || "unknown"}</CoreTypographyCaption>
     </CoreBox>
   );
 }

@@ -14,6 +14,7 @@ import CoreTypographyCaption from "../../../components/dataDisplay/paragraph/Cor
 import CoreGrid from "../../../components/layouts/CoreGrid";
 import CoreLink from "../../../components/navigation/CoreLink";
 import config from "../../../config/config";
+import CoreSpan from "../../../components/layouts/CoreSpan";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
@@ -72,14 +73,13 @@ export const AuthContainer = (props) => {
 
         {props.children}
 
-        <CoreGrid>
+        <CoreGrid styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
           <CoreBox gridProps={{ gridSize: 3 }}>
-            <span>v</span>
             <CoreAppVersion noTitle={true} />
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
-            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses?.LAYOUT?.LEFT_ALIGN]}
+            styleClasses={[CoreClasses?.MARGIN?.MT1,]}
           >
             <CoreLink>Help</CoreLink>
             <CoreLink
