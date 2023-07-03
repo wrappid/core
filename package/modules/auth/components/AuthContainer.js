@@ -79,7 +79,7 @@ export const AuthContainer = (props) => {
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
-            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses.ALIGNMENT.ALIGN_CONTENT_END]}
+            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
           >
             <CoreLink>Help</CoreLink>
             <CoreLink
