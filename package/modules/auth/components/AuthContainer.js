@@ -74,7 +74,7 @@ export const AuthContainer = (props) => {
 
         {props.children}
         <CoreDivider />
-        <CoreGrid styleClasses={[CoreClasses.POSITION.FIXED_BOTTOM]}>
+        <CoreGrid styleClasses={[CoreClasses.POSITION.STICKY_BOTTOM]}>
           <CoreBox gridProps={{ gridSize: 3 }}>
             <CoreAppVersion noTitle={true} styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]} />
           </CoreBox>
