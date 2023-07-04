@@ -21,7 +21,7 @@ async function tempFetch(apiConfig) {
       },
     };
     // reloadToken();
-  } else if (res.status === 500) {
+  } else if (res.status === 500 || !String(res.status).startsWith("20")) {
     throw {
       response: {
         status: res.status,
@@ -29,15 +29,8 @@ async function tempFetch(apiConfig) {
       },
     };
   } else {
-    throw {
-      response: {
-        status: res.status,
-        data,
-      },
-    };
+    return { status: res.status, data };
   }
-
-  return { status: res.status, data };
 }
 
 async function axiosInterceptor(apiConfig) {
