@@ -73,15 +73,17 @@ export const AuthContainer = (props) => {
 
         {props.children}
         <CoreDivider variant="middle" />
-        <CoreGrid styleClasses={[CoreClasses.POSITION.JUSTIFY_CONTENT_FLEX_END, CoreClasses.COLOR.TEXT_SECONDARY]}>
+        <CoreGrid styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+        ]}>
           <CoreBox gridProps={{ gridSize: 3 }}>
             <CoreAppVersion noTitle={true} />
           </CoreBox>
           <CoreBox
             gridProps={{ gridSize: 9 }}
-            styleClasses={[CoreClasses?.MARGIN?.MT1, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+            styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
           >
-            <CoreLink>Help</CoreLink>
+            {/* <CoreLink>Help</CoreLink> */}
             <CoreLink
               styleClasses={[CoreClasses?.MARGIN?.ML1]}
               href={
