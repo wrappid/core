@@ -1,4 +1,3 @@
-import CoreComponentsRegistry from "./CoreComponentsRegistry.js";
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
 import CoreBadge from "./dataDisplay/CoreBadge.js";
 import CoreChip from "./dataDisplay/CoreChip.js";
@@ -175,8 +174,7 @@ import NotificationPopOver from "./utils/custom/NotificationPopOver.js";
 import QuickAddPopOver from "./utils/custom/QuickAddPopOver.js";
 import CoreSpecificForm from "./forms/CoreSpecificForm.js";
 
-export const ComponentRegistry = {
-  CoreComponentsRegistry: { comp: CoreComponentsRegistry },
+export const CoreComponentsRegistry = {
   CoreAvatar: { comp: CoreAvatar },
   CoreBadge: { comp: CoreBadge },
   CoreChip: { comp: CoreChip },
