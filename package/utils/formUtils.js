@@ -670,7 +670,7 @@ function checkConditions(dependencies, formik) {
     let dependency = dependencies[i];
     if (dependency?.type === "operand") {
       console.log("EVALUATEING,", dependency.id, formik.values);
-      let dependentValue = formik.values[dependency.id];
+      let dependentValue = formik.values ? formik.values[dependency.id] : {};
       try {
         if (dependency.operator === "===") {
           if (dependentValue === dependency.value) {
