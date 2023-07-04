@@ -193,6 +193,7 @@ import {
   coreUseNavigate,
   coreUseLocation,
   coreUseParams,
+  coreUseSearchParams,
 } from "./helper/routerHelper";
 
 import { getForm, createApiMeta } from "./utils/formUtils";
@@ -213,6 +214,7 @@ import CoreComponent from "./components/CoreComponent";
 import { CoreResourceContext } from "./config/contextHandler";
 
 export {
+  coreUseSearchParams,
   CoreResourceContext,
   CoreComponent,
   config,
