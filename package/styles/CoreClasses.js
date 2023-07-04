@@ -166,9 +166,10 @@ const CoreClasses = {
     RX_SUCCESS_AMOUNT_CARD: "rxSuccessAmountCard",
     RX_SUCCESS_AMOUNT: "rxSuccessAmount",
   },
-  AUTH_CARD: {
-    MIN_WIDTH: "authCardMinWidth",
-    MAX_WIDTH: "authCardMaxWidth",
+  AUTH: {
+    WRAPPER: "authWrapper",
+    CARD_MIN_WIDTH: "authCardMinWidth",
+    CARD_MAX_WIDTH: "authCardMaxWidth",
   },
 };
 

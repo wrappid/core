@@ -291,4 +291,11 @@ export const defaultCoreStyles = {
   },
   fiContentWidth: {},
   fitContentHeight: {},
+  authWrapper: {
+    ...defaultUtilityStyles.justifyContentCenter,
+    ...defaultUtilityStyles.alignContentCenter,
+    ...defaultUtilityStyles.flexWrapWrap,
+    ...defaultUtilityStyles.vh100,
+    width: "98vw" + IMPORTANT,
+  },
 };

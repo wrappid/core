@@ -43,21 +43,13 @@ export const AuthContainer = (props) => {
     }
   });
   return (
-    <CoreBox
-      styleClasses={[
-        CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
-        CoreClasses?.ALIGNMENT?.ALIGN_CONTENT_CENTER,
-        CoreClasses?.FLEX?.FLEX_WRAP_WRAP,
-        CoreClasses?.HEIGHT?.VH_100,
-        CoreClasses?.WIDTH?.VW_100,
-      ]}
-    >
+    <CoreBox styleClasses={[CoreClasses?.AUTH?.WRAPPER]}>
       <CoreSection
         styleClasses={[
           CoreClasses?.UTILS?.FIT_CONTENT_WIDTH,
           CoreClasses?.UTILS?.FIT_CONTENT_HEIGHT,
-          CoreClasses?.AUTH_CARD?.MIN_WIDTH,
-          CoreClasses?.AUTH_CARD?.MAX_WIDTH,
+          CoreClasses?.AUTH?.CARD_MIN_WIDTH,
+          CoreClasses?.AUTH?.CARD_MAX_WIDTH,
         ]}
       >
         <CoreBox
