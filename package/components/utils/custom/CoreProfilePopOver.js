@@ -69,7 +69,9 @@ export default function CoreProfilePopOver(props) {
           gridProps={{ gridSize: 4 }}
           styleClasses={[
             CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM,
-            CoreClasses.MARGIN.MR2,
+            CoreClasses.MARGIN.MR1,
+            CoreClasses.PADDING.PL1,
+            CoreClasses.PADDING.PT1
           ]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />

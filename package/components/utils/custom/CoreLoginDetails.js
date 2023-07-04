@@ -18,7 +18,8 @@ export default function CoreLoginDetails() {
   return (
     <>
       <CoreBox
-        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        styleClasses={[CoreClasses.PADDING.PL1]}
+      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Role:</CoreTypographyCaption>
 
@@ -26,13 +27,15 @@ export default function CoreLoginDetails() {
       </CoreBox>
 
       <CoreBox
-        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        styleClasses={[CoreClasses.PADDING.PL1]}
+      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreLabel>Last Login Information :-</CoreLabel>
       </CoreBox>
 
       <CoreBox
-        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        styleClasses={[CoreClasses.PADDING.PL1]}
+      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Device:</CoreTypographyCaption>
 
@@ -42,7 +45,8 @@ export default function CoreLoginDetails() {
       </CoreBox>
 
       <CoreBox
-        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        styleClasses={[CoreClasses.PADDING.PL1]}
+      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Last Login time:</CoreTypographyCaption>
 
@@ -53,7 +57,8 @@ export default function CoreLoginDetails() {
       </CoreBox>
 
       <CoreBox
-        // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+        styleClasses={[CoreClasses.PADDING.PL1]}
+      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
       >
         <CoreTypographyCaption>Location IP:</CoreTypographyCaption>
 

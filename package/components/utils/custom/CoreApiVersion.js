@@ -25,7 +25,8 @@ export default function CoreApiVersion() {
 
     return (
         <>
-            <CoreBox 
+            <CoreBox
+                styleClasses={[CoreClasses.PADDING.PL1]}
             // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
             >
                 <CoreTypographyCaption>API Version:</CoreTypographyCaption>
@@ -34,7 +35,8 @@ export default function CoreApiVersion() {
             </CoreBox>
 
             <CoreBox
-                // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
                 <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
 
