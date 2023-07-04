@@ -28,6 +28,13 @@ async function tempFetch(apiConfig) {
         data,
       },
     };
+  } else {
+    throw {
+      response: {
+        status: res.status,
+        data,
+      },
+    };
   }
 
   return { status: res.status, data };
