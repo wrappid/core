@@ -7,7 +7,7 @@ import { FORM_VIEW_MODE } from "./coreFormConstants";
 
 export default function CoreSpecificForm() {
     const { formId } = coreUseParams();
-    const searchParams = coreUseSearchParams();
+    const [searchParams] = coreUseSearchParams();
     const [query, setQuery] = useState();
 
     React.useEffect(() => {
