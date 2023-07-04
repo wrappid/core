@@ -72,34 +72,52 @@ export const AuthContainer = (props) => {
         </CoreBox>
 
         {props.children}
-        <CoreDivider variant="middle" />
-        <CoreGrid styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-        ]}>
-          <CoreBox gridProps={{ gridSize: 3 }}>
+
+        {/* <CoreDivider variant="middle" /> */}
+
+        <CoreGrid
+          styleClasses={[
+            CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+            CoreClasses.MARGIN.MT2,
+          ]}
+        >
+          <CoreBox
+            gridProps={{ gridSize: 6 }}
+            styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
+          >
             <CoreAppVersion noTitle={true} />
           </CoreBox>
           <CoreBox
-            gridProps={{ gridSize: 9 }}
-            styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+            gridProps={{ gridSize: 6 }}
+            styleClasses={[
+              CoreClasses.LAYOUT.FULL_WIDTH,
+              CoreClasses.FLEX.DIRECTION_ROW,
+              CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+              CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+            ]}
           >
-            {/* <CoreLink>Help</CoreLink> */}
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1]}
+              styleClasses={[CoreClasses?.MARGIN?.MR1]}
+              href={
+                process.env?.REACT_APP_WRAPPID_helpLink ||
+                config?.wrappid?.helpLink
+              }
+            >
+              Help
+            </CoreLink>
+            <CoreLink
+              styleClasses={[CoreClasses?.MARGIN?.MR1]}
               href={
                 process.env?.REACT_APP_WRAPPID_privacyLink ||
-                config?.wrappid?.privacyLink ||
-                "#"
+                config?.wrappid?.privacyLink
               }
             >
               Privacy
             </CoreLink>
             <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.ML1]}
               href={
                 process.env?.REACT_APP_WRAPPID_termsLink ||
-                config?.wrappid?.termsLink ||
-                "#"
+                config?.wrappid?.termsLink
               }
             >
               Terms
