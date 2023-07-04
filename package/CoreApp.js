@@ -11,7 +11,7 @@ import {
   CoreMenuContext,
   CoreResourceContext,
 } from "./config/contextHandler";
-import CoreComponentRegistry from "./config/ComponentRegistry";
+import ComponentRegistry from "./config/ComponentRegistry";
 // import CoreDialog from "./components/feedback/CoreDialog";
 
 export default function CoreApp({
@@ -35,7 +35,7 @@ export default function CoreApp({
     >
       <CoreApplicationContext.Provider value={applicationRegistry}>
       <ComponentRegistryContext.Provider
-        value={{ ...componentRegistry, ...CoreComponentRegistry }}
+        value={{ ...componentRegistry, ...ComponentRegistry }}
       >
         <React.StrictMode>
           <CoreResourceContext.Provider value={resourceRegistry}>

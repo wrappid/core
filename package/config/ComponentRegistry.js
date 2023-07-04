@@ -1,4 +1,4 @@
-import { CoreComponentRegistry } from "../components/CoreComponentsRegistry";
+import { CoreComponentsRegistry } from "../components/CoreComponentsRegistry";
 import authComponentRegistry from "../modules/auth/components.registry";
 import { componentMap } from "../utils/componentMap";
 
@@ -8,7 +8,7 @@ let ComponentRegistry = {
    */
   ...componentMap,
   ...authComponentRegistry,
-  ...CoreComponentRegistry
+  ...CoreComponentsRegistry
 };
 
 export default ComponentRegistry;
