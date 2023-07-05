@@ -671,3 +671,15 @@ export function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
   };
   return obj;
 }
+
+export function SanStatusUpdate(formData, apiMeta, state, others) {
+  const id = formData.id;
+  const model = apiMeta?.reduxData?.reduxData?.query?.model;
+  const data = { ...formData };
+  delete data["id"];
+  const obj = {
+    values: formData,
+    endpoint: apiMeta?.endpoint?.replace(":model", model).replace(":id", id),
+  };
+  return obj;
+}
