@@ -7,8 +7,8 @@ import {
   MASTER_DATA_LOADING,
 } from "../types/mdmTypes";
 
-let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
-let adminUrl = process.env.REACT_APP_ADMIN_URL || config.adminUrl;
+let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;
+let adminUrl = process.env.REACT_APP_ADMIN_URL || config?.adminUrl;
 
 export const getScrappedDepartments = (query = {}, token = "") => {
   return (dispatch) => {
