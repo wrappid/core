@@ -1,5 +1,4 @@
 import React, { createContext } from "react";
-import { coreDialogInitValue } from "./constants";
 
 export const ComponentRegistryContext = createContext({});
 export const ThemeContext = createContext({});

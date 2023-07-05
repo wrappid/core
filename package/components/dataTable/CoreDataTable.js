@@ -147,6 +147,8 @@ export default function CoreDataTable(props) {
     enableCreateEntity = true,
     createEntityButtonText,
     hideForm = false,
+    hideCreateForm = false,
+    hideUpdateForm = false,
     createFormID = null,
     updateFormID = null,
     // table props
@@ -782,6 +784,8 @@ export default function CoreDataTable(props) {
             createFormID={detailsPaneCreateFormID}
             updateFormID={detailsPaneUpdateFormID}
             hideForm={hideForm}
+            hideCreateForm={hideCreateForm}
+            hideUpdateForm={hideUpdateForm}
             formState={form}
             formMode={formMode}
             setFormMode={setFormMode}

@@ -29,6 +29,8 @@ export default function CoreDataTableDetailsPane(props) {
     createFormID,
     updateFormID,
     hideForm,
+    hideCreateForm,
+    hideUpdateForm,
     formMode,
     setFormMode,
     editable,
@@ -139,7 +141,7 @@ export default function CoreDataTableDetailsPane(props) {
               )}
               {detailedRowId && detailedRowData ? (
                 updateFormID &&
-                !hideForm && (
+                !hideForm && !hideUpdateForm && (
                   <>
                     <CoreDivider />
                     <CoreForm
@@ -245,7 +247,7 @@ export default function CoreDataTableDetailsPane(props) {
               )}
               {enableCreateEntity ? (
                 createFormID &&
-                !hideForm && (
+                !hideForm && !hideCreateForm && (
                   <>
                     <CoreForm
                       apiMode={"create"}
