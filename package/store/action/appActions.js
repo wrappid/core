@@ -54,7 +54,8 @@ export const apiRequestAction =
     resetLoadingType = RESET_LOADING
   ) =>
   (dispatch) => {
-    dispatch({ type: loadingType });
+    try {
+      dispatch({ type: loadingType });
     formId &&
       method !== HTTP.GET &&
       dispatch({
@@ -240,6 +241,10 @@ export const apiRequestAction =
 
         // return Promise.reject();
       });
+    } catch (error) {
+      console.error("Something went wrong.", error);
+    }
+    
   };
 
 /**
