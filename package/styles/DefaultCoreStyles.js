@@ -21,19 +21,19 @@ export const defaultCoreStyles = {
   /**
    * Core App Bar Styles
    */
-  appbarHeight: { top: HEADING_TOP_MARGIN },
-  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` },
-  appBarLogo: { height: "30px" },
+  appbarHeight: { top: HEADING_TOP_MARGIN + IMPORTANT },
+  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
+  appBarLogo: { height: "30px" + IMPORTANT },
 
   /**
    * App Styles
    */
   footer: {
-    padding: DEFAULT_PADDING,
-    textAlign: "center",
-    backgroundColor: defaultUtilityStyles.bgSecondaryLight,
+    padding: DEFAULT_PADDING + IMPORTANT,
+    textAlign: "center" + IMPORTANT,
+    backgroundColor: defaultUtilityStyles.bgSecondaryLight + IMPORTANT,
   },
-  ucImg: { width: "50%" },
+  ucImg: { width: "50%" + IMPORTANT },
   basicInfoCard: {},
   // ------------------------------------------
   /**
@@ -43,16 +43,16 @@ export const defaultCoreStyles = {
     /**
      * DO NOT TOUCH THIS STYLE WITHOUT DISCUSSION
      */
-    height: "100vh",
-    width: "100vw",
+    height: "100vh" + IMPORTANT,
+    width: "100vw" + IMPORTANT,
   },
-  fullWidth: { width: "100%" },
-  fullHeight: { height: "100%" },
-  flexBox: { display: "flex" },
-  fullWidthHeight: { width: "100%", height: "100%" },
+  fullWidth: { width: "100%" + IMPORTANT},
+  fullHeight: { height: "100%" + IMPORTANT },
+  flexBox: { display: "flex" + IMPORTANT },
+  fullWidthHeight: { width: "100%" + IMPORTANT, height: "100%" + IMPORTANT },
   pageContainer: {
-    minHeight: "100%",
-    padding: DEFAULT_PADDING,
+    minHeight: "100%" + IMPORTANT,
+    padding: DEFAULT_PADDING + IMPORTANT,
   },
   contentContainer: {
     ...defaultUtilityStyles.bgWhite,
@@ -61,17 +61,17 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.borderPrimaryLight,
     ...defaultUtilityStyles.w100,
     ...defaultUtilityStyles.overflowYAuto,
-    marginTop: HEADING_TOP_MARGIN,
+    marginTop: HEADING_TOP_MARGIN + IMPORTANT,
   },
   loggedOutContentContainer: {
-    flexGrow: 1,
-    width: "100%",
-    overflowY: "auto",
+    flexGrow: 1 + IMPORTANT,
+    width: "100%" + IMPORTANT,
+    overflowY: "auto" + IMPORTANT,
   },
   avatar: {
-    borderWidth: "2px",
-    borderStyle: "solid",
-    borderColor: defaultUtilityStyles.borderPrimaryLight,
+    borderWidth: "2px" + IMPORTANT,
+    borderStyle: "solid" + IMPORTANT,
+    borderColor: defaultUtilityStyles.borderPrimaryLight + IMPORTANT,
   },
   avatarSmall: { height: "24px" + IMPORTANT, width: "24px" + IMPORTANT },
   avatarMedium: { height: "48px" + IMPORTANT, width: "48px" + IMPORTANT },
@@ -84,7 +84,7 @@ export const defaultCoreStyles = {
     // paddingTop: 2,
     // paddingBottom: 2,
   },
-  miniDrawerListItemIcon: { minWidth: 0 },
+  miniDrawerListItemIcon: { minWidth: 0 + IMPORTANT },
 
   listItem: {},
   listItemButton: {
@@ -95,7 +95,7 @@ export const defaultCoreStyles = {
   listItemText: {},
 
   headerItem: {
-    padding: 0,
+    padding: 0 + IMPORTANT,
     // backgroundColor: theme.palette.secondary.light,
   },
   headerButtonItem: {},
@@ -103,7 +103,7 @@ export const defaultCoreStyles = {
   headerTextItem: {},
 
   parentItem: {
-    padding: 0,
+    padding: 0 + IMPORTANT,
     // backgroundColor: theme.palette.secondary.light,
   },
   parentButtonItem: {},
@@ -111,19 +111,19 @@ export const defaultCoreStyles = {
   parentTextItem: {},
 
   seperatorItem: {
-    padding: 0,
+    padding: 0 + IMPORTANT,
     // backgroundColor: theme.palette.secondary.light,
   },
   seperatorButtonItem: {
-    height: 0,
-    minHeight: 0,
+    height: 0 + IMPORTANT,
+    minHeight: 0 + IMPORTANT,
     // backgroundColor: "gray"
   },
-  seperatorIconItem: { height: 0, minHeight: 0, display: "none" },
-  seperatorTextItem: { height: 0, minHeight: 0 },
+  seperatorIconItem: { height: 0 + IMPORTANT, minHeight: 0 + IMPORTANT, display: "none" + IMPORTANT },
+  seperatorTextItem: { height: 0 + IMPORTANT, minHeight: 0 + IMPORTANT },
 
   menuItem: {
-    padding: 0,
+    padding: 0 + IMPORTANT,
     // backgroundColor: theme.palette.secondary.light,
   },
   menuItemButtonItem: {},
@@ -134,56 +134,56 @@ export const defaultCoreStyles = {
    * text styles
    */
   hiddenBodyText: {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    "-webkit-box-orient": "vertical",
-    display: "-webkit-box",
+    overflow: "hidden" + IMPORTANT,
+    textOverflow: "ellipsis" + IMPORTANT,
+    "-webkit-box-orient": "vertical" + IMPORTANT,
+    display: "-webkit-box" + IMPORTANT,
   },
 
   /**
    * MODAL
    */
   modalContainer: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "30%",
-    minHeight: "60%",
-    boxShadow: 24,
-    borderRadius: 10,
-    outline: 0,
+    position: "absolute" + IMPORTANT,
+    top: "50%" + IMPORTANT,
+    left: "50%" + IMPORTANT,
+    transform: "translate(-50%, -50%)" + IMPORTANT,
+    width: "30%" + IMPORTANT,
+    minHeight: "60%" + IMPORTANT,
+    boxShadow: 24 + IMPORTANT,
+    borderRadius: 10 + IMPORTANT,
+    outline: 0 + IMPORTANT,
   },
-  modalHeader: { padding: 20 },
-  modalBody: { padding: 40 },
+  modalHeader: { padding: 20 + IMPORTANT },
+  modalBody: { padding: 40 + IMPORTANT },
 
-  helperOutsideForm: { marginTop: "-2rem" },
+  helperOutsideForm: { marginTop: "-2rem" + IMPORTANT },
 
   /**
    * Popover Content Styles
    */
   popoverHeader: {
-    padding: DEFAULT_PADDING,
-    maxWidth: "70vw",
+    padding: DEFAULT_PADDING + IMPORTANT,
+    maxWidth: "70vw" + IMPORTANT,
   },
   popoverContent: {
-    padding: DEFAULT_PADDING,
-    maxWidth: "70vw",
-    maxHeight: "70vh",
-    minWidth: "300px",
-    overflowY: "auto",
+    padding: DEFAULT_PADDING + IMPORTANT,
+    maxWidth: "70vw" + IMPORTANT,
+    maxHeight: "70vh" + IMPORTANT,
+    minWidth: "300px" + IMPORTANT,
+    overflowY: "auto" + IMPORTANT,
   },
   popoverFooter: {
-    padding: DEFAULT_PADDING,
-    maxWidth: "70vw",
+    padding: DEFAULT_PADDING + IMPORTANT,
+    maxWidth: "70vw" + IMPORTANT,
   },
 
   // ----------Data Table Styles Starts----------
   dataTableContainer: {
     ...defaultUtilityStyles.bgWhite,
+    width: "calc(100% + 16px)" + IMPORTANT,
     // ...defaultUtilityStyles.bgInfoLight,
     // ...defaultUtilityStyles.border,
-    width: "calc(100% + 16px)",
     // ...defaultUtilityStyles.w100,
     // ...defaultUtilityStyles.mxN1,
   },
@@ -195,8 +195,8 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.positionSticky,
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,
-    height: "calc(100vh - 118px)",
-    top: "53px",
+    height: "calc(100vh - 118px)" + IMPORTANT,
+    top: "53px" + IMPORTANT,
   },
   dataTableFullWidthPane: {
     // ...defaultUtilityStyles.border,
@@ -206,7 +206,7 @@ export const defaultCoreStyles = {
   dataTable: {
     ...defaultUtilityStyles.mtN1,
     ...defaultUtilityStyles.mlN1,
-    width: "calc(100% + 8px)",
+    width: "calc(100% + 8px)" + IMPORTANT,
   },
   dataTableToolbarContainer: {
     // ...defaultUtilityStyles.border,
@@ -226,7 +226,7 @@ export const defaultCoreStyles = {
     // ...defaultUtilityStyles.borderPrimaryLight,
     // ...defaultUtilityStyles.shadow,
     ...defaultUtilityStyles.stickyTop,
-    top: "-1px",
+    top: "-1px" + IMPORTANT,
     // top: "-8px",
   },
   dataTableHeadTop: {},
@@ -243,15 +243,15 @@ export const defaultCoreStyles = {
   },
   tableCell: { ...defaultUtilityStyles.px1 },
   tableToolbarPopoverScrollableContainer: {
-    padding: DEFAULT_PADDING,
-    maxHeight: "70vh",
-    maxWidth: "80vw",
+    padding: DEFAULT_PADDING + IMPORTANT,
+    maxHeight: "70vh" + IMPORTANT,
+    maxWidth: "80vw" + IMPORTANT,
   },
 
   /**
    * Custom table features
    */
-  tableRowActionPopover: { backgroundColor: "transparent" },
+  tableRowActionPopover: { backgroundColor: "transparent" + IMPORTANT },
 
   auditData: {},
 
@@ -267,10 +267,10 @@ export const defaultCoreStyles = {
   counterWidgetCardActions: {},
   counterWidgetCardIcon: {
     /* position: "absolute", */
-    bottom: "-16px",
-    right: "-16px",
-    color: defaultUtilityStyles.bgDefault,
-    fontSize: "120px",
+    bottom: "-16px" + IMPORTANT,
+    right: "-16px" + IMPORTANT,
+    color: defaultUtilityStyles.bgDefault + IMPORTANT,
+    fontSize: "120px" + IMPORTANT,
   },
   counterWidgetCounterStack: {
     ...defaultUtilityStyles.justifyContentSpaceEvenly,
@@ -280,14 +280,14 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.justifyContentFlexEnd,
     ...defaultUtilityStyles.alignItemsCenter,
   },
-  counterWidgetCounterPrimary: { color: defaultUtilityStyles.bgPrimary },
+  counterWidgetCounterPrimary: { color: defaultUtilityStyles.bgPrimary + IMPORTANT },
   // ----------Widget Styles Ends----------------
 
   // ---------Business Entity Comp---------------
   includedModelCard: {
-    borderLeft: `1px solid ${defaultUtilityStyles.bgPrimaryLight}`,
-    margin: "8px",
-    paddingLeft: "8px",
+    borderLeft: `1px solid ${defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
+    margin: "8px" + IMPORTANT,
+    paddingLeft: "8px" + IMPORTANT,
   },
   fiContentWidth: {},
   fitContentHeight: {},

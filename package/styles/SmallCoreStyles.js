@@ -16,27 +16,27 @@ export const smallCoreStyles = {
   /**
    * Core App Bar Styles
    */
-  appbarHeight: { top: HEADING_TOP_MARGIN },
-  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` },
+  appbarHeight: { top: HEADING_TOP_MARGIN  + IMPORTANT },
+  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
   appBarLogo: {
-    cursor: "pointer",
-    height: "40px",
-    paddingLeft: "8px",
+    cursor: "pointer" + IMPORTANT,
+    height: "40px" + IMPORTANT,
+    paddingLeft: "8px" + IMPORTANT,
   },
 
-  contentContainer: { marginTop: HEADING_TOP_MARGIN },
+  contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
 
-  authFormContainer: { width: "100%" },
+  authFormContainer: { width: "100%" + IMPORTANT },
   authBanner: {
-    backgroundImage: "url(./images/welcome-bg.png)",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    height: "100%",
+    backgroundImage: "url(./images/welcome-bg.png)" + IMPORTANT,
+    backgroundPosition: "center" + IMPORTANT,
+    backgroundSize: "cover" + IMPORTANT,
+    backgroundRepeat: "no-repeat" + IMPORTANT,
+    height: "100%" + IMPORTANT,
   },
-  authContainer: { height: "100%" },
-  authForm: { height: "100%" },
-  profileBarWidth: { maxWidth: "80vw" },
+  authContainer: { height: "100%" + IMPORTANT },
+  authForm: { height: "100%" + IMPORTANT },
+  profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
 
   // ----------Data Table Styles Starts----------
   dataTableContainer: {
@@ -50,8 +50,8 @@ export const smallCoreStyles = {
     ...defaultUtilityStyles.positionSticky,
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,
-    height: "calc(100vh - 118px)",
-    top: "53px",
+    height: "calc(100vh - 118px)" + IMPORTANT,
+    top: "53px" + IMPORTANT,
   },
   dataTableFullWidthPane: {
     // ...defaultUtilityStyles.border,
@@ -61,7 +61,7 @@ export const smallCoreStyles = {
   dataTable: {
     ...defaultUtilityStyles.mtN1,
     ...defaultUtilityStyles.mlN1,
-    width: "calc(100% + 8px)",
+    width: "calc(100% + 8px)" + IMPORTANT,
   },
   dataTableToolbarContainer: {},
   dataTableToolbar: {},
@@ -80,20 +80,20 @@ export const smallCoreStyles = {
   },
   tableCell: { ...defaultUtilityStyles.px1 },
   tableToolbarPopoverScrollableContainer: {
-    padding: DEFAULT_PADDING,
-    maxHeight: "70vh",
-    maxWidth: "80vw",
+    padding: DEFAULT_PADDING + IMPORTANT,
+    maxHeight: "70vh" + IMPORTANT,
+    maxWidth: "80vw" + IMPORTANT,
   },
 
   /**
    * Custom table features
    */
-  tableRowActionPopover: { backgroundColor: "transparent" },
+  tableRowActionPopover: { backgroundColor: "transparent" + IMPORTANT },
 
   auditData: {},
 
   // ----------Data Table Styles Ends------------
 
-  fiContentWidth: { width: "fit-content" },
-  fitContentHeight: { height: "fit-content" },
+  fiContentWidth: { width: "fit-content" + IMPORTANT },
+  fitContentHeight: { height: "fit-content" + IMPORTANT },
 };
