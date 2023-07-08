@@ -5,6 +5,9 @@ import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import { NativeFilePicker } from "@wrappid/styled-components";
+import CoreBox from "../layouts/CoreBox";
+import CoreClasses from "../../styles/CoreClasses";
+import CoreIcon from "../dataDisplay/CoreIcon";
 
 export default function CoreFilePicker(props) {
   const inputRef = useRef(null);
@@ -21,9 +24,18 @@ export default function CoreFilePicker(props) {
       >
         {props.label}
       </CoreLabel>
-      <NativeFilePicker {...props} />
-      <CoreFormErrorText>{props.touched && props.error}</CoreFormErrorText>
-      <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
+      <CoreBox
+        styleClasses={[
+          CoreClasses.BORDER.BORDER_SECONDARY_LIGHT,
+          CoreClasses.HEIGHT.H_25,
+          CoreClasses.HEIGHT.W_50,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+        ]}
+      >
+        <CoreIcon fontSize={"small"}>{"add"}</CoreIcon>
+        <NativeFilePicker {...props} />
+      </CoreBox>
     </CoreFormControl>
   );
 }
