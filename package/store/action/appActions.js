@@ -19,7 +19,9 @@ import {
   CLEAR_SNACK_MESSAGE,
   PUSH_SNACK_MESSAGE,
   RESET_LOADING,
+  RESET_PROGRESS_BAR,
   SET_LOADING,
+  SET_PROGRESS_BAR,
 } from "../types/appTypes";
 import {
   HTTP_NO_CONTENT,
@@ -55,6 +57,7 @@ export const apiRequestAction =
   ) =>
   (dispatch) => {
     try {
+      dispatch({type: SET_PROGRESS_BAR}); //show progress bar
       dispatch({ type: loadingType });
     formId &&
       method !== HTTP.GET &&
@@ -240,9 +243,10 @@ export const apiRequestAction =
         }
 
         // return Promise.reject();
-      });
+      }).finally(() => {dispatch({type: RESET_PROGRESS_BAR})});
     } catch (error) {
       console.error("Something went wrong.", error);
+      dispatch({type: RESET_PROGRESS_BAR});
     }
     
   };

@@ -44,6 +44,7 @@ import {
   GET_ROLE_PERMISSION_ERROR,
 } from "../modules/auth/types/authTypes";
 import CoreClasses from "../styles/CoreClasses";
+import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
 
 export var globalAccessToken = null;
 export var globalRefreshToken = null;
@@ -218,6 +219,7 @@ function AppContainer(props) {
       coreClasses={CoreClasses}
       uid={auth?.uid}
     >
+      <CoreRequestProgressBar />
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
         {props.children}
       </ErrorBoundary>

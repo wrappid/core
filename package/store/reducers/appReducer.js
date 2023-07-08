@@ -8,7 +8,9 @@ import {
     MESSAGE_SHOWED,
     PUSH_SNACK_MESSAGE,
     RESET_LOADING,
-    SET_LOADING
+    SET_LOADING,
+    SET_PROGRESS_BAR,
+    RESET_PROGRESS_BAR
 } from "./../types/appTypes";
 // import { LOGOUT_SUCCESS } from "../types/authTypes";
 
@@ -23,6 +25,9 @@ const initState = {
     routes               : [],
     snackMessages        : [],
     snackMessagesMaxCount: 5,
+    requestProgress: {
+        visible: false,
+    },
 };
 
 const appReducer = (state = initState, action) => {
@@ -115,6 +120,18 @@ const appReducer = (state = initState, action) => {
                 routes: [],
             };
 
+        case SET_PROGRESS_BAR: 
+            return {
+                ...state,
+                requestProgress: {visible: true},
+            };
+
+        case RESET_PROGRESS_BAR: 
+            return {
+                ...state,
+                requestProgress: {visible: false},
+        };
+        
         // case LOGOUT_SUCCESS:
         //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };
 
