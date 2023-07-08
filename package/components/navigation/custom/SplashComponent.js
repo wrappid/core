@@ -7,7 +7,11 @@ import {
 } from "@wrappid/styled-components";
 
 import { urls } from "../../../config/constants";
-import { CoreTypographyBody1, CoreBox } from "@wrappid/core";
+import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreBox from "../../layouts/CoreBox";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreComponent from "../../CoreComponent";
+import CoreGrid from "../../layouts/CoreGrid";
 
 export default function SplashComponent() {
   const _routes = useSelector((state) => state.route.routes);
@@ -58,10 +62,34 @@ export default function SplashComponent() {
   }
 
   return (
-    <CoreBox>
+    <CoreGrid
+      styleClasses={[
+        CoreClasses.HEIGHT.VH_100,
+        CoreClasses.WIDTH.VW_100,
+        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+      ]}
+    >
+      <CoreBox
+        gridProps={{ gridSize: 6 }}
+        styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+        ]}
+      >
+        <CoreComponent componentName={"AppLogoGif"} />
+        <CoreTypographyBody1>
+          {checkAppLoadDependencies()?.message}
+        </CoreTypographyBody1>
+      </CoreBox>
+    </CoreGrid>
+  );
+}
+
+/*
+<CoreBox>
       <CoreTypographyBody1>
         {checkAppLoadDependencies()?.message}
       </CoreTypographyBody1>
     </CoreBox>
-  );
-}
+*/
