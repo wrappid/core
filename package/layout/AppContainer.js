@@ -6,7 +6,7 @@ import {
   NativeAppContainer,
 } from "@wrappid/styled-components";
 
-import { ComponentRegistry } from "./../config/ComponentRegistry";
+import ComponentRegistry from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
 import CoreDrawer from "./../components/surfaces/CoreDrawer";
