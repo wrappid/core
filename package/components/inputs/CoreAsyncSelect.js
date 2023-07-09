@@ -54,6 +54,7 @@ export default function CoreAsyncSelect(props) {
     editId,
     asyncLoading,
     allowEdit,
+    optionComp,
     optionCompProps,
   } = props;
 
@@ -238,11 +239,74 @@ export default function CoreAsyncSelect(props) {
     );
   });
 
+  const getEndAdornment = (params) => {
+    return (
+      <React.Fragment>
+        {loading &&
+        inlineAction &&
+        fieldActions &&
+        fieldActions.length === 1 &&
+        !props.readOnly ? (
+          <CoreCircularProgress color="inherit" size={20} />
+        ) : null}
+        {/* inline form submits */}
+        {inlineAction && fieldActions && fieldActions.length === 1 ? (
+          !props.readOnly ? (
+            <>
+              {checkValueDiff() &&
+                fieldActions?.map((actionElement, i) => (
+                  <CoreFieldButton
+                    key={i}
+                    element={actionElement}
+                    formikprops={props.formik}
+                    handleButtonCLick={handleButtonCLick}
+                    submitLoading={submitLoading}
+                  />
+                ))}
+              {props.value &&
+                ((props.multiple && props.value.length > 0) ||
+                  (props.value.label && props.value.id)) && (
+                  <CoreIconButton
+                    onClick={(e) => {
+                      props.multiple
+                        ? props?.formik?.setFieldValue(props.id, [])
+                        : props?.formik?.setFieldValue(props.id, {});
+
+                      // @todo added for on clear handle change support
+                      if (handleChange) {
+                        handleChange(e, props.multiple ? [] : {});
+                      }
+                    }}
+                  >
+                    <CoreIcon fontSize="small">close</CoreIcon>
+                  </CoreIconButton>
+                )}
+            </>
+          ) : (
+            allowEdit !== false &&
+            !props.onFormFocus && (
+              <CoreIconButton
+                onClick={() => {
+                  OnEditClick(editId);
+                }}
+              >
+                <CoreIcon fontSize="small">edit</CoreIcon>
+              </CoreIconButton>
+            )
+          )
+        ) : (
+          params?.InputProps?.endAdornment
+        )}
+      </React.Fragment>
+    );
+  };
+
   return (
     <>
       <CoreAutocomplete
         _topLabel={label} //required for mobile layer
         _inputValue={inputValue} //required for mobile layer
+        _optionComp={optionComp} //required for mobile layer
         onBlur={props?.formik?.handleBlur(props.id)}
         multiple={props.multiple ? props.multiple : false}
         id={props.id ? props.id : `"async-select-"+${getKey()}`}
@@ -323,15 +387,15 @@ export default function CoreAsyncSelect(props) {
           if (onChangeDispatch) {
             /**
              * @todo
-             * if onChangeDispatch is a function 
+             * if onChangeDispatch is a function
              *    dispatch the function
              * else if onChangeDispatch is a string
-             *    if onChangeDispatch value is available in the asyncSelectFunction Map 
+             *    if onChangeDispatch value is available in the asyncSelectFunction Map
              *      then get it from asyncSelectFunctionMap
              *    else
              *       dispatch with onChangeDispatch value as type(reducer type)
              * else if it's a object
-             *       do we really need it?  
+             *       do we really need it?
              */
             if (typeof onChangeDispatch === "function") {
               dispatch(onChangeDispatch(values));
@@ -346,7 +410,6 @@ export default function CoreAsyncSelect(props) {
                 payload: values,
               });
             }
-            
           }
           if (handleChange) {
             handleChange(values);
@@ -423,65 +486,7 @@ export default function CoreAsyncSelect(props) {
             label={label}
             InputProps={{
               ...params.InputProps,
-              endAdornment: (
-                <React.Fragment>
-                  {loading &&
-                  inlineAction &&
-                  fieldActions &&
-                  fieldActions.length === 1 &&
-                  !props.readOnly ? (
-                    <CoreCircularProgress color="inherit" size={20} />
-                  ) : null}
-                  {/* inline form submits */}
-                  {inlineAction && fieldActions && fieldActions.length === 1 ? (
-                    !props.readOnly ? (
-                      <>
-                        {checkValueDiff() &&
-                          fieldActions?.map((actionElement, i) => (
-                            <CoreFieldButton
-                              key={i}
-                              element={actionElement}
-                              formikprops={props.formik}
-                              handleButtonCLick={handleButtonCLick}
-                              submitLoading={submitLoading}
-                            />
-                          ))}
-                        {props.value &&
-                          ((props.multiple && props.value.length > 0) ||
-                            (props.value.label && props.value.id)) && (
-                            <CoreIconButton
-                              onClick={(e) => {
-                                props.multiple
-                                  ? props?.formik?.setFieldValue(props.id, [])
-                                  : props?.formik?.setFieldValue(props.id, {});
-
-                                // @todo added for on clear handle change support
-                                if (handleChange) {
-                                  handleChange(e, props.multiple ? [] : {});
-                                }
-                              }}
-                            >
-                              <CoreIcon fontSize="small">close</CoreIcon>
-                            </CoreIconButton>
-                          )}
-                      </>
-                    ) : (
-                      allowEdit !== false &&
-                      !props.onFormFocus && (
-                        <CoreIconButton
-                          onClick={() => {
-                            OnEditClick(editId);
-                          }}
-                        >
-                          <CoreIcon fontSize="small">edit</CoreIcon>
-                        </CoreIconButton>
-                      )
-                    )
-                  ) : (
-                    params?.InputProps?.endAdornment
-                  )}
-                </React.Fragment>
-              ),
+              endAdornment: getEndAdornment(params),
             }}
           />
         )}

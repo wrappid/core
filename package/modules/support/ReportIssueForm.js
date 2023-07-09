@@ -54,11 +54,11 @@ export default function ReportIssueForm(props) {
                   isMobile ? " " + mobileVendor + " " + mobileModel : ""
                 }`,
                 os: `${osName} Ver: ${osVersion}`,
-                userAgent: navigator.userAgent,
+                userAgent: navigator?.userAgent,
               },
               frontend: {
-                url: window.location.href,
-                version: packageJSON.version,
+                url: window?.location?.href,
+                version: packageJSON?.version,
               },
             }),
             isStacktrace: isStacktrace,
