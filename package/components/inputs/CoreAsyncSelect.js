@@ -307,6 +307,9 @@ export default function CoreAsyncSelect(props) {
         _topLabel={label} //required for mobile layer
         _inputValue={inputValue} //required for mobile layer
         _optionComp={optionComp} //required for mobile layer
+        _onFormFocus={props.onFormFocus} //required for mobile layer
+        _editId={props.editId} //required for mobile layer
+        _getEndAdornment={getEndAdornment} //required for mobile layer
         onBlur={props?.formik?.handleBlur(props.id)}
         multiple={props.multiple ? props.multiple : false}
         id={props.id ? props.id : `"async-select-"+${getKey()}`}
