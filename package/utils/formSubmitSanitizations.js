@@ -463,7 +463,7 @@ export function SanCreateAppointment(formData, apiMeta, state, others) {
         Number(formData?.clinicId?.Clinic?.id) === 0
           ? null
           : Number(formData?.clinicId?.Clinic?.id),
-      patientId: state?.prescription?.navData?.Person?.id,
+      patientId: state?.appointment?.patient?.Person?.id,
       doctorId: state?.profile?.basic?.id,
     },
     endpoint: apiMeta.endpoint,
