@@ -23,19 +23,14 @@ export default function CoreFilePicker(props) {
         htmlFor={props.id}
       >
         {props.label}
+        {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+        {props.helperText && (
+          <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+            {props.helperText}
+          </CoreFormHelperText>
+        )}
       </CoreLabel>
-      <CoreBox
-        styleClasses={[
-          CoreClasses.BORDER.BORDER_SECONDARY_LIGHT,
-          CoreClasses.HEIGHT.H_25,
-          CoreClasses.HEIGHT.W_50,
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-        ]}
-      >
-        <CoreIcon fontSize={"small"}>{"add"}</CoreIcon>
         <NativeFilePicker {...props} />
-      </CoreBox>
     </CoreFormControl>
   );
 }
