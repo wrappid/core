@@ -6,6 +6,7 @@ import {
   nativeUseLocation as coreUseLocation,
   nativeUseParams as coreUseParams,
   nativeUseSearchParams as coreUseSearchParams,
+  nativeOpenUrl as coreOpenUrl,
 } from "@wrappid/styled-components";
 
 export {
@@ -16,4 +17,5 @@ export {
   coreUseLocation,
   coreUseParams,
   coreUseSearchParams,
+  coreOpenUrl,
 };

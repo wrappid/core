@@ -194,6 +194,7 @@ import {
   coreUseLocation,
   coreUseParams,
   coreUseSearchParams,
+  coreOpenUrl,
 } from "./helper/routerHelper";
 
 import { getForm, createApiMeta } from "./utils/formUtils";
@@ -403,4 +404,5 @@ export {
   CoreEmailLink,
   CoreEmailOrPhoneLink,
   CORE_DIALOG_TYPES,
+  coreOpenUrl,
 };
