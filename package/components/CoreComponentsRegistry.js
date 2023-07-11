@@ -173,6 +173,8 @@ import HelpAndSupportPopOver from "./utils/custom/HelpAndSupportPopOver.js";
 import NotificationPopOver from "./utils/custom/NotificationPopOver.js";
 import QuickAddPopOver from "./utils/custom/QuickAddPopOver.js";
 import CoreSpecificForm from "./forms/CoreSpecificForm.js";
+import CoreEmailOrPhoneLink from "./dataDisplay/custom/CoreEmailOrPhoneLink.js";
+
 
 export const CoreComponentsRegistry = {
   CoreAvatar: { comp: CoreAvatar },
@@ -352,4 +354,5 @@ export const CoreComponentsRegistry = {
   NotificationPopOver: { comp: NotificationPopOver },
   QuickAddPopOver: { comp: QuickAddPopOver },
   CoreSpecificForm: { comp: CoreSpecificForm },
+  CoreEmailOrPhoneLink: { comp: CoreEmailOrPhoneLink },
 };

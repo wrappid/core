@@ -1,5 +1,5 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 
 import { SENT_OTP_API } from "../../../config/api";
 import { HTTP, communicationTypes } from "../../../config/constants";
@@ -16,10 +16,12 @@ import CoreTypographyBody1 from "../paragraph/CoreTypographyBody1";
 import CoreLink from "../../navigation/CoreLink";
 import CoreIcon from "../CoreIcon";
 import CoreTextButton from "../../inputs/CoreTextButton";
+import CoreClasses from "../../../styles/CoreClasses";
 
 export default function CoreEmailOrPhoneLink(props) {
   const dispatch = useDispatch();
   const personId = useSelector((state) => state?.profile?.basic?.id);
+  const verifyOtpSuccess = useSelector((state) => state?.settings?.verifyOtpSuccess);
 
   const HandleModalOpen = (data) => {
     let comp = (
@@ -66,6 +68,14 @@ export default function CoreEmailOrPhoneLink(props) {
     );
   };
 
+  useEffect(() => {
+    if (verifyOtpSuccess) {
+      // Dispatch an action to close the modal
+      dispatch(toggleModalState({}));
+    }
+  }, [verifyOtpSuccess]);
+
+
   return (
     <>
       {props.data && (
@@ -75,7 +85,7 @@ export default function CoreEmailOrPhoneLink(props) {
         >
           <CoreLink
             styleClasses={[CoreClasses.PADDING.PR1]}
-            // href={`tel:${props.phone}`}
+          // href={`tel:${props.phone}`}
           >
             {props.data}
           </CoreLink>
