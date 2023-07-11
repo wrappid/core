@@ -93,7 +93,7 @@ export default function CoreAppBar(props) {
             </CoreIconButton>
 
             <CoreComponent
-              componentName={"AppLogo"}
+              componentName={"AppLogoAppBar"}
               onClick={() => {
                 navigate("/" + urls.DASHBOARD);
               }}
