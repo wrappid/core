@@ -123,11 +123,12 @@ export const apiRequestAction =
                     payload: { ...reduxData, ...response.data },
                   });
                 }
-              } else
+              } else {
                 dispatch({
                   type: successType[response.status],
                   payload: { ...reduxData, ...response.data },
                 });
+              }
             } else {
               throw new Error("Unknown successType of this form");
             }
@@ -220,10 +221,19 @@ export const apiRequestAction =
                 payload: { ...reduxData, data: error },
               });
             } else if (typeof errorType === "object") {
-              dispatch({
-                type: errorType[error.response.status],
-                payload: { ...reduxData, data: error },
-              });
+              if (Array.isArray(successType)) {
+                for (var i = 0; i < successType.length; i++) {
+                  dispatch({
+                    type: errorType[i],
+                    payload: { ...reduxData, data: error },
+                  });
+                }
+              } else {
+                dispatch({
+                  type: errorType[error.response.status],
+                  payload: { ...reduxData, data: error },
+                });
+              }
             }
           } else {
             dispatch({
