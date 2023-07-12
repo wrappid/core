@@ -30,18 +30,18 @@ const selectOptionsReducer = (state = initState, action) => {
         options:
           action?.payload?.data && action?.payload?.data[0]?.Children
             ? {
-                ...state.options,
-                [action?.payload?.data[0].name]: {
-                  loading: false,
-                  success: true,
-                  error: false,
-                  data: action?.payload?.data
-                    ? action?.payload?.data[0]?.Children || []
-                    : [],
-                },
-              }
+              ...state.options,
+              [action?.payload?.data[0].name]: {
+                loading: false,
+                success: true,
+                error: false,
+                data: action?.payload?.data
+                  ? action?.payload?.data[0]?.Children || []
+                  : [],
+              },
+            }
             : action?.payload?.data?.rows
-            ? {
+              ? {
                 ...state.options,
                 [action.payload?.key]: {
                   loading: false,
@@ -51,7 +51,7 @@ const selectOptionsReducer = (state = initState, action) => {
                   data: action?.payload?.data?.rows,
                 },
               }
-            : {
+              : {
                 ...state.options,
                 [action.payload?.key]: {
                   loading: false,
@@ -66,7 +66,7 @@ const selectOptionsReducer = (state = initState, action) => {
         ...state,
         options: {
           ...state.options,
-          [action?.payload?.data[0].name]: {
+          [action?.payload?.data[0]?.name]: {
             loading: false,
             success: false,
             error: true,
