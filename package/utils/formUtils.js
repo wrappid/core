@@ -276,16 +276,16 @@ export function createFormGridProps(element) {
 export function createFormFieldProps(element, formikprops, type) {
   // console.log("FORMIK props", formikprops);
   if (type === "edit") {
-    if (element.onlyView) {
+    if (element?.onlyView) {
       return {
-        id: element.id,
+        id: String(element.id),
         label: element.label,
         styleClasses: element.styleClasses,
       };
     } else
       return {
         type: element?.type,
-        id: element?.id,
+        id: String(element?.id),
         onChange: formikprops?.handleChange,
         label: element?.label,
         value: formikprops?.values ? formikprops?.values[element.id] : "",
@@ -299,47 +299,47 @@ export function createFormFieldProps(element, formikprops, type) {
         touched: formikprops?.touched ? formikprops?.touched[element.id] : "",
         formik: formikprops,
         helperText: element?.helperText,
-        options: element.options,
-        optionComp: element.optionComp,
-        itemKey: element.itemKey,
-        endpoint: element.endpoint,
-        query: element.query,
-        optionsData: element.optionsData,
-        asyncLoading: element.asyncLoading,
-        multiple: element.multiple,
-        freeSolo: element.freeSolo,
-        getOptionValue: element.getOptionValue
+        options: element?.options,
+        optionComp: element?.optionComp,
+        itemKey: element?.itemKey,
+        endpoint: element?.endpoint,
+        query: element?.query,
+        optionsData: element?.optionsData,
+        asyncLoading: element?.asyncLoading,
+        multiple: element?.multiple,
+        freeSolo: element?.freeSolo,
+        getOptionValue: element?.getOptionValue
           ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
           : null,
-        getOptionLabel: element.getOptionLabel
+        getOptionLabel: element?.getOptionLabel
           ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionLabel]
           : null,
-        isOptionEqualToValue: element.isOptionEqualToValue
+        isOptionEqualToValue: element?.isOptionEqualToValue
           ? ASYNC_SELECT_FUNCTION_MAP[element.isOptionEqualToValue]
           : null,
-        onChangeDispatch: element.onChangeDispatch
+        onChangeDispatch: element?.onChangeDispatch
           ? ASYNC_SELECT_FUNCTION_MAP[element.onChangeDispatch]
           : null,
         //this will be arrow function like (d) => { return d.value } to show the value
-        optionValue: element.optionValue,
+        optionValue: element?.optionValue,
         //this will be arrow function like (d) => { return d.value }to show the label
-        optionDisplay: element.optionDisplay,
-        inputProps: { tabIndex: element.tabIndex },
-        styleClasses: element.styleClasses
+        optionDisplay: element?.optionDisplay,
+        inputProps: { tabIndex: element?.tabIndex },
+        styleClasses: element?.styleClasses
           ? Array.isArray(element.styleClasses)
             ? element.styleClasses
             : [element.styleClasses]
           : [],
 
-        skeletonProps: element.skeletonProps,
-        navigateUrl: element.navigateUrl,
-        creatable: element.creatable,
-        optionCompProps: element.optionCompProps,
+        skeletonProps: element?.skeletonProps,
+        navigateUrl: element?.navigateUrl,
+        creatable: element?.creatable,
+        optionCompProps: element?.optionCompProps,
       };
   } else {
     return {
-      id: element.id,
-      label: element.label,
+      id: element?.id ? String(element.id) : "",
+      label: element?.label,
     };
   }
 }
