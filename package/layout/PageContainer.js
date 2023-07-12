@@ -100,7 +100,11 @@ export default function PageContainer(props) {
   };
 
   return (
-    <NativePageContainer route={route} coreClasses={CoreClasses}>
+    <NativePageContainer
+      uid={auth?.uid}
+      route={route}
+      coreClasses={CoreClasses}
+    >
       <CoreModal />
       {/* Show Helper Text Toggle */}
       {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
