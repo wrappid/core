@@ -2,6 +2,7 @@ import { SMALL_WINDOW_WIDTH } from "../config/constants";
 import {
   defaultUtilityStyles,
   DEFAULT_PADDING,
+  PX_TAG,
   IMPORTANT,
 } from "@wrappid/styles";
 
@@ -29,7 +30,7 @@ export const defaultCoreStyles = {
    * App Styles
    */
   footer: {
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
     textAlign: "center" + IMPORTANT,
     backgroundColor: defaultUtilityStyles.bgSecondaryLight + IMPORTANT,
   },
@@ -52,7 +53,7 @@ export const defaultCoreStyles = {
   fullWidthHeight: { width: "100%" + IMPORTANT, height: "100%" + IMPORTANT },
   pageContainer: {
     minHeight: "100%" + IMPORTANT,
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
   contentContainer: {
     ...defaultUtilityStyles.bgWhite,
@@ -163,18 +164,18 @@ export const defaultCoreStyles = {
    * Popover Content Styles
    */
   popoverHeader: {
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
     maxWidth: "70vw" + IMPORTANT,
   },
   popoverContent: {
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
     maxWidth: "70vw" + IMPORTANT,
     maxHeight: "70vh" + IMPORTANT,
     minWidth: "300px" + IMPORTANT,
     overflowY: "auto" + IMPORTANT,
   },
   popoverFooter: {
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
     maxWidth: "70vw" + IMPORTANT,
   },
 
@@ -243,7 +244,7 @@ export const defaultCoreStyles = {
   },
   tableCell: { ...defaultUtilityStyles.px1 },
   tableToolbarPopoverScrollableContainer: {
-    padding: DEFAULT_PADDING + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
     maxHeight: "70vh" + IMPORTANT,
     maxWidth: "80vw" + IMPORTANT,
   },
