@@ -10,7 +10,7 @@ const initState = {
   collapse: {},
   leftMenuOpen: true,
   menu: [],
-  rightMenuOpen: true,
+  rightMenuOpen: false,
 };
 
 const menuReducer = (state = initState, action) => {
