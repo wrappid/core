@@ -5,6 +5,7 @@ import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
 
 export default function CoreEmailLink(props) {
   const {
@@ -13,6 +14,7 @@ export default function CoreEmailLink(props) {
     verified,
     tooltipPlacement = "bottom",
     size = "medium",
+    mask = false,
   } = props;
 
   const renderEmailLinkComp = () => {
@@ -25,12 +27,13 @@ export default function CoreEmailLink(props) {
                 <CoreTypographyCaption
                   hideSeeMore={true}
                   limitChars={limitChars}
+                  mask={mask}
                 >
-                  {email}
+                  {mask ? maskEmailOrPhone(email) : email}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                  {email}
+                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars} mask={mask}>
+                  {mask ? maskEmailOrPhone(email) : email}
                 </CoreTypographyBody2>
               )}
             </CoreLink>

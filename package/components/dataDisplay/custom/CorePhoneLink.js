@@ -5,6 +5,7 @@ import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
 
 export default function CorePhoneLink(props) {
   const {
@@ -13,6 +14,7 @@ export default function CorePhoneLink(props) {
     verified,
     tooltipPlacement = "bottom",
     size = "medium",
+    mask=false,
   } = props;
 
   const renderPhoneLinkComp = () => {
@@ -25,12 +27,13 @@ export default function CorePhoneLink(props) {
                 <CoreTypographyCaption
                   hideSeeMore={true}
                   limitChars={limitChars}
+                  mask={mask}
                 >
-                  {phone}
+                  {mask ? maskEmailOrPhone(phone) : phone}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                  {phone}
+                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars} mask={mask}>
+                  {mask ? maskEmailOrPhone(phone) : phone}
                 </CoreTypographyBody2>
               )}
             </CoreLink>
