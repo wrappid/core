@@ -23,14 +23,14 @@ export default function CoreFilePicker(props) {
         htmlFor={props.id}
       >
         {props.label}
-        {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
-        {props.helperText && (
-          <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-            {props.helperText}
-          </CoreFormHelperText>
-        )}
       </CoreLabel>
-        <NativeFilePicker {...props} />
+      <NativeFilePicker {...props} />
+      {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+      {props.helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {props.helperText}
+        </CoreFormHelperText>
+      )}
     </CoreFormControl>
   );
 }

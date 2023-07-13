@@ -118,9 +118,11 @@ function getComponentArray(formJson) {
 
 export function createInitialData(formJson, initData) {
   var initialDataOb = Array.isArray(initData) ? [] : {};
-
-  for (var i = 0; i < formJson?.fields?.length; i++) {
-    var x = formJson.fields[i];
+  let fields = formJson?.formJson
+    ? formJson?.formJson?.fields
+    : formJson?.fields;
+  for (var i = 0; i < fields?.length; i++) {
+    var x = fields[i];
     if (x.onlyView) continue;
     if (initData) {
       if (Array.isArray(initData)) {
