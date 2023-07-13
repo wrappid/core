@@ -14,7 +14,7 @@ export default function CorePhoneLink(props) {
     verified,
     tooltipPlacement = "bottom",
     size = "medium",
-    mask=false,
+    mask = false,
   } = props;
 
   const renderPhoneLinkComp = () => {
@@ -22,7 +22,7 @@ export default function CorePhoneLink(props) {
       <>
         {phone ? (
           <CoreStack direction={"row"} spacing={1}>
-            <CoreLink href={`mailto:${phone}`}>
+            <CoreLink href={`tel:${phone}`}>
               {size === "small" ? (
                 <CoreTypographyCaption
                   hideSeeMore={true}
@@ -32,7 +32,11 @@ export default function CorePhoneLink(props) {
                   {mask ? maskEmailOrPhone(phone) : phone}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars} mask={mask}>
+                <CoreTypographyBody2
+                  hideSeeMore={true}
+                  limitChars={limitChars}
+                  mask={mask}
+                >
                   {mask ? maskEmailOrPhone(phone) : phone}
                 </CoreTypographyBody2>
               )}
