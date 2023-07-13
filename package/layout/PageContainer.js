@@ -105,7 +105,7 @@ export default function PageContainer(props) {
       route={route}
       coreClasses={CoreClasses}
     >
-      {/* <CoreModal /> */}
+      <CoreModal open={true} />
       {/* Show Helper Text Toggle */}
       {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
