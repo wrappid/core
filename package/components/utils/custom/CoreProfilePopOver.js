@@ -15,7 +15,10 @@ import { getFullName } from "../../../utils/helper";
 import CoreApiVersion from "./CoreApiVersion";
 import CoreLoginDetails from "./CoreLoginDetails";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreAppVersion from './CoreAppVersion';
+import CoreAppVersion from "./CoreAppVersion";
+import CoreEmailOrPhoneLink from "../../dataDisplay/custom/CoreEmailOrPhoneLink";
+import CoreEmailLink from "../../dataDisplay/custom/CoreEmailLink";
+import CorePhoneLink from "../../dataDisplay/custom/CorePhoneLink";
 
 export default function CoreProfilePopOver(props) {
   const dispatch = useDispatch();
@@ -27,6 +30,12 @@ export default function CoreProfilePopOver(props) {
     middleName = "",
     lastName = "",
   } = profile?.basic || {};
+  const {
+    email = "",
+    emailVerified = false,
+    phone = "",
+    phoneVerified = false,
+  } = profile?.contact || {};
   const { onClose } = props;
   const profileCardMenu = [
     {
@@ -59,31 +68,47 @@ export default function CoreProfilePopOver(props) {
     <CoreBox styleClasses={[CoreClasses.WIDTH.W_100]}>
       <CoreGrid
         styleClasses={[
-          // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          // CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
-          // CoreClasses.PADDING.PB1,
         ]}
       >
         <CoreAvatar
           gridProps={{ gridSize: 4 }}
           styleClasses={[
             CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM,
-            CoreClasses.MARGIN.MR1,
-            CoreClasses.PADDING.PL1,
-            CoreClasses.PADDING.PT1
+            CoreClasses.MARGIN.ML1,
           ]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />
 
         <CoreBox
           gridProps={{ gridSize: 8 }}
-          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+          // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
         >
-          <CoreTypographyCaption hideSeeMore={true} limitChars={30}>
-            {auth?.name}
-          </CoreTypographyCaption>
+          {/* <CoreGrid> */}
+            <CoreTypographyCaption  hideSeeMore={true} limitChars={30}>
+              {auth?.name}
+            </CoreTypographyCaption>
 
+            <CoreBox >
+              <CoreEmailLink
+                email={email}
+                verified={emailVerified}
+                limitChars={15}
+                mask={true}
+              />
+            </CoreBox>
+
+            <CoreBox >
+              <CorePhoneLink
+                phone={phone}
+                verified={phoneVerified}
+                limitChars={15}
+                mask={true}
+              />
+            </CoreBox>
+          {/* </CoreGrid> */}
           {/* @todo need to get it from authReducer */}
           {/* {profile?.contact?.email && profile?.contact?.email !== "" && (
             <CoreTypographyCaption>{profile?.contact?.email}</CoreTypographyCaption>
@@ -95,7 +120,7 @@ export default function CoreProfilePopOver(props) {
         </CoreBox>
       </CoreGrid>
 
-      <CoreDivider styleClasses={[CoreClasses.MARGIN.MB4]} />
+      <CoreDivider /* styleClasses={[CoreClasses.MARGIN.MB4]} */ />
 
       <CoreMenu
         menu={profileCardMenu}
