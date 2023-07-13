@@ -408,17 +408,17 @@ export const createPatient = {
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(),
-  gender: yup.object().required(),
-  phone: yup.string().length(10).required(),
-  email: yup.string().email().required(),
+  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
+  gender: yup.object().required(getFormikRequiredMessage("gender")),
+  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
+  email: yup.string().email().required(getFormikRequiredMessage("email")),
 };
 
 export const createPatientRelative = {
   firstName: yup
     .string()
     .trim()
-    .required(getFormikRequiredMessage("firstName"))
+    .required()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   middleName: yup
     .string()
@@ -428,11 +428,11 @@ export const createPatientRelative = {
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(),
-  relation: yup.string().required(),
-  gender: yup.object().required(),
-  phone: yup.string().length(10).required(),
-  email: yup.string().email().required(),
+  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
+  relation: yup.string().required(getFormikRequiredMessage("relation")),
+  gender: yup.object().required(getFormikRequiredMessage("gender")),
+  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
+  email: yup.string().email().required(getFormikRequiredMessage("email")),
 };
 
 export const createDoctor = {
@@ -449,11 +449,11 @@ export const createDoctor = {
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(),
-  gender: yup.object().required(),
-  phone: yup.string().length(10).required(),
-  email: yup.string().email().required(),
-  regNo: yup.string().required(),
+  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
+  gender: yup.object().required(getFormikRequiredMessage("gender")),
+  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
+  email: yup.string().email(getFormikRequiredMessage("email")).required(),
+  regNo: yup.string().required(getFormikRequiredMessage("regNo")),
   regDate: yup.string(),
 };
 
@@ -508,9 +508,9 @@ export const stringValueManager = {
 };
 
 export const createAppointment = {
-  date: yup.date().required(),
-  startTime: yup.string().required(),
-  endTime: yup.string().required(),
+  date: yup.date().required(getFormikRequiredMessage("date")),
+  startTime: yup.string().required(getFormikRequiredMessage("startTime")),
+  endTime: yup.string().required(getFormikRequiredMessage("endTime")),
   isForce: yup.boolean(),
 };
 

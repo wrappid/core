@@ -38,6 +38,7 @@ export function getFormikRequiredMessage(name = "", isShort = false) {
     message = name.toUpperCase() + " is required";
   } else {
     message = name.replace(/([a-z0-9])([A-Z])/g, "$1 $2") + " is required";
+    message = message[0].toUpperCase() + message.slice(1);
   }
   return message;
 }

@@ -201,6 +201,7 @@ export function SanProfileRegistrationRead(data, otherData) {
     return {
       regNo: data.regNo ? data.regNo : "",
       regDate: data.regDate ? data.regDate : "",
+      degrees: data.degrees ? data.degrees : "",
       departmentId: dept
         ? { label: dept.name, id: dept.id }
         : { label: "", id: "" },
