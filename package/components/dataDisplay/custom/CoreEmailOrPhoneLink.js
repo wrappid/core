@@ -82,22 +82,21 @@ export default function CoreEmailOrPhoneLink(props) {
     <>
       {props.data && (
         <CoreTypographyBody1
+          styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
           noWrap={true}
-          styleClasses={[UtilityClasses?.LINK?.PHONE_EMAIL_LINK]}
         >
           <CoreLink
-            styleClasses={[CoreClasses.PADDING.PR1]}
-            // href={`tel:${props.phone}`}
+          // href={`tel:${props.phone}`}
           >
             {props.data}
           </CoreLink>
 
           {props.verified ? (
-            <CoreIcon fontSize={"small"} color={"success"}>
+            <CoreIcon styleClasses={[CoreClasses?.ICON?.VERIFIED_SUCCESS]}>
               check_circle
             </CoreIcon>
           ) : (
-            <CoreIcon fontSize={"small"} color={"warning"}>
+            <CoreIcon styleClasses={[CoreClasses?.ICON?.VERIFIED_WARNING]}>
               error_outline
             </CoreIcon>
           )}

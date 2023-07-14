@@ -160,6 +160,8 @@ export const defaultCoreStyles = {
     boxShadow: 24 + IMPORTANT,
     borderRadius: 10 + IMPORTANT,
     outline: 0 + IMPORTANT,
+    padding: DEFAULT_PADDING,
+    borderRadius: "8px" + IMPORTANT
   },
   modalHeader: { padding: 20 + IMPORTANT },
   modalBody: { padding: 40 + IMPORTANT },
@@ -306,5 +308,15 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.flexWrapWrap,
     ...defaultUtilityStyles.vh100,
     width: "98vw" + IMPORTANT,
+  },
+  verifiedSuccess: {
+    ...defaultUtilityStyles.textSuccessDark,
+    ...defaultUtilityStyles.pl1,
+    fontSize: "0.9rem" + IMPORTANT,
+  },
+  verifiedWarning: {
+    ...defaultUtilityStyles.textSuccessWarning,
+    ...defaultUtilityStyles.pl1,
+    fontSize: "0.9rem" + IMPORTANT,
   },
 };

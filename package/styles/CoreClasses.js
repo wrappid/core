@@ -171,6 +171,11 @@ const CoreClasses = {
     CARD_MIN_WIDTH: "authCardMinWidth",
     CARD_MAX_WIDTH: "authCardMaxWidth",
   },
+
+  ICON: {
+    VERIFIED_SUCCESS: "verifiedSuccess",
+    VERIFIED_WARNING: "verifiedWarning",
+  },
 };
 
 export default CoreClasses;
