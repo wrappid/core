@@ -103,7 +103,7 @@ export const mediumCoreStyles = {
 
   auditData: {},
 
-  authCardMinWidth: { maxWidth: "25%" + IMPORTANT },
+  authCardMinWidth: { minWidth: "25%" + IMPORTANT },
   authCardMaxWidth: { maxWidth: "25%" + IMPORTANT },
 
   // ----------Data Table Styles Ends------------

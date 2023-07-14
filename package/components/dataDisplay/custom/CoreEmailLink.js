@@ -6,6 +6,7 @@ import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
 import { maskEmailOrPhone } from "../../../utils/stringUtils";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function CoreEmailLink(props) {
   const {
@@ -21,7 +22,11 @@ export default function CoreEmailLink(props) {
     return (
       <>
         {email ? (
-          <CoreStack direction={"row"} spacing={1}>
+          <CoreStack
+            styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
+            direction={"row"}
+            spacing={1}
+          >
             <CoreLink href={`mailto:${email}`}>
               {size === "small" ? (
                 <CoreTypographyCaption
@@ -32,7 +37,11 @@ export default function CoreEmailLink(props) {
                   {mask ? maskEmailOrPhone(email) : email}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars} mask={mask}>
+                <CoreTypographyBody2
+                  hideSeeMore={true}
+                  limitChars={limitChars}
+                  mask={mask}
+                >
                   {mask ? maskEmailOrPhone(email) : email}
                 </CoreTypographyBody2>
               )}

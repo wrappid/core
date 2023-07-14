@@ -6,6 +6,7 @@ import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
 import { maskEmailOrPhone } from "../../../utils/stringUtils";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function CorePhoneLink(props) {
   const {
@@ -21,7 +22,11 @@ export default function CorePhoneLink(props) {
     return (
       <>
         {phone ? (
-          <CoreStack direction={"row"} spacing={1}>
+          <CoreStack
+            styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
+            direction={"row"}
+            spacing={1}
+          >
             <CoreLink href={`tel:${phone}`}>
               {size === "small" ? (
                 <CoreTypographyCaption

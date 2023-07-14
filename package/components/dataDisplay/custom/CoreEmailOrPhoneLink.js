@@ -17,11 +17,14 @@ import CoreLink from "../../navigation/CoreLink";
 import CoreIcon from "../CoreIcon";
 import CoreTextButton from "../../inputs/CoreTextButton";
 import CoreClasses from "../../../styles/CoreClasses";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function CoreEmailOrPhoneLink(props) {
   const dispatch = useDispatch();
   const personId = useSelector((state) => state?.profile?.basic?.id);
-  const verifyOtpSuccess = useSelector((state) => state?.settings?.verifyOtpSuccess);
+  const verifyOtpSuccess = useSelector(
+    (state) => state?.settings?.verifyOtpSuccess
+  );
 
   const HandleModalOpen = (data) => {
     let comp = (
@@ -75,17 +78,16 @@ export default function CoreEmailOrPhoneLink(props) {
     }
   }, [verifyOtpSuccess]);
 
-
   return (
     <>
       {props.data && (
         <CoreTypographyBody1
           noWrap={true}
-          styleClasses={[CoreClasses.LAYOUT.VERTICAL_CENTER]}
+          styleClasses={[UtilityClasses?.LINK?.PHONE_EMAIL_LINK]}
         >
           <CoreLink
             styleClasses={[CoreClasses.PADDING.PR1]}
-          // href={`tel:${props.phone}`}
+            // href={`tel:${props.phone}`}
           >
             {props.data}
           </CoreLink>

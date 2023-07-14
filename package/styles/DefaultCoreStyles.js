@@ -23,7 +23,9 @@ export const defaultCoreStyles = {
    * Core App Bar Styles
    */
   appbarHeight: { top: HEADING_TOP_MARGIN + IMPORTANT },
-  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
+  appDrawerPaperHeight: {
+    height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+  },
   appBarLogo: { height: "30px" + IMPORTANT },
 
   /**
@@ -47,7 +49,7 @@ export const defaultCoreStyles = {
     height: "100vh" + IMPORTANT,
     width: "100vw" + IMPORTANT,
   },
-  fullWidth: { width: "100%" + IMPORTANT},
+  fullWidth: { width: "100%" + IMPORTANT },
   fullHeight: { height: "100%" + IMPORTANT },
   flexBox: { display: "flex" + IMPORTANT },
   fullWidthHeight: { width: "100%" + IMPORTANT, height: "100%" + IMPORTANT },
@@ -120,7 +122,11 @@ export const defaultCoreStyles = {
     minHeight: 0 + IMPORTANT,
     // backgroundColor: "gray"
   },
-  seperatorIconItem: { height: 0 + IMPORTANT, minHeight: 0 + IMPORTANT, display: "none" + IMPORTANT },
+  seperatorIconItem: {
+    height: 0 + IMPORTANT,
+    minHeight: 0 + IMPORTANT,
+    display: "none" + IMPORTANT,
+  },
   seperatorTextItem: { height: 0 + IMPORTANT, minHeight: 0 + IMPORTANT },
 
   menuItem: {
@@ -281,7 +287,9 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.justifyContentFlexEnd,
     ...defaultUtilityStyles.alignItemsCenter,
   },
-  counterWidgetCounterPrimary: { color: defaultUtilityStyles.bgPrimary + IMPORTANT },
+  counterWidgetCounterPrimary: {
+    color: defaultUtilityStyles.bgPrimary + IMPORTANT,
+  },
   // ----------Widget Styles Ends----------------
 
   // ---------Business Entity Comp---------------
