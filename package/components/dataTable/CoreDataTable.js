@@ -133,6 +133,8 @@ export default function CoreDataTable(props) {
     postRenderDetailsPaneComponent,
     preRender_CreateData_DetailsPaneComponent,
     postRender_CreateData_DetailsPaneComponent,
+    preRender_UpdateData_DetailsPaneComponent,
+    postRender_UpdateData_DetailsPaneComponent,
     // table row actions
     rowActions = [], // row specific action button array
     /**
@@ -808,6 +810,12 @@ export default function CoreDataTable(props) {
             }
             postRender_CreateData_DetailsPaneComponent={
               postRender_CreateData_DetailsPaneComponent
+            }
+            preRender_UpdateData_DetailsPaneComponent={
+              preRender_UpdateData_DetailsPaneComponent
+            }
+            postRender_UpdateData_DetailsPaneComponent={
+              postRender_UpdateData_DetailsPaneComponent
             }
             _expandedDevJSONSchema={_expandedDevJSONSchema}
             set_expandedDevJSONSchema={set_expandedDevJSONSchema}

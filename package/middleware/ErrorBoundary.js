@@ -62,11 +62,14 @@ class ErrorBoundary extends React.Component {
             </CoreAccordionSummary>
             <CoreAccordionDetail>
               <CoreTypographyBody1
+                code={true}
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
                 Message: {this.state.error?.message}
               </CoreTypographyBody1>
+              <CoreDivider />
               <CoreTypographyBody1
+                code={true}
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
                 Stacktrace:

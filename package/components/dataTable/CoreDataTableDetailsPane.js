@@ -1,5 +1,5 @@
 import React from "react";
-import { ENV_PROD_MODE } from "../../config/constants";
+import { ENV_DEV_MODE } from "../../config/constants";
 import { getLabel } from "../../utils/stringUtils";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -49,6 +49,8 @@ export default function CoreDataTableDetailsPane(props) {
     postRenderDetailsPaneComponent,
     preRender_CreateData_DetailsPaneComponent,
     postRender_CreateData_DetailsPaneComponent,
+    preRender_UpdateData_DetailsPaneComponent,
+    postRender_UpdateData_DetailsPaneComponent,
     _expandedDevJSONSchema,
     set_expandedDevJSONSchema,
     _showDetailsPane,
@@ -113,7 +115,7 @@ export default function CoreDataTableDetailsPane(props) {
         <CoreCardContent>
           {detailedRowData ? (
             <>
-              {process.env.REACT_APP_ENV !== ENV_PROD_MODE && (
+              {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
                 <CoreAccordion
                   expanded={_expandedDevJSONSchema}
                   onChange={() => {
@@ -137,6 +139,13 @@ export default function CoreDataTableDetailsPane(props) {
                   {React.createElement(preRenderDetailsPaneComponent, {
                     data: detailedRowData,
                   })}
+                </>
+              )}
+              {preRender_UpdateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    preRender_UpdateData_DetailsPaneComponent
+                  )}
                 </>
               )}
               {detailedRowId && detailedRowData ? (
@@ -217,6 +226,14 @@ export default function CoreDataTableDetailsPane(props) {
                 )
               ) : (
                 <CoreTypographyBody1>No row selected</CoreTypographyBody1>
+              )}
+              
+              {postRender_UpdateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    postRender_UpdateData_DetailsPaneComponent
+                  )}
+                </>
               )}
               {/**
                * @todo check if it's available show flag ticked
