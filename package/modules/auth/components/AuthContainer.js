@@ -85,10 +85,11 @@ export const AuthContainer = (props) => {
               CoreClasses.LAYOUT.FULL_WIDTH,
               CoreClasses.FLEX.DIRECTION_ROW,
               CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+              CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+              // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
             ]}
           >
-            <CoreLink
+            {/* <CoreLink
               styleClasses={[CoreClasses?.MARGIN?.MR1]}
               href={
                 process.env?.REACT_APP_WRAPPID_helpLink ||
@@ -96,7 +97,7 @@ export const AuthContainer = (props) => {
               }
             >
               Help
-            </CoreLink>
+            </CoreLink> */}
             <CoreLink
               styleClasses={[CoreClasses?.MARGIN?.MR1]}
               href={
