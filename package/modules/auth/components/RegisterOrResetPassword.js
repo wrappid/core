@@ -123,8 +123,11 @@ class RegisterOrResetPassword extends Component {
         {this.props.authNextPage === urls.REGISTER_ROUTE && (  
           <CoreTypographyBody2>
             By signing up you agree to our
+            {" "}
             <CoreLink href={process.env?.REACT_APP_WRAPPID_privacyLink || config?.wrappid?.privacyLink || "#"}>Privacy Policy</CoreLink>
+            {" "}
             <CoreTypographyBody2 component="span">&</CoreTypographyBody2>
+            {" "}
             <CoreLink href={process.env?.REACT_APP_WRAPPID_termsLink || config?.wrappid?.termsLink || "#"}>Terms</CoreLink>{"."}
           </CoreTypographyBody2>
         )}
