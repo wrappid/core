@@ -144,7 +144,9 @@ export default function CoreDataTableDetailsPane(props) {
               {preRender_UpdateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(
-                    preRender_UpdateData_DetailsPaneComponent
+                    preRender_UpdateData_DetailsPaneComponent, {
+                      data: detailedRowData,
+                    }
                   )}
                 </>
               )}
@@ -231,7 +233,9 @@ export default function CoreDataTableDetailsPane(props) {
               {postRender_UpdateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(
-                    postRender_UpdateData_DetailsPaneComponent
+                    postRender_UpdateData_DetailsPaneComponent, {
+                      data: detailedRowData,
+                    }
                   )}
                 </>
               )}
