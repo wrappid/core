@@ -176,6 +176,9 @@ const CoreClasses = {
     VERIFIED_SUCCESS: "verifiedSuccess",
     VERIFIED_WARNING: "verifiedWarning",
   },
+  FRAMEWORK: {
+    CORE_FOOTER: "coreFooter"
+  }
 };
 
 export default CoreClasses;

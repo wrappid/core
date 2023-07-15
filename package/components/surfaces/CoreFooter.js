@@ -7,20 +7,38 @@ import CoreGrid from "../layouts/CoreGrid";
 // import AppVersion from "../../module/app/AppVersion";
 import config from "../../config/config";
 import CoreClasses from "../../styles/CoreClasses";
+import CoreAppVersion from "../utils/custom/CoreAppVersion";
+import CoreTermsPrivacyLink from "../utils/custom/CoreTermsPrivacyLink";
+import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreFooter(props) {
   return (
-    <CoreBox styleClasses={[/* CoreClasses.APP.FOOTER */]}>
-      <CoreDivider />
-      <CoreGrid styleClasses={[CoreClasses.PADDING.PT3]}>
-        <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.TEXT_END]}>
-          {process.env.REACT_APP_WRAPPID_footerText ||
+    <CoreGrid styleClasses={[
+      CoreClasses.FRAMEWORK.CORE_FOOTER
+    ]}>
+      <CoreBox gridProps={{ gridSize: { md: 4 } }}
+        styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START,
+        ]}>
+        <CoreAppVersion />
+      </CoreBox>
+      <CoreBox gridProps={{gridSize:{md: 4}}}
+        styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+        ]}>
+        <CoreTypographyCaption>
+          {`${process.env.REACT_APP_WRAPPID_footerText ||
             config?.wrappid?.footerText ||
-            "Wrappid Default Footer"}{` © ${new Date().getFullYear()}`}
-        </CoreTypographyBody1>
-
-        <CoreTypographyBody1>{/* <AppVersion /> */}</CoreTypographyBody1>
-      </CoreGrid>
-    </CoreBox>
+            "Wrappid Default Footer"} © ${new Date().getFullYear()}`}
+        </CoreTypographyCaption>
+      </CoreBox>
+      <CoreBox gridProps={{gridSize:{md: 4}}}
+        styleClasses={[
+          CoreClasses.PADDING.PR1,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+        ]}>
+        <CoreTermsPrivacyLink />
+      </CoreBox>
+    </CoreGrid>
   );
 }
