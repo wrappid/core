@@ -1,69 +1,105 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CoreLabel from "../../dataDisplay/paragraph/CoreLabel";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreBox from "../../layouts/CoreBox";
 import CoreClasses from "../../../styles/CoreClasses";
+import { apiRequestAction } from "../../../store/action/appActions";
+import { HTTP } from "../../../config/constants";
+import {
+  CLIENT_INFORMATION_FETCH_ERROR,
+  CLIENT_INFORMATION_FETCH_SUCCESS,
+} from "../../../modules/auth/types/authTypes";
+import CoreTypographySubtitle2 from "../../dataDisplay/paragraph/CoreTypographySubtitle2";
+import CoreAccordion from "../../surfaces/CoreAccordion";
+import CoreAccordionSummary from "../../surfaces/CoreAccordionSummary";
+import CoreAccordionDetail from "../../surfaces/CoreAccordionDetail";
+import { getDeviceDetails } from "../../../utils/device.utils";
 
 export default function CoreLoginDetails() {
   const role = useSelector((state) => state.auth?.role);
+  const dispatch = useDispatch();
   const clientLoginInformation = useSelector(
-    (state) => state.auth?.clientLoginInformation
+    (state) => state?.auth?.clientLoginInformation
   );
-  const { currentLog } = clientLoginInformation || {};
-  const { extraInfo } = currentLog || {};
+  const { lastLoginDetails, ip, deviceInfo } = clientLoginInformation || {};
+  console.log("clientLoginInformation1", clientLoginInformation);
+
+  const deviceDetails = getDeviceDetails();
+
+  useEffect(() => {
+    GetClientLoginInformation();
+  }, []);
+
+  const GetClientLoginInformation = () => {
+    dispatch(
+      apiRequestAction(
+        HTTP.GET,
+        "/clientLoginInformation",
+        true,
+        null,
+        CLIENT_INFORMATION_FETCH_SUCCESS,
+        CLIENT_INFORMATION_FETCH_ERROR
+      )
+    );
+  };
 
   return (
     <>
-      <CoreBox
-        styleClasses={[CoreClasses.PADDING.PL1]}
-      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-      >
-        <CoreTypographyCaption>Role:</CoreTypographyCaption>
+      <CoreAccordion>
+        <CoreAccordionSummary>
+          <CoreTypographySubtitle2>Login Information</CoreTypographySubtitle2>
+        </CoreAccordionSummary>
+        <CoreAccordionDetail>
+          <CoreBox
+            styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
+            <CoreTypographyCaption>Role:</CoreTypographyCaption>
 
-        <CoreTypographyCaption>{role?.role}</CoreTypographyCaption>
-      </CoreBox>
+            <CoreTypographyCaption>{role?.role}</CoreTypographyCaption>
+          </CoreBox>
 
-      <CoreBox
-        styleClasses={[CoreClasses.PADDING.PL1]}
-      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-      >
-        <CoreLabel>Last Login Information :-</CoreLabel>
-      </CoreBox>
+          <CoreBox
+            styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
+            <CoreLabel>Login Information :-</CoreLabel>
+          </CoreBox>
+          <CoreBox
 
-      <CoreBox
-        styleClasses={[CoreClasses.PADDING.PL1]}
-      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-      >
-        <CoreTypographyCaption>Device:</CoreTypographyCaption>
+            styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
+            <CoreTypographyCaption>Device:</CoreTypographyCaption>
 
-        <CoreTypographyCaption>
-          {extraInfo?.isMobile ? "Mobile" : extraInfo?.browser}
-        </CoreTypographyCaption>
-      </CoreBox>
+            <CoreTypographyCaption>{deviceInfo?.id || deviceDetails.brand + deviceDetails.model}</CoreTypographyCaption>
+          </CoreBox>
+          <CoreBox
+            styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
+            <CoreTypographyCaption>Last Login time:</CoreTypographyCaption>
 
-      <CoreBox
-        styleClasses={[CoreClasses.PADDING.PL1]}
-      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-      >
-        <CoreTypographyCaption>Last Login time:</CoreTypographyCaption>
+            <CoreTypographyCaption>
+              {lastLoginDetails?.createdAt &&
+                moment(lastLoginDetails?.createdAt).format("YYYY-MM-DD, hh:mm:ss")}
+            </CoreTypographyCaption>
+          </CoreBox>
 
-        <CoreTypographyCaption>
-          {currentLog?.createdAt &&
-            moment(currentLog?.createdAt).format("YYYY-MM-DD, hh:mm:ss")}
-        </CoreTypographyCaption>
-      </CoreBox>
+          <CoreBox
+            styleClasses={[CoreClasses.PADDING.PL1]}
+            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
+            <CoreTypographyCaption>Location IP:</CoreTypographyCaption>
 
-      <CoreBox
-        styleClasses={[CoreClasses.PADDING.PL1]}
-      // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-      >
-        <CoreTypographyCaption>Location IP:</CoreTypographyCaption>
-
-        <CoreTypographyCaption>Unknown</CoreTypographyCaption>
-      </CoreBox>
+            <CoreTypographyCaption>{ip}</CoreTypographyCaption>
+          </CoreBox>
+        </CoreAccordionDetail>
+      </CoreAccordion>
+      {/* <CoreTypographyCaption code="true">{JSON.stringify(getDeviceDetails(), null, 2)}</CoreTypographyCaption> */}
     </>
   );
 }

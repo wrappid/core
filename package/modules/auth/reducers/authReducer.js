@@ -21,12 +21,17 @@ import {
   SESSION_RECALLED,
   TOKEN_REFRESH_SUCCESS,
   AUTHENTICATION_ERROR,
+  CLIENT_INFORMATION_FETCH_SUCCESS,
+  CLIENT_INFORMATION_FETCH_ERROR
 } from "../types/authTypes";
 
 const initState = {
   authError: null,
   authLoading: false,
   logoutLoading: false,
+
+  clientLoginInformation: null,
+  clientLoginFlag: false,
 
   registerRequestLoading: false,
   registerRequestError: false,
@@ -348,6 +353,21 @@ const authReducer = (state = initState, action) => {
         ...state,
         ...action.data,
       };
+
+    case CLIENT_INFORMATION_FETCH_SUCCESS:
+      return {
+          ...state,
+          clientLoginInformation: action.payload,
+          clientLoginFlag: true,
+      };
+
+    case CLIENT_INFORMATION_FETCH_ERROR:
+      return {
+        ...state,
+        clientLoginInformation: null,
+        clientLoginFlag: false,
+      };
+
     default:
       return state;
   }
