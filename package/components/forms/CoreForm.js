@@ -923,7 +923,7 @@ null,
                     initData?.length > arrayDataLimit &&
                     this.state.hideFlag && (
                       <CoreBox
-                        styleClasses={[CoreClasses.LAYOUT.HORIZONTAL_CENTER]}
+                        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
                       >
                         <CoreLink
                           href={
@@ -935,13 +935,10 @@ null,
                                   JSON.stringify(this.props.query)
                                 )
                           }
-                        >
-                          <CoreTypographyCaption>
-                            Show {Number(initData?.length - arrayDataLimit)}{" "}
-                            other
-                            {Number(initData?.length - arrayDataLimit) > 1 &&
-                              "s"}
-                          </CoreTypographyCaption>
+                        >{
+                          Number(initData?.length - arrayDataLimit) > 1?
+                            "Show " + Number(initData?.length - arrayDataLimit) + " others"
+                            :  "Show " + Number(initData?.length - arrayDataLimit) + " other"}
                         </CoreLink>
                       </CoreBox>
                     )}
