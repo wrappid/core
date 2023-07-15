@@ -14,6 +14,7 @@ import {
   onEditForm,
   resetFormReducer,
   storeForm,
+  updateApiMeta,
 } from "../../store/action/formAction";
 import CoreGrid from "../layouts/CoreGrid";
 import { apiRequestAction } from "../../store/action/appActions";
@@ -125,6 +126,7 @@ class CoreForm extends Component {
     }
     if (
       formJson?.read &&
+      !formJson?.read?.entity &&
       formJson?.onMountRead !== false &&
       this.props?.onMountRead !== false
     ) {
@@ -163,20 +165,27 @@ class CoreForm extends Component {
       }
 
       console.log("-----ON MOUNT READ", apiMeta);
-      this.props.HandleFormSubmit(
-        apiMeta.method,
-        apiMeta.endpoint,
-        apiMeta.authRequired,
-        apiMeta.values,
-        apiMeta.successType,
-        apiMeta.errorType,
-        apiMeta.localAction,
-        apiMeta.includeFile,
-        apiMeta.files,
-        this.props.formId,
-        true,
-        apiMeta.reduxData
-      );
+      if(apiMeta.endpoint && apiMeta.method){
+        this.props.HandleFormSubmit(
+          apiMeta.method, 
+          apiMeta.endpoint,
+          apiMeta.authRequired,
+          apiMeta.values,
+          apiMeta.successType,
+          apiMeta.errorType,
+          apiMeta.localAction,
+          apiMeta.includeFile,
+          apiMeta.files,
+          this.props.formId,
+          true,
+          apiMeta.reduxData,
+          false,
+          null,
+          null,
+          null
+        );
+        this.props.UpdateApiMeta(this.props.formId, {...apiMeta, onSubmitRefine:formJson?.read?.onSubmitRefine})
+      }
     }
   };
 
@@ -338,6 +347,7 @@ class CoreForm extends Component {
 
       console.log("-----RELOAD", apiMeta);
       if (apiMeta.method && apiMeta.endpoint) {
+        let reloadForm = formJson?.read?.entity || this.props.formId
         this.props.HandleFormSubmit(
           apiMeta.method,
           apiMeta.endpoint,
@@ -350,8 +360,13 @@ class CoreForm extends Component {
           apiMeta.files,
           this.props.formId,
           true,
-          apiMeta.reduxData
+          apiMeta.reduxData,
+          false,
+          null,
+          null,
+          reloadForm
         );
+        this.props.UpdateApiMeta(this.props.formId, {...apiMeta, onSubmitRefine:formJson?.read?.onSubmitRefine, onGetRefine:formJson?.read?.onGetRefine})
       }
     }
   };
@@ -417,7 +432,11 @@ class CoreForm extends Component {
       apiMeta.files,
       this.props.formId,
       apiMeta.reload,
-      apiMeta.reduxData
+      apiMeta.reduxData,
+      null,
+null,
+null,
+null,
     );
 
     this.setState({ submitMode: apiMeta.mode });
@@ -455,7 +474,12 @@ class CoreForm extends Component {
         data.includeFile,
         data.files,
         this.props.formId,
-        data.reload
+        data.reload,
+        null,
+        null,
+        null,
+        null,
+        null,
       );
   };
 
@@ -550,7 +574,12 @@ class CoreForm extends Component {
       apiMeta.includeFile,
       apiMeta.files,
       this.props.formId,
-      apiMeta.reload
+      apiMeta.reload,
+      null,
+      null,
+      null,
+      null,
+      null,
     );
     this.setState({ submitMode: "delete" });
 
@@ -1017,7 +1046,11 @@ const mapDispatchToProps = (dispatch) => {
       files,
       formId,
       reload,
-      reduxData
+      reduxData,
+      pushSnack,
+      loadingType,
+      resetLoadingType,
+      reloadForm,
     ) => {
       dispatch(
         apiRequestAction(
@@ -1033,7 +1066,10 @@ const mapDispatchToProps = (dispatch) => {
           formId,
           reload,
           reduxData,
-          true
+          pushSnack,
+          loadingType,
+          resetLoadingType,
+          reloadForm
         )
       );
     },
@@ -1054,6 +1090,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     storeForm: (type, payload) => {
       dispatch(storeForm(type, payload));
+    },
+    UpdateApiMeta: (formId, apiMeta) => {
+      dispatch(updateApiMeta(formId, apiMeta));
     },
   };
 };

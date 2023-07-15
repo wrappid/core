@@ -1,5 +1,6 @@
 import { FORM_IDS } from "../components/forms/coreFormConstants";
 import { communicationTypes, __EntityStatus } from "../config/constants";
+import { queryBuilder } from "./helper";
 
 export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
   return {
@@ -352,9 +353,12 @@ export function SanContactsRead(data) {
 
 export function SanContactsReadUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
+  let endUrl = apiMeta.endpoint?.includes('?')?apiMeta.endpoint: queryBuilder(apiMeta.endpoint, {
+     _defaultFilter: encodeURIComponent(JSON.stringify({ personId: state.profile.basic.id })) 
+  })
   return {
     values: apiMeta.values,
-    endpoint: apiMeta.endpoint + "&personId=" + state.profile.basic.id,
+    endpoint: endUrl,
     reduxData: apiMeta.reduxData,
   };
 }

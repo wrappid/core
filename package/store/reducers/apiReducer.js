@@ -1,10 +1,12 @@
 import { FORM_SANITIZATOIN_FUNCTION_MAP } from "../../components/forms/coreFormConstants";
+import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
 import { createInitialData } from "../../utils/formUtils";
 // import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   FORM_DATA_READ_LOADING,
   FORM_DATA_SAVE,
   FORM_INIT_UPDATE,
+  UPDATE_API_META,
 } from "../types/formTypes";
 
 function getData(action, dataOb) {
@@ -121,7 +123,24 @@ const apiReducer = (state = initState, action) => {
         },
       };
 
-    case "LOGOUT_SUCCESS":
+    case UPDATE_API_META:
+      let newApiMeta = {}
+      let removeKeys = ['values', 'reduxData', 'files']
+      let keys = Object.keys(action.payload?.apiMeta)
+      for(var i=0;i<keys.length;i++){
+        let key = keys[i]
+        if(!removeKeys.includes(key)){
+          newApiMeta[key] = action.payload?.apiMeta[key]
+        }
+      }
+      return {
+        ...state,
+        [action.payload.formId]: {
+          ...(state[action.payload.formId]||{}),
+          api: newApiMeta
+        }
+      }
+    case LOGOUT_SUCCESS:
       return initState;
     default:
       return state;

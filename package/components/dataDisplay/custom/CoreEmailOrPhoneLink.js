@@ -37,11 +37,6 @@ export default function CoreEmailOrPhoneLink(props) {
         }
         onMountRead={false}
         mode={FORM_EDIT_MODE}
-        _query={{
-          _defaultFilter: encodeURIComponent(
-            JSON.stringify({ personId: personId })
-          ),
-        }}
       />
     );
 

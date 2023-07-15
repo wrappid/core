@@ -53,7 +53,8 @@ export const apiRequestAction =
     reduxData = {},
     pushSnack = false,
     loadingType = SET_LOADING,
-    resetLoadingType = RESET_LOADING
+    resetLoadingType = RESET_LOADING,
+    reloadForm
   ) =>
   (dispatch) => {
     try {
@@ -81,8 +82,12 @@ export const apiRequestAction =
     )
       .then(async (response) => {
         let formJson = null;
+        let reloadFormJson = null;
         if (formId) {
           formJson = await getForm(formId);
+        }
+        if(reloadForm){
+          reloadFormJson = await getForm(reloadForm);
         }
         if (!response) throw new Error("Response is undefined");
         switch (response.status) {
@@ -94,10 +99,20 @@ export const apiRequestAction =
                 payload: { formId, data: { ...reduxData, ...response.data } },
               });
             else if (reload && method === HTTP.GET) {
+              if(reloadForm){
+                dispatch({
+                  type: FORM_INIT_UPDATE,
+                  payload: {
+                    formId: reloadForm,
+                    formJson: reloadFormJson,
+                    data: { ...reduxData, ...response.data },
+                  },
+                });
+              }
               dispatch({
                 type: FORM_INIT_UPDATE,
                 payload: {
-                  formId,
+                  formId: formId,
                   formJson,
                   data: { ...reduxData, ...response.data },
                 },
@@ -135,10 +150,20 @@ export const apiRequestAction =
             break;
           case 204:
             if (reload && method === HTTP.GET) {
+              if(reloadForm){
+                dispatch({
+                  type: FORM_INIT_UPDATE,
+                  payload: {
+                    formId: reloadForm,
+                    formJson: reloadFormJson,
+                    data: { ...reduxData, ...response.data },
+                  },
+                });
+              }
               dispatch({
                 type: FORM_INIT_UPDATE,
                 payload: {
-                  formId,
+                  formId: formId,
                   formJson,
                   data: { ...reduxData, ...response.data },
                 },

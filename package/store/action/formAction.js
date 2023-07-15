@@ -6,6 +6,7 @@ import {
   EDIT_FORM,
   FORM_DATA_SAVE,
   FORM_RESET,
+  UPDATE_API_META,
 } from "../types/formTypes";
 
 export const createAllForms = (
@@ -73,5 +74,11 @@ export const resetFormReducer = (data) => {
 export const storeForm = (type, payload) => {
   return (dispatch) => {
     dispatch({ type, payload });
+  };
+};
+
+export const updateApiMeta = (formId, apiMeta) => {
+  return (dispatch) => {
+    dispatch({type: UPDATE_API_META, payload: {apiMeta,formId} });
   };
 };
