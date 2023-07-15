@@ -8,15 +8,8 @@ export default function CoreAppVersion(props) {
   const { version } = useContext(CoreApplicationContext);
 
   return (
-    <CoreBox
-      styleClasses={[CoreClasses.PADDING.PL1]}
-    // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-    >
-      {props.noTitle ? null : (
-        <CoreTypographyCaption>APP Version:</CoreTypographyCaption>
-      )}
-
-      <CoreTypographyCaption>v{version || "unknown"}</CoreTypographyCaption>
-    </CoreBox>
+    <CoreTypographyCaption>
+      {`${props.noTitle ? null : "Application Version:"} v${version || "unknown"}`}
+    </CoreTypographyCaption>
   );
 }
