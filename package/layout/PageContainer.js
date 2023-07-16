@@ -25,6 +25,7 @@ import {
 import CoreClasses from "../styles/CoreClasses";
 import { coreUseNavigate } from "../helper/routerHelper";
 import CoreDialog from "../components/feedback/CoreDialog";
+import CoreFooter from "../components/surfaces/CoreFooter";
 
 export let mergedComponentRegistry = {};
 
@@ -129,6 +130,7 @@ export default function PageContainer(props) {
         )} */}
       <CoreDialogContext.Provider value={value}>
         {pageChild()}
+        <CoreFooter />
         <CoreDialog />
       </CoreDialogContext.Provider>
     </NativePageContainer>

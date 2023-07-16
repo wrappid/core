@@ -190,7 +190,7 @@ function AppContainer(props) {
   };
 
   const getFooter = () => {
-    return <CoreFooter />;
+    return null;//<CoreFooter />;
   };
 
   const getLeftDrawer = () => {

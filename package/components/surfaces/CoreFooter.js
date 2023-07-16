@@ -14,15 +14,15 @@ import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaptio
 export default function CoreFooter(props) {
   return (
     <CoreGrid styleClasses={[
-      CoreClasses.FRAMEWORK.CORE_FOOTER
+      // CoreClasses.FRAMEWORK.CORE_FOOTER
     ]}>
-      <CoreBox gridProps={{ gridSize: { md: 4 } }}
+      <CoreBox gridProps={{ gridSize: 4 }}
         styleClasses={[
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START,
         ]}>
-        <CoreAppVersion />
+        <CoreAppVersion noTitle={true} />
       </CoreBox>
-      <CoreBox gridProps={{gridSize:{md: 4}}}
+      <CoreBox gridProps={{gridSize: 4}}
         styleClasses={[
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
         ]}>
@@ -32,7 +32,7 @@ export default function CoreFooter(props) {
             "Wrappid Default Footer"} © ${new Date().getFullYear()}`}
         </CoreTypographyCaption>
       </CoreBox>
-      <CoreBox gridProps={{gridSize:{md: 4}}}
+      <CoreBox gridProps={{gridSize: 4}}
         styleClasses={[
           CoreClasses.PADDING.PR1,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,

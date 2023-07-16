@@ -2,6 +2,7 @@ import React from 'react'
 import CoreBox from '../../layouts/CoreBox'
 import CoreClasses from '../../../styles/CoreClasses'
 import CoreLink from '../../navigation/CoreLink'
+import config from '../../../config/config'
 
 export default function CoreTermsPrivacyLink() {
     return (
