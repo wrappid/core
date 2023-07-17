@@ -83,6 +83,7 @@ export default function CoreAppBar(props) {
             styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
           >
             <CoreIconButton
+              styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
@@ -112,7 +113,7 @@ export default function CoreAppBar(props) {
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
-                <CoreIconButton>
+                <CoreIconButton styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
                   <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
                 </CoreIconButton>
               )}
@@ -120,6 +121,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
                 ?.flag && (
                 <CoreIconButton
+                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Help & Support"}
                   onClick={(e) => {
                     console.log("Help & Support clicked");
@@ -133,6 +135,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
                 ?.value?.flag && (
                 <CoreIconButton
+                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Show Notification"}
                   onClick={(e) => {
                     console.log("Notification clicked");
@@ -146,6 +149,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
                 ?.flag && (
                 <CoreIconButton
+                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Quick Menu"}
                   onClick={(e) => {
                     console.log("Quick Menu clicked");
