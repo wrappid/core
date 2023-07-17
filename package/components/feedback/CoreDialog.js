@@ -5,8 +5,8 @@ import { coreDialogInitValue } from "../../config/constants";
 
 export const CORE_DIALOG_TYPES = {
   INFO: "info",
-  SUCCESS: "info",
-  FAILURE: "info",
+  SUCCESS: "success",
+  FAILURE: "error",
 };
 
 export default function CoreDialog(props) {

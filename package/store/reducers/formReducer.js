@@ -156,7 +156,7 @@ const formReducer = (state = initState, action) => {
         errorMsg = action?.payload?.data?.message;
       }
 
-      alert(errorMsg);
+      // alert(errorMsg);
 
       return {
         ...state,
@@ -165,6 +165,7 @@ const formReducer = (state = initState, action) => {
           [action.payload.formId]: {
             error: true,
             data: action.payload.data,
+            errorMsg,
           },
         },
         formSubmitLoading: {

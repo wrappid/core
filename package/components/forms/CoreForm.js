@@ -64,6 +64,7 @@ class CoreForm extends Component {
   };
   componentDidUpdate = () => {
     this.onUpdateLoad();
+    this.setErrorAlert();
   };
 
   getAndStoreForm = async () => {
@@ -165,9 +166,9 @@ class CoreForm extends Component {
       }
 
       console.log("-----ON MOUNT READ", apiMeta);
-      if(apiMeta.endpoint && apiMeta.method){
+      if (apiMeta.endpoint && apiMeta.method) {
         this.props.HandleFormSubmit(
-          apiMeta.method, 
+          apiMeta.method,
           apiMeta.endpoint,
           apiMeta.authRequired,
           apiMeta.values,
@@ -184,7 +185,10 @@ class CoreForm extends Component {
           null,
           null
         );
-        this.props.UpdateApiMeta(this.props.formId, {...apiMeta, onSubmitRefine:formJson?.read?.onSubmitRefine})
+        this.props.UpdateApiMeta(this.props.formId, {
+          ...apiMeta,
+          onSubmitRefine: formJson?.read?.onSubmitRefine,
+        });
       }
     }
   };
@@ -347,7 +351,7 @@ class CoreForm extends Component {
 
       console.log("-----RELOAD", apiMeta);
       if (apiMeta.method && apiMeta.endpoint) {
-        let reloadForm = formJson?.read?.entity || this.props.formId
+        let reloadForm = formJson?.read?.entity || this.props.formId;
         this.props.HandleFormSubmit(
           apiMeta.method,
           apiMeta.endpoint,
@@ -366,7 +370,11 @@ class CoreForm extends Component {
           null,
           reloadForm
         );
-        this.props.UpdateApiMeta(this.props.formId, {...apiMeta, onSubmitRefine:formJson?.read?.onSubmitRefine, onGetRefine:formJson?.read?.onGetRefine})
+        this.props.UpdateApiMeta(this.props.formId, {
+          ...apiMeta,
+          onSubmitRefine: formJson?.read?.onSubmitRefine,
+          onGetRefine: formJson?.read?.onGetRefine,
+        });
       }
     }
   };
@@ -434,9 +442,9 @@ class CoreForm extends Component {
       apiMeta.reload,
       apiMeta.reduxData,
       null,
-null,
-null,
-null,
+      null,
+      null,
+      null
     );
 
     this.setState({ submitMode: apiMeta.mode });
@@ -479,7 +487,7 @@ null,
         null,
         null,
         null,
-        null,
+        null
       );
   };
 
@@ -579,7 +587,7 @@ null,
       null,
       null,
       null,
-      null,
+      null
     );
     this.setState({ submitMode: "delete" });
 
@@ -609,6 +617,72 @@ null,
 
     //hook function to excute after cancel
     if (this.props.afterCancel) this.props.afterCancel();
+  };
+
+  /**
+   * Checking if error occured and errorAlert flag
+   * is not false in formjson or json
+   * 
+   * if not setting core dialog
+   */
+
+  setErrorAlert = async () => {
+    let alertFlag = false;
+    if (
+      this.props.formSubmitError &&
+      this.props.formSubmitError[this.props.formId] &&
+      !this.state.dialogSet
+    ) {
+      alertFlag = true;
+
+      let formJson =
+        this.props.formJson && this.props.formJson[this.props.formId]
+          ? this.props.formJson[this.props.formId]
+          : null;
+      if (formJson && formJson.errorAlert === false) {
+        alertFlag = false;
+      } else {
+        let rawForm = this.props.rawFormSchema;
+        let rawFormStatus = this.props.rawFormStatus;
+        let t = await getForm(this.props.formId, this.props.authenticated, {
+          rawForm,
+          rawFormStatus,
+        });
+        if (t?.formJson?.errorAlert === false) {
+          alertFlag = false;
+        }
+      }
+
+      if (this.props.errorAlert === false) {
+        alertFlag = false;
+      }
+    }
+
+    if (alertFlag) {
+      let message = this.props.formSubmitError[this.props.formId]?.errorMsg;
+      this.setState({
+        dialogSet: true,
+        dialogContent: {
+          type: CORE_DIALOG_TYPES.FAILURE,
+          showDialog: true,
+          title: "ERROR",
+          subtitle: message,
+          doneButton: () => {
+            this.setState({ dialogContent: null, dialogSet: false });
+          },
+          cancelButton: () => {
+            this.setState({ dialogContent: null, dialogSet: false });
+          },
+        },
+      }, ()=>{
+        this.props.FormReset({
+          formSubmitError: {
+            ...this.props.formSubmitError,
+            [this.props.formId]: null,
+          },
+        });
+      });
+    }
   };
 
   render() {
@@ -923,7 +997,9 @@ null,
                     initData?.length > arrayDataLimit &&
                     this.state.hideFlag && (
                       <CoreBox
-                        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+                        styleClasses={[
+                          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+                        ]}
                       >
                         <CoreLink
                           href={
@@ -935,10 +1011,14 @@ null,
                                   JSON.stringify(this.props.query)
                                 )
                           }
-                        >{
-                          Number(initData?.length - arrayDataLimit) > 1?
-                            "Show " + Number(initData?.length - arrayDataLimit) + " others"
-                            :  "Show " + Number(initData?.length - arrayDataLimit) + " other"}
+                        >
+                          {Number(initData?.length - arrayDataLimit) > 1
+                            ? "Show " +
+                              Number(initData?.length - arrayDataLimit) +
+                              " others"
+                            : "Show " +
+                              Number(initData?.length - arrayDataLimit) +
+                              " other"}
                         </CoreLink>
                       </CoreBox>
                     )}
@@ -1047,7 +1127,7 @@ const mapDispatchToProps = (dispatch) => {
       pushSnack,
       loadingType,
       resetLoadingType,
-      reloadForm,
+      reloadForm
     ) => {
       dispatch(
         apiRequestAction(
