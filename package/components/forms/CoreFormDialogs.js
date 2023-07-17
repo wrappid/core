@@ -5,7 +5,9 @@ export default function CoreFormDialogs({ dialogset, content }) {
   const coreDialogContext = useContext(CoreDialogContext);
 
   React.useEffect(() => {
-    coreDialogContext?.setDialog(content);
+    if(dialogset&&content){
+      coreDialogContext?.setDialog(content);
+    }
   }, [dialogset]);
 
   return null;
