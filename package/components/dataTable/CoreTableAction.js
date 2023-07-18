@@ -10,10 +10,10 @@ export default function CoreTableAction(props) {
       {actions &&
         Array.isArray(actions) &&
         actions.length > 0 &&
-        actions.map((action) =>
+        actions.map((action, actionIndex) =>
           action.hide && action.hide(rowData) ? null : (
             <CoreResponsiveButton
-              key={`${tableUUID}-${action?.id}`}
+              key={action?.id?`${tableUUID}-action-${action?.id}`:`${tableUUID}-action-${actionIndex}`}
               label={action?.label}
               icon={action?.icon}
               disabled={action.disabled}
