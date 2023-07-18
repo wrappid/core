@@ -1,3 +1,4 @@
+import React from "react";
 import CoreClasses from "../../../styles/CoreClasses";
 import CoreIcon from "../CoreIcon";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
