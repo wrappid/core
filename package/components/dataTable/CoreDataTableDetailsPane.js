@@ -115,7 +115,7 @@ export default function CoreDataTableDetailsPane(props) {
         <CoreCardContent>
           {detailedRowData ? (
             <>
-              {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
+              {process.env.REACT_APP_ENV !== ENV_DEV_MODE && (
                 <CoreAccordion
                   expanded={_expandedDevJSONSchema}
                   onChange={() => {
