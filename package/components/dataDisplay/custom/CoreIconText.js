@@ -11,15 +11,15 @@ export default function CoreIconText(props) {
   return (
     (link === true)
     ?
-      <CoreBox styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
-        <CoreIcon type={type} style={{ fontSize: 12 }}>{icon}</CoreIcon>
+      <CoreBox styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
+        <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>{icon}</CoreIcon>
 
         {/* @todo need to change the "style" below */}
         <CoreLink href={href || "#"} style={{ fontSize: 12 }} styleClasses={[CoreClasses.MARGIN.ML1]}>{text}</CoreLink>
       </CoreBox>
     :
-    <CoreTypographyCaption styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
-      <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type} style={{ fontSize: 12 }}>{icon}</CoreIcon>
+    <CoreTypographyCaption styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
+      <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>{icon}</CoreIcon>
       
       <CoreTypographyCaption styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}>{text}</CoreTypographyCaption>
     </CoreTypographyCaption>
