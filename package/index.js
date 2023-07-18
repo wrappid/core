@@ -213,10 +213,12 @@ import AppService from "./service/AppService";
 import { toggleRightMenuState } from "./store/action/menuAction";
 import CoreComponent from "./components/CoreComponent";
 import { CoreResourceContext } from "./config/contextHandler";
+import CoreIconText from "./components/dataDisplay/custom/CoreIconText";
 
 export {
   coreUseSearchParams,
   CoreResourceContext,
+  CoreIconText,
   CoreComponent,
   config,
   CoreFormGroup,
