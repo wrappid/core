@@ -32,6 +32,15 @@ export default function SplashComponent() {
     }
   };
 
+  React.useEffect(() => {
+    /**
+     * @todo
+     * 
+     * must provide a delay here min 1000ms
+     */
+  }, [])
+  
+
   if (checkAppLoadDependencies()?.success) {
     if (auth.uid) {
       if (location?.state?.recalledPath) {
