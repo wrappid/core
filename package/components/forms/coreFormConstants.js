@@ -45,6 +45,7 @@ import {
   SanCreateCommunicationTemplate,
   SanEditCommunicationTemplate,
   SanTestCommunicationTemplate,
+  SanStatusUpdate,
 } from "../../utils/formSubmitSanitizations";
 
 export const FORM_EDIT_MODE = "edit";
@@ -221,6 +222,8 @@ export const FORM_SANITIZATION_FUNCTION_IDS = {
   __COMMUNICATION_TEMPLATE_EDIT: "SanEditCommunicationTemplate",
 
   __COMMUNICATION_TEMPLATE_TEST: "SanTestCommunicationTemplate",
+
+  __STATUS_UPDATE_APP_BUILDER_ENTITY: "SanStatusUpdate"
 };
 
 export const FORM_ARRAY_EDIT_DEL_FUNCTION_IDS = {
@@ -324,6 +327,9 @@ export const FORM_SANITIZATOIN_FUNCTION_MAP = {
     SanEditCommunicationTemplate,
   [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_TEST]:
     SanTestCommunicationTemplate,
+
+  // app builder status update form 
+  [FORM_SANITIZATOIN_FUNCTION_MAP.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate
 };
 
 export const FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP = {
