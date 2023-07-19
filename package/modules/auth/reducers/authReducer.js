@@ -331,7 +331,7 @@ const authReducer = (state = initState, action) => {
         sessionDetail: null,
         authNextPage: urls.PASSWORD_ROUTE,
         loginPage: null,
-        checkLoginOrRegisterSuccess: false,
+        checkLoginOrRegisterSuccess: true,
       };
     }
     case SAVE_EXPIRED_SESSION: {

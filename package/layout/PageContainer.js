@@ -23,14 +23,13 @@ import {
   CoreDialogContext,
 } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
-import { coreUseNavigate } from "../helper/routerHelper";
+import { CoreDomNavigate } from "../helper/routerHelper";
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreFooter from "../components/surfaces/CoreFooter";
 
 export let mergedComponentRegistry = {};
 
 export default function PageContainer(props) {
-  const navigate = coreUseNavigate();
   const dispatch = useDispatch();
   let location = nativeUseLocation();
   mergedComponentRegistry = useContext(ComponentRegistryContext);
@@ -99,8 +98,9 @@ export default function PageContainer(props) {
       return <Error404 />;
     }
   };
-
-  return (
+  return auth.sessionExpired && !auth.uid && route.authRequired? (
+    <CoreDomNavigate to="/" replace={true} />
+  ) : (
     <NativePageContainer
       uid={auth?.uid}
       route={route}
