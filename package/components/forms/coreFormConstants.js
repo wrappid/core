@@ -329,7 +329,7 @@ export const FORM_SANITIZATOIN_FUNCTION_MAP = {
     SanTestCommunicationTemplate,
 
   // app builder status update form 
-  [FORM_SANITIZATOIN_FUNCTION_MAP.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate
+  [FORM_SANITIZATION_FUNCTION_IDS.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate
 };
 
 export const FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP = {
