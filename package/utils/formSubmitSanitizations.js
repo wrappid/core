@@ -258,6 +258,7 @@ export function SanPrescription(formData, apiMeta, state, others) {
   data["doctorId"] = state?.profile?.basic?.id;
   data["patientId"] = state?.prescription?.navData?.Person?.id;
   data["clinicId"] = state?.prescription?.clinic?.Clinic?.id;
+  data["templateId"] = state?.prescription?.template?.id;
 
   data["appointmentId"] = state.prescription?.navData?.appointment?.id;
   data["languageId"] = state.prescription?.language?.id;
