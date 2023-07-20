@@ -419,20 +419,6 @@ export const createPatient = {
     is: (email, phone) => !email && !phone,
     then: yup.string().required(getFormikRequiredMessage("phone"))
   })),
-  // cyclic dependency
-  // phone: yup.string().when('phone', {
-  //   is: (email) => email === '',
-  //   then: yup.string().required(getFormikRequiredMessage("phone")),
-  //   otherwise: yup.string().notRequired()
-  // }),
-  // email: yup.string().when('phone', {
-  //   is: (phone) => phone === '',
-  //   then: yup.string().required(getFormikRequiredMessage("email")),
-  //   otherwise: yup.string().notRequired()
-  // })
-  // both required
-  // phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
-  // email: yup.string().email().required(getFormikRequiredMessage("email")),
 };
 
 export const createPatientRelative = {
