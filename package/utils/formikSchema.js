@@ -411,8 +411,28 @@ export const createPatient = {
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   dob: yup.date().required(getFormikRequiredMessage("dob", true)),
   gender: yup.object().required(getFormikRequiredMessage("gender")),
-  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
-  email: yup.string().email().required(getFormikRequiredMessage("email")),
+  email: yup.lazy(() => yup.string().when(['email', 'phone'], {
+    is: (email, phone) => !email && !phone,
+    then: yup.string().required(getFormikRequiredMessage("email"))
+  })),
+  phone: yup.lazy(() => yup.string().when(['email', 'phone'], {
+    is: (email, phone) => !email && !phone,
+    then: yup.string().required(getFormikRequiredMessage("phone"))
+  })),
+  // cyclic dependency
+  // phone: yup.string().when('phone', {
+  //   is: (email) => email === '',
+  //   then: yup.string().required(getFormikRequiredMessage("phone")),
+  //   otherwise: yup.string().notRequired()
+  // }),
+  // email: yup.string().when('phone', {
+  //   is: (phone) => phone === '',
+  //   then: yup.string().required(getFormikRequiredMessage("email")),
+  //   otherwise: yup.string().notRequired()
+  // })
+  // both required
+  // phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
+  // email: yup.string().email().required(getFormikRequiredMessage("email")),
 };
 
 export const createPatientRelative = {
