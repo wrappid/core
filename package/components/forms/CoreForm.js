@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import CoreEditForm from "./CoreEditForm";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import CoreEditForm from './CoreEditForm';
 import {
   FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP,
   FORM_EDIT_MODE,
   FORM_SANITIZATOIN_FUNCTION_MAP,
-} from "./coreFormConstants";
+} from './coreFormConstants';
 import {
   cancelFormEdit,
   createAllForms,
@@ -15,29 +15,29 @@ import {
   resetFormReducer,
   storeForm,
   updateApiMeta,
-} from "../../store/action/formAction";
-import CoreGrid from "../layouts/CoreGrid";
-import { apiRequestAction } from "../../store/action/appActions";
-import CoreFormHeader from "./CoreFormHeader";
-import CoreFormHeaderActions from "./CoreFormHeaderActions";
-import CoreBox from "../layouts/CoreBox";
+} from '../../store/action/formAction';
+import CoreGrid from '../layouts/CoreGrid';
+import {apiRequestAction} from '../../store/action/appActions';
+import CoreFormHeader from './CoreFormHeader';
+import CoreFormHeaderActions from './CoreFormHeaderActions';
+import CoreBox from '../layouts/CoreBox';
 import {
   createApiMeta,
   forReloadCheck,
   getForm,
   hookcallCheck,
-} from "../../utils/formUtils";
+} from '../../utils/formUtils';
 // import swal from "sweetalert";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreSkeleton from "../feedback/CoreSkeleton";
-import CoreLink from "../navigation/CoreLink";
-import { urls } from "../../config/constants";
-import { compareObject } from "../../utils/objectUtils";
-import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
-import CoreClasses from "../../styles/CoreClasses";
-import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
-import CoreFormDialogs from "./CoreFormDialogs";
+import CoreTypographyBody1 from '../dataDisplay/paragraph/CoreTypographyBody1';
+import CoreTypographyCaption from '../dataDisplay/paragraph/CoreTypographyCaption';
+import CoreSkeleton from '../feedback/CoreSkeleton';
+import CoreLink from '../navigation/CoreLink';
+import {urls} from '../../config/constants';
+import {compareObject} from '../../utils/objectUtils';
+import {GET_FORM_ERROR, GET_FORM_SUCCESS} from '../../store/types/formTypes';
+import CoreClasses from '../../styles/CoreClasses';
+import {CORE_DIALOG_TYPES} from '../feedback/CoreDialog';
+import CoreFormDialogs from './CoreFormDialogs';
 
 /**
  * @TODO
@@ -85,9 +85,9 @@ class CoreForm extends Component {
       let success = t.success;
       let formId = t.formId;
       if (success) {
-        this.props.storeForm(GET_FORM_SUCCESS, { formId, data: formJson });
+        this.props.storeForm(GET_FORM_SUCCESS, {formId, data: formJson});
       } else {
-        this.props.storeForm(GET_FORM_ERROR, { formId, data: null });
+        this.props.storeForm(GET_FORM_ERROR, {formId, data: null});
       }
     } else {
       //local forms supplied via props are stored in rawForm
@@ -97,7 +97,7 @@ class CoreForm extends Component {
       }
       formJson = formJson.formJson;
       if (tempFields) {
-        formJson = { ...formJson, fields: tempFields };
+        formJson = {...formJson, fields: tempFields};
       }
       this.props.storeForm(GET_FORM_SUCCESS, {
         formId: this.props.formId,
@@ -110,7 +110,7 @@ class CoreForm extends Component {
 
   onMountLoad = async () => {
     // console.log("ROW FORM JSON", this.props.formJson, this.props.initData);
-    this.setState({ formIdAtMount: this.props.formId });
+    this.setState({formIdAtMount: this.props.formId});
     var formJson = await this.getAndStoreForm();
 
     this.props.CreateAllForms(
@@ -119,11 +119,11 @@ class CoreForm extends Component {
       this.props.mode,
       this.props.formJson,
       this.props.authenticated,
-      formJson
+      formJson,
     );
 
     if (!formJson) {
-      this.setState({ firstDataLoadFail: true, prevQuery: this.props.query });
+      this.setState({firstDataLoadFail: true, prevQuery: this.props.query});
     }
     if (
       formJson?.read &&
@@ -133,24 +133,24 @@ class CoreForm extends Component {
     ) {
       var values = {};
       var apiMeta = createApiMeta(
-        { editing: null, addForm: null, query: this.props.query },
+        {editing: null, addForm: null, query: this.props.query},
         formJson,
         values,
         {
           editForm: this.props.editForm[this.props.formId],
           addForm: this.props.addForm[this.props.formId],
-          apiMode: "read",
+          apiMode: 'read',
           _query: this.props._query,
-        }
+        },
       );
-      var sanData = { values: values, endpoint: apiMeta.endpoint };
+      var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.onSubmitRefine
         ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
-            this.state
+            this.state,
           )
         : sanData;
 
@@ -165,7 +165,7 @@ class CoreForm extends Component {
         apiMeta.reduxData = sanData.reduxData;
       }
 
-      console.log("-----ON MOUNT READ", apiMeta);
+      console.log('-----ON MOUNT READ', apiMeta);
       if (apiMeta.endpoint && apiMeta.method) {
         this.props.HandleFormSubmit(
           apiMeta.method,
@@ -183,7 +183,7 @@ class CoreForm extends Component {
           false,
           null,
           null,
-          null
+          null,
         );
         this.props.UpdateApiMeta(this.props.formId, {
           ...apiMeta,
@@ -196,14 +196,14 @@ class CoreForm extends Component {
   onUpdateLoad = async () => {
     if (this.props.formId !== this.state.formIdAtMount) {
       let formJson = await this.getAndStoreForm();
-      this.setState({ formIdAtMount: this.props.formId }, () => {
+      this.setState({formIdAtMount: this.props.formId}, () => {
         this.props.CreateAllForms(
           this.props.formId,
           this.props.initData,
           this.props.mode,
           this.props.formJson,
           this.props.authenticated,
-          formJson
+          formJson,
         );
       });
     }
@@ -215,7 +215,7 @@ class CoreForm extends Component {
       this.props.formSubmitSuccess,
       this.props.formId,
       this.props.formJson,
-      formSchema
+      formSchema,
     );
 
     let hookCallSuccess = null;
@@ -228,7 +228,7 @@ class CoreForm extends Component {
         edit: this.props.afterEditSuccess,
         create: this.props.afterCreateSuccess,
         delete: this.props.afterDeleteSuccess,
-      }
+      },
     );
 
     hookCallError = hookcallCheck(
@@ -240,7 +240,7 @@ class CoreForm extends Component {
         create: this.props.afterCreateError,
         delete: this.props.afterDeleteError,
       },
-      "error"
+      'error',
     );
     // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     // console.log(hookCallSuccess, hookCallError);
@@ -252,7 +252,7 @@ class CoreForm extends Component {
       this.state.submitMode
     ) {
       hookCallSuccess.process();
-      await this.setState({ submitMode: null });
+      await this.setState({submitMode: null});
     }
     if (
       hookCallError?.flag &&
@@ -260,7 +260,7 @@ class CoreForm extends Component {
       this.state.submitMode
     ) {
       hookCallError.process();
-      if (hookCallError.type === "error") {
+      if (hookCallError.type === 'error') {
         this.props.FormReset({
           formSubmitError: {
             ...this.props.formSubmitError,
@@ -268,7 +268,7 @@ class CoreForm extends Component {
           },
         });
       }
-      await this.setState({ submitMode: null });
+      await this.setState({submitMode: null});
     }
 
     let r2 =
@@ -285,14 +285,14 @@ class CoreForm extends Component {
           prevQuery: this.props.query,
         });
       } else if (r3) {
-        this.setState({ prevQuery: this.props.query });
+        this.setState({prevQuery: this.props.query});
       }
       var tempFormSubmitSuccess = {
         ...this.props.formSubmitSuccess,
         [this.props.formId]: null,
       };
-      var tempFormEdit = { ...this.props.editForm, [this.props.formId]: null };
-      var tempFormAdd = { ...this.props.addForm, [this.props.formId]: null };
+      var tempFormEdit = {...this.props.editForm, [this.props.formId]: null};
+      var tempFormAdd = {...this.props.addForm, [this.props.formId]: null};
       this.props.FormReset({
         formSubmitSuccess: tempFormSubmitSuccess,
         editForm: tempFormEdit,
@@ -311,31 +311,31 @@ class CoreForm extends Component {
         apiMeta = this.props.formData[formJson?.read?.entity]?.api;
       } else
         apiMeta = createApiMeta(
-          { editing: null, addForm: null, query: this.props.query },
+          {editing: null, addForm: null, query: this.props.query},
           formJson,
           values,
           {
             editForm: this.props.editForm[this.props.formId],
             addForm: this.props.addForm[this.props.formId],
-            apiMode: "read",
+            apiMode: 'read',
             _query: this.props._query,
-          }
+          },
         );
-      var sanData = { values: values, endpoint: apiMeta.endpoint };
+      var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.entity
         ? FORM_SANITIZATOIN_FUNCTION_MAP[apiMeta?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
-            this.state
+            this.state,
           )
         : formJson?.read?.onSubmitRefine
         ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
-            this.state
+            this.state,
           )
         : sanData;
 
@@ -349,7 +349,7 @@ class CoreForm extends Component {
         apiMeta.reduxData = sanData.reduxData;
       }
 
-      console.log("-----RELOAD", apiMeta);
+      console.log('-----RELOAD', apiMeta);
       if (apiMeta.method && apiMeta.endpoint) {
         let reloadForm = formJson?.read?.entity || this.props.formId;
         this.props.HandleFormSubmit(
@@ -368,7 +368,7 @@ class CoreForm extends Component {
           false,
           null,
           null,
-          reloadForm
+          reloadForm,
         );
         this.props.UpdateApiMeta(this.props.formId, {
           ...apiMeta,
@@ -379,7 +379,7 @@ class CoreForm extends Component {
     }
   };
 
-  handleSubmit = async (values) => {
+  handleSubmit = async values => {
     var formJson =
       this.props.formJson && this.props.formJson[this.props.formId]
         ? this.props.formJson[this.props.formId]?.formJson
@@ -399,17 +399,17 @@ class CoreForm extends Component {
       _query: this.props._query,
     });
 
-    var sanData = { values: values, endpoint: apiMeta.endpoint };
-    if (apiMeta.mode === "edit" && formJson?.edit?.onSubmitRefine) {
-      console.log("EDITING");
+    var sanData = {values: values, endpoint: apiMeta.endpoint};
+    if (apiMeta.mode === 'edit' && formJson?.edit?.onSubmitRefine) {
+      console.log('EDITING');
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.edit?.onSubmitRefine](
         values,
         apiMeta,
         this.props.state,
-        this.state
+        this.state,
       );
-    } else if (apiMeta.mode === "create" && formJson?.create?.onSubmitRefine) {
-      console.log("ADDING");
+    } else if (apiMeta.mode === 'create' && formJson?.create?.onSubmitRefine) {
+      console.log('ADDING');
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
         formJson?.create?.onSubmitRefine
       ](values, apiMeta, this.props.state, this.state);
@@ -444,16 +444,16 @@ class CoreForm extends Component {
       null,
       null,
       null,
-      null
+      null,
     );
 
-    this.setState({ submitMode: apiMeta.mode });
+    this.setState({submitMode: apiMeta.mode});
 
     //hook function to excute after submit
     if (this.props.afterSave) this.props.afterSave();
   };
 
-  handleButtonClick = (data) => {
+  handleButtonClick = data => {
     var values = {};
     if (data.onSubmitRefine) {
       var othersFormData = {
@@ -464,7 +464,7 @@ class CoreForm extends Component {
         values,
         {},
         this.props.state,
-        othersFormData
+        othersFormData,
       );
     }
 
@@ -487,11 +487,11 @@ class CoreForm extends Component {
         null,
         null,
         null,
-        null
+        null,
       );
   };
 
-  OnEditClick = (id) => {
+  OnEditClick = id => {
     //hook function to excute before edit
     if (this.props.beforeEdit) this.props.beforeEdit();
     this.setState({
@@ -503,22 +503,22 @@ class CoreForm extends Component {
     if (this.props.afterEdit) this.props.afterEdit();
   };
 
-  OnDeleteClick = (id) => {
+  OnDeleteClick = id => {
     this.setState({
       deleting: id,
       dialogSet: true,
       dialogContent: {
         type: CORE_DIALOG_TYPES.INFO,
         showDialog: true,
-        title: "Confirm",
-        subtitle: "Are you Sure",
-        doneButtonLabel: "Delete",
+        title: 'Confirm',
+        subtitle: 'Are you Sure',
+        doneButtonLabel: 'Delete',
         doneButton: () => {
           this.CompleteDelete();
-          this.setState({ dialogContent: null, dialogSet: false });
+          this.setState({dialogContent: null, dialogSet: false});
         },
         cancelButton: () => {
-          this.setState({ dialogContent: null, dialogSet: false });
+          this.setState({dialogContent: null, dialogSet: false});
         },
       },
     });
@@ -540,9 +540,9 @@ class CoreForm extends Component {
       {
         editForm: this.props.editForm[this.props.formId],
         addForm: this.props.addForm[this.props.formId],
-        apiMode: "delete",
+        apiMode: 'delete',
         _query: this.props._query,
-      }
+      },
     );
 
     var sanData = {
@@ -551,14 +551,14 @@ class CoreForm extends Component {
     };
 
     if (formJson?.delete?.onSubmitRefine) {
-      console.log("DELETING");
+      console.log('DELETING');
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
         formJson?.delete?.onSubmitRefine
       ](
         this.props.formData[this.props.formId]?.data?.rows,
         apiMeta,
         this.props.state,
-        this.state
+        this.state,
       );
     }
 
@@ -587,9 +587,9 @@ class CoreForm extends Component {
       null,
       null,
       null,
-      null
+      null,
     );
-    this.setState({ submitMode: "delete" });
+    this.setState({submitMode: 'delete'});
 
     //hook function to excute after submit
     if (this.props.afterDelete) this.props.afterDelete();
@@ -600,10 +600,10 @@ class CoreForm extends Component {
     if (this.props.beforeAdd) this.props.beforeAdd();
     var temp = this.props.processedForms[this.props.formId];
     // console.log("here", temp);
-    this.setState({ addForm: { [this.props.formId]: temp }, editing: null });
+    this.setState({addForm: {[this.props.formId]: temp}, editing: null});
     this.props.OnAddForm(
       this.props.formId,
-      this.props.processedForms[this.props.formId]
+      this.props.processedForms[this.props.formId],
     );
     //hook function to excute after submit
     if (this.props.afterAdd) this.props.afterAdd();
@@ -622,7 +622,7 @@ class CoreForm extends Component {
   /**
    * Checking if error occured and errorAlert flag
    * is not false in formjson or json
-   * 
+   *
    * if not setting core dialog
    */
 
@@ -660,28 +660,31 @@ class CoreForm extends Component {
 
     if (alertFlag) {
       let message = this.props.formSubmitError[this.props.formId]?.errorMsg;
-      this.setState({
-        dialogSet: true,
-        dialogContent: {
-          type: CORE_DIALOG_TYPES.FAILURE,
-          showDialog: true,
-          title: "ERROR",
-          subtitle: message,
-          doneButton: () => {
-            this.setState({ dialogContent: null, dialogSet: false });
-          },
-          cancelButton: () => {
-            this.setState({ dialogContent: null, dialogSet: false });
+      this.setState(
+        {
+          dialogSet: true,
+          dialogContent: {
+            type: CORE_DIALOG_TYPES.FAILURE,
+            showDialog: true,
+            title: 'ERROR',
+            subtitle: message,
+            doneButton: () => {
+              this.setState({dialogContent: null, dialogSet: false});
+            },
+            cancelButton: () => {
+              this.setState({dialogContent: null, dialogSet: false});
+            },
           },
         },
-      }, ()=>{
-        this.props.FormReset({
-          formSubmitError: {
-            ...this.props.formSubmitError,
-            [this.props.formId]: null,
-          },
-        });
-      });
+        () => {
+          this.props.FormReset({
+            formSubmitError: {
+              ...this.props.formSubmitError,
+              [this.props.formId]: null,
+            },
+          });
+        },
+      );
     }
   };
 
@@ -709,7 +712,7 @@ class CoreForm extends Component {
     const arrayFlag =
       arrayView || (rawFormSchema ? rawFormSchema[formId]?.arrayView : false);
 
-    var { initData } = this.props;
+    var {initData} = this.props;
     if (!initData) {
       var newData = formData[formId]?.data?.rows;
       if (newData) {
@@ -745,8 +748,8 @@ class CoreForm extends Component {
               mode === FORM_EDIT_MODE ||
               (editForm[formId] && editForm[formId].editing)
             }
-            heading={rawFormSchema ? rawFormSchema[formId]?.heading : ""}
-            subHeading={rawFormSchema ? rawFormSchema[formId]?.subHeading : ""}
+            heading={rawFormSchema ? rawFormSchema[formId]?.heading : ''}
+            subHeading={rawFormSchema ? rawFormSchema[formId]?.subHeading : ''}
             headerAction={
               rawFormSchema &&
               rawFormSchema[formId] &&
@@ -760,10 +763,10 @@ class CoreForm extends Component {
                 ? allowAdd !== false
                   ? [
                       {
-                        icon: "add",
+                        icon: 'add',
                         OnClick: this.OnAdd,
                         disable: preview,
-                        title: "add",
+                        title: 'add',
                       },
                     ]
                   : []
@@ -771,37 +774,37 @@ class CoreForm extends Component {
                 ? allowDelete !== false
                   ? [
                       {
-                        icon: "edit_note",
+                        icon: 'edit_note',
                         OnClick: this.OnEditClick,
                         disable: preview,
-                        title: "edit",
+                        title: 'edit',
                       },
                       {
-                        icon: "delete_outline",
+                        icon: 'delete_outline',
                         // OnClick: () => {
                         //   // alert("Single component delete tobe done");
                         // },
                         disable: preview,
-                        title: "delete",
+                        title: 'delete',
                         OnClick: this.OnDeleteClick,
                       },
                     ]
                   : [
                       {
-                        icon: "edit_note",
+                        icon: 'edit_note',
                         OnClick: this.OnEditClick,
                         disable: preview,
-                        title: "edit",
+                        title: 'edit',
                       },
                     ]
                 : allowDelete !== false
                 ? [
                     {
-                      icon: "delete_outline",
+                      icon: 'delete_outline',
                       // OnClick: () => {
                       //   alert("Single component delete tobe done");
                       // },
-                      title: "delete",
+                      title: 'delete',
                       disable: preview,
                       OnClick: this.OnDeleteClick,
                     },
@@ -849,7 +852,7 @@ class CoreForm extends Component {
                     !this.state.hideFlag ||
                     (arrayDataLimit && i < arrayDataLimit) ? (
                       <CoreGrid>
-                        <CoreBox gridProps={{ gridSize: 10 }}>
+                        <CoreBox gridProps={{gridSize: 10}}>
                           <CoreEditForm
                             styleClasses={this.props.styleClasses}
                             index={i}
@@ -878,12 +881,11 @@ class CoreForm extends Component {
                           />
                         </CoreBox>
                         <CoreBox
-                          gridProps={{ gridSize: 2 }}
+                          gridProps={{gridSize: 2}}
                           styleClasses={[
                             CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
                             CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                          ]}
-                        >
+                          ]}>
                           {formDataReadLoading[formId] ? null : (
                             <CoreFormHeaderActions
                               index={i}
@@ -894,7 +896,7 @@ class CoreForm extends Component {
                                   ? allowDelete !== false
                                     ? [
                                         {
-                                          icon: "edit_note",
+                                          icon: 'edit_note',
                                           OnClick:
                                             processedForms[formId] &&
                                             processedForms[formId]
@@ -906,17 +908,17 @@ class CoreForm extends Component {
                                                 ? this.OnEditClick
                                                 : () => {
                                                     swal(
-                                                      "Error",
-                                                      "Data not editable",
-                                                      "error"
+                                                      'Error',
+                                                      'Data not editable',
+                                                      'error',
                                                     );
                                                   }
                                               : this.OnEditClick,
                                           disable: preview,
-                                          title: "edit",
+                                          title: 'edit',
                                         },
                                         {
-                                          icon: "delete_outline",
+                                          icon: 'delete_outline',
                                           OnClick:
                                             processedForms[formId] &&
                                             processedForms[formId]
@@ -928,19 +930,19 @@ class CoreForm extends Component {
                                                 ? this.OnDeleteClick
                                                 : () => {
                                                     swal(
-                                                      "Error",
-                                                      "Data not deletable",
-                                                      "error"
+                                                      'Error',
+                                                      'Data not deletable',
+                                                      'error',
                                                     );
                                                   }
                                               : this.OnDeleteClick,
                                           disable: preview,
-                                          title: "delete",
+                                          title: 'delete',
                                         },
                                       ]
                                     : [
                                         {
-                                          icon: "edit_note",
+                                          icon: 'edit_note',
                                           OnClick:
                                             processedForms[formId] &&
                                             processedForms[formId]
@@ -952,19 +954,19 @@ class CoreForm extends Component {
                                                 ? this.OnEditClick
                                                 : () => {
                                                     swal(
-                                                      "Error",
-                                                      "Data not editable"
+                                                      'Error',
+                                                      'Data not editable',
                                                     );
                                                   }
                                               : this.OnEditClick,
                                           disable: preview,
-                                          title: "edit",
+                                          title: 'edit',
                                         },
                                       ]
                                   : allowDelete !== false
                                   ? [
                                       {
-                                        icon: "delete_outline",
+                                        icon: 'delete_outline',
                                         OnClick:
                                           processedForms[formId] &&
                                           processedForms[formId]
@@ -976,13 +978,13 @@ class CoreForm extends Component {
                                               ? this.OnDeleteClick
                                               : () => {
                                                   swal(
-                                                    "Error",
-                                                    "Data not deletable"
+                                                    'Error',
+                                                    'Data not deletable',
                                                   );
                                                 }
                                             : this.OnDeleteClick,
                                         disable: preview,
-                                        title: "delete",
+                                        title: 'delete',
                                       },
                                     ]
                                   : []
@@ -991,7 +993,7 @@ class CoreForm extends Component {
                           )}
                         </CoreBox>
                       </CoreGrid>
-                    ) : null
+                    ) : null,
                   )}
                   {arrayDataLimit &&
                     initData?.length > arrayDataLimit &&
@@ -999,26 +1001,25 @@ class CoreForm extends Component {
                       <CoreBox
                         styleClasses={[
                           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-                        ]}
-                      >
+                          CoreClasses.FLEX.DIRECTION_ROW,
+                        ]}>
                         <CoreLink
                           href={
                             !this.props.query
-                              ? urls.SHOW_SPECIFIC.replace(":formId", formId)
-                              : urls.SHOW_SPECIFIC.replace(":formId", formId) +
-                                "?query=" +
+                              ? urls.SHOW_SPECIFIC.replace(':formId', formId)
+                              : urls.SHOW_SPECIFIC.replace(':formId', formId) +
+                                '?query=' +
                                 encodeURIComponent(
-                                  JSON.stringify(this.props.query)
+                                  JSON.stringify(this.props.query),
                                 )
-                          }
-                        >
+                          }>
                           {Number(initData?.length - arrayDataLimit) > 1
-                            ? "Show " +
+                            ? 'Show ' +
                               Number(initData?.length - arrayDataLimit) +
-                              " others"
-                            : "Show " +
+                              ' others'
+                            : 'Show ' +
                               Number(initData?.length - arrayDataLimit) +
-                              " other"}
+                              ' other'}
                         </CoreLink>
                       </CoreBox>
                     )}
@@ -1073,8 +1074,8 @@ class CoreForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log("STATE", state);
+const mapStateToProps = state => {
+  console.log('STATE', state);
   return {
     state: state,
     auth: state.auth,
@@ -1090,7 +1091,7 @@ const mapStateToProps = (state) => {
     formData: state.api,
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     CreateAllForms: (
       formId,
@@ -1098,7 +1099,7 @@ const mapDispatchToProps = (dispatch) => {
       mode,
       rowFormJson,
       authenticated,
-      formSchema
+      formSchema,
     ) => {
       dispatch(
         createAllForms(
@@ -1107,8 +1108,8 @@ const mapDispatchToProps = (dispatch) => {
           mode,
           rowFormJson,
           authenticated,
-          formSchema
-        )
+          formSchema,
+        ),
       );
     },
     HandleFormSubmit: (
@@ -1127,7 +1128,7 @@ const mapDispatchToProps = (dispatch) => {
       pushSnack,
       loadingType,
       resetLoadingType,
-      reloadForm
+      reloadForm,
     ) => {
       dispatch(
         apiRequestAction(
@@ -1146,8 +1147,8 @@ const mapDispatchToProps = (dispatch) => {
           pushSnack,
           loadingType,
           resetLoadingType,
-          reloadForm
-        )
+          reloadForm,
+        ),
       );
     },
     OnEditForm: (formId, formArrayId) => {
@@ -1156,13 +1157,13 @@ const mapDispatchToProps = (dispatch) => {
     OnAddForm: (formId, data) => {
       dispatch(onAddForm(formId, data));
     },
-    CancelFormEdit: (formId) => {
+    CancelFormEdit: formId => {
       dispatch(cancelFormEdit(formId));
     },
     HandleLocalFormAction: (data, localAction) => {
       dispatch(handleFormLocalAction(data, localAction));
     },
-    FormReset: (data) => {
+    FormReset: data => {
       dispatch(resetFormReducer(data));
     },
     storeForm: (type, payload) => {
