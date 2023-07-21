@@ -26,6 +26,7 @@ export default function Logout() {
 
   React.useEffect(() => {
     if (location?.state?.logout !== false)
+      dispatch({type:LOGOUT_SUCCESS})
       dispatch(
         apiRequestAction(
           HTTP.POST,
