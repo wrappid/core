@@ -3,6 +3,7 @@ import {
   defaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT,
+  PX_TAG,
   smallUtilityStyles,
 } from "@wrappid/styles";
 
@@ -16,7 +17,7 @@ export const smallCoreStyles = {
   /**
    * Core App Bar Styles
    */
-  appbarHeight: { top: HEADING_TOP_MARGIN  + IMPORTANT },
+  appbarHeight: { top: HEADING_TOP_MARGIN + IMPORTANT },
   appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
   appBarLogo: {
     cursor: "pointer" + IMPORTANT,
@@ -25,6 +26,10 @@ export const smallCoreStyles = {
   },
 
   contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
+  pageContainer: {
+    height: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
+  },
 
   authFormContainer: { width: "100%" + IMPORTANT },
   authBanner: {

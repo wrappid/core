@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-  nativeUseLocation,
-  NativeAppContainer,
-} from "@wrappid/styled-components";
+import { nativeUseLocation, NativeAppContainer } from "@wrappid/styled-components";
 
 import ComponentRegistry from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
@@ -18,11 +15,7 @@ import {
   GET_USER_SETTINGS,
   UPDATE_USER_SETTINGS,
 } from "../config/api";
-import {
-  HTTP,
-  SMALL_WINDOW_WIDTH,
-  userSettingsConstants,
-} from "../config/constants";
+import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
 import { apiRequestAction } from "../store/action/appActions";
 import { toggleLeftMenuState } from "../store/action/menuAction";
 import {
@@ -58,17 +51,13 @@ function AppContainer(props) {
   const auth = useSelector((state) => state?.auth);
   const accessToken = useSelector((state) => state?.auth?.accessToken);
   const refreshToken = useSelector((state) => state?.auth?.refreshToken);
-  const tokenRequested = useSelector(
-    (state) => state?.pendingRequests?.tokenRequested
-  );
+  const tokenRequested = useSelector((state) => state?.pendingRequests?.tokenRequested);
   const tokenRequestTimeStamp = useSelector(
     (state) => state?.pendingRequests?.tokenRequestTimeStamp
   );
   const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
-  const currentPendingRequest = useSelector(
-    (state) => state.pendingRequests.pendingRequest
-  );
+  const currentPendingRequest = useSelector((state) => state.pendingRequests.pendingRequest);
   const recallState = useSelector((state) => state?.pendingRequests?.recall);
 
   // user settings
@@ -190,17 +179,13 @@ function AppContainer(props) {
   };
 
   const getFooter = () => {
-    return null;//<CoreFooter />;
+    return <CoreFooter />;
   };
 
   const getLeftDrawer = () => {
     return auth?.uid && auth?.accessToken ? (
       <CoreDrawer
-        open={
-          windowWidth <= SMALL_WINDOW_WIDTH
-            ? leftMenuOpenSmallScreen
-            : leftMenuOpen
-        }
+        open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
         toggleDrawer={handleDrawer}
       />
     ) : null;

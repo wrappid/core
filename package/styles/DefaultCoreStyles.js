@@ -1,10 +1,5 @@
 import { SMALL_WINDOW_WIDTH } from "../config/constants";
-import {
-  defaultUtilityStyles,
-  DEFAULT_PADDING,
-  PX_TAG,
-  IMPORTANT,
-} from "@wrappid/styles";
+import { defaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT } from "@wrappid/styles";
 
 const MIN_WIDTH = 0;
 const MAX_WIDTH = SMALL_WINDOW_WIDTH - 1;
@@ -53,23 +48,18 @@ export const defaultCoreStyles = {
   fullHeight: { height: "100%" + IMPORTANT },
   flexBox: { display: "flex" + IMPORTANT },
   fullWidthHeight: { width: "100%" + IMPORTANT, height: "100%" + IMPORTANT },
-  pageContainer: {
-    minHeight: "100%" + IMPORTANT,
-    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
-  },
   contentContainer: {
-    ...defaultUtilityStyles.bgWhite,
-    ...defaultUtilityStyles.borderTop,
-    ...defaultUtilityStyles.borderLeft,
-    ...defaultUtilityStyles.borderPrimaryLight,
     ...defaultUtilityStyles.w100,
     ...defaultUtilityStyles.overflowYAuto,
     marginTop: HEADING_TOP_MARGIN + IMPORTANT,
   },
   loggedOutContentContainer: {
-    flexGrow: 1 + IMPORTANT,
-    width: "100%" + IMPORTANT,
-    overflowY: "auto" + IMPORTANT,
+    ...defaultUtilityStyles.w100,
+    ...defaultUtilityStyles.overflowYAuto,
+  },
+  pageContainer: {
+    height: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
   avatar: {
     borderWidth: "2px" + IMPORTANT,
@@ -161,7 +151,7 @@ export const defaultCoreStyles = {
     borderRadius: 10 + IMPORTANT,
     outline: 0 + IMPORTANT,
     padding: DEFAULT_PADDING,
-    borderRadius: "8px" + IMPORTANT
+    borderRadius: "8px" + IMPORTANT,
   },
   modalHeader: { padding: 20 + IMPORTANT },
   modalBody: { padding: 40 + IMPORTANT },
