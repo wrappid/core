@@ -21,7 +21,7 @@ export default function CoreIconText(props) {
     <CoreTypographyCaption styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
       <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>{icon}</CoreIcon>
       
-      <CoreTypographyCaption styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.COLOR.TEXT_SECONDARY]}>{text}</CoreTypographyCaption>
+      <CoreTypographyCaption styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.COLOR.TEXT_SECONDARY_DARK]}>{text}</CoreTypographyCaption>
     </CoreTypographyCaption>
   );
 }
