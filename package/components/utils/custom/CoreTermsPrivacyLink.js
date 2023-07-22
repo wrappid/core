@@ -13,7 +13,6 @@ export default function CoreTermsPrivacyLink() {
                 CoreClasses.FLEX.DIRECTION_ROW,
                 CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
                 CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
             ]}
         >
             {/* <CoreLink

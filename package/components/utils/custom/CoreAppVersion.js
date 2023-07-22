@@ -9,7 +9,7 @@ export default function CoreAppVersion(props) {
 
   return (
     <CoreTypographyCaption>
-      {`${props.noTitle ? null : "Application Version:"} v${version || "unknown"}`}
+      {!props?.noTitle && "Application Version: "}{`v${version || "unknown"}`}
     </CoreTypographyCaption>
   );
 }
