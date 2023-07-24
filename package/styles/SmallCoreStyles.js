@@ -27,7 +27,7 @@ export const smallCoreStyles = {
 
   contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
   pageContainer: {
-    height: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+    minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
     padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
 

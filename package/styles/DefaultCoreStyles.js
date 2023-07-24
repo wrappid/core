@@ -58,7 +58,7 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.overflowYAuto,
   },
   pageContainer: {
-    height: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+    minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
     padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
   avatar: {
