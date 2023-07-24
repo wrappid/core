@@ -54,7 +54,7 @@ export default function CoreMultiTimeRangePicker(props) {
     <CoreBox>
       <CoreLabel>{label}</CoreLabel>
       {timeRanges.map((timeRange, i) => (
-        <CoreGrid styleClasses={[CoreClasses.MARGIN.MT1]}>
+        <CoreGrid styleClasses={[CoreClasses.PADDING.PB3]}>
           <CoreTimePicker
             readOnly={props.readOnly}
             gridProps={{
