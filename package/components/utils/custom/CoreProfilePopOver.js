@@ -131,7 +131,7 @@ export default function CoreProfilePopOver(props) {
       />
 
       {/* ApiVersion && LoginDetails */}
-      <CoreApiVersion />
+      {/* <CoreApiVersion /> */}
       <CoreAppVersion />
       {/* <CoreLoginDetails /> */}
     </CoreBox>

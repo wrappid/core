@@ -38,6 +38,7 @@ import {
 } from "../../store/types/settingsTypes";
 import { compareObject } from "../../utils/objectUtils";
 import CoreClasses from "../../styles/CoreClasses";
+import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 
 /**
  * @TODO
@@ -92,6 +93,13 @@ import CoreClasses from "../../styles/CoreClasses";
  */
 export default function CoreDataTable(props) {
   const dispatch = useDispatch();
+
+  // platform detection
+  
+  const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+  React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
 
   // table column shown = 5
   const tableColumnsShown = 5;
@@ -161,33 +169,6 @@ export default function CoreDataTable(props) {
 
   // User Settings
   const userSettings = useSelector((state) => state.settings.userSettings);
-  React.useEffect(() => {
-    // details pane
-    if (
-      userSettings.hasOwnProperty(
-        userSettingsConstants?.DATA_TABLE_DETAILS_PANE
-      )
-    ) {
-      let open = userSettings[userSettingsConstants?.DATA_TABLE_DETAILS_PANE];
-      // show details pane
-      _set_showDetailsPane(open);
-      if (open) {
-        /* if (enableCreateEntity) {
-          setDetailedRowId(null);
-          setDetailedRowData(null);
-        } else {
-        } */
-        if (!detailedRowId && tableData && tableData?.length > 0) {
-          setDetailedRowId(tableData[0]?.id);
-          setDetailedRowData(tableData[0]);
-        }
-      }
-    }
-    //max row in page
-    if (userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)) {
-      setMaxRowsInPage(userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]);
-    }
-  }, []);
 
   // max row in pages
   const [maxRowsInPage, setMaxRowsInPage] = React.useState(
@@ -304,24 +285,67 @@ export default function CoreDataTable(props) {
   // Details Pane
   // show/hide details pane
   const [_showDetailsPane, _set_showDetailsPane] = React.useState(
-    userSettings[userSettingsConstants.DATA_TABLE_DETAILS_PANE] || false
+    true//userSettings[userSettingsConstants.DATA_TABLE_DETAILS_PANE] || false
   );
   const set_showDetailsPane = (open) => {
     _set_showDetailsPane(open);
-    dispatch(
-      apiRequestAction(
-        HTTP.POST,
-        UPDATE_USER_SETTINGS,
-        true,
-        {
-          name: userSettingsConstants.DATA_TABLE_DETAILS_PANE,
-          value: open,
-        },
-        USER_SETTINGS_UPDATE_SUCCESS,
-        USER_SETTINGS_UPDATE_ERROR
-      )
-    );
+    if (platform === APP_PLATFORM) {
+      // dispatch(
+      //   apiRequestAction(
+      //     HTTP.POST,
+      //     UPDATE_USER_SETTINGS,
+      //     true,
+      //     {
+      //       name: userSettingsConstants.DATA_TABLE_DETAILS_PANE,
+      //       value: open,
+      //     },
+      //     USER_SETTINGS_UPDATE_SUCCESS,
+      //     USER_SETTINGS_UPDATE_ERROR
+      //   )
+      // );
+    } else {
+      // _set_showDetailsPane(true);
+    }
   };
+
+  React.useEffect(() => {
+    // details pane
+    // if (
+    //   userSettings.hasOwnProperty(
+    //     userSettingsConstants?.DATA_TABLE_DETAILS_PANE
+    //   )
+    // ) {
+    //   let open = userSettings[userSettingsConstants?.DATA_TABLE_DETAILS_PANE];
+      
+    //   // show details pane
+    //   _set_showDetailsPane(open);
+    //   if (open) {
+    //     /* if (enableCreateEntity) {
+    //       setDetailedRowId(null);
+    //       setDetailedRowData(null);
+    //     } else {
+    //     } */
+    //     if (!detailedRowId && tableData && tableData?.length > 0) {
+    //       setDetailedRowId(tableData[0]?.id);
+    //       setDetailedRowData(tableData[0]);
+    //     }
+    //   }
+    // }
+    if (platform === APP_PLATFORM) {
+      set_showDetailsPane(false);
+    } else {
+      set_showDetailsPane(true);
+      if (!detailedRowId && tableData && tableData?.length > 0) {
+        setDetailedRowId(tableData[0]?.id);
+        setDetailedRowData(tableData[0]);
+      }
+    }
+
+    //max row in page
+    if (userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)) {
+      setMaxRowsInPage(userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]);
+    }
+  }, [tableData]);
 
   /**
    * handle sortable request

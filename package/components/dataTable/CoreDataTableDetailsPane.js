@@ -100,7 +100,7 @@ export default function CoreDataTableDetailsPane(props) {
                   rowData={detailedRowData}
                 />
               )}
-              <CoreIconButton
+              {/* <CoreIconButton
                 onClick={(e) => {
                   set_showDetailsPane(false);
                   setDetailedRowId(null);
@@ -108,14 +108,14 @@ export default function CoreDataTableDetailsPane(props) {
                 }}
               >
                 <CoreIcon>clear</CoreIcon>
-              </CoreIconButton>
+              </CoreIconButton> */}
             </CoreStack>
           }
         />
         <CoreCardContent>
           {detailedRowData ? (
             <>
-              {process.env.REACT_APP_ENV !== ENV_DEV_MODE && (
+              {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
                 <CoreAccordion
                   expanded={_expandedDevJSONSchema}
                   onChange={() => {

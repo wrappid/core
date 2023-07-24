@@ -56,6 +56,10 @@ export default function CoreDataTableRowContent(props) {
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
 
   React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
+
+  React.useEffect(() => {
     /**
      * if summaryRendererComponent
      *    render summaryRendererComponent with tableColumns, rowData
@@ -175,9 +179,7 @@ export default function CoreDataTableRowContent(props) {
     );
   };
 
-  React.useEffect(() => {
-    setPlatform(detectPlatform());
-  }, []);
+  
 
   return (
     <>
