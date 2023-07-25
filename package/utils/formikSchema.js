@@ -411,14 +411,18 @@ export const createPatient = {
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   dob: yup.date().required(getFormikRequiredMessage("dob", true)),
   gender: yup.object().required(getFormikRequiredMessage("gender")),
-  email: yup.lazy(() => yup.string().when(['email', 'phone'], {
-    is: (email, phone) => !email && !phone,
-    then: yup.string().required(getFormikRequiredMessage("email"))
-  })),
-  phone: yup.lazy(() => yup.string().when(['email', 'phone'], {
-    is: (email, phone) => !email && !phone,
-    then: yup.string().required(getFormikRequiredMessage("phone"))
-  })),
+  email: yup.lazy(() =>
+    yup.string().when(["email", "phone"], {
+      is: (email, phone) => !email && !phone,
+      then: yup.string().required(getFormikRequiredMessage("email")),
+    })
+  ),
+  phone: yup.lazy(() =>
+    yup.string().when(["email", "phone"], {
+      is: (email, phone) => !email && !phone,
+      then: yup.string().required(getFormikRequiredMessage("phone")),
+    })
+  ),
 };
 
 export const createPatientRelative = {
@@ -517,7 +521,10 @@ export const stringValueManager = {
 export const createAppointment = {
   date: yup.date().required(getFormikRequiredMessage("date")),
   startTime: yup.string().required(getFormikRequiredMessage("startTime")),
-  endTime: yup.string().required(getFormikRequiredMessage("endTime")),
+  endTime: yup.string().required(getFormikRequiredMessage("endTime")).test("end time test", "End time must be greater than Start time", (value, props) => {
+    const { startTime } = props.parent;
+    return moment(startTime, 'HH:mm').isBefore(moment(value, 'HH:mm'));
+  }),
   isForce: yup.boolean(),
 };
 
