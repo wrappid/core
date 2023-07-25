@@ -46,6 +46,7 @@ import {
   SanEditCommunicationTemplate,
   SanTestCommunicationTemplate,
   SanStatusUpdate,
+  getBmi,
 } from "../../utils/formSubmitSanitizations";
 
 export const FORM_EDIT_MODE = "edit";
@@ -223,7 +224,12 @@ export const FORM_SANITIZATION_FUNCTION_IDS = {
 
   __COMMUNICATION_TEMPLATE_TEST: "SanTestCommunicationTemplate",
 
-  __STATUS_UPDATE_APP_BUILDER_ENTITY: "SanStatusUpdate"
+  __STATUS_UPDATE_APP_BUILDER_ENTITY: "SanStatusUpdate",
+
+  /**
+   * dependent value function
+   */
+  __GET_BMI: "getBmi"
 };
 
 export const FORM_ARRAY_EDIT_DEL_FUNCTION_IDS = {
@@ -329,7 +335,13 @@ export const FORM_SANITIZATOIN_FUNCTION_MAP = {
     SanTestCommunicationTemplate,
 
   // app builder status update form 
-  [FORM_SANITIZATION_FUNCTION_IDS.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate
+  [FORM_SANITIZATION_FUNCTION_IDS.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate,
+
+  /**
+   * form dependency functions
+   */
+  [FORM_SANITIZATION_FUNCTION_IDS.__GET_BMI]: getBmi
+
 };
 
 export const FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP = {

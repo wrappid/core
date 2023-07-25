@@ -77,7 +77,7 @@ export default function CoreEditForm(props) {
                   element.comp ? element.comp : CoreInput,
                   {
                     key: `coreFormElement-${element.id}`,
-                    ...createFormFieldProps(element, formikprops, "edit"),
+                    ...createFormFieldProps(element, formikprops, "edit", forms[formId]?.formElements),
                     coreId: "coreFormElement-" + element.id,
                     gridProps: {
                       gridSize: getGridSizeProps(element.gridSize, true),

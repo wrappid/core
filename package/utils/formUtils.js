@@ -12,6 +12,7 @@ import {
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
+  FORM_SANITIZATOIN_FUNCTION_MAP,
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
@@ -276,8 +277,9 @@ export function createFormGridProps(element) {
   return finalProps;
 }
 
-export function createFormFieldProps(element, formikprops, type) {
+export function createFormFieldProps(element, formikprops, type, allElements) {
   // console.log("FORMIK props", formikprops);
+  let derivedValue = checkDependencies(element, formikprops, allElements)?.derivedValue
   if (type === "edit") {
     if (element?.onlyView) {
       return {
@@ -291,7 +293,7 @@ export function createFormFieldProps(element, formikprops, type) {
         id: String(element?.id),
         onChange: formikprops?.handleChange,
         label: element?.label,
-        value: formikprops?.values ? formikprops?.values[element.id] : "",
+        value: derivedValue? derivedValue: formikprops?.values ? formikprops?.values[element.id] : "",
         src:
           element.type === "avatar" || element.type === "imagePicker"
             ? formikprops?.values
@@ -714,18 +716,35 @@ function checkConditions(dependencies, formik) {
   return eval(finalStr);
 }
 
-export function checkDependencies(element, formik) {
+
+function getDependentValue(getValueFunction,formik, elem, allElements){
+  if(getValueFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction]){
+    return FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction](formik, elem, allElements)
+  }
+  else{
+    return ""
+  }
+}
+
+
+export function checkDependencies(element, formik, allElements) {
   let finalStr = "";
+  let finalVal = "";
   // console.log("CHEKING DEPENDENCIES");
   if (element.dependencies) {
-    finalStr += String(checkConditions(element?.dependencies?.hide, formik));
+    if(element?.dependencies?.hide)
+      finalStr += String(checkConditions(element?.dependencies?.hide, formik));
+    if(element?.dependencies?.getValue)
+      finalVal = String(getDependentValue(element?.dependencies?.getValue, formik, element, allElements));
 
     return {
       hide: eval(finalStr),
+      derivedValue: finalVal
     };
   } else {
     return {
       hide: false,
+      derivedValue: null
     };
   }
 }

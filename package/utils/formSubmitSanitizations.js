@@ -689,3 +689,22 @@ export function SanStatusUpdate(formData, apiMeta, state, others) {
   };
   return obj;
 }
+
+
+
+export function getBmi(formik, elem, allElements) {
+  const heightId = allElements?.find(el => el.name === 'height')?.id
+  const weightId = allElements?.find(el => el.name === 'weight')?.id
+
+  if(heightId 
+    && weightId 
+    && formik?.values 
+    && formik?.values[heightId] 
+    && formik?.values[weightId] 
+  ){
+    return Number(formik?.values[heightId] / (formik?.values[weightId] * formik?.values[weightId] )).toFixed(3)
+  }
+  else{
+    return 0
+  }
+}
