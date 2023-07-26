@@ -279,7 +279,6 @@ export function createFormGridProps(element) {
 
 export function createFormFieldProps(element, formikprops, type, allElements) {
   // console.log("FORMIK props", formikprops);
-  let derivedValue = checkDependencies(element, formikprops, allElements)?.derivedValue
   if (type === "edit") {
     if (element?.onlyView) {
       return {
@@ -291,9 +290,16 @@ export function createFormFieldProps(element, formikprops, type, allElements) {
       return {
         type: element?.type,
         id: String(element?.id),
-        onChange: formikprops?.handleChange,
+        onChange: (e)=>{
+          let dependentElement = allElements?.find(el => el?.dependencies?.getValue)
+          if(dependentElement){
+            let val = checkDependencies(dependentElement, formikprops, allElements)?.derivedValue
+            formikprops?.setFieldValue(dependentElement?.id, val)
+          }
+          formikprops?.handleChange(e)
+        },
         label: element?.label,
-        value: derivedValue? derivedValue: formikprops?.values ? formikprops?.values[element.id] : "",
+        value: formikprops?.values ? formikprops?.values[element.id] : "",
         src:
           element.type === "avatar" || element.type === "imagePicker"
             ? formikprops?.values
@@ -734,8 +740,9 @@ export function checkDependencies(element, formik, allElements) {
   if (element.dependencies) {
     if(element?.dependencies?.hide)
       finalStr += String(checkConditions(element?.dependencies?.hide, formik));
-    if(element?.dependencies?.getValue)
+    if(element?.dependencies?.getValue){
       finalVal = String(getDependentValue(element?.dependencies?.getValue, formik, element, allElements));
+    }
 
     return {
       hide: eval(finalStr),
