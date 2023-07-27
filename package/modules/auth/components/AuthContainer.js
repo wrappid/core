@@ -8,6 +8,8 @@ import { nativeUseNavigate } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 import CoreComponent from "../../../components/CoreComponent";
 import { CoreResourceContext } from "../../../config/contextHandler";
+import CoreImage from "../../../components/dataDisplay/CoreImage";
+import { mergedResourceRegistry } from "../../../layout/PageContainer";
 
 export const AuthContainer = (props) => {
   const navigate = nativeUseNavigate();
@@ -53,7 +55,9 @@ export const AuthContainer = (props) => {
             CoreClasses?.MARGIN?.MB5,
           ]}
         >
-          <CoreComponent componentName="AppLogo" />
+          {/* <CoreComponent componentName="AppLogo" /> */}
+          {mergedResourceRegistry?.appLogo&&
+          <CoreImage src={mergedResourceRegistry?.appLogo} style={{width: 190}}/>}
         </CoreBox>
         {props.children}
       </CoreSection>

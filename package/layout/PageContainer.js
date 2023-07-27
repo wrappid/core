@@ -9,18 +9,20 @@ import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreModal from "../components/utils/CoreModal";
-import { ComponentRegistryContext, CoreDialogContext } from "../config/contextHandler";
+import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import CoreDialog from "../components/feedback/CoreDialog";
 
 export let mergedComponentRegistry = {};
+export let mergedResourceRegistry = {};
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
   mergedComponentRegistry = useContext(ComponentRegistryContext);
-  console.log("mergedComponentRegistry", mergedComponentRegistry);
+  mergedResourceRegistry = useContext(CoreResourceContext);
+  console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
   const { showHelperText = true, helperButtonFlag = true } = useSelector((state) => state.forms);
 
