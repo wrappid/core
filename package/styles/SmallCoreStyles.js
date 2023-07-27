@@ -24,6 +24,9 @@ export const smallCoreStyles = {
     height: "40px" + IMPORTANT,
     paddingLeft: "8px" + IMPORTANT,
   },
+  authAppLogo: {
+    width: 190
+  },
 
   contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
   pageContainer: {

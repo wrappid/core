@@ -57,7 +57,7 @@ export const AuthContainer = (props) => {
         >
           {/* <CoreComponent componentName="AppLogo" /> */}
           {mergedResourceRegistry?.appLogo&&
-          <CoreImage src={mergedResourceRegistry?.appLogo} style={{width: 190}}/>}
+          <CoreImage src={mergedResourceRegistry?.appLogo} styleClasses={[CoreClasses?.AUTH?.LOGO]}/>}
         </CoreBox>
         {props.children}
       </CoreSection>

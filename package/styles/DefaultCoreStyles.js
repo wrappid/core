@@ -311,5 +311,9 @@ export const defaultCoreStyles = {
   },
   profileBarWidth: {
     minWidth: "250px"
+  },
+  authAppLogo: {
+    height: 50,
+    width: 190
   }
 };
