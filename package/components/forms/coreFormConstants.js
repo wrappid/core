@@ -47,6 +47,7 @@ import {
   SanTestCommunicationTemplate,
   SanStatusUpdate,
   getBmi,
+  SanReadAppointment,
 } from "../../utils/formSubmitSanitizations";
 
 export const FORM_EDIT_MODE = "edit";
@@ -208,6 +209,7 @@ export const FORM_SANITIZATION_FUNCTION_IDS = {
   //Appointment related
   __CREATE_APPOINTMENT: "SanCreateAppointment",
   __RESCHEDULE_APPOINTMENT: "SanEditAppointment",
+  __READ_APPOINTMENT: "SanReadAppointment",
 
   //language
   __CREATE_LOCALE: "SanStringValueAdd",
@@ -313,6 +315,7 @@ export const FORM_SANITIZATOIN_FUNCTION_MAP = {
   //Appointment related
   [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_APPOINTMENT]: SanCreateAppointment,
   [FORM_SANITIZATION_FUNCTION_IDS.__RESCHEDULE_APPOINTMENT]: SanEditAppointment,
+  [FORM_SANITIZATION_FUNCTION_IDS.__READ_APPOINTMENT]: SanReadAppointment,
 
   //language
   [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_LOCALE]: SanStringValueAdd,

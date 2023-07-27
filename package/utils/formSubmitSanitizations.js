@@ -477,6 +477,13 @@ export function SanCreateAppointment(formData, apiMeta, state, others) {
   };
 }
 
+export function SanReadAppointment(data) {
+  return {
+      ...data,
+      clinicId: {id: data?.Clinic?.id, label: data?.Clinic?.Address?.fullName, fullName: data?.Clinic?.Address?.fullName}
+    }
+}
+
 export function SanEditAppointment(form, apiMeta, state, others) {
   let formData = { ...form };
   const endpoint = apiMeta.endpoint.replace(":id", form?.id);
