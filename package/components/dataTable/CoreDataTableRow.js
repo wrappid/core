@@ -89,11 +89,9 @@ export default function CoreDataTableRow(props) {
         {/* Table Row Data */}
         <CoreTableRow
           sx={{
-            backgroundColor:
-              enableDetailsPane &&
-              _showDetailsPane &&
-              detailedRowId === rowData.id &&
-              `${theme.palette.primary.light} !important`,
+            borderLeft:enableDetailsPane &&
+            _showDetailsPane &&
+            detailedRowId === rowData.id?`solid 5px ${theme.palette.primary.light}`:"",
             cursor: enableDetailsPane && _showDetailsPane && "pointer",
             minHeight: "40px",
           }}
