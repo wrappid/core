@@ -309,4 +309,7 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.pl1,
     fontSize: "0.9rem" + IMPORTANT,
   },
+  profileBarWidth: {
+    minWidth: "250px"
+  }
 };

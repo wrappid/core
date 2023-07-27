@@ -71,6 +71,7 @@ export default function CoreProfilePopOver(props) {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
+          CoreClasses.LAYOUT.PROFILE_BAR_WIDTH,
         ]}
       >
         <CoreAvatar
