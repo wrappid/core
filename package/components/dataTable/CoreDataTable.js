@@ -163,6 +163,12 @@ export default function CoreDataTable(props) {
     updateFormID = null,
     // table props
     tableHeadProps,
+    afterEditSuccess, // function to be called after successfull Edit
+    afterEditError, // function to be called after successfull Edit
+    afterCreateSuccess, // function to be called after successfull Create
+    afterCreateError, // function to be called after successfull Create
+    afterDeleteSuccess, // function to be called after successfull Delete
+    afterDeleteError // function to be called after successfull Delete
   } = props;
 
   const { _create = {}, _read = {}, _update = {}, _delete = {} } = reduxType;
@@ -844,6 +850,12 @@ export default function CoreDataTable(props) {
             _expandedDevJSONSchema={_expandedDevJSONSchema}
             set_expandedDevJSONSchema={set_expandedDevJSONSchema}
             _showDetailsPane={_showDetailsPane}
+            afterEditSuccess={afterEditSuccess}
+            afterEditError={afterEditError}
+            afterCreateSuccess={afterCreateSuccess}
+            afterCreateError={afterCreateError}
+            afterDeleteSuccess={afterDeleteSuccess}
+            afterDeleteError={afterDeleteError}
           />
         )}
       </CoreGrid>

@@ -54,6 +54,12 @@ export default function CoreDataTableDetailsPane(props) {
     _expandedDevJSONSchema,
     set_expandedDevJSONSchema,
     _showDetailsPane,
+    afterEditSuccess,
+    afterEditError,
+    afterCreateSuccess,
+    afterCreateError,
+    afterDeleteSuccess,
+    afterDeleteError,
   } = props;
 
   return (
@@ -169,10 +175,27 @@ export default function CoreDataTableDetailsPane(props) {
                       afterEditSuccess={() => {
                         set_showDetailsPane(false);
                         filterData();
+                        if(afterEditSuccess && typeof afterEditSuccess === 'function'){
+                          afterEditSuccess()
+                        }
                       }}
-                      afterDeleteSuccess={() => {}}
-                      afterEditError={() => {}}
-                      afterDeleteError={() => {}}
+                      afterDeleteSuccess={() => {
+                        set_showDetailsPane(false);
+                        filterData();
+                        if(afterDeleteSuccess){
+                          afterDeleteSuccess()
+                        }
+                      }}
+                      afterEditError={() => {
+                        if(afterEditError && typeof afterEditError === 'function'){
+                          afterEditError()
+                        }
+                      }}
+                      afterDeleteError={() => {
+                        if(afterDeleteError && typeof afterDeleteError === 'function'){
+                          afterDeleteError()
+                        }
+                      }}
                     />
                   </>
                 )
@@ -232,8 +255,15 @@ export default function CoreDataTableDetailsPane(props) {
                       afterCreateSuccess={() => {
                           set_showDetailsPane(false);
                           filterData();
+                          if(afterCreateSuccess && typeof afterCreateSuccess === 'function'){
+                            afterCreateSuccess()
+                          }
                       }}
-                      afterCreateError={() => {}}
+                      afterCreateError={() => {
+                        if(afterCreateError && typeof afterCreateError === 'function'){
+                          afterCreateError()
+                        }
+                      }}
                     />
                   </>
                 )
