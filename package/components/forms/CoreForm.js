@@ -513,6 +513,7 @@ class CoreForm extends Component {
         title: 'Confirm',
         subtitle: 'Are you Sure',
         doneButtonLabel: 'Delete',
+        noCancelButton: true,
         doneButton: () => {
           this.CompleteDelete();
           this.setState({dialogContent: null, dialogSet: false});
@@ -667,6 +668,7 @@ class CoreForm extends Component {
             type: CORE_DIALOG_TYPES.FAILURE,
             showDialog: true,
             title: 'ERROR',
+            noCancelButton: true,
             subtitle: message,
             doneButton: () => {
               this.setState({dialogContent: null, dialogSet: false});
