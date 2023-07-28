@@ -1,5 +1,5 @@
 import React from "react";
-import CoreIcon from "..//CoreIcon";
+import CoreIcon, { __IconTypes } from "..//CoreIcon";
 import CoreTooltip from "../CoreTooltip";
 import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
@@ -24,6 +24,7 @@ export default function CoreEmailLink(props) {
       <>
         {email ? (
           <CoreStack direction={"row"} spacing={1}>
+             <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
             <CoreLink href={`mailto:${email}`}>
               {size === "small" ? (
                 <CoreTypographyCaption
@@ -53,7 +54,7 @@ export default function CoreEmailLink(props) {
                     : [CoreClasses?.ICON?.VERIFIED_WARNING]
                 }
               >
-                {verified ? "check_circle" : "error_outline"}
+                {verified ? "verified" : "error_outline"}
               </CoreIcon>
             )}
           </CoreStack>
