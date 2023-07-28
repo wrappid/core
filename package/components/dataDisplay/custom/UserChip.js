@@ -32,7 +32,7 @@ export default function UserChip(props) {
         url:
           backendUrl +
           "/business/individual/UserBasicInfo?_defaultFilter=" +
-          encodeURIComponent(JSON.stringify({ "Users.id": userid })),
+          encodeURIComponent(JSON.stringify({ id: userid })),
         headers: await authHeader(true),
       })
         .then((response) => {
@@ -50,7 +50,7 @@ export default function UserChip(props) {
       _firstName === "" &&
       _middleName === "" &&
       _lastName === "" &&
-      _photoUrl === ""
+      _photoUrl === "" && userid
     ) {
       apiCall();
     }
@@ -64,19 +64,9 @@ export default function UserChip(props) {
   }
 
   return (
-    <CoreChip
-      size="small"
-      avatar={
-        <CoreAvatar
-          styleClasses={[CoreClasses.BORDER.BORDER_0]}
-          src={photoUrl || "photo.jpg"}
-        />
-      }
-      label={
-        <CoreTypographyCaption limitChars={12} hideSeeMore={true}>
-          {displayName}
-        </CoreTypographyCaption>
-      }
+    <CoreAvatar
+      styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
+      src={photoUrl || "photo.jpg"}
     />
   );
 }

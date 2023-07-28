@@ -5,6 +5,9 @@ import CoreAlert from "../feedback/CoreAlert";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreClasses from "../../styles/CoreClasses";
+import CoreStack from "../layouts/CoreStack";
+import { getLabel } from "../../utils/stringUtils";
+import { auditTypes } from "../../config/constants";
 
 const alertStyle = [
   CoreClasses.PADDING.PX1,
@@ -35,30 +38,32 @@ export default function TableRowAuditData(props) {
   );
 }
 
+function AuditDataComponent(type, rowData) {
+  return (
+    rowData?.[`${type}At`] && (
+      <CoreStack
+        direction="row"
+        spacing={1}
+      >
+        <CoreTypographyCaption>
+          {`${getLabel(type)} at ${(rowData[`${type}At`] && new Date(rowData?.[`${type}At`]).toLocaleString()) || "not known"}`}
+        </CoreTypographyCaption>
+        <CoreTypographyCaption>
+          {" by "}
+        </CoreTypographyCaption>
+        <UserChip component="span" userid={rowData[`${type}By`]} />
+      </CoreStack>
+    )
+  );
+}
+
 /**
  *
  * @param {*} rowData
  * @returns
  */
 function getCreatedDataComponent(rowData) {
-  return (
-    rowData?.createdAt && (
-      <CoreAlert icon={false} severity="success" styleClasses={alertStyle}>
-        <CoreTypographyCaption>
-          Created at&nbsp;
-          {(rowData?.createdAt &&
-            new Date(rowData?.createdAt).toLocaleString()) ||
-            "not known"}
-        </CoreTypographyCaption>
-        {rowData?.createdBy && (
-          <>
-            &nbsp;by&nbsp;
-            <UserChip userid={rowData.createdBy} />
-          </>
-        )}
-      </CoreAlert>
-    )
-  );
+  return <AuditDataComponent type={auditTypes.CREATED} rowData={rowData} />;
 }
 
 /**
@@ -67,24 +72,7 @@ function getCreatedDataComponent(rowData) {
  * @returns
  */
 function getUpdatedDataComponent(rowData) {
-  return (
-    rowData?.updatedAt && (
-      <CoreAlert icon={false} severity="warning" styleClasses={alertStyle}>
-        <CoreTypographyCaption>
-          Updated at&nbsp;
-          {(rowData?.updatedAt &&
-            new Date(rowData?.updatedAt).toLocaleString()) ||
-            "not known"}
-        </CoreTypographyCaption>
-        {rowData?.updatedBy && (
-          <>
-            &nbsp;by&nbsp;
-            <UserChip userid={rowData.updatedBy} />
-          </>
-        )}
-      </CoreAlert>
-    )
-  );
+  return <AuditDataComponent type={auditTypes.UPDATED} rowData={rowData} />;;
 }
 
 /**
@@ -93,22 +81,5 @@ function getUpdatedDataComponent(rowData) {
  * @returns
  */
 function getDeletedDataComponent(rowData) {
-  return (
-    rowData?.deletedAt && (
-      <CoreAlert icon={false} severity="error" styleClasses={alertStyle}>
-        <CoreTypographyCaption>
-          Deleted at&nbsp;
-          {(rowData?.deletedAt &&
-            new Date(rowData?.deletedAt).toLocaleString()) ||
-            "not known"}
-        </CoreTypographyCaption>
-        {rowData?.deletedBy && (
-          <>
-            &nbsp;by&nbsp;
-            <UserChip userid={rowData.deletedBy} />
-          </>
-        )}
-      </CoreAlert>
-    )
-  );
+  return <AuditDataComponent type={auditTypes.DELETED} rowData={rowData} />;;
 }
