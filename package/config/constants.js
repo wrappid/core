@@ -229,3 +229,9 @@ export const communicationTypes = {
 export const coreDialogInitValue = {
   showDialog: false,
 };
+
+export const auditTypes = {
+  CREATED: "created",
+  UPDATED: "updated",
+  DELETED: "deleted",
+}
