@@ -162,67 +162,17 @@ export default function CoreDataTableDetailsPane(props) {
                       mode={formMode}
                       allowEdit={editable}
                       allowDelete={deletable}
-                      initData={detailedRowData}
-                      // afterEdit={() => {
-                      //   filterData();
-                      // }}
+                      initData={detailedRowData}s
                       afterCancel={() => {
                         setFormMode(FORM_VIEW_MODE);
                       }}
                       afterEditSuccess={() => {
-                        // do something
-                        // swal({
-                        //   icon: 'success',
-                        //   title: 'Updated Successfully',
-                        //   text: `${getLabel(updateFormID)} updated successfully`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   set_showDetailsPane(false);
-                        //   filterData();
-                        // });
+                        set_showDetailsPane(false);
+                        filterData();
                       }}
-                      afterDeleteSuccess={() => {
-                        // do something
-                        // swal({
-                        //   icon: 'success',
-                        //   title: 'Deleted Successfully',
-                        //   text: `${getLabel(updateFormID)} deleted successfully`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   set_showDetailsPane(false);
-                        //   filterData();
-                        // });
-                      }}
-                      afterEditError={() => {
-                        // swal({
-                        //   icon: 'error',
-                        //   title: 'Updated Failure',
-                        //   text: `${getLabel(createFormID)} updated failure`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   // set_showDetailsPane(false);
-                        //   // filterData();
-                        // });
-                      }}
-                      afterDeleteError={() => {
-                        // swal({
-                        //   icon: 'error',
-                        //   title: 'Deleted Failure',
-                        //   text: `${getLabel(createFormID)} delete failure`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   // set_showDetailsPane(false);
-                        //   // filterData();
-                        // });
-                      }}
+                      afterDeleteSuccess={() => {}}
+                      afterEditError={() => {}}
+                      afterDeleteError={() => {}}
                     />
                   </>
                 )
@@ -276,39 +226,14 @@ export default function CoreDataTableDetailsPane(props) {
                       formId={createFormID}
                       mode={FORM_EDIT_MODE}
                       initData={{}}
-                      afterEdit={() => {
-                        filterData();
-                      }}
                       afterCancel={() => {
                         set_showDetailsPane(false);
                       }}
                       afterCreateSuccess={() => {
-                        // do something
-                        // swal({
-                        //   icon: 'success',
-                        //   title: 'Created Successfully',
-                        //   text: `${getLabel(createFormID)} created successfully`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   set_showDetailsPane(false);
-                        //   filterData();
-                        // });
+                          set_showDetailsPane(false);
+                          filterData();
                       }}
-                      afterCreateError={() => {
-                        // swal({
-                        //   icon: 'error',
-                        //   title: 'Create Failure',
-                        //   text: `${getLabel(createFormID)} create failure`,
-                        //   buttons: {
-                        //     confirm: 'Ok',
-                        //   },
-                        // }).then(data => {
-                        //   // set_showDetailsPane(false);
-                        //   // filterData();
-                        // });
-                      }}
+                      afterCreateError={() => {}}
                     />
                   </>
                 )
