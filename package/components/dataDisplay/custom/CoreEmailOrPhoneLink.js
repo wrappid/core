@@ -88,7 +88,7 @@ export default function CoreEmailOrPhoneLink(props) {
 
           {props.verified ? (
             <CoreIcon styleClasses={[CoreClasses?.ICON?.VERIFIED_SUCCESS]}>
-              check_circle
+              verified
             </CoreIcon>
           ) : (
             <CoreIcon styleClasses={[CoreClasses?.ICON?.VERIFIED_WARNING]}>
