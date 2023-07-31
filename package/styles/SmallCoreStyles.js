@@ -104,4 +104,8 @@ export const smallCoreStyles = {
 
   fiContentWidth: { width: "fit-content" + IMPORTANT },
   fitContentHeight: { height: "fit-content" + IMPORTANT },
+  authAppLogo: {
+    height: 'auto',
+    width: 190
+  }
 };
