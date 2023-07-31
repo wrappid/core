@@ -14,6 +14,7 @@ const CoreClasses = {
     FULL_HEIGHT: "fullHeight",
     FULL_WIDTH_HEIGHT: "fullWidthHeight",
     PAGE_CONTAINER: "pageContainer",
+    LOGGED_OUT_PAGE_CONTAINER: "loggedOutPageContainer",
     CONTENT_CONTAINER: "contentContainer",
     LOGGED_OUT_CONTENT_CONTAINER: "loggedOutContentContainer",
     /* Prescription */

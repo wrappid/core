@@ -6,7 +6,7 @@ const MIN_WIDTH = LARGE_WINDOW_WIDTH;
 const MAX_WIDTH = X_LARGE_WINDOW_WIDTH - 1;
 
 export const largeCoreStyles = {
-	devBorder: { ...defaultUtilityStyles.borderSuccess },
+	devBorder: { boxShadow: "inset 0px 0px 1px 1px green", },
 	authBanner: {
 		backgroundImage   : "url(./images/welcome-bg.png)",
 		backgroundPosition: "center" + IMPORTANT,

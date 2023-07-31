@@ -12,7 +12,7 @@ const HEADING_TOP_MARGIN = "56px";
 export const DEFAULT_SPACING = 1;
 
 export const defaultCoreStyles = {
-  devBorder: { ...defaultUtilityStyles.border },
+  devBorder: { boxShadow: "inset 0px 0px 1px 1px black",  },
 
   /**
    * Core App Bar Styles
@@ -56,15 +56,10 @@ export const defaultCoreStyles = {
   loggedOutContentContainer: {
     ...defaultUtilityStyles.w100,
     ...defaultUtilityStyles.overflowYAuto,
-    ...defaultUtilityStyles.bgPrimary
   },
   pageContainer: {
     minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
     padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
-  },
- loggedOutPageContainer: {
-    minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
-    // padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
   avatar: {
     borderWidth: "2px" + IMPORTANT,
@@ -320,9 +315,5 @@ export const defaultCoreStyles = {
   authAppLogo: {
     height: 50,
     width: 190
-  },
-  authCard: {
-    background: 'transparent' + IMPORTANT,
-    boxShadow: "none" + IMPORTANT
   }
 };

@@ -16,7 +16,7 @@ export const AUTH_THEME = {
 			contrastText: "#000000",
 		},
 		secondary: {
-			main            : "#6D6C6C",
+			main            : "#FFFFFF",
 			light           : "#FAFAFA",
 			dark            : "#6D6C6C",
 			transparentLight: "#FAFAFAAA",
@@ -47,7 +47,8 @@ export const AUTH_THEME = {
 			contrastText: "rgba(0, 0, 0, 0.87)",
 		},
         text: {
-            primary: "#FFFFFF"
+            primary: "#FFFFFF",
+            secondary: "#FB607F"
         }
 	},
 };

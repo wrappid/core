@@ -1,22 +1,40 @@
-import { LARGE_WINDOW_WIDTH, MEDIUM_WINDOW_WIDTH } from "../config/constants";
+import { MEDIUM_WINDOW_WIDTH, SMALL_WINDOW_WIDTH } from "../config/constants";
 import {
   defaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT,
-  mediumUtilityStyles,
+  PX_TAG,
+  smallUtilityStyles,
 } from "@wrappid/styles";
 
-const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;
-const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
+const MIN_WIDTH = SMALL_WINDOW_WIDTH;
+const MAX_WIDTH = MEDIUM_WINDOW_WIDTH - 1;
+
 const HEADING_TOP_MARGIN = "64px";
 
-export const mediumCoreStyles = {
-  devBorder: { boxShadow: "inset 0px 0px 1px 1px cyan" },
+export const smallCoreStyles = {
+  devBorder: { boxShadow: "inset 0px 0px 1px 1px yellow" },
   /**
    * Core App Bar Styles
    */
-  appBarLogo: {},
+  appbarHeight: { top: HEADING_TOP_MARGIN + IMPORTANT },
+  appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
+  appBarLogo: {
+    cursor: "pointer" + IMPORTANT,
+    height: "40px" + IMPORTANT,
+    paddingLeft: "8px" + IMPORTANT,
+  },
+  authAppLogo: {
+    width: 190
+  },
 
+  contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
+  pageContainer: {
+    minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
+    padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
+  },
+
+  authFormContainer: { width: "100%" + IMPORTANT },
   authBanner: {
     backgroundImage: "url(./images/welcome-bg.png)" + IMPORTANT,
     backgroundPosition: "center" + IMPORTANT,
@@ -24,19 +42,13 @@ export const mediumCoreStyles = {
     backgroundRepeat: "no-repeat" + IMPORTANT,
     height: "100%" + IMPORTANT,
   },
-  authForm: { height: "100%" + IMPORTANT },
-  authFormContainer: { width: "60%" + IMPORTANT },
   authContainer: { height: "100%" + IMPORTANT },
-  profileBarWidth: { maxWidth: "40vw" + IMPORTANT },
-  tableFilterColumnBox: {
-    padding: DEFAULT_PADDING + IMPORTANT,
-    maxHeight: "70vh" + IMPORTANT,
-    maxWidth: "25vw" + IMPORTANT,
-  },
+  authForm: { height: "100%" + IMPORTANT },
+  profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
 
   // ----------Data Table Styles Starts----------
   dataTableContainer: {
-    // ...defaultUtilityStyles.bgWarningLight,
+    // ...defaultUtilityStyles.bgSuccessLight,
   },
   dataTableMiniWidthPane: {
     ...defaultUtilityStyles.border,
@@ -59,25 +71,10 @@ export const mediumCoreStyles = {
     ...defaultUtilityStyles.mlN1,
     width: "calc(100% + 8px)" + IMPORTANT,
   },
-  dataTableToolbarContainer: {
-    ...defaultUtilityStyles.stickyTop,
-    zIndex: "1025" + IMPORTANT,
-  },
-  dataTableToolbar: {
-    ...defaultUtilityStyles.mtN2,
-    ...defaultUtilityStyles.pr0,
-  },
-  dataTableHead: {
-    // ...defaultUtilityStyles.border,
-    // ...defaultUtilityStyles.borderBottom,
-    // ...defaultUtilityStyles.borderPrimaryLight,
-    // ...defaultUtilityStyles.shadow,
-    top: "-8px" + IMPORTANT,
-  },
-  dataTableHeadTop: {
-    // top: "50px",
-    top: "53px" + IMPORTANT,
-  },
+  dataTableToolbarContainer: {},
+  dataTableToolbar: {},
+  dataTableHead: {},
+  dataTableHeadTop: {},
   dataTableBody: {},
   dataTableFoot: {},
 
@@ -103,8 +100,8 @@ export const mediumCoreStyles = {
 
   auditData: {},
 
-  authCardMinWidth: { minWidth: "25%" + IMPORTANT },
-  authCardMaxWidth: { maxWidth: "25%" + IMPORTANT },
-
   // ----------Data Table Styles Ends------------
+
+  fiContentWidth: { width: "fit-content" + IMPORTANT },
+  fitContentHeight: { height: "fit-content" + IMPORTANT },
 };
