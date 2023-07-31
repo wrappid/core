@@ -8,6 +8,7 @@ import CoreListItem from "./components/layouts/CoreListItem";
 import CoreSection from "./components/layouts/CoreSection";
 import CoreSpan from "./components/layouts/CoreSpan";
 import CoreStack from "./components/layouts/CoreStack";
+import CoreImageBackground from "./components/layouts/CoreImageBackground";
 
 import CoreLink from "./components/navigation/CoreLink";
 import CoreMenuItem from "./components/navigation/CoreMenuItem";
@@ -253,6 +254,7 @@ export {
   CoreSection,
   CoreSpan,
   CoreStack,
+  CoreImageBackground,
   CoreLink,
   CoreMenuItem,
   CoreMenuList,
