@@ -56,6 +56,7 @@ export const defaultCoreStyles = {
   loggedOutContentContainer: {
     ...defaultUtilityStyles.w100,
     ...defaultUtilityStyles.overflowYAuto,
+    ...defaultUtilityStyles.bgPrimary
   },
   pageContainer: {
     minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
@@ -315,5 +316,9 @@ export const defaultCoreStyles = {
   authAppLogo: {
     height: 50,
     width: 190
+  },
+  authCard: {
+    background: 'transparent' + IMPORTANT,
+    boxShadow: "none" + IMPORTANT
   }
 };

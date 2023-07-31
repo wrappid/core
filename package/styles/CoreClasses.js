@@ -170,7 +170,8 @@ const CoreClasses = {
     WRAPPER: "authWrapper",
     CARD_MIN_WIDTH: "authCardMinWidth",
     CARD_MAX_WIDTH: "authCardMaxWidth",
-    LOGO: "authAppLogo"
+    LOGO: "authAppLogo",
+    CARD: "authCard"
   },
 
   ICON: {

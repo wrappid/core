@@ -8,9 +8,11 @@ import {nativeUseNavigate} from '@wrappid/styled-components';
 import {useSelector} from 'react-redux';
 import CoreComponent from '../../../components/CoreComponent';
 import CoreImageBackground from '../../../components/layouts/CoreImageBackground'
-import {CoreResourceContext} from '../../../config/contextHandler';
+import {CoreResourceContext, ThemeContext} from '../../../config/contextHandler';
 import CoreImage from '../../../components/dataDisplay/CoreImage';
 import {mergedResourceRegistry} from '../../../layout/PageContainer';
+import CoreThemeProvider from '../../../theme/CoreThemeProvider';
+import { AUTH_THEME } from './authTheme';
 
 export const AuthContainer = props => {
   const navigate = nativeUseNavigate();
@@ -39,35 +41,40 @@ export const AuthContainer = props => {
     }
   });
   return (
-      <CoreImageBackground
-        source={mergedResourceRegistry?.authBackground}
-        resizeMode="cover">
-    <CoreBox styleClasses={[CoreClasses?.AUTH?.WRAPPER]}>
-        <CoreSection
-          styleClasses={[
-            CoreClasses?.UTILS?.FIT_CONTENT_WIDTH,
-            CoreClasses?.UTILS?.FIT_CONTENT_HEIGHT,
-            CoreClasses?.AUTH?.CARD_MIN_WIDTH,
-            CoreClasses?.AUTH?.CARD_MAX_WIDTH,
-          ]}>
-          <CoreBox
-            styleClasses={[
-              CoreClasses?.LAYOUT?.FULL_WIDTH,
-              CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-              CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
-              CoreClasses?.MARGIN?.MB5,
-            ]}>
-            {/* <CoreComponent componentName="AppLogo" /> */}
-            {mergedResourceRegistry?.appLogo && (
-              <CoreImage
-                src={mergedResourceRegistry?.appLogo}
-                styleClasses={[CoreClasses?.AUTH?.LOGO]}
-              />
-            )}
+    <ThemeContext.Provider value={AUTH_THEME}>
+      <CoreThemeProvider>
+        <CoreImageBackground
+          source={mergedResourceRegistry?.authBackground}
+          resizeMode="cover">
+          <CoreBox styleClasses={[CoreClasses?.AUTH?.WRAPPER]}>
+              <CoreSection
+                styleClasses={[
+                  CoreClasses?.UTILS?.FIT_CONTENT_WIDTH,
+                  CoreClasses?.UTILS?.FIT_CONTENT_HEIGHT,
+                  CoreClasses?.AUTH?.CARD_MIN_WIDTH,
+                  CoreClasses?.AUTH?.CARD_MAX_WIDTH,
+                  CoreClasses?.AUTH?.CARD
+                ]}>
+                <CoreBox
+                  styleClasses={[
+                    CoreClasses?.LAYOUT?.FULL_WIDTH,
+                    CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+                    CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
+                    CoreClasses?.MARGIN?.MB5,
+                  ]}>
+                  {/* <CoreComponent componentName="AppLogo" /> */}
+                  {mergedResourceRegistry?.appLogo && (
+                    <CoreImage
+                      src={mergedResourceRegistry?.appLogo}
+                      styleClasses={[CoreClasses?.AUTH?.LOGO]}
+                    />
+                  )}
+                </CoreBox>
+                {props.children}
+              </CoreSection>
           </CoreBox>
-          {props.children}
-        </CoreSection>
-    </CoreBox>
-      </CoreImageBackground>
+        </CoreImageBackground>
+      </CoreThemeProvider>
+    </ThemeContext.Provider>
   );
 };
