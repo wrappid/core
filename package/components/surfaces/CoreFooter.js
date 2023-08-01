@@ -14,6 +14,8 @@ import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaptio
 export default function CoreFooter(props) {
   return (
     <CoreGrid styleClasses={[
+      CoreClasses?.COLOR?.TEXT_WHITE,
+      CoreClasses?.PADDING?.P1
       // CoreClasses.FRAMEWORK.CORE_FOOTER
     ]}>
       <CoreBox gridProps={{ gridSize: 4 }}

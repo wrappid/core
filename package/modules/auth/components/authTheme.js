@@ -6,7 +6,7 @@ export const AUTH_THEME = {
 	palette: {
 		type      : "light",
 		background: {
-			default: "#FA385F",
+			default: "#f91754",
 			// default: "#F00",
 		},
         common: {

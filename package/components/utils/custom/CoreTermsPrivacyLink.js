@@ -3,8 +3,10 @@ import CoreBox from '../../layouts/CoreBox'
 import CoreClasses from '../../../styles/CoreClasses'
 import CoreLink from '../../navigation/CoreLink'
 import config from '../../../config/config'
+import { useSelector } from 'react-redux'
 
 export default function CoreTermsPrivacyLink() {
+    const uid = useSelector(state=>state?.auth.uid)
     return (
         <CoreBox
             gridProps={{ gridSize: 6 }}
@@ -25,7 +27,7 @@ export default function CoreTermsPrivacyLink() {
               Help
             </CoreLink> */}
             <CoreLink
-                styleClasses={[CoreClasses?.MARGIN?.MR1]}
+                styleClasses={uid?[]:[CoreClasses?.COLOR?.TEXT_WHITE]}
                 href={
                     process.env?.REACT_APP_WRAPPID_privacyLink ||
                     config?.wrappid?.privacyLink
@@ -34,6 +36,7 @@ export default function CoreTermsPrivacyLink() {
                 Privacy
             </CoreLink>
             <CoreLink
+                styleClasses={uid?[]:[CoreClasses?.COLOR?.TEXT_WHITE]}
                 href={
                     process.env?.REACT_APP_WRAPPID_termsLink ||
                     config?.wrappid?.termsLink
