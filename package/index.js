@@ -142,8 +142,8 @@ import CoreH4 from "./components/dataDisplay/heading/CoreH4";
 import CoreH5 from "./components/dataDisplay/heading/CoreH5";
 import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 
-// import StatusText from "./components/dataDisplay/custom/StatusText";
-// import UserChip from "./components/dataDisplay/custom/UserChip";
+import StatusText from "./components/dataDisplay/custom/StatusText";
+import UserChip from "./components/dataDisplay/custom/UserChip";
 import CoreEmailLink from "./components/dataDisplay/custom/CoreEmailLink";
 import CorePhoneLink from "./components/dataDisplay/custom/CorePhoneLink";
 import CoreEmailOrPhoneLink from "./components/dataDisplay/custom/CoreEmailOrPhoneLink";
@@ -165,7 +165,6 @@ import {
 import CoreClasses from "./styles/CoreClasses";
 import CoreGoogleButton from "./components/inputs/custom/CoreGoogleButton";
 import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInput";
-import StatusText from "./components/dataDisplay/custom/StatusText";
 import { __EntityStatus, HTTP, urls } from "./config/constants";
 import config from "./config/config";
 
@@ -229,7 +228,6 @@ export {
   __EntityStatus,
   HTTP,
   urls,
-  StatusText,
   CoreDialog,
   CoreDialogContext,
   coreDialogInitValue,
@@ -365,8 +363,8 @@ export {
   CoreH4,
   CoreH5,
   CoreH6,
-  // StatusText,
-  // UserChip,
+  StatusText,
+  UserChip,
   createFullStore,
   apiRequestAction,
   ComponentRegistryContext,
