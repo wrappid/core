@@ -13,6 +13,9 @@ export function clearValidatePhoneEmail(text) {
   );
 
   if (f) {
+    if(t?.length > 254){
+      return false
+    }
     return f;
   } else if (!f) {
     if(t?.length !== 10) {
