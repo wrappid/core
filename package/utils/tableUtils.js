@@ -275,12 +275,19 @@ export const getStatusTextColorClass = (status) => {
 
   switch (status) {
     case __EntityStatus.NEW:
+    case __EntityStatus.DRAFT:
       return CoreClasses.COLOR.TEXT_INFO;
     case __EntityStatus.ACTIVE:
+    case __EntityStatus.APPROVED:
       return CoreClasses.COLOR.TEXT_SUCCESS;
+    case __EntityStatus.PUBLISHED:
+      return CoreClasses.COLOR.TEXT_PRIMARY;
     case __EntityStatus.INACTIVE:
+    case __EntityStatus.CHANGE_REQUESTED:
+    case __EntityStatus.REVIEW_REQUESTED:
       return CoreClasses.COLOR.TEXT_WARNING;
     case __EntityStatus.DELETED:
+    case __EntityStatus.REJECTED:
       return CoreClasses.COLOR.TEXT_ERROR;
     default:
       return CoreClasses.COLOR.TEXT_SECONDARY;

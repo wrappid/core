@@ -211,6 +211,9 @@ export const __EntityStatus = {
   REVIEW: "review",
   APPROVED: "approved",
   REJECTED: "rejected",
+  PUBLISHED: "published",
+  REVIEW_REQUESTED: "review_requested",
+  CHANGE_REQUESTED: "change_requested",
 };
 
 export const userSettingsConstants = {
