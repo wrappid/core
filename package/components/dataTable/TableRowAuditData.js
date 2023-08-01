@@ -38,7 +38,7 @@ export default function TableRowAuditData(props) {
   );
 }
 
-function AuditDataComponent(type, rowData) {
+function AuditDataComponent({type, rowData}) {
   return (
     rowData?.[`${type}At`] && (
       <CoreStack
