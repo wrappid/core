@@ -56,7 +56,7 @@ export const defaultCoreStyles = {
   loggedOutContentContainer: {
     ...defaultUtilityStyles.w100,
     ...defaultUtilityStyles.overflowYAuto,
-    ...defaultUtilityStyles.bgPrimary
+    ...defaultUtilityStyles.bgPrimaryDark
   },
   pageContainer: {
     minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
