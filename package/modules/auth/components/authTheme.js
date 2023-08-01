@@ -6,14 +6,18 @@ export const AUTH_THEME = {
 	palette: {
 		type      : "light",
 		background: {
-			default: "#FB607F",
+			default: "#FA385F",
 			// default: "#F00",
 		},
+        common: {
+            black: "#FFFFFF",
+            white: "#FFFFFF",
+        },
 		primary: {
 			main        : "#FFFFFF",
 			light       : "#FFFFFF",
 			dark        : "#FFFFFF",
-			contrastText: "#000000",
+			contrastText: "#FB607F",
 		},
 		secondary: {
 			main            : "#FFFFFF",
@@ -23,32 +27,38 @@ export const AUTH_THEME = {
 			transparentDark : "#6D6C6CAA",
 		},
 		error: {
-			main        : "#f44336",
-			light       : "#e57373",
-			dark        : "#d32f2f",
-			contrastText: "#fff",
+			main        : "#FFFFFF",
+			light       : "#FFFFFF",
+			dark        : "#FFFFFF",
+			contrastText: "#0000",
 		},
 		success: {
-			main        : "#66bb6a",
-			light       : "#81c784",
-			dark        : "#388e3c",
-			contrastText: " rgba(0, 0, 0, 0.87)",
+			main        : "#FFFFFF",
+			light       : "#FFFFFF",
+			dark        : "#FFFFFF",
+			contrastText: " rgba(255, 255, 255, 0.87)",
 		},
 		warning: {
-			main        : "#ffa726",
-			light       : "#ffb74d",
-			dark        : "#f57c00",
-			contrastText: "rgba(0, 0, 0, 0.87)",
+			main        : "#FFFFFF",
+			light       : "#FFFFFF",
+			dark        : "#FFFFFF",
+			contrastText: "rgba(255,255,255, 0.87)",
 		},
 		info: {
-			main        : "#29b6f6",
-			light       : "#4fc3f7",
-			dark        : "#0288d1",
-			contrastText: "rgba(0, 0, 0, 0.87)",
+			main        : "#FFFFFF",
+			light       : "#FFFFFF",
+			dark        : "#FFFFFF",
+			contrastText: "rgba(255, 255, 255, 0.87)",
 		},
         text: {
             primary: "#FFFFFF",
-            secondary: "#FB607F"
+            secondary: "#FFFFFF"
+        },
+        action: {
+            active: "rgba(255, 255, 255, 0.54)",
+            hover: "rgba(255, 255, 255, 0.04)",
+            disabled: "rgba(255, 255, 255, 0.26)",
+            focus: "rgba(255, 255, 255, 0.12)",
         }
 	},
 };
