@@ -58,15 +58,26 @@ export default function UserChip(props) {
 
   let displayName = "";
   if (firstName === "" && middleName === "" && lastName === "") {
-    displayName = email;
+    displayName = "Unknown";
   } else {
     displayName = getFullName({ firstName, middleName, lastName });
   }
 
   return (
-    <CoreAvatar
-      styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
-      src={photoUrl || "photo.jpg"}
-    />
+      <CoreChip
+        title={displayName}
+        size="small"
+        avatar={
+          <CoreAvatar
+            styleClasses={[CoreClasses.BORDER.BORDER_0]}
+            src={photoUrl || "photo.jpg"}
+          />
+        }
+        label={
+          <CoreTypographyCaption limitChars={6} hideSeeMore={true}>
+            {displayName}
+          </CoreTypographyCaption>
+        }
+      />
   );
 }
