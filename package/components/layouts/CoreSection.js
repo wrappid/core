@@ -6,10 +6,11 @@ import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreH5 from "../dataDisplay/heading/CoreH5";
 
 export default function CoreSection(props) {
-  const { styleClasses = [] } = props;
+  const { styleClasses = [], elevated } = props;
 
   return (
     <CoreCard
+      elevated={elevated}
       styleClasses={[
         CoreClasses.MARGIN.MB2,
         CoreClasses.PADDING.P0,

@@ -48,6 +48,7 @@ export const AuthContainer = props => {
           resizeMode="cover">
           <CoreBox styleClasses={[CoreClasses?.AUTH?.WRAPPER]}>
               <CoreSection
+                elevated={false}
                 styleClasses={[
                   CoreClasses?.UTILS?.FIT_CONTENT_WIDTH,
                   CoreClasses?.UTILS?.FIT_CONTENT_HEIGHT,
