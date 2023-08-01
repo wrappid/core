@@ -48,6 +48,7 @@ export default function CoreEmailLink(props) {
 
             {email && verified !== undefined && (
               <CoreIcon
+                type={__IconTypes.MATERIAL_OUTLINED_ICON}
                 styleClasses={
                   verified
                     ? [CoreClasses?.ICON?.VERIFIED_SUCCESS]
