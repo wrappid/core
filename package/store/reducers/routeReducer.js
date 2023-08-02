@@ -2,7 +2,7 @@ import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "../types/appTypes";
 import {
   AUTHENTICATION_ERROR,
   LOGOUT_SUCCESS,
-} from "../../modules/auth/types/authTypes";
+} from "../types/authTypes";
 
 const initState = {
   routes: [],

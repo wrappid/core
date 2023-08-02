@@ -1,7 +1,6 @@
 import { FORM_SANITIZATOIN_FUNCTION_MAP } from "../../components/forms/coreFormConstants";
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "../../store/types/authTypes";
 import { createInitialData } from "../../utils/formUtils";
-// import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   FORM_DATA_READ_LOADING,
   FORM_DATA_SAVE,

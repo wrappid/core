@@ -32,12 +32,11 @@ import {
   USER_SETTINGS_UPDATE_SUCCESS,
 } from "../store/types/settingsTypes";
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
-import {
-  GET_ROLE_PERMISSION_SUCCESS,
-  GET_ROLE_PERMISSION_ERROR,
-} from "../modules/auth/types/authTypes";
+
+
 import CoreClasses from "../styles/CoreClasses";
 import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
+import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store/types/authTypes";
 
 export var globalAccessToken = null;
 export var globalRefreshToken = null;

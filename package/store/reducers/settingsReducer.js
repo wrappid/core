@@ -1,4 +1,4 @@
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
     DELETE_USER_ACCOUNT_SUCCESS,
     GET_USER_SETTINGS_ERROR,

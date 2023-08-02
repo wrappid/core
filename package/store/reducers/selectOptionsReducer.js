@@ -1,4 +1,4 @@
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   SELECT_OPTION_ERROR,
   SELECT_OPTION_LOAD,

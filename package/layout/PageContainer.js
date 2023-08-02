@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { nativeUseLocation, NativePageContainer } from "@wrappid/styled-components";
 import Error404 from "../error/Error404";
 import { RESET_LOADING } from "../store/types/appTypes";
-import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../modules/auth/types/authTypes";
+import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { UPDATE_HELPER_FLAG, UPDATE_HELPER_TEXT_VIEW } from "../store/types/formTypes";
 import CoreAlert from "../components/feedback/CoreAlert";
 import CoreSwitch from "../components/inputs/CoreSwitch";

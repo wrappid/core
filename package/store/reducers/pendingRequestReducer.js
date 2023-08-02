@@ -1,4 +1,4 @@
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes"
+import { LOGOUT_SUCCESS } from "../types/authTypes"
 import {
     REMOVE_PENDING_REQUESTS,
     SET_PENDING_REQUESTS,

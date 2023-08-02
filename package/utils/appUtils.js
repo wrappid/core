@@ -6,7 +6,7 @@ import {
   LOGOUT_SUCCESS,
   SESSION_EXPIRED,
   TOKEN_REFRESH_SUCCESS,
-} from "../modules/auth/types/authTypes";
+} from "../store/types/authTypes";
 import {
   TOKEN_REJUVINATED,
   TOKEN_REQUESTED,

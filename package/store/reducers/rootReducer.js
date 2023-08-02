@@ -14,7 +14,6 @@ import pendingRequestReducer from "./pendingRequestReducer";
 /**
  *  Module specific reducers
  */
-import { reducers as authReducer } from "../../modules/auth/reducers.registry";
 
 const coreReducer = {
   app: appReducer,
@@ -28,7 +27,6 @@ const coreReducer = {
   menu: menuReducer,
   settings: settingsReducer,
   pendingRequests: pendingRequestReducer,
-  ...(authReducer || {}),
 };
 
 export default coreReducer;

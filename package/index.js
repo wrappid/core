@@ -176,7 +176,7 @@ import {
   FORM_SANITIZATOIN_FUNCTION_MAP,
 } from "./components/forms/coreFormConstants";
 
-import { LOGOUT_SUCCESS } from "./modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 
 import {
   getFullName,
@@ -212,8 +212,9 @@ import {
 import AppService from "./service/AppService";
 import { toggleRightMenuState } from "./store/action/menuAction";
 import CoreComponent from "./components/CoreComponent";
-import { CoreResourceContext } from "./config/contextHandler";
+import { CoreResourceContext, ThemeContext } from "./config/contextHandler";
 import CoreIconText from "./components/dataDisplay/custom/CoreIconText";
+import CoreThemeProvider from "./theme/CoreThemeProvider";
 
 export {
   coreUseSearchParams,
@@ -408,4 +409,6 @@ export {
   CoreEmailOrPhoneLink,
   CORE_DIALOG_TYPES,
   coreOpenUrl,
+  CoreThemeProvider,
+  ThemeContext
 };

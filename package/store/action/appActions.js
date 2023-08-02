@@ -11,7 +11,6 @@ import {
   globalTokenRequestTimeStamp,
   globalTokenRequested,
 } from "../../layout/AppContainer";
-import { AUTHENTICATION_ERROR } from "../../modules/auth/types/authTypes";
 import AppService from "../../service/AppService";
 import { reloadToken } from "../../utils/appUtils";
 import { getForm } from "../../utils/formUtils";
@@ -201,9 +200,6 @@ export const apiRequestAction =
           endpoint !== LOGIN_WITH_URL_API &&
           endpoint !== LOGIN_WITH_RESET_PASSWORD_API
         ) {
-          // dispatch({
-          //   type: AUTHENTICATION_ERROR,
-          // });
           reloadToken(
             globalRefreshToken,
             globalAccessToken,

@@ -12,7 +12,6 @@ import {
     SET_PROGRESS_BAR,
     RESET_PROGRESS_BAR
 } from "./../types/appTypes";
-// import { LOGOUT_SUCCESS } from "../types/authTypes";
 
 const initState = {
     apiVersion: {

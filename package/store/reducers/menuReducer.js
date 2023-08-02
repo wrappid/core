@@ -1,4 +1,4 @@
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   BUILD_MENU_ROLE_PERMISSIONS,
   TOGGLE_LEFT_MENU,

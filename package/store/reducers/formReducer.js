@@ -1,5 +1,5 @@
 // import swal from "sweetalert";
-import { LOGOUT_SUCCESS } from "../../modules/auth/types/authTypes";
+import { LOGOUT_SUCCESS } from "../types/authTypes"
 import {
   ADD_FORM,
   CANCEL_CORE_FORM_EDIT_ADD,

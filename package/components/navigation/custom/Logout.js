@@ -14,7 +14,7 @@ import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
 import {
   LOGOUT_ERROR,
   LOGOUT_SUCCESS,
-} from "../../../modules/auth/types/authTypes";
+} from "../../../store/types/authTypes";
 import CoreClasses from "../../../styles/CoreClasses";
 
 export default function Logout() {

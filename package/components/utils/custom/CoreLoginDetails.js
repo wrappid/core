@@ -11,7 +11,7 @@ import { HTTP } from "../../../config/constants";
 import {
   CLIENT_INFORMATION_FETCH_ERROR,
   CLIENT_INFORMATION_FETCH_SUCCESS,
-} from "../../../modules/auth/types/authTypes";
+} from "../../../store/types/authTypes";
 import CoreTypographySubtitle2 from "../../dataDisplay/paragraph/CoreTypographySubtitle2";
 import CoreAccordion from "../../surfaces/CoreAccordion";
 import CoreAccordionSummary from "../../surfaces/CoreAccordionSummary";
