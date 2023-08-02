@@ -4,9 +4,10 @@ import CoreTypographyCaption from '../../dataDisplay/paragraph/CoreTypographyCap
 import CoreClasses from '../../../styles/CoreClasses';
 
 export default function StatusText(props) {
-  const {status} = props;
+  const {status, gridProps} = props;
   return (
     <CoreTypographyCaption
+      gridProps={gridProps}
       styleClasses={[
         getStatusTextColorClass(status || ''),
         CoreClasses.TEXT.TEXT_WEIGHT_BOLD,

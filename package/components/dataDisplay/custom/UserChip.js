@@ -8,9 +8,11 @@ import CoreAvatar from "../CoreAvatar";
 import CoreChip from "../CoreChip";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 import CoreClasses from "../../../styles/CoreClasses";
+import CoreTooltip from "../CoreTooltip";
 
 export default function UserChip(props) {
   const {
+    titleVisible = true,
     userid,
     _firstName = "",
     _middleName = "",
@@ -26,7 +28,8 @@ export default function UserChip(props) {
 
   React.useEffect(() => {
     async function apiCall() {
-      let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
+      let backendUrl =
+        process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
       await axiosInterceptor({
         method: HTTP.GET,
         url:
@@ -50,7 +53,8 @@ export default function UserChip(props) {
       _firstName === "" &&
       _middleName === "" &&
       _lastName === "" &&
-      _photoUrl === "" && userid
+      _photoUrl === "" &&
+      userid
     ) {
       apiCall();
     }
@@ -63,21 +67,28 @@ export default function UserChip(props) {
     displayName = getFullName({ firstName, middleName, lastName });
   }
 
-  return (
-      <CoreChip
-        title={displayName}
-        size="small"
-        avatar={
-          <CoreAvatar
-            styleClasses={[CoreClasses.BORDER.BORDER_0]}
-            src={photoUrl || "photo.jpg"}
-          />
-        }
-        label={
-          <CoreTypographyCaption limitChars={6} hideSeeMore={true}>
-            {displayName}
-          </CoreTypographyCaption>
-        }
+  return titleVisible ? (
+    <CoreChip
+      title={displayName}
+      size="small"
+      avatar={
+        <CoreAvatar
+          styleClasses={[CoreClasses.BORDER.BORDER_0]}
+          src={photoUrl || "photo.jpg"}
+        />
+      }
+      label={
+        <CoreTypographyCaption limitChars={6} hideSeeMore={true}>
+          {displayName}
+        </CoreTypographyCaption>
+      }
+    />
+  ) : (
+    <CoreTooltip title={displayName} arrow>
+      <CoreAvatar
+        styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
+        src={photoUrl || "photo.jpg"}
       />
+    </CoreTooltip>
   );
 }
