@@ -51,7 +51,7 @@ function AuditDataComponent({type, rowData}) {
         <CoreTypographyCaption>
           {" by "}
         </CoreTypographyCaption>
-        <UserChip component="span" userid={rowData[`${type}By`]} />
+        <UserChip titleVisible={false} component="span" userid={rowData[`${type}By`]} />
       </CoreStack>
     )
   );
