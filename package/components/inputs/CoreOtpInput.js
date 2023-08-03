@@ -11,6 +11,7 @@ import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/
 import { HTTP } from "../../config/constants";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreTextButton from "./CoreTextButton";
+import CoreTimer from "../dataDisplay/custom/CoreTimer";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
@@ -63,10 +64,7 @@ export default function CoreOtpInput(props) {
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {props.helperText}
         </CoreFormHelperText>
-        <CoreBox
-          styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1]}>
-          <CoreTextButton OnClick={sendOtp} label="Resend OTP" />
-        </CoreBox>
+        <CoreTimer action={sendOtp} actionLabel="Resend OTP" seconds={20} timerLabel={"Resend after: "}/>
       </CoreBox>
   );
 }

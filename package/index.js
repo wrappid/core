@@ -147,6 +147,7 @@ import UserChip from "./components/dataDisplay/custom/UserChip";
 import CoreEmailLink from "./components/dataDisplay/custom/CoreEmailLink";
 import CorePhoneLink from "./components/dataDisplay/custom/CorePhoneLink";
 import CoreEmailOrPhoneLink from "./components/dataDisplay/custom/CoreEmailOrPhoneLink";
+import CoreTimer from "./components/dataDisplay/custom/CoreTimer";
 
 import { createFullStore } from "./store/store";
 import { apiRequestAction } from "./store/action/appActions";
@@ -412,6 +413,7 @@ export {
   CorePhoneLink,
   CoreEmailLink,
   CoreEmailOrPhoneLink,
+  CoreTimer,
   CORE_DIALOG_TYPES,
   coreOpenUrl,
   CoreThemeProvider,
