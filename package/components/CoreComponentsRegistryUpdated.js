@@ -1,6 +1,3 @@
-import CoreComponent from "./CoreComponent.js";
-import CoreComponentsRegistry copy from "./CoreComponentsRegistry copy.js";
-import CoreComponentsRegistry from "./CoreComponentsRegistry.js";
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
 import CoreBadge from "./dataDisplay/CoreBadge.js";
 import CoreChip from "./dataDisplay/CoreChip.js";
@@ -192,9 +189,6 @@ import NotificationPopOver from "./utils/custom/NotificationPopOver.js";
 import QuickAddPopOver from "./utils/custom/QuickAddPopOver.js";
 
 const CoreComponentsRegistry = {
-  CoreComponent: { comp: CoreComponent, readme: "https://github.com/wrappid/docs/blob/main/components/CoreComponent.md" },
-  CoreComponentsRegistry copy: { comp: CoreComponentsRegistry copy, readme: "https://github.com/wrappid/docs/blob/main/components/CoreComponentsRegistry copy.md" },
-  CoreComponentsRegistry: { comp: CoreComponentsRegistry, readme: "https://github.com/wrappid/docs/blob/main/components/CoreComponentsRegistry.md" },
   CoreAvatar: { comp: CoreAvatar, readme: "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreAvatar.md" },
   CoreBadge: { comp: CoreBadge, readme: "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreBadge.md" },
   CoreChip: { comp: CoreChip, readme: "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreChip.md" },
