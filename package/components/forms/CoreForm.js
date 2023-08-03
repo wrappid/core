@@ -710,6 +710,7 @@ class CoreForm extends Component {
       rawFormSchema,
       preview,
       arrayDataLimit,
+      initProps
     } = this.props;
     const arrayFlag =
       arrayView || (rawFormSchema ? rawFormSchema[formId]?.arrayView : false);
@@ -834,6 +835,7 @@ class CoreForm extends Component {
               formData={addForm[formId]?.formInitialOb}
               allowEdit={allowEdit}
               preview={preview}
+              initProps={initProps}
             />
           )}
 
@@ -880,6 +882,7 @@ class CoreForm extends Component {
                             allowEdit={allowEdit}
                             onFormFocus={onFormFocus}
                             preview={preview}
+                            initProps={initProps}
                           />
                         </CoreBox>
                         <CoreBox
@@ -1044,6 +1047,7 @@ class CoreForm extends Component {
               formData={formData[formId]?.data?.rows}
               allowEdit={allowEdit}
               preview={preview}
+              initProps={initProps}
             />
           ) : (
             <CoreEditForm
@@ -1068,6 +1072,7 @@ class CoreForm extends Component {
               allowEdit={allowEdit}
               onFormFocus={onFormFocus}
               preview={preview}
+              initProps={initProps}
             />
           )}
         </CoreGrid>
