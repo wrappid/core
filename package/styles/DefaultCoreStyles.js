@@ -66,11 +66,7 @@ export const defaultCoreStyles = {
     minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
     // padding: DEFAULT_PADDING + PX_TAG + IMPORTANT,
   },
-  avatar: {
-    borderWidth: "2px" + IMPORTANT,
-    borderStyle: "solid" + IMPORTANT,
-    borderColor: defaultUtilityStyles.borderPrimaryLight + IMPORTANT,
-  },
+  avatar: {},
   avatarSmall: { height: "24px" + IMPORTANT, width: "24px" + IMPORTANT },
   avatarMedium: { height: "48px" + IMPORTANT, width: "48px" + IMPORTANT },
   avatarLarge: { height: "72px" + IMPORTANT, width: "72px" + IMPORTANT },
