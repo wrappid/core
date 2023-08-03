@@ -277,7 +277,7 @@ export function createFormGridProps(element) {
   return finalProps;
 }
 
-export function createFormFieldProps(element, formikprops, type, allElements) {
+export function createFormFieldProps(element, formikprops, type, allElements, initProps) {
   // console.log("FORMIK props", formikprops);
   if (type === "edit") {
     if (element?.onlyView) {
@@ -285,6 +285,7 @@ export function createFormFieldProps(element, formikprops, type, allElements) {
         id: String(element.id),
         label: element.label,
         styleClasses: element.styleClasses,
+        ...(initProps[element.id]||{})
       };
     } else
       return {
@@ -346,11 +347,13 @@ export function createFormFieldProps(element, formikprops, type, allElements) {
         navigateUrl: element?.navigateUrl,
         creatable: element?.creatable,
         optionCompProps: element?.optionCompProps,
+        ...(initProps[element.id]||{})
       };
   } else {
     return {
       id: element?.id ? String(element.id) : "",
       label: element?.label,
+      ...(initProps[element.id]||{})
     };
   }
 }

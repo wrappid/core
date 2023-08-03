@@ -41,6 +41,7 @@ export default function CoreEditForm(props) {
     allowEdit,
     onFormFocus,
     preview,
+    initProps={}
   } = props;
   console.log("CORE EDIT FORM DETAILS", props);
 
@@ -77,7 +78,7 @@ export default function CoreEditForm(props) {
                   element.comp ? element.comp : CoreInput,
                   {
                     key: `coreFormElement-${element.id}`,
-                    ...createFormFieldProps(element, formikprops, "edit", forms[formId]?.formElements),
+                    ...createFormFieldProps(element, formikprops, "edit", forms[formId]?.formElements,initProps),
                     coreId: "coreFormElement-" + element.id,
                     gridProps: {
                       gridSize: getGridSizeProps(element.gridSize, true),

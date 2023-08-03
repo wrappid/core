@@ -10,7 +10,10 @@ import {
     RESET_LOADING,
     SET_LOADING,
     SET_PROGRESS_BAR,
-    RESET_PROGRESS_BAR
+    RESET_PROGRESS_BAR,
+    SEND_OTP_LOADING,
+    SEND_OTP_SUCCESS,
+    SEND_OTP_ERROR
 } from "./../types/appTypes";
 
 const initState = {
@@ -27,6 +30,10 @@ const initState = {
     requestProgress: {
         visible: false,
     },
+    sendOtpLoading: false,
+    sendOtpSuccess: false,
+    sendOtpError: false,
+    errorMsg: false,
 };
 
 const appReducer = (state = initState, action) => {
@@ -131,6 +138,36 @@ const appReducer = (state = initState, action) => {
                 requestProgress: {visible: false},
         };
         
+        case SEND_OTP_LOADING:
+            return {
+                ...state,
+                sendOtpLoading: true,
+                sendOtpSuccess: false,
+                sendOtpError: false,
+            }
+        case SEND_OTP_SUCCESS:
+            return {
+                ...state,
+                sendOtpLoading: false,
+                sendOtpSuccess: true,
+                sendOtpError: false,
+            }
+        case SEND_OTP_ERROR:
+            var errorMsg = "Something went wrong!";
+
+            if (
+                action?.payload?.data?.message &&
+                typeof action?.payload?.data?.message === "string"
+            ) {
+                errorMsg = action?.payload?.data?.message;
+            }
+            return {
+                ...state,
+                sendOtpLoading: false,
+                sendOtpSuccess: false,
+                sendOtpError: false,
+                errorMsg: errorMsg
+            }
         // case LOGOUT_SUCCESS:
         //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };
 
