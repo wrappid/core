@@ -80,11 +80,11 @@ export default function CoreDataTableDetailsPane(props) {
                   </CoreTypographyCaption>
                   {detailedRowData.hasOwnProperty("id") &&
                     detailedRowData.hasOwnProperty("_status") && (
-                      <CoreDivider
-                        orientation="vertical"
-                        variant="middle"
-                        flexItem
-                      />
+                      <CoreTypographyCaption
+                        styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+                      >
+                        {"|"}
+                      </CoreTypographyCaption>
                     )}
                   <StatusText status={detailedRowData["_status"]} />
                 </CoreStack>
@@ -150,7 +150,8 @@ export default function CoreDataTableDetailsPane(props) {
               {preRender_UpdateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(
-                    preRender_UpdateData_DetailsPaneComponent, {
+                    preRender_UpdateData_DetailsPaneComponent,
+                    {
                       data: detailedRowData,
                     }
                   )}
@@ -158,7 +159,8 @@ export default function CoreDataTableDetailsPane(props) {
               )}
               {detailedRowId && detailedRowData ? (
                 updateFormID &&
-                !hideForm && !hideUpdateForm && (
+                !hideForm &&
+                !hideUpdateForm && (
                   <>
                     <CoreDivider />
                     <CoreForm
@@ -168,32 +170,42 @@ export default function CoreDataTableDetailsPane(props) {
                       mode={formMode}
                       allowEdit={editable}
                       allowDelete={deletable}
-                      initData={detailedRowData}s
+                      initData={detailedRowData}
+                      s
                       afterCancel={() => {
                         setFormMode(FORM_VIEW_MODE);
                       }}
                       afterEditSuccess={() => {
                         set_showDetailsPane(false);
                         filterData();
-                        if(afterEditSuccess && typeof afterEditSuccess === 'function'){
-                          afterEditSuccess()
+                        if (
+                          afterEditSuccess &&
+                          typeof afterEditSuccess === "function"
+                        ) {
+                          afterEditSuccess();
                         }
                       }}
                       afterDeleteSuccess={() => {
                         set_showDetailsPane(false);
                         filterData();
-                        if(afterDeleteSuccess){
-                          afterDeleteSuccess()
+                        if (afterDeleteSuccess) {
+                          afterDeleteSuccess();
                         }
                       }}
                       afterEditError={() => {
-                        if(afterEditError && typeof afterEditError === 'function'){
-                          afterEditError()
+                        if (
+                          afterEditError &&
+                          typeof afterEditError === "function"
+                        ) {
+                          afterEditError();
                         }
                       }}
                       afterDeleteError={() => {
-                        if(afterDeleteError && typeof afterDeleteError === 'function'){
-                          afterDeleteError()
+                        if (
+                          afterDeleteError &&
+                          typeof afterDeleteError === "function"
+                        ) {
+                          afterDeleteError();
                         }
                       }}
                     />
@@ -202,11 +214,12 @@ export default function CoreDataTableDetailsPane(props) {
               ) : (
                 <CoreTypographyBody1>No row selected</CoreTypographyBody1>
               )}
-              
+
               {postRender_UpdateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(
-                    postRender_UpdateData_DetailsPaneComponent, {
+                    postRender_UpdateData_DetailsPaneComponent,
+                    {
                       data: detailedRowData,
                     }
                   )}
@@ -241,7 +254,8 @@ export default function CoreDataTableDetailsPane(props) {
               )}
               {enableCreateEntity ? (
                 createFormID &&
-                !hideForm && !hideCreateForm && (
+                !hideForm &&
+                !hideCreateForm && (
                   <>
                     <CoreForm
                       apiMode={"create"}
@@ -253,15 +267,21 @@ export default function CoreDataTableDetailsPane(props) {
                         set_showDetailsPane(false);
                       }}
                       afterCreateSuccess={() => {
-                          set_showDetailsPane(false);
-                          filterData();
-                          if(afterCreateSuccess && typeof afterCreateSuccess === 'function'){
-                            afterCreateSuccess()
-                          }
+                        set_showDetailsPane(false);
+                        filterData();
+                        if (
+                          afterCreateSuccess &&
+                          typeof afterCreateSuccess === "function"
+                        ) {
+                          afterCreateSuccess();
+                        }
                       }}
                       afterCreateError={() => {
-                        if(afterCreateError && typeof afterCreateError === 'function'){
-                          afterCreateError()
+                        if (
+                          afterCreateError &&
+                          typeof afterCreateError === "function"
+                        ) {
+                          afterCreateError();
                         }
                       }}
                     />
