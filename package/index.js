@@ -217,8 +217,10 @@ import CoreIconText from "./components/dataDisplay/custom/CoreIconText";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 
 import { CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
+import CoreMarkdownViewer from "./components/dataDisplay/custom/CoreMarkdownViewer";
 
 export {
+  CoreMarkdownViewer,
   CoreComponentsRegistry,
   coreUseSearchParams,
   CoreResourceContext,

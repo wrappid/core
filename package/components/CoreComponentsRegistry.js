@@ -176,7 +176,10 @@ import CoreSpecificForm from "./forms/CoreSpecificForm.js";
 import CoreEmailOrPhoneLink from "./dataDisplay/custom/CoreEmailOrPhoneLink.js";
 
 const CoreComponentsRegistry = {
-  CoreAvatar: { comp: CoreAvatar },
+  CoreAvatar: {
+    comp: CoreAvatar,
+    readme: "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreAvatar.md"
+  },
   CoreBadge: { comp: CoreBadge },
   CoreChip: { comp: CoreChip },
   CoreDivider: { comp: CoreDivider },
