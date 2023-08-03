@@ -5,7 +5,7 @@ let ComponentRegistry = {
   /**
    * componentMap is form specific map for elements
    */
-  ...componentMap,
+  // ...componentMap,
   ...CoreComponentsRegistry
 };
 

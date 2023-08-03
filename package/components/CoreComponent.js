@@ -3,10 +3,10 @@ import { ComponentRegistryContext } from "../config/contextHandler";
 
 export default function CoreComponent(props) {
   const { componentName, ...restProps } = props;
-  const mergedComponentRegistry = React.useContext(ComponentRegistryContext);
+  const componentRegistry = React.useContext(ComponentRegistryContext);
 
-  return componentName && mergedComponentRegistry[componentName]?.comp
-    ? React.createElement(mergedComponentRegistry[componentName]?.comp, {
+  return componentName && componentRegistry[componentName]?.comp
+    ? React.createElement(componentRegistry[componentName]?.comp, {
         ...restProps,
       })
     : null;

@@ -34,7 +34,7 @@ export default function PageContainer(props) {
   const value = { dialog, setDialog };
 
   React.useEffect(() => {
-    if (auth.sessionExpired && !auth.sessionDetail) {
+    if (auth?.sessionExpired && !auth?.sessionDetail) {
       dispatch({
         type: SAVE_EXPIRED_SESSION,
         payload: {
@@ -48,10 +48,10 @@ export default function PageContainer(props) {
     }
 
     if (
-      auth.sessionExpired &&
-      auth.sessionDetail &&
-      auth.uid &&
-      location.pathname === auth.sessionDetail?.location?.pathname
+      auth?.sessionExpired &&
+      auth?.sessionDetail &&
+      auth?.uid &&
+      location.pathname === auth?.sessionDetail?.location?.pathname
     ) {
       dispatch({
         type: SESSION_RECALLED,
@@ -80,7 +80,7 @@ export default function PageContainer(props) {
       return <Error404 />;
     }
   };
-  return auth.sessionExpired && !auth.uid && route.authRequired ? (
+  return auth?.sessionExpired && !auth?.uid && route?.authRequired ? (
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <NativePageContainer uid={auth?.uid} route={route} coreClasses={CoreClasses}>

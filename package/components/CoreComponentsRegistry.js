@@ -175,8 +175,7 @@ import QuickAddPopOver from "./utils/custom/QuickAddPopOver.js";
 import CoreSpecificForm from "./forms/CoreSpecificForm.js";
 import CoreEmailOrPhoneLink from "./dataDisplay/custom/CoreEmailOrPhoneLink.js";
 
-
-export const CoreComponentsRegistry = {
+const CoreComponentsRegistry = {
   CoreAvatar: { comp: CoreAvatar },
   CoreBadge: { comp: CoreBadge },
   CoreChip: { comp: CoreChip },
@@ -356,3 +355,5 @@ export const CoreComponentsRegistry = {
   CoreSpecificForm: { comp: CoreSpecificForm },
   CoreEmailOrPhoneLink: { comp: CoreEmailOrPhoneLink },
 };
+
+export default CoreComponentsRegistry;

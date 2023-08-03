@@ -104,7 +104,7 @@ function AppContainer(props) {
           GET_ROLE_PERMISSION_ERROR
         )
       );
-  }, [auth.uid, accessToken]);
+  }, [auth?.uid, accessToken]);
 
   const [hasError, setHasError] = React.useState(false);
 

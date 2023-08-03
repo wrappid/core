@@ -30,7 +30,7 @@ import { getLabel } from "../../utils/stringUtils";
 export default function ReportIssueForm(props) {
   const { title, isStacktrace = true, stackTrace, labels } = props;
   const { apiVersion } = useSelector((state) => state.app);
-  const { role } = useSelector((state) => state.auth);
+  const { role } = useSelector((state) => state.auth?.role || {});
   const profile = useSelector((state) => state.profile);
   const basic = profile?.basic;
   const contact = profile?.contact;
@@ -68,7 +68,7 @@ export default function ReportIssueForm(props) {
               email: contact?.email,
               name: getFullName(basic),
               phone: contact?.phone,
-              role: role?.role,
+              role: role || "unknown",
             }),
             stackTrace: stackTrace,
             title: title,

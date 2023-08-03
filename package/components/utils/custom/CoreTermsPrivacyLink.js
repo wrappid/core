@@ -6,7 +6,7 @@ import config from '../../../config/config'
 import { useSelector } from 'react-redux'
 
 export default function CoreTermsPrivacyLink() {
-    const uid = useSelector(state=>state?.auth.uid)
+    const uid = useSelector(state=>state?.auth?.uid)
     return (
         <CoreBox
             gridProps={{ gridSize: 6 }}

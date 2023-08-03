@@ -42,7 +42,7 @@ export default function SplashComponent() {
   
 
   if (checkAppLoadDependencies()?.success) {
-    if (auth.uid) {
+    if (auth?.uid) {
       if (location?.state?.recalledPath) {
         console.log("&&&&&&&&&&&&&&&&&&&\n GING TO RECALL\n&&&&&&&&&&&&&&&&&&");
         return <NativeDomNavigate to={location?.state?.recalledPath} />;

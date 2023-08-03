@@ -216,7 +216,10 @@ import { CoreResourceContext, ThemeContext } from "./config/contextHandler";
 import CoreIconText from "./components/dataDisplay/custom/CoreIconText";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 
+import { CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
+
 export {
+  CoreComponentsRegistry,
   coreUseSearchParams,
   CoreResourceContext,
   CoreIconText,
