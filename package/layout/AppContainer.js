@@ -7,7 +7,6 @@ import ComponentRegistry from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
 import CoreDrawer from "./../components/surfaces/CoreDrawer";
-import CoreRightDrawer from "./../components/surfaces/CoreRightDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
 import {
   GET_ROLE_PERMISSIONS_API,

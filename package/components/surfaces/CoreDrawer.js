@@ -4,6 +4,7 @@ import CoreMenu from "../inputs/CoreMenu";
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
 import { toggleMenuItemState } from "../../store/action/menuAction";
 import { ThemeContext } from "../../config/contextHandler";
+import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();
@@ -14,6 +15,11 @@ export default function CoreDrawer(props) {
   const theme = useContext(ThemeContext);
 
   const { open, toggleDrawer } = props;
+
+  const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+  React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
 
   console.log("MENU DRAWER", menu);
 
@@ -28,7 +34,9 @@ export default function CoreDrawer(props) {
     if (item.Children && item.Children.length > 0) {
       dispatch(toggleMenuItemState(item));
     } else {
-      navigate(item.link);
+      if (platform === APP_PLATFORM) {
+        navigate(item.link);
+      }
     }
   };
 
