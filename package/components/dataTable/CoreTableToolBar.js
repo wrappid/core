@@ -8,10 +8,10 @@ import CoreCheckbox from "../inputs/CoreCheckbox";
 import CorePopover from "../utils/CorePopover";
 import CoreFormGroup from "../forms/CoreFormGroup";
 import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
-import CoreToolBar from "../utils/CoreToolbar";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 import config from "../../config/config";
+import CoreToolBar from "../surfaces/CoreToolbar";
 
 export default function CoreTableToolBar(props) {
   const { HandleColumnFilter, columns, bulkActions, selected } = props;
