@@ -2,15 +2,11 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import config from "../../../config/config";
 import { HTTP } from "../../../config/constants";
 import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreBox from "../../layouts/CoreBox";
-// import CoreLink from "../../navigation/CoreLink";
-import CoreClasses from "../../../styles/CoreClasses";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { API_VERSION_ERROR, API_VERSION_SUCCESS } from "../../../store/types/appTypes";
-import CoreLink from "../../navigation/CoreLink";
 
 export default function CoreApiVersion() {
     const dispatch = useDispatch();
@@ -25,16 +21,10 @@ export default function CoreApiVersion() {
 
     return (
         <>
-            <CoreBox
-                styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
-            >
-                <CoreTypographyCaption>API Version:</CoreTypographyCaption>
-
-                <CoreTypographyCaption>{apiVersion?.version || "unknown"}</CoreTypographyCaption>
+            <CoreBox>
+                <CoreTypographyCaption>{`API Version: ${apiVersion?.version || "unknown"}`}</CoreTypographyCaption>
             </CoreBox>
-
-            <CoreBox
+            {/* <CoreBox
                 styleClasses={[CoreClasses.PADDING.PL1]}
             // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
@@ -45,7 +35,7 @@ export default function CoreApiVersion() {
                         {process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl + "/apiDocs"}
                     </CoreLink>
                 </CoreTypographyCaption>
-            </CoreBox>
+            </CoreBox> */}
         </>
     );
 }
