@@ -1,3 +1,5 @@
+import React from "react";
+
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
 import CoreBadge from "./dataDisplay/CoreBadge.js";
 import CoreChip from "./dataDisplay/CoreChip.js";
