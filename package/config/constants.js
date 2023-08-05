@@ -42,17 +42,7 @@ export const DB_CONST = {
 };
 
 export const urls = {
-  // auth
-  LOGIN_ROUTE: "checkUserExist",
-  PASSWORD_ROUTE: "enterPassword",
-  LOGIN_OTP_ROUTE: "enterOtp",
-  RESET_PASSWORD_ROUTE: "resetPassword",
-  REGISTER_ROUTE: "register",
-  LOGOUT: "logout",
-
   HOME_ROUTE: "home",
-  PROFILE: "profile",
-  SETTINGS: "settings",
   // Admin Route
   DATA_CREATOR: "dataCreator",
   DATA_VIEWER: "dataViewer",
@@ -61,90 +51,16 @@ export const urls = {
   ROUTES: "routes",
   TEST: "test",
 
-  // common routes
-  DASHBOARD: "dashboard",
-
-  // doctor routes
-  // prescription
-  PRESCRIPTION: "prescription",
-  PRESCRIPTION_MANAGE: "prescription/manage",
-  PRESCRIPTION_TEMPLATE_MANAGE: "prescription/template/manage",
-  PRESCRIPTION_TEMPLATE_EDIT: "prescription/template/edit/:id",
-  // appointment
-  APPOINTMENT_SCHEDULE: "appointment/schedule",
-  APPOINTMENT_MANAGE: "appointment/manage",
-  // patient
-  MANAGE_PATIENT: "patient/manage",
-  MANAGE_DOCUMENTS: "documents/manage",
-  MEDICINE_DATABASE: "medicine_database",
   SUBSCRIPTION: "subscription",
   REPORTS: "reports",
-  MANAGE_CLINICS: "manage_clinics",
-  CREATE_PATIENT: "create_patient",
-  CREATE_PATIENT_RELATIVE: "patient/:id/create_patient_relative",
   CREATE_DOCTOR: "create_doctor",
-  CREATE_ONBOARDING_SALESFORCE: "create_onboarding_salesforce",
-  CREATE_ONBOARDING_BACK_OFFICE: "create_onboarding_back_office",
-  CREATE_PATIENT_BACK_OFFICE: "create_patient_back_office",
-  CREATE_ASSISTANT: "create_Assistant",
-  RX_RECHARGE: "rx_recharge",
-  RX_RECHARGE_SUCCESS: "rx_recharge_success",
-  RX_RECHARGE_FAILED: "rx_recharge_failed",
-  CONSULTATION_TIMINGS: "consultation_timings",
   // salesforce
-  PROSPECTED_DOCTORS: "prospected_doctors",
-  STRING_TABLE: "string_table",
-  STRING_TABLE_FILTERED: "string_table/:key",
-  HELP_DOCUMENTS: "help_documents",
-  // medical test data
-  MEDICAL_TEST_DATA_MANAGEMENT: "medical_test_data_management",
-  SCRAPED_MEDICAL_TEST_DATA: "scraped_medical_test_data",
-  INUSE_MEDICAL_TEST_DATA: "inuse_medical_test_data",
-  MTDM_EDIT_SUGGESTIONS: "mtdm_edit_suggestions",
-  // drug data
-  DRUG_DATA_MANAGEMENT: "drug_data_management",
-  SCRAPED_DRUG_DATA: "scraped_drug_data",
-  INUSE_DRUG_DATA: "inuse_drug_data",
-  EDIT_SUGGESTIONS: "edit_suggestions",
-  // master data
-  MDM: "mdm",
-  MASTER_DATA: "masterData/all",
-  MASTER_DATA_TYPES: "masterData/types",
-  MASTER_DATA_TYPE_SPECIFIC: "masterData/all/:parentID",
-  MASTER_DATA_TYPE_SPECIFIC_SCRAPED: "masterData/scraped/:parentID",
-  MASTER_DATA_TYPE_SPECIFIC_CROWDSOURCED: "masterData/crowdsourced/:parentID",
 
-  //medicine db
-  DEPARTMENTS: "departments",
-  BASE_CHEMICALS: "chemical/base",
-  CHEMICAL_COMPOSITIONS: "chemical/compositions",
-  SCRAPED_MEDICINES: "medicine/scraped",
-  MEDICINE_COMPANIES: "medicine/companies",
-  MEDICINE_DETAILS: "medicine/details",
-  MEDICINE_PACKAGES: "medicine/packages",
-  MEDICINES: "medicine/all",
-
-  // medicine rxefy
-  MEDICINE_DATA: "medicine_data",
-  // admin
-  USER: "user",
-  ROLE: "role",
-  PERMISSION: "permission",
-  ROLE_PERMISSION: "role_permission",
-  USER_PERMISSION: "user_permission",
-  MENU: "menu",
   // verification
   DOCTOR_VERIFICATION: "verify/doctor",
-  TABLES: "tables",
-  FORMS: "forms",
-  BUSINESS_ENTITY: "business_entity",
-  LANGUAGES: "languages",
+
   COMPONENTS: "dev/guide/components",
   STYLE_UTILITIES: "dev/guide/style_utilities",
-  // Assistant
-  MANAGE_ASSISTANT: "assistant/manage",
-  CREATE_AND_APPOINT_ASSISTANT: "assistant/invite",
-  DOCTOR_INVITATIONS: "invitations/doctor",
 
   /**
    * Bug Report, Feature, Enhancement & Support Requests
