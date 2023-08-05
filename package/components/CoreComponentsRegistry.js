@@ -1,3 +1,5 @@
+import React from "react";
+
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
 import CoreBadge from "./dataDisplay/CoreBadge.js";
 import CoreChip from "./dataDisplay/CoreChip.js";
@@ -79,7 +81,6 @@ import CoreEditForm from "./forms/CoreEditForm.js";
 import CoreFieldButton from "./forms/CoreFieldButton.js";
 import CoreForm from "./forms/CoreForm.js";
 import CoreFormButton from "./forms/CoreFormButton.js";
-import coreFormConstants from "./forms/coreFormConstants.js";
 import CoreFormContainer from "./forms/CoreFormContainer.js";
 import CoreFormDialogs from "./forms/CoreFormDialogs.js";
 import CoreFormField from "./forms/CoreFormField.js";
@@ -115,7 +116,6 @@ import CoreInputPassword from "./inputs/CoreInputPassword.js";
 import CoreJSONEditor from "./inputs/CoreJSONEditor.js";
 import CoreJSONInput from "./inputs/CoreJSONInput.js";
 import CoreMenu from "./inputs/CoreMenu.js";
-import CoreMenuItem from "./inputs/CoreMenuItem.js";
 import CoreMultiTimeRangePicker from "./inputs/CoreMultiTimeRangePicker.js";
 import CoreOtpInput from "./inputs/CoreOtpInput.js";
 import CoreOutlinedButton from "./inputs/CoreOutlinedButton.js";
@@ -178,7 +178,6 @@ import CoreToolbar from "./surfaces/CoreToolbar.js";
 import CoreFade from "./utils/CoreFade.js";
 import CoreModal from "./utils/CoreModal.js";
 import CorePopover from "./utils/CorePopover.js";
-import CoreToolbar from "./utils/CoreToolbar.js";
 import CoreApiVersion from "./utils/custom/CoreApiVersion.js";
 import CoreAppVersion from "./utils/custom/CoreAppVersion.js";
 import CoreLoginDetails from "./utils/custom/CoreLoginDetails.js";
@@ -191,89 +190,89 @@ import CoreClasses from "../styles/CoreClasses.js";
 
 const CoreComponentsRegistry = {
   CoreAvatar: {
-    title: "Core Avatar",
-    description: "This is a Core Avatar",
-    props: [
-      {
-        title: "alt",
-        description: "Used with a combination with src and srcSet.",
-      },
-      {
-        title: "src",
-        description: "Used for image element",
-      },
-    ],
     categoryGroup: [
       {
-        title: "Different Sizes",
         description: "Here you can see multiple sizes of the image avatar",
         propsGroups: [
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
           },
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_SMALL],
           },
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM],
           },
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_LARGE],
           },
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XLARGE],
           },
           {
-            alt: "Some Alternative",
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            alt         : "Some Alternative",
+            src         : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE],
           }
-        ]
+        ],
+        title: "Different Sizes"
       },
       {
-        title: "Different Sizes",
         description: "Here you can see multiple sizes of the text avatar",
         propsGroups: [
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
           },
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_SMALL],
           },
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM],
           },
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_LARGE],
           },
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XLARGE],
           },
           {
-            children: <CoreTypography>A</CoreTypography>,
+            children    : <CoreTypography>A</CoreTypography>,
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE],
           }
-        ]
+        ],
+        title: "Different Sizes"
       }
     ],
-    comp: CoreAvatar,
+    comp       : CoreAvatar,
+    description: "This is a Core Avatar",
+    props      : [
+      {
+        description: "Used with a combination with src and srcSet.",
+        title      : "alt",
+      },
+      {
+        description: "Used for image element",
+        title      : "src",
+      },
+    ],
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreAvatar.md",
+    title: "Core Avatar",
   },
   CoreBadge: {
     comp: CoreBadge,
@@ -284,211 +283,6 @@ const CoreComponentsRegistry = {
     comp: CoreChip,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreChip.md",
-  },
-  CoreDivider: {
-    comp: CoreDivider,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreDivider.md",
-  },
-  CoreIcon: {
-    comp: CoreIcon,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreIcon.md",
-  },
-  CoreImage: {
-    comp: CoreImage,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreImage.md",
-  },
-  CoreListItemIcon: {
-    comp: CoreListItemIcon,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreListItemIcon.md",
-  },
-  CoreListItemText: {
-    comp: CoreListItemText,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreListItemText.md",
-  },
-  CoreTable: {
-    comp: CoreTable,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTable.md",
-  },
-  CoreTableBody: {
-    comp: CoreTableBody,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableBody.md",
-  },
-  CoreTableBodyCell: {
-    comp: CoreTableBodyCell,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableBodyCell.md",
-  },
-  CoreTableCell: {
-    comp: CoreTableCell,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableCell.md",
-  },
-  CoreTableContainer: {
-    comp: CoreTableContainer,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableContainer.md",
-  },
-  CoreTableFooter: {
-    comp: CoreTableFooter,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableFooter.md",
-  },
-  CoreTableHead: {
-    comp: CoreTableHead,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHead.md",
-  },
-  CoreTableHeadCell: {
-    comp: CoreTableHeadCell,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHeadCell.md",
-  },
-  CoreTableHeadRow: {
-    comp: CoreTableHeadRow,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHeadRow.md",
-  },
-  CoreTablePagination: {
-    comp: CoreTablePagination,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTablePagination.md",
-  },
-  CoreTableRow: {
-    comp: CoreTableRow,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableRow.md",
-  },
-  CoreTableSortLabel: {
-    comp: CoreTableSortLabel,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableSortLabel.md",
-  },
-  CoreTooltip: {
-    comp: CoreTooltip,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTooltip.md",
-  },
-  CoreTypography: {
-    comp: CoreTypography,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTypography.md",
-  },
-  CoreEmailLink: {
-    comp: CoreEmailLink,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreEmailLink.md",
-  },
-  CoreEmailOrPhoneLink: {
-    comp: CoreEmailOrPhoneLink,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreEmailOrPhoneLink.md",
-  },
-  CoreIconText: {
-    comp: CoreIconText,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreIconText.md",
-  },
-  CoreMarkdownViewer: {
-    comp: CoreMarkdownViewer,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreMarkdownViewer.md",
-  },
-  CorePhoneLink: {
-    comp: CorePhoneLink,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CorePhoneLink.md",
-  },
-  StatusText: {
-    comp: StatusText,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/StatusText.md",
-  },
-  UserChip: {
-    comp: UserChip,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/UserChip.md",
-  },
-  CoreH: {
-    comp: CoreH,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH.md",
-  },
-  CoreH1: {
-    comp: CoreH1,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH1.md",
-  },
-  CoreH2: {
-    comp: CoreH2,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH2.md",
-  },
-  CoreH3: {
-    comp: CoreH3,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH3.md",
-  },
-  CoreH4: {
-    comp: CoreH4,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH4.md",
-  },
-  CoreH5: {
-    comp: CoreH5,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH5.md",
-  },
-  CoreH6: {
-    comp: CoreH6,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH6.md",
-  },
-  CoreLabel: {
-    comp: CoreLabel,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreLabel.md",
-  },
-  CoreTypographyBody1: {
-    comp: CoreTypographyBody1,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyBody1.md",
-  },
-  CoreTypographyBody2: {
-    comp: CoreTypographyBody2,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyBody2.md",
-  },
-  CoreTypographyButton: {
-    comp: CoreTypographyButton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyButton.md",
-  },
-  CoreTypographyCaption: {
-    comp: CoreTypographyCaption,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyCaption.md",
-  },
-  CoreTypographyOverline: {
-    comp: CoreTypographyOverline,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyOverline.md",
-  },
-  CoreTypographySubtitle1: {
-    comp: CoreTypographySubtitle1,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographySubtitle1.md",
-  },
-  CoreTypographySubtitle2: {
-    comp: CoreTypographySubtitle2,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographySubtitle2.md",
   },
   CoreDataTable: {
     comp: CoreDataTable,
@@ -530,270 +324,310 @@ const CoreComponentsRegistry = {
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreDataTableRowActionPopover.md",
   },
+  CoreDivider: {
+    comp: CoreDivider,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreDivider.md",
+  },
   CoreDataTableRowContent: {
     comp: CoreDataTableRowContent,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreDataTableRowContent.md",
+  },
+  CoreEmailLink: {
+    comp: CoreEmailLink,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreEmailLink.md",
   },
   CoreDataTableRowSummary: {
     comp: CoreDataTableRowSummary,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreDataTableRowSummary.md",
   },
+  CoreEmailOrPhoneLink: {
+    comp: CoreEmailOrPhoneLink,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreEmailOrPhoneLink.md",
+  },
   CoreDataTableToolbar: {
     comp: CoreDataTableToolbar,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreDataTableToolbar.md",
+  },
+  CoreH: {
+    comp: CoreH,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH.md",
   },
   CoreFlatList: {
     comp: CoreFlatList,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreFlatList.md",
   },
-  CoreTableAction: {
-    comp: CoreTableAction,
+  CoreH1: {
+    comp: CoreH1,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableAction.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH1.md",
   },
-  CoreTableBulkAction: {
-    comp: CoreTableBulkAction,
+  CoreH2: {
+    comp: CoreH2,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableBulkAction.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH2.md",
   },
-  CoreTableCollapsible: {
-    comp: CoreTableCollapsible,
+  CoreH3: {
+    comp: CoreH3,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableCollapsible.md",
-  },
-  CoreTableFilter: {
-    comp: CoreTableFilter,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableFilter.md",
-  },
-  CoreTableSkeleton: {
-    comp: CoreTableSkeleton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableSkeleton.md",
-  },
-  CoreTableToolBar: {
-    comp: CoreTableToolBar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableToolBar.md",
-  },
-  DevCoreDataTable: {
-    comp: DevCoreDataTable,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/DevCoreDataTable.md",
-  },
-  TableRowAuditData: {
-    comp: TableRowAuditData,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/TableRowAuditData.md",
-  },
-  ExportData: {
-    comp: ExportData,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/ExportData.md",
-  },
-  FilterColumn: {
-    comp: FilterColumn,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/FilterColumn.md",
-  },
-  FilterData: {
-    comp: FilterData,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/FilterData.md",
-  },
-  SortTableData: {
-    comp: SortTableData,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/SortTableData.md",
-  },
-  TableDensity: {
-    comp: TableDensity,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/TableDensity.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH3.md",
   },
   CoreAlert: {
     comp: CoreAlert,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/feedback/CoreAlert.md",
   },
+  CoreH4: {
+    comp: CoreH4,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH4.md",
+  },
   CoreBackdrop: {
     comp: CoreBackdrop,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/feedback/CoreBackdrop.md",
+  },
+  CoreH5: {
+    comp: CoreH5,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH5.md",
   },
   CoreCircularProgress: {
     comp: CoreCircularProgress,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/feedback/CoreCircularProgress.md",
   },
+  CoreH6: {
+    comp: CoreH6,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/heading/CoreH6.md",
+  },
   CoreDialog: {
     comp: CoreDialog,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/feedback/CoreDialog.md",
   },
-  CoreLinearProgress: {
-    comp: CoreLinearProgress,
+  CoreIcon: {
+    comp: CoreIcon,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreLinearProgress.md",
-  },
-  CoreRequestProgressBar: {
-    comp: CoreRequestProgressBar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreRequestProgressBar.md",
-  },
-  CoreSkeleton: {
-    comp: CoreSkeleton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreSkeleton.md",
-  },
-  CoreSnackbar: {
-    comp: CoreSnackbar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreSnackbar.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreIcon.md",
   },
   CoreEditForm: {
     comp: CoreEditForm,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreEditForm.md",
   },
+  CoreIconText: {
+    comp: CoreIconText,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreIconText.md",
+  },
   CoreFieldButton: {
     comp: CoreFieldButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFieldButton.md",
+  },
+  CoreImage: {
+    comp: CoreImage,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreImage.md",
   },
   CoreForm: {
     comp: CoreForm,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreForm.md",
   },
+  CoreLabel: {
+    comp: CoreLabel,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreLabel.md",
+  },
   CoreFormButton: {
     comp: CoreFormButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormButton.md",
   },
-  coreFormConstants: {
-    comp: coreFormConstants,
+  CoreListItemIcon: {
+    comp: CoreListItemIcon,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/coreFormConstants.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreListItemIcon.md",
   },
   CoreFormContainer: {
     comp: CoreFormContainer,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormContainer.md",
   },
+  CoreListItemText: {
+    comp: CoreListItemText,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreListItemText.md",
+  },
   CoreFormDialogs: {
     comp: CoreFormDialogs,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormDialogs.md",
+  },
+  CoreMarkdownViewer: {
+    comp: CoreMarkdownViewer,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CoreMarkdownViewer.md",
   },
   CoreFormField: {
     comp: CoreFormField,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormField.md",
   },
+  CorePhoneLink: {
+    comp: CorePhoneLink,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/CorePhoneLink.md",
+  },
   CoreFormGroup: {
     comp: CoreFormGroup,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormGroup.md",
   },
-  CoreFormGroupLabel: {
-    comp: CoreFormGroupLabel,
+  CoreTable: {
+    comp: CoreTable,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormGroupLabel.md",
-  },
-  CoreFormHeader: {
-    comp: CoreFormHeader,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormHeader.md",
-  },
-  CoreFormHeaderActions: {
-    comp: CoreFormHeaderActions,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormHeaderActions.md",
-  },
-  CoreSpecificForm: {
-    comp: CoreSpecificForm,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreSpecificForm.md",
-  },
-  CoreViewField: {
-    comp: CoreViewField,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreViewField.md",
-  },
-  CoreViewForm: {
-    comp: CoreViewForm,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/forms/CoreViewForm.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTable.md",
   },
   CoreAsyncSelect: {
     comp: CoreAsyncSelect,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreAsyncSelect.md",
   },
+  CoreTableBody: {
+    comp: CoreTableBody,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableBody.md",
+  },
   CoreAutocomplete: {
     comp: CoreAutocomplete,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreAutocomplete.md",
+  },
+  CoreTableBodyCell: {
+    comp: CoreTableBodyCell,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableBodyCell.md",
   },
   CoreButton: {
     comp: CoreButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreButton.md",
   },
+  CoreTableCell: {
+    comp: CoreTableCell,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableCell.md",
+  },
   CoreCheckbox: {
     comp: CoreCheckbox,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreCheckbox.md",
+  },
+  CoreTableContainer: {
+    comp: CoreTableContainer,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableContainer.md",
   },
   CoreConfirmPassword: {
     comp: CoreConfirmPassword,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreConfirmPassword.md",
   },
+  CoreTableFooter: {
+    comp: CoreTableFooter,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableFooter.md",
+  },
   CoreConfirmPasswordField: {
     comp: CoreConfirmPasswordField,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreConfirmPasswordField.md",
+  },
+  CoreTableHead: {
+    comp: CoreTableHead,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHead.md",
   },
   CoreContainedButton: {
     comp: CoreContainedButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreContainedButton.md",
   },
-  CoreDatepicker: {
-    comp: CoreDatepicker,
+  CoreTableHeadCell: {
+    comp: CoreTableHeadCell,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreDatepicker.md",
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHeadCell.md",
   },
   CoreDateRangepicker: {
     comp: CoreDateRangepicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreDateRangepicker.md",
   },
+  CoreTableHeadRow: {
+    comp: CoreTableHeadRow,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableHeadRow.md",
+  },
   CoreDateTimePicker: {
     comp: CoreDateTimePicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreDateTimePicker.md",
+  },
+  CoreTablePagination: {
+    comp: CoreTablePagination,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTablePagination.md",
   },
   CoreDateTimeRangePicker: {
     comp: CoreDateTimeRangePicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreDateTimeRangePicker.md",
   },
+  CoreTableRow: {
+    comp: CoreTableRow,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableRow.md",
+  },
+  CoreDatepicker: {
+    comp: CoreDatepicker,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreDatepicker.md",
+  },
+  CoreTableSortLabel: {
+    comp: CoreTableSortLabel,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTableSortLabel.md",
+  },
   CoreFab: {
     comp: CoreFab,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreFab.md",
   },
+  CoreTooltip: {
+    comp: CoreTooltip,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTooltip.md",
+  },
   CoreFilePicker: {
     comp: CoreFilePicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreFilePicker.md",
+  },
+  CoreTypography: {
+    comp: CoreTypography,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/CoreTypography.md",
   },
   CoreFormControl: {
     comp: CoreFormControl,
@@ -805,50 +639,365 @@ const CoreComponentsRegistry = {
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreFormErrorText.md",
   },
+  CoreTableAction: {
+    comp: CoreTableAction,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableAction.md",
+  },
+  CoreFormGroupLabel: {
+    comp: CoreFormGroupLabel,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormGroupLabel.md",
+  },
+  StatusText: {
+    comp: StatusText,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/StatusText.md",
+  },
+  CoreFormHeader: {
+    comp: CoreFormHeader,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormHeader.md",
+  },
+  UserChip: {
+    comp: UserChip,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/custom/UserChip.md",
+  },
+  CoreFormHeaderActions: {
+    comp: CoreFormHeaderActions,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreFormHeaderActions.md",
+  },
   CoreFormHelperText: {
     comp: CoreFormHelperText,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreFormHelperText.md",
+  },
+  CoreTypographyBody1: {
+    comp: CoreTypographyBody1,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyBody1.md",
+  },
+  ChildMap: {
+    comp: ChildMap,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/ChildMap.md",
+  },
+  CoreTypographyBody2: {
+    comp: CoreTypographyBody2,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyBody2.md",
+  },
+  CoreFormLabelCheckbox: {
+    comp: CoreFormLabelCheckbox,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreFormLabelCheckbox.md",
+  },
+  CoreTypographyButton: {
+    comp: CoreTypographyButton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyButton.md",
+  },
+  CoreGoogleButton: {
+    comp: CoreGoogleButton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreGoogleButton.md",
+  },
+  CoreTypographyCaption: {
+    comp: CoreTypographyCaption,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyCaption.md",
   },
   CoreIconButton: {
     comp: CoreIconButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreIconButton.md",
   },
+  CoreTypographyOverline: {
+    comp: CoreTypographyOverline,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographyOverline.md",
+  },
   CoreImagePicker: {
     comp: CoreImagePicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreImagePicker.md",
+  },
+  CoreTypographySubtitle1: {
+    comp: CoreTypographySubtitle1,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographySubtitle1.md",
+  },
+  CoreAppDiv: {
+    comp: CoreAppDiv,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreAppDiv.md",
+  },
+  CoreTypographySubtitle2: {
+    comp: CoreTypographySubtitle2,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataDisplay/paragraph/CoreTypographySubtitle2.md",
+  },
+  CoreBox: {
+    comp: CoreBox,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreBox.md",
+  },
+  CoreTableBulkAction: {
+    comp: CoreTableBulkAction,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableBulkAction.md",
+  },
+  CoreContainer: {
+    comp: CoreContainer,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreContainer.md",
+  },
+  CoreTableCollapsible: {
+    comp: CoreTableCollapsible,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableCollapsible.md",
+  },
+  CoreGrid: {
+    comp: CoreGrid,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreGrid.md",
+  },
+  CoreTableFilter: {
+    comp: CoreTableFilter,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableFilter.md",
+  },
+  CoreGridItem: {
+    comp: CoreGridItem,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreGridItem.md",
+  },
+  CoreTableSkeleton: {
+    comp: CoreTableSkeleton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableSkeleton.md",
+  },
+  CoreImageBackground: {
+    comp: CoreImageBackground,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreImageBackground.md",
+  },
+  CoreTableToolBar: {
+    comp: CoreTableToolBar,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/CoreTableToolBar.md",
   },
   CoreInput: {
     comp: CoreInput,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreInput.md",
   },
+  DevCoreDataTable: {
+    comp: DevCoreDataTable,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/DevCoreDataTable.md",
+  },
   CoreInputAdornment: {
     comp: CoreInputAdornment,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreInputAdornment.md",
+  },
+  ExportData: {
+    comp: ExportData,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/ExportData.md",
   },
   CoreInputLabel: {
     comp: CoreInputLabel,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreInputLabel.md",
   },
+  FilterColumn: {
+    comp: FilterColumn,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/FilterColumn.md",
+  },
+  CoreCustomTabs: {
+    comp: CoreCustomTabs,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/CoreCustomTabs.md",
+  },
+  FilterData: {
+    comp: FilterData,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/FilterData.md",
+  },
   CoreInputPassword: {
     comp: CoreInputPassword,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreInputPassword.md",
+  },
+  TableRowAuditData: {
+    comp: TableRowAuditData,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/TableRowAuditData.md",
+  },
+  CoreAccordion: {
+    comp: CoreAccordion,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordion.md",
+  },
+  CoreAccordionDetail: {
+    comp: CoreAccordionDetail,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordionDetail.md",
+  },
+  SortTableData: {
+    comp: SortTableData,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/SortTableData.md",
+  },
+  CoreAccordionSummary: {
+    comp: CoreAccordionSummary,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordionSummary.md",
+  },
+  TableDensity: {
+    comp: TableDensity,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/dataTable/tableToolbarUtils/TableDensity.md",
+  },
+  CoreAppBar: {
+    comp: CoreAppBar,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAppBar.md",
+  },
+  CoreLinearProgress: {
+    comp: CoreLinearProgress,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreLinearProgress.md",
+  },
+  CoreCard: {
+    comp: CoreCard,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCard.md",
+  },
+  CoreRequestProgressBar: {
+    comp: CoreRequestProgressBar,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreRequestProgressBar.md",
+  },
+  CoreCardActionArea: {
+    comp: CoreCardActionArea,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardActionArea.md",
+  },
+  CoreSkeleton: {
+    comp: CoreSkeleton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreSkeleton.md",
+  },
+  CoreCardActions: {
+    comp: CoreCardActions,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardActions.md",
+  },
+  CoreSnackbar: {
+    comp: CoreSnackbar,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/feedback/CoreSnackbar.md",
+  },
+  CoreCardContent: {
+    comp: CoreCardContent,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardContent.md",
+  },
+  CoreCardHeader: {
+    comp: CoreCardHeader,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardHeader.md",
   },
   CoreJSONEditor: {
     comp: CoreJSONEditor,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreJSONEditor.md",
   },
+  CoreCardMedia: {
+    comp: CoreCardMedia,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardMedia.md",
+  },
+  CoreApiVersion: {
+    comp: CoreApiVersion,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreApiVersion.md",
+  },
   CoreJSONInput: {
     comp: CoreJSONInput,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreJSONInput.md",
+  },
+  CoreAppVersion: {
+    comp: CoreAppVersion,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreAppVersion.md",
+  },
+  CoreLink: {
+    comp: CoreLink,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreLink.md",
+  },
+  CoreCollapse: {
+    comp: CoreCollapse,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCollapse.md",
+  },
+  CoreSpecificForm: {
+    comp: CoreSpecificForm,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreSpecificForm.md",
+  },
+  CoreDrawer: {
+    comp: CoreDrawer,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreDrawer.md",
+  },
+  CoreViewField: {
+    comp: CoreViewField,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreViewField.md",
+  },
+  CoreFade: {
+    comp: CoreFade,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/utils/CoreFade.md",
+  },
+  CoreViewForm: {
+    comp: CoreViewForm,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/forms/CoreViewForm.md",
+  },
+  CoreFooter: {
+    comp: CoreFooter,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreFooter.md",
+  },
+  CoreList: {
+    comp: CoreList,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreList.md",
+  },
+  CoreListItem: {
+    comp: CoreListItem,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreListItem.md",
+  },
+  CoreLoginDetails: {
+    comp: CoreLoginDetails,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreLoginDetails.md",
+  },
+  CoreMedicineSelector: {
+    comp: CoreMedicineSelector,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreMedicineSelector.md",
   },
   CoreMenu: {
     comp: CoreMenu,
@@ -858,12 +1007,27 @@ const CoreComponentsRegistry = {
   CoreMenuItem: {
     comp: CoreMenuItem,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreMenuItem.md",
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreMenuItem.md",
+  },
+  CoreMenuList: {
+    comp: CoreMenuList,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreMenuList.md",
+  },
+  CoreModal: {
+    comp: CoreModal,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/utils/CoreModal.md",
   },
   CoreMultiTimeRangePicker: {
     comp: CoreMultiTimeRangePicker,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreMultiTimeRangePicker.md",
+  },
+  CoreNavigation: {
+    comp: CoreNavigation,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreNavigation.md",
   },
   CoreOtpInput: {
     comp: CoreOtpInput,
@@ -875,65 +1039,25 @@ const CoreComponentsRegistry = {
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CoreOutlinedButton.md",
   },
+  CorePaper: {
+    comp: CorePaper,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CorePaper.md",
+  },
   CorePhone: {
     comp: CorePhone,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/CorePhone.md",
   },
-  CoreSelect: {
-    comp: CoreSelect,
+  CorePopover: {
+    comp: CorePopover,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreSelect.md",
+      "https://github.com/wrappid/docs/blob/main/components/utils/CorePopover.md",
   },
-  CoreSwitch: {
-    comp: CoreSwitch,
+  CoreProfilePopOver: {
+    comp: CoreProfilePopOver,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreSwitch.md",
-  },
-  CoreTextarea: {
-    comp: CoreTextarea,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextarea.md",
-  },
-  CoreTextButton: {
-    comp: CoreTextButton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextButton.md",
-  },
-  CoreTextField: {
-    comp: CoreTextField,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextField.md",
-  },
-  CoreTimePicker: {
-    comp: CoreTimePicker,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTimePicker.md",
-  },
-  CoreTimeRangePicker: {
-    comp: CoreTimeRangePicker,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTimeRangePicker.md",
-  },
-  ChildMap: {
-    comp: ChildMap,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/ChildMap.md",
-  },
-  CoreFormLabelCheckbox: {
-    comp: CoreFormLabelCheckbox,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreFormLabelCheckbox.md",
-  },
-  CoreGoogleButton: {
-    comp: CoreGoogleButton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreGoogleButton.md",
-  },
-  CoreMedicineSelector: {
-    comp: CoreMedicineSelector,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreMedicineSelector.md",
+      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreProfilePopOver.md",
   },
   CoreReactSelectInput: {
     comp: CoreReactSelectInput,
@@ -950,270 +1074,130 @@ const CoreComponentsRegistry = {
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/custom/CoreRichTextEditor.md",
   },
-  ParentChildMap: {
-    comp: ParentChildMap,
+  CoreRightDrawer: {
+    comp: CoreRightDrawer,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/ParentChildMap.md",
-  },
-  ListItemButton: {
-    comp: ListItemButton,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/inputs/ListItemButton.md",
-  },
-  CoreAppDiv: {
-    comp: CoreAppDiv,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreAppDiv.md",
-  },
-  CoreBox: {
-    comp: CoreBox,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreBox.md",
-  },
-  CoreContainer: {
-    comp: CoreContainer,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreContainer.md",
-  },
-  CoreGrid: {
-    comp: CoreGrid,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreGrid.md",
-  },
-  CoreGridItem: {
-    comp: CoreGridItem,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreGridItem.md",
-  },
-  CoreImageBackground: {
-    comp: CoreImageBackground,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreImageBackground.md",
-  },
-  CoreList: {
-    comp: CoreList,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreList.md",
-  },
-  CoreListItem: {
-    comp: CoreListItem,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreListItem.md",
-  },
-  CoreSection: {
-    comp: CoreSection,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreSection.md",
-  },
-  CoreSpan: {
-    comp: CoreSpan,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreSpan.md",
-  },
-  CoreStack: {
-    comp: CoreStack,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreStack.md",
-  },
-  CoreLink: {
-    comp: CoreLink,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreLink.md",
-  },
-  CoreMenuItem: {
-    comp: CoreMenuItem,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreMenuItem.md",
-  },
-  CoreMenuList: {
-    comp: CoreMenuList,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreMenuList.md",
-  },
-  CoreNavigation: {
-    comp: CoreNavigation,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreNavigation.md",
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreRightDrawer.md",
   },
   CoreScrollTop: {
     comp: CoreScrollTop,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/navigation/CoreScrollTop.md",
   },
+  CoreSection: {
+    comp: CoreSection,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreSection.md",
+  },
+  CoreSelect: {
+    comp: CoreSelect,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreSelect.md",
+  },
+  CoreSpan: {
+    comp: CoreSpan,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreSpan.md",
+  },
+  CoreSwitch: {
+    comp: CoreSwitch,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreSwitch.md",
+  },
+  CoreStack: {
+    comp: CoreStack,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/layouts/CoreStack.md",
+  },
+  CoreTextButton: {
+    comp: CoreTextButton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextButton.md",
+  },
   CoreTab: {
     comp: CoreTab,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/navigation/CoreTab.md",
   },
-  CoreTabPanel: {
-    comp: CoreTabPanel,
+  CoreTextField: {
+    comp: CoreTextField,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreTabPanel.md",
-  },
-  CoreTabs: {
-    comp: CoreTabs,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreTabs.md",
-  },
-  CoreCustomTabs: {
-    comp: CoreCustomTabs,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/CoreCustomTabs.md",
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextField.md",
   },
   CoreTabHead: {
     comp: CoreTabHead,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/navigation/custom/CoreTabHead.md",
   },
-  Logout: {
-    comp: Logout,
+  CoreTextarea: {
+    comp: CoreTextarea,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/Logout.md",
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTextarea.md",
   },
-  SplashComponent: {
-    comp: SplashComponent,
+  CoreTabPanel: {
+    comp: CoreTabPanel,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/SplashComponent.md",
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreTabPanel.md",
   },
-  CoreAccordion: {
-    comp: CoreAccordion,
+  CoreTimePicker: {
+    comp: CoreTimePicker,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordion.md",
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTimePicker.md",
   },
-  CoreAccordionDetail: {
-    comp: CoreAccordionDetail,
+  CoreTabs: {
+    comp: CoreTabs,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordionDetail.md",
+      "https://github.com/wrappid/docs/blob/main/components/navigation/CoreTabs.md",
   },
-  CoreAccordionSummary: {
-    comp: CoreAccordionSummary,
+  CoreTimeRangePicker: {
+    comp: CoreTimeRangePicker,
     readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAccordionSummary.md",
-  },
-  CoreAppBar: {
-    comp: CoreAppBar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreAppBar.md",
-  },
-  CoreCard: {
-    comp: CoreCard,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCard.md",
-  },
-  CoreCardActionArea: {
-    comp: CoreCardActionArea,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardActionArea.md",
-  },
-  CoreCardActions: {
-    comp: CoreCardActions,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardActions.md",
-  },
-  CoreCardContent: {
-    comp: CoreCardContent,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardContent.md",
-  },
-  CoreCardHeader: {
-    comp: CoreCardHeader,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardHeader.md",
-  },
-  CoreCardMedia: {
-    comp: CoreCardMedia,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCardMedia.md",
-  },
-  CoreCollapse: {
-    comp: CoreCollapse,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreCollapse.md",
-  },
-  CoreDrawer: {
-    comp: CoreDrawer,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreDrawer.md",
-  },
-  CoreFooter: {
-    comp: CoreFooter,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreFooter.md",
-  },
-  CorePaper: {
-    comp: CorePaper,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CorePaper.md",
-  },
-  CoreRightDrawer: {
-    comp: CoreRightDrawer,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreRightDrawer.md",
-  },
-  CoreToolbar: {
-    comp: CoreToolbar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreToolbar.md",
-  },
-  CoreFade: {
-    comp: CoreFade,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/CoreFade.md",
-  },
-  CoreModal: {
-    comp: CoreModal,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/CoreModal.md",
-  },
-  CorePopover: {
-    comp: CorePopover,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/CorePopover.md",
-  },
-  CoreToolbar: {
-    comp: CoreToolbar,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/CoreToolbar.md",
-  },
-  CoreApiVersion: {
-    comp: CoreApiVersion,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreApiVersion.md",
-  },
-  CoreAppVersion: {
-    comp: CoreAppVersion,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreAppVersion.md",
-  },
-  CoreLoginDetails: {
-    comp: CoreLoginDetails,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreLoginDetails.md",
-  },
-  CoreProfilePopOver: {
-    comp: CoreProfilePopOver,
-    readme:
-      "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreProfilePopOver.md",
+      "https://github.com/wrappid/docs/blob/main/components/inputs/CoreTimeRangePicker.md",
   },
   CoreTermsPrivacyLink: {
     comp: CoreTermsPrivacyLink,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/utils/custom/CoreTermsPrivacyLink.md",
   },
+  CoreToolbar: {
+    comp: CoreToolbar,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/surfaces/CoreToolbar.md",
+  },
   HelpAndSupportPopOver: {
     comp: HelpAndSupportPopOver,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/utils/custom/HelpAndSupportPopOver.md",
+  },
+  ListItemButton: {
+    comp: ListItemButton,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/ListItemButton.md",
+  },
+  Logout: {
+    comp: Logout,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/Logout.md",
   },
   NotificationPopOver: {
     comp: NotificationPopOver,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/utils/custom/NotificationPopOver.md",
   },
+  ParentChildMap: {
+    comp: ParentChildMap,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/inputs/custom/ParentChildMap.md",
+  },
   QuickAddPopOver: {
     comp: QuickAddPopOver,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/utils/custom/QuickAddPopOver.md",
+  },
+  SplashComponent: {
+    comp: SplashComponent,
+    readme:
+      "https://github.com/wrappid/docs/blob/main/components/navigation/custom/SplashComponent.md",
   },
 };
 

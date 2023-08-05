@@ -8,7 +8,7 @@ import { APP_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
 import CorePopover from "../utils/CorePopover";
-import CoreToolbar from "../utils/CoreToolbar";
+import CoreToolbar from "../surfaces/CoreToolbar";
 import CoreStack from "../layouts/CoreStack";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreIcon from "../dataDisplay/CoreIcon";
