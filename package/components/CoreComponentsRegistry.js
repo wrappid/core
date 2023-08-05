@@ -225,7 +225,7 @@ const CoreComponentsRegistry = {
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE],
           }
         ],
-        title: "Different Sizes"
+        title: "Image avatars"
       },
       {
         description: "Here you can see multiple sizes of the text avatar",
@@ -255,7 +255,7 @@ const CoreComponentsRegistry = {
             styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR_XXLARGE],
           }
         ],
-        title: "Different Sizes"
+        title: "Letter avatars"
       }
     ],
     comp       : CoreAvatar,
