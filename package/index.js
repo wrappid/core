@@ -220,8 +220,12 @@ import CoreThemeProvider from "./theme/CoreThemeProvider";
 import CoreComponentsRegistry from "./components/CoreComponentsRegistry";
 import CoreComponentsRegistryDocs from "./components/CoreComponentsRegistryDocs";
 import CoreMarkdownViewer from "./components/dataDisplay/custom/CoreMarkdownViewer";
+import { getFormikRequiredMessage } from "./utils/formUtils";
+import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
 
 export {
+  clearValidatePhoneEmail,
+  getFormikRequiredMessage,
   CoreMarkdownViewer,
   CoreComponentsRegistry,
   CoreComponentsRegistryDocs,
