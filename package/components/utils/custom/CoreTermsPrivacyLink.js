@@ -36,7 +36,10 @@ export default function CoreTermsPrivacyLink() {
                 Privacy
             </CoreLink>
             <CoreLink
-                styleClasses={uid?[]:[CoreClasses?.COLOR?.TEXT_WHITE]}
+                styleClasses={uid
+                    ?[CoreClasses?.MARGIN?.ML1]
+                    :[CoreClasses?.MARGIN?.ML1, CoreClasses?.COLOR?.TEXT_WHITE]
+                }
                 href={
                     process.env?.REACT_APP_WRAPPID_termsLink ||
                     config?.wrappid?.termsLink
