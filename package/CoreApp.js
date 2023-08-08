@@ -8,7 +8,8 @@ import {
   CoreApplicationContext,
   CoreMenuContext,
   CoreResourceContext,
-  FunctionsRegistryContext
+  FunctionsRegistryContext,
+  ValidationsRegistryContext,
 } from "./config/contextHandler";
 import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";
@@ -24,6 +25,7 @@ export default function CoreApp({
   applicationRegistry,
   resourceRegistry,
   functionsRegistry,
+  validationsRegistry,
 }) {
   return (
     <CoreProvider
@@ -33,29 +35,31 @@ export default function CoreApp({
       customIcons={customIcons}
     >
       <CoreApplicationContext.Provider value={applicationRegistry}>
-        <FunctionsRegistryContext.Provider value={functionsRegistry}>
-          <ComponentRegistryContext.Provider
-            value={{ ...componentRegistry, ...ComponentRegistry }}
-          >
-            <React.StrictMode>
-              <CoreResourceContext.Provider value={resourceRegistry}>
-                <CoreMenuContext.Provider value={menuRegistry}>
-                  <CoreAppDiv>
-                    {/* <CoreDialogContext.Provider value={value}> */}
-                    <CoreNavigation>
-                      <AppContainer>
-                        <CoreRoutes />
-                      </AppContainer>
-                    </CoreNavigation>
+        <ValidationsRegistryContext.Provider value={validationsRegistry}>
+          <FunctionsRegistryContext.Provider value={functionsRegistry}>
+            <ComponentRegistryContext.Provider
+              value={{ ...componentRegistry, ...ComponentRegistry }}
+            >
+              <React.StrictMode>
+                <CoreResourceContext.Provider value={resourceRegistry}>
+                  <CoreMenuContext.Provider value={menuRegistry}>
+                    <CoreAppDiv>
+                      {/* <CoreDialogContext.Provider value={value}> */}
+                      <CoreNavigation>
+                        <AppContainer>
+                          <CoreRoutes />
+                        </AppContainer>
+                      </CoreNavigation>
 
-                    {/* <CoreDialog /> */}
-                    {/* </CoreDialogContext.Provider> */}
-                  </CoreAppDiv>
-                </CoreMenuContext.Provider>
-              </CoreResourceContext.Provider>
-            </React.StrictMode>
-          </ComponentRegistryContext.Provider>
-        </FunctionsRegistryContext.Provider>
+                      {/* <CoreDialog /> */}
+                      {/* </CoreDialogContext.Provider> */}
+                    </CoreAppDiv>
+                  </CoreMenuContext.Provider>
+                </CoreResourceContext.Provider>
+              </React.StrictMode>
+            </ComponentRegistryContext.Provider>
+          </FunctionsRegistryContext.Provider>
+        </ValidationsRegistryContext.Provider>
       </CoreApplicationContext.Provider>
     </CoreProvider>
   );

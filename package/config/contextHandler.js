@@ -12,7 +12,8 @@ export const CoreDialogContext = createContext({
 export const CoreMenuContext = createContext({});
 export const CoreResourceContext = createContext({});
 export const CoreApplicationContext = createContext({
-  apiRegistry: {},
-  urlRegistry: {},
+  apisRegistry: {},
+  routesRegistry: {},
   version    : ""
 });
+export const ValidationsRegistryContext = createContext({});
