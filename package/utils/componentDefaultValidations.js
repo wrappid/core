@@ -13,15 +13,12 @@ export function clearValidatePhoneEmail(text) {
   );
 
   if (f) {
-    if(t?.length > 254){
+    if(t?.length > 255){
       return false
     }
     return f;
   } else if (!f) {
-    if(t?.length !== 10) {
-      return false;
-    }
-    f = String(t).match(/^[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/);
+    f = String(t).match(/^[4-9](\d{9})$/);
     return f;
   }
 
