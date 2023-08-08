@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
-import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreBox from "../../layouts/CoreBox";
+import React from "react";
+
 import { CoreApplicationContext } from "../../../config/contextHandler";
+import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreAppVersion(props) {
-  const { version } = useContext(CoreApplicationContext);
+  const { noTitle = false } = props;
+  const { version } = React.useContext(CoreApplicationContext);
 
-  return (
-    <CoreBox>
-      <CoreTypographyCaption>
-        {!props?.noTitle && "Application Version: "}{`v${version || "unknown"}`}
-      </CoreTypographyCaption>
-    </CoreBox>
-  );
+  return <CoreTypographyCaption>{!noTitle && "Application Version: "}{`v${version || "unknown"}`}</CoreTypographyCaption>;
 }
