@@ -4,7 +4,7 @@ import CoreEditForm from './CoreEditForm';
 import {
   FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP,
   FORM_EDIT_MODE,
-  FORM_SANITIZATOIN_FUNCTION_MAP,
+  // FORM_SANITIZATOIN_FUNCTION_MAP,
 } from './coreFormConstants';
 import {
   cancelFormEdit,
@@ -38,6 +38,9 @@ import {GET_FORM_ERROR, GET_FORM_SUCCESS} from '../../store/types/formTypes';
 import CoreClasses from '../../styles/CoreClasses';
 import {CORE_DIALOG_TYPES} from '../feedback/CoreDialog';
 import CoreFormDialogs from './CoreFormDialogs';
+import { getFunctions } from '../../helper/ContextValueProvider';
+
+const functionRegistry = getFunctions();
 
 /**
  * @TODO
@@ -146,7 +149,7 @@ class CoreForm extends Component {
       var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.onSubmitRefine
-        ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
+        ? functionRegistry[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
@@ -324,14 +327,14 @@ class CoreForm extends Component {
       var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.entity
-        ? FORM_SANITIZATOIN_FUNCTION_MAP[apiMeta?.onSubmitRefine](
+        ? functionRegistry[apiMeta?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
             this.state,
           )
         : formJson?.read?.onSubmitRefine
-        ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
+        ? functionRegistry[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
@@ -402,7 +405,7 @@ class CoreForm extends Component {
     var sanData = {values: values, endpoint: apiMeta.endpoint};
     if (apiMeta.mode === 'edit' && formJson?.edit?.onSubmitRefine) {
       console.log('EDITING');
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.edit?.onSubmitRefine](
+      sanData = functionRegistry[formJson?.edit?.onSubmitRefine](
         values,
         apiMeta,
         this.props.state,
@@ -410,7 +413,7 @@ class CoreForm extends Component {
       );
     } else if (apiMeta.mode === 'create' && formJson?.create?.onSubmitRefine) {
       console.log('ADDING');
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
+      sanData = functionRegistry[
         formJson?.create?.onSubmitRefine
       ](values, apiMeta, this.props.state, this.state);
     }
@@ -460,7 +463,7 @@ class CoreForm extends Component {
         formId: this.props.formId,
         editForm: this.props.editForm,
       };
-      values = FORM_SANITIZATOIN_FUNCTION_MAP[data.onSubmitRefine](
+      values = functionRegistry[data.onSubmitRefine](
         values,
         {},
         this.props.state,
@@ -553,7 +556,7 @@ class CoreForm extends Component {
 
     if (formJson?.delete?.onSubmitRefine) {
       console.log('DELETING');
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
+      sanData = functionRegistry[
         formJson?.delete?.onSubmitRefine
       ](
         this.props.formData[this.props.formId]?.data?.rows,

@@ -12,14 +12,14 @@ import {
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
-  FORM_SANITIZATOIN_FUNCTION_MAP,
+  // FORM_SANITIZATOIN_FUNCTION_MAP,
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
 } from "../components/forms/coreFormConstants";
 import config from "../config/config";
 import { FORM_VALIDATION_MAP } from "./fromValidationMap";
-import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
+// import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
 // import { store } from "../store/CoreProvider";
 import {
   GET_FORM_ERROR,
@@ -32,6 +32,9 @@ import authHeader from "../service/DataService";
 import { queryBuilder } from "./helper";
 import CoreClasses from "../styles/CoreClasses";
 import { mergedComponentRegistry } from "../layout/PageContainer";
+import { getFunctions } from "../helper/ContextValueProvider";
+
+const functionRegistry = getFunctions();
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   var message = "";
@@ -321,16 +324,16 @@ export function createFormFieldProps(element, formikprops, type, allElements, in
         multiple: element?.multiple,
         freeSolo: element?.freeSolo,
         getOptionValue: element?.getOptionValue
-          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
+          ? functionRegistry[element.getOptionValue]
           : null,
         getOptionLabel: element?.getOptionLabel
-          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionLabel]
+          ? functionRegistry[element.getOptionLabel]
           : null,
         isOptionEqualToValue: element?.isOptionEqualToValue
-          ? ASYNC_SELECT_FUNCTION_MAP[element.isOptionEqualToValue]
+          ? functionRegistry[element.isOptionEqualToValue]
           : null,
         onChangeDispatch: element?.onChangeDispatch
-          ? ASYNC_SELECT_FUNCTION_MAP[element.onChangeDispatch]
+          ? functionRegistry[element.onChangeDispatch]
           : null,
         //this will be arrow function like (d) => { return d.value } to show the value
         optionValue: element?.optionValue,
@@ -727,8 +730,8 @@ function checkConditions(dependencies, formik) {
 
 
 function getDependentValue(getValueFunction,formik, elem, allElements){
-  if(getValueFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction]){
-    return FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction](formik, elem, allElements)
+  if(getValueFunction && functionRegistry[getValueFunction]){
+    return functionRegistry[getValueFunction](formik, elem, allElements)
   }
   else{
     return ""
