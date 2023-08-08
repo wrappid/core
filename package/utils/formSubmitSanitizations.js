@@ -20,10 +20,11 @@ export function SanAddEmailOrPhoneRemoveConfirmPassword(
   apiMeta,
   state
 ) {
-  formData["emailOrPhone"] = state?.auth?.navData?.emailOrPhone;
-  delete formData.confirmPassword;
-  console.log("--SANITIZATION", formData);
-  return { values: formData };
+  let newFormData = {...formData}
+  newFormData["emailOrPhone"] = state?.auth?.navData?.emailOrPhone;
+  delete newFormData.confirmPassword;
+  console.log("--SANITIZATION", newFormData);
+  return { values: newFormData };
 }
 
 export function SanBasicEditUrlChange(formData, apiMeta, state, others) {
