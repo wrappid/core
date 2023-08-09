@@ -38,9 +38,8 @@ import {GET_FORM_ERROR, GET_FORM_SUCCESS} from '../../store/types/formTypes';
 import CoreClasses from '../../styles/CoreClasses';
 import {CORE_DIALOG_TYPES} from '../feedback/CoreDialog';
 import CoreFormDialogs from './CoreFormDialogs';
-import { getFunctions } from '../../helper/ContextValueProvider';
-
-const functionRegistry = getFunctions();
+import { functionsRegistry } from '../../layout/PageContainer';
+// const functionRegistry = getFunctions();
 
 /**
  * @TODO
@@ -149,7 +148,7 @@ class CoreForm extends Component {
       var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.onSubmitRefine
-        ? functionRegistry[formJson?.read?.onSubmitRefine](
+        ? functionsRegistry[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
@@ -327,14 +326,14 @@ class CoreForm extends Component {
       var sanData = {values: values, endpoint: apiMeta.endpoint};
 
       sanData = formJson?.read?.entity
-        ? functionRegistry[apiMeta?.onSubmitRefine](
+        ? functionsRegistry[apiMeta?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
             this.state,
           )
         : formJson?.read?.onSubmitRefine
-        ? functionRegistry[formJson?.read?.onSubmitRefine](
+        ? functionsRegistry[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
@@ -405,7 +404,7 @@ class CoreForm extends Component {
     var sanData = {values: values, endpoint: apiMeta.endpoint};
     if (apiMeta.mode === 'edit' && formJson?.edit?.onSubmitRefine) {
       console.log('EDITING');
-      sanData = functionRegistry[formJson?.edit?.onSubmitRefine](
+      sanData = functionsRegistry[formJson?.edit?.onSubmitRefine](
         values,
         apiMeta,
         this.props.state,
@@ -413,7 +412,7 @@ class CoreForm extends Component {
       );
     } else if (apiMeta.mode === 'create' && formJson?.create?.onSubmitRefine) {
       console.log('ADDING');
-      sanData = functionRegistry[
+      sanData = functionsRegistry[
         formJson?.create?.onSubmitRefine
       ](values, apiMeta, this.props.state, this.state);
     }
@@ -463,7 +462,7 @@ class CoreForm extends Component {
         formId: this.props.formId,
         editForm: this.props.editForm,
       };
-      values = functionRegistry[data.onSubmitRefine](
+      values = functionsRegistry[data.onSubmitRefine](
         values,
         {},
         this.props.state,
@@ -556,7 +555,7 @@ class CoreForm extends Component {
 
     if (formJson?.delete?.onSubmitRefine) {
       console.log('DELETING');
-      sanData = functionRegistry[
+      sanData = functionsRegistry[
         formJson?.delete?.onSubmitRefine
       ](
         this.props.formData[this.props.formId]?.data?.rows,

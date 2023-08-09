@@ -32,9 +32,8 @@ import authHeader from "../service/DataService";
 import { queryBuilder } from "./helper";
 import CoreClasses from "../styles/CoreClasses";
 import { mergedComponentRegistry } from "../layout/PageContainer";
-import { getFunctions } from "../helper/ContextValueProvider";
-
-const functionRegistry = getFunctions();
+import { functionsRegistry } from "../layout/PageContainer";
+// const functionRegistry = getFunctions();
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   var message = "";
@@ -324,16 +323,16 @@ export function createFormFieldProps(element, formikprops, type, allElements, in
         multiple: element?.multiple,
         freeSolo: element?.freeSolo,
         getOptionValue: element?.getOptionValue
-          ? functionRegistry[element.getOptionValue]
+          ? functionsRegistry[element.getOptionValue]
           : null,
         getOptionLabel: element?.getOptionLabel
-          ? functionRegistry[element.getOptionLabel]
+          ? functionsRegistry[element.getOptionLabel]
           : null,
         isOptionEqualToValue: element?.isOptionEqualToValue
-          ? functionRegistry[element.isOptionEqualToValue]
+          ? functionsRegistry[element.isOptionEqualToValue]
           : null,
         onChangeDispatch: element?.onChangeDispatch
-          ? functionRegistry[element.onChangeDispatch]
+          ? functionsRegistry[element.onChangeDispatch]
           : null,
         //this will be arrow function like (d) => { return d.value } to show the value
         optionValue: element?.optionValue,
@@ -730,8 +729,8 @@ function checkConditions(dependencies, formik) {
 
 
 function getDependentValue(getValueFunction,formik, elem, allElements){
-  if(getValueFunction && functionRegistry[getValueFunction]){
-    return functionRegistry[getValueFunction](formik, elem, allElements)
+  if(getValueFunction && functionsRegistry[getValueFunction]){
+    return functionsRegistry[getValueFunction](formik, elem, allElements)
   }
   else{
     return ""
