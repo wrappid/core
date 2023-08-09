@@ -15,6 +15,7 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
+import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
 import { coreUseNavigate } from "../../helper/routerHelper";
 import CoreComponent from "../CoreComponent";
 
@@ -190,7 +191,7 @@ export default function CoreAppBar(props) {
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
             <>
               {/* Help & Support Popover */}
-              <CoreProfilePopOver onClose={handleAppbarPopOverClose} />
+              <HelpAndSupportPopOver onClose={handleAppbarPopOverClose} />
             </>
           ) : _appbarContent === appbarPopOver.NOTIFICATION ? (
             <>
