@@ -1,14 +1,12 @@
 import React from "react";
 
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
-import {documentation as coreAvatarDocs} from "./dataDisplay/CoreAvatar.js";
-import CoreClasses from "../styles/CoreClasses.js";
-import CoreTypography from "./dataDisplay/CoreTypography.js";
+import CoreAvatarDocs from "../docs/CoreAvatarDocs.js";
 
 const CoreComponentsRegistryDocs = {
   CoreAvatar: {
-    comp       : CoreAvatar,
-    documentation: coreAvatarDocs,
+    comp          : CoreAvatar,
+    documentation : CoreAvatarDocs,
   },
 };
 
