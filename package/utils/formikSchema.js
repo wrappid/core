@@ -1,6 +1,7 @@
 import * as yup from "yup";
-import { getFormikRequiredMessage } from "./formUtils";
+
 import { clearValidatePhoneEmail } from "./componentDefaultValidations";
+import { getFormikRequiredMessage } from "./formUtils";
 
 const moment = require("moment");
 
@@ -13,23 +14,12 @@ const email = yup
   .trim()
   .matches(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/, "Invalid email");
 
-export const phoneSchema = yup.object({
-  phone: phone.required("Phone number is required"),
-});
+export const phoneSchema = yup.object({ phone: phone.required("Phone number is required") });
 
-export const emailSchema = yup.object({
-  email: email.required("Email is required"),
-});
+export const emailSchema = yup.object({ email: email.required("Email is required") });
 
 export const clinicSchemas = yup.object({
-  // addressTypeId: yup.number().required('Address Type is required'),
-  fullName: yup
-    .string()
-    .required("Name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-/]+$/,
-      "Special charecters are not allowed except - and /"
-    ),
+  
   addLine1: yup
     .string()
     .required("Address Line is required")
@@ -37,18 +27,29 @@ export const clinicSchemas = yup.object({
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
+  
   addLine2: yup
     .string()
     .matches(
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
-  country: yup.string().required("Country is required"),
-  state: yup.string().required("State is required"),
-  district: yup.string().required("District is required"),
+  
   city: yup
     .string()
     .required("City is required")
+    .matches(
+      /^[a-zA-Z0-9\s-/]+$/,
+      "Special charecters are not allowed except - and /"
+    ),
+  
+  country: yup.string().required("Country is required"),
+  
+  district: yup.string().required("District is required"),
+  // addressTypeId: yup.number().required('Address Type is required'),
+  fullName: yup
+    .string()
+    .required("Name is required")
     .matches(
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
@@ -60,23 +61,17 @@ export const clinicSchemas = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  pin: yup
+  phone: phone.required("Phone number is required"),
+  pin  : yup
     .string()
     .required("PIN is required")
     .matches(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/),
-  phone: phone.required("Phone number is required"),
+  state: yup.string().required("State is required"),
   // clinicLogo: yup.string().trim().required('File name is required')
 });
 
 export const clinicSchemasProfile = yup.object({
-  // addressTypeId: yup.number().required('Address Type is required'),
-  fullName: yup
-    .string()
-    .required("Name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-/]+$/,
-      "Special charecters are not allowed except - and /"
-    ),
+  
   addLine1: yup
     .string()
     .required("Address Line is required")
@@ -84,18 +79,31 @@ export const clinicSchemasProfile = yup.object({
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
+  
   addLine2: yup
     .string()
     .matches(
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
-  country: yup.string().required("Country is required"),
-  state: yup.string().required("State is required"),
-  district: yup.string().required("District is required"),
+  
+  addressTypeId: yup.number().required("Address type is required"),
+  
   city: yup
     .string()
     .required("City is required")
+    .matches(
+      /^[a-zA-Z0-9\s-/]+$/,
+      "Special charecters are not allowed except - and /"
+    ),
+  
+  country: yup.string().required("Country is required"),
+  
+  district: yup.string().required("District is required"),
+  // addressTypeId: yup.number().required('Address Type is required'),
+  fullName: yup
+    .string()
+    .required("Name is required")
     .matches(
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
@@ -107,16 +115,20 @@ export const clinicSchemasProfile = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  pin: yup
+  phone: phone.required("Phone number is required"),
+  pin  : yup
     .string()
     .required("PIN is required")
     .matches(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/),
-  phone: phone.required("Phone number is required"),
-  addressTypeId: yup.number().required("Address type is required"),
+  state: yup.string().required("State is required"),
 });
 
 export const registrationDetailSchemas = yup.object({
   departmentId: yup.number().required("Department is required"),
+  regDate     : yup
+    .date()
+    .max(new Date(), "Registration date must be today or earlier than today")
+    .required("Registration date is required"),
   regNo: yup
     .string()
     .trim()
@@ -125,18 +137,9 @@ export const registrationDetailSchemas = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  regDate: yup
-    .date()
-    .max(new Date(), "Registration date must be today or earlier than today")
-    .required("Registration date is required"),
 });
 
 export const basicIntroSchemas = yup.object({
-  name: yup
-    .string()
-    .trim()
-    .required("Name is required")
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   bio: yup
     .string()
     .trim()
@@ -150,17 +153,14 @@ export const basicIntroSchemas = yup.object({
     .min(moment().subtract(115, "years"), "MIN_AGE")
     .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
   gender: yup.string().required("Gender is required"),
+  name  : yup
+    .string()
+    .trim()
+    .required("Name is required")
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
 });
 
 export const experienceSchemas = yup.object({
-  organization: yup
-    .string()
-    .trim()
-    .required("Organization name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    ),
   designation: yup
     .string()
     .trim()
@@ -169,24 +169,11 @@ export const experienceSchemas = yup.object({
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  location: yup
-    .string()
-    .trim()
-    .required("Location is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    ),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -205,18 +192,31 @@ export const experienceSchemas = yup.object({
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
-});
-
-export const educationSchemas = yup.object({
-  school: yup
+  location: yup
     .string()
     .trim()
-    .required("School name is required")
+    .required("Location is required")
     .matches(
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
+  organization: yup
+    .string()
+    .trim()
+    .required("Organization name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
+});
+
+export const educationSchemas = yup.object({
   board: yup
     .string()
     .trim()
@@ -233,16 +233,11 @@ export const educationSchemas = yup.object({
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -261,7 +256,20 @@ export const educationSchemas = yup.object({
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
+  school: yup
+    .string()
+    .trim()
+    .required("School name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
 });
 
 export const loginSchema = yup.object({
@@ -276,6 +284,9 @@ export const loginSchema = yup.object({
 });
 
 export const passwordSetSchema = yup.object({
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
   password: yup
     .string()
     .required()
@@ -284,22 +295,18 @@ export const passwordSetSchema = yup.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
       "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
     ),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 export const loginOtpSchema = yup.object({
-  otp: yup.string().required().min(6).max(6),
+  otp: yup.string().required().min(6)
+    .max(6)
 });
 
-export const passwordSchema = yup.object({
-  password: yup.string().required("Enter password"),
-});
+export const passwordSchema = yup.object({ password: yup.string().required("Enter password") });
 
 export const contactSchema = yup.object({
-  phone: phone,
-  email: email,
+  email  : email,
+  phone  : phone,
   website: yup.string(),
 });
 
@@ -318,68 +325,33 @@ export const checkEmailorPhone = {
     .required("Please enter email or phone"),
 };
 
-export const enterPassword = {
-  password: yup.string().required("Enter password"),
-};
+export const enterPassword = { password: yup.string().required("Enter password") };
 
-export const requiredPassword = {
-  password: yup.string().required("Enter password"),
-};
+export const requiredPassword = { password: yup.string().required("Enter password") };
 
-export const complaint = {
-  complaint: yup.array().min(1).required(getFormikRequiredMessage("Complaint")),
-};
-export const history = {
-  history: yup.array().min(1).required(getFormikRequiredMessage("History")),
-};
-export const reffer = {
-  history: yup.array().min(1).required(getFormikRequiredMessage("Reffer")),
-};
-export const guideline = {
-  guideline: yup.array(),
-};
-export const diagnoses = {
-  diagnosis: yup.array(),
-};
-export const procedure = {
-  procedure: yup.array(),
-};
-export const followup = {
-  followup: yup.array(),
-};
+export const complaint = { complaint: yup.array().min(1).required(getFormikRequiredMessage("Complaint")) };
+export const history = { history: yup.array().min(1).required(getFormikRequiredMessage("History")) };
+export const reffer = { history: yup.array().min(1).required(getFormikRequiredMessage("Reffer")) };
+export const guideline = { guideline: yup.array() };
+export const diagnoses = { diagnosis: yup.array() };
+export const procedure = { procedure: yup.array() };
+export const followup = { followup: yup.array() };
 export const prescriptionClinic = {
+  address : yup.string().required(getFormikRequiredMessage("Address")),
   fullName: yup.string().required(getFormikRequiredMessage("Name")),
-  address: yup.string().required(getFormikRequiredMessage("Address")),
-  phone: yup.string().required(getFormikRequiredMessage("Phone")),
+  phone   : yup.string().required(getFormikRequiredMessage("Phone")),
 };
 export const prescriptionPatientProfile = {
-  name: yup.string().required(getFormikRequiredMessage("Name")),
+  dob   : yup.date().required(getFormikRequiredMessage("DOB")),
   gender: yup.string().required(getFormikRequiredMessage("Gender")),
-  dob: yup.date().required(getFormikRequiredMessage("DOB")),
+  name  : yup.string().required(getFormikRequiredMessage("Name")),
 };
 
-export const prescriptionClinicSearch = {
-  clinic: yup.object().required(getFormikRequiredMessage("Clinic")),
-};
+export const prescriptionClinicSearch = { clinic: yup.object().required(getFormikRequiredMessage("Clinic")) };
 
-export const prescriptionPatientSearch = {
-  patient: yup.object().required(getFormikRequiredMessage("Patient")),
-};
+export const prescriptionPatientSearch = { patient: yup.object().required(getFormikRequiredMessage("Patient")) };
 
 export const profileBaic = {
-  firstName: yup
-    .string()
-    .trim()
-    .required(getFormikRequiredMessage("firstName"))
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  middleName: yup
-    .string()
-    .trim()
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  lastName: yup
-    .string()
-    .trim()
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   bio: yup
     .string()
     .trim()
@@ -392,84 +364,101 @@ export const profileBaic = {
     .date()
     .min(moment().subtract(115, "years"), "MIN_AGE")
     .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
-  gender: yup.object().required("Gender is required"),
-};
-
-export const createPatient = {
   firstName: yup
     .string()
     .trim()
     .required(getFormikRequiredMessage("firstName"))
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  middleName: yup
-    .string()
-    .trim()
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  gender  : yup.object().required("Gender is required"),
   lastName: yup
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
-  gender: yup.object().required(getFormikRequiredMessage("gender")),
+  middleName: yup
+    .string()
+    .trim()
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+};
+
+export const createPatient = {
+  dob  : yup.date().required(getFormikRequiredMessage("dob", true)),
   email: yup.lazy(() =>
     yup.string().when(["email", "phone"], {
-      is: (email, phone) => !email && !phone,
+      is  : (email, phone) => !email && !phone,
       then: yup.string().required(getFormikRequiredMessage("email")),
     })
   ),
+  firstName: yup
+    .string()
+    .trim()
+    .required(getFormikRequiredMessage("firstName"))
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  gender  : yup.object().required(getFormikRequiredMessage("gender")),
+  lastName: yup
+    .string()
+    .trim()
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  middleName: yup
+    .string()
+    .trim()
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   phone: yup.lazy(() =>
     yup.string().when(["email", "phone"], {
-      is: (email, phone) => !email && !phone,
+      is  : (email, phone) => !email && !phone,
       then: yup.string().required(getFormikRequiredMessage("phone")),
     })
   ),
 };
 
 export const createPatientRelative = {
+  dob      : yup.date().required(getFormikRequiredMessage("dob", true)),
+  email    : yup.string().email().required(getFormikRequiredMessage("email")),
   firstName: yup
     .string()
     .trim()
     .required()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  middleName: yup
-    .string()
-    .trim()
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  gender  : yup.object().required(getFormikRequiredMessage("gender")),
   lastName: yup
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
+  middleName: yup
+    .string()
+    .trim()
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  phone   : yup.string().length(10).required(getFormikRequiredMessage("phone")),
   relation: yup.string().required(getFormikRequiredMessage("relation")),
-  gender: yup.object().required(getFormikRequiredMessage("gender")),
-  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
-  email: yup.string().email().required(getFormikRequiredMessage("email")),
 };
 
 export const createDoctor = {
+  dob      : yup.date().required(getFormikRequiredMessage("dob", true)),
+  email    : yup.string().email(getFormikRequiredMessage("email")).required(),
   firstName: yup
     .string()
     .trim()
     .required(getFormikRequiredMessage("firstName"))
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  middleName: yup
-    .string()
-    .trim()
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  gender  : yup.object().required(getFormikRequiredMessage("gender")),
   lastName: yup
     .string()
     .trim()
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  dob: yup.date().required(getFormikRequiredMessage("dob", true)),
-  gender: yup.object().required(getFormikRequiredMessage("gender")),
-  phone: yup.string().length(10).required(getFormikRequiredMessage("phone")),
-  email: yup.string().email(getFormikRequiredMessage("email")).required(),
-  regNo: yup.string().required(getFormikRequiredMessage("regNo")),
+  middleName: yup
+    .string()
+    .trim()
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  phone  : yup.string().length(10).required(getFormikRequiredMessage("phone")),
   regDate: yup.string(),
+  regNo  : yup.string().required(getFormikRequiredMessage("regNo")),
 };
 
 export const profileRegistration = {
   departmentId: yup.object().required("Department is required"),
+  regDate     : yup
+    .date()
+    .max(new Date(), "Registration date must be today or earlier than today")
+    .required("Registration date is required"),
   regNo: yup
     .string()
     .trim()
@@ -478,22 +467,13 @@ export const profileRegistration = {
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  regDate: yup
-    .date()
-    .max(new Date(), "Registration date must be today or earlier than today")
-    .required("Registration date is required"),
   registrationDocument: yup.object().nullable(),
 };
 
 export const confirmPassword = {
-  password: yup
+  confirmPassword: yup
     .string()
-    .required()
-    .min(8)
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
-      "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
-    ),
+    .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
   newPassword: yup
     .string()
     .required()
@@ -502,41 +482,37 @@ export const confirmPassword = {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
       "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
     ),
-  confirmPassword: yup
+  password: yup
     .string()
-    .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
+    .required()
+    .min(8)
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
+      "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
+    ),
 };
 
 export const changePrimaryContact = { data: yup.object().required() };
 
-export const consultationTimings = {
-  clinic: yup.object().nullable(),
-};
+export const consultationTimings = { clinic: yup.object().nullable() };
 
 export const stringValueManager = {
   locale: yup.string().required(),
-  value: yup.string().required(),
+  value : yup.string().required(),
 };
 
 export const createAppointment = {
-  date: yup.date().required(getFormikRequiredMessage("date")),
-  startTime: yup.string().required(getFormikRequiredMessage("startTime")),
+  date   : yup.date().required(getFormikRequiredMessage("date")),
   endTime: yup.string().required(getFormikRequiredMessage("endTime")).test("end time test", "End time must be greater than Start time", (value, props) => {
     const { startTime } = props.parent;
-    return moment(startTime, 'HH:mm').isBefore(moment(value, 'HH:mm'));
+
+    return moment(startTime, "HH:mm").isBefore(moment(value, "HH:mm"));
   }),
-  isForce: yup.boolean(),
+  isForce  : yup.boolean(),
+  startTime: yup.string().required(getFormikRequiredMessage("startTime")),
 };
 
 export const profileExperience = {
-  organization: yup
-    .string()
-    .trim()
-    .required("Organization name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    ),
   designation: yup
     .string()
     .trim()
@@ -545,25 +521,11 @@ export const profileExperience = {
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  location: yup
-    .string()
-    .trim()
-    .required("Location is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    )
-    .required(),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -582,19 +544,33 @@ export const profileExperience = {
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
   isCurrent: yup.boolean().notRequired(),
-};
-
-export const profileEducation = {
-  school: yup
+  location : yup
     .string()
     .trim()
-    .required("School name is required")
+    .required("Location is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    )
+    .required(),
+  organization: yup
+    .string()
+    .trim()
+    .required("Organization name is required")
     .matches(
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
+};
+
+export const profileEducation = {
   board: yup
     .string()
     .trim()
@@ -611,16 +587,11 @@ export const profileEducation = {
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -639,117 +610,122 @@ export const profileEducation = {
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
   isCurrent: yup.boolean().notRequired(),
+  school   : yup
+    .string()
+    .trim()
+    .required("School name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
 };
 
 export const smsCommunicationTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  body: yup.string().required("Body is required"),
+  body     : yup.string().required("Body is required"),
   extraInfo: yup.object(),
+  name     : yup.string().required("Name is required"),
+  type     : yup.mixed().required("Type is required"),
 };
 
 export const mailCommunicationTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  subject: yup.string().required("Subject is required"),
-  bodyType: yup.mixed().required("Body Type is required"),
-  type: yup.mixed().required("Type is required"),
-  body: yup.string().required("Body is required"),
+  body     : yup.string().required("Body is required"),
+  bodyType : yup.mixed().required("Body Type is required"),
   extraInfo: yup.object(),
+  name     : yup.string().required("Name is required"),
+  subject  : yup.string().required("Subject is required"),
+  type     : yup.mixed().required("Type is required"),
 };
 
 export const whatsappCommunicationTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  body: yup.string().required("Body is required"),
+  body     : yup.string().required("Body is required"),
   extraInfo: yup.object(),
+  name     : yup.string().required("Name is required"),
+  type     : yup.mixed().required("Type is required"),
 };
 
 export const createSMSTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  message: yup.string().required("Message is required"),
+  extraInfo    : yup.object().required("Extra Info is required"),
+  message      : yup.string().required("Message is required"),
+  name         : yup.string().required("Name is required"),
   sampleMessage: yup.string().nullable(),
+  type         : yup.mixed().required("Type is required"),
 };
 
 export const updateSMSTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  message: yup.string().required("Message is required"),
-  sampleMessage: yup.string(),
+  _status           : yup.string().required("Status is required"),
+  externalReason    : yup.string().nullable(),
+  externalStatus    : yup.string().nullable(),
   externalTemplateId: yup.string().nullable(),
-  externalStatus: yup.string().nullable(),
-  externalReason: yup.string().nullable(),
-  _status: yup.string().required("Status is required"),
+  extraInfo         : yup.object().required("Extra Info is required"),
+  message           : yup.string().required("Message is required"),
+  name              : yup.string().required("Name is required"),
+  sampleMessage     : yup.string(),
+  type              : yup.mixed().required("Type is required"),
 };
 
 export const createWhatsappTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  header: yup.mixed().nullable(),
-  footer: yup.string().nullable(),
-  config: yup.object().required("Object is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  message: yup.string().required("Message is required"),
+  config       : yup.object().required("Object is required"),
+  extraInfo    : yup.object().required("Extra Info is required"),
+  footer       : yup.string().nullable(),
+  header       : yup.mixed().nullable(),
+  message      : yup.string().required("Message is required"),
+  name         : yup.string().required("Name is required"),
   sampleMessage: yup.string().nullable(),
+  type         : yup.mixed().required("Type is required"),
 };
 
 export const updateWhatsappTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  header: yup.mixed().nullable(),
-  footer: yup.string().nullable(),
-  config: yup.object().required("Object is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  message: yup.string().required("Message is required"),
-  sampleMessage: yup.string().nullable(),
+  _status           : yup.string().required("Status is required"),
+  config            : yup.object().required("Object is required"),
+  externalReason    : yup.string().nullable(),
+  externalStatus    : yup.string().nullable(),
   externalTemplateId: yup.string().nullable(),
-  externalStatus: yup.string().nullable(),
-  externalReason: yup.string().nullable(),
-  _status: yup.string().required("Status is required"),
+  extraInfo         : yup.object().required("Extra Info is required"),
+  footer            : yup.string().nullable(),
+  header            : yup.mixed().nullable(),
+  message           : yup.string().required("Message is required"),
+  name              : yup.string().required("Name is required"),
+  sampleMessage     : yup.string().nullable(),
+  type              : yup.mixed().required("Type is required"),
 };
 
 export const createMailTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  subject: yup.string().required("Subject is required"),
-  contentType: yup.mixed().required("Content type is required"),
-  message: yup.string().required("Message is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  sampleSubject: yup.string().nullable(),
+  contentType  : yup.mixed().required("Content type is required"),
+  extraInfo    : yup.object().required("Extra Info is required"),
+  message      : yup.string().required("Message is required"),
+  name         : yup.string().required("Name is required"),
   sampleMessage: yup.string().nullable(),
+  sampleSubject: yup.string().nullable(),
+  subject      : yup.string().required("Subject is required"),
+  type         : yup.mixed().required("Type is required"),
 };
 
 export const updateMailTemplateSchema = {
-  name: yup.string().required("Name is required"),
-  type: yup.mixed().required("Type is required"),
-  subject: yup.string().required("Subject is required"),
-  contentType: yup.mixed().required("Content type is required"),
-  message: yup.string().required("Message is required"),
-  extraInfo: yup.object().required("Extra Info is required"),
-  sampleSubject: yup.string().nullable(),
-  sampleMessage: yup.string().nullable(),
+  _status           : yup.string().required("Status is required"),
+  contentType       : yup.mixed().required("Content type is required"),
+  externalReason    : yup.string().nullable(),
+  externalStatus    : yup.string().nullable(),
   externalTemplateId: yup.string().nullable(),
-  externalStatus: yup.string().nullable(),
-  externalReason: yup.string().nullable(),
-  _status: yup.string().required("Status is required"),
+  extraInfo         : yup.object().required("Extra Info is required"),
+  message           : yup.string().required("Message is required"),
+  name              : yup.string().required("Name is required"),
+  sampleMessage     : yup.string().nullable(),
+  sampleSubject     : yup.string().nullable(),
+  subject           : yup.string().required("Subject is required"),
+  type              : yup.mixed().required("Type is required"),
 };
 
-export const testMailCommunicationTemplateSchema = {
-  sendTo: email.required("Email is required"),
-};
+export const testMailCommunicationTemplateSchema = { sendTo: email.required("Email is required") };
 
-export const testSMSCommunicationTemplateSchema = {
-  sendTo: phone.required("Phone is required"),
-};
+export const testSMSCommunicationTemplateSchema = { sendTo: phone.required("Phone is required") };
 
 export const permissionFormSchema = { link: yup.string().nullable() };
-export const routeFormSchema = {
-  pageRef: yup.string().required("Page refference is required"),
-};
-export const pageFormSchema = {
-  appComponent: yup.string().required("App component is required"),
-};
+export const routeFormSchema = { pageRef: yup.string().required("Page refference is required") };
+export const pageFormSchema = { appComponent: yup.string().required("App component is required") };

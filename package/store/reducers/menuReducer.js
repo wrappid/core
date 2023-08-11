@@ -3,13 +3,13 @@ import {
   BUILD_MENU_ROLE_PERMISSIONS,
   TOGGLE_LEFT_MENU,
   TOGGLE_LEFT_MENU_ITEM_STATE,
-  TOGGLE_RIGHT_MENU,
+  TOGGLE_RIGHT_MENU
 } from "../types/menuTypes";
 
 const initState = {
-  collapse: {},
-  leftMenuOpen: true,
-  menu: [],
+  collapse     : {},
+  leftMenuOpen : true,
+  menu         : [],
   rightMenuOpen: false,
 };
 

@@ -1,7 +1,7 @@
-import axiosInterceptor from "../middleware/axiosInterceptor";
-import config from "../config/config";
 import authHeader from "./DataService";
+import config from "../config/config";
 import { HTTP } from "../config/constants";
+import axiosInterceptor from "../middleware/axiosInterceptor";
 import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
@@ -29,29 +29,31 @@ class AppService {
     file = null
   ) {
     try {
-      var response = await axiosInterceptor({
-        method: method,
-        url: getEndpoint(method, endpoint, data),
-        headers: await authHeader(authRequired, includeFile),
+      let response = await axiosInterceptor({
         data:
           method !== HTTP.GET
             ? includeFile
               ? createFormData(file, data)
               : JSON.stringify(data)
             : null,
+        headers: await authHeader(authRequired, includeFile),
+        method : method,
+        url    : getEndpoint(method, endpoint, data),
       });
+
       // console.log("API Endpoint = " + endpoint);
       // console.log("-----------SUCCESS RESPONSE-----------");
       // console.log(response);
       // console.log("--------------------------------------");
+
       return response;
     } catch (error) {
       console.error("Service layer error:", error.message);
       console.error(error);
       const ob = {
-        status: error?.response?.status,
+        data   : error?.response?.data?.data,
         message: error?.response?.data?.message,
-        data: error?.response?.data?.data,
+        status : error?.response?.status,
       };
 
       // console.error("API Endpoint = " + endpoint);

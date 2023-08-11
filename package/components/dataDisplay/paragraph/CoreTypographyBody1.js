@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import { UtilityClasses } from "@wrappid/styles";
+
 import CoreSpan from "../../layouts/CoreSpan";
 import CoreLink from "../../navigation/CoreLink";
 import CoreTypography from "../CoreTypography";
@@ -20,6 +22,7 @@ export default function CoreTypographyBody1(props) {
             : props?.children.slice(0, limitChars) + "..."
           : props?.children}
       </CoreSpan>
+
       {!hideSeeMore && limitChars < props?.children?.length && (
         <CoreLink
           styleClasses={[UtilityClasses.MARGIN.ML1]}

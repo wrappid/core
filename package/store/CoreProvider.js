@@ -1,35 +1,36 @@
-import React from "react";
-import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { nativeStorage } from "@wrappid/styled-components";
+import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
+import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import { nativeStorage } from "@wrappid/styled-components";
-import thunk from "redux-thunk";
-import coreReducer from "./reducers/rootReducer";
 import { PersistGate } from "redux-persist/integration/react";
+import thunk from "redux-thunk";
+
+import coreReducer from "./reducers/rootReducer";
 import {
   AppStylesContext,
   IconContext,
-  ThemeContext,
+  ThemeContext
 } from "../config/contextHandler";
-import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
-import CoreThemeProvider from "../theme/CoreThemeProvider";
 import CoreClasses from "../styles/CoreClasses";
 import { defaultCoreStyles } from "../styles/DefaultCoreStyles";
-import { smallCoreStyles } from "../styles/SmallCoreStyles";
-import { mediumCoreStyles } from "../styles/MediumCoreStyles";
 import { largeCoreStyles } from "../styles/LargeCoreStyles";
+import { mediumCoreStyles } from "../styles/MediumCoreStyles";
+import { smallCoreStyles } from "../styles/SmallCoreStyles";
 import { xLargeCoreStyles } from "../styles/XLargeCoreStyles";
 import { xXLargeCoreStyles } from "../styles/XXLargeCoreStyles";
+import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 function createFullStore(appReducer, persistFlag = true) {
-  var keys = Object.keys(coreReducer);
+  let keys = Object.keys(coreReducer);
 
   let finalReducer = {};
+
   for (var i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
-        key: keys[i],
+        key    : keys[i],
         storage: nativeStorage,
       },
       coreReducer[keys[i]]
@@ -38,10 +39,11 @@ function createFullStore(appReducer, persistFlag = true) {
 
   if (persistFlag === true) {
     let appReducerKeys = Object.keys(appReducer);
+
     for (var i = 0; i < appReducerKeys.length; i++) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
-          key: appReducerKeys[i],
+          key    : appReducerKeys[i],
           storage: nativeStorage,
         },
         appReducer[appReducerKeys[i]]
@@ -52,14 +54,14 @@ function createFullStore(appReducer, persistFlag = true) {
   finalReducer = { ...finalReducer, ...appReducer };
 
   const store = configureStore({
-    reducer: combineReducers(finalReducer),
-    devTools: true,
+    devTools  : true,
     middleware: [thunk],
+    reducer   : combineReducers(finalReducer),
   });
 
   const persistor = persistStore(store);
 
-  return { store, persistor };
+  return { persistor, store };
 }
 
 export default function CoreProvider(props) {
@@ -85,12 +87,12 @@ export default function CoreProvider(props) {
 
   let coreStyles = {
     classes: CoreClasses,
-    styles: {
+    styles : {
       default: defaultCoreStyles,
-      small: smallCoreStyles,
-      medium: mediumCoreStyles,
-      large: largeCoreStyles,
-      xLarge: xLargeCoreStyles,
+      large  : largeCoreStyles,
+      medium : mediumCoreStyles,
+      small  : smallCoreStyles,
+      xLarge : xLargeCoreStyles,
       xxLarge: xXLargeCoreStyles,
     },
   };

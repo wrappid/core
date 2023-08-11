@@ -2,8 +2,8 @@ import { LOGOUT_SUCCESS } from "../types/authTypes";
 import { HANDLE_MODAL } from "../types/settingsTypes";
 
 const initState = {
-  modalOpen: false,
   modalData: null,
+  modalOpen: false,
 };
 
 const modalReducer = (state = initState, action) => {
@@ -27,15 +27,18 @@ const modalReducer = (state = initState, action) => {
       }
       return {
         ...state,
-        modalOpen: action?.payload?.data ? !state.modalOpen : false,
-        modalData: action?.payload?.data ? action.payload.data : null,
+        modalData : action?.payload?.data ? action.payload.data : null,
+        modalOpen : action?.payload?.data ? !state.modalOpen : false,
         modalStyle: action?.payload?.style ? action.payload.style : null,
       };
+
     case LOGOUT_SUCCESS:
       console.log("FORM LOGOUT_SUCCESS REDUCER------", action);
       return initState;
+
     default:
       return state;
   }
 };
+
 export default modalReducer;

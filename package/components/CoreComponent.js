@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { ComponentRegistryContext } from "../config/contextHandler";
 
 export default function CoreComponent(props) {
@@ -6,8 +8,6 @@ export default function CoreComponent(props) {
   const componentRegistry = React.useContext(ComponentRegistryContext);
 
   return componentName && componentRegistry[componentName]?.comp
-    ? React.createElement(componentRegistry[componentName]?.comp, {
-        ...restProps,
-      })
+    ? React.createElement(componentRegistry[componentName]?.comp, { ...restProps })
     : null;
 }

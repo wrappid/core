@@ -1,16 +1,17 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { useSelector } from "react-redux";
 import {
   NativeDomNavigate,
-  nativeUseLocation,
+  nativeUseLocation
 } from "@wrappid/styled-components";
+import { useSelector } from "react-redux";
 
 import { urls } from "../../../config/constants";
-import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreBox from "../../layouts/CoreBox";
 import CoreClasses from "../../../styles/CoreClasses";
 import CoreComponent from "../../CoreComponent";
+import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 
 export default function SplashComponent() {
@@ -38,18 +39,15 @@ export default function SplashComponent() {
      * 
      * must provide a delay here min 1000ms
      */
-  }, [])
-  
+  }, []);
 
   if (checkAppLoadDependencies()?.success) {
     if (auth?.uid) {
       if (location?.state?.recalledPath) {
-        console.log("&&&&&&&&&&&&&&&&&&&\n GING TO RECALL\n&&&&&&&&&&&&&&&&&&");
+        // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO RECALL\n&&&&&&&&&&&&&&&&&&");
         return <NativeDomNavigate to={location?.state?.recalledPath} />;
       } else {
-        console.log(
-          "&&&&&&&&&&&&&&&&&&&\n GING TO DASHBOARD\n&&&&&&&&&&&&&&&&&&"
-        );
+        // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO DASHBOARD\n&&&&&&&&&&&&&&&&&&");
         return <NativeDomNavigate to={"/" + urls.DASHBOARD} />;
       }
     } else if (
@@ -57,36 +55,27 @@ export default function SplashComponent() {
       (location.pathname !== "/" + urls.PASSWORD_ROUTE ||
         location.pathname !== "/")
     ) {
-      console.log("&&&&&&&&&&&&&&&&&&&\n GING TO PASSWORD\n&&&&&&&&&&&&&&&&&&");
+      // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO PASSWORD\n&&&&&&&&&&&&&&&&&&");
       return <NativeDomNavigate to={"/" + urls.PASSWORD_ROUTE} />;
     } else if (
       location.pathname !== "/" + urls.LOGIN_ROUTE ||
       location.pathname !== "/"
     ) {
-      console.log(
-        "&&&&&&&&&&&&&&&&&&&\n GING TO CHEK USER EXIST\n&&&&&&&&&&&&&&&&&&"
-      );
+      // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO CHEK USER EXIST\n&&&&&&&&&&&&&&&&&&");
       return <NativeDomNavigate to={"/" + urls.LOGIN_ROUTE} />;
     }
   }
 
   return (
     <CoreGrid
-      styleClasses={[
-        CoreClasses.HEIGHT.VH_100,
-        CoreClasses.WIDTH.VW_100,
-        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-      ]}
+      styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.WIDTH.VW_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
     >
       <CoreBox
         gridProps={{ gridSize: 6 }}
-        styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-        ]}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
         <CoreComponent componentName={"AppLogoGif"} />
+
         <CoreTypographyBody1>
           {checkAppLoadDependencies()?.message}
         </CoreTypographyBody1>
@@ -94,11 +83,3 @@ export default function SplashComponent() {
     </CoreGrid>
   );
 }
-
-/*
-<CoreBox>
-      <CoreTypographyBody1>
-        {checkAppLoadDependencies()?.message}
-      </CoreTypographyBody1>
-    </CoreBox>
-*/

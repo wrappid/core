@@ -24,98 +24,123 @@ import {
   DELETE_DATA_LOADING,
   DELETE_DATA_SUCCESS,
   DELETE_DATA_ERROR,
-  RESET_DATA_CUD_STATUS,
+  RESET_DATA_CUD_STATUS
 } from "../types/dataManagementTypes";
 
 const initState = {};
 const entityDefaultState = {
-  filtering: false,
-  loading: true,
-  success: false,
-  error: false,
   data: {
-    columns: [],
-    rows: [],
+    columns     : [],
+    rows        : [],
     totalRecords: 0,
   },
-  form: {
+  error    : false,
+  filtering: false,
+  form     : {
     create: {
+      error  : false,
       loading: false,
       success: false,
-      error: false,
-    },
-    update: {
-      loading: false,
-      success: false,
-      error: false,
     },
     delete: {
+      error  : false,
       loading: false,
       success: false,
-      error: false,
+    },
+    update: {
+      error  : false,
+      loading: false,
+      success: false,
     },
   },
-  query: {
-    currentRows: 0,
-    page: 0,
-    maxRowInPage: 10,
-    _order: {},
-    _filter: {},
+  loading: true,
+  query  : {
+    _filter     : {},
+    _order      : {},
     _searchValue: "",
+    currentRows : 0,
+    maxRowInPage: 10,
+    page        : 0,
   },
+  success: false,
 };
 
 const dataReducer = (state = initState, action) => {
   switch (action.type) {
     case READ_DATA_LOADING:
       return case_ReadDataLoading(state, action);
+
     case READ_DATA_SUCCESS:
       return case_ReadDataSuccess(state, action);
+
     case READ_DATA_ERROR:
       return case_ReadDataError(state, action);
+
     case UPDATE_QUERY_PAGE_DATA:
       return case_UpdateQueryPageData(state, action);
+
     case UPDATE_QUERY_MAXROWINPAGE_DATA:
       return case_UpdateQueryMaxRowInPageData(state, action);
+
     case UPDATE_COLUMNS_DATA:
       return case_updateColumnsData(state, action);
+
     case UPDATE_FILTER_DATA:
       return case_UpdateFilterData(state, action);
+
     case FILTER_DATA:
       return case_FilterData(state, action);
+
     case RESET_FILTER_DATA:
       return case_ResetFilterData(state, action);
+
     case UPDATE_QUERY_ORDER_DATA:
       return case_UpdateQueryOrderData(state, action);
+
     case RESET_QUERY_ORDER_DATA:
       return case_ResetQueryOrderData(state, action);
+
     case UPDATE_QUERY_SEARCH_VALUE_DATA:
       return case_UpdateQuerySearchValueData(state, action);
+
     case RESET_QUERY_DATA:
       return case_ResetQueryData(state, action);
+
     case RESET_DATA:
+
     case LOGOUT_SUCCESS:
       return initState;
+
     case CREATE_DATA_LOADING:
       return case_CreateDataLoading(state, action);
+
     case CREATE_DATA_SUCCESS:
       return case_CreateDataSuccess(state, action);
+
     case CREATE_DATA_ERROR:
       return case_CreateDataError(state, action);
+
     case UPDATE_DATA_LOADING:
       return case_UpdateDataLoading(state, action);
+
     case UPDATE_DATA_SUCCESS:
       return case_UpdateDataSuccess(state, action);
+
     case UPDATE_DATA_ERROR:
       return case_UpdateDataError(state, action);
+
     case DELETE_DATA_LOADING:
       return case_DeleteDataLoading(state, action);
+
     case DELETE_DATA_SUCCESS:
       return case_DeleteDataSuccess(state, action);
+
     case DELETE_DATA_ERROR:
       return case_DeleteDataError(state, action);
+
     case RESET_DATA_CUD_STATUS:
       return case_ResetDataCudStatus(state, action);
+
     default:
       return state;
   }
@@ -125,7 +150,7 @@ const case_ReadDataLoading = (state, action) => {
   console.log(
     `------READ_DATA_LOADING REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -148,7 +173,7 @@ const case_ReadDataSuccess = (state, action) => {
   console.log(
     `------READ_DATA_SUCCESS REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   if (!state[action?.payload?.entity || "UNKNOWN"]?.loading) {
@@ -162,25 +187,22 @@ const case_ReadDataSuccess = (state, action) => {
       data: {
         columns: prepareColumns(
           state[action?.payload?.entity || "UNKNOWN"].data,
-          action?.payload?.data,
+          action?.payload?.data
         ),
         rows: state[action?.payload?.entity || "UNKNOWN"]?.filtering
           ? action?.payload?.data?.rows
-          : [
-              ...state[action?.payload?.entity || "UNKNOWN"]?.data?.rows,
-              ...action?.payload?.data?.rows,
-            ],
+          : [...state[action?.payload?.entity || "UNKNOWN"]?.data?.rows, ...action?.payload?.data?.rows],
         totalRecords: action?.payload?.data?.totalRecords,
       },
-      query: {
+      error  : false,
+      loading: false,
+      query  : {
         ...state[action?.payload?.entity || "UNKNOWN"]?.query,
         currentRows:
           (state[action?.payload?.entity || "UNKNOWN"]?.data?.rows?.length || 0) +
           (action?.payload?.data?.rows?.length || 0),
       },
-      loading: false,
       success: true,
-      error: false,
     },
   };
 };
@@ -189,14 +211,14 @@ const case_ReadDataError = (state, action) => {
   console.log(
     `------READ_DATA_ERROR REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
-      ...(action?.payload?.data || {}, { loading: false, success: false, error: true }),
+      ...(action?.payload?.data || {}, { error: true, loading: false, success: false }),
     },
   };
 };
@@ -205,7 +227,7 @@ const case_UpdateQueryPageData = (state, action) => {
   console.log(
     `------UPDATE_QUERY_PAGE_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
 
@@ -218,13 +240,13 @@ const case_UpdateQueryPageData = (state, action) => {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
-      query: {
+      error  : false,
+      loading: loading,
+      query  : {
         ...state[action?.payload?.entity || "UNKNOWN"].query,
         page: action?.payload?.page,
       },
-      loading: loading,
       success: false,
-      error: false,
     },
   };
 };
@@ -233,7 +255,7 @@ const case_UpdateQueryMaxRowInPageData = (state, action) => {
   console.log(
     `------UPDATE_QUERY_MAXROWINPAGE_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
 
@@ -246,13 +268,13 @@ const case_UpdateQueryMaxRowInPageData = (state, action) => {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
-      query: {
+      error  : false,
+      loading: loading,
+      query  : {
         ...state[action?.payload?.entity || "UNKNOWN"].query,
         maxRowInPage: action?.payload?.maxRowInPage,
       },
-      loading: loading,
       success: false,
-      error: false,
     },
   };
 };
@@ -261,7 +283,7 @@ const case_updateColumnsData = (state, action) => {
   console.log(
     `------UPDATE_COLUMNS_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
 
@@ -288,12 +310,12 @@ const case_UpdateFilterData = (state, action) => {
   console.log(
     `------UPDATE_FILTER_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   let lastFilterOb = state[action?.payload?.entity || "UNKNOWN"]?.query?.filter;
   let presentFilterOb = Object.fromEntries(
-    Object.entries(action?.payload?.filterValues).map(([k, v]) => [k, v.toLowerCase()]),
+    Object.entries(action?.payload?.filterValues).map(([k, v]) => [k, v.toLowerCase()])
   );
   let _loadingNotRequired = JSON.stringify(lastFilterOb) === JSON.stringify(presentFilterOb);
   let _filteringRequired = !_loadingNotRequired || !(Object.keys(presentFilterOb).length === 0);
@@ -302,11 +324,11 @@ const case_UpdateFilterData = (state, action) => {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
-      query: {
+      filtering: _filteringRequired,
+      query    : {
         ...state[action?.payload?.entity || "UNKNOWN"].query,
         _filter: action?.payload?.filterValues,
       },
-      filtering: _filteringRequired,
     },
   };
 };
@@ -315,7 +337,7 @@ const case_FilterData = (state, action) => {
   console.log(
     `------FILTER_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -332,7 +354,7 @@ const case_ResetFilterData = (state, action) => {
   console.log(
     `------RESET_FILTER_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -340,8 +362,8 @@ const case_ResetFilterData = (state, action) => {
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
       filtering: true,
-      loading: true,
-      query: {
+      loading  : true,
+      query    : {
         ...state[action?.payload?.entity || "UNKNOWN"]?.query,
         _filter: {},
       },
@@ -353,7 +375,7 @@ const case_UpdateQueryOrderData = (state, action) => {
   console.log(
     `------UPDATE_QUERY_ORDER_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -361,11 +383,11 @@ const case_UpdateQueryOrderData = (state, action) => {
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
       filtering: true,
-      loading: true,
-      query: {
+      loading  : true,
+      query    : {
         ...state[action?.payload?.entity || "UNKNOWN"]?.query,
-        page: 0,
         _order: action?.payload?.order,
+        page  : 0,
       },
     },
   };
@@ -375,7 +397,7 @@ const case_ResetQueryOrderData = (state, action) => {
   console.log(
     `------RESET_QUERY_ORDER_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -383,11 +405,11 @@ const case_ResetQueryOrderData = (state, action) => {
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
       filtering: true,
-      loading: true,
-      query: {
+      loading  : true,
+      query    : {
         ...state[action?.payload?.entity || "UNKNOWN"]?.query,
-        page: 0,
         _order: {},
+        page  : 0,
       },
     },
   };
@@ -397,7 +419,7 @@ const case_UpdateQuerySearchValueData = (state, action) => {
   console.log(
     `------UPDATE_QUERY_SEARCH_VALUE_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -405,11 +427,11 @@ const case_UpdateQuerySearchValueData = (state, action) => {
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
       filtering: true,
-      loading: true,
-      query: {
+      loading  : true,
+      query    : {
         ...state[action?.payload?.entity || "UNKNOWN"]?.query,
-        page: 0,
         _searchValue: action?.payload?.searchValue,
+        page        : 0,
       },
     },
   };
@@ -419,7 +441,7 @@ const case_ResetQueryData = (state, action) => {
   console.log(
     `------RESET_QUERY_DATA REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -427,8 +449,8 @@ const case_ResetQueryData = (state, action) => {
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
       filtering: true,
-      loading: true,
-      query: entityDefaultState.query,
+      loading  : true,
+      query    : entityDefaultState.query,
     },
   };
 };
@@ -437,7 +459,7 @@ const case_CreateDataLoading = (state, action) => {
   console.log(
     `------CREATE_DATA_LOADING REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -447,9 +469,9 @@ const case_CreateDataLoading = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         create: {
+          error  : false,
           loading: true,
           success: false,
-          error: false,
         },
       },
     },
@@ -459,7 +481,7 @@ const case_CreateDataSuccess = (state, action) => {
   console.log(
     `------CREATE_DATA_SUCCESS REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -469,9 +491,9 @@ const case_CreateDataSuccess = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         create: {
+          error  : false,
           loading: false,
           success: true,
-          error: false,
         },
       },
     },
@@ -481,7 +503,7 @@ const case_CreateDataError = (state, action) => {
   console.log(
     `------CREATE_DATA_ERROR REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -491,9 +513,9 @@ const case_CreateDataError = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         create: {
+          error  : true,
           loading: false,
           success: false,
-          error: true,
         },
       },
     },
@@ -503,7 +525,7 @@ const case_UpdateDataLoading = (state, action) => {
   console.log(
     `------UPDATE_DATA_LOADING REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -513,9 +535,9 @@ const case_UpdateDataLoading = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         update: {
+          error  : false,
           loading: true,
           success: false,
-          error: false,
         },
       },
     },
@@ -525,7 +547,7 @@ const case_UpdateDataSuccess = (state, action) => {
   console.log(
     `------UPDATE_DATA_SUCCESS REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -535,9 +557,9 @@ const case_UpdateDataSuccess = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         update: {
+          error  : false,
           loading: false,
           success: true,
-          error: false,
         },
       },
     },
@@ -547,7 +569,7 @@ const case_UpdateDataError = (state, action) => {
   console.log(
     `------UPDATE_DATA_ERROR REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -557,9 +579,9 @@ const case_UpdateDataError = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         update: {
+          error  : true,
           loading: false,
           success: false,
-          error: true,
         },
       },
     },
@@ -569,7 +591,7 @@ const case_DeleteDataLoading = (state, action) => {
   console.log(
     `------DELETE_DATA_LOADING REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -579,9 +601,9 @@ const case_DeleteDataLoading = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         delete: {
+          error  : false,
           loading: true,
           success: false,
-          error: false,
         },
       },
     },
@@ -591,7 +613,7 @@ const case_DeleteDataSuccess = (state, action) => {
   console.log(
     `------DELETE_DATA_SUCCESS REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -601,9 +623,9 @@ const case_DeleteDataSuccess = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         delete: {
+          error  : false,
           loading: false,
           success: true,
-          error: false,
         },
       },
     },
@@ -613,7 +635,7 @@ const case_DeleteDataError = (state, action) => {
   console.log(
     `------DELETE_DATA_ERROR REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {
@@ -623,9 +645,9 @@ const case_DeleteDataError = (state, action) => {
       form: {
         ...state[action?.payload?.entity]?.form,
         delete: {
+          error  : true,
           loading: false,
           success: false,
-          error: true,
         },
       },
     },
@@ -636,7 +658,7 @@ const case_ResetDataCudStatus = (state, action) => {
   console.log(
     `------DELETE_DATA_ERROR REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
-    } ------`,
+    } ------`
   );
   console.log("WITH PAYLOAD = ", action?.payload);
   return {

@@ -1,5 +1,7 @@
-import React from 'react';
-import CoreH from './CoreH';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import CoreH from "./CoreH";
 
 export default function CoreH1(props) {
   return (

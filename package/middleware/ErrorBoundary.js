@@ -1,4 +1,5 @@
 import React from "react";
+
 import CoreDivider from "../components/dataDisplay/CoreDivider";
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
@@ -7,8 +8,8 @@ import CoreBox from "../components/layouts/CoreBox";
 import CoreAccordion from "../components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "../components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../components/surfaces/CoreAccordionSummary";
-import CoreClasses from "../styles/CoreClasses";
 import ReportIssueForm from "../modules/support/ReportIssueForm";
+import CoreClasses from "../styles/CoreClasses";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class ErrorBoundary extends React.Component {
     console.error(error);
     console.error("------------------------------");
     console.error("------------------------------");
-    return { hasError: true, error: error };
+    return { error: error, hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
@@ -60,6 +61,7 @@ class ErrorBoundary extends React.Component {
                 Error Reported
               </CoreH6>
             </CoreAccordionSummary>
+
             <CoreAccordionDetail>
               <CoreTypographyBody1
                 code={true}
@@ -67,18 +69,22 @@ class ErrorBoundary extends React.Component {
               >
                 Message: {this.state.error?.message}
               </CoreTypographyBody1>
+
               <CoreDivider />
+
               <CoreTypographyBody1
                 code={true}
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
                 Stacktrace:
               </CoreTypographyBody1>
+
               <CoreTypographyCaption
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
                 {this.state.error?.stack}
               </CoreTypographyCaption>
+
               <CoreTypographyCaption
                 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}
               >
@@ -86,7 +92,9 @@ class ErrorBoundary extends React.Component {
               </CoreTypographyCaption>
             </CoreAccordionDetail>
           </CoreAccordion>
+
           <CoreDivider />
+
           <ReportIssueForm
             labels={[{ label: "Bug" }]}
             title={this.state.error?.message}

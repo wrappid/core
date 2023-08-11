@@ -1,12 +1,15 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { UtilityClasses } from "@wrappid/styles";
+
+import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
+import CoreTypographyBody1 from "./../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyCaption from "./../dataDisplay/paragraph/CoreTypographyCaption";
+import CoreTypographySubtitle1 from "./../dataDisplay/paragraph/CoreTypographySubtitle1";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreStack from "../layouts/CoreStack";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
-import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
-import CoreTypographySubtitle1 from "./../dataDisplay/paragraph/CoreTypographySubtitle1";
-import CoreTypographyBody1 from "./../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreTypographyCaption from "./../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreDataTableRowSummary(props) {
   const {
@@ -51,6 +54,7 @@ export default function CoreDataTableRowSummary(props) {
         ) : (
           ""
         )}
+
         <CoreStack direction="row" spacing={1}>
           {priority3Data ? (
             <CoreTypographyCaption>
@@ -59,6 +63,7 @@ export default function CoreDataTableRowSummary(props) {
           ) : (
             ""
           )}
+
           {priority4Data ? (
             <>
               {priority3Data ? (
@@ -66,6 +71,7 @@ export default function CoreDataTableRowSummary(props) {
               ) : (
                 ""
               )}
+
               <CoreTypographyCaption>
                 {getColumnLabel(priority4Data.column) + priority4Data.data}
               </CoreTypographyCaption>
@@ -73,6 +79,7 @@ export default function CoreDataTableRowSummary(props) {
           ) : (
             ""
           )}
+
           {priority5Data ? (
             <>
               {priority4Data ? (
@@ -80,6 +87,7 @@ export default function CoreDataTableRowSummary(props) {
               ) : (
                 ""
               )}
+
               <CoreTypographyCaption>
                 {getColumnLabel(priority5Data.column) + priority5Data.data}
               </CoreTypographyCaption>
@@ -91,12 +99,13 @@ export default function CoreDataTableRowSummary(props) {
       </>
     );
   };
+
   return (
     <>
       {summaryRendererComponent ? (
         React.createElement(summaryRendererComponent, {
+          rowData     : rowData,
           tableColumns: tableColumns,
-          rowData: rowData,
         })
       ) : (
         <>
@@ -106,9 +115,11 @@ export default function CoreDataTableRowSummary(props) {
             subheader={getSubheaderComponent()}
             styleClasses={[UtilityClasses.PADDING.P0]}
           />
+
           {
             /* hasId ?  */ <>
               <CoreDivider />
+
               <CoreStack
                 direction="row"
                 spacing={1}

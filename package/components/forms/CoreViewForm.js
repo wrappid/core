@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import { Component } from "react";
+
 import { connect } from "react-redux";
 
 import CoreViewField from "./CoreViewField";
@@ -22,7 +23,7 @@ class CoreViewForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth,
+    auth : state.auth,
     forms: state.forms,
   };
 };

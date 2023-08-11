@@ -1,5 +1,5 @@
 import { NativeTooltip } from "@wrappid/styled-components";
-import React from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 
 export default function CoreTooltip(props) {
   return <NativeTooltip {...props} />;

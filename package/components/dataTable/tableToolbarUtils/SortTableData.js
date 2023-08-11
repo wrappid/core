@@ -1,4 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import CoreClasses from "../../../styles/CoreClasses";
 import { getLabel } from "../../../utils/stringUtils";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../../dataDisplay/CoreIcon";
@@ -8,7 +11,6 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import CoreTextField from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function SortTableData(props) {
   const { tableUUID, tableColumns, auditColumnsKey, order, onRequestSort } =
@@ -20,6 +22,7 @@ export default function SortTableData(props) {
   React.useEffect(() => {
     if (searchString) {
       let tmpSearchString = searchString?.toLocaleLowerCase();
+
       console.log("########################");
       console.log(`Searched Column String: ${searchString}`);
       console.log(
@@ -78,6 +81,7 @@ export default function SortTableData(props) {
           }}
         />
       </CoreBox>
+
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         {(searchString &&
         searchString.length > 0 &&
@@ -85,29 +89,23 @@ export default function SortTableData(props) {
         searchedColumns?.length > 0
           ? searchedColumns
           : tableColumns?.filter(
-              (tblCol) => !auditColumnsKey.includes(tblCol.id)
-            )
+            (tblCol) => !auditColumnsKey.includes(tblCol.id)
+          )
         )?.map((col) => {
           return (
             !auditColumnsKey.includes(col.id) && (
               <CoreStack
                 direction="row"
-                styleClasses={[
-                  CoreClasses.WIDTH.W_100,
-                  CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-                  CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-                ]}
+                styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
               >
                 <CoreStack
                   direction="row"
-                  styleClasses={[
-                    CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-                    CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-                  ]}
+                  styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
                 >
                   <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.MB0]}>
                     {col?.label || getLabel(col?.id || "Unknown")}&nbsp;
                   </CoreTypographyBody1>
+
                   {Object.keys(order).includes(col.id) && (
                     <>
                       &nbsp;
@@ -122,6 +120,7 @@ export default function SortTableData(props) {
                     </>
                   )}
                 </CoreStack>
+
                 <CoreStack
                   direction="row"
                   styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
@@ -136,6 +135,7 @@ export default function SortTableData(props) {
                       type={__IconTypes.FONTAWESOME_V5_SOLID_ICON}
                     />
                   </CoreIconButton>
+
                   <CoreIconButton
                     onClick={(e) => {
                       onRequestSort(e, col.id, "desc");
@@ -151,6 +151,7 @@ export default function SortTableData(props) {
             )
           );
         })}
+
         <CoreDivider />
       </CoreBox>
     </>

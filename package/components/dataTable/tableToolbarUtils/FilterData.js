@@ -1,4 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import CoreClasses from "../../../styles/CoreClasses";
 import { getUUID } from "../../../utils/appUtils";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreIconButton from "../../inputs/CoreIconButton";
@@ -7,16 +10,15 @@ import CoreTextButton from "../../inputs/CoreTextButton";
 import { CoreTextField } from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function FilterData(props) {
   const { tableUUID, columns } = props;
 
   const _filterOB = {
-    id: getUUID(),
-    column: "",
+    column  : "",
+    id      : getUUID(),
     operator: "",
-    value: "",
+    value   : "",
   };
 
   const [_filterDatas, set_filterDatas] = React.useState([_filterOB]);
@@ -42,6 +44,7 @@ export default function FilterData(props) {
                     let _temp = _filterDatas.filter((_fd) => {
                       return _fd.id !== _filterData.id;
                     });
+
                     set_filterDatas(_temp);
                   }
                 }}
@@ -50,6 +53,7 @@ export default function FilterData(props) {
                   highlight_off
                 </CoreIcon>
               </CoreIconButton>
+
               <CoreSelect
                 selectID={`column-select-${tableUUID}`}
                 gridProps={{ gridSize: 4 }}
@@ -60,6 +64,7 @@ export default function FilterData(props) {
                 }}
                 options={columns}
               />
+
               <CoreSelect
                 selectID={`op-select-${tableUUID}`}
                 gridProps={{ gridSize: 3 }}
@@ -70,6 +75,7 @@ export default function FilterData(props) {
                 }}
                 options={columns}
               />
+
               <CoreTextField
                 gridProps={{ gridSize: 4 }}
                 label={"Value"}
@@ -79,11 +85,9 @@ export default function FilterData(props) {
           </>
         );
       })}
+
       <CoreBox
-        styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-          CoreClasses.PADDING.PT2,
-        ]}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.PADDING.PT2]}
       >
         <CoreTextButton
           label={
@@ -95,6 +99,7 @@ export default function FilterData(props) {
             set_filterDatas([..._filterDatas, _filterOB]);
           }}
         />
+
         <CoreTextButton
           label={
             <>

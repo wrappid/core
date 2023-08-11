@@ -9,7 +9,7 @@ import {
   CoreMenuContext,
   CoreResourceContext,
   FunctionsRegistryContext,
-  ValidationsRegistryContext,
+  ValidationsRegistryContext
 } from "./config/contextHandler";
 import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";

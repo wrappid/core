@@ -1,9 +1,12 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { __TableDensity } from "../../../config/constants";
 import CoreMenu from "../../inputs/CoreMenu";
 
 export default function TableDensity(props) {
   const { tableDensity, setTableDensity } = props;
+
   return (
     <>
       <CoreMenu
@@ -13,9 +16,9 @@ export default function TableDensity(props) {
         }}
         menu={[
           {
-            id: __TableDensity.COMPACT,
+            icon : "density_small",
+            id   : __TableDensity.COMPACT,
             label: "Compact",
-            icon: "density_small",
           },
           /*  {
             id: __TableDensity.STANDARD,
@@ -23,9 +26,9 @@ export default function TableDensity(props) {
             icon: "density_medium",
           }, */
           {
-            id: __TableDensity.COMFORTABLE,
+            icon : "density_large",
+            id   : __TableDensity.COMFORTABLE,
             label: "Comfortable",
-            icon: "density_large",
           },
         ]}
       />

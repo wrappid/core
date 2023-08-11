@@ -1,7 +1,8 @@
 import React, { useContext, useRef } from "react";
-import CoreTabPanel from "../CoreTabPanel";
-import { ComponentRegistryContext } from "../../../config/contextHandler";
+
 import CoreTabHead from "./CoreTabHead";
+import { ComponentRegistryContext } from "../../../config/contextHandler";
+import CoreTabPanel from "../CoreTabPanel";
 
 export default function CoreCustomTabs(props) {
   const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
@@ -17,6 +18,7 @@ export default function CoreCustomTabs(props) {
 
   React.useEffect(() => {
     const initialIndex = 0; //random number
+
     if (tabRef.current) {
       tabRef.current.scrollToIndex({ index: initialIndex });
     }
@@ -37,6 +39,7 @@ export default function CoreCustomTabs(props) {
         tabRef={tabRef}
         tabValue={tabValue}
       />
+
       {tabsContent?.map((tabContent, tabIndex) => {
         return (
           <CoreTabPanel

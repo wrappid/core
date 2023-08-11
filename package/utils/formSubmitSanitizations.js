@@ -1,11 +1,11 @@
+import { queryBuilder } from "./helper";
 import { FORM_IDS } from "../components/forms/coreFormConstants";
 import { communicationTypes, __EntityStatus } from "../config/constants";
-import { queryBuilder } from "./helper";
 
 export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
   return {
-    values: formData,
     endpoint: apiMeta.endpoint + "/" + formData?.id,
+    values  : formData,
   };
 }
 
@@ -20,7 +20,8 @@ export function SanAddEmailOrPhoneRemoveConfirmPassword(
   apiMeta,
   state
 ) {
-  let newFormData = {...formData}
+  let newFormData = { ...formData };
+
   newFormData["emailOrPhone"] = state?.auth?.navData?.emailOrPhone;
   delete newFormData.confirmPassword;
   console.log("--SANITIZATION", newFormData);
@@ -36,8 +37,8 @@ export function SanBasicEditUrlChange(formData, apiMeta, state, others) {
     formData.departmentId = formData.departmentId.id;
   }
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
@@ -47,8 +48,8 @@ export function SanClinicAddUrlChange(formData, apiMeta, state, others) {
     (a) => a.type.toLowerCase() === "clinic"
   )?.id;
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
@@ -60,24 +61,24 @@ export function SanClinicEditUrlChange(formData, apiMeta, state, others) {
     }
   }
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", others.editing),
+    values  : formData,
   };
 }
 
 export function SanClinicDeleteUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", others.deleting),
+    values  : formData,
   };
 }
 
 export function SanClinicReadUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
@@ -85,18 +86,18 @@ export function SanProfileClinicRead(data) {
   // console.log("SANITING", apiMeta, others);
   return data?.rows?.map((m) => {
     return {
-      id: m?.id,
+      addLine1  : m?.addLine1,
+      addLine2  : m?.addLine2,
+      city      : m?.city,
       clinicLogo: m?.Clinic?.photoUrl,
-      fullName: m?.fullName,
-      addLine1: m?.addLine1,
-      addLine2: m?.addLine2,
-      country: m?.country,
-      state: m?.state,
-      district: m?.district,
-      city: m?.city,
-      pin: m?.pin,
-      landmark: m?.landmark,
-      phone: m?.phone,
+      country   : m?.country,
+      district  : m?.district,
+      fullName  : m?.fullName,
+      id        : m?.id,
+      landmark  : m?.landmark,
+      phone     : m?.phone,
+      pin       : m?.pin,
+      state     : m?.state,
     };
   });
 }
@@ -104,11 +105,11 @@ export function SanProfileClinicRead(data) {
 export function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: {
-      formId: others.formId,
-      formArrayId: others?.editForm[others.formId]?.formArrayId,
-    },
     endpoint: "",
+    values  : {
+      formArrayId: others?.editForm[others.formId]?.formArrayId,
+      formId     : others.formId,
+    },
   };
 }
 
@@ -116,24 +117,24 @@ export function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
 export function SanEducationAddUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
 export function SanEducationEditUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", others.editing),
+    values  : formData,
   };
 }
 
 export function SanEducationReadUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
@@ -141,15 +142,15 @@ export function SanProfileEducationRead(data) {
   // console.log("SANITING", apiMeta, others);
   return data?.rows?.map((m) => {
     return {
-      id: m?.id,
-      degree: m?.degree,
-      school: m?.school,
-      location: m?.location,
-      board: m?.board,
-      field: m?.field,
-      startDate: m?.startDate,
-      endDate: m?.endDate,
+      board    : m?.board,
+      degree   : m?.degree,
+      endDate  : m?.endDate,
+      field    : m?.field,
+      id       : m?.id,
       isCurrent: m?.endDate ? false : true,
+      location : m?.location,
+      school   : m?.school,
+      startDate: m?.startDate,
     };
   });
 }
@@ -158,67 +159,68 @@ export function SanProfileEducationRead(data) {
 export function SanExperienceAddUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
 export function SanExperienceEditUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", others.editing),
+    values  : formData,
   };
 }
 
 export function SanExperienceReadUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
   return {
-    values: formData,
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+    values  : formData,
   };
 }
 
 export function SanProfileBasicRead(data) {
   // console.log("SANITING", apiMeta, others);
   return {
+    bio      : data?.data.extraInfo ? data?.data.extraInfo.bio : "",
+    dob      : data?.data.dob ? data?.data.dob : "",
     firstName: data?.data.firstName ? data.data.firstName : "",
-    middleName: data?.data.middleName ? data.data.middleName : "",
-    lastName: data?.data.lastName ? data.data.lastName : "",
-    gender: data?.data.gender
-      ? { label: data?.data.gender, id: data?.data.gender }
+    gender   : data?.data.gender
+      ? { id: data?.data.gender, label: data?.data.gender }
       : "",
-    dob: data?.data.dob ? data?.data.dob : "",
-    photo: data?.data.photoUrl ? data?.data.photoUrl : "",
-    bio: data?.data.extraInfo ? data?.data.extraInfo.bio : "",
+    lastName  : data?.data.lastName ? data.data.lastName : "",
+    middleName: data?.data.middleName ? data.data.middleName : "",
+    photo     : data?.data.photoUrl ? data?.data.photoUrl : "",
   };
 }
 
 export function SanProfileRegistrationRead(data, otherData) {
   console.log("Registration SANITING", otherData?.AllDepartments);
   if (data && data.departmentId) {
-    var dept = otherData?.AllDepartments?.find(
+    let dept = otherData?.AllDepartments?.find(
       (d) => d.id === data.departmentId
     );
+
     return {
-      regNo: data.regNo ? data.regNo : "",
-      regDate: data.regDate ? data.regDate : "",
-      degrees: data.degrees ? data.degrees : "",
+      degrees     : data.degrees ? data.degrees : "",
       departmentId: dept
-        ? { label: dept.name, id: dept.id }
-        : { label: "", id: "" },
+        ? { id: dept.id, label: dept.name }
+        : { id: "", label: "" },
+      regDate             : data.regDate ? data.regDate : "",
+      regNo               : data.regNo ? data.regNo : "",
       registrationDocument: data.registrationDocument,
     };
   } else {
-    return { regNo: "", regDate: "", departmentId: { label: "", id: "" } };
+    return { departmentId: { id: "", label: "" }, regDate: "", regNo: "" };
   }
 }
 
 export function SanRegistrationReadUrlChange(formData, apiMeta, state, others) {
   return {
-    values: formData,
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: { AllDepartments: state.common.departments },
+    values   : formData,
   };
 }
 
@@ -226,30 +228,31 @@ export function SanProfileExperienceRead(data) {
   // console.log("SANITING", apiMeta, others);
   return data?.rows?.map((m) => {
     return {
-      id: m?.id,
-      designation: m?.designation,
+      designation : m?.designation,
+      endDate     : m?.endDate,
+      id          : m?.id,
+      isCurrent   : m?.endDate ? false : true,
+      location    : m?.location,
       organization: m?.organization,
-      location: m?.location,
-      startDate: m?.startDate,
-      endDate: m?.endDate,
-      isCurrent: m?.endDate ? false : true,
+      startDate   : m?.startDate,
     };
   });
 }
 
 const formToFieldMap = {
   prescriptionComplaints: { field: "Complaints" },
+  prescriptionDiagnosis : { field: "Diagnoses" },
+  prescriptionFollowups : { field: "Followups" },
   prescriptionGuidelines: { field: "Guidelines" },
-  prescriptionFollowups: { field: "Followups" },
+  prescriptionHistory   : { field: "Histories" },
   prescriptionProcedures: { field: "Procedures" },
-  prescriptionDiagnosis: { field: "Diagnoses" },
-  prescriptionHistory: { field: "Histories" },
   prescriptionRefferedTo: { field: "Reffers" },
 };
+
 export function SanPrescription(formData, apiMeta, state, others) {
   console.log("SANITING", state.prescription);
-  var prescriptionInStore = state.prescription?.prescription;
-  var data = {};
+  let prescriptionInStore = state.prescription?.prescription;
+  let data = {};
   const formId = others?.formId;
 
   if (prescriptionInStore?.id) {
@@ -272,19 +275,20 @@ export function SanPrescription(formData, apiMeta, state, others) {
         prescriptionInStore[formToFieldMap[formId]?.field][0] &&
         prescriptionInStore[formToFieldMap[formId]?.field][0].id
           ? {
-              id: prescriptionInStore[formToFieldMap[formId]?.field][0].id,
-              ...formData,
-            }
+            id: prescriptionInStore[formToFieldMap[formId]?.field][0].id,
+            ...formData,
+          }
           : formData,
     };
   } else if (formId === FORM_IDS.__PRESCRIPTION_VITALS) {
-    var vitalIds = Object.keys(formData);
+    let vitalIds = Object.keys(formData);
     var finalData = [];
+
     for (var i = 0; i < vitalIds.length; i++) {
       if (formData[vitalIds[i]])
         finalData.push({
           masterDataId: vitalIds[i],
-          value: formData[vitalIds[i]],
+          value       : formData[vitalIds[i]],
         });
     }
     data = {
@@ -293,9 +297,11 @@ export function SanPrescription(formData, apiMeta, state, others) {
     };
   } else if (formId === FORM_IDS.__PRESCRIPTION_MEDICINE) {
     var finalData = [];
+
     for (var i = 0; i < formData.length; i++) {
-      var med = formData[i];
-      var ob = {};
+      let med = formData[i];
+      let ob = {};
+
       if (
         prescriptionInStore?.AdvicedMedicines &&
         prescriptionInStore.AdvicedMedicines[i]
@@ -326,17 +332,17 @@ export function SanPrescription(formData, apiMeta, state, others) {
   }
 
   return {
-    values: data,
     endpoint: apiMeta.endpoint,
+    values  : data,
   };
 }
 
 //settings
 export function SanContactEmailsCreate(formData, apiMeta, state, others) {
   return {
-    values: { data: formData.data, type: communicationTypes.MAIL },
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
+    values   : { data: formData.data, type: communicationTypes.MAIL },
   };
 }
 
@@ -346,8 +352,8 @@ export function SanContactsRead(data) {
     ?.filter((d) => d.isActive)
     .map((m) => {
       return {
-        id: m.id,
-        data: m.data,
+        data    : m.data,
+        id      : m.id,
         verified: m.verified,
       };
     });
@@ -355,43 +361,42 @@ export function SanContactsRead(data) {
 
 export function SanContactsReadUrlChange(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta, others);
-  let endUrl = apiMeta.endpoint?.includes('?')?apiMeta.endpoint: queryBuilder(apiMeta.endpoint, {
-     _defaultFilter: encodeURIComponent(JSON.stringify({ personId: state.profile.basic.id })) 
-  })
+  let endUrl = apiMeta.endpoint?.includes("?") ? apiMeta.endpoint : queryBuilder(apiMeta.endpoint, { _defaultFilter: encodeURIComponent(JSON.stringify({ personId: state.profile.basic.id })) });
+
   return {
-    values: apiMeta.values,
-    endpoint: endUrl,
+    endpoint : endUrl,
     reduxData: apiMeta.reduxData,
+    values   : apiMeta.values,
   };
 }
 export function SanContactPhonesCreate(formData, apiMeta, state, others) {
   return {
-    values: { data: formData.data, type: communicationTypes.SMS },
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
+    values   : { data: formData.data, type: communicationTypes.SMS },
   };
 }
 
 export function SanContactWapCreate(formData, apiMeta, state, others) {
   return {
-    values: { data: formData.data, type: communicationTypes.WHATSAPP },
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
+    values   : { data: formData.data, type: communicationTypes.WHATSAPP },
   };
 }
 
 export function SanChangePrimaryContact(formData, apiMeta, state, others) {
   return {
-    values: { data: formData.data.data, id: formData.data.id },
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
+    values   : { data: formData.data.data, id: formData.data.id },
   };
 }
 
 export function SanReadPrimaryPhone(data) {
   // console.log("SANITING", apiMeta, others);
   return {
-    data: data.phone,
+    data    : data.phone,
     verified: data.phoneVerified,
   };
 }
@@ -399,28 +404,28 @@ export function SanReadPrimaryPhone(data) {
 export function SanReadPrimaryEmail(data) {
   // console.log("SANITING", apiMeta, others);
   return {
-    data: data.email,
+    data    : data.email,
     verified: data.emailVerified,
   };
 }
 
 export function SanPatientCreate(formData, apiMeta, state, others) {
   return {
-    values: { ...formData, gender: formData?.gender?.label },
-    endpoint: apiMeta.endpoint,
+    endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
+    values   : { ...formData, gender: formData?.gender?.label },
   };
 }
 
 export function SanPatientRelativeCreate(formData, apiMeta, state, others) {
   return {
-    values: {
+    endpoint : apiMeta.endpoint,
+    reduxData: apiMeta.reduxData,
+    values   : {
       ...formData,
-      gender: formData?.gender?.label,
+      gender  : formData?.gender?.label,
       personId: state?.manageUser?.currentPerson,
     },
-    endpoint: apiMeta.endpoint,
-    reduxData: apiMeta.reduxData,
   };
 }
 
@@ -429,12 +434,12 @@ export function SanDoctorCreate(formData, apiMeta, state, others) {
   console.error("endpoint", apiMeta.endpoint);
   console.error("reduxData", apiMeta.reduxData);
   return {
-    values: {
+    endpoint : apiMeta.endpoint,
+    reduxData: apiMeta.reduxData,
+    values   : {
       ...formData,
       gender: formData?.gender?.label,
     },
-    endpoint: apiMeta.endpoint,
-    reduxData: apiMeta.reduxData,
   };
 }
 
@@ -444,92 +449,94 @@ export function SanRxRexharge(formData, apiMeta, state, others) {
   console.error("reduxData", apiMeta.reduxData);
   console.error("state", state);
   // var amountWithTax = formData.rxPackages + formData.rxPackages * 0.1;
-  var amountWithTax =
+  let amountWithTax =
     formData.rxPackages +
     formData.rxPackages *
       state.mdm.settingMeta.find((f) => f.name === "rxCacheCharge")?.value?.gst;
+
   return {
-    values: {
+    endpoint : apiMeta.endpoint.replace(":id", state?.auth?.uid),
+    reduxData: apiMeta.reduxData,
+    values   : {
+      amount: amountWithTax * 100,
       token:
         formData.rxPackages *
         state.mdm.settingMeta.find((f) => f.name === "rxTokenRatio")?.value
           ?.ratio,
-      amount: amountWithTax * 100,
     },
-    endpoint: apiMeta.endpoint.replace(":id", state?.auth?.uid),
-    reduxData: apiMeta.reduxData,
   };
 }
 
 export function SanCreateAppointment(formData, apiMeta, state, others) {
   console.log("formData", formData);
   return {
-    values: {
+    endpoint : apiMeta.endpoint,
+    reduxData: apiMeta.reduxData,
+    values   : {
       ...formData,
       clinicId:
         Number(formData?.clinicId?.Clinic?.id) === 0
           ? null
           : Number(formData?.clinicId?.Clinic?.id),
+      doctorId : state?.profile?.basic?.id,
       patientId: state?.appointment?.patient?.Person?.id,
-      doctorId: state?.profile?.basic?.id,
     },
-    endpoint: apiMeta.endpoint,
-    reduxData: apiMeta.reduxData,
   };
 }
 
 export function SanReadAppointment(data) {
   return {
-      ...data,
-      clinicId: {id: data?.Clinic?.id, label: data?.Clinic?.Address?.fullName, fullName: data?.Clinic?.Address?.fullName}
-    }
+    ...data,
+    clinicId: { fullName: data?.Clinic?.Address?.fullName, id: data?.Clinic?.id, label: data?.Clinic?.Address?.fullName }
+  };
 }
 
 export function SanEditAppointment(form, apiMeta, state, others) {
   let formData = { ...form };
   const endpoint = apiMeta.endpoint.replace(":id", form?.id);
+
   console.error("form", form);
   console.error("endpoint", endpoint);
   console.error("reduxData", apiMeta.reduxData);
   console.error("state", state);
   return {
-    values: {
-      date: formData.date,
-      startTime: formData.startTime,
-      endTime: formData.endTime,
+    endpoint : endpoint,
+    reduxData: apiMeta.reduxData,
+    values   : {
       clinicId:
         Number(formData?.clinicId?.Clinic?.id) === 0
           ? null
           : Number(formData?.clinicId?.Clinic?.id),
+      date     : formData.date,
+      doctorId : state?.profile?.basic?.id,
+      endTime  : formData.endTime,
       patientId: formData["Patient.id"],
-      doctorId: state?.profile?.basic?.id,
+      startTime: formData.startTime,
     },
-    endpoint: endpoint,
-    reduxData: apiMeta.reduxData,
   };
 }
 
 export function SanStringValueAdd(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: {
-      ...formData,
-      table: state?.language?.languageTable?.id,
-      key: state?.language?.languageTableData?.key,
-    },
     endpoint: apiMeta.endpoint,
+    values  : {
+      ...formData,
+      key  : state?.language?.languageTableData?.key,
+      table: state?.language?.languageTable?.id,
+    },
   };
 }
 
 export function SanStringValueEdit(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: {
-      ...formData,
-      table: state?.language?.languageTable?.id,
-      key: state?.language?.languageTableData?.key,
-    },
     endpoint: apiMeta.endpoint.replace(":id", others?.editing),
+    values  : {
+      ...formData,
+      key  : state?.language?.languageTableData?.key,
+      table: state?.language?.languageTable?.id,
+    },
   };
 }
 
@@ -537,18 +544,18 @@ export function SanChemDeptReadMap(data) {
   // console.log("SANITING", apiMeta, others);
   let temp = data?.rows?.map((m) => {
     return {
-      id: m?.id,
-      name: m?.name,
-      priority:
-        m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
-          ? m?.ChemicalDepartments[0]?.priority
-          : 1,
+      groupHead: m.parentId === null ? true : false,
       hasEntry:
         m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
           ? true
           : false,
-      groupHead: m.parentId === null ? true : false,
+      id      : m?.id,
+      name    : m?.name,
       parentId: m?.parentId,
+      priority:
+        m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
+          ? m?.ChemicalDepartments[0]?.priority
+          : 1,
     };
   });
 
@@ -558,10 +565,8 @@ export function SanChemDeptReadMap(data) {
 export function SanChemDeptMap(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: nLevelFlat(formData, {
-      chemDeptMap: nLevelFlat(formData.chemDeptMap, []),
-    }),
     endpoint: apiMeta.endpoint.replace(":id", state?.mdm?.baseChemical?.id),
+    values  : nLevelFlat(formData, { chemDeptMap: nLevelFlat(formData.chemDeptMap, []) }),
   };
 }
 
@@ -592,8 +597,9 @@ function nLevelGroup(data, parentId) {
 }
 
 function nLevelFlat(data, finalData) {
-  for (var i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     let ob = { ...data[i] };
+
     delete ob.__children;
     finalData.push(ob);
     finalData = nLevelFlat(data[i].__children, finalData);
@@ -609,19 +615,7 @@ export function SanRolePermissionReadMap(data, otherData) {
 
   let temp = data?.rows?.map((m) => {
     return {
-      id: m?.id,
-      name: m?.label,
-      priority:
-        m?.RolePermissions &&
-        m?.RolePermissions?.length > 0 &&
-        m.RolePermissions.find(
-          (rp) => rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
-        )
-          ? m.RolePermissions.find(
-              (rp) =>
-                rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
-            )?.priority
-          : 1,
+      groupHead: m.parentId === null ? true : false,
       hasEntry:
         m?.RolePermissions &&
         m?.RolePermissions?.length > 0 &&
@@ -630,8 +624,20 @@ export function SanRolePermissionReadMap(data, otherData) {
         )
           ? true
           : false,
-      groupHead: m.parentId === null ? true : false,
+      id      : m?.id,
+      name    : m?.label,
       parentId: m?.parentId,
+      priority:
+        m?.RolePermissions &&
+        m?.RolePermissions?.length > 0 &&
+        m.RolePermissions.find(
+          (rp) => rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
+        )
+          ? m.RolePermissions.find(
+            (rp) =>
+              rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
+          )?.priority
+          : 1,
     };
   });
 
@@ -641,13 +647,11 @@ export function SanRolePermissionReadMap(data, otherData) {
 export function SanRolePermission(formData, apiMeta, state, others) {
   // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: nLevelFlat(formData, {
-      rolePermissionMap: nLevelFlat(formData.rolePermissionMap, []),
-    }),
     endpoint: apiMeta.endpoint.replace(
       ":id",
       state?.mdm?.rolePermissionRole?.id
     ),
+    values: nLevelFlat(formData, { rolePermissionMap: nLevelFlat(formData.rolePermissionMap, []) }),
   };
 }
 
@@ -658,31 +662,30 @@ export function SanCreateCommunicationTemplate(
   others
 ) {
   return {
-    values: {
+    endpoint: apiMeta.endpoint,
+    values  : {
       ...formData,
       _status: formData?._status ? formData?._status : __EntityStatus.DRAFT,
     },
-    endpoint: apiMeta.endpoint,
   };
 }
 
 export function SanEditCommunicationTemplate(formData, apiMeta, state, others) {
   return {
-    values: {
+    endpoint: apiMeta?.endpoint.replace(":id", apiMeta?.values?.id),
+    values  : {
       ...formData,
       _status: formData?._status ? formData?._status : __EntityStatus.DRAFT,
     },
-    endpoint: apiMeta?.endpoint.replace(":id", apiMeta?.values?.id),
   };
 }
 
 export function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
   const obj = {
-    values: {
-      ...formData,
-    },
     endpoint: apiMeta?.endpoint.replace(":name", formData.name),
+    values  : { ...formData },
   };
+
   return obj;
 }
 
@@ -690,19 +693,19 @@ export function SanStatusUpdate(formData, apiMeta, state, others) {
   const id = formData.id;
   const model = apiMeta?.reduxData?.reduxData?.query?.model;
   const data = { ...formData };
+
   delete data["id"];
   const obj = {
-    values: formData,
     endpoint: apiMeta?.endpoint?.replace(":model", model).replace(":id", id),
+    values  : formData,
   };
+
   return obj;
 }
 
-
-
 export function getBmi(formik, elem, allElements) {
-  const heightId = allElements?.find(el => el.name === 'height')?.id
-  const weightId = allElements?.find(el => el.name === 'weight')?.id
+  const heightId = allElements?.find(el => el.name === "height")?.id;
+  const weightId = allElements?.find(el => el.name === "weight")?.id;
 
   if(heightId 
     && weightId 
@@ -710,9 +713,9 @@ export function getBmi(formik, elem, allElements) {
     && formik?.values[heightId] 
     && formik?.values[weightId] 
   ){
-    return Number(formik?.values[heightId] / (formik?.values[weightId] * formik?.values[weightId] )).toFixed(3)
+    return Number(formik?.values[heightId] / (formik?.values[weightId] * formik?.values[weightId] )).toFixed(3);
   }
   else{
-    return 0
+    return 0;
   }
 }

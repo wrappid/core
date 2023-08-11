@@ -1,30 +1,32 @@
-import React, {useState, useEffect} from "react";
+import { useEffect } from "react";
+
 import { NativeOtpInput } from "@wrappid/styled-components";
-import CoreBox from "../layouts/CoreBox";
+import { useDispatch, useSelector } from "react-redux";
+
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
-import { useDispatch, useSelector } from "react-redux";
-import { apiRequestAction } from "../../store/action/appActions";
 import { SENT_OTP_API } from "../../config/api";
-import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/types/appTypes";
 import { HTTP } from "../../config/constants";
-import CoreSkeleton from "../feedback/CoreSkeleton";
-import CoreTextButton from "./CoreTextButton";
+import { apiRequestAction } from "../../store/action/appActions";
+import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/types/appTypes";
+import CoreClasses from "../../styles/CoreClasses";
 import CoreTimer from "../dataDisplay/custom/CoreTimer";
+import CoreSkeleton from "../feedback/CoreSkeleton";
+import CoreBox from "../layouts/CoreBox";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
   const sendOtpLoading = useSelector(state => state?.app?.sendOtpLoading);
 
   useEffect(()=>{
-    sendOtp()
-  },[])
+    sendOtp();
+  }, []);
 
-  const sendOtp=()=>{
+  const sendOtp = ()=>{
     if(props.to){
       if(props.sendOtp !== false){
-        let data = { data: props.to }
+        let data = { data: props.to };
+
         dispatch(
           apiRequestAction(
             HTTP.POST,
@@ -52,19 +54,26 @@ export default function CoreOtpInput(props) {
     else{
       console.log("Can not send OTP 'to' props not found");
     }
-  } 
+  }; 
 
   return (
-    sendOtpLoading?
+    sendOtpLoading ?
       <CoreSkeleton variant="rectangular"/>
-    :
+      :
       <CoreBox>
         <NativeOtpInput {...props} />
+
         {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {props.helperText}
         </CoreFormHelperText>
-        <CoreTimer action={sendOtp} actionLabel="Resend OTP" seconds={20} timerLabel={"Resend after: "}/>
+
+        <CoreTimer
+          action={sendOtp}
+          actionLabel="Resend OTP"
+          seconds={20}
+          timerLabel={"Resend after: "}/>
       </CoreBox>
   );
 }

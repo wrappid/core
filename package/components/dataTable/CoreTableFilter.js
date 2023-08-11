@@ -1,8 +1,9 @@
 import * as React from "react";
-import CoreBox from "../layouts/CoreBox";
+
+import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 import CoreIconButton from "../inputs/CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreBox from "../layouts/CoreBox";
 
 export default function CoreTableFilter(props) {
   const { head, filtering, ApplyFilter } = props;
@@ -21,6 +22,7 @@ export default function CoreTableFilter(props) {
           </CoreIconButton>
         </CoreTooltip>
       )}
+
       {
         <CoreTooltip title="Search">
           <CoreIconButton onClick={filtering ? ApplyFilter : SetSearch}>
@@ -28,11 +30,12 @@ export default function CoreTableFilter(props) {
           </CoreIconButton>
         </CoreTooltip>
       }
+
       {searchFlag && !filtering && (
         <input
           style={{
-            borderWidth: 0,
             borderBottomWidth: 1,
+            borderWidth      : 0,
           }}
           value={props.query}
           onChange={props.HandleQueryChange}
@@ -55,6 +58,7 @@ export default function CoreTableFilter(props) {
           className="browser-default"
         >
           <option value="">Select filter</option>
+
           {head.dropdowns.map((d) => (
             <option value={head.dropdownValue(d)}>
               {head.dropdownLabel(d)}

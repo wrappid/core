@@ -1,19 +1,18 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
 import {
   NativeDomNavigate,
-  nativeUseLocation,
+  nativeUseLocation
 } from "@wrappid/styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
 import { LOGOUT_API } from "../../../config/api";
 import { HTTP } from "../../../config/constants";
-
-import { CoreTypographyBody1, CoreBox, apiRequestAction } from "@wrappid/core";
-
 import {
   LOGOUT_ERROR,
-  LOGOUT_SUCCESS,
+  LOGOUT_SUCCESS
 } from "../../../store/types/authTypes";
 import CoreClasses from "../../../styles/CoreClasses";
 
@@ -26,17 +25,17 @@ export default function Logout() {
 
   React.useEffect(() => {
     if (location?.state?.logout !== false)
-      dispatch({type:LOGOUT_SUCCESS})
-      dispatch(
-        apiRequestAction(
-          HTTP.POST,
-          LOGOUT_API,
-          true,
-          {},
-          LOGOUT_SUCCESS,
-          LOGOUT_ERROR
-        )
-      );
+      dispatch({ type: LOGOUT_SUCCESS });
+    dispatch(
+      apiRequestAction(
+        HTTP.POST,
+        LOGOUT_API,
+        true,
+        {},
+        LOGOUT_SUCCESS,
+        LOGOUT_ERROR
+      )
+    );
   }, []);
 
   if (!auth?.uid) {
@@ -49,11 +48,7 @@ export default function Logout() {
 
   return (
     <CoreBox
-      styleClasses={[
-        CoreClasses.HEIGHT.VH_100,
-        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-      ]}
+      styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
     >
       {/* <RxLoadingGif /> */}
 

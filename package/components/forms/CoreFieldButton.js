@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { createFormButtonProps } from "../../utils/formUtils";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreIconButton from "../inputs/CoreIconButton";
@@ -25,10 +27,10 @@ export default function CoreFieldButton(props) {
         {element.icon
           ? element.icon
           : element.actionType === "submit"
-          ? "save"
-          : element.actionType === "button"
-          ? "cancel"
-          : ""}
+            ? "save"
+            : element.actionType === "button"
+              ? "cancel"
+              : ""}
       </CoreIcon>
     </CoreIconButton>
   );

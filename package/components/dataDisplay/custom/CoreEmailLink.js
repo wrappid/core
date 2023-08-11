@@ -1,13 +1,17 @@
+// eslint-disable-next-line unused-imports/no-unused-imports
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import { UtilityClasses } from "@wrappid/styles";
+
 import CoreIcon, { __IconTypes } from "..//CoreIcon";
+import CoreClasses from "../../../styles/CoreClasses";
+import { maskEmailOrPhone } from "../../../utils/stringUtils";
+import CoreStack from "../../layouts/CoreStack";
+import CoreLink from "../../navigation/CoreLink";
 import CoreTooltip from "../CoreTooltip";
 import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
 import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
-import CoreStack from "../../layouts/CoreStack";
-import CoreLink from "../../navigation/CoreLink";
-import { maskEmailOrPhone } from "../../../utils/stringUtils";
-import { UtilityClasses } from "@wrappid/styles";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function CoreEmailLink(props) {
   const {
@@ -24,7 +28,8 @@ export default function CoreEmailLink(props) {
       <>
         {email ? (
           <CoreStack direction={"row"} spacing={1}>
-             <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
+            <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
+
             <CoreLink href={`mailto:${email}`}>
               {size === "small" ? (
                 <CoreTypographyCaption
@@ -50,9 +55,7 @@ export default function CoreEmailLink(props) {
               <CoreIcon
                 type={__IconTypes.MATERIAL_OUTLINED_ICON}
                 styleClasses={
-                  verified
-                    ? [CoreClasses?.ICON?.VERIFIED_SUCCESS]
-                    : [CoreClasses?.ICON?.VERIFIED_WARNING]
+                  [CoreClasses.MARGIN.ML_N1, ...(verified ? CoreClasses.ICON.VERIFIED_SUCCESS : CoreClasses.ICON.VERIFIED_WARNING)]
                 }
               >
                 {verified ? "verified" : "error_outline"}

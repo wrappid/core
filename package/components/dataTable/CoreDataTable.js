@@ -1,44 +1,41 @@
 import * as React from "react";
-import CoreTable from "../dataDisplay/CoreTable";
-import CoreDataTableHead from "./CoreDataTableHead";
+
 import { useDispatch, useSelector } from "react-redux";
-import { apiRequestAction } from "../../store/action/appActions";
+
+import CoreDataTableBody from "./CoreDataTableBody";
+import CoreDataTableDetailsPane from "./CoreDataTableDetailsPane";
+import CoreDataTableHead from "./CoreDataTableHead";
+import CoreDataTableToolbar from "./CoreDataTableToolbar";
 import {
   HTTP,
   userSettingsConstants,
-  __TableDensity,
+  __TableDensity
 } from "../../config/constants";
-import { getUUID } from "../../utils/appUtils";
-import {
-  getTableDensityPaddingValue,
-  getTableDensityValue,
-  prepareTableAPIQuery,
-  __TableLeftPanelGridSize,
-  __TableRightPanelGridSize,
-} from "../../utils/tableUtils";
-import CoreDataTableBody from "./CoreDataTableBody";
+import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
+import { apiRequestAction } from "../../store/action/appActions";
 import {
   READ_DATA_ERROR,
   READ_DATA_LOADING,
   READ_DATA_SUCCESS,
   UPDATE_FILTER_DATA,
   UPDATE_QUERY_ORDER_DATA,
-  UPDATE_QUERY_SEARCH_VALUE_DATA,
+  UPDATE_QUERY_SEARCH_VALUE_DATA
 } from "../../store/types/dataManagementTypes";
-import CoreDataTableToolbar from "./CoreDataTableToolbar";
-import CoreGrid from "../layouts/CoreGrid";
-import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import { FORM_INIT_UPDATE } from "../../store/types/formTypes";
-import CoreDataTableDetailsPane from "./CoreDataTableDetailsPane";
-import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
-import { UPDATE_USER_SETTINGS } from "../../config/api";
-import {
-  USER_SETTINGS_UPDATE_ERROR,
-  USER_SETTINGS_UPDATE_SUCCESS,
-} from "../../store/types/settingsTypes";
-import { compareObject } from "../../utils/objectUtils";
 import CoreClasses from "../../styles/CoreClasses";
+import { getUUID } from "../../utils/appUtils";
+import { compareObject } from "../../utils/objectUtils";
+import {
+  getTableDensityPaddingValue,
+  getTableDensityValue,
+  prepareTableAPIQuery,
+  __TableLeftPanelGridSize,
+  __TableRightPanelGridSize
+} from "../../utils/tableUtils";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
+import CoreTable from "../dataDisplay/CoreTable";
+import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
+import CoreGrid from "../layouts/CoreGrid";
 
 /**
  * @TODO
@@ -97,6 +94,7 @@ export default function CoreDataTable(props) {
   // platform detection
   
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+
   React.useEffect(() => {
     setPlatform(detectPlatform());
   }, []);
@@ -110,7 +108,7 @@ export default function CoreDataTable(props) {
     entity = null, // data store entity name must be unique [default: null]
     filterQuery = {
       filter: {}, // this filter automatically applied on the API query
-      order: {}, // this order automatically applied on the API query
+      order : {}, // this order automatically applied on the API query
     },
     api = null, // get data api [default: null]
     reduxType = {}, // here we can have crud operation specific reducer type
@@ -226,13 +224,11 @@ export default function CoreDataTable(props) {
   React.useEffect(() => {
     if (detailedRowData)
       dispatch({
-        type: FORM_INIT_UPDATE,
         payload: {
+          data  : { data: detailedRowData },
           formId: detailsPaneUpdateFormID,
-          data: {
-            data: detailedRowData,
-          },
         },
+        type: FORM_INIT_UPDATE,
       });
   }, [detailsPaneUpdateFormID, detailedRowData]);
 
@@ -249,35 +245,35 @@ export default function CoreDataTable(props) {
     success = false,
     error = false,
     data = {
-      columns: columns || [],
-      rows: rows || [],
+      columns     : columns || [],
+      rows        : rows || [],
       totalRecords: (rows && rows.length) || 0,
     },
     form = {
       create: {
+        error  : false,
         loading: false,
         success: false,
-        error: false,
-      },
-      update: {
-        loading: false,
-        success: false,
-        error: false,
       },
       delete: {
+        error  : false,
         loading: false,
         success: false,
-        error: false,
+      },
+      update: {
+        error  : false,
+        loading: false,
+        success: false,
       },
     },
     query = {
-      currentRows: (rows && rows.length) || 0,
-      page: 0,
-      maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
-      pagesToCache: pagesToCache,
-      _order: {},
-      _filter: {},
+      _filter     : {},
+      _order      : {},
       _searchValue: "",
+      currentRows : (rows && rows.length) || 0,
+      maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
+      page        : 0,
+      pagesToCache: pagesToCache,
     },
   } = dataStore[tableUUID] || {};
 
@@ -363,6 +359,7 @@ export default function CoreDataTable(props) {
      */
     console.log(`event.ctrlKey= ${event.ctrlKey}`);
     let tmpOrder = query?._order;
+
     if (event.ctrlKey) {
       tmpOrder = { ...tmpOrder, [column]: order };
     } else {
@@ -370,11 +367,11 @@ export default function CoreDataTable(props) {
     }
 
     dispatch({
-      type: UPDATE_QUERY_ORDER_DATA,
       payload: {
         entity: entity,
-        order: tmpOrder,
+        order : tmpOrder,
       },
+      type: UPDATE_QUERY_ORDER_DATA,
     });
   };
 
@@ -383,20 +380,20 @@ export default function CoreDataTable(props) {
    */
   const filterData = () => {
     dispatch({
-      type: UPDATE_QUERY_SEARCH_VALUE_DATA,
       payload: {
-        entity: tableUUID,
+        entity     : tableUUID,
         searchValue: searchValue,
       },
+      type: UPDATE_QUERY_SEARCH_VALUE_DATA,
     });
   };
   const clearFilterData = () => {
     dispatch({
-      type: UPDATE_QUERY_SEARCH_VALUE_DATA,
       payload: {
-        entity: tableUUID,
+        entity     : tableUUID,
         searchValue: "",
       },
+      type: UPDATE_QUERY_SEARCH_VALUE_DATA,
     });
   };
 
@@ -407,9 +404,11 @@ export default function CoreDataTable(props) {
    */
   const handleRowSelectAll = (event) => {
     let _selectedAll = event.target.checked ? true : false;
+
     if (_selectedAll) {
       // if checked add all
       const newSelected = tableData.map((td) => td.id);
+
       setSelected(newSelected);
     } else {
       // if not checked add empty array
@@ -424,6 +423,7 @@ export default function CoreDataTable(props) {
    */
   const handleRowSelect = (event, rowIndex) => {
     let _selected = event.target.checked ? true : false;
+
     if (_selected) {
       // if checked add
       setSelected(...selected, [rowIndex]);
@@ -432,6 +432,7 @@ export default function CoreDataTable(props) {
       let _tempSelected = selected.filter((_s) => {
         return _s !== rowIndex;
       });
+
       setSelected(_tempSelected);
     }
   };
@@ -446,12 +447,12 @@ export default function CoreDataTable(props) {
       console.log("before dispatch entity=" + entity);
       console.log("before dispatch tableUUID=" + tableUUID);
       dispatch({
-        type: READ_DATA_LOADING,
         payload: {
+          data  : { columns },
           entity: tableUUID,
-          data: { columns },
-          query: { maxRowInPage: maxRowsInPage },
+          query : { maxRowInPage: maxRowsInPage },
         },
+        type: READ_DATA_LOADING,
       });
     }
     callAsync();
@@ -476,12 +477,12 @@ export default function CoreDataTable(props) {
 
   React.useEffect(() => {
     dispatch({
-      type: READ_DATA_LOADING,
       payload: {
+        data  : { columns },
         entity: tableUUID,
-        data: { columns },
-        query: { maxRowInPage: maxRowsInPage },
+        query : { maxRowInPage: maxRowsInPage },
       },
+      type: READ_DATA_LOADING,
     });
   }, [tableUUID]);
 
@@ -526,8 +527,8 @@ export default function CoreDataTable(props) {
   React.useEffect(() => {
     console.log("Filtered values changed=", filterValues);
     dispatch({
-      type: UPDATE_FILTER_DATA,
       payload: { entity, filterValues },
+      type   : UPDATE_FILTER_DATA,
     });
   }, [filterValues]);
 
@@ -548,6 +549,7 @@ export default function CoreDataTable(props) {
             }`
           );
           let _endpoint = api || "/business/all/" + entity;
+
           dispatch(
             apiRequestAction(
               HTTP.GET,
@@ -573,15 +575,15 @@ export default function CoreDataTable(props) {
         }
       } else {
         dispatch({
-          type: READ_DATA_SUCCESS,
           payload: {
-            entity: tableUUID,
             data: {
+              columns     : columns,
               rows,
-              columns: columns,
               totalRecords: rows.length,
             },
+            entity: tableUUID,
           },
+          type: READ_DATA_SUCCESS,
         });
       }
     }
@@ -594,10 +596,12 @@ export default function CoreDataTable(props) {
   console.log("Page=" + page);
 
   const [tableColumnsToShow, setTableColumnsToShow] = React.useState([]);
+
   React.useEffect(() => {
     if (!tableColumnsToShow || tableColumnsToShow?.length === 0) {
       let lastProcessedPriority = DATA_TABLE_CONST.LOWEST_PRIORITY;
       let usedColumnIds = [];
+
       DATA_TABLE_CONST.DEFAULT_COLUMNS_IDS.sort(
         (firstCol, secondCol) =>
           firstCol.priority - secondCol.priority ||
@@ -640,8 +644,9 @@ export default function CoreDataTable(props) {
   // change of default filter
   const [_filterQuery, set_filterQuery] = React.useState({
     filter: {},
-    order: {},
+    order : {},
   });
+
   React.useEffect(() => {
     set_filterQuery(filterQuery);
   }, []);
@@ -721,6 +726,7 @@ export default function CoreDataTable(props) {
             setMaxRowInPage={setMaxRowInPage}
           />
         )}
+
         <CoreTable
           gridProps={{
             gridSize: {
@@ -740,9 +746,7 @@ export default function CoreDataTable(props) {
           hover={rowHover}
           coreId={tableUUID}
           size={getTableDensityValue(tableDensity)}
-          sx={{
-            padding: getTableDensityPaddingValue(tableDensity),
-          }}
+          sx={{ padding: getTableDensityPaddingValue(tableDensity) }}
           {...props.tableProps}
         >
           <CoreDataTableHead
@@ -775,6 +779,7 @@ export default function CoreDataTable(props) {
             enableDetailsPane={enableDetailsPane}
             _showDetailsPane={_showDetailsPane}
           />
+
           <CoreDataTableBody
             {...props.tableBodyProps}
             tableUUID={tableUUID}
@@ -809,6 +814,7 @@ export default function CoreDataTable(props) {
             page={page}
           />
         </CoreTable>
+
         {enableDetailsPane && _showDetailsPane && (
           <CoreDataTableDetailsPane
             gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}

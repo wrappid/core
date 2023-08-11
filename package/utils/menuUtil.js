@@ -1,4 +1,5 @@
-import React from "react";
+import { getNativeMenuItem } from "@wrappid/styled-components";
+
 import {
   MENU_HEADER_ITEM,
   MENU_ITEM,
@@ -7,9 +8,8 @@ import {
   MENU_ITEM_TEXT,
   MENU_ITEM_WRAPPER,
   MENU_PARENT_ITEM,
-  MENU_SEPERATOR,
+  MENU_SEPERATOR
 } from "../config/menuConstants";
-import { getNativeMenuItem } from "@wrappid/styled-components";
 
 export function createMultiLevelMenu(
   menu,
@@ -48,6 +48,7 @@ export function createMultiLevelMenu(
             MENU_SEPERATOR,
           }
         )}
+
         {multiLevel &&
           itemData?.Children &&
           itemData?.Children.length > 0 &&

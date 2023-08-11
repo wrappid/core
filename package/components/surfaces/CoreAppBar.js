@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { getSettingMeta } from "../../store/action/mdmAction";
-import { useDispatch, useSelector } from "react-redux";
-import { urls } from "../../config/constants";
+
 import { NativeAppBar } from "@wrappid/styled-components";
 import { UtilityClasses } from "@wrappid/styles";
-import { APP_PLATFORM, detectPlatform } from "../../utils/themeUtil";
-import CoreClasses from "../../styles/CoreClasses";
-import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
-import CorePopover from "../utils/CorePopover";
-import CoreToolbar from "../surfaces/CoreToolbar";
-import CoreStack from "../layouts/CoreStack";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreImage from "../dataDisplay/CoreImage";
-import CoreAvatar from "../dataDisplay/CoreAvatar";
-import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
-import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
+import { useDispatch, useSelector } from "react-redux";
+
+import { urls } from "../../config/constants";
 import { coreUseNavigate } from "../../helper/routerHelper";
+import { getSettingMeta } from "../../store/action/mdmAction";
+import CoreClasses from "../../styles/CoreClasses";
+import { detectPlatform } from "../../utils/themeUtil";
 import CoreComponent from "../CoreComponent";
+import CoreAvatar from "../dataDisplay/CoreAvatar";
+import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreIconButton from "../inputs/CoreIconButton";
+import CoreStack from "../layouts/CoreStack";
+import CoreToolbar from "../surfaces/CoreToolbar";
+import CorePopover from "../utils/CorePopover";
+import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
+import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
+import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE: "PROFILE",
-    QUICK_MENU: "QUICK_MENU",
+    PROFILE     : "PROFILE",
+    QUICK_MENU  : "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -47,12 +48,7 @@ export default function CoreAppBar(props) {
       }
       dispatch(getSettingMeta(null, auth.accessToken));
     }
-  }, [
-    getSettingMetaFlag,
-    mdm.getSettingMetaSuccess,
-    dispatch,
-    auth.accessToken,
-  ]);
+  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
 
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
@@ -73,11 +69,7 @@ export default function CoreAppBar(props) {
     <>
       <NativeAppBar {...props}>
         <CoreToolbar
-          styleClasses={[
-            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.FLEX.DIRECTION_ROW,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
+          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           <CoreStack
             direction="row"
@@ -106,11 +98,7 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[
-                CoreClasses.WIDTH.W_100,
-                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              ]}
+              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
@@ -176,6 +164,7 @@ export default function CoreAppBar(props) {
           )}
         </CoreToolbar>
       </NativeAppBar>
+
       {/* AppBar PopOver */}
       {_appbarContent && (
         <CorePopover
@@ -185,7 +174,7 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical: "bottom",
+            vertical  : "bottom",
           }}
         >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (

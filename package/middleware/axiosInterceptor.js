@@ -1,14 +1,14 @@
-import { reloadToken } from "../utils/appUtils";
 
 async function tempFetch(apiConfig) {
   console.log("API CALLL", apiConfig);
   let res = await fetch(apiConfig.url, {
-    method: apiConfig.method,
+    body   : apiConfig.data,
     headers: apiConfig.headers,
-    body: apiConfig.data,
+    method : apiConfig.method,
   });
 
   let data = await res.json();
+
   if (res.status === 401 || res.status === 403) {
     /**
      * @todo
@@ -16,20 +16,20 @@ async function tempFetch(apiConfig) {
      */
     throw {
       response: {
-        status: res.status,
         data,
+        status: res.status,
       },
     };
     // reloadToken();
   } else if (res.status === 500 || !String(res.status).startsWith("20")) {
     throw {
       response: {
-        status: res.status,
         data,
+        status: res.status,
       },
     };
   } else {
-    return { status: res.status, data };
+    return { data, status: res.status };
   }
 }
 

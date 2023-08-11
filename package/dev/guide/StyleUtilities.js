@@ -1,4 +1,3 @@
-import { __IconTypes } from "../../components/dataDisplay/CoreIcon";
 import CoreH4 from "../../components/dataDisplay/heading/CoreH4";
 import CoreH5 from "../../components/dataDisplay/heading/CoreH5";
 import CoreH6 from "../../components/dataDisplay/heading/CoreH6";
@@ -15,12 +14,17 @@ const getUtilitySamples = () => {
   return (
     <>
       {getHeading("Style Utilities")}
+
       <CoreTypographyBody1>
         These are style utilities built using bootstrap flavour.
       </CoreTypographyBody1>
+
       {getBackgroundColorUtilitySamples()}
+
       {getBorderUtilitySamples()}
+
       {getColorUtilitySamples()}
+
       {getTextUtilitySamples()}
     </>
   );
@@ -30,21 +34,19 @@ const getBackgroundColorUtilitySamples = () => {
   return (
     <>
       {getTopicHeading("Background color")}
+
       <CoreTypographyBody1>
         Similar to the contextual text color classes, set the background of an
         element to any contextual class. Background utilities do not set color,
         so in some cases you’ll want to use .text-*
       </CoreTypographyBody1>
+
       <CoreGrid>
         {Object.keys(CoreClasses.BG).map((bgClass) => {
           return (
             <CoreBox
               gridProps={{ gridSize: 4 }}
-              styleClasses={[
-                CoreClasses.BG[bgClass],
-                CoreClasses.PADDING.P2,
-                CoreClasses.MARGIN.MB1,
-              ]}
+              styleClasses={[CoreClasses.BG[bgClass], CoreClasses.PADDING.P2, CoreClasses.MARGIN.MB1]}
             >
               {bgClass}
             </CoreBox>
@@ -64,6 +66,7 @@ const getBorderUtilitySamples = () => {
         In the examples the border-width is forcefully given 2px, so that
         examples are easily visible.
       </CoreTypographyBody1>
+
       <CoreGrid>
         {Object.keys(CoreClasses.BORDER).map((borderClass) => {
           return (
@@ -91,19 +94,17 @@ const getColorUtilitySamples = () => {
   return (
     <>
       {getTopicHeading("Color")}
+
       <CoreTypographyBody1>
         Colorize text with text color utilities.
       </CoreTypographyBody1>
+
       <CoreGrid>
         {Object.keys(CoreClasses.COLOR).map((colorClass) => {
           return (
             <CoreBox
               gridProps={{ gridSize: 3 }}
-              styleClasses={[
-                CoreClasses.COLOR[colorClass],
-                CoreClasses.PADDING.PX2,
-                CoreClasses.MARGIN.MB1,
-              ]}
+              styleClasses={[CoreClasses.COLOR[colorClass], CoreClasses.PADDING.PX2, CoreClasses.MARGIN.MB1]}
             >
               {colorClass}
             </CoreBox>
@@ -117,17 +118,15 @@ const getTextUtilitySamples = () => {
   return (
     <>
       {getTopicHeading("Text")}
+
       <CoreTypographyBody1></CoreTypographyBody1>
+
       <CoreGrid>
         {Object.keys(CoreClasses.TEXT).map((textClass) => {
           return (
             <CoreBox
               gridProps={{ gridSize: 3 }}
-              styleClasses={[
-                CoreClasses.TEXT[textClass],
-                CoreClasses.PADDING.PX2,
-                CoreClasses.MARGIN.MB1,
-              ]}
+              styleClasses={[CoreClasses.TEXT[textClass], CoreClasses.PADDING.PX2, CoreClasses.MARGIN.MB1]}
             >
               {textClass}
             </CoreBox>
@@ -151,11 +150,7 @@ const getHeading = (headingText) => {
 const getSubHeading = (subHeadingText) => {
   return (
     <CoreH5
-      styleClasses={[
-        CoreClasses.MARGIN.MY2,
-        CoreClasses.COLOR.TEXT_SECONDARY,
-        CoreClasses.TEXT.TEXT_UPPERCASE,
-      ]}
+      styleClasses={[CoreClasses.MARGIN.MY2, CoreClasses.COLOR.TEXT_SECONDARY, CoreClasses.TEXT.TEXT_UPPERCASE]}
     >
       {subHeadingText}
     </CoreH5>

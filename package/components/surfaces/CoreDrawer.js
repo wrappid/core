@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import CoreMenu from "../inputs/CoreMenu";
+
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
-import { toggleMenuItemState } from "../../store/action/menuAction";
+import { useDispatch, useSelector } from "react-redux";
+
 import { ThemeContext } from "../../config/contextHandler";
+import { toggleMenuItemState } from "../../store/action/menuAction";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
+import CoreMenu from "../inputs/CoreMenu";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ export default function CoreDrawer(props) {
   const { open, toggleDrawer } = props;
 
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+
   React.useEffect(() => {
     setPlatform(detectPlatform());
   }, []);

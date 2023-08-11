@@ -1,4 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import CoreClasses from "../../../styles/CoreClasses";
 import { getLabel } from "../../../utils/stringUtils";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
@@ -8,7 +11,6 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import { CoreTextField } from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function FilterColumn(props) {
   const {
@@ -30,6 +32,7 @@ export default function FilterColumn(props) {
   React.useEffect(() => {
     if (searchString) {
       let tmpSearchString = searchString?.toLocaleLowerCase();
+
       console.log("########################");
       console.log(`Searched Column String: ${searchString}`);
       console.log(
@@ -94,9 +97,11 @@ export default function FilterColumn(props) {
                     <CoreIcon>clear</CoreIcon>
                   </CoreIconButton>
                 )}
+
                 <CoreIconButton title={"Hide all"} onClick={hideAllColumns}>
                   <CoreIcon>playlist_remove</CoreIcon>
                 </CoreIconButton>
+
                 <CoreIconButton title={"Show all"} onClick={showAllColumns}>
                   <CoreIcon>playlist_add_check</CoreIcon>
                 </CoreIconButton>
@@ -104,6 +109,7 @@ export default function FilterColumn(props) {
             ),
           }}
         />
+
         {/* <CoreStack direction="column">
           <CoreFormControlLabel
             control={
@@ -118,6 +124,7 @@ export default function FilterColumn(props) {
           />
         </CoreStack> */}
       </CoreBox>
+
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreStack direction="column">
           {(searchString &&
@@ -126,8 +133,8 @@ export default function FilterColumn(props) {
           searchedColumns?.length > 0
             ? searchedColumns
             : tableColumns?.filter(
-                (tblCol) => !auditColumnsKey.includes(tblCol.id)
-              )
+              (tblCol) => !auditColumnsKey.includes(tblCol.id)
+            )
           )?.map((col) => {
             return (
               !auditColumnsKey.includes(col.id) && (

@@ -5,7 +5,7 @@ import {
   profileBasicgender,
   profileRegistrationSpecilization,
   searchClinic,
-  searchPatient,
+  searchPatient
 } from "./asyncSelectCustomFunctions";
 
 export const __CHANGEPRIMARYCONTACT_GET_OPTION_VALUE = "__CHANGEPRIMARYCONTACT_GET_OPTION_VALUE";
@@ -36,33 +36,33 @@ export const __SEARCH_CLINIC_IS_OPTIONS_EQUAL_TO_VALUE =
   "__SEARCH_CLINIC_IS_OPTIONS_EQUAL_TO_VALUE";
 
 export const ASYNC_SELECT_FUNCTION_MAP = {
-  __CHANGEPRIMARYCONTACT_GET_OPTION_VALUE: changePrimaryContact.getOptionValue,
-  __CHANGEPRIMARYCONTACT_GET_OPTION_LABEL: changePrimaryContact.getOptionLabel,
+  __CHANGEPRIMARYCONTACT_GET_OPTION_LABEL         : changePrimaryContact.getOptionLabel,
+  __CHANGEPRIMARYCONTACT_GET_OPTION_VALUE         : changePrimaryContact.getOptionValue,
   __CHANGEPRIMARYCONTACT_IS_OPTIONS_EQUAL_TO_VALUE: changePrimaryContact.isOptionsEqualToValue,
 
-  __PROFILEBASICGENDER_GET_OPTION_VALUE: profileBasicgender.getOptionValue,
-  __PROFILEBASICGENDER_GET_OPTION_LABEL: profileBasicgender.getOptionLabel,
-  __PROFILEBASICGENDER_IS_OPTIONS_EQUAL_TO_VALUE: profileBasicgender.isOptionEqualToValue,
+  __MASTERDATA_GET_OPTION_LABEL         : masterData.getOptionLabel,
+  __MASTERDATA_GET_OPTION_VALUE         : masterData.getOptionValue,
+  __MASTERDATA_IS_OPTIONS_EQUAL_TO_VALUE: masterData.isOptionsEqualToValue,
 
-  __PROFILEREGISTRATIONSPECILIZATION_GET_OPTION_VALUE:
-    profileRegistrationSpecilization.getOptionValue,
+  __PRESCRIPTIONASYNCSELECTS_GET_OPTION_LABEL: prescriptionAsyncSelects.getOptionLabel,
 
   __PRESCRIPTIONASYNCSELECTS_GET_OPTION_VALUE: prescriptionAsyncSelects.getOptionValue,
-  __PRESCRIPTIONASYNCSELECTS_GET_OPTION_LABEL: prescriptionAsyncSelects.getOptionLabel,
   __PRESCRIPTIONASYNCSELECTS_IS_OPTIONS_EQUAL_TO_VALUE:
     prescriptionAsyncSelects.isOptionEqualToValue,
+  __PROFILEBASICGENDER_GET_OPTION_LABEL: profileBasicgender.getOptionLabel,
 
-  __SEARCHPATIENT_ON_CHANGE_DISPATCH: searchPatient.onChangeDispatch,
-  __SEARCHPATIENT_GET_OPTION_VALUE: searchPatient.getOptionValue,
+  __PROFILEBASICGENDER_GET_OPTION_VALUE         : profileBasicgender.getOptionValue,
+  __PROFILEBASICGENDER_IS_OPTIONS_EQUAL_TO_VALUE: profileBasicgender.isOptionEqualToValue,
+  __PROFILEREGISTRATIONSPECILIZATION_GET_OPTION_VALUE:
+    profileRegistrationSpecilization.getOptionValue,
   __SEARCHPATIENT_GET_OPTION_LABEL: searchPatient.getOptionLabel,
+
+  __SEARCHPATIENT_GET_OPTION_VALUE         : searchPatient.getOptionValue,
   __SEARCHPATIENT_IS_OPTIONS_EQUAL_TO_VALUE: searchPatient.isOptionsEqualToValue,
+  __SEARCHPATIENT_ON_CHANGE_DISPATCH       : searchPatient.onChangeDispatch,
+  __SEARCH_CLINIC_GET_OPTION_LABEL         : searchClinic.getOptionLabel,
 
-  __SEARCH_CLINIC_ON_CHANGE_DISPATCH: searchClinic.onChangeDispatch,
-  __SEARCH_CLINIC_GET_OPTION_VALUE: searchClinic.getOptionValue,
-  __SEARCH_CLINIC_GET_OPTION_LABEL: searchClinic.getOptionLabel,
+  __SEARCH_CLINIC_GET_OPTION_VALUE         : searchClinic.getOptionValue,
   __SEARCH_CLINIC_IS_OPTIONS_EQUAL_TO_VALUE: searchClinic.isOptionsEqualToValue,
-
-  __MASTERDATA_GET_OPTION_LABEL: masterData.getOptionLabel,
-  __MASTERDATA_GET_OPTION_VALUE: masterData.getOptionValue,
-  __MASTERDATA_IS_OPTIONS_EQUAL_TO_VALUE: masterData.isOptionsEqualToValue,
+  __SEARCH_CLINIC_ON_CHANGE_DISPATCH       : searchClinic.onChangeDispatch,
 };

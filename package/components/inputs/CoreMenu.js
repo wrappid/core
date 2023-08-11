@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+
 import { nativeUseLocation } from "@wrappid/styled-components";
-import { createMultiLevelMenu } from "../../utils/menuUtil";
-import CoreStack from "../layouts/CoreStack";
+
 import { ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
+import { createMultiLevelMenu } from "../../utils/menuUtil";
+import CoreStack from "../layouts/CoreStack";
 
 export default function CoreMenu(props) {
   const {
@@ -27,6 +29,7 @@ export default function CoreMenu(props) {
     }
   }
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
+
   console.log("MENU", menu, openCollapse);
   const theme = useContext(ThemeContext);
 
@@ -35,10 +38,7 @@ export default function CoreMenu(props) {
       direction="column"
       styleClasses={
         miniDrawer &&
-        !open && [
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_START,
-          CoreClasses.PADDING.PL1,
-        ]
+        !open && [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START, CoreClasses.PADDING.PL1]
       }
     >
       {createMultiLevelMenu(

@@ -1,17 +1,19 @@
 import * as React from "react";
+
 import PropTypes from "prop-types";
+
 import TableBulkAction from "./CoreTableBulkAction";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreBox from "../layouts/CoreBox";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreCheckbox from "../inputs/CoreCheckbox";
-import CorePopover from "../utils/CorePopover";
-import CoreFormGroup from "../forms/CoreFormGroup";
-import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
+import config from "../../config/config";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
-import config from "../../config/config";
+import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreFormGroup from "../forms/CoreFormGroup";
+import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
+import CoreCheckbox from "../inputs/CoreCheckbox";
+import CoreIconButton from "../inputs/CoreIconButton";
+import CoreBox from "../layouts/CoreBox";
 import CoreToolBar from "../surfaces/CoreToolbar";
+import CorePopover from "../utils/CorePopover";
 
 export default function CoreTableToolBar(props) {
   const { HandleColumnFilter, columns, bulkActions, selected } = props;
@@ -32,10 +34,8 @@ export default function CoreTableToolBar(props) {
     <CoreToolBar
       sx={{
         pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(selected.length > 0 && {
-          bgcolor: config.color.primaryTextColorLight,
-        }),
+        pr: { sm: 1, xs: 1 },
+        ...(selected.length > 0 && { bgcolor: config.color.primaryTextColorLight }),
       }}
     >
       {selected.length > 0 ? (
@@ -58,14 +58,15 @@ export default function CoreTableToolBar(props) {
               <CoreIcon>filter_list</CoreIcon>
             </CoreIconButton>
           </CoreTooltip>
+
           <CorePopover
             id={id}
             open={open}
             anchorEl={anchorEl}
             onClose={handleClose}
             anchorOrigin={{
-              vertical: "bottom",
               horizontal: "left",
+              vertical  : "bottom",
             }}
           >
             {props?.headCells?.map((col) => (
@@ -91,6 +92,4 @@ export default function CoreTableToolBar(props) {
   );
 }
 
-CoreTableToolBar.propTypes = {
-  selected: PropTypes.array.isRequired,
-};
+CoreTableToolBar.propTypes = { selected: PropTypes.array.isRequired };

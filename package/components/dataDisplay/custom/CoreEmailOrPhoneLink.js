@@ -1,27 +1,27 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import { UtilityClasses } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
 
 import { SENT_OTP_API } from "../../../config/api";
 import { HTTP, communicationTypes } from "../../../config/constants";
-
+import { apiRequestAction } from "../../../store/action/appActions";
 import { toggleModalState } from "../../../store/action/modalAction";
 import {
   OTP_SENT_ERROR,
-  OTP_SENT_SUCCESS,
+  OTP_SENT_SUCCESS
 } from "../../../store/types/settingsTypes";
-import { apiRequestAction } from "../../../store/action/appActions";
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreForm from "../../forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_IDS } from "../../forms/coreFormConstants";
-import CoreTypographyBody1 from "../paragraph/CoreTypographyBody1";
+import CoreTextButton from "../../inputs/CoreTextButton";
 import CoreLink from "../../navigation/CoreLink";
 import CoreIcon from "../CoreIcon";
-import CoreTextButton from "../../inputs/CoreTextButton";
-import CoreClasses from "../../../styles/CoreClasses";
-import { UtilityClasses } from "@wrappid/styles";
+import CoreTypographyBody1 from "../paragraph/CoreTypographyBody1";
 
 export default function CoreEmailOrPhoneLink(props) {
   const dispatch = useDispatch();
-  const personId = useSelector((state) => state?.profile?.basic?.id);
   const verifyOtpSuccess = useSelector(
     (state) => state?.settings?.verifyOtpSuccess
   );
@@ -66,7 +66,7 @@ export default function CoreEmailOrPhoneLink(props) {
     );
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (verifyOtpSuccess) {
       // Dispatch an action to close the modal
       dispatch(toggleModalState({}));

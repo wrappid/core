@@ -1,8 +1,7 @@
-import * as React from "react";
 
+import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 import CoreIconButton from "../inputs/CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
 
 export default function CoreTableBulkAction({ bulkActions, selected }) {
   return (

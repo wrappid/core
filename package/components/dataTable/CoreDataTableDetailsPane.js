@@ -1,13 +1,20 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import CoreTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
+import CoreTableAction from "./CoreTableAction";
+import TableRowAuditData from "./TableRowAuditData";
 import { ENV_DEV_MODE } from "../../config/constants";
+import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
 import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon from "../dataDisplay/CoreIcon";
+import StatusText from "../dataDisplay/custom/StatusText";
 import CoreH1 from "../dataDisplay/heading/CoreH1";
+import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreForm from "../forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreIconButton from "../inputs/CoreIconButton";
 import CoreStack from "../layouts/CoreStack";
 import CoreAccordion from "../surfaces/CoreAccordion";
 import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
@@ -15,13 +22,6 @@ import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
-import CoreTableAction from "./CoreTableAction";
-import TableRowAuditData from "./TableRowAuditData";
-import StatusText from "../dataDisplay/custom/StatusText";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreClasses from "../../styles/CoreClasses";
-import CoreTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
-import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -78,14 +78,16 @@ export default function CoreDataTableDetailsPane(props) {
                   <CoreTypographyCaption>
                     {"ID: " + detailedRowData["id"]}
                   </CoreTypographyCaption>
+
                   {detailedRowData.hasOwnProperty("id") &&
                     detailedRowData.hasOwnProperty("_status") && (
-                      <CoreTypographyCaption
-                        styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
-                      >
-                        {"|"}
-                      </CoreTypographyCaption>
-                    )}
+                    <CoreTypographyCaption
+                      styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+                    >
+                      {"|"}
+                    </CoreTypographyCaption>
+                  )}
+
                   <StatusText status={detailedRowData["_status"]} />
                 </CoreStack>
               </>
@@ -106,6 +108,7 @@ export default function CoreDataTableDetailsPane(props) {
                   rowData={detailedRowData}
                 />
               )}
+
               {/* <CoreIconButton
                 onClick={(e) => {
                   set_showDetailsPane(false);
@@ -118,6 +121,7 @@ export default function CoreDataTableDetailsPane(props) {
             </CoreStack>
           }
         />
+
         <CoreCardContent>
           {detailedRowData ? (
             <>
@@ -131,6 +135,7 @@ export default function CoreDataTableDetailsPane(props) {
                   <CoreAccordionSummary>
                     <CoreLabel>JSON Schema</CoreLabel>
                   </CoreAccordionSummary>
+
                   <CoreAccordionDetail>
                     {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
                     <CoreLabel>
@@ -139,30 +144,31 @@ export default function CoreDataTableDetailsPane(props) {
                   </CoreAccordionDetail>
                 </CoreAccordion>
               )}
+
               {preRenderDetailsPaneComponent && (
                 <>
                   <CoreDivider />
-                  {React.createElement(preRenderDetailsPaneComponent, {
-                    data: detailedRowData,
-                  })}
+
+                  {React.createElement(preRenderDetailsPaneComponent, { data: detailedRowData })}
                 </>
               )}
+
               {preRender_UpdateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(
                     preRender_UpdateData_DetailsPaneComponent,
-                    {
-                      data: detailedRowData,
-                    }
+                    { data: detailedRowData }
                   )}
                 </>
               )}
+
               {detailedRowId && detailedRowData ? (
                 updateFormID &&
                 !hideForm &&
                 !hideUpdateForm && (
                   <>
                     <CoreDivider />
+
                     <CoreForm
                       apiMode={"edit"}
                       onMountRead={false}
@@ -219,26 +225,26 @@ export default function CoreDataTableDetailsPane(props) {
                 <>
                   {React.createElement(
                     postRender_UpdateData_DetailsPaneComponent,
-                    {
-                      data: detailedRowData,
-                    }
+                    { data: detailedRowData }
                   )}
                 </>
               )}
+
               {/**
                * @todo check if it's available show flag ticked
                */}
               {postRenderDetailsPaneComponent && (
                 <>
                   <CoreDivider />
-                  {React.createElement(postRenderDetailsPaneComponent, {
-                    data: detailedRowData,
-                  })}
+
+                  {React.createElement(postRenderDetailsPaneComponent, { data: detailedRowData })}
                 </>
               )}
+
               {true && (
                 <>
                   <CoreDivider />
+
                   <TableRowAuditData rowData={detailedRowData} />
                 </>
               )}
@@ -252,6 +258,7 @@ export default function CoreDataTableDetailsPane(props) {
                   )}
                 </>
               )}
+
               {enableCreateEntity ? (
                 createFormID &&
                 !hideForm &&
@@ -290,6 +297,7 @@ export default function CoreDataTableDetailsPane(props) {
               ) : (
                 <CoreH1>No data found</CoreH1>
               )}
+
               {postRender_CreateData_DetailsPaneComponent && (
                 <>
                   {React.createElement(

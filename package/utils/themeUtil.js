@@ -1,8 +1,9 @@
 import {
   nativeCreateTheme,
   nativeUseTheme as coreUseTheme,
-  NativeCssBaseline as CoreCssBaseline,
+  NativeCssBaseline as CoreCssBaseline
 } from "@wrappid/styled-components";
+
 import { theme as coreTheme } from "../theme/theme";
 
 export const WEB_PLATFORM = "web";
@@ -44,6 +45,7 @@ let theme = null;
 try {
   let p = "../../../../src/config.json";
   let config = require(p);
+
   if (config?.theme) {
     theme = nativeCreateTheme({ ...coreTheme, ...config?.theme });
   } else {

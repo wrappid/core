@@ -1,11 +1,15 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { NativeIcon } from "@wrappid/styled-components";
 
 export const __IconTypes = {
-  MATERIAL_ICON: "material-icons", // Default support of MUI
+  FONTAWESOME_V5_REGULAR_ICON: "far", 
+  FONTAWESOME_V5_SOLID_ICON  : "fas",
+  
+  MATERIAL_ICON         : "material-icons",
+  // Default support of MUI
   MATERIAL_OUTLINED_ICON: "material-icons-outlined",
-  FONTAWESOME_V5_SOLID_ICON: "fas",
-  FONTAWESOME_V5_REGULAR_ICON: "far",
   RXICON_V1_REGULAR_ICON: "rxi",
 };
 

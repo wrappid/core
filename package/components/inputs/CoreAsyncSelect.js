@@ -1,28 +1,30 @@
 import * as React from "react";
-import { apiRequestAction } from "../../store/action/appActions";
-import { HTTP } from "../../config/constants";
+
+import {
+  nativeUseNavigate,
+  nativeFilterOptions
+} from "@wrappid/styled-components";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
+
+import CoreAutocomplete from "./CoreAutocomplete";
+import CoreFormErrorText from "./CoreFormErrorText";
+import CoreFormHelperText from "./CoreFormHelperText";
+import CoreIconButton from "./CoreIconButton";
+import CoreTextField from "./CoreTextField";
+import { HTTP } from "../../config/constants";
+import { mergedComponentRegistry } from "../../layout/PageContainer";
+import { apiRequestAction } from "../../store/action/appActions";
 import {
   SELECT_OPTION_ERROR,
   SELECT_OPTION_LOAD,
-  SELECT_OPTION_SUCCESS,
+  SELECT_OPTION_SUCCESS
 } from "../../store/types/selectOptionsTypes";
-import CoreTextField from "./CoreTextField";
-import CoreAutocomplete from "./CoreAutocomplete";
-import CoreCircularProgress from "../feedback/CoreCircularProgress";
-import CoreListItem from "../layouts/CoreListItem";
-import InfiniteScroll from "react-infinite-scroll-component";
-import CoreIconButton from "./CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreFieldButton from "../forms/CoreFieldButton";
-import CoreFormErrorText from "./CoreFormErrorText";
-import CoreFormHelperText from "./CoreFormHelperText";
-import {
-  nativeUseNavigate,
-  nativeFilterOptions,
-} from "@wrappid/styled-components";
 import CoreClasses from "../../styles/CoreClasses";
-import { mergedComponentRegistry } from "../../layout/PageContainer";
+import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreCircularProgress from "../feedback/CoreCircularProgress";
+import CoreFieldButton from "../forms/CoreFieldButton";
+import CoreListItem from "../layouts/CoreListItem";
 
 const filter = nativeFilterOptions();
 //TODO:
@@ -65,24 +67,27 @@ export default function CoreAsyncSelect(props) {
   const getKey = () => {
     return itemKey
       ? itemKey
-      : label?.toString()?.trim().toLocaleLowerCase().split(" ").join("-");
+      : label?.toString()?.trim().toLocaleLowerCase()
+        .split(" ")
+        .join("-");
   };
 
   const loading = submitLoading
     ? true
     : open
-    ? optionsData && optionsData.length !== 0
-      ? false
-      : options[getKey()]
-      ? options[getKey()].loading
-      : true
-    : false;
+      ? optionsData && optionsData.length !== 0
+        ? false
+        : options[getKey()]
+          ? options[getKey()].loading
+          : true
+      : false;
 
   // console.log("CoreAsyncSelect LOC props", props);
 
   const findOption = (options, value) => {
     let f1 = options?.find((x) => x.id === value);
     let f2 = options?.find((x) => x.value === value);
+
     if (f1) {
       return f1.label ? f1.label : f1.name ? f1.name : "";
     } else if (f2) {
@@ -120,7 +125,8 @@ export default function CoreAsyncSelect(props) {
   }, [submitLoading]);
 
   const checkValueDiff = () => {
-    var flag = false;
+    let flag = false;
+
     if (props?.multiple) {
       if (!oldValue && (!props.value || props.value.length === 0)) {
         return false;
@@ -128,7 +134,7 @@ export default function CoreAsyncSelect(props) {
       if (props?.value?.length !== oldValue?.length) {
         return true;
       }
-      for (var i = 0; i < props?.value?.length; i++) {
+      for (let i = 0; i < props?.value?.length; i++) {
         if (props?.value[i].id !== oldValue[i]?.id) {
           return true;
         }
@@ -178,8 +184,8 @@ export default function CoreAsyncSelect(props) {
     }
     if ((!optionsData || optionsData.length === 0) && endpoint) {
       dispatch({
-        type: SELECT_OPTION_LOAD,
         payload: getKey(),
+        type   : SELECT_OPTION_LOAD,
       });
       dispatch(
         apiRequestAction(
@@ -225,7 +231,7 @@ export default function CoreAsyncSelect(props) {
               : false
           }
           loader={
-            <p style={{ textAlign: "center", backgroundColor: "#f9dc01" }}>
+            <p style={{ backgroundColor: "#f9dc01", textAlign: "center" }}>
               <b>Loading...</b>
             </p>
           }
@@ -247,8 +253,9 @@ export default function CoreAsyncSelect(props) {
         fieldActions &&
         fieldActions.length === 1 &&
         !props.readOnly ? (
-          <CoreCircularProgress color="inherit" size={20} />
-        ) : null}
+            <CoreCircularProgress color="inherit" size={20} />
+          ) : null}
+
         {/* inline form submits */}
         {inlineAction && fieldActions && fieldActions.length === 1 ? (
           !props.readOnly ? (
@@ -263,24 +270,25 @@ export default function CoreAsyncSelect(props) {
                     submitLoading={submitLoading}
                   />
                 ))}
+
               {props.value &&
                 ((props.multiple && props.value.length > 0) ||
                   (props.value.label && props.value.id)) && (
-                  <CoreIconButton
-                    onClick={(e) => {
-                      props.multiple
-                        ? props?.formik?.setFieldValue(props.id, [])
-                        : props?.formik?.setFieldValue(props.id, {});
+                <CoreIconButton
+                  onClick={(e) => {
+                    props.multiple
+                      ? props?.formik?.setFieldValue(props.id, [])
+                      : props?.formik?.setFieldValue(props.id, {});
 
-                      // @todo added for on clear handle change support
-                      if (handleChange) {
-                        handleChange(e, props.multiple ? [] : {});
-                      }
-                    }}
-                  >
-                    <CoreIcon fontSize="small">close</CoreIcon>
-                  </CoreIconButton>
-                )}
+                    // @todo added for on clear handle change support
+                    if (handleChange) {
+                      handleChange(e, props.multiple ? [] : {});
+                    }
+                  }}
+                >
+                  <CoreIcon fontSize="small">close</CoreIcon>
+                </CoreIconButton>
+              )}
             </>
           ) : (
             allowEdit !== false &&
@@ -333,47 +341,48 @@ export default function CoreAsyncSelect(props) {
         onFocus={
           props.onFormFocus && editId && props.readOnly
             ? () => {
-                console.log("CLICKED");
-                props.onFormFocus(editId);
-              }
+              console.log("CLICKED");
+              props.onFormFocus(editId);
+            }
             : () => {
-                console.log("CLICKED else");
-              }
+              console.log("CLICKED else");
+            }
         }
         isOptionEqualToValue={
           props.isOptionEqualToValue
             ? (option, value) => props.isOptionEqualToValue(option, value)
             : (option, value) => {
-                // console.log("COMPARE", option, value);
-                if (
-                  typeof option === "string" &&
+              // console.log("COMPARE", option, value);
+              if (
+                typeof option === "string" &&
                   typeof option === typeof value
-                ) {
-                  return option === value;
-                } else return option.id === value.id;
-              }
+              ) {
+                return option === value;
+              } else return option.id === value.id;
+            }
         }
         getOptionLabel={(option) => {
           return typeof option === "string"
             ? option
             : typeof option === "number"
-            ? getLabelFromValue(option, optionsData, options)
-            : props.getOptionLabel
-            ? props.getOptionLabel(option)
-            : option.label
-            ? option.label
-            : option.name
-            ? option.name
-            : "";
+              ? getLabelFromValue(option, optionsData, options)
+              : props.getOptionLabel
+                ? props.getOptionLabel(option)
+                : option.label
+                  ? option.label
+                  : option.name
+                    ? option.name
+                    : "";
         }}
         filterOptions={(options, params) => {
           const filtered =
             props.asyncLoading !== false ? options : filter(options, params);
+
           if (props.creatable && params.inputValue !== "") {
             filtered.push({
-              label: `Add "${params.inputValue}"`,
-              name: `Add "${params.inputValue}"`,
               inputValue: params.inputValue,
+              label     : `Add "${params.inputValue}"`,
+              name      : `Add "${params.inputValue}"`,
             });
           }
 
@@ -405,13 +414,13 @@ export default function CoreAsyncSelect(props) {
               dispatch(onChangeDispatch(values));
             } else if (typeof onChangeDispatch === "object") {
               dispatch({
-                type: onChangeDispatch.type,
                 payload: values,
+                type   : onChangeDispatch.type,
               });
             } else {
               dispatch({
-                type: onChangeDispatch,
                 payload: values,
+                type   : onChangeDispatch,
               });
             }
           }
@@ -425,18 +434,20 @@ export default function CoreAsyncSelect(props) {
               );
             } else {
               if (props.multiple) {
-                var finalValue = "";
-                for (var i = 0; i < values.length; i++) {
-                  var val =
+                let finalValue = "";
+
+                for (let i = 0; i < values.length; i++) {
+                  let val =
                     typeof values[i] === "string"
                       ? values[i]
                       : values[i].id
-                      ? values[i].id
-                      : values[i].name
-                      ? values[i].id
-                      : values[i].name
-                      ? values[i].name
-                      : "";
+                        ? values[i].id
+                        : values[i].name
+                          ? values[i].id
+                          : values[i].name
+                            ? values[i].name
+                            : "";
+
                   finalValue += val;
                   if (i < values.length - 1) {
                     finalValue += "|";
@@ -452,36 +463,36 @@ export default function CoreAsyncSelect(props) {
           optionsData.length !== 0
             ? optionsData
             : options[getKey()]?.data
-            ? options[getKey()]?.data
-            : []
+              ? options[getKey()]?.data
+              : []
         }
         renderOption={(optionProps, option, state) =>
           props.optionComp &&
           mergedComponentRegistry[props.optionComp]?.comp ? (
-            <React.Fragment>
-              {React.createElement(
-                mergedComponentRegistry[props.optionComp].comp,
-                {
-                  data: option,
-                  state,
-                  optionProps,
-                  optionCompProps,
-                }
-              )}
-            </React.Fragment>
-          ) : (
-            <CoreListItem {...optionProps}>
-              {option.inputValue
-                ? option.label
-                : props.getOptionLabel
-                ? props.getOptionLabel(option)
-                : option.label
-                ? option.label
-                : option.name
-                ? option.name
-                : ""}
-            </CoreListItem>
-          )
+              <React.Fragment>
+                {React.createElement(
+                  mergedComponentRegistry[props.optionComp].comp,
+                  {
+                    data: option,
+                    optionCompProps,
+                    optionProps,
+                    state,
+                  }
+                )}
+              </React.Fragment>
+            ) : (
+              <CoreListItem {...optionProps}>
+                {option.inputValue
+                  ? option.label
+                  : props.getOptionLabel
+                    ? props.getOptionLabel(option)
+                    : option.label
+                      ? option.label
+                      : option.name
+                        ? option.name
+                        : ""}
+              </CoreListItem>
+            )
         }
         ListboxComponent={props.asyncLoading ? CustomListboxComponent : null}
         renderInput={(params) => (
@@ -495,11 +506,13 @@ export default function CoreAsyncSelect(props) {
           />
         )}
       />
+
       {props?.touched && props?.error && (
         <CoreFormErrorText styleClasses={[CoreClasses.MARGIN.MT1]}>
           {props.touched && props.error}
         </CoreFormErrorText>
       )}
+
       {props?.helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.MARGIN.MT1]}>
           {props.helperText}

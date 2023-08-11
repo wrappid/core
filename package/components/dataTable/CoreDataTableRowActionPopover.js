@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import CorePopover from "../utils/CorePopover";
 
 export default function CoreDataTableRowActionPopover(props) {
@@ -8,23 +10,23 @@ export default function CoreDataTableRowActionPopover(props) {
     <CorePopover
       id="mouse-over-popover"
       sx={{
+        boxShadow    : "none",
         pointerEvents: "none",
-        boxShadow: "none",
       }}
       open={_rowHoverIndex === rowIndex}
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "center",
         horizontal: "right",
+        vertical  : "center",
       }}
       transformOrigin={{
-        vertical: "center",
         horizontal: "right",
+        vertical  : "center",
       }}
       hideBackdrop={true}
       PaperProps={{
         elevation: 0,
-        sx: { pointerEvents: "auto" },
+        sx       : { pointerEvents: "auto" },
       }}
     >
       {props.children}
