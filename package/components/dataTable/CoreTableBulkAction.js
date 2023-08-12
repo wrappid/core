@@ -8,12 +8,12 @@ import CoreIconButton from "../inputs/CoreIconButton";
 export default function CoreTableBulkAction({ bulkActions, selected }) {
   return (
     bulkActions &&
-    bulkActions.map((ac) =>
-      ac.iconName === "delete" ? (
-        <CoreTooltip title="Delete">
+    bulkActions.map((act, index) =>
+      act.iconName === "delete" ? (
+        <CoreTooltip key={`cta-${act?.id}-${index}`} title="Delete">
           <CoreIconButton
             onClick={() => {
-              ac.action(selected);
+              act.action(selected);
             }}
           >
             <CoreIcon>delete</CoreIcon>
