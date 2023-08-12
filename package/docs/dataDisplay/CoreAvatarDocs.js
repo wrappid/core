@@ -30,8 +30,6 @@ export default {
     {
       description:
         "Avatars containing simple characters can be created by passing a string as children.",
-      description:
-        "(stringavatar NOT IMPLEMENTED) You can use different background colors for the avatar. The following demo generates the color based on the name of the person.",
       propsGroups: [
         {
           children    : "H",
@@ -46,6 +44,11 @@ export default {
           styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
         },
       ],
+      title: "Letter avatars",
+    },
+    {
+      description:
+        "(stringavatar NOT IMPLEMENTED) You can use different background colors for the avatar. The following demo generates the color based on the name of the person.",
       propsGroups: [
         {
           //   children: "SD",
