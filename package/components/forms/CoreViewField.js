@@ -6,6 +6,7 @@ import {
   createFormGridProps
 } from "../../utils/formUtils";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
+import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreGrid from "../layouts/CoreGrid";
 
 export default function CoreViewField(props) {
@@ -18,7 +19,7 @@ export default function CoreViewField(props) {
       {React.createElement(CoreLabel, {}, element?.label)}
 
       {React.createElement(
-        element.viewComp ? element.viewComp : CoreBody1,
+        element.viewComp ? element.viewComp : CoreTypographyBody1,
         createFormFieldProps(element),
         data && data[element.id] ? data[element.id] : "NA"
       )}

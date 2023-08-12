@@ -8,7 +8,7 @@ import CoreTableRow from "../dataDisplay/CoreTableRow";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 
 export default function CoreTableSkeleton(props) {
-  const { showData, maxRowInPage } = props;
+  const { maxRowInPage } = props;
 
   return (
     <CoreTable>

@@ -12,7 +12,7 @@ export default function CoreCustomTabs(props) {
   const mergedComponentRegistry = useContext(ComponentRegistryContext);
   const tabRef = useRef(null);
 
-  // React.useEffect(() => {
+  // -- React.useEffect(() => {
   //   setTabValue(tabsContent[0]?.id);
   // }, [tabsContent]);
 
@@ -24,13 +24,13 @@ export default function CoreCustomTabs(props) {
     }
   }, [tabRef, tabRef?.current]);
 
-  const handleChange = (e, value) => {
-    preHandleChangeHook && preHandleChangeHook(e, value);
+  const handleChange = (event, value) => {
+    preHandleChangeHook && preHandleChangeHook(event, value);
     setTabValue(value);
-    postHandleChangeHook && postHandleChangeHook(e, value);
+    postHandleChangeHook && postHandleChangeHook(event, value);
   };
 
-  console.log("TAB REF T", tabRef);
+  // -- console.log("TAB REF T", tabRef);
   return (
     <>
       <CoreTabHead

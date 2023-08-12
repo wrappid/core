@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/styled-components";
 
 import CoreResponsiveButton from "../inputs/custom/CoreResponsiveButton";

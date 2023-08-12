@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable id-length */
 import React, { useState } from "react";
 
 import { useSelector } from "react-redux";
@@ -88,6 +90,7 @@ function setChildProps(parentOb, element, finalVal, level, path, id, rootFlag) {
 }
 
 function setDataValue(id, data, el, finalVal) {
+  // eslint-disable-next-line no-unused-vars
   let [meta, path] = multiLevelSerch(id, data, []);
 
   console.log("path", path);
@@ -142,8 +145,8 @@ export default function ParentChildMap(props) {
   return (
     formData &&
     Array.isArray(formData) &&
-    formData?.map((parentOb, i) => (
-      <CoreAccordion>
+    formData?.map((parentOb, index) => (
+      <CoreAccordion key={`CoreAccordion-${index}`}>
         <CoreAccordionSummary
           expandIcon={<CoreIcon>expand_more</CoreIcon>}
           styleClasses={[CoreClasses.FLEX.DIRECTION_ROW_REVERSE, CoreClasses.PADDING.PX1, CoreClasses.MARGIN.MY0]}

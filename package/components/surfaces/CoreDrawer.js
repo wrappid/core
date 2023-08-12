@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -24,13 +25,10 @@ export default function CoreDrawer(props) {
     setPlatform(detectPlatform());
   }, []);
 
-  console.log("MENU DRAWER", menu);
-
   const OnMenuClick = (item, appFlag) => {
     /**
      * appFlag only passed from native mobile drawer
      */
-    // console.log("MENU CLICK", item, appFlag);
     if (appFlag && !item.Children) {
       toggleDrawer();
     }

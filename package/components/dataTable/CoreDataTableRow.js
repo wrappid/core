@@ -1,4 +1,5 @@
-import { useContext } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useContext } from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 import { useDispatch } from "react-redux";
@@ -37,8 +38,6 @@ export default function CoreDataTableRow(props) {
       maxRowInPage: 10,
       page        : 0,
     },
-    auditColumnsKey,
-    showAuditColumns,
     selectable = false,
     selected,
     handleRowSelect,
@@ -99,22 +98,22 @@ export default function CoreDataTableRow(props) {
           }}
           hover={hover}
           key={tableUUID + "-tr-" + rowIndex}
-          onMouseEnter={(e) => {
+          onMouseEnter={(err) => {
             if (!_showDetailsPane) {
-              console.log("Mouse Enter on ", rowIndex);
+              // -- console.log("Mouse Enter on ", rowIndex);
               tableActions &&
                 tableActions.length > 0 &&
-                handlePopoverOpen(e, rowIndex);
+                handlePopoverOpen(err, rowIndex);
             }
           }}
           // @Note: onMouseLeave event is handled in table body
           onClick={() => {
-            console.log("rowIndex selection made");
+            // -- console.log("rowIndex selection made");
             if (enableDetailsPane) {
               if (detailedRowId === rowData?.id) {
-                // set_showDetailsPane(false);
-                // setDetailedRowId(null);
-                // setDetailedRowData(null);
+                // -- set_showDetailsPane(false);
+                // -- setDetailedRowId(null);
+                // -- setDetailedRowData(null);
               } else {
                 setDetailedRowId(rowData?.id || null);
                 setDetailedRowData(rowData);
@@ -133,8 +132,8 @@ export default function CoreDataTableRow(props) {
               <CoreCheckbox
                 key={`${tableUUID}-select-row-${rowIndex}`}
                 checked={selected.includes(rowData["id"])}
-                onChange={(e) => {
-                  handleRowSelect(e, rowData["id"]);
+                onChange={(err) => {
+                  handleRowSelect(err, rowData["id"]);
                 }}
               />
             </CoreTableCell>
@@ -209,7 +208,7 @@ export default function CoreDataTableRow(props) {
                     label={
                       createEntityButtonText || `Add ${getLabel(tableUUID || "")}`
                     }
-                    OnClick={(e) => {
+                    OnClick={() => {
                       setDetailedRowId(null);
                       setDetailedRowData(null);
                       set_showDetailsPane(true);
@@ -228,7 +227,7 @@ export default function CoreDataTableRow(props) {
             colSpan={
               (selectable ? 1 : 0) + (tableColumnsToShow?.length || 0)
               /* filteredColumns.length + */
-            /* (showAuditColumns && auditColumnsKey && auditColumnsKey.length > 0
+              /* -- (showAuditColumns && auditColumnsKey && auditColumnsKey.length > 0
                     ? auditColumnsKey.length
                     : 0) */
             }

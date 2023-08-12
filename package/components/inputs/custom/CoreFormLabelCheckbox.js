@@ -5,7 +5,7 @@ import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
 import CoreCheckbox from "../CoreCheckbox";
 
 export default function CoreFormLabelCheckbox(props) {
-  console.log("props", props);
+  // -- console.log("props", props);
   return (
     <CoreFormControlLabel
       id={props.id}

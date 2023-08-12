@@ -1,3 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/styled-components";
 
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
@@ -6,7 +10,7 @@ import CoreCard from "../components/surfaces/CoreCard";
 import CoreCardContent from "../components/surfaces/CoreCardContent";
 import CoreClasses from "../styles/CoreClasses";
 
-export default function Error500(props) {
+export default function Error500() {
   const { error = { message: "", stack: "" } } = nativeUseLocation();
 
   return (

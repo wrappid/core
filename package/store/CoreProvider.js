@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import { configureStore } from "@reduxjs/toolkit";
 import { nativeStorage } from "@wrappid/styled-components";
 import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";

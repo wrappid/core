@@ -77,6 +77,8 @@ class CoreForm extends Component {
       //forms fetched from api ar stored
       let rawForm = this.props.rawFormSchema;
       let rawFormStatus = this.props.rawFormStatus;
+
+      // eslint-disable-next-line id-length
       let t = await getForm(this.props.formId, this.props.authenticated, {
         rawForm,
         rawFormStatus,
@@ -215,6 +217,7 @@ class CoreForm extends Component {
     let formSchema = this.props.rawFormSchema
       ? this.props.rawFormSchema[this.props.formId]
       : {};
+    // eslint-disable-next-line id-length
     let r = forReloadCheck(
       this.props.formSubmitSuccess,
       this.props.formId,
@@ -276,12 +279,14 @@ class CoreForm extends Component {
       await this.setState({ submitMode: null });
     }
 
+    // eslint-disable-next-line id-length
     let r2 =
       this.state.firstDataLoadFail &&
       formSchema?.read &&
       formSchema?.onMountRead !== false &&
       this.props?.onMountRead !== false;
-
+      
+    // eslint-disable-next-line id-length
     let r3 = compareObject(this.props.query, this.state.prevQuery);
 
     if (r || r2 || r3) {
@@ -411,7 +416,7 @@ class CoreForm extends Component {
     let sanData = { endpoint: apiMeta.endpoint, values: values };
 
     if (apiMeta.mode === "edit" && formJson?.edit?.onSubmitRefine) {
-      console.log("EDITING");
+      // -- console.log("EDITING");
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.edit?.onSubmitRefine](
         values,
         apiMeta,
@@ -419,13 +424,13 @@ class CoreForm extends Component {
         this.state
       );
     } else if (apiMeta.mode === "create" && formJson?.create?.onSubmitRefine) {
-      console.log("ADDING");
+      // -- console.log("ADDING");
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
         formJson?.create?.onSubmitRefine
       ](values, apiMeta, this.props.state, this.state);
     }
 
-    // console.log("SANITIZED DATA", sanData);
+    // -- console.log("SANITIZED DATA", sanData);
 
     if (sanData.values) {
       apiMeta.values = sanData.values;
@@ -437,7 +442,7 @@ class CoreForm extends Component {
       apiMeta.reduxData = sanData.reduxData;
     }
 
-    // console.log("SUBMIT", apiMeta);
+    // -- console.log("SUBMIT", apiMeta);
     this.props.HandleFormSubmit(
       apiMeta.method,
       apiMeta.endpoint,
@@ -564,7 +569,7 @@ class CoreForm extends Component {
     };
 
     if (formJson?.delete?.onSubmitRefine) {
-      console.log("DELETING");
+      // -- console.log("DELETING");
       sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
         formJson?.delete?.onSubmitRefine
       ](
@@ -613,7 +618,7 @@ class CoreForm extends Component {
     if (this.props.beforeAdd) this.props.beforeAdd();
     let temp = this.props.processedForms[this.props.formId];
 
-    // console.log("here", temp);
+    // -- console.log("here", temp);
 
     this.setState({ addForm: { [this.props.formId]: temp }, editing: null });
     this.props.OnAddForm(
@@ -661,6 +666,7 @@ class CoreForm extends Component {
       } else {
         let rawForm = this.props.rawFormSchema;
         let rawFormStatus = this.props.rawFormStatus;
+        // eslint-disable-next-line id-length
         let t = await getForm(this.props.formId, this.props.authenticated, {
           rawForm,
           rawFormStatus,
@@ -749,10 +755,10 @@ class CoreForm extends Component {
       }
     }
 
-    // console.log("LOC STATE", initData);
-    // console.log("LOC props", this.props);
+    // -- console.log("LOC STATE", initData);
+    // -- console.log("LOC props", this.props);
 
-    // console.log(
+    // -- console.log(
     //   "SPECIAL ---------------",
     //   arrayFlag,
     //   formId,
@@ -807,7 +813,7 @@ class CoreForm extends Component {
                         
                         OnClick: this.OnDeleteClick,
                         
-                        // OnClick: () => {
+                        // -- OnClick: () => {
                         //   // alert("Single component delete tobe done");
                         // },
                         disable: preview,
@@ -831,7 +837,7 @@ class CoreForm extends Component {
                         disable: preview,
                         
                         icon : "delete_outline",
-                        // OnClick: () => {
+                        // -- OnClick: () => {
                         //   alert("Single component delete tobe done");
                         // },
                         title: "delete",
@@ -877,15 +883,15 @@ class CoreForm extends Component {
                 )
               ) : Array.isArray(initData) ? (
                 <>
-                  {initData?.map((initDataOb, i) =>
+                  {initData?.map((initDataOb, index) =>
                     !arrayDataLimit ||
                     !this.state.hideFlag ||
-                    (arrayDataLimit && i < arrayDataLimit) ? (
-                        <CoreGrid>
+                    (arrayDataLimit && index < arrayDataLimit) ? (
+                        <CoreGrid key={`CoreForm-${formId}-initData-${index}`}>
                           <CoreBox gridProps={{ gridSize: 10 }}>
                             <CoreEditForm
                               styleClasses={this.props.styleClasses}
-                              index={i}
+                              index={index}
                               forms={processedForms}
                               formId={formId}
                               handleSubmit={this.handleSubmit}
@@ -917,7 +923,7 @@ class CoreForm extends Component {
                             styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
                             {formDataReadLoading[formId] ? null : (
                               <CoreFormHeaderActions
-                                index={i}
+                                index={index}
                                 id={initDataOb.id}
                                 preview={preview}
                                 action={
@@ -935,11 +941,11 @@ class CoreForm extends Component {
                                               ](initDataOb)
                                                 ? this.OnEditClick
                                                 : () => {
-                                                  swal(
-                                                    "Error",
-                                                    "Data not editable",
-                                                    "error"
-                                                  );
+                                                  // -- swal(
+                                                  //   "Error",
+                                                  //   "Data not editable",
+                                                  //   "error"
+                                                  // );
                                                 }
                                               : this.OnEditClick,
                                           disable: preview,
@@ -957,11 +963,11 @@ class CoreForm extends Component {
                                               ](initDataOb)
                                                 ? this.OnDeleteClick
                                                 : () => {
-                                                  swal(
-                                                    "Error",
-                                                    "Data not deletable",
-                                                    "error"
-                                                  );
+                                                  // -- swal(
+                                                  //   "Error",
+                                                  //   "Data not deletable",
+                                                  //   "error"
+                                                  // );
                                                 }
                                               : this.OnDeleteClick,
                                           disable: preview,
@@ -981,10 +987,10 @@ class CoreForm extends Component {
                                               ](initDataOb)
                                                 ? this.OnEditClick
                                                 : () => {
-                                                  swal(
-                                                    "Error",
-                                                    "Data not editable"
-                                                  );
+                                                  // -- swal(
+                                                  //   "Error",
+                                                  //   "Data not editable"
+                                                  // );
                                                 }
                                               : this.OnEditClick,
                                           disable: preview,
@@ -1005,10 +1011,10 @@ class CoreForm extends Component {
                                             ](initDataOb)
                                               ? this.OnDeleteClick
                                               : () => {
-                                                swal(
-                                                  "Error",
-                                                  "Data not deletable"
-                                                );
+                                                // -- swal(
+                                                //   "Error",
+                                                //   "Data not deletable"
+                                                // );
                                               }
                                             : this.OnDeleteClick,
                                           disable: preview,
@@ -1104,7 +1110,7 @@ class CoreForm extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE", state);
+  // -- console.log("STATE", state);
   return {
     addForm            : state.forms.addForm,
     auth               : state.auth,

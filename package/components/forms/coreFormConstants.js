@@ -80,7 +80,7 @@ export const FORM_IDS = {
   
   __CREATE_APPOINTMENT: "createAppointment",
   
-  // __CREATE_PATIENT_BACK_OFFICE: "createPatientBackOffice",
+  // -- __CREATE_PATIENT_BACK_OFFICE: "createPatientBackOffice",
   __CREATE_ASSISTANT: "createAssistant",
   
   __CREATE_DOCTOR: "createDoctor",

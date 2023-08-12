@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars, import/default
+import React, { useSelector } from "react-redux";
 
 import TableRowAuditData from "./TableRowAuditData";
 import CoreClasses from "../../styles/CoreClasses";

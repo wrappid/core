@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";

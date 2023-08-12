@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeRichTextEditor } from "@wrappid/styled-components";
 
 import CoreInputLabel from "../CoreInputLabel";
@@ -36,8 +36,8 @@ export default function CoreRichTextEditor(props) {
         onBlur={
           props.onBlur
             ? props.onBlur
-            : (v) => {
-              props.formik?.setFieldValue(props.id, v);
+            : (value) => {
+              props.formik?.setFieldValue(props.id, value);
             }
         }
       />

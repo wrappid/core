@@ -1,6 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 

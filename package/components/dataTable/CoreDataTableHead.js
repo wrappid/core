@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
 import CoreTableHead from "../dataDisplay/CoreTableHead";
@@ -18,7 +21,9 @@ export default function CoreDataTableHead(props) {
     rows,
     columns,
     // filteredColumns,
+    // eslint-disable-next-line no-unused-vars
     showAuditColumns,
+    // eslint-disable-next-line no-unused-vars
     auditColumnsKey,
     order,
     onRequestSort,
@@ -46,8 +51,8 @@ export default function CoreDataTableHead(props) {
                   <CoreCheckbox
                     key={`${tableUUID}-selectall-row`}
                     checked={rows.length !== 0 && rows.length === selected.length}
-                    onChange={(e) => {
-                      handleRowSelectAll(e);
+                    onChange={(err) => {
+                      handleRowSelectAll(err);
                     }}
                   />
                 </CoreTableHeadCell>
@@ -64,6 +69,7 @@ export default function CoreDataTableHead(props) {
                     ?.filter((col) => {
                       return tableColumnsToShow?.includes(col.id);
                     })
+                    // eslint-disable-next-line no-unused-vars
                     ?.map((column, columnIndex) => {
                       return (
                         <CoreTableHeadCell
@@ -85,13 +91,13 @@ export default function CoreDataTableHead(props) {
                                   ? order[column.id]
                                   : "asc"
                               }
-                              onClick={(e) => {
-                                let orderDirection =
-                                order && order.hasOwnProperty(column.id)
+                              onClick={(err) => {
+                                // eslint-disable-next-line no-prototype-builtins
+                                let orderDirection = order && order.hasOwnProperty(column.id)
                                   ? order[column.id] === "asc" && "desc"
                                   : "asc";
 
-                                onRequestSort(e, column.id, orderDirection);
+                                onRequestSort(err, column.id, orderDirection);
                               }}
                             >
                               <CoreTypographyBody1 noWrap={true}>

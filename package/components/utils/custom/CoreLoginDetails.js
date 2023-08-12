@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React, { useEffect } from "react";
 
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,8 +27,6 @@ export default function CoreLoginDetails() {
     (state) => state?.auth?.clientLoginInformation
   );
   const { lastLoginDetails, ip, deviceInfo } = clientLoginInformation || {};
-
-  console.log("clientLoginInformation1", clientLoginInformation);
 
   const deviceDetails = getDeviceDetails();
 
@@ -73,7 +72,6 @@ export default function CoreLoginDetails() {
           </CoreBox>
 
           <CoreBox
-
             styleClasses={[CoreClasses.PADDING.PL1]}
             // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
@@ -104,8 +102,6 @@ export default function CoreLoginDetails() {
           </CoreBox>
         </CoreAccordionDetail>
       </CoreAccordion>
-
-      {/* <CoreTypographyCaption code="true">{JSON.stringify(getDeviceDetails(), null, 2)}</CoreTypographyCaption> */}
     </>
   );
 }

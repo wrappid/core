@@ -47,7 +47,7 @@ export default function CoreEditForm(props) {
     initProps = {}
   } = props;
 
-  console.log("CORE EDIT FORM DETAILS", props);
+  // -- console.log("CORE EDIT FORM DETAILS", props);
 
   return formDataReadLoading &&
     formDataReadLoading[formId] &&

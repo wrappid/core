@@ -1,9 +1,9 @@
-import * as React from "react";
+/* eslint-disable no-console */
+/* eslint-disable id-length */
+import React from "react";
 
-import {
-  nativeUseNavigate,
-  nativeFilterOptions
-} from "@wrappid/styled-components";
+// eslint-disable-next-line import/no-unresolved
+import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -82,7 +82,7 @@ export default function CoreAsyncSelect(props) {
           : true
       : false;
 
-  // console.log("CoreAsyncSelect LOC props", props);
+  // -- console.log("CoreAsyncSelect LOC props", props);
 
   const findOption = (options, value) => {
     let f1 = options?.find((x) => x.id === value);
@@ -104,13 +104,13 @@ export default function CoreAsyncSelect(props) {
   };
 
   React.useEffect(() => {
-    // let active = true;
+    // -- let active = true;
     if (!open) {
       return undefined;
     }
     if (asyncLoading !== false) loadData(true);
     return () => {
-      // active = false;
+      // -- active = false;
     };
   }, [loading, inputValue]);
 
@@ -352,7 +352,7 @@ export default function CoreAsyncSelect(props) {
           props.isOptionEqualToValue
             ? (option, value) => props.isOptionEqualToValue(option, value)
             : (option, value) => {
-              // console.log("COMPARE", option, value);
+              // -- console.log("COMPARE", option, value);
               if (
                 typeof option === "string" &&
                   typeof option === typeof value

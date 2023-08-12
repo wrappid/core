@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeFilePicker } from "@wrappid/styled-components";
 
 import CoreFormControl from "./CoreFormControl";
@@ -11,10 +11,10 @@ import CoreClasses from "../../styles/CoreClasses";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 
 export default function CoreFilePicker(props) {
-  const inputRef = useRef(null);
-  const handleFileOpen = () => {
+  // -- const inputRef = useRef(null);
+  /* -- const handleFileOpen = () => {
     inputRef.current.click();
-  };
+  }; */
 
   return (
     <CoreFormControl>

@@ -1,6 +1,9 @@
+/* eslint-disable id-length */
 import React, { useEffect, useState } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeAppBar } from "@wrappid/styled-components";
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -25,6 +28,7 @@ export default function CoreAppBar(props) {
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
   const navigate = coreUseNavigate();
 
@@ -53,10 +57,10 @@ export default function CoreAppBar(props) {
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
     React.useState(null);
-  // const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
+  // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
   const [_appbarContent, set_appbarContent] = React.useState(null);
-  const handleAppbarPopOverClose = (e) => {
+  const handleAppbarPopOverClose = () => {
     set_appbarContent(null);
     set_appbarPopOverAnchorEl(null);
   };
@@ -113,7 +117,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Help & Support"}
                   onClick={(e) => {
-                    console.log("Help & Support clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
                   }}
                 >
@@ -127,7 +130,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Show Notification"}
                   onClick={(e) => {
-                    console.log("Notification clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
                   }}
                 >
@@ -141,7 +143,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Quick Menu"}
                   onClick={(e) => {
-                    console.log("Quick Menu clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
                   }}
                 >
@@ -151,7 +152,6 @@ export default function CoreAppBar(props) {
 
               <CoreIconButton
                 onClick={(e) => {
-                  console.log("Profile clicked");
                   handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
                 }}
               >

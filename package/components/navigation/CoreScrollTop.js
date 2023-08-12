@@ -1,3 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseScrollTrigger } from "@wrappid/styled-components";
 import PropTypes from "prop-types";
 

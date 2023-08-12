@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/styled-components";
 
 import { ThemeContext } from "../../config/contextHandler";
@@ -25,12 +26,12 @@ export default function CoreMenu(props) {
     try {
       location = nativeUseLocation();
     } catch (err) {
-      console.log("No navigation");
+      // -- console.log("No navigation");
     }
   }
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
 
-  console.log("MENU", menu, openCollapse);
+  // -- console.log("MENU", menu, openCollapse);
   const theme = useContext(ThemeContext);
 
   return (

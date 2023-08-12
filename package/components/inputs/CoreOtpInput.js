@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeOtpInput } from "@wrappid/styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -46,13 +47,11 @@ export default function CoreOtpInput(props) {
             null //resetLoadingType,
           )
         );
+      }else{
+        // -- console.log("Not sending otp");
       }
-      else{
-        console.log("Not sending otp");
-      }
-    }
-    else{
-      console.log("Can not send OTP 'to' props not found");
+    }else{
+      // -- console.log("Can not send OTP 'to' props not found");
     }
   }; 
 

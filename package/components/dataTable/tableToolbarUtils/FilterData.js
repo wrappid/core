@@ -5,9 +5,9 @@ import CoreClasses from "../../../styles/CoreClasses";
 import { getUUID } from "../../../utils/appUtils";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreIconButton from "../../inputs/CoreIconButton";
-import { CoreSelect } from "../../inputs/CoreSelect";
+import CoreSelect from "../../inputs/CoreSelect";
 import CoreTextButton from "../../inputs/CoreTextButton";
-import { CoreTextField } from "../../inputs/CoreTextField";
+import CoreTextField from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 
@@ -23,12 +23,14 @@ export default function FilterData(props) {
 
   const [_filterDatas, set_filterDatas] = React.useState([_filterOB]);
 
+  // eslint-disable-next-line no-unused-vars
   const handleColumnChange = (event, _filterID) => {
-    // setColumn(event.target.value);
+    // -- setColumn(event.target.value);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleOperatorChange = (event, _filterID) => {
-    // setOperator(event.target.value);
+    // -- setOperator(event.target.value);
   };
 
   return (
@@ -59,8 +61,8 @@ export default function FilterData(props) {
                 gridProps={{ gridSize: 4 }}
                 label="Select Column"
                 value={_filterData?.columm || ""}
-                handleChange={(e) => {
-                  handleColumnChange(e, _filterData.id);
+                handleChange={(err) => {
+                  handleColumnChange(err, _filterData.id);
                 }}
                 options={columns}
               />
@@ -70,8 +72,8 @@ export default function FilterData(props) {
                 gridProps={{ gridSize: 3 }}
                 label="Select Operator"
                 value={_filterData?.columm || ""}
-                handleChange={(e) => {
-                  handleOperatorChange(e, _filterData.id);
+                handleChange={(err) => {
+                  handleOperatorChange(err, _filterData.id);
                 }}
                 options={columns}
               />

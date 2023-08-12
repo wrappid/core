@@ -69,13 +69,13 @@ export default function CoreTableToolBar(props) {
               vertical  : "bottom",
             }}
           >
-            {props?.headCells?.map((col) => (
-              <CoreFormGroup row={true}>
+            {props?.headCells?.map((col, index) => (
+              <CoreFormGroup row={true} key={`CoreFormGroup-${col.id}-${index}`}>
                 <CoreFormControlLabel
                   control={
                     <CoreCheckbox
-                      onChange={(e) => {
-                        HandleColumnFilter(e, col);
+                      onChange={(err) => {
+                        HandleColumnFilter(err, col);
                       }}
                       checked={!columns.includes(col.id)}
                     />

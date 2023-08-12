@@ -1,10 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import {
-  NativeDomNavigate,
-  nativeUseLocation
-} from "@wrappid/styled-components";
+// eslint-disable-next-line import/no-unresolved
+import { NativeDomNavigate, nativeUseLocation } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 
 import { urls } from "../../../config/constants";
@@ -22,7 +20,7 @@ export default function SplashComponent() {
   const checkAppLoadDependencies = () => {
     if (_routes && Array.isArray(_routes) && _routes?.length > 0) {
       if (auth?.uid) {
-        if (_routes.filter((r) => r.authRequired)?.length > 0) {
+        if (_routes.filter((route) => route.authRequired)?.length > 0) {
           return { message: "Navigating...", success: true };
         } else {
           return { message: "Loading authenticated routes...", success: false };
