@@ -2,7 +2,7 @@
 import React from "react";
 
 import CoreAvatar from "./dataDisplay/CoreAvatar.js";
-import CoreAvatarDocs from "../docs/CoreAvatarDocs.js";
+import CoreAvatarDocs from "../docs/dataDisplay/CoreAvatarDocs.js";
 
 const CoreComponentsRegistryDocs = {
   CoreAvatar: {
