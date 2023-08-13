@@ -1,7 +1,10 @@
-/* eslint-disable import/order */
+// eslint-disable-next-line import/no-unresolved
+import { getConfigurationObject } from "@wrappid/styles";
 import * as yup from "yup";
 
 import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
+import { getGridSizeProps } from "./componentUtil";
+import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
 import { FORM_VALIDATION_MAP } from "./fromValidationMap";
 import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
@@ -11,12 +14,12 @@ import {
   FORM_SANITIZATOIN_FUNCTION_MAP,
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
-  FORM_XS_DEFAULT_GRID_SIZE
+  FORM_XS_DEFAULT_GRID_SIZE,
+  INPUT_TYPE
 } from "../components/forms/coreFormConstants";
 import CoreInput from "../components/inputs/CoreInput";
 import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
-import config from "../config/config";
 import { ENV_DEV_MODE, HTTP } from "../config/constants";
 import { mergedComponentRegistry } from "../layout/PageContainer";
 import axiosInterceptor from "../middleware/axiosInterceptor";
@@ -27,9 +30,9 @@ import {
   UPDATE_DATA_ERROR,
   UPDATE_DATA_SUCCESS
 } from "../store/types/dataManagementTypes";
-// import { store } from "../store/CoreProvider";
-
 import CoreClasses from "../styles/CoreClasses";
+
+let configuration = getConfigurationObject();
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   let message = "";
@@ -52,42 +55,41 @@ function getComponentArray(formJson) {
   let skeletonComp =
     mergedComponentRegistry[formJson?.skeletonRender]?.comp || null;
 
-  console.log("FORM JSON", formJson?.fields);
   if (formJson?.fields) {
-    let temp = formJson?.fields?.map((m) => {
+    let temp = formJson?.fields?.map((fields) => {
       return {
-        ...m,
-        order: m.order ? m.order : 0,
+        ...fields,
+        order: fields.order ? fields.order : 0,
       };
     });
 
-    temp = temp?.sort((a, b) => a.order - b.order);
+    temp = temp?.sort((elementA, elementB) => elementA.order - elementB.order);
     formJson.fields = temp;
   }
   for (let i = 0; i < formJson?.fields?.length; i++) {
-    var x = formJson.fields[i];
+    let formField = formJson.fields[i];
 
     allComps.push({
-      ...x,
-      box : { comp: CoreBox, gridSize: x.gridSize },
-      comp: x.hidden
+      ...formField,
+      box : { comp: CoreBox, gridSize: formField?.gridSize },
+      comp: formField?.hidden
         ? null
-        : mergedComponentRegistry[x.type]
-          ? mergedComponentRegistry[x.type]?.comp
+        : mergedComponentRegistry[formField?.type]
+          ? mergedComponentRegistry[formField?.type]?.comp
           : CoreInput,
-      dependencies: x.dependencies,
+      dependencies: formField?.dependencies,
       onlyView:
-        mergedComponentRegistry[x.type]?.onlyView === true ? true : false,
-      tabIndex: x.tabIndex ? x.tabIndex : i + 1,
-      viewComp: mergedComponentRegistry[x.viewComp]
-        ? mergedComponentRegistry[x.viewComp].comp
+        mergedComponentRegistry[formField?.type]?.onlyView === true ? true : false,
+      tabIndex: formField?.tabIndex ? formField?.tabIndex : i + 1,
+      viewComp: mergedComponentRegistry[formField?.viewComp]
+        ? mergedComponentRegistry[formField?.viewComp].comp
         : CoreTypographyBody1,
     });
-    allValidations[x.id] = x.required
-      ? mergedComponentRegistry[x.type]?.defaultValidation?.required
-      : mergedComponentRegistry[x.type]?.defaultValidation?.notRequired;
+    allValidations[formField?.id] = formField?.required
+      ? mergedComponentRegistry[formField?.type]?.defaultValidation?.required
+      : mergedComponentRegistry[formField?.type]?.defaultValidation?.notRequired;
 
-    if (x.helperText && x.helperText !== "") {
+    if (formField?.helperText && formField?.helperText !== "") {
       helperButtonFlag = true;
     }
   }
@@ -101,13 +103,10 @@ function getComponentArray(formJson) {
 
     actionComps.push({
       box : { comp: CoreBox },
-      comp: mergedComponentRegistry[x.type]?.comp,
+      comp: mergedComponentRegistry[action?.type]?.comp,
       ...action,
     });
   }
-
-  console.log("allValidations", allValidations);
-  console.log("helperButtonFlag", helperButtonFlag);
 
   return {
     actionComps,
@@ -126,48 +125,45 @@ export function createInitialData(formJson, initData) {
     : formJson?.fields;
 
   for (let i = 0; i < fields?.length; i++) {
-    var x = fields[i];
+    let formField = fields[i];
 
-    if (x.onlyView) continue;
+    if (formField?.onlyView) continue;
     if (initData) {
       if (Array.isArray(initData)) {
-        for (var j = 0; j < initData.length; j++) {
+        for (let j = 0; j < initData.length; j++) {
           if (initialDataOb[j]) {
-            initialDataOb[j][x.id] = initData[j][x.id];
+            initialDataOb[j][formField?.id] = initData[j][formField?.id];
           } else {
             initialDataOb[j] = {
-              id    : initData[j].id,
-              [x.id]: initData[j][x.id],
+              id             : initData[j]?.id,
+              [formField?.id]: initData[j][formField?.id],
             };
           }
         }
-      } else if (initData[x.id]) {
-        initialDataOb[x.id] = initData[x.id];
+      } else if (initData[formField?.id]) {
+        initialDataOb[formField?.id] = initData[formField?.id];
       } else {
-        console.log("inititla ob A", x.id);
-        initialDataOb[x.id] = "";
+        initialDataOb[formField?.id] = "";
       }
     } else {
-      console.log("inititla ob A", x.id);
-      initialDataOb[x.id] = "";
+      initialDataOb[formField?.id] = "";
     }
   }
 
   if (formJson?.keepAllData) {
     if (initData) {
       if (Array.isArray(initData)) {
-        for (var j = 0; j < initData.length; j++) {
+        for (let j = 0; j < initData.length; j++) {
           initialDataOb[j] = { ...initialDataOb[j], ...initData[j] };
         }
       } else {
-        console.log("inititla ob A", x.id);
         initialDataOb = { ...initialDataOb, ...initData };
       }
     } else {
-      console.log("inititla ob A", x.id);
-      initialDataOb[x.id] = "";
+      initialDataOb = {};
     }
   }
+  // eslint-disable-next-line no-console
   console.log("inititla ob", initialDataOb);
   if (!Array.isArray(initData) && !Array.isArray(initialDataOb)) {
     return { ...initData, ...initialDataOb };
@@ -180,19 +176,18 @@ function concateValidations(formJson, defValidations) {
   let validationOb = {};
 
   for (let i = 0; i < formJson?.fields?.length; i++) {
-    let x = formJson.fields[i];
+    let formField = formJson.fields[i];
 
     if (formJson.validation) {
       let formValidation = FORM_VALIDATION_MAP[formJson.validation];
 
-      validationOb[x.id] = formValidation[x.id];
+      validationOb[formField?.id] = formValidation[formField?.id];
     } else {
-      validationOb[x.id] = defValidations[x.id]
-        ? defValidations[x.id]
+      validationOb[formField?.id] = defValidations[formField?.id]
+        ? defValidations[formField?.id]
         : yup.string();
     }
   }
-  console.log("Validations", validationOb);
 
   return yup.object(validationOb);
 }
@@ -211,6 +206,7 @@ export async function createForm(
         : rawFormJson[formId]
       : formSchema;
 
+  // eslint-disable-next-line no-console
   console.log("form", formJson);
   let {
     allComps,
@@ -286,53 +282,89 @@ export function createFormGridProps(element) {
   return finalProps;
 }
 
-export function createFormFieldProps(element, formikprops, type, allElements, initProps) {
-  // console.log("FORMIK props", formikprops);
+export function createFormFieldProps(props, type) {
+  const {
+    forms,
+    formId,
+    element,
+    formikprops,
+    initProps,
+    mode, 
+    preview,
+    handleButtonCLick,
+    submitLoading,
+    submitSuccess,
+    OnEditClick,
+    editFormId,
+    allowEdit,
+    onFormFocus,
+  } = props;
+  
   if (type === "edit") {
     if (element?.onlyView) {
       return {
-        id          : String(element.id),
-        label       : element.label,
-        styleClasses: element.styleClasses,
-        ...(initProps[element.id] || {})
+        id          : String(element?.id),
+        key         : "formElement" + element?.id,
+        label       : element?.label,
+        styleClasses: element?.styleClasses,
+        ...(initProps[element?.id] || {})
       };
     } else
       return {
-        asyncLoading  : element?.asyncLoading,
-        creatable     : element?.creatable,
-        endpoint      : element?.endpoint,
-        error         : formikprops?.errors ? formikprops?.errors[element.id] : "",
-        formik        : formikprops,
-        freeSolo      : element?.freeSolo,
+
+        OnEditClick : OnEditClick,
+        allowEdit   : allowEdit,
+        asyncLoading: element?.asyncLoading,
+        
+        coreId: "coreFormElement-" + element?.id,
+        
+        creatable: element?.creatable,
+        
+        dependencies: element?.dependencies,
+        
+        editId: editFormId,
+        
+        endpoint: element?.endpoint,
+        
+        //data table
+        entity: element?.entity
+          ? element?.entity
+          : element?.getEntity
+            ? FORM_DATA_TABLE_FUNCTION_MAP[element?.getEntity](formikprops)
+            : "",
+        
+        error       : formikprops?.errors ? formikprops?.errors[element?.id] : "",
+        //below field are passed on for inline actions
+        fieldActions: forms[formId]?.formActions,
+
+        formik  : formikprops,
+        freeSolo: element?.freeSolo,
+
         getOptionLabel: element?.getOptionLabel
           ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionLabel]
           : null,
         getOptionValue: element?.getOptionValue
           ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
           : null,
+        gridProps           : { gridSize: getGridSizeProps(element?.gridSize, true) },
+        handleButtonCLick   : handleButtonCLick,
         helperText          : element?.helperText,
         id                  : String(element?.id),
+        inlineAction        : forms[formId].inlineAction,
         inputProps          : { tabIndex: element?.tabIndex },
         isOptionEqualToValue: element?.isOptionEqualToValue
           ? ASYNC_SELECT_FUNCTION_MAP[element.isOptionEqualToValue]
           : null,
-        itemKey    : element?.itemKey,
-        label      : element?.label,
-        multiple   : element?.multiple,
-        navigateUrl: element?.navigateUrl,
-        onChange   : (e)=>{
-          let dependentElement = allElements?.find(el => el?.dependencies?.getValue);
-
-          if(dependentElement){
-            let val = checkDependencies(dependentElement, formikprops, allElements)?.derivedValue;
-
-            formikprops?.setFieldValue(dependentElement?.id, val);
-          }
-          formikprops?.handleChange(e);
-        },
+        itemKey         : element?.itemKey,
+        key             : "formElement" + element?.id,
+        label           : element?.label,
+        multiple        : element?.multiple,
+        navigateUrl     : element?.navigateUrl,
+        onChange        : formikprops.handleChange,
         onChangeDispatch: element?.onChangeDispatch
           ? ASYNC_SELECT_FUNCTION_MAP[element.onChangeDispatch]
           : null,
+        onFormFocus    : onFormFocus,
         optionComp     : element?.optionComp,
         optionCompProps: element?.optionCompProps,
         //this will be arrow function like (d) => { return d.value }to show the label
@@ -345,14 +377,18 @@ export function createFormFieldProps(element, formikprops, type, allElements, in
         
         optionsData: element?.optionsData,
         
+        preview: preview,
+        
         query: element?.query,
+        
+        readOnly: !mode || preview || element?.readOnly,
         
         skeletonProps: element?.skeletonProps,
         
         src:
           element.type === "avatar" || element.type === "imagePicker"
             ? formikprops?.values
-              ? formikprops?.values[element.id]
+              ? formikprops?.values[element?.id]
               : ""
             : "",
         
@@ -362,39 +398,42 @@ export function createFormFieldProps(element, formikprops, type, allElements, in
             : [element.styleClasses]
           : [],
         
-        touched: formikprops?.touched ? formikprops?.touched[element.id] : "",
+        submitLoading: submitLoading,
+        
+        submitSuccess: submitSuccess,
+        
+        touched: formikprops?.touched ? formikprops?.touched[element?.id] : "",
         type   : element?.type,
-        value  : formikprops?.values ? formikprops?.values[element.id] : "",
-        ...(initProps[element.id] || {})
+        value  : formikprops?.values ? formikprops?.values[element?.id] : "",
+        ...(initProps[element?.id] || {})
       };
   } else {
     return {
-      id   : element?.id ? String(element.id) : "",
+      id   : element?.id ? String(element?.id) : "",
       label: element?.label,
-      ...(initProps[element.id] || {})
+      ...(initProps[element?.id] || {})
     };
   }
 }
 
 export function createFormActionProps(element) {
-  let ob = {};
+  let styleProps = {};
 
   if (
     element.actionContainerStyle &&
     typeof element.actionContainerStyle === "string"
   ) {
-    ob["styleClasses"] = [element.actionContainerStyle];
+    styleProps["styleClasses"] = [element.actionContainerStyle];
   } else if (
     element.actionContainerStyle &&
     Array.isArray(element.actionContainerStyle)
   ) {
-    ob["styleClasses"] = element.actionContainerStyle;
+    styleProps["styleClasses"] = element.actionContainerStyle;
   } else {
-    ob["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
+    styleProps["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
   }
 
-  // console.log("FORM ACTION PROPS BUILDRE", ob, element);
-  return ob;
+  return styleProps;
 }
 
 export function createFormButtonProps(element, formikprops, handleButtonCLick) {
@@ -427,36 +466,37 @@ export function createApiMeta(state, formJson, values, props) {
   const editForm = props?.editForm?.editing;
   const addForm = props?.addForm?.add;
 
+  // eslint-disable-next-line no-console
   console.log("API METa REATE", values, addForm, editForm, apiMode);
-  let ob = formJson?.create || {};
+  let apiAction = formJson?.create || {};
   let mode = "create";
 
   if (apiMode && formJson && formJson[apiMode]) {
-    ob = formJson[apiMode];
+    apiAction = formJson[apiMode];
     mode = apiMode;
   } else if (addForm) {
-    ob = formJson?.create;
+    apiAction = formJson?.create;
     mode = "create";
   } else if (editForm) {
-    ob = formJson?.edit;
+    apiAction = formJson?.edit;
     mode = "edit";
   }
 
   return {
-    authRequired: ob.authRequired,
+    authRequired: apiAction?.authRequired,
     endpoint:
-      ob.method === HTTP.GET && state.query
-        ? queryBuilder(ob.endpoint, state.query)
-        : ob.endpoint,
-    errorType  : ob.errorType,
+    apiAction?.method === HTTP.GET && state.query
+      ? queryBuilder(apiAction.endpoint, state.query)
+      : apiAction.endpoint,
+    errorType  : apiAction.errorType,
     files      : [],
-    includeFile: ob.includeFile,
-    localAction: ob.localAction,
-    method     : ob.method,
+    includeFile: apiAction?.includeFile,
+    localAction: apiAction?.localAction,
+    method     : apiAction?.method,
     mode       : mode,
     reduxData  : { reduxData: { query: props._query } },
-    reload     : ob.reload,
-    successType: ob.successType,
+    reload     : apiAction?.reload,
+    successType: apiAction?.successType,
     values,
   };
 }
@@ -468,13 +508,11 @@ export function createTableFormJson(
   successType,
   errorType
 ) {
-  let ob = {};
+  let initOb = {};
 
-  for (let i = 0; i < dataJson.filter((d) => d.input).length; i++) {
-    ob[dataJson[i].id] = dataJson[i].value;
+  for (let i = 0; i < dataJson.filter((data) => data?.input).length; i++) {
+    initOb[dataJson[i]?.id] = dataJson[i].value;
   }
-  console.log("---------------DATAJSON", dataJson);
-  console.log("---------------INIT", ob);
 
   let apiObject = {};
 
@@ -518,7 +556,7 @@ export function createTableFormJson(
     } else if (mode === "edit") {
       apiObject["edit"] = {
         authRequired: true,
-        endpoint    : apiRoute + "/" + ob.id,
+        endpoint    : apiRoute + "/" + initOb?.id,
         errorType   : errorType
           ? errorType.edit
             ? errorType.edit
@@ -536,7 +574,7 @@ export function createTableFormJson(
     } else if (mode === "delete") {
       apiObject["edit"] = {
         authRequired: true,
-        endpoint    : apiRoute + "/" + ob.id,
+        endpoint    : apiRoute + "/" + initOb?.id,
         errorType   : errorType
           ? errorType.edit
             ? errorType.edit
@@ -555,7 +593,7 @@ export function createTableFormJson(
   }
 
   // remove common fields
-  dataJson = dataJson.filter((d) => d.input);
+  dataJson = dataJson.filter((data) => data?.input);
 
   return {
     form: {
@@ -571,27 +609,26 @@ export function createTableFormJson(
           type      : "coreContainedButton",
         },
       ],
-      fields: dataJson.map((d) => {
+      fields: dataJson.map((data) => {
         return {
-          id      : d.id,
-          label   : d.label,
-          name    : d.id,
+          id      : data?.id,
+          label   : data?.label,
+          name    : data?.id,
           required: true,
           type    : "text",
-          // gridSize: 2,
         };
       }),
 
       validation: null,
     },
-    initData: ob,
+    initData: initOb,
   };
 }
 
 export function viewString(text, type) {
   if (text) {
     return text;
-  } else if (process.env.REACT_APP_ENV === ENV_DEV_MODE) {
+  } else if (configuration?.wrappid?.env === ENV_DEV_MODE) {
     if (type) {
       return "No " + type + " found";
     } else return "NA";
@@ -663,16 +700,16 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
-      let backendUrl =
-        process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
+      let backendUrl = configuration?.wrappid?.backendUrl;
       let url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
-      var formRes = await axiosInterceptor({
+      let formRes = await axiosInterceptor({
         headers: await authHeader(auth, false),
         method : HTTP.GET,
         url    : backendUrl + url + formId,
       });
 
       if (formRes.status === 200) {
+        // eslint-disable-next-line no-console
         console.log("IN GET FORM SUCCESS:", formRes);
         return {
           formId,
@@ -689,10 +726,11 @@ export async function getForm(formId, auth = true, formReducer) {
         };
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error("Error in form fetch");
       return {
         formId,
-        formJson: formRes?.data?.data?.schema,
+        formJson: {},
         message : "Form fetch error",
         success : false,
       };
@@ -707,8 +745,9 @@ function checkConditions(dependencies, formik) {
     let dependency = dependencies[i];
 
     if (dependency?.type === "operand") {
-      console.log("EVALUATEING,", dependency.id, formik.values);
-      let dependentValue = formik.values ? formik.values[dependency.id] : {};
+      // eslint-disable-next-line no-console
+      console.log("EVALUATEING,", dependency?.id, formik.values);
+      let dependentValue = formik.values ? formik.values[dependency?.id] : {};
 
       try {
         if (dependency.operator === "===") {
@@ -737,6 +776,7 @@ function checkConditions(dependencies, formik) {
           }
         }
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.warn("Not correct checking", err);
         finalStr += "false";
       }
@@ -744,42 +784,89 @@ function checkConditions(dependencies, formik) {
       finalStr += dependency.operator;
     }
 
+    // eslint-disable-next-line no-console
     console.log("FINAL STR,", finalStr);
   }
 
   return eval(finalStr);
 }
 
-function getDependentValue(getValueFunction, formik, elem, allElements){
-  if(getValueFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction]){
-    return FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction](formik, elem, allElements);
+export function getDependentProps(getPropsFunction, formik, elem, allElements){
+  if(getPropsFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction]){
+    let newProps =  FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction](formik, elem, allElements);
+    
+    if(newProps){
+      return newProps;
+    }
+    else{
+      return {};
+    }
   }
   else{
-    return "";
+    return {};
   }
 }
 
-export function checkDependencies(element, formik, allElements) {
+export function checkDependencies(element, formik) {
   let finalStr = "";
-  let finalVal = "";
 
-  // console.log("CHEKING DEPENDENCIES");
-
-  if (element.dependencies) {
+  if (element?.dependencies) {
     if(element?.dependencies?.hide)
       finalStr += String(checkConditions(element?.dependencies?.hide, formik));
-    if(element?.dependencies?.getValue){
-      finalVal = String(getDependentValue(element?.dependencies?.getValue, formik, element, allElements));
+    return { hide: eval(finalStr) };
+  } else {
+    return { hide: false };
+  }
+}
+
+export function getDependents(element, forms, formikprops, type, formId){
+  if(element && element.isDependent && type === INPUT_TYPE && element?.dependencies?.props?.elements){
+    let dependents = [];
+    let dependentOn = element?.dependencies?.props?.elements;
+
+    if(element?.dependencies?.props?.identifier){
+      const identifier = element?.dependencies?.props?.identifier;
+      let elemIds = forms[formId]?.formElements?.
+        filter(elem=>dependentOn.includes(elem[identifier]))
+        .map(elem=>{
+          return elem?.id;
+        });
+
+      dependents = elemIds?.map(id=> formikprops?.values ? formikprops?.values[id] : "");
+    }
+    else {
+      dependents = element?.dependencies?.props?.elements?.map((elem) => {
+        return formikprops?.values ? formikprops?.values[elem?.id] : "";
+      });
     }
 
-    return {
-      derivedValue: finalVal,
-      hide        : eval(finalStr)
-    };
-  } else {
-    return {
-      derivedValue: null,
-      hide        : false
-    };
+    return dependents;
   }
+  else{
+    return [];
+  }
+}
+
+export function detectChange(element, forms, formikprops, type, formId, oldValues){
+  let dependentValues = getDependents(element, forms, formikprops, type, formId);
+
+  if(dependentValues?.length === 0){
+    return false;
+  }
+  let dependentValuesOld = getDependents(element, forms, { values: oldValues }, type, formId);
+
+  if(dependentValues?.length !== dependentValuesOld?.length){
+    // eslint-disable-next-line no-console
+    console.error("POssible error");
+    return false;
+  }
+  else{
+    for(let i = 0;i < dependentValues?.length;i++){
+      if(dependentValues[i] !== dependentValuesOld[i]){
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }

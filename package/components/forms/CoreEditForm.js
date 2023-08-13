@@ -1,25 +1,15 @@
 import React from "react";
 
 import { Formik } from "formik";
-// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import { useSelector } from "react-redux";
 
-import CoreFormButton from "./CoreFormButton";
+import { BUTTON_TYPE, INPUT_TYPE } from "./coreFormConstants";
 import CoreFormContainer from "./CoreFormContainer";
+import CoreFormInputs from "./CoreFormInputs";
 import { getGridSizeProps } from "../../utils/componentUtil";
-import { FORM_DATA_TABLE_FUNCTION_MAP } from "../../utils/formDataTableFunctionMap";
-import {
-  checkDependencies,
-  createFieldSkeletonProps,
-  createFormActionProps,
-  createFormFieldProps
-} from "../../utils/formUtils";
+import { createFieldSkeletonProps } from "../../utils/formUtils";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreSkeleton from "../feedback/CoreSkeleton";
-import CoreContainedButton from "../inputs/CoreContainedButton";
-import CoreInput from "../inputs/CoreInput";
-import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
-import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 
 export const FormContext = React.createContext();
@@ -44,10 +34,8 @@ export default function CoreEditForm(props) {
     allowEdit,
     onFormFocus,
     preview,
-    initProps = {}
+    initProps = {},
   } = props;
-
-  // -- console.log("CORE EDIT FORM DETAILS", props);
 
   return formDataReadLoading &&
     formDataReadLoading[formId] &&
@@ -76,84 +64,51 @@ export default function CoreEditForm(props) {
                     {...createFieldSkeletonProps(element)}
                     key={`core-skeleton-${formId}-${elementIndex}`}
                   />
-                ) : element.comp &&
-                !checkDependencies(element, formikprops)?.hide ? (
-                    React.createElement(
-                      element.comp ? element.comp : CoreInput,
-                      {
-                        key        : `coreFormElement-${element.id}`,
-                        ...createFormFieldProps(element, formikprops, "edit", forms[formId]?.formElements, initProps),
-                        OnEditClick: OnEditClick,
-                        
-                        allowEdit: allowEdit,
-                        
-                        coreId: "coreFormElement-" + element.id,
-                        
-                        editId: editFormId,
-                        
-                        //data table
-                        entity: element.entity
-                          ? element.entity
-                          : element.getEntity
-                            ? FORM_DATA_TABLE_FUNCTION_MAP[element.getEntity](
-                              formikprops
-                            )
-                            : "",
-                        //below field are passed on for inline actions
-                        fieldActions     : forms[formId]?.formActions,
-                        gridProps        : { gridSize: getGridSizeProps(element.gridSize, true) },
-                        handleButtonCLick: handleButtonCLick,
-                        inlineAction     : forms[formId].inlineAction,
-                        onFormFocus      : onFormFocus,
-                        preview          : preview,
-                        readOnly         : !props.mode || preview || element.readOnly,
-
-                        submitLoading: submitLoading,
-                        submitSuccess: submitSuccess,
-                      },
-                      element.onlyView ? element.label : null
-                    )
-                  ) : null
+                ) : (
+                  <CoreFormInputs
+                    gridProps={{ gridSize: getGridSizeProps(element?.gridSize, true) }}
+                    key={"form-input-" + elementIndex}
+                    type={INPUT_TYPE}
+                    forms={forms}
+                    formId={formId}
+                    element={element}
+                    formikprops={formikprops}
+                    initProps={initProps}
+                    preview={preview}
+                    handleButtonCLick={handleButtonCLick}
+                    submitLoading={submitLoading}
+                    submitSuccess={submitSuccess}
+                    OnEditClick={OnEditClick}
+                    editFormId={editFormId}
+                    allowEdit={allowEdit}
+                    onFormFocus={onFormFocus}
+                    OnCancelClick={OnCancelClick}
+                    mode={props.mode}
+                  />
+                )
               )}
 
               {/* Showing Action Elements. Inline actions are written on input components */}
               {mode && forms[formId] && !forms[formId].inlineAction ? (
-                <CoreBox xs={12} {...createFormActionProps(forms[formId])}>
-                  {forms[formId]?.formActions?.map((actionElement, i) => (
-                    <CoreFormButton
-                      key={i}
-                      element={actionElement}
-                      formikprops={formikprops}
-                      handleButtonCLick={handleButtonCLick}
-                      submitLoading={submitLoading}
-                    />
-                  ))}
-
-                  {forms[formId]?.allowCancel !== false && (
-                    <CoreOutlinedButton
-                      label={
-                        forms[formId]?.cancelButtonLabel
-                          ? forms[formId].cancelButtonLabel
-                          : "Cancel"
-                      }
-                      disabled={submitLoading || preview}
-                      OnClick={OnCancelClick}
-                    />
-                  )}
-
-                  {forms[formId]?.allowSubmit !== false && (
-                    <CoreContainedButton
-                      label={
-                        forms[formId]?.submitButtonLabel
-                          ? forms[formId].submitButtonLabel
-                          : "Save"
-                      }
-                      disabled={submitLoading || preview}
-                      type="submit"
-                      OnClick={formikprops.handleSubmit}
-                    />
-                  )}
-                </CoreBox>
+                <CoreFormInputs
+                  key={"form-actions"}
+                  type={BUTTON_TYPE}
+                  formId={formId}
+                  element={null}
+                  formikprops={formikprops}
+                  forms={forms}
+                  initProps={initProps}
+                  preview={preview}
+                  handleButtonCLick={handleButtonCLick}
+                  submitLoading={submitLoading}
+                  submitSuccess={submitSuccess}
+                  OnEditClick={OnEditClick}
+                  editFormId={editFormId}
+                  allowEdit={allowEdit}
+                  onFormFocus={onFormFocus}
+                  OnCancelClick={OnCancelClick}
+                  mode={props.mode}
+                />
               ) : null}
             </CoreGrid>
           </CoreFormContainer>

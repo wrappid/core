@@ -59,6 +59,9 @@ export const FORM_MD_DEFAULT_GRID_SIZE = 4;
 export const FORM_LG_DEFAULT_GRID_SIZE = 3;
 export const FORM_XL_DEFAULT_GRID_SIZE = 3;
 
+export const INPUT_TYPE = "input";
+export const BUTTON_TYPE = "button";
+
 export const FORM_IDS = {
   REGISTER                 : "register",
   __CHANGE_PASSWORD        : "changePassword",
