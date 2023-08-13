@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeOtpInput } from "@wrappid/styled-components";
