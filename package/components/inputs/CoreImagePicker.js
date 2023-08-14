@@ -7,15 +7,25 @@ import { NativeImagePicker } from "@wrappid/styled-components";
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
+import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreImagePicker(props) {
+  const {
+    error,
+    helperText
+  } =  props;
+  
   return (
     <CoreFormControl>
       <NativeImagePicker {...props} />
 
-      <CoreFormErrorText>{props.touched && props.error}</CoreFormErrorText>
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
 
-      <CoreFormHelperText>{props.helperText}</CoreFormHelperText>
+      {helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {helperText}
+        </CoreFormHelperText>
+      )}
     </CoreFormControl>
   );
 }

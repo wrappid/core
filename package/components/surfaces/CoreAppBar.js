@@ -21,6 +21,7 @@ import CoreToolbar from "../surfaces/CoreToolbar";
 import CorePopover from "../utils/CorePopover";
 import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
 import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
+import NotificationPopOver from "../utils/custom/NotificationPopOver";
 import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
@@ -185,7 +186,7 @@ export default function CoreAppBar(props) {
           ) : _appbarContent === appbarPopOver.NOTIFICATION ? (
             <>
               {/* Notifications Popover */}
-              <CoreProfilePopOver />
+              <NotificationPopOver onClose={handleAppbarPopOverClose}/>
             </>
           ) : _appbarContent === appbarPopOver.QUICK_MENU ? (
             <>
