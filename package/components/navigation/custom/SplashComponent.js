@@ -13,14 +13,14 @@ import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 
 export default function SplashComponent() {
-  const _routes = useSelector((state) => state.route.routes);
-  const auth = useSelector((state) => state.auth);
+  const _routes = useSelector(state => state.route.routes);
+  const auth = useSelector(state => state.auth);
   let location = nativeUseLocation();
 
   const checkAppLoadDependencies = () => {
     if (_routes && Array.isArray(_routes) && _routes?.length > 0) {
       if (auth?.uid) {
-        if (_routes.filter((route) => route.authRequired)?.length > 0) {
+        if (_routes.filter(route => route.authRequired)?.length > 0) {
           return { message: "Navigating...", success: true };
         } else {
           return { message: "Loading authenticated routes...", success: false };
@@ -34,7 +34,7 @@ export default function SplashComponent() {
   React.useEffect(() => {
     /**
      * @todo
-     * 
+     *
      * must provide a delay here min 1000ms
      */
   }, []);
@@ -66,15 +66,22 @@ export default function SplashComponent() {
 
   return (
     <CoreGrid
-      styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.WIDTH.VW_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-    >
+      styleClasses={[
+        CoreClasses.HEIGHT.VH_100,
+        CoreClasses.WIDTH.VW_100,
+        CoreClasses.WIDTH.W_100,
+        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+      ]}>
       <CoreBox
         gridProps={{ gridSize: 6 }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-      >
-        <CoreComponent componentName={"AppLogoGif"} />
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+        <CoreBox styleClasses={[CoreClasses?.MARGIN?.MB1]}>
+          <CoreComponent componentName={"AppLogoGif"} />
+        </CoreBox>
 
-        <CoreTypographyBody1>
+        <CoreTypographyBody1
+          styleClasses={!auth?.uid ? [CoreClasses?.COLOR?.TEXT_WHITE] : []}>
           {checkAppLoadDependencies()?.message}
         </CoreTypographyBody1>
       </CoreBox>
