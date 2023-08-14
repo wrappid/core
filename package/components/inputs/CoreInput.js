@@ -10,15 +10,20 @@ import CoreClasses from "../../styles/CoreClasses";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreInput(props) {
+  const {
+    error,
+    helperText
+  } =  props;
+
   return (
     <CoreBox>
       <NativeInput {...props} />
 
-      {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
 
-      {props.helperText && (
+      {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-          {props.helperText}
+          {helperText}
         </CoreFormHelperText>
       )}
     </CoreBox>
