@@ -60,6 +60,7 @@ export default function CoreDataTableDetailsPane(props) {
     afterCreateError,
     afterDeleteSuccess,
     afterDeleteError,
+    hideAuditDataDetailPane
   } = props;
 
   return (
@@ -241,7 +242,7 @@ export default function CoreDataTableDetailsPane(props) {
                 </>
               )}
 
-              {true && (
+              {!hideAuditDataDetailPane && (
                 <>
                   <CoreDivider />
 

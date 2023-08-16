@@ -43,14 +43,14 @@ export default function UserChip(props) {
           "/business/individual/UserBasicInfo?_defaultFilter=" +
           encodeURIComponent(JSON.stringify({ id: userid })),
       })
-        .then((response) => {
+        .then(response => {
           setFirstName(response?.data?.data?.data["Person.firstName"]);
           setMiddleName(response?.data?.data?.data["Person.middleName"]);
           setLastName(response?.data?.data?.data["Person.lastName"]);
           setEmail(response?.data?.data?.data["email"]);
           setPhotoUrl(response?.data?.data?.data["Person.photoUrl"]);
         })
-        .catch((error) => {
+        .catch(error => {
           throw error;
         });
     }

@@ -1,6 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+import { CoreClasses } from "@wrappid/core";
+
 import { auditTypes } from "../../config/constants";
 import { getLabel } from "../../utils/stringUtils";
 import UserChip from "../dataDisplay/custom/UserChip";
@@ -35,14 +37,25 @@ export default function TableRowAuditData(props) {
 
 function AuditDataComponent({ type, rowData }) {
   return (
-    rowData?.[`${type}At`] && rowData?.[`${type}By`] && (
-      <CoreTypographyCaption>
-        {`${getLabel(type)} at ${(rowData[`${type}At`] && new Date(rowData?.[`${type}At`]).toLocaleString()) || "not known"}`}
+    rowData?.[`${type}At`] &&
+    rowData?.[`${type}By`] && (
+      <CoreGrid styleClasses={[CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+        <CoreTypographyCaption gridProps={{ gridSize: 8 }}>
+          {`${getLabel(type)} at ${
+            (rowData[`${type}At`] &&
+              new Date(rowData?.[`${type}At`]).toLocaleString()) ||
+            "not known"
+          }`}
 
-        {" by "}
+          {" by "}
+        </CoreTypographyCaption>
 
-        <UserChip component="span" userid={rowData[`${type}By`]} />
-      </CoreTypographyCaption>
+        <UserChip
+          gridProps={{ gridSize: 4 }}
+          component="span"
+          userid={rowData[`${type}By`]}
+        />
+      </CoreGrid>
     )
   );
 }

@@ -21,8 +21,7 @@ export default function CoreDataTableBody(props) {
   return (
     <CoreTableBody
       {...props.tableHead}
-      onMouseLeave={(e) => {
-        console.log("Mouse Leave on table");
+      onMouseLeave={() => {
         tableActions && tableActions.length > 0 && handlePopoverClose();
       }}
     >

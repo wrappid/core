@@ -166,7 +166,8 @@ export default function CoreDataTable(props) {
     afterCreateSuccess, // function to be called after successfull Create
     afterCreateError, // function to be called after successfull Create
     afterDeleteSuccess, // function to be called after successfull Delete
-    afterDeleteError // function to be called after successfull Delete
+    afterDeleteError, // function to be called after successfull Delete
+    hideAuditDataDetailPane //flag for hiding audit info in details pane
   } = props;
 
   // eslint-disable-next-line no-unused-vars
@@ -851,6 +852,7 @@ export default function CoreDataTable(props) {
             afterCreateError={afterCreateError}
             afterDeleteSuccess={afterDeleteSuccess}
             afterDeleteError={afterDeleteError}
+            hideAuditDataDetailPane={hideAuditDataDetailPane}
           />
         )}
       </CoreGrid>
