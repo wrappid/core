@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import {
   browserName,
   deviceType,
@@ -43,11 +46,8 @@ export default function ReportIssueForm(props) {
           mode={FORM_EDIT_MODE}
           initData={{
             devInfo: JSON.stringify({
-              backend: {
-                // url: config.backendUrl,
-                version: apiVersion?.version || "unknown",
-              },
-              client: {
+              backend: { version: apiVersion?.version || "unknown" },
+              client : {
                 browser: `${browserName} Ver: ${fullBrowserVersion}`,
                 device : `${getLabel(deviceType)}${
                   isMobile ? " " + mobileVendor + " " + mobileModel : ""
