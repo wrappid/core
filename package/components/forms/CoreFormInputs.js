@@ -52,7 +52,7 @@ export default function CoreFormInputs(props) {
           forms[formId]?.formElements
         );
 
-        data = { ...formikprops?.values };
+        data = { ...formikprops };
         setOldData(data);
         setTempProps(changedProps);
         

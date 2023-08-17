@@ -823,21 +823,37 @@ export function getDependents(element, forms, formikprops, type, formId){
   if(element && element.isDependent && type === INPUT_TYPE && element?.dependencies?.props?.elements){
     let dependents = [];
     let dependentOn = element?.dependencies?.props?.elements;
+    let dependentProps = element?.dependencies?.props?.dependentProps || [];
 
-    if(element?.dependencies?.props?.identifier){
-      const identifier = element?.dependencies?.props?.identifier;
-      let elemIds = forms[formId]?.formElements?.
-        filter(elem=>dependentOn.includes(elem[identifier]))
-        .map(elem=>{
-          return elem?.id;
-        });
-
-      dependents = elemIds?.map(id=> formikprops?.values ? formikprops?.values[id] : "");
+    if(dependentProps){
+      if(Array.isArray( dependentProps) && dependentProps.length === 0){
+        dependentProps = ["values"];
+      }
     }
-    else {
-      dependents = element?.dependencies?.props?.elements?.map((elem) => {
-        return formikprops?.values ? formikprops?.values[elem?.id] : "";
-      });
+
+    /**
+     * @todo
+     * only considering formik props for now as dependent props.
+     * This may have extend to all props of depending elements
+     */
+    for(let i = 0;i < dependentProps.length;i++){
+      let prop = dependentProps[[i]];
+
+      if(element?.dependencies?.props?.identifier){
+        const identifier = element?.dependencies?.props?.identifier;
+        let elemIds = forms[formId]?.formElements?.
+          filter(elem=>dependentOn.includes(elem[identifier]))
+          .map(elem=>{
+            return elem?.id;
+          });
+  
+        dependents = elemIds?.map(id=> formikprops && formikprops[prop] ? formikprops[prop][id] : "");
+      }
+      else {
+        dependents = element?.dependencies?.props?.elements?.map((elem) => {
+          return formikprops && formikprops[prop] ? formikprops && formikprops[prop][elem?.id] : "";
+        });
+      }
     }
 
     return dependents;
@@ -847,13 +863,13 @@ export function getDependents(element, forms, formikprops, type, formId){
   }
 }
 
-export function detectChange(element, forms, formikprops, type, formId, oldValues){
+export function detectChange(element, forms, formikprops, type, formId, oldProps){
   let dependentValues = getDependents(element, forms, formikprops, type, formId);
 
   if(dependentValues?.length === 0){
     return false;
   }
-  let dependentValuesOld = getDependents(element, forms, { values: oldValues }, type, formId);
+  let dependentValuesOld = getDependents(element, forms, oldProps, type, formId);
 
   if(dependentValues?.length !== dependentValuesOld?.length){
     // eslint-disable-next-line no-console
