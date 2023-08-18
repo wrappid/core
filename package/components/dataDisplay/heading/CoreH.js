@@ -1,5 +1,7 @@
-import React from 'react';
-import CoreTypography from '../CoreTypography';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import CoreTypography from "../CoreTypography";
 
 export default function CoreH(props) {
   //DONT use this directly instead use CoreH1 to CoreH6

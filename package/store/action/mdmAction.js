@@ -4,7 +4,7 @@ import {
   MAIN_MASTER_DATA_ERROR,
   MAIN_MASTER_DATA_LOADING,
   MAIN_MASTER_DATA_SUCCESS,
-  MASTER_DATA_LOADING,
+  MASTER_DATA_LOADING
 } from "../types/mdmTypes";
 
 let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;
@@ -17,7 +17,7 @@ export const getScrappedDepartments = (query = {}, token = "") => {
 
     fetch(adminUrl + newUrl, {
       headers: {
-        Accept: "application/json",
+        Accept        : "application/json",
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
       },
@@ -26,16 +26,16 @@ export const getScrappedDepartments = (query = {}, token = "") => {
         res.json().then((data) => {
           if (res.status === 200) {
             dispatch({
-              data: data.data,
+              data   : data.data,
               message: data.message,
-              type: "GET_SCRAPPED_DEPARTMENTS_SUCCESS",
+              type   : "GET_SCRAPPED_DEPARTMENTS_SUCCESS",
             });
           } else if (res.status === 403 || res.status === 401) {
             dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
-              type: "GET_SCRAPPED_DEPARTMENTS_ERROR",
+              type   : "GET_SCRAPPED_DEPARTMENTS_ERROR",
             });
           }
         })
@@ -43,7 +43,7 @@ export const getScrappedDepartments = (query = {}, token = "") => {
       .catch((err) => {
         dispatch({
           message: "Internal Error",
-          type: "GET_SCRAPPED_DEPARTMENTS_ERROR",
+          type   : "GET_SCRAPPED_DEPARTMENTS_ERROR",
         });
       });
   };
@@ -56,8 +56,8 @@ export const getMainMasterData = (query = {}, token = "") => {
 
     fetch(backendUrl + newUrl, {
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })
@@ -65,16 +65,16 @@ export const getMainMasterData = (query = {}, token = "") => {
         res.json().then((data) => {
           if (res.status === 200) {
             dispatch({
-              data: data.data,
+              data   : data.data,
               message: data.message,
-              type: MAIN_MASTER_DATA_SUCCESS,
+              type   : MAIN_MASTER_DATA_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
             dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
-              type: MAIN_MASTER_DATA_ERROR,
+              type   : MAIN_MASTER_DATA_ERROR,
             });
           }
         })
@@ -82,7 +82,7 @@ export const getMainMasterData = (query = {}, token = "") => {
       .catch((err) => {
         dispatch({
           message: "Internal Error",
-          type: MAIN_MASTER_DATA_ERROR,
+          type   : MAIN_MASTER_DATA_ERROR,
         });
       });
   };
@@ -95,8 +95,8 @@ export const getSettingMeta = (query, token) => {
 
     fetch(backendUrl + newUrl, {
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })
@@ -104,16 +104,16 @@ export const getSettingMeta = (query, token) => {
         res.json().then((data) => {
           if (res.status === 200) {
             dispatch({
-              data: data.data,
+              data   : data.data,
               message: data.message,
-              type: "GET_SETTING_META_SUCCESS",
+              type   : "GET_SETTING_META_SUCCESS",
             });
           } else if (res.status === 403 || res.status === 401) {
             dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
-              type: "GET_SETTING_META_ERROR",
+              type   : "GET_SETTING_META_ERROR",
             });
           }
         })
@@ -121,7 +121,7 @@ export const getSettingMeta = (query, token) => {
       .catch((err) => {
         dispatch({
           message: "Internal Error",
-          type: "GET_SETTING_META_ERROR",
+          type   : "GET_SETTING_META_ERROR",
         });
       });
   };
@@ -133,10 +133,10 @@ export const createSettingMeta = (query, body, token) => {
     let newUrl = queryBuilder("/settingMeta", query);
 
     fetch(backendUrl + newUrl, {
-      body: JSON.stringify(body),
+      body   : JSON.stringify(body),
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       method: "post",
@@ -146,16 +146,16 @@ export const createSettingMeta = (query, body, token) => {
           if (res.status === 200) {
             dispatch({
               errList: data.errList,
-              ids: data.ids,
+              ids    : data.ids,
               message: data.message,
-              type: "CREATE_SETTING_META_SUCCESS",
+              type   : "CREATE_SETTING_META_SUCCESS",
             });
           } else if (res.status === 403 || res.status === 401) {
             dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
-              type: "CREATE_SETTING_META_ERROR",
+              type   : "CREATE_SETTING_META_ERROR",
             });
           }
         })
@@ -163,7 +163,7 @@ export const createSettingMeta = (query, body, token) => {
       .catch((err) => {
         dispatch({
           message: "Internal Error",
-          type: "CREATE_SETTING_META_ERROR",
+          type   : "CREATE_SETTING_META_ERROR",
         });
       });
   };
@@ -175,10 +175,10 @@ export const updateSettingMeta = (query, id, body, token) => {
     let newUrl = queryBuilder("/settingMeta/" + id, query);
 
     fetch(backendUrl + newUrl, {
-      body: JSON.stringify(body),
+      body   : JSON.stringify(body),
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       method: "put",
@@ -188,14 +188,14 @@ export const updateSettingMeta = (query, id, body, token) => {
           if (res.status === 200) {
             dispatch({
               message: data.message,
-              type: "UPDATE_SETTING_META_SUCCESS",
+              type   : "UPDATE_SETTING_META_SUCCESS",
             });
           } else if (res.status === 403 || res.status === 401) {
             dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
-              type: "UPDATE_SETTING_META_ERROR",
+              type   : "UPDATE_SETTING_META_ERROR",
             });
           }
         })
@@ -203,7 +203,7 @@ export const updateSettingMeta = (query, id, body, token) => {
       .catch((err) => {
         dispatch({
           message: "Internal Error",
-          type: "UPDATE_SETTING_META_ERROR",
+          type   : "UPDATE_SETTING_META_ERROR",
         });
       });
   };

@@ -1,27 +1,30 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import CoreTableCell from "./../dataDisplay/CoreTableCell";
-import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
+
 import { UtilityClasses } from "@wrappid/styles";
+
 import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
 import {
   getColumnLabel,
   getStatusTextColorClass,
-  setPriorityBasedData,
+  setPriorityBasedData
 } from "./../../utils/tableUtils";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreTypographyBody2 from "../dataDisplay/paragraph/CoreTypographyBody2";
-import CoreTableBodyCell from "../dataDisplay/CoreTableBodyCell";
-import CoreAvatar from "../dataDisplay/CoreAvatar";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import { isJson } from "../../utils/stringUtils";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import StatusText from "../dataDisplay/custom/StatusText";
+import CoreTableCell from "./../dataDisplay/CoreTableCell";
+import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
 import CoreClasses from "../../styles/CoreClasses";
+import { isJson } from "../../utils/stringUtils";
 import {
   APP_PLATFORM,
   WEB_PLATFORM,
-  detectPlatform,
+  detectPlatform
 } from "../../utils/themeUtil";
+import CoreAvatar from "../dataDisplay/CoreAvatar";
+import CoreDivider from "../dataDisplay/CoreDivider";
+import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreTableBodyCell from "../dataDisplay/CoreTableBodyCell";
+import StatusText from "../dataDisplay/custom/StatusText";
+import CoreTypographyBody2 from "../dataDisplay/paragraph/CoreTypographyBody2";
+import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 
 export default function CoreDataTableRowContent(props) {
   const {
@@ -87,6 +90,7 @@ export default function CoreDataTableRowContent(props) {
     // prepare columns intelligently
     let lastProcessedPriority = DATA_TABLE_CONST.LOWEST_PRIORITY;
     let usedColumnIds = [];
+
     DATA_TABLE_CONST.DEFAULT_COLUMNS_IDS.sort(
       (firstCol, secondCol) =>
         firstCol.priority - secondCol.priority ||
@@ -166,20 +170,15 @@ export default function CoreDataTableRowContent(props) {
         ) : (
           ""
         )}
+
         <CoreTypographyCaption
-          styleClasses={[
-            getStatusTextColorClass(statusData?.data || ""),
-            CoreClasses.TEXT.TEXT_WEIGHT_BOLD,
-            CoreClasses.TEXT.TEXT_UPPERCASE,
-          ]}
+          styleClasses={[getStatusTextColorClass(statusData?.data || ""), CoreClasses.TEXT.TEXT_WEIGHT_BOLD, CoreClasses.TEXT.TEXT_UPPERCASE]}
         >
           {statusData?.data || "UNKNOWN"}
         </CoreTypographyCaption>
       </>
     );
   };
-
-  
 
   return (
     <>
@@ -220,7 +219,7 @@ export default function CoreDataTableRowContent(props) {
                     {tableColumn.render ? (
                       tableColumn.renderType === "component" ? (
                         React.createElement(tableColumn?.render, {
-                          data: rowData[tableColumn.id],
+                          data   : rowData[tableColumn.id],
                           rowData: rowData,
                         })
                       ) : (
@@ -228,30 +227,30 @@ export default function CoreDataTableRowContent(props) {
                       )
                     ) : rowData[tableColumn.id] !== null &&
                       typeof rowData[tableColumn.id] === "object" ? (
-                      <CoreTypographyBody2
-                        limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
-                        hideSeeMore={true}
-                      >
-                        {JSON.stringify(rowData[tableColumn.id], null, 4)}
-                      </CoreTypographyBody2>
-                    ) : typeof rowData[tableColumn.id] === "boolean" ? (
-                      rowData[tableColumn.id] === true ? (
-                        "True"
+                        <CoreTypographyBody2
+                          limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
+                          hideSeeMore={true}
+                        >
+                          {JSON.stringify(rowData[tableColumn.id], null, 4)}
+                        </CoreTypographyBody2>
+                      ) : typeof rowData[tableColumn.id] === "boolean" ? (
+                        rowData[tableColumn.id] === true ? (
+                          "True"
+                        ) : (
+                          "False"
+                        )
+                      ) : tableColumn.id === "_status" ? (
+                        <StatusText status={rowData[tableColumn.id]} />
                       ) : (
-                        "False"
-                      )
-                    ) : tableColumn.id === "_status" ? (
-                      <StatusText status={rowData[tableColumn.id]} />
-                    ) : (
-                      <CoreTypographyBody2
-                        limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
-                        hideSeeMore={true}
-                      >
-                        {rowData.hasOwnProperty(tableColumn.id)
-                          ? rowData[tableColumn.id]
-                          : "Not Given"}
-                      </CoreTypographyBody2>
-                    )}
+                        <CoreTypographyBody2
+                          limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
+                          hideSeeMore={true}
+                        >
+                          {rowData.hasOwnProperty(tableColumn.id)
+                            ? rowData[tableColumn.id]
+                            : "Not Given"}
+                        </CoreTypographyBody2>
+                      )}
                   </CoreTableBodyCell>
                 );
               })}

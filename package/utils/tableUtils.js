@@ -1,7 +1,7 @@
+import { getLabel } from "./stringUtils";
 import { __EntityStatus, __TableDensity } from "../config/constants";
 import { DATA_TABLE_CONST } from "../config/dataTableConstants";
 import CoreClasses from "../styles/CoreClasses";
-import { getLabel, isJson } from "./stringUtils";
 
 export const __TableLeftPanelGridSize = 4;
 export const __TableRightPanelGridSize = 8;
@@ -11,10 +11,13 @@ export const getStatusColor = (status) => {
   switch (status) {
     case __EntityStatus.ACTIVE:
       return "success";
+
     case __EntityStatus.INACTIVE:
       return "warning";
+
     case __EntityStatus.DELETED:
       return "error";
+
     default:
       return "secondary";
   }
@@ -26,17 +29,17 @@ export const getStatusColor = (status) => {
 export const prepareTableAPIQuery = (
   notifyFilterChange,
   query = {
-    currentRows: 0,
-    page: 0,
-    maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
-    pagesToCache: DATA_TABLE_CONST.PAGES_TO_CACHE,
-    _order: {},
-    _filter: {},
+    _filter     : {},
+    _order      : {},
     _searchValue: "",
+    currentRows : 0,
+    maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
+    page        : 0,
+    pagesToCache: DATA_TABLE_CONST.PAGES_TO_CACHE,
   },
   filterQuery = {
-    order: {},
     filter: {},
+    order : {},
   },
   totalRecords = 0
 ) => {
@@ -59,14 +62,19 @@ export const prepareTableAPIQuery = (
   // }
 
   let _query = {
+    
+    _defaultFilter: "",
+
+    _filter: "",
+
+    _order: "",
+
+    _searchValue: "",
+
+    limit : limit,
     // start: filtering ? 0 : currentRows || 0,
     // length: maxRowInPage * pagesToCache,
     offset: offset,
-    limit: limit,
-    _order: "",
-    _filter: "",
-    _defaultFilter: "",
-    _searchValue: "",
   };
 
   // if (filtering) {
@@ -77,6 +85,7 @@ export const prepareTableAPIQuery = (
   // }
 
   let orderOb = {};
+
   if (_order) {
     Object.keys(_order).forEach((eachOrder) => {
       console.log("Each order" + eachOrder);
@@ -91,6 +100,7 @@ export const prepareTableAPIQuery = (
   }
 
   let filterOb = {};
+
   if (filterQuery?.filter) {
     Object.keys(filterQuery?.filter).forEach((eachFilter) => {
       console.log("Each Filter" + eachFilter);
@@ -206,8 +216,10 @@ export function getComparator(order, orderBy) {
 // this is a local sort functionality
 export function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
+
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
+
     if (order !== 0) {
       return order;
     }
@@ -234,9 +246,12 @@ export const getTableDensityIconName = (tableDensity) => {
   switch (tableDensity) {
     case __TableDensity.COMFORTABLE:
       return "density_large";
+
     case __TableDensity.STANDARD:
       return "density_medium";
+
     case __TableDensity.COMPACT:
+
     default:
       return "density_small";
   }
@@ -245,9 +260,12 @@ export const getTableDensityPaddingValue = (tableDensity) => {
   switch (tableDensity) {
     case __TableDensity.COMFORTABLE:
       return "16px 0px";
+
     case __TableDensity.STANDARD:
       return "8px 0px";
+
     case __TableDensity.COMPACT:
+
     default:
       return "6px 0px";
   }
@@ -257,9 +275,12 @@ export const getTableDensityValue = (tableDensity) => {
   switch (tableDensity) {
     case __TableDensity.COMFORTABLE:
       return "medium";
+
     case __TableDensity.STANDARD:
       return "medium";
+
     case __TableDensity.COMPACT:
+
     default:
       return "small";
   }
@@ -275,20 +296,30 @@ export const getStatusTextColorClass = (status) => {
 
   switch (status) {
     case __EntityStatus.NEW:
+
     case __EntityStatus.DRAFT:
       return CoreClasses.COLOR.TEXT_INFO;
+
     case __EntityStatus.ACTIVE:
+
     case __EntityStatus.APPROVED:
       return CoreClasses.COLOR.TEXT_SUCCESS;
+
     case __EntityStatus.PUBLISHED:
       return CoreClasses.COLOR.TEXT_PRIMARY;
+
     case __EntityStatus.INACTIVE:
+
     case __EntityStatus.CHANGE_REQUESTED:
+
     case __EntityStatus.REVIEW_REQUESTED:
       return CoreClasses.COLOR.TEXT_WARNING;
+
     case __EntityStatus.DELETED:
+
     case __EntityStatus.REJECTED:
       return CoreClasses.COLOR.TEXT_ERROR;
+
     default:
       return CoreClasses.COLOR.TEXT_SECONDARY;
   }
@@ -318,38 +349,48 @@ export const setPriorityBasedData = (
   switch (defaultCol.priority) {
     case -2:
       let tmpIdData = prepareData(rowData, tableColumn, defaultCol);
+
       setIdData(tmpIdData);
       setHasId(tmpIdData?.data ? true : false);
       break;
+
     case -1:
       let tmpStatusData = prepareData(rowData, tableColumn, defaultCol);
+
       setStatusData(tmpStatusData);
       setHasStatus(tmpStatusData ? true : false);
       break;
+
     case 0:
       setImageData(prepareData(rowData, tableColumn, defaultCol, true));
       setHasImage(imageData ? true : false);
       break;
+
     case 1:
       setPriority1Data(prepareData(rowData, tableColumn, defaultCol));
       // hasPriority1 = priority1Data ? true : false;
       break;
+
     case 2:
       setPriority2Data(prepareData(rowData, tableColumn, defaultCol));
       // hasPriority2 = priority2Data ? true : false;
       break;
+
     case 3:
       setPriority3Data(prepareData(rowData, tableColumn, defaultCol));
       // hasPriority3 = priority3Data ? true : false;
       break;
+
     case 4:
       setPriority4Data(prepareData(rowData, tableColumn, defaultCol));
       // hasPriority4 = priority4Data ? true : false;
       break;
+
     case 5:
       setPriority5Data(prepareData(rowData, tableColumn, defaultCol));
       // hasPriority5 = priority5Data ? true : false;
       break;
+
     default:
       break;
   }
@@ -362,23 +403,23 @@ export const prepareData = (
 ) => {
   return rowData[tableColumn.id]
     ? {
-        data: getData(rowData, tableColumn),
-        column: { ...tableColumn, priority: defaultCol.priority },
-      }
+      column: { ...tableColumn, priority: defaultCol.priority },
+      data  : getData(rowData, tableColumn),
+    }
     : allowDefaultValue
-    ? {
-        data: DATA_TABLE_CONST.DEFAULT_DATA[defaultCol.priority],
+      ? {
         column: { ...tableColumn, priority: defaultCol.priority },
+        data  : DATA_TABLE_CONST.DEFAULT_DATA[defaultCol.priority],
       }
-    : null;
+      : null;
 };
 
 export const getColumnLabel = (column) => {
   return column?.label
     ? column.label + ": "
     : column?.id
-    ? column?.id.toUpperCase() + ": "
-    : "";
+      ? column?.id.toUpperCase() + ": "
+      : "";
 };
 export const getData = (rowData, columnData) => {
   // tableColumnsToShow[2] && rowData[tableColumnsToShow[2]?.id];

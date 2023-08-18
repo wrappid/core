@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/styled-components";
-import { createMultiLevelMenu } from "../../utils/menuUtil";
-import CoreStack from "../layouts/CoreStack";
+
 import { ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
+import { createMultiLevelMenu } from "../../utils/menuUtil";
+import CoreStack from "../layouts/CoreStack";
 
 export default function CoreMenu(props) {
   const {
@@ -23,11 +26,12 @@ export default function CoreMenu(props) {
     try {
       location = nativeUseLocation();
     } catch (err) {
-      console.log("No navigation");
+      // -- console.log("No navigation");
     }
   }
   const [selectedID, setSelectedID] = React.useState(defaultSelection);
-  console.log("MENU", menu, openCollapse);
+
+  // -- console.log("MENU", menu, openCollapse);
   const theme = useContext(ThemeContext);
 
   return (
@@ -35,10 +39,7 @@ export default function CoreMenu(props) {
       direction="column"
       styleClasses={
         miniDrawer &&
-        !open && [
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_START,
-          CoreClasses.PADDING.PL1,
-        ]
+        !open && [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START, CoreClasses.PADDING.PL1]
       }
     >
       {createMultiLevelMenu(

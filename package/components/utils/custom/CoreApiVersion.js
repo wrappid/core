@@ -1,41 +1,24 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { HTTP } from "../../../config/constants";
-import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreBox from "../../layouts/CoreBox";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { API_VERSION_ERROR, API_VERSION_SUCCESS } from "../../../store/types/appTypes";
+import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
 
-export default function CoreApiVersion() {
-    const dispatch = useDispatch();
+export default function CoreApiVersion(props) {
+  const dispatch = useDispatch();
+  const { noTitle = false } = props;
 
-    const { apiVersion } = useSelector((state) => state.app);
+  const { apiVersion } = useSelector((state) => state.app);
 
-    React.useEffect(() => {
-        dispatch(
-            apiRequestAction(HTTP.GET, "/version", false, null, API_VERSION_SUCCESS, API_VERSION_ERROR)
-        );
-    }, []);
-
-    return (
-        <>
-            <CoreBox>
-                <CoreTypographyCaption>{`API Version: ${apiVersion?.version || "unknown"}`}</CoreTypographyCaption>
-            </CoreBox>
-            {/* <CoreBox
-                styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-            >
-                <CoreTypographyCaption>API Swagger:</CoreTypographyCaption>
-
-                <CoreTypographyCaption>
-                    <CoreLink target="_blank" href={process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl + "/apiDocs"}>
-                        {process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl + "/apiDocs"}
-                    </CoreLink>
-                </CoreTypographyCaption>
-            </CoreBox> */}
-        </>
+  React.useEffect(() => {
+    dispatch(
+      apiRequestAction(HTTP.GET, "/version", false, null, API_VERSION_SUCCESS, API_VERSION_ERROR)
     );
+  }, []);
+
+  return <CoreTypographyCaption>{!noTitle && "API Version: "}{`v${apiVersion?.version || "unknown"}`}</CoreTypographyCaption>;
 }

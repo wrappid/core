@@ -1,59 +1,55 @@
-import { FORM_IDS } from "../components/forms/coreFormConstants";
-import { communicationTypes, __EntityStatus } from "../config/constants";
-import { queryBuilder } from "./helper";
-
-export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
+export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta) {
   return {
-    values: formData,
     endpoint: apiMeta.endpoint + "/" + formData?.id,
+    values  : formData,
   };
 }
 
 export function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta, others);
   return {
-    values: {
-      formId: others.formId,
-      formArrayId: others?.editForm[others.formId]?.formArrayId,
-    },
     endpoint: "",
+    values  : {
+      formArrayId: others?.editForm[others.formId]?.formArrayId,
+      formId     : others.formId,
+    },
   };
 }
 
+// eslint-disable-next-line no-unused-vars
 export function SanDoctorCreate(formData, apiMeta, state, others) {
-  console.error("formData", formData);
-  console.error("endpoint", apiMeta.endpoint);
-  console.error("reduxData", apiMeta.reduxData);
+  // -- console.error("formData", formData);
+  // -- console.error("endpoint", apiMeta.endpoint);
+  // -- console.error("reduxData", apiMeta.reduxData);
   return {
-    values: {
+    endpoint : apiMeta.endpoint,
+    reduxData: apiMeta.reduxData,
+    values   : {
       ...formData,
       gender: formData?.gender?.label,
     },
-    endpoint: apiMeta.endpoint,
-    reduxData: apiMeta.reduxData,
   };
 }
 
+// eslint-disable-next-line no-unused-vars
 export function SanStringValueAdd(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta.endpoint, others);
+  // -- console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: {
-      ...formData,
-      table: state?.language?.languageTable?.id,
-      key: state?.language?.languageTableData?.key,
-    },
     endpoint: apiMeta.endpoint,
+    values  : {
+      ...formData,
+      key  : state?.language?.languageTableData?.key,
+      table: state?.language?.languageTable?.id,
+    },
   };
 }
 
 export function SanStringValueEdit(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta.endpoint, others);
   return {
-    values: {
-      ...formData,
-      table: state?.language?.languageTable?.id,
-      key: state?.language?.languageTableData?.key,
-    },
     endpoint: apiMeta.endpoint.replace(":id", others?.editing),
+    values  : {
+      ...formData,
+      key  : state?.language?.languageTableData?.key,
+      table: state?.language?.languageTable?.id,
+    },
   };
 }

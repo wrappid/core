@@ -1,14 +1,15 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import CoreTable from "../dataDisplay/CoreTable";
 import CoreTableBody from "../dataDisplay/CoreTableBody";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
-import CoreTableHead from "../dataDisplay/CoreTableHead";
-import CoreTableHeadCell from "../dataDisplay/CoreTableHeadCell";
 import CoreTableRow from "../dataDisplay/CoreTableRow";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 
 export default function CoreTableSkeleton(props) {
-  const { showData, maxRowInPage } = props;
+  const { maxRowInPage } = props;
+
   return (
     <CoreTable>
       {/* <CoreTableHead>

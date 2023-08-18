@@ -8,6 +8,7 @@ export default async function authHeader(
 
   if (authRequired) {
     let accessToken = await getCoreAccessToken();
+
     headers["Authorization"] = "Bearer " + accessToken;
   }
   if (includeFile) {

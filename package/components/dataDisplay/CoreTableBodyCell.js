@@ -1,5 +1,7 @@
-import React from 'react';
-import CoreTableCell from './CoreTableCell';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import CoreTableCell from "./CoreTableCell";
 
 export default function CoreTableBodyCell(props) {
   return (

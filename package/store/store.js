@@ -3,15 +3,16 @@ import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-import config from "../config/config";
-import { ENV_PROD_MODE } from "../config/constants";
+
 import coreReducer from "./reducers/rootReducer";
+import { ENV_PROD_MODE } from "../config/constants";
 
 function createFullStore(appReducer) {
-  var keys = Object.keys(coreReducer);
+  let keys = Object.keys(coreReducer);
 
   let finalReducer = {};
-  for (var i = 0; i < keys.length; i++) {
+
+  for (let i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
         key: keys[i],
@@ -24,14 +25,14 @@ function createFullStore(appReducer) {
   finalReducer = { ...finalReducer, ...appReducer };
 
   const store = configureStore({
-    reducer: combineReducers(finalReducer),
-    devTools: process.env.REACT_APP_ENV !== ENV_PROD_MODE,
+    devTools  : process.env.REACT_APP_ENV !== ENV_PROD_MODE,
     middleware: [thunk],
+    reducer   : combineReducers(finalReducer),
   });
 
   const persistor = persistStore(store);
 
-  return { store, persistor };
+  return { persistor, store };
 }
 
 export { createFullStore };

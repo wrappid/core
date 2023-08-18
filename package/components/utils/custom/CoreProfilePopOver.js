@@ -1,36 +1,33 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/styled-components";
+import { useSelector } from "react-redux";
 
-import { ENV_STAGE_MODE, urls, ENV_DEV_MODE } from "../../../config/constants";
-import { MENU_SEPERATOR } from "../../../config/menuConstants";
-import CoreBox from "../../layouts/CoreBox";
-import CoreGrid from "../../layouts/CoreGrid";
+import CoreApiVersion from "./CoreApiVersion";
+import CoreAppVersion from "./CoreAppVersion";
+import { urls } from "../../../config/constants";
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreAvatar from "../../dataDisplay/CoreAvatar";
 import CoreDivider from "../../dataDisplay/CoreDivider";
-import CoreMenu from "../../inputs/CoreMenu";
-import CoreClasses from "../../../styles/CoreClasses";
-import CoreApiVersion from "./CoreApiVersion";
-import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreAppVersion from "./CoreAppVersion";
+import { __IconTypes } from "../../dataDisplay/CoreIcon";
 import CoreEmailLink from "../../dataDisplay/custom/CoreEmailLink";
 import CorePhoneLink from "../../dataDisplay/custom/CorePhoneLink";
-import CoreButton from "../../inputs/CoreButton";
-import { __IconTypes } from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody2 from "../../dataDisplay/paragraph/CoreTypographyBody2";
+import CoreTypographyCaption from "../../dataDisplay/paragraph/CoreTypographyCaption";
+import CoreButton from "../../inputs/CoreButton";
+import CoreMenu from "../../inputs/CoreMenu";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreStack from "../../layouts/CoreStack";
 
 export default function CoreProfilePopOver(props) {
-  const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
   const { profileRegistration } = useSelector((state) => state.api);
-  const {
-    firstName = "",
-    middleName = "",
-    lastName = "",
-  } = profile?.basic || {};
+
   const {
     email = "",
     emailVerified = false,
@@ -41,26 +38,26 @@ export default function CoreProfilePopOver(props) {
   const profileCardMenu = [
     {
       icon: {
-        type: __IconTypes.MATERIAL_OUTLINED_ICON,
         icon: "account_circle",
+        type: __IconTypes.MATERIAL_OUTLINED_ICON,
       },
-      id: "viewProfile",
+      id   : "viewProfile",
       label: "View Profile",
-      link: urls.PROFILE,
+      link : urls.PROFILE,
     },
     {
-      icon: { type: __IconTypes.MATERIAL_OUTLINED_ICON, icon: "settings" },
-      id: "settings",
+      icon : { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
+      id   : "settings",
       label: "Settings",
-      link: urls.SETTINGS,
-    },
+      link : urls.SETTINGS,
+    }/* -- ,
     { type: MENU_SEPERATOR },
     {
-      icon: "logout",
-      id: "logout",
+      icon : "logout",
+      id   : "logout",
       label: "Logout",
-      link: urls.LOGOUT,
-    },
+      link : urls.LOGOUT,
+    }, */
   ];
 
   const OnMenuClick = (item) => {
@@ -72,18 +69,16 @@ export default function CoreProfilePopOver(props) {
     <CoreBox styleClasses={[CoreClasses.WIDTH.MIN_VW_25, CoreClasses.HEIGHT.MIN_VH_25]}>
       <CoreGrid
         styleClasses={[
+          CoreClasses.PADDING.P1,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
-          CoreClasses.LAYOUT.PROFILE_BAR_WIDTH,
+          CoreClasses.LAYOUT.PROFILE_BAR_WIDTH
         ]}
       >
         <CoreAvatar
           gridProps={{ gridSize: 4 }}
-          styleClasses={[
-            CoreClasses.DATA_DISPLAY.AVATAR_XLARGE,
-            CoreClasses.MARGIN.ML1,
-          ]}
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XLARGE, CoreClasses.MARGIN.ML1]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />
 
@@ -115,15 +110,6 @@ export default function CoreProfilePopOver(props) {
               limitChars={15}
             />
           </CoreBox>
-          {/* </CoreGrid> */}
-          {/* @todo need to get it from authReducer */}
-          {/* {profile?.contact?.email && profile?.contact?.email !== "" && (
-            <CoreTypographyCaption>{profile?.contact?.email}</CoreTypographyCaption>
-          )}
-
-          {profile?.contact?.phone && profile?.contact?.phone !== "" && (
-            <CoreTypographyCaption>{profile?.contact?.phone}</CoreTypographyCaption>
-          )} */}
         </CoreBox>
       </CoreGrid>
 
@@ -137,16 +123,17 @@ export default function CoreProfilePopOver(props) {
         OnMenuClick={OnMenuClick}
       />
 
-      <CoreDivider /* styleClasses={[CoreClasses.MARGIN.MB4]} */ />
+      <CoreDivider />
 
-      <CoreBox styleClasses={[CoreClasses.MARGIN.MX1]}>
-        {/* ApiVersion && LoginDetails */}
-        <CoreApiVersion />
-        <CoreAppVersion />
-      </CoreBox>
+      <CoreBox styleClasses={[CoreClasses.PADDING.P1]}>
+        <CoreStack styleClasses={[CoreClasses.MARGIN.MB3]}>
+          <CoreApiVersion />
 
-      <CoreBox styleClasses={[CoreClasses.MARGIN.MX1, CoreClasses.JUSTIFY_CONTENT_FLEX_END, CoreClasses.MARGIN.MB1]}>
+          <CoreAppVersion />
+        </CoreStack>
+
         <CoreButton
+          styleClasses={[CoreClasses.MARGIN.ML0]}
           label="Logout"
           variant="contained"
           fullWidth={true}
@@ -154,9 +141,10 @@ export default function CoreProfilePopOver(props) {
             return navigate(urls.LOGOUT);
           }}
         />
+
+        {/* -- <CoreLoginDetails /> */}
       </CoreBox>
 
-      {/* <CoreLoginDetails /> */}
     </CoreBox>
   );
 }

@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import CoreMenu from "../inputs/CoreMenu";
+
+// eslint-disable-next-line import/no-unresolved
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
-import { toggleMenuItemState } from "../../store/action/menuAction";
+import { useDispatch, useSelector } from "react-redux";
+
 import { ThemeContext } from "../../config/contextHandler";
+import { toggleMenuItemState } from "../../store/action/menuAction";
 import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
+import CoreMenu from "../inputs/CoreMenu";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();
@@ -17,17 +20,15 @@ export default function CoreDrawer(props) {
   const { open, toggleDrawer } = props;
 
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+
   React.useEffect(() => {
     setPlatform(detectPlatform());
   }, []);
-
-  console.log("MENU DRAWER", menu);
 
   const OnMenuClick = (item, appFlag) => {
     /**
      * appFlag only passed from native mobile drawer
      */
-    // console.log("MENU CLICK", item, appFlag);
     if (appFlag && !item.Children) {
       toggleDrawer();
     }

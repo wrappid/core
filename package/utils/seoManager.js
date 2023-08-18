@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export const DocumentTitle = ({ title, prevailOnUnmount = false }) => {
   // const defaultTitle = useRef(document.title);
@@ -25,7 +25,7 @@ export const DocumentMetaDescription = ({
     () => () => {
       if (!prevailOnUnmount) {
         document
-          ?.querySelector('meta[name="description"]')
+          ?.querySelector("meta[name=\"description\"]")
           ?.setAttribute("content", metaDescription);
       }
     },
@@ -41,7 +41,7 @@ export const DocumentMetaKeywords = ({
     () => () => {
       if (!prevailOnUnmount) {
         document
-          ?.querySelector('meta[name="keywords"]')
+          ?.querySelector("meta[name=\"keywords\"]")
           ?.setAttribute("content", metaKeywords.join(","));
       }
     },

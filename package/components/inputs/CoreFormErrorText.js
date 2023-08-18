@@ -1,6 +1,9 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import CoreFormHelperText from "./CoreFormHelperText";
+
+// eslint-disable-next-line import/no-unresolved
+import { NativeFormErrorText } from "@wrappid/styled-components";
 
 export default function CoreFormErrorText(props) {
-  return <CoreFormHelperText {...props} error={true} />;
+  return <NativeFormErrorText {...props} />;
 }

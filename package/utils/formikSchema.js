@@ -1,6 +1,8 @@
 import * as yup from "yup";
+
 import { clearValidatePhoneEmail } from "./componentDefaultValidations";
 
+// eslint-disable-next-line no-undef
 const moment = require("moment");
 
 const phone = yup
@@ -12,23 +14,12 @@ const email = yup
   .trim()
   .matches(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/, "Invalid email");
 
-export const phoneSchema = yup.object({
-  phone: phone.required("Phone number is required"),
-});
+export const phoneSchema = yup.object({ phone: phone.required("Phone number is required") });
 
-export const emailSchema = yup.object({
-  email: email.required("Email is required"),
-});
+export const emailSchema = yup.object({ email: email.required("Email is required") });
 
 export const clinicSchemas = yup.object({
-  // addressTypeId: yup.number().required('Address Type is required'),
-  fullName: yup
-    .string()
-    .required("Name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-/]+$/,
-      "Special charecters are not allowed except - and /"
-    ),
+  
   addLine1: yup
     .string()
     .required("Address Line is required")
@@ -36,18 +27,29 @@ export const clinicSchemas = yup.object({
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
+  
   addLine2: yup
     .string()
     .matches(
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
-  country: yup.string().required("Country is required"),
-  state: yup.string().required("State is required"),
-  district: yup.string().required("District is required"),
+  
   city: yup
     .string()
     .required("City is required")
+    .matches(
+      /^[a-zA-Z0-9\s-/]+$/,
+      "Special charecters are not allowed except - and /"
+    ),
+  
+  country: yup.string().required("Country is required"),
+  
+  district: yup.string().required("District is required"),
+  // -- addressTypeId: yup.number().required('Address Type is required'),
+  fullName: yup
+    .string()
+    .required("Name is required")
     .matches(
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
@@ -59,23 +61,17 @@ export const clinicSchemas = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  pin: yup
+  phone: phone.required("Phone number is required"),
+  pin  : yup
     .string()
     .required("PIN is required")
     .matches(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/),
-  phone: phone.required("Phone number is required"),
+  state: yup.string().required("State is required"),
   // clinicLogo: yup.string().trim().required('File name is required')
 });
 
 export const clinicSchemasProfile = yup.object({
-  // addressTypeId: yup.number().required('Address Type is required'),
-  fullName: yup
-    .string()
-    .required("Name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-/]+$/,
-      "Special charecters are not allowed except - and /"
-    ),
+  
   addLine1: yup
     .string()
     .required("Address Line is required")
@@ -83,18 +79,31 @@ export const clinicSchemasProfile = yup.object({
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
+  
   addLine2: yup
     .string()
     .matches(
       /^[a-zA-Z0-9\s,-/]+$/,
       "Special charecters are not allowed except , - and /"
     ),
-  country: yup.string().required("Country is required"),
-  state: yup.string().required("State is required"),
-  district: yup.string().required("District is required"),
+  
+  addressTypeId: yup.number().required("Address type is required"),
+  
   city: yup
     .string()
     .required("City is required")
+    .matches(
+      /^[a-zA-Z0-9\s-/]+$/,
+      "Special charecters are not allowed except - and /"
+    ),
+  
+  country: yup.string().required("Country is required"),
+  
+  district: yup.string().required("District is required"),
+  // -- addressTypeId: yup.number().required('Address Type is required'),
+  fullName: yup
+    .string()
+    .required("Name is required")
     .matches(
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
@@ -106,16 +115,20 @@ export const clinicSchemasProfile = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  pin: yup
+  phone: phone.required("Phone number is required"),
+  pin  : yup
     .string()
     .required("PIN is required")
     .matches(/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/),
-  phone: phone.required("Phone number is required"),
-  addressTypeId: yup.number().required("Address type is required"),
+  state: yup.string().required("State is required"),
 });
 
 export const registrationDetailSchemas = yup.object({
   departmentId: yup.number().required("Department is required"),
+  regDate     : yup
+    .date()
+    .max(new Date(), "Registration date must be today or earlier than today")
+    .required("Registration date is required"),
   regNo: yup
     .string()
     .trim()
@@ -124,18 +137,9 @@ export const registrationDetailSchemas = yup.object({
       /^[a-zA-Z0-9\s-/]+$/,
       "Special charecters are not allowed except - and /"
     ),
-  regDate: yup
-    .date()
-    .max(new Date(), "Registration date must be today or earlier than today")
-    .required("Registration date is required"),
 });
 
 export const basicIntroSchemas = yup.object({
-  name: yup
-    .string()
-    .trim()
-    .required("Name is required")
-    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   bio: yup
     .string()
     .trim()
@@ -149,17 +153,14 @@ export const basicIntroSchemas = yup.object({
     .min(moment().subtract(115, "years"), "MIN_AGE")
     .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
   gender: yup.string().required("Gender is required"),
+  name  : yup
+    .string()
+    .trim()
+    .required("Name is required")
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
 });
 
 export const experienceSchemas = yup.object({
-  organization: yup
-    .string()
-    .trim()
-    .required("Organization name is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    ),
   designation: yup
     .string()
     .trim()
@@ -168,24 +169,11 @@ export const experienceSchemas = yup.object({
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  location: yup
-    .string()
-    .trim()
-    .required("Location is required")
-    .matches(
-      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-      "All special charecters are not allowed except - . , / ( ) [ ]"
-    ),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -193,8 +181,8 @@ export const experienceSchemas = yup.object({
           "start-end-check",
           "End date should be after start date",
           (val, props) => {
-            // console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
-            console.log("HERER", val);
+            // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
+            // -- console.log("HERER", val);
             if (
               props.parent.startDate &&
               val &&
@@ -204,18 +192,31 @@ export const experienceSchemas = yup.object({
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
-});
-
-export const educationSchemas = yup.object({
-  school: yup
+  location: yup
     .string()
     .trim()
-    .required("School name is required")
+    .required("Location is required")
     .matches(
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
+  organization: yup
+    .string()
+    .trim()
+    .required("Organization name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
+});
+
+export const educationSchemas = yup.object({
   board: yup
     .string()
     .trim()
@@ -232,16 +233,11 @@ export const educationSchemas = yup.object({
       /^[a-zA-Z0-9\s-.,/()[\]]+$/,
       "All special charecters are not allowed except - . , / ( ) [ ]"
     ),
-  startDate: yup
-    .date()
-    .max(new Date(), "Must be today or earlier than today")
-    .required("Start date is required"),
   endDate: yup
     .date()
     .max(new Date(), "Must be today or earlier than today")
     .when("isCurrent", {
-      is: true,
-      then: yup.date(),
+      is       : true,
       otherwise: yup
         .date()
         .required("End date required")
@@ -249,8 +245,8 @@ export const educationSchemas = yup.object({
           "start-end-check",
           "End date should be after start date",
           (val, props) => {
-            // console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
-            console.log("HERER", val);
+            // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
+            // -- console.log("HERER", val);
             if (
               props.parent.startDate &&
               val &&
@@ -260,7 +256,20 @@ export const educationSchemas = yup.object({
             } else return false;
           }
         ),
+      then: yup.date(),
     }),
+  school: yup
+    .string()
+    .trim()
+    .required("School name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: yup
+    .date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
 });
 
 export const loginSchema = yup.object({
@@ -275,6 +284,9 @@ export const loginSchema = yup.object({
 });
 
 export const passwordSetSchema = yup.object({
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
   password: yup
     .string()
     .required()
@@ -283,22 +295,18 @@ export const passwordSetSchema = yup.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
       "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
     ),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 export const loginOtpSchema = yup.object({
-  otp: yup.string().required().min(6).max(6),
+  otp: yup.string().required().min(6)
+    .max(6)
 });
 
-export const passwordSchema = yup.object({
-  password: yup.string().required("Enter password"),
-});
+export const passwordSchema = yup.object({ password: yup.string().required("Enter password") });
 
 export const contactSchema = yup.object({
-  phone: phone,
-  email: email,
+  email  : email,
+  phone  : phone,
   website: yup.string(),
 });
 
@@ -308,5 +316,5 @@ export const contactSchema = yup.object({
 
 export const stringValueManager = {
   locale: yup.string().required(),
-  value: yup.string().required(),
+  value : yup.string().required(),
 };

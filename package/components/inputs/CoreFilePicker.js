@@ -1,19 +1,21 @@
-import React from "react";
-import { useRef } from "react";
-import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useRef } from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { NativeFilePicker } from "@wrappid/styled-components";
+
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
-import { NativeFilePicker } from "@wrappid/styled-components";
-import CoreBox from "../layouts/CoreBox";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 
 export default function CoreFilePicker(props) {
-  const inputRef = useRef(null);
-  const handleFileOpen = () => {
+  // -- const inputRef = useRef(null);
+  /* -- const handleFileOpen = () => {
     inputRef.current.click();
-  };
+  }; */
+
   return (
     <CoreFormControl>
       <CoreLabel
@@ -24,8 +26,11 @@ export default function CoreFilePicker(props) {
       >
         {props.label}
       </CoreLabel>
+
       <NativeFilePicker {...props} />
+
       {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+
       {props.helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {props.helperText}

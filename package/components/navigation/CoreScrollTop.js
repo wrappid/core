@@ -1,8 +1,12 @@
-import * as React from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { nativeUseScrollTrigger } from "@wrappid/styled-components";
 import PropTypes from "prop-types";
+
 import CoreBox from "../layouts/CoreBox";
 import CoreFade from "../utils/CoreFade";
-import { nativeUseScrollTrigger } from "@wrappid/styled-components";
 
 export default function CoreScrollTop(props) {
   const { children, window } = props;
@@ -10,9 +14,9 @@ export default function CoreScrollTop(props) {
   // will default to window.
   // This is only being set here because the demo is in an iframe.
   const trigger = nativeUseScrollTrigger({
-    target: window ? window() : undefined,
     disableHysteresis: true,
-    threshold: 100,
+    target           : window ? window() : undefined,
+    threshold        : 100,
   });
 
   const handleClick = (event) => {
@@ -21,9 +25,7 @@ export default function CoreScrollTop(props) {
     );
 
     if (anchor) {
-      anchor.scrollIntoView({
-        block: "center",
-      });
+      anchor.scrollIntoView({ block: "center" });
     }
   };
 
@@ -32,7 +34,7 @@ export default function CoreScrollTop(props) {
       <CoreBox
         onClick={handleClick}
         role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        sx={{ bottom: 16, position: "fixed", right: 16 }}
       >
         {children}
       </CoreBox>
@@ -46,5 +48,5 @@ CoreScrollTop.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window: PropTypes.func,
+  window  : PropTypes.func,
 };

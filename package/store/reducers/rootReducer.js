@@ -1,32 +1,32 @@
 // import { combineReducers } from "redux";
+import apiReducer from "./apiReducer";
 import appReducer from "./appReducer";
 import dataReducer from "./dataReducer";
-import apiReducer from "./apiReducer";
 import formReducer from "./formReducer";
-import selectOptionsReducer from "./selectOptionsReducer";
 import mdmReducer from "./mdmReducer";
-import modalReducer from "./modalReducer";
-import routeReducer from "./routeReducer";
 import menuReducer from "./menuReducer";
-import settingsReducer from "./settingsReducer";
+import modalReducer from "./modalReducer";
 import pendingRequestReducer from "./pendingRequestReducer";
+import routeReducer from "./routeReducer";
+import selectOptionsReducer from "./selectOptionsReducer";
+import settingsReducer from "./settingsReducer";
 
 /**
  *  Module specific reducers
  */
 
 const coreReducer = {
-  app: appReducer,
-  data: dataReducer,
-  forms: formReducer,
-  selectOptions: selectOptionsReducer,
-  api: apiReducer,
-  mdm: mdmReducer,
-  modal: modalReducer,
-  route: routeReducer,
-  menu: menuReducer,
-  settings: settingsReducer,
+  api            : apiReducer,
+  app            : appReducer,
+  data           : dataReducer,
+  forms          : formReducer,
+  mdm            : mdmReducer,
+  menu           : menuReducer,
+  modal          : modalReducer,
   pendingRequests: pendingRequestReducer,
+  route          : routeReducer,
+  selectOptions  : selectOptionsReducer,
+  settings       : settingsReducer,
 };
 
 export default coreReducer;

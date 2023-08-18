@@ -1,9 +1,11 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import CoreCard from "../surfaces/CoreCard";
+
 import CoreClasses from "../../styles/CoreClasses";
-import CoreCardHeader from "../surfaces/CoreCardHeader";
-import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreH5 from "../dataDisplay/heading/CoreH5";
+import CoreCard from "../surfaces/CoreCard";
+import CoreCardContent from "../surfaces/CoreCardContent";
+import CoreCardHeader from "../surfaces/CoreCardHeader";
 
 export default function CoreSection(props) {
   const { styleClasses = [], elevated } = props;
@@ -11,16 +13,13 @@ export default function CoreSection(props) {
   return (
     <CoreCard
       elevated={elevated}
-      styleClasses={[
-        CoreClasses.MARGIN.MB2,
-        CoreClasses.PADDING.P0,
-        ...styleClasses,
-      ]}
+      styleClasses={[CoreClasses.MARGIN.MB2, CoreClasses.PADDING.P0, ...styleClasses]}
     >
       <CoreCardHeader
         styleClasses={[CoreClasses.PADDING.P1]}
         title={props?.heading && <CoreH5>{props?.heading}</CoreH5>}
       />
+
       <CoreCardContent styleClasses={[]}>{props?.children}</CoreCardContent>
     </CoreCard>
   );

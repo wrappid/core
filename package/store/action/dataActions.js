@@ -5,37 +5,37 @@ import {
   READ_DATA_SUCCESS,
   UPDATE_DATA_ERROR,
   UPDATE_DATA_LOADING,
-  UPDATE_DATA_SUCCESS,
+  UPDATE_DATA_SUCCESS
 } from "../types/dataManagementTypes";
-var backendUrl = config?.backendUrl || process.env.REACT_APP_BACKEND_URL;
+let backendUrl = config?.backendUrl || process.env.REACT_APP_BACKEND_URL;
 
 export const getDataByModel = (model, query, token) => {
   return (dispatch) => {
     fetch(backendUrl + queryBuilder("/data/" + model, query), {
       headers: {
-        Accept: "application/json",
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) =>
         res.json().then((data) => {
           if (res.status === 200) {
             dispatch({
-              type: READ_DATA_SUCCESS,
               payload: {
+                data   : data.data,
                 message: data.message,
-                data: data.data,
-                query: query,
+                query  : query,
               },
+              type: READ_DATA_SUCCESS,
             });
           }
         })
       )
       .catch((err) => {
         dispatch({
-          type: READ_DATA_ERROR,
           message: "Internal Error",
+          type   : READ_DATA_ERROR,
         });
       });
   };
@@ -45,39 +45,38 @@ export const updateDataByModel = (model, id, data, token) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_DATA_LOADING });
     console.log(data);
-    var apiUrl = backendUrl + queryBuilder("/data/" + model + "/" + id);
+    let apiUrl = backendUrl + queryBuilder("/data/" + model + "/" + id);
+
     fetch(apiUrl, {
-      method: "put",
+      body   : JSON.stringify(data),
       headers: {
-        Accept: "application/json",
+        Accept        : "application/json",
+        Authorization : `Bearer ${token}`,
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      method: "put",
     })
       .then((res) =>
         res.json().then((data) => {
           if (res.status === 200) {
             dispatch({
-              type: UPDATE_DATA_SUCCESS,
               message: data.message,
+              type   : UPDATE_DATA_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            dispatch({
-              type: "AUTHENTICATION_ERROR",
-            });
+            dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
-              type: UPDATE_DATA_ERROR,
               message: data.message,
+              type   : UPDATE_DATA_ERROR,
             });
           }
         })
       )
       .catch((err) => {
         dispatch({
-          type: UPDATE_DATA_ERROR,
           message: "Internal Error",
+          type   : UPDATE_DATA_ERROR,
         });
       });
   };

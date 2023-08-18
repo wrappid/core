@@ -1,14 +1,13 @@
+// eslint-disable-next-line import/no-unresolved
+import { getConfigurationObject } from "@wrappid/styles";
 import * as yup from "yup";
+
+import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
+import { getGridSizeProps } from "./componentUtil";
+import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
+import { FORM_VALIDATION_MAP } from "./fromValidationMap";
+import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
-import CoreInput from "../components/inputs/CoreInput";
-import CoreBox from "../components/layouts/CoreBox";
-import { ENV_DEV_MODE, HTTP } from "../config/constants";
-import {
-  DELETE_DATA_ERROR,
-  DELETE_DATA_SUCCESS,
-  UPDATE_DATA_ERROR,
-  UPDATE_DATA_SUCCESS,
-} from "../store/types/dataManagementTypes";
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
@@ -16,25 +15,28 @@ import {
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
+  INPUT_TYPE
 } from "../components/forms/coreFormConstants";
-import config from "../config/config";
-import { FORM_VALIDATION_MAP } from "./fromValidationMap";
-import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
-// import { store } from "../store/CoreProvider";
-import {
-  GET_FORM_ERROR,
-  GET_FORM_LOADING,
-  GET_FORM_SUCCESS,
-} from "../store/types/formTypes";
+import CoreInput from "../components/inputs/CoreInput";
+import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
+import { ENV_DEV_MODE, HTTP } from "../config/constants";
+import { mergedComponentRegistry } from "../layout/PageContainer";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import authHeader from "../service/DataService";
-import { queryBuilder } from "./helper";
+import {
+  DELETE_DATA_ERROR,
+  DELETE_DATA_SUCCESS,
+  UPDATE_DATA_ERROR,
+  UPDATE_DATA_SUCCESS
+} from "../store/types/dataManagementTypes";
 import CoreClasses from "../styles/CoreClasses";
-import { mergedComponentRegistry } from "../layout/PageContainer";
+
+let configuration = getConfigurationObject();
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
-  var message = "";
+  let message = "";
+
   if (isShort) {
     message = name.toUpperCase() + " is required";
   } else {
@@ -45,125 +47,123 @@ export function getFormikRequiredMessage(name = "", isShort = false) {
 }
 
 function getComponentArray(formJson) {
-  var allComps = [];
-  var actionComps = [];
-  var allValidations = {};
-  var helperButtonFlag = false;
-  var renderComp = mergedComponentRegistry[formJson?.render]?.comp || null;
-  var skeletonComp =
+  let allComps = [];
+  let actionComps = [];
+  let allValidations = {};
+  let helperButtonFlag = false;
+  let renderComp = mergedComponentRegistry[formJson?.render]?.comp || null;
+  let skeletonComp =
     mergedComponentRegistry[formJson?.skeletonRender]?.comp || null;
 
-  console.log("FORM JSON", formJson?.fields);
   if (formJson?.fields) {
-    var temp = formJson?.fields?.map((m) => {
+    let temp = formJson?.fields?.map((fields) => {
       return {
-        ...m,
-        order: m.order ? m.order : 0,
+        ...fields,
+        order: fields.order ? fields.order : 0,
       };
     });
-    temp = temp?.sort((a, b) => a.order - b.order);
+
+    temp = temp?.sort((elementA, elementB) => elementA.order - elementB.order);
     formJson.fields = temp;
   }
-  for (var i = 0; i < formJson?.fields?.length; i++) {
-    var x = formJson.fields[i];
-    allComps.push({
-      ...x,
-      box: { comp: CoreBox, gridSize: x.gridSize },
-      comp: x.hidden
-        ? null
-        : mergedComponentRegistry[x.type]
-        ? mergedComponentRegistry[x.type]?.comp
-        : CoreInput,
-      viewComp: mergedComponentRegistry[x.viewComp]
-        ? mergedComponentRegistry[x.viewComp].comp
-        : CoreTypographyBody1,
-      onlyView:
-        mergedComponentRegistry[x.type]?.onlyView === true ? true : false,
-      tabIndex: x.tabIndex ? x.tabIndex : i + 1,
-      dependencies: x.dependencies,
-    });
-    allValidations[x.id] = x.required
-      ? mergedComponentRegistry[x.type]?.defaultValidation?.required
-      : mergedComponentRegistry[x.type]?.defaultValidation?.notRequired;
+  for (let i = 0; i < formJson?.fields?.length; i++) {
+    let formField = formJson.fields[i];
 
-    if (x.helperText && x.helperText !== "") {
+    allComps.push({
+      ...formField,
+      box : { comp: CoreBox, gridSize: formField?.gridSize },
+      comp: formField?.hidden
+        ? null
+        : mergedComponentRegistry[formField?.type]
+          ? mergedComponentRegistry[formField?.type]?.comp
+          : CoreInput,
+      dependencies: formField?.dependencies,
+      onlyView:
+        mergedComponentRegistry[formField?.type]?.onlyView === true ? true : false,
+      tabIndex: formField?.tabIndex ? formField?.tabIndex : i + 1,
+      viewComp: mergedComponentRegistry[formField?.viewComp]
+        ? mergedComponentRegistry[formField?.viewComp].comp
+        : CoreTypographyBody1,
+    });
+    allValidations[formField?.id] = formField?.required
+      ? mergedComponentRegistry[formField?.type]?.defaultValidation?.required
+      : mergedComponentRegistry[formField?.type]?.defaultValidation?.notRequired;
+
+    if (formField?.helperText && formField?.helperText !== "") {
       helperButtonFlag = true;
     }
   }
 
   for (
-    var actionIndex = 0;
+    let actionIndex = 0;
     actionIndex < formJson?.actions?.length;
     actionIndex++
   ) {
-    var action = formJson.actions[actionIndex];
+    let action = formJson.actions[actionIndex];
+
     actionComps.push({
-      box: { comp: CoreBox },
-      comp: mergedComponentRegistry[x.type]?.comp,
+      box : { comp: CoreBox },
+      comp: mergedComponentRegistry[action?.type]?.comp,
       ...action,
     });
   }
 
-  console.log("allValidations", allValidations);
-  console.log("helperButtonFlag", helperButtonFlag);
-
   return {
+    actionComps,
     allComps,
     allValidations,
-    actionComps,
+    helperButtonFlag,
     renderComp,
     skeletonComp,
-    helperButtonFlag,
   };
 }
 
 export function createInitialData(formJson, initData) {
-  var initialDataOb = Array.isArray(initData) ? [] : {};
+  let initialDataOb = Array.isArray(initData) ? [] : {};
   let fields = formJson?.formJson
     ? formJson?.formJson?.fields
     : formJson?.fields;
-  for (var i = 0; i < fields?.length; i++) {
-    var x = fields[i];
-    if (x.onlyView) continue;
+
+  for (let i = 0; i < fields?.length; i++) {
+    let formField = fields[i];
+
+    if (formField?.onlyView) continue;
     if (initData) {
       if (Array.isArray(initData)) {
-        for (var j = 0; j < initData.length; j++) {
+        for (let j = 0; j < initData.length; j++) {
           if (initialDataOb[j]) {
-            initialDataOb[j][x.id] = initData[j][x.id];
+            initialDataOb[j][formField?.id] = initData[j][formField?.id];
           } else {
             initialDataOb[j] = {
-              id: initData[j].id,
-              [x.id]: initData[j][x.id],
+              id             : initData[j]?.id,
+              [formField?.id]: initData[j][formField?.id],
             };
           }
         }
-      } else if (initData[x.id]) {
-        initialDataOb[x.id] = initData[x.id];
+      } else if (initData[formField?.id]) {
+        initialDataOb[formField?.id] = initData[formField?.id];
       } else {
-        console.log("inititla ob A", x.id);
-        initialDataOb[x.id] = "";
+        initialDataOb[formField?.id] = "";
       }
     } else {
-      console.log("inititla ob A", x.id);
-      initialDataOb[x.id] = "";
+      initialDataOb[formField?.id] = "";
     }
   }
 
   if (formJson?.keepAllData) {
     if (initData) {
       if (Array.isArray(initData)) {
-        for (var j = 0; j < initData.length; j++) {
+        for (let j = 0; j < initData.length; j++) {
           initialDataOb[j] = { ...initialDataOb[j], ...initData[j] };
         }
       } else {
-        console.log("inititla ob A", x.id);
         initialDataOb = { ...initialDataOb, ...initData };
       }
     } else {
-      console.log("inititla ob A", x.id);
-      initialDataOb[x.id] = "";
+      initialDataOb = {};
     }
   }
+  // eslint-disable-next-line no-console
   console.log("inititla ob", initialDataOb);
   if (!Array.isArray(initData) && !Array.isArray(initialDataOb)) {
     return { ...initData, ...initialDataOb };
@@ -173,19 +173,21 @@ export function createInitialData(formJson, initData) {
 }
 
 function concateValidations(formJson, defValidations) {
-  var validationOb = {};
-  for (var i = 0; i < formJson?.fields?.length; i++) {
-    var x = formJson.fields[i];
+  let validationOb = {};
+
+  for (let i = 0; i < formJson?.fields?.length; i++) {
+    let formField = formJson.fields[i];
+
     if (formJson.validation) {
-      var formValidation = FORM_VALIDATION_MAP[formJson.validation];
-      validationOb[x.id] = formValidation[x.id];
+      let formValidation = FORM_VALIDATION_MAP[formJson.validation];
+
+      validationOb[formField?.id] = formValidation[formField?.id];
     } else {
-      validationOb[x.id] = defValidations[x.id]
-        ? defValidations[x.id]
+      validationOb[formField?.id] = defValidations[formField?.id]
+        ? defValidations[formField?.id]
         : yup.string();
     }
   }
-  console.log("Validations", validationOb);
 
   return yup.object(validationOb);
 }
@@ -197,14 +199,16 @@ export async function createForm(
   auth,
   formSchema
 ) {
-  var formJson =
+  let formJson =
     rawFormJson && rawFormJson[formId]
       ? rawFormJson[formId]?.formJson
         ? rawFormJson[formId]?.formJson
         : rawFormJson[formId]
       : formSchema;
+
+  // eslint-disable-next-line no-console
   console.log("form", formJson);
-  var {
+  let {
     allComps,
     allValidations,
     actionComps,
@@ -212,186 +216,240 @@ export async function createForm(
     skeletonComp,
     helperButtonFlag,
   } = getComponentArray(formJson);
-  var validationOb = concateValidations(formJson, allValidations);
-  var initialDataOb = createInitialData(formJson, initialData);
+  let validationOb = concateValidations(formJson, allValidations);
+  let initialDataOb = createInitialData(formJson, initialData);
 
-  var allowSubmit = formJson?.allowSubmit === false ? false : true;
-  var submitButtonLabel = formJson?.submitButtonLabel || "Save";
-  var allowCancel = formJson?.allowCancel === false ? false : true;
-  var cancelButtonLabel = formJson?.cancelButtonLabel || "Cancel";
-  var arrayDataNotDeletable = formJson?.arrayDataNotDeletable;
-  var arrayDataNotEditable = formJson?.arrayDataNotEditable;
+  let allowSubmit = formJson?.allowSubmit === false ? false : true;
+  let submitButtonLabel = formJson?.submitButtonLabel || "Save";
+  let allowCancel = formJson?.allowCancel === false ? false : true;
+  let cancelButtonLabel = formJson?.cancelButtonLabel || "Cancel";
+  let arrayDataNotDeletable = formJson?.arrayDataNotDeletable;
+  let arrayDataNotEditable = formJson?.arrayDataNotEditable;
 
   return {
-    allComps,
-    validationOb,
-    initialDataOb,
     actionComps,
     actionContainerStyle: formJson?.actionContainerStyle,
-    inlineAction: formJson?.inlineAction,
-    renderComp,
-    skeletonComp,
-    helperButtonFlag,
-    allowSubmit,
-    submitButtonLabel,
+    allComps,
     allowCancel,
-    cancelButtonLabel,
-    apiDetails: formJson?.read,
+    allowSubmit,
+    apiDetails          : formJson?.read,
     arrayDataNotDeletable,
     arrayDataNotEditable,
+    cancelButtonLabel,
+    helperButtonFlag,
+    initialDataOb,
+    inlineAction        : formJson?.inlineAction,
+    renderComp,
+    skeletonComp,
+    submitButtonLabel,
+    validationOb,
   };
 }
 
 export function createFormGridProps(element) {
-  var finalProps = { item: true };
+  let finalProps = { item: true };
+
   if (element?.gridSize && !isNaN(element?.gridSize)) {
     finalProps = {
       ...finalProps,
-      xs: element?.gridSize ? element?.gridSize : FORM_XS_DEFAULT_GRID_SIZE,
-      sm: element?.gridSize ? element?.gridSize : FORM_SM_DEFAULT_GRID_SIZE,
-      md: element?.gridSize ? element?.gridSize : FORM_MD_DEFAULT_GRID_SIZE,
       lg: element?.gridSize ? element?.gridSize : FORM_LG_DEFAULT_GRID_SIZE,
+      md: element?.gridSize ? element?.gridSize : FORM_MD_DEFAULT_GRID_SIZE,
+      sm: element?.gridSize ? element?.gridSize : FORM_SM_DEFAULT_GRID_SIZE,
       xl: element?.gridSize ? element?.gridSize : FORM_XL_DEFAULT_GRID_SIZE,
+      xs: element?.gridSize ? element?.gridSize : FORM_XS_DEFAULT_GRID_SIZE,
     };
   } else {
     finalProps = {
       ...finalProps,
-      xs: element?.gridSize?.xs
-        ? element?.gridSize?.xs
-        : FORM_XS_DEFAULT_GRID_SIZE,
-      sm: element?.gridSize?.sm
-        ? element?.gridSize?.sm
-        : FORM_SM_DEFAULT_GRID_SIZE,
-      md: element?.gridSize?.md
-        ? element?.gridSize?.md
-        : FORM_MD_DEFAULT_GRID_SIZE,
       lg: element?.gridSize?.lg
         ? element?.gridSize?.lg
         : FORM_LG_DEFAULT_GRID_SIZE,
+      md: element?.gridSize?.md
+        ? element?.gridSize?.md
+        : FORM_MD_DEFAULT_GRID_SIZE,
+      sm: element?.gridSize?.sm
+        ? element?.gridSize?.sm
+        : FORM_SM_DEFAULT_GRID_SIZE,
       xl: element?.gridSize?.xl
         ? element?.gridSize?.xl
         : FORM_XL_DEFAULT_GRID_SIZE,
+      xs: element?.gridSize?.xs
+        ? element?.gridSize?.xs
+        : FORM_XS_DEFAULT_GRID_SIZE,
     };
   }
 
   return finalProps;
 }
 
-export function createFormFieldProps(element, formikprops, type, allElements, initProps) {
-  // console.log("FORMIK props", formikprops);
+export function createFormFieldProps(props, type) {
+  const {
+    forms,
+    formId,
+    element,
+    formikprops,
+    initProps,
+    mode, 
+    preview,
+    handleButtonCLick,
+    submitLoading,
+    submitSuccess,
+    OnEditClick,
+    editFormId,
+    allowEdit,
+    onFormFocus,
+  } = props;
+  
   if (type === "edit") {
     if (element?.onlyView) {
       return {
-        id: String(element.id),
-        label: element.label,
-        styleClasses: element.styleClasses,
-        ...(initProps[element.id]||{})
+        id          : String(element?.id),
+        key         : "formElement" + element?.id,
+        label       : element?.label,
+        styleClasses: element?.styleClasses,
+        ...(initProps[element?.id] || {})
       };
     } else
       return {
-        type: element?.type,
-        id: String(element?.id),
-        onChange: (e)=>{
-          let dependentElement = allElements?.find(el => el?.dependencies?.getValue)
-          if(dependentElement){
-            let val = checkDependencies(dependentElement, formikprops, allElements)?.derivedValue
-            formikprops?.setFieldValue(dependentElement?.id, val)
-          }
-          formikprops?.handleChange(e)
-        },
-        label: element?.label,
-        value: formikprops?.values ? formikprops?.values[element.id] : "",
-        src:
-          element.type === "avatar" || element.type === "imagePicker"
-            ? formikprops?.values
-              ? formikprops?.values[element.id]
-              : ""
-            : "",
-        error: formikprops?.errors ? formikprops?.errors[element.id] : "",
-        touched: formikprops?.touched ? formikprops?.touched[element.id] : "",
-        formik: formikprops,
-        helperText: element?.helperText,
-        options: element?.options,
-        optionComp: element?.optionComp,
-        itemKey: element?.itemKey,
-        endpoint: element?.endpoint,
-        query: element?.query,
-        optionsData: element?.optionsData,
+
+        OnEditClick : OnEditClick,
+        allowEdit   : allowEdit,
         asyncLoading: element?.asyncLoading,
-        multiple: element?.multiple,
+        
+        coreId: "coreFormElement-" + element?.id,
+        
+        creatable: element?.creatable,
+        
+        dependencies: element?.dependencies,
+        
+        editId: editFormId,
+        
+        endpoint: element?.endpoint,
+        
+        //data table
+        entity: element?.entity
+          ? element?.entity
+          : element?.getEntity
+            ? FORM_DATA_TABLE_FUNCTION_MAP[element?.getEntity](formikprops)
+            : "",
+        
+        error       : formikprops?.errors ? formikprops?.errors[element?.id] : "",
+        //below field are passed on for inline actions
+        fieldActions: forms[formId]?.formActions,
+
+        formik  : formikprops,
         freeSolo: element?.freeSolo,
-        getOptionValue: element?.getOptionValue
-          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
-          : null,
+
         getOptionLabel: element?.getOptionLabel
           ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionLabel]
           : null,
+        getOptionValue: element?.getOptionValue
+          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
+          : null,
+        gridProps           : { gridSize: getGridSizeProps(element?.gridSize, true) },
+        handleButtonCLick   : handleButtonCLick,
+        helperText          : element?.helperText,
+        id                  : String(element?.id),
+        inlineAction        : forms[formId].inlineAction,
+        inputProps          : { tabIndex: element?.tabIndex },
         isOptionEqualToValue: element?.isOptionEqualToValue
           ? ASYNC_SELECT_FUNCTION_MAP[element.isOptionEqualToValue]
           : null,
+        itemKey         : element?.itemKey,
+        key             : "formElement" + element?.id,
+        label           : element?.label,
+        multiple        : element?.multiple,
+        navigateUrl     : element?.navigateUrl,
+        onChange        : formikprops.handleChange,
         onChangeDispatch: element?.onChangeDispatch
           ? ASYNC_SELECT_FUNCTION_MAP[element.onChangeDispatch]
           : null,
+        onFormFocus    : onFormFocus,
+        optionComp     : element?.optionComp,
+        optionCompProps: element?.optionCompProps,
+        //this will be arrow function like (d) => { return d.value }to show the label
+        optionDisplay  : element?.optionDisplay,
+        
         //this will be arrow function like (d) => { return d.value } to show the value
         optionValue: element?.optionValue,
-        //this will be arrow function like (d) => { return d.value }to show the label
-        optionDisplay: element?.optionDisplay,
-        inputProps: { tabIndex: element?.tabIndex },
+        
+        options: element?.options,
+        
+        optionsData: element?.optionsData,
+        
+        preview: preview,
+        
+        query: element?.query,
+        
+        readOnly: !mode || preview || element?.readOnly,
+        
+        skeletonProps: element?.skeletonProps,
+        
+        src:
+          element.type === "avatar" || element.type === "imagePicker"
+            ? formikprops?.values
+              ? formikprops?.values[element?.id]
+              : ""
+            : "",
+        
         styleClasses: element?.styleClasses
           ? Array.isArray(element.styleClasses)
             ? element.styleClasses
             : [element.styleClasses]
           : [],
-
-        skeletonProps: element?.skeletonProps,
-        navigateUrl: element?.navigateUrl,
-        creatable: element?.creatable,
-        optionCompProps: element?.optionCompProps,
-        ...(initProps[element.id]||{})
+        
+        submitLoading: submitLoading,
+        
+        submitSuccess: submitSuccess,
+        
+        touched: formikprops?.touched ? formikprops?.touched[element?.id] : "",
+        type   : element?.type,
+        value  : formikprops?.values ? formikprops?.values[element?.id] : "",
+        ...(initProps[element?.id] || {})
       };
   } else {
     return {
-      id: element?.id ? String(element.id) : "",
+      id   : element?.id ? String(element?.id) : "",
       label: element?.label,
-      ...(initProps[element.id]||{})
+      ...(initProps[element?.id] || {})
     };
   }
 }
 
 export function createFormActionProps(element) {
-  var ob = {};
+  let styleProps = {};
+
   if (
     element.actionContainerStyle &&
     typeof element.actionContainerStyle === "string"
   ) {
-    ob["styleClasses"] = [element.actionContainerStyle];
+    styleProps["styleClasses"] = [element.actionContainerStyle];
   } else if (
     element.actionContainerStyle &&
     Array.isArray(element.actionContainerStyle)
   ) {
-    ob["styleClasses"] = element.actionContainerStyle;
+    styleProps["styleClasses"] = element.actionContainerStyle;
   } else {
-    ob["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
+    styleProps["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
   }
 
-  // console.log("FORM ACTION PROPS BUILDRE", ob, element);
-  return ob;
+  return styleProps;
 }
 
 export function createFormButtonProps(element, formikprops, handleButtonCLick) {
   return {
-    label: element.label,
     OnClick: element.onClick
       ? typeof element.onClick === "object"
         ? () => {
-            handleButtonCLick(element.onClick);
-          }
+          handleButtonCLick(element.onClick);
+        }
         : element.onClick
       : () => {
-          alert("error in button action");
-        },
-    type: element.actionType === "submit" ? "submit" : "button",
+        alert("error in button action");
+      },
     alignment: element.actionContainerStyle ? null : "end",
+    label    : element.label,
+    type     : element.actionType === "submit" ? "submit" : "button",
   };
 }
 
@@ -408,36 +466,38 @@ export function createApiMeta(state, formJson, values, props) {
   const editForm = props?.editForm?.editing;
   const addForm = props?.addForm?.add;
 
+  // eslint-disable-next-line no-console
   console.log("API METa REATE", values, addForm, editForm, apiMode);
-  var ob = formJson?.create || {};
-  var mode = "create";
+  let apiAction = formJson?.create || {};
+  let mode = "create";
+
   if (apiMode && formJson && formJson[apiMode]) {
-    ob = formJson[apiMode];
+    apiAction = formJson[apiMode];
     mode = apiMode;
   } else if (addForm) {
-    ob = formJson?.create;
+    apiAction = formJson?.create;
     mode = "create";
   } else if (editForm) {
-    ob = formJson?.edit;
+    apiAction = formJson?.edit;
     mode = "edit";
   }
 
   return {
-    method: ob.method,
+    authRequired: apiAction?.authRequired,
     endpoint:
-      ob.method === HTTP.GET && state.query
-        ? queryBuilder(ob.endpoint, state.query)
-        : ob.endpoint,
-    authRequired: ob.authRequired,
+    apiAction?.method === HTTP.GET && state.query
+      ? queryBuilder(apiAction.endpoint, state.query)
+      : apiAction.endpoint,
+    errorType  : apiAction.errorType,
+    files      : [],
+    includeFile: apiAction?.includeFile,
+    localAction: apiAction?.localAction,
+    method     : apiAction?.method,
+    mode       : mode,
+    reduxData  : { reduxData: { query: props._query } },
+    reload     : apiAction?.reload,
+    successType: apiAction?.successType,
     values,
-    successType: ob.successType,
-    errorType: ob.errorType,
-    localAction: ob.localAction,
-    includeFile: ob.includeFile,
-    files: [],
-    reload: ob.reload,
-    mode: mode,
-    reduxData: { reduxData: { query: props._query } },
   };
 }
 
@@ -448,128 +508,127 @@ export function createTableFormJson(
   successType,
   errorType
 ) {
-  var ob = {};
-  for (var i = 0; i < dataJson.filter((d) => d.input).length; i++) {
-    ob[dataJson[i].id] = dataJson[i].value;
-  }
-  console.log("---------------DATAJSON", dataJson);
-  console.log("---------------INIT", ob);
+  let initOb = {};
 
-  var apiObject = {};
+  for (let i = 0; i < dataJson.filter((data) => data?.input).length; i++) {
+    initOb[dataJson[i]?.id] = dataJson[i].value;
+  }
+
+  let apiObject = {};
+
   if (apiRoute) {
     if (mode === "create") {
       apiObject["create"] = {
-        method: HTTP.POST,
-        endpoint: apiRoute,
         authRequired: true,
-        successType: successType
-          ? successType.create
-            ? successType.create
-            : successType
-          : UPDATE_DATA_SUCCESS,
-        errorType: errorType
+        endpoint    : apiRoute,
+        errorType   : errorType
           ? errorType.create
             ? errorType.create
             : errorType
           : UPDATE_DATA_ERROR,
+        includeFile   : false,
+        method        : HTTP.POST,
         onSubmitRefine: null,
-        includeFile: false,
+        successType   : successType
+          ? successType.create
+            ? successType.create
+            : successType
+          : UPDATE_DATA_SUCCESS,
       };
     } else if (mode === "read") {
       apiObject["read"] = {
-        method: HTTP.GET,
-        endpoint: apiRoute,
         authRequired: true,
-        successType: successType
-          ? successType.read
-            ? successType.read
-            : successType
-          : UPDATE_DATA_SUCCESS,
-        errorType: errorType
+        endpoint    : apiRoute,
+        errorType   : errorType
           ? errorType.read
             ? errorType.read
             : errorType
           : UPDATE_DATA_ERROR,
+        includeFile   : false,
+        method        : HTTP.GET,
         onSubmitRefine: null,
-        includeFile: false,
+        successType   : successType
+          ? successType.read
+            ? successType.read
+            : successType
+          : UPDATE_DATA_SUCCESS,
       };
     } else if (mode === "edit") {
       apiObject["edit"] = {
-        method: HTTP.PUT,
-        endpoint: apiRoute + "/" + ob.id,
         authRequired: true,
-        successType: successType
-          ? successType.edit
-            ? successType.edit
-            : successType
-          : UPDATE_DATA_SUCCESS,
-        errorType: errorType
+        endpoint    : apiRoute + "/" + initOb?.id,
+        errorType   : errorType
           ? errorType.edit
             ? errorType.edit
             : errorType
           : UPDATE_DATA_ERROR,
+        includeFile   : false,
+        method        : HTTP.PUT,
         onSubmitRefine: null,
-        includeFile: false,
-      };
-    } else if (mode === "delete") {
-      apiObject["edit"] = {
-        method: HTTP.PATCH,
-        endpoint: apiRoute + "/" + ob.id,
-        authRequired: true,
-        successType: successType
+        successType   : successType
           ? successType.edit
             ? successType.edit
             : successType
-          : DELETE_DATA_SUCCESS,
-        errorType: errorType
+          : UPDATE_DATA_SUCCESS,
+      };
+    } else if (mode === "delete") {
+      apiObject["edit"] = {
+        authRequired: true,
+        endpoint    : apiRoute + "/" + initOb?.id,
+        errorType   : errorType
           ? errorType.edit
             ? errorType.edit
             : errorType
           : DELETE_DATA_ERROR,
+        includeFile   : false,
+        method        : HTTP.PATCH,
         onSubmitRefine: null,
-        includeFile: false,
+        successType   : successType
+          ? successType.edit
+            ? successType.edit
+            : successType
+          : DELETE_DATA_SUCCESS,
       };
     }
   }
 
   // remove common fields
-  dataJson = dataJson.filter((d) => d.input);
+  dataJson = dataJson.filter((data) => data?.input);
 
   return {
-    initData: ob,
     form: {
       ...apiObject,
-      validation: null,
-      fields: dataJson.map((d) => {
+      actions: [
+        {
+          actionType: "submit",
+          gridSize  : 12,
+          id        : "button1",
+          label     : "Save",
+          name      : "coreContainedButton",
+          required  : true,
+          type      : "coreContainedButton",
+        },
+      ],
+      fields: dataJson.map((data) => {
         return {
-          id: d.id,
-          name: d.id,
-          label: d.label,
-          type: "text",
+          id      : data?.id,
+          label   : data?.label,
+          name    : data?.id,
           required: true,
-          // gridSize: 2,
+          type    : "text",
         };
       }),
 
-      actions: [
-        {
-          id: "button1",
-          name: "coreContainedButton",
-          label: "Save",
-          type: "coreContainedButton",
-          required: true,
-          gridSize: 12,
-          actionType: "submit",
-        },
-      ],
+      validation: null,
     },
+    initData: initOb,
   };
 }
 
 export function viewString(text, type) {
   if (text) {
     return text;
-  } else if (process.env.REACT_APP_ENV === ENV_DEV_MODE) {
+  } else if (configuration?.wrappid?.env === ENV_DEV_MODE) {
     if (type) {
       return "No " + type + " found";
     } else return "NA";
@@ -625,10 +684,10 @@ export function hookcallCheck(
 export async function getForm(formId, auth = true, formReducer) {
   if (formReducer?.rawForm && formReducer?.rawForm[formId]) {
     return {
-      formJson: formReducer?.rawForm[formId],
-      success: true,
       formId,
-      message: "Local fetch success",
+      formJson: formReducer?.rawForm[formId],
+      message : "Local fetch success",
+      success : true,
     };
   } else if (
     !formReducer?.rawFormStatus ||
@@ -641,37 +700,39 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
-      let backendUrl =
-        process.env.REACT_APP_WRAPPID_backendUrl || config.wrappid.backendUrl;
-      var url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
-      var formRes = await axiosInterceptor({
-        method: HTTP.GET,
-        url: backendUrl + url + formId,
+      let backendUrl = configuration?.wrappid?.backendUrl;
+      let url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
+      let formRes = await axiosInterceptor({
         headers: await authHeader(auth, false),
+        method : HTTP.GET,
+        url    : backendUrl + url + formId,
       });
+
       if (formRes.status === 200) {
+        // eslint-disable-next-line no-console
         console.log("IN GET FORM SUCCESS:", formRes);
         return {
-          formJson: formRes?.data?.data?.schema,
-          success: true,
-          message: formRes?.data?.message,
           formId,
+          formJson: formRes?.data?.data?.schema,
+          message : formRes?.data?.message,
+          success : true,
         };
       } else {
         return {
-          formJson: null,
-          success: false,
-          message: formRes?.data?.message,
           formId,
+          formJson: null,
+          message : formRes?.data?.message,
+          success : false,
         };
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error("Error in form fetch");
       return {
-        formJson: formRes?.data?.data?.schema,
-        success: false,
-        message: "Form fetch error",
         formId,
+        formJson: {},
+        message : "Form fetch error",
+        success : false,
       };
     }
   }
@@ -682,9 +743,12 @@ function checkConditions(dependencies, formik) {
 
   for (let i = 0; i < dependencies.length; i++) {
     let dependency = dependencies[i];
+
     if (dependency?.type === "operand") {
-      console.log("EVALUATEING,", dependency.id, formik.values);
-      let dependentValue = formik.values ? formik.values[dependency.id] : {};
+      // eslint-disable-next-line no-console
+      console.log("EVALUATEING,", dependency?.id, formik.values);
+      let dependentValue = formik.values ? formik.values[dependency?.id] : {};
+
       try {
         if (dependency.operator === "===") {
           if (dependentValue === dependency.value) {
@@ -712,6 +776,7 @@ function checkConditions(dependencies, formik) {
           }
         }
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.warn("Not correct checking", err);
         finalStr += "false";
       }
@@ -719,42 +784,105 @@ function checkConditions(dependencies, formik) {
       finalStr += dependency.operator;
     }
 
+    // eslint-disable-next-line no-console
     console.log("FINAL STR,", finalStr);
   }
 
   return eval(finalStr);
 }
 
-
-function getDependentValue(getValueFunction,formik, elem, allElements){
-  if(getValueFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction]){
-    return FORM_SANITIZATOIN_FUNCTION_MAP[getValueFunction](formik, elem, allElements)
+export function getDependentProps(getPropsFunction, formik, elem, allElements){
+  if(getPropsFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction]){
+    let newProps =  FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction](formik, elem, allElements);
+    
+    if(newProps){
+      return newProps;
+    }
+    else{
+      return {};
+    }
   }
   else{
-    return ""
+    return {};
   }
 }
 
-
-export function checkDependencies(element, formik, allElements) {
+export function checkDependencies(element, formik) {
   let finalStr = "";
-  let finalVal = "";
-  // console.log("CHEKING DEPENDENCIES");
-  if (element.dependencies) {
+
+  if (element?.dependencies) {
     if(element?.dependencies?.hide)
       finalStr += String(checkConditions(element?.dependencies?.hide, formik));
-    if(element?.dependencies?.getValue){
-      finalVal = String(getDependentValue(element?.dependencies?.getValue, formik, element, allElements));
+    return { hide: eval(finalStr) };
+  } else {
+    return { hide: false };
+  }
+}
+
+export function getDependents(element, forms, formikprops, type, formId){
+  if(element && element.isDependent && type === INPUT_TYPE && element?.dependencies?.props?.elements){
+    let dependents = [];
+    let dependentOn = element?.dependencies?.props?.elements;
+    let dependentProps = element?.dependencies?.props?.dependentProps || [];
+
+    if(dependentProps){
+      if(Array.isArray( dependentProps) && dependentProps.length === 0){
+        dependentProps = ["values"];
+      }
     }
 
-    return {
-      hide: eval(finalStr),
-      derivedValue: finalVal
-    };
-  } else {
-    return {
-      hide: false,
-      derivedValue: null
-    };
+    /**
+     * @todo
+     * only considering formik props for now as dependent props.
+     * This may have extend to all props of depending elements
+     */
+    for(let i = 0;i < dependentProps.length;i++){
+      let prop = dependentProps[[i]];
+
+      if(element?.dependencies?.props?.identifier){
+        const identifier = element?.dependencies?.props?.identifier;
+        let elemIds = forms[formId]?.formElements?.
+          filter(elem=>dependentOn.includes(elem[identifier]))
+          .map(elem=>{
+            return elem?.id;
+          });
+  
+        dependents = elemIds?.map(id=> formikprops && formikprops[prop] ? formikprops[prop][id] : "");
+      }
+      else {
+        dependents = element?.dependencies?.props?.elements?.map((elem) => {
+          return formikprops && formikprops[prop] ? formikprops && formikprops[prop][elem?.id] : "";
+        });
+      }
+    }
+
+    return dependents;
   }
+  else{
+    return [];
+  }
+}
+
+export function detectChange(element, forms, formikprops, type, formId, oldProps){
+  let dependentValues = getDependents(element, forms, formikprops, type, formId);
+
+  if(dependentValues?.length === 0){
+    return false;
+  }
+  let dependentValuesOld = getDependents(element, forms, oldProps, type, formId);
+
+  if(dependentValues?.length !== dependentValuesOld?.length){
+    // eslint-disable-next-line no-console
+    console.error("POssible error");
+    return false;
+  }
+  else{
+    for(let i = 0;i < dependentValues?.length;i++){
+      if(dependentValues[i] !== dependentValuesOld[i]){
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }
