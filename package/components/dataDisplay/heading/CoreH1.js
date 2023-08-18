@@ -4,9 +4,15 @@ import React from "react";
 import CoreH from "./CoreH";
 
 export default function CoreH1(props) {
+  const { styleClasses = [], variant = "h1", children, ...restProps } = props;
+  
   return (
-    <CoreH {...props} __level="h1">
-      {props.children}
+    <CoreH
+      styleClasses={styleClasses}
+      variant={variant}
+      {...restProps}
+      __level="h1">
+      {children}
     </CoreH>
   );
 }
