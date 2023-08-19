@@ -24,7 +24,7 @@ import CoreClasses from "../../styles/CoreClasses";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreCircularProgress from "../feedback/CoreCircularProgress";
 import CoreFieldButton from "../forms/CoreFieldButton";
-import CoreListItem from "../layouts/CoreListItem";
+import CoreListItem from "../dataDisplay/CoreListItem";
 
 const filter = nativeFilterOptions();
 //TODO:
