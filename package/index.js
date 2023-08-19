@@ -148,6 +148,7 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
 import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
 import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
+import CoreCollapse from "./components/surfaces/CoreCollapse";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import { CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext } from "./config/contextHandler";
@@ -202,6 +203,7 @@ export {
   clearValidatePhoneEmail,
   getFormikRequiredMessage,
   CoreMarkdownViewer,
+  CoreCollapse,
   CoreComponentsRegistry,
   CoreComponentsRegistryDocs,
   coreUseSearchParams,
