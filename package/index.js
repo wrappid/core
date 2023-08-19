@@ -106,7 +106,7 @@ import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInpu
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
-import ListItemButton from "./components/inputs/ListItemButton";
+import CoreListItemButton from "./components/inputs/CoreListItemButton";
 import CoreBox from "./components/layouts/CoreBox";
 // import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
@@ -303,7 +303,7 @@ export {
   CoreTextField,
   CoreTimePicker,
   CoreTimeRangePicker,
-  ListItemButton,
+  CoreListItemButton,
   ChildMap,
   CoreFormLabelCheckbox,
   CoreResponsiveButton,
