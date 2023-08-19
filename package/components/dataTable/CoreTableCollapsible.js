@@ -1,12 +1,13 @@
-import * as React from "react";
-import CoreTableRow from "../dataDisplay/CoreTableRow";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars, import/default
+import React, { useSelector } from "react-redux";
+
+import TableRowAuditData from "./TableRowAuditData";
+import CoreClasses from "../../styles/CoreClasses";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
+import CoreTableRow from "../dataDisplay/CoreTableRow";
 import CoreForm from "../forms/CoreForm";
 import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import TableRowAuditData from "./TableRowAuditData";
-import { useSelector } from "react-redux";
 import CoreCollapse from "../surfaces/CoreCollapse";
-import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreTableCollapsible({
   rowIndex,
@@ -47,6 +48,7 @@ export default function CoreTableCollapsible({
                   ToggleOpen(rowIndex);
                 }}
               />
+
               <TableRowAuditData rowData={rowData} />
             </CoreCollapse>
           </CoreTableCell>

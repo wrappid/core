@@ -1,6 +1,11 @@
-import { element } from "prop-types";
+/* eslint-disable no-console */
+/* eslint-disable id-length */
 import React, { useState } from "react";
+
 import { useSelector } from "react-redux";
+
+import ChildMap from "./ChildMap";
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreChip from "../../dataDisplay/CoreChip";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
@@ -12,17 +17,16 @@ import CoreAccordionDetail from "../../surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../../surfaces/CoreAccordionSummary";
 import CoreCheckbox from "../CoreCheckbox";
 import CoreInput from "../CoreInput";
-import ChildMap from "./ChildMap";
-import CoreClasses from "../../../styles/CoreClasses";
 
 function multiLevelSerch(id, data, parentIndices) {
   let f = data.find((d) => Number(d.id) === Number(id));
   let fI = data.findIndex((d) => Number(d.id) === Number(id));
+
   if (f) {
     parentIndices.push(fI);
     return [f, parentIndices];
   } else {
-    for (var j = 0; j < data.length; j++) {
+    for (let j = 0; j < data.length; j++) {
       if (data[j].__children && data[j].__children.length > 0) {
         parentIndices.push(j);
         [f, parentIndices] = multiLevelSerch(
@@ -47,7 +51,7 @@ function setChildProps(parentOb, element, finalVal, level, path, id, rootFlag) {
     console.log("\t ROOT: Setting data:", element, finalVal);
     parentOb[element] = finalVal;
   }
-  for (var k = 0; k < parentOb?.__children?.length; k++) {
+  for (let k = 0; k < parentOb?.__children?.length; k++) {
     //only setting value when we are at level deeper than parent
     // console.log(
     //   "\t level",
@@ -86,7 +90,9 @@ function setChildProps(parentOb, element, finalVal, level, path, id, rootFlag) {
 }
 
 function setDataValue(id, data, el, finalVal) {
+  // eslint-disable-next-line no-unused-vars
   let [meta, path] = multiLevelSerch(id, data, []);
+
   console.log("path", path);
   data[path[0]] = setChildProps(
     data[path[0]],
@@ -106,10 +112,12 @@ export default function ParentChildMap(props) {
     state?.api ? state?.api[props.editId]?.data : null
   );
   const data = tempData?.rows[props.id];
+
   console.log("props", formData);
 
   React.useEffect(() => {
     let temp = [...data];
+
     console.log("TEMP", temp);
     setFormData(temp);
   }, []);
@@ -120,8 +128,10 @@ export default function ParentChildMap(props) {
     let element = parts[1];
     let finalVal =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
     console.log("id", id, "element", element, "val", finalVal);
     let temp = [...formData];
+
     console.log("DATA", temp);
 
     if (props.formik) {
@@ -135,21 +145,14 @@ export default function ParentChildMap(props) {
   return (
     formData &&
     Array.isArray(formData) &&
-    formData?.map((parentOb, i) => (
-      <CoreAccordion>
+    formData?.map((parentOb, index) => (
+      <CoreAccordion key={`CoreAccordion-${index}`}>
         <CoreAccordionSummary
           expandIcon={<CoreIcon>expand_more</CoreIcon>}
-          styleClasses={[
-            CoreClasses.FLEX.DIRECTION_ROW_REVERSE,
-            CoreClasses.PADDING.PX1,
-            CoreClasses.MARGIN.MY0,
-          ]}
+          styleClasses={[CoreClasses.FLEX.DIRECTION_ROW_REVERSE, CoreClasses.PADDING.PX1, CoreClasses.MARGIN.MY0]}
         >
           <CoreGrid
-            styleClasses={[
-              CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              CoreClasses.MARGIN.ML0,
-            ]}
+            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.MARGIN.ML0]}
           >
             <CoreBox gridProps={{ gridSize: 10 }}>
               <CoreCheckbox
@@ -159,15 +162,16 @@ export default function ParentChildMap(props) {
                     <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.M0]}>
                       {parentOb?.name}
                     </CoreTypographyBody1>
+
                     {parentOb?.__children &&
                       parentOb?.__children?.length > 0 && (
-                        <CoreChip
-                          label={
-                            "has " + parentOb?.__children?.length + " children"
-                          }
-                          size="small"
-                        />
-                      )}
+                      <CoreChip
+                        label={
+                          "has " + parentOb?.__children?.length + " children"
+                        }
+                        size="small"
+                      />
+                    )}
                   </CoreStack>
                 }
                 onChange={handleChange}

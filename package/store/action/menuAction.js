@@ -1,7 +1,7 @@
 import {
   TOGGLE_LEFT_MENU,
   TOGGLE_LEFT_MENU_ITEM_STATE,
-  TOGGLE_RIGHT_MENU,
+  TOGGLE_RIGHT_MENU
 } from "../types/menuTypes";
 
 export const toggleLeftMenuState = (v) => {

@@ -1,19 +1,9 @@
-import React from 'react';
-import CoreFormHelperText from './CoreFormHelperText';
-import CoreIcon from '../dataDisplay/CoreIcon';
-import CoreClasses from '../../styles/CoreClasses';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { NativeFormErrorText } from "@wrappid/styled-components";
 
 export default function CoreFormErrorText(props) {
-  return (
-    <CoreFormHelperText
-      {...props}
-      styleClasses={[
-        ...(props.styleClasses || []),
-        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-      ]}
-      error={true}>
-      <CoreIcon styleClasses={[CoreClasses.MARGIN.MR1]}>error</CoreIcon>
-      {props.children}
-    </CoreFormHelperText>
-  );
+  return <NativeFormErrorText {...props} />;
 }

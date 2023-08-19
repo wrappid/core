@@ -1,6 +1,8 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import CoreTableBody from "../dataDisplay/CoreTableBody";
+
 import CoreDataTableRow from "./CoreDataTableRow";
+import CoreTableBody from "../dataDisplay/CoreTableBody";
 
 export default function CoreDataTableBody(props) {
   const { tableActions } = props;
@@ -19,8 +21,7 @@ export default function CoreDataTableBody(props) {
   return (
     <CoreTableBody
       {...props.tableHead}
-      onMouseLeave={(e) => {
-        console.log("Mouse Leave on table");
+      onMouseLeave={() => {
         tableActions && tableActions.length > 0 && handlePopoverClose();
       }}
     >

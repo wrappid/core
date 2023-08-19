@@ -1,10 +1,12 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 import CoreCheckbox from "../CoreCheckbox";
 import CoreInput from "../CoreInput";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function ChildMap({ parentOb, handleChange, formData, label }) {
   return parentOb?.__children?.map((childOb, j) => (
@@ -24,6 +26,7 @@ export default function ChildMap({ parentOb, handleChange, formData, label }) {
           checked={childOb?.hasEntry}
         />
       </CoreBox>
+
       <CoreInput
         id={childOb.id + "-priority"}
         label="Order/Priority"
@@ -32,6 +35,7 @@ export default function ChildMap({ parentOb, handleChange, formData, label }) {
         gridProps={{ gridSize: 2 }}
         value={childOb?.priority}
       />
+
       {childOb?.__children ? (
         <CoreBox gridProps={{ gridSize: 12 }}>
           <ChildMap

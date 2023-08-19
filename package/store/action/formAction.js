@@ -6,7 +6,7 @@ import {
   EDIT_FORM,
   FORM_DATA_SAVE,
   FORM_RESET,
-  UPDATE_API_META,
+  UPDATE_API_META
 } from "../types/formTypes";
 
 export const createAllForms = (
@@ -20,65 +20,66 @@ export const createAllForms = (
   //formId: form ids , initData: object of init data
   return async (dispatch) => {
     console.log("FORM CREATE_FORM ACTION------");
-    var formData = await createForm(
+    let formData = await createForm(
       formId,
       initData,
       rawFormJson,
       authenticated,
       formSchema
     );
-    dispatch({ type: CREATE_FORM, payload: { formData, formId } });
+
+    dispatch({ payload: { formData, formId }, type: CREATE_FORM });
     dispatch({
-      type: FORM_DATA_SAVE,
       payload: {
-        data: formData.initialDataOb,
-        id: formId,
         apiDetails: formData.apiDetails,
+        data      : formData.initialDataOb,
+        id        : formId,
       },
+      type: FORM_DATA_SAVE,
     });
   };
 };
 
 export const onEditForm = (formId, formArrayId) => {
   return (dispatch) => {
-    dispatch({ type: EDIT_FORM, payload: { formId, formArrayId } });
+    dispatch({ payload: { formArrayId, formId }, type: EDIT_FORM });
   };
 };
 
 export const onAddForm = (formId, data) => {
   return (dispatch) => {
-    dispatch({ type: ADD_FORM, payload: { formId, data } });
+    dispatch({ payload: { data, formId }, type: ADD_FORM });
   };
 };
 
 export const handleFormLocalAction = (data, localAction) => {
   return (dispatch) => {
     console.log("---------------------action", data, localAction);
-    dispatch({ type: localAction, payload: data });
+    dispatch({ payload: data, type: localAction });
   };
 };
 
 export const cancelFormEdit = (formId) => {
   return (dispatch) => {
-    dispatch({ type: CANCEL_CORE_FORM_EDIT_ADD, payload: { formId } });
+    dispatch({ payload: { formId }, type: CANCEL_CORE_FORM_EDIT_ADD });
   };
 };
 
 export const resetFormReducer = (data) => {
   return (dispatch) => {
     console.log("---------------------action", data);
-    dispatch({ type: FORM_RESET, payload: data });
+    dispatch({ payload: data, type: FORM_RESET });
   };
 };
 
 export const storeForm = (type, payload) => {
   return (dispatch) => {
-    dispatch({ type, payload });
+    dispatch({ payload, type });
   };
 };
 
 export const updateApiMeta = (formId, apiMeta) => {
   return (dispatch) => {
-    dispatch({type: UPDATE_API_META, payload: {apiMeta,formId} });
+    dispatch({ payload: { apiMeta, formId }, type: UPDATE_API_META });
   };
 };

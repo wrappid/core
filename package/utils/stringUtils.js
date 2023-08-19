@@ -19,7 +19,7 @@ export function getLabel(string = "") {
 }
 
 export function maskEmailOrPhone(userLogin) {
-  var type = "email";
+  let type = "email";
 
   if (!isNaN(String(userLogin))) type = "phone";
 
@@ -28,14 +28,14 @@ export function maskEmailOrPhone(userLogin) {
       userLogin?.replace(
         /^(.)(.*)(@.)([a-z].)([a-z0-9]*)(.)([a-z0-9]*)([a-z].)$/,
         (_, a, b, c, d, e, f, g, h) =>
-          a + b.replace(/./g, "*") + c + d + e.replace(/./g, "*") + f + g.replace(/./g, "*") + h,
+          a + b.replace(/./g, "*") + c + d + e.replace(/./g, "*") + f + g.replace(/./g, "*") + h
       ) || ""
     );
   } else if (type === "phone") {
     return (
       userLogin?.replace(
         /^(.)(.)([0-9]*)(.)(.)$/,
-        (_, a, b, c, d, e) => a + b + c.replace(/./g, "*") + d + e,
+        (_, a, b, c, d, e) => a + b + c.replace(/./g, "*") + d + e
       ) || ""
     );
   } else return userLogin;

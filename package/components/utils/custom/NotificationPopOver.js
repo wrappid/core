@@ -1,21 +1,19 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreDivider from "../../dataDisplay/CoreDivider";
 import CoreIcon from "../../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import CoreBox from "../../layouts/CoreBox";
-import CoreClasses from "../../../styles/CoreClasses";
 
 export default function NotificationPopOver() {
   return (
     <>
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreBox
-          styleClasses={[
-            CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.LAYOUT.VERTICAL_CENTER,
-          ]}
+          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.LAYOUT.VERTICAL_CENTER]}
         >
           <CoreTypographyBody1>Notifications</CoreTypographyBody1>
 

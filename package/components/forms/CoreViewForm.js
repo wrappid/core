@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { Component } from "react";
+
 import { connect } from "react-redux";
 
 import CoreViewField from "./CoreViewField";
@@ -13,16 +15,16 @@ class CoreViewForm extends Component {
   render() {
     const { forms, initData, formId } = this.props;
 
-    console.log("-------------VIEW PROPS", this.props);
-    return forms[formId]?.formElements?.map((element, i) => (
-      <CoreViewField element={element} data={initData} />
+    // -- console.log("-------------VIEW PROPS", this.props);
+    return forms[formId]?.formElements?.map((element, index) => (
+      <CoreViewField key={`CoreViewField-${formId}-${index}`} element={element} data={initData} />
     ));
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth,
+    auth : state.auth,
     forms: state.forms,
   };
 };

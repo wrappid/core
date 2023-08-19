@@ -1,29 +1,32 @@
 import moment from "moment";
+
 import { REFRESH_TOKEN_API } from "../config/api";
 import config from "../config/config";
 import { HTTP } from "../config/constants";
 import {
   LOGOUT_SUCCESS,
   SESSION_EXPIRED,
-  TOKEN_REFRESH_SUCCESS,
+  TOKEN_REFRESH_SUCCESS
 } from "../store/types/authTypes";
 import {
   TOKEN_REJUVINATED,
-  TOKEN_REQUESTED,
+  TOKEN_REQUESTED
 } from "../store/types/pendingRequestTypes";
 
 const AUTH_STORE = "persist:auth";
 
 export const getUUID = () => {
-  var dt = new Date().getTime();
-  var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+  let dt = new Date().getTime();
+  let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
     /[xy]/g,
     function (c) {
-      var r = (dt + Math.random() * 16) % 16 | 0;
+      let r = (dt + Math.random() * 16) % 16 | 0;
+
       dt = Math.floor(dt / 16);
       return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
     }
   );
+
   return uuid;
   // return window.self.crypto.randomUUID();
 };
@@ -39,21 +42,22 @@ export async function reloadToken(
   tokenRequestTimeStamp,
   dispatch
 ) {
-  var diff = moment().diff(tokenRequestTimeStamp, "seconds");
+  let diff = moment().diff(tokenRequestTimeStamp, "seconds");
 
   console.log("__tokenRequested__", tokenRequested, diff);
   if (!tokenRequested || diff > 60) {
     const backendUrl = config?.wrappid
       ? config.wrappid.backendUrl
       : process.env.REACT_APP_WRAPPID_backendUrl;
+
     dispatch({ type: TOKEN_REQUESTED });
     fetch(backendUrl + REFRESH_TOKEN_API, {
-      method: HTTP.POST,
+      body   : JSON.stringify({ refreshToken }),
       headers: {
-        Authorization: "Bearer " + accessToken,
+        Authorization : "Bearer " + accessToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ refreshToken }),
+      method: HTTP.POST,
     })
       .then((tokenResponse) => {
         tokenResponse
@@ -62,23 +66,17 @@ export async function reloadToken(
             console.log("-----REJUVINATE IN RELOAD TOKEN--------");
             if (tokenResponse.status === 200) {
               dispatch({
-                type: TOKEN_REFRESH_SUCCESS,
-                payload: {
-                  accessToken: tokenResponseParsed?.accessToken,
-                },
+                payload: { accessToken: tokenResponseParsed?.accessToken },
+                type   : TOKEN_REFRESH_SUCCESS,
               });
               dispatch({ type: TOKEN_REJUVINATED });
             } else if (
               tokenResponse.status === 401 ||
               tokenResponse.status === 403
             ) {
-              dispatch({
-                type: SESSION_EXPIRED,
-              });
+              dispatch({ type: SESSION_EXPIRED });
             } else if (tokenResponse.status === 500) {
-              dispatch({
-                type: LOGOUT_SUCCESS,
-              });
+              dispatch({ type: LOGOUT_SUCCESS });
             }
           })
           .catch((err) => {

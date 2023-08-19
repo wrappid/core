@@ -1,40 +1,39 @@
 const breakpoints = {
   values: {
-    xs: 0,
-    sm: 600,
-    md: 900,
     lg: 1200,
+    md: 900,
+    sm: 600,
     xl: 1536,
+    xs: 0,
   },
 };
 const font = "'Rubik', sans-serif";
 
 export const theme = {
-  breakpoints: breakpoints, // same as mui guidelines
-  typography: {
-    fontFamily: font,
-    button: {
-      textTransform: "none",
-    },
-  },
-  palette: {
-    type: "light",
+  breakpoints: breakpoints, 
+  palette    : {
     background: {
       default: "#FAFAFA",
       // default: "#F00",
     },
     primary: {
-      main: "#FB607F",
-      light: "#FC7595",
-      dark: "#FA385F",
       contrastText: "#FFFFFF",
+      dark        : "#FA385F",
+      light       : "#FC7595",
+      main        : "#FB607F",
     },
     secondary: {
-      main: "#6D6C6C",
-      light: "#FAFAFA",
-      dark: "#6D6C6C",
+      dark            : "#6D6C6C",
+      light           : "#FAFAFA",
+      main            : "#6D6C6C",
+      transparentDark : "#6D6C6CAA",
       transparentLight: "#FAFAFAAA",
-      transparentDark: "#6D6C6CAA",
     },
+    type: "light",
+  },
+  // same as mui guidelines
+  typography: {
+    button    : { textTransform: "none" },
+    fontFamily: font,
   },
 };

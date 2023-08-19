@@ -1,12 +1,16 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { NativeDialog } from "@wrappid/styled-components";
-import { CoreDialogContext } from "../../config/contextHandler";
+
 import { coreDialogInitValue } from "../../config/constants";
+import { CoreDialogContext } from "../../config/contextHandler";
 
 export const CORE_DIALOG_TYPES = {
-  INFO: "info",
-  SUCCESS: "success",
   FAILURE: "error",
+  INFO   : "info",
+  SUCCESS: "success",
 };
 
 export default function CoreDialog(props) {

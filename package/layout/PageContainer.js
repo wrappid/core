@@ -1,18 +1,18 @@
 import React, { useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation, NativePageContainer } from "@wrappid/styled-components";
-import Error404 from "../error/Error404";
-import { RESET_LOADING } from "../store/types/appTypes";
-import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
-import { UPDATE_HELPER_FLAG, UPDATE_HELPER_TEXT_VIEW } from "../store/types/formTypes";
-import CoreAlert from "../components/feedback/CoreAlert";
-import CoreSwitch from "../components/inputs/CoreSwitch";
-import CoreBox from "../components/layouts/CoreBox";
+import { useDispatch, useSelector } from "react-redux";
+
+import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
 import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext, FunctionsRegistryContext } from "../config/contextHandler";
-import CoreClasses from "../styles/CoreClasses";
+import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
-import CoreDialog from "../components/feedback/CoreDialog";
+import { RESET_LOADING } from "../store/types/appTypes";
+import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
+import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
+import CoreClasses from "../styles/CoreClasses";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -21,17 +21,18 @@ export let functionsRegistry = {};
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
+
   mergedComponentRegistry = useContext(ComponentRegistryContext);
   mergedResourceRegistry = useContext(CoreResourceContext);
   functionsRegistry = useContext(FunctionsRegistryContext);
 
-  console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
+  // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
-  const { showHelperText = true, helperButtonFlag = true } = useSelector((state) => state.forms);
+  const { /* -- showHelperText = true, */ helperButtonFlag = true } = useSelector((state) => state.forms);
 
-  const { route = { Page: { schema: {}, appComponent: "" } } } = props;
+  const { route = { Page: { appComponent: "", schema: {} } } } = props;
 
-  const [pageComponent, setPageComponent] = React.useState();
+  // -- const [pageComponent, setPageComponent] = React.useState();
 
   const [dialog, setDialog] = useState({});
   const value = { dialog, setDialog };
@@ -39,15 +40,13 @@ export default function PageContainer(props) {
   React.useEffect(() => {
     if (auth?.sessionExpired && !auth?.sessionDetail) {
       dispatch({
-        type: SAVE_EXPIRED_SESSION,
         payload: {
-          userId: auth.uid,
           location,
+          userId: auth.uid,
         },
+        type: SAVE_EXPIRED_SESSION,
       });
-      dispatch({
-        type: RESET_LOADING,
-      });
+      dispatch({ type: RESET_LOADING });
     }
 
     if (
@@ -56,22 +55,20 @@ export default function PageContainer(props) {
       auth?.uid &&
       location.pathname === auth?.sessionDetail?.location?.pathname
     ) {
-      dispatch({
-        type: SESSION_RECALLED,
-      });
+      dispatch({ type: SESSION_RECALLED });
     }
   });
 
   React.useEffect(() => {
-    console.log("LOCATION SAVE______", location);
+    // -- console.log("LOCATION SAVE______", location);
     dispatch({
-      type: UPDATE_HELPER_FLAG,
       payload: { helperButtonFlag: false },
+      type   : UPDATE_HELPER_FLAG,
     });
   }, []);
 
   React.useEffect(() => {
-    console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
+    // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
   const pageChild = () => {
@@ -83,13 +80,15 @@ export default function PageContainer(props) {
       return <Error404 />;
     }
   };
+
   return auth?.sessionExpired && !auth?.uid && route?.authRequired ? (
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <NativePageContainer uid={auth?.uid} route={route} coreClasses={CoreClasses}>
       <CoreModal open={true} />
+
       {/* Show Helper Text Toggle */}
-      {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
+      {/* -- {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[
@@ -111,6 +110,7 @@ export default function PageContainer(props) {
         )} */}
       <CoreDialogContext.Provider value={value}>
         {pageChild()}
+
         <CoreDialog />
       </CoreDialogContext.Provider>
     </NativePageContainer>

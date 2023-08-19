@@ -1,19 +1,19 @@
 import React from "react";
+
 import {
   NativeDomRoutes,
-  NativeDomRoute,
-  NativeDomNavigate,
+  NativeDomRoute
 } from "@wrappid/styled-components";
-import { urls } from "./config/constants";
-import Error404 from "./error/Error404";
-import PageContainer from "./layout/PageContainer";
-import Error500 from "./error/Error500";
 import { useDispatch, useSelector } from "react-redux";
-import { apiRequestAction } from "./store/action/appActions";
-import { HTTP } from "./config/constants";
-import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
-import SplashComponent from "./components/navigation/custom/SplashComponent";
+
 import Logout from "./components/navigation/custom/Logout";
+import SplashComponent from "./components/navigation/custom/SplashComponent";
+import { HTTP } from "./config/constants";
+import Error404 from "./error/Error404";
+import Error500 from "./error/Error500";
+import PageContainer from "./layout/PageContainer";
+import { apiRequestAction } from "./store/action/appActions";
+import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
 export default function CoreRoutes() {
   const dispatch = useDispatch();
@@ -103,6 +103,7 @@ export default function CoreRoutes() {
           />
         }
       />
+
       {/* Error 500 */}
       <NativeDomRoute
         path="/error"
@@ -115,6 +116,7 @@ export default function CoreRoutes() {
           />
         }
       />
+
       {/* Not Found */}
       <NativeDomRoute
         path="*"

@@ -1,6 +1,9 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import { getUUID } from "../../utils/appUtils";
+
 import { NativeTable } from "@wrappid/styled-components";
+
+import { getUUID } from "../../utils/appUtils";
 
 export default function CoreTable(props) {
   let _uuid = getUUID();

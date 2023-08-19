@@ -1,7 +1,8 @@
 import moment from "moment";
 
 export function getFullName(data) {
-  var n = "";
+  let n = "";
+
   if (data?.firstName) {
     n += data?.firstName;
   }
@@ -15,16 +16,18 @@ export function getFullName(data) {
 }
 
 export function queryBuilder(url, query) {
-  var newUrl = url;
+  let newUrl = url;
+
   if (
     query &&
     Object.keys(query).length > 0 /* &&
     Object.values(query).find((v) => v && v !== "") */
   ) {
     newUrl += "?";
-    var keys = Object.keys(query);
-    for (var index = 0; index < keys.length; index++) {
-      var q = keys[index];
+    let keys = Object.keys(query);
+
+    for (let index = 0; index < keys.length; index++) {
+      let q = keys[index];
 
       // not needed below if statement,
       // because it is not considering the value 0 i.e.treated as false
@@ -48,9 +51,11 @@ export function queryBuilder(url, query) {
 export function createFormData(files, body) {
   //console.log(file, field, body);
   const data = new FormData();
+
   //console.log("IN form data", file, body);
+
   if (file) {
-    for (var i = 0; i < files.length; i++) var file = files[i];
+    for (let i = 0; i < files.length; i++) var file = files[i];
     data.append(file.name, file.data);
   }
   //console.log("IN form data", data);
@@ -63,13 +68,14 @@ export function createFormData(files, body) {
 }
 
 export function clearValidatePhoneEmail(text) {
-  var t = text;
+  let t = text;
+
   if (!text || (text && text.length === 0)) return false;
   if (t[0] === "'") {
     t = t.slice(1);
     t = t.toLowerCase();
   }
-  var f = String(t).match(
+  let f = String(t).match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 
@@ -140,9 +146,9 @@ export function getAge(birthDate) {
   }
   //group the age in a single variable
   age = {
-    days: dateAge,
+    days  : dateAge,
     months: monthAge,
-    years: yearAge,
+    years : yearAge,
   };
 
   let ageString = "";

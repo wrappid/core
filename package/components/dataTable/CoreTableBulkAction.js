@@ -1,18 +1,19 @@
-import * as React from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
 
+import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 import CoreIconButton from "../inputs/CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
 
 export default function CoreTableBulkAction({ bulkActions, selected }) {
   return (
     bulkActions &&
-    bulkActions.map((ac) =>
-      ac.iconName === "delete" ? (
-        <CoreTooltip title="Delete">
+    bulkActions.map((act, index) =>
+      act.iconName === "delete" ? (
+        <CoreTooltip key={`cta-${act?.id}-${index}`} title="Delete">
           <CoreIconButton
             onClick={() => {
-              ac.action(selected);
+              act.action(selected);
             }}
           >
             <CoreIcon>delete</CoreIcon>

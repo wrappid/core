@@ -1,6 +1,10 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+// eslint-disable-next-line import/no-unresolved
 import { NativeRightDrawer } from "@wrappid/styled-components";
+import { useDispatch, useSelector } from "react-redux";
+
 import { toggleRightMenuState } from "../../store/action/menuAction";
 
 export default function CoreRightDrawer(props) {

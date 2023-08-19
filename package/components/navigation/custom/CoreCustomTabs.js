@@ -1,7 +1,8 @@
 import React, { useContext, useRef } from "react";
-import CoreTabPanel from "../CoreTabPanel";
-import { ComponentRegistryContext } from "../../../config/contextHandler";
+
 import CoreTabHead from "./CoreTabHead";
+import { ComponentRegistryContext } from "../../../config/contextHandler";
+import CoreTabPanel from "../CoreTabPanel";
 
 export default function CoreCustomTabs(props) {
   const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
@@ -11,24 +12,25 @@ export default function CoreCustomTabs(props) {
   const mergedComponentRegistry = useContext(ComponentRegistryContext);
   const tabRef = useRef(null);
 
-  // React.useEffect(() => {
+  // -- React.useEffect(() => {
   //   setTabValue(tabsContent[0]?.id);
   // }, [tabsContent]);
 
   React.useEffect(() => {
     const initialIndex = 0; //random number
+
     if (tabRef.current) {
       tabRef.current.scrollToIndex({ index: initialIndex });
     }
   }, [tabRef, tabRef?.current]);
 
-  const handleChange = (e, value) => {
-    preHandleChangeHook && preHandleChangeHook(e, value);
+  const handleChange = (event, value) => {
+    preHandleChangeHook && preHandleChangeHook(event, value);
     setTabValue(value);
-    postHandleChangeHook && postHandleChangeHook(e, value);
+    postHandleChangeHook && postHandleChangeHook(event, value);
   };
 
-  console.log("TAB REF T", tabRef);
+  // -- console.log("TAB REF T", tabRef);
   return (
     <>
       <CoreTabHead
@@ -37,6 +39,7 @@ export default function CoreCustomTabs(props) {
         tabRef={tabRef}
         tabValue={tabValue}
       />
+
       {tabsContent?.map((tabContent, tabIndex) => {
         return (
           <CoreTabPanel

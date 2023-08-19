@@ -1,28 +1,35 @@
+/* eslint-disable id-length */
 import React, { useEffect, useState } from "react";
-import { getSettingMeta } from "../../store/action/mdmAction";
-import { useDispatch, useSelector } from "react-redux";
-import { urls } from "../../config/constants";
+
+// eslint-disable-next-line import/no-unresolved
 import { NativeAppBar } from "@wrappid/styled-components";
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
-import { APP_PLATFORM, detectPlatform } from "../../utils/themeUtil";
-import CoreClasses from "../../styles/CoreClasses";
-import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
-import CorePopover from "../utils/CorePopover";
-import CoreToolbar from "../surfaces/CoreToolbar";
-import CoreStack from "../layouts/CoreStack";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreImage from "../dataDisplay/CoreImage";
-import CoreAvatar from "../dataDisplay/CoreAvatar";
-import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
+import { useDispatch, useSelector } from "react-redux";
+
+import { urls } from "../../config/constants";
 import { coreUseNavigate } from "../../helper/routerHelper";
+import { getSettingMeta } from "../../store/action/mdmAction";
+import CoreClasses from "../../styles/CoreClasses";
+import { detectPlatform } from "../../utils/themeUtil";
 import CoreComponent from "../CoreComponent";
+import CoreAvatar from "../dataDisplay/CoreAvatar";
+import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreIconButton from "../inputs/CoreIconButton";
+import CoreStack from "../layouts/CoreStack";
+import CoreToolbar from "../surfaces/CoreToolbar";
+import CorePopover from "../utils/CorePopover";
+import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
+import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
+import NotificationPopOver from "../utils/custom/NotificationPopOver";
+import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
   const navigate = coreUseNavigate();
 
@@ -31,8 +38,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE: "PROFILE",
-    QUICK_MENU: "QUICK_MENU",
+    PROFILE     : "PROFILE",
+    QUICK_MENU  : "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -46,20 +53,15 @@ export default function CoreAppBar(props) {
       }
       dispatch(getSettingMeta(null, auth.accessToken));
     }
-  }, [
-    getSettingMetaFlag,
-    mdm.getSettingMetaSuccess,
-    dispatch,
-    auth.accessToken,
-  ]);
+  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
 
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
     React.useState(null);
-  // const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
+  // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
   const [_appbarContent, set_appbarContent] = React.useState(null);
-  const handleAppbarPopOverClose = (e) => {
+  const handleAppbarPopOverClose = () => {
     set_appbarContent(null);
     set_appbarPopOverAnchorEl(null);
   };
@@ -72,11 +74,7 @@ export default function CoreAppBar(props) {
     <>
       <NativeAppBar {...props}>
         <CoreToolbar
-          styleClasses={[
-            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.FLEX.DIRECTION_ROW,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
+          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           <CoreStack
             direction="row"
@@ -105,11 +103,7 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[
-                CoreClasses.WIDTH.W_100,
-                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              ]}
+              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
@@ -124,7 +118,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Help & Support"}
                   onClick={(e) => {
-                    console.log("Help & Support clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
                   }}
                 >
@@ -138,7 +131,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Show Notification"}
                   onClick={(e) => {
-                    console.log("Notification clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
                   }}
                 >
@@ -152,7 +144,6 @@ export default function CoreAppBar(props) {
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Quick Menu"}
                   onClick={(e) => {
-                    console.log("Quick Menu clicked");
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
                   }}
                 >
@@ -162,7 +153,6 @@ export default function CoreAppBar(props) {
 
               <CoreIconButton
                 onClick={(e) => {
-                  console.log("Profile clicked");
                   handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
                 }}
               >
@@ -175,6 +165,7 @@ export default function CoreAppBar(props) {
           )}
         </CoreToolbar>
       </NativeAppBar>
+
       {/* AppBar PopOver */}
       {_appbarContent && (
         <CorePopover
@@ -184,18 +175,18 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical: "bottom",
+            vertical  : "bottom",
           }}
         >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
             <>
               {/* Help & Support Popover */}
-              <CoreProfilePopOver onClose={handleAppbarPopOverClose} />
+              <HelpAndSupportPopOver onClose={handleAppbarPopOverClose} />
             </>
           ) : _appbarContent === appbarPopOver.NOTIFICATION ? (
             <>
               {/* Notifications Popover */}
-              <CoreProfilePopOver />
+              <NotificationPopOver onClose={handleAppbarPopOverClose}/>
             </>
           ) : _appbarContent === appbarPopOver.QUICK_MENU ? (
             <>
