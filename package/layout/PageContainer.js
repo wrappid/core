@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
-import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext, FunctionsRegistryContext } from "../config/contextHandler";
+import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext, FunctionsRegistryContext, ValidationsRegistryContext } from "../config/contextHandler";
 import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import { RESET_LOADING } from "../store/types/appTypes";
@@ -17,6 +17,7 @@ import CoreClasses from "../styles/CoreClasses";
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
 export let functionsRegistry = {};
+export let validationsRegistry = {};
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function PageContainer(props) {
   mergedComponentRegistry = useContext(ComponentRegistryContext);
   mergedResourceRegistry = useContext(CoreResourceContext);
   functionsRegistry = useContext(FunctionsRegistryContext);
+  validationsRegistry = useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
