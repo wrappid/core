@@ -136,15 +136,15 @@ import CoreReactSelectInput from "./inputs/custom/CoreReactSelectInput.js";
 import CoreResponsiveButton from "./inputs/custom/CoreResponsiveButton.js";
 import CoreRichTextEditor from "./inputs/custom/CoreRichTextEditor.js";
 import ParentChildMap from "./inputs/custom/ParentChildMap.js";
-import ListItemButton from "./inputs/ListItemButton.js";
+import CoreListItemButton from "./inputs/CoreListItemButton.js";
 import CoreAppDiv from "./layouts/CoreAppDiv.js";
 import CoreBox from "./layouts/CoreBox.js";
 import CoreContainer from "./layouts/CoreContainer.js";
 import CoreGrid from "./layouts/CoreGrid.js";
 import CoreGridItem from "./layouts/CoreGridItem.js";
 import CoreImageBackground from "./layouts/CoreImageBackground.js";
-import CoreList from "./layouts/CoreList.js";
-import CoreListItem from "./layouts/CoreListItem.js";
+import CoreList from "./dataDisplay/CoreList.js";
+import CoreListItem from "./dataDisplay/CoreListItem.js";
 import CoreSection from "./layouts/CoreSection.js";
 import CoreSpan from "./layouts/CoreSpan.js";
 import CoreStack from "./layouts/CoreStack.js";
@@ -1064,8 +1064,8 @@ const CoreComponentsRegistry = {
     readme:
       "https://github.com/wrappid/docs/blob/main/components/utils/custom/HelpAndSupportPopOver.md",
   },
-  ListItemButton: {
-    comp: ListItemButton,
+  CoreListItemButton: {
+    comp: CoreListItemButton,
     readme:
       "https://github.com/wrappid/docs/blob/main/components/inputs/ListItemButton.md",
   },

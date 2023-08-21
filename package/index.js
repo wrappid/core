@@ -106,14 +106,14 @@ import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInpu
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
-import ListItemButton from "./components/inputs/ListItemButton";
+import CoreListItemButton from "./components/inputs/CoreListItemButton";
 import CoreBox from "./components/layouts/CoreBox";
 // import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
 // import CoreGridItem from "./components/layouts/CoreGridItem";
 import CoreImageBackground from "./components/layouts/CoreImageBackground";
-import CoreList from "./components/layouts/CoreList";
-import CoreListItem from "./components/layouts/CoreListItem";
+import CoreList from "./components/dataDisplay/CoreList";
+import CoreListItem from "./components/dataDisplay/CoreListItem";
 import CoreSection from "./components/layouts/CoreSection";
 import CoreSpan from "./components/layouts/CoreSpan";
 import CoreStack from "./components/layouts/CoreStack";
@@ -148,6 +148,9 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
 import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
 import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
+import CoreCollapse from "./components/surfaces/CoreCollapse";
+import CoreListItemAvatar from "./components/dataDisplay/CoreListItemAvatar";
+import CoreListSubheader from "./components/dataDisplay/CoreListSubheader";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import { CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext } from "./config/contextHandler";
@@ -202,6 +205,9 @@ export {
   clearValidatePhoneEmail,
   getFormikRequiredMessage,
   CoreMarkdownViewer,
+  CoreCollapse,
+  CoreListItemAvatar,
+  CoreListSubheader,
   CoreComponentsRegistry,
   CoreComponentsRegistryDocs,
   coreUseSearchParams,
@@ -303,7 +309,7 @@ export {
   CoreTextField,
   CoreTimePicker,
   CoreTimeRangePicker,
-  ListItemButton,
+  CoreListItemButton,
   ChildMap,
   CoreFormLabelCheckbox,
   CoreResponsiveButton,
