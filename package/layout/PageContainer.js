@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation, NativePageContainer } from "@wrappid/styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
-import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext } from "../config/contextHandler";
+import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext, FunctionsRegistryContext, ValidationsRegistryContext } from "../config/contextHandler";
 import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import { RESET_LOADING } from "../store/types/appTypes";
@@ -15,6 +16,8 @@ import CoreClasses from "../styles/CoreClasses";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
+export let functionsRegistry = {};
+export let validationsRegistry = {};
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
@@ -22,13 +25,16 @@ export default function PageContainer(props) {
 
   mergedComponentRegistry = useContext(ComponentRegistryContext);
   mergedResourceRegistry = useContext(CoreResourceContext);
-  console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
+  functionsRegistry = useContext(FunctionsRegistryContext);
+  validationsRegistry = useContext(ValidationsRegistryContext);
+
+  // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
-  const { showHelperText = true, helperButtonFlag = true } = useSelector((state) => state.forms);
+  const { /* -- showHelperText = true, */ helperButtonFlag = true } = useSelector((state) => state.forms);
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
 
-  const [pageComponent, setPageComponent] = React.useState();
+  // -- const [pageComponent, setPageComponent] = React.useState();
 
   const [dialog, setDialog] = useState({});
   const value = { dialog, setDialog };
@@ -56,7 +62,7 @@ export default function PageContainer(props) {
   });
 
   React.useEffect(() => {
-    console.log("LOCATION SAVE______", location);
+    // -- console.log("LOCATION SAVE______", location);
     dispatch({
       payload: { helperButtonFlag: false },
       type   : UPDATE_HELPER_FLAG,
@@ -64,7 +70,7 @@ export default function PageContainer(props) {
   }, []);
 
   React.useEffect(() => {
-    console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
+    // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
   const pageChild = () => {
@@ -84,7 +90,7 @@ export default function PageContainer(props) {
       <CoreModal open={true} />
 
       {/* Show Helper Text Toggle */}
-      {/* {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
+      {/* -- {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[

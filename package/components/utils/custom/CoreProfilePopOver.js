@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
+import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/styled-components";
@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 import CoreApiVersion from "./CoreApiVersion";
 import CoreAppVersion from "./CoreAppVersion";
-import { urls } from "../../../config/constants";
+import { CoreRouteRegistryContext } from "../../../config/contextHandler";
 import CoreClasses from "../../../styles/CoreClasses";
 import CoreAvatar from "../../dataDisplay/CoreAvatar";
 import CoreDivider from "../../dataDisplay/CoreDivider";
@@ -26,6 +26,8 @@ export default function CoreProfilePopOver(props) {
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
+  const routeRegistry = useContext(CoreRouteRegistryContext);
+
   const { profileRegistration } = useSelector((state) => state.api);
 
   const {
@@ -43,13 +45,13 @@ export default function CoreProfilePopOver(props) {
       },
       id   : "viewProfile",
       label: "View Profile",
-      link : urls.PROFILE,
+      link : routeRegistry?.profile,
     },
     {
       icon : { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
       id   : "settings",
       label: "Settings",
-      link : urls.SETTINGS,
+      link : routeRegistry?.settings,
     }/* -- ,
     { type: MENU_SEPERATOR },
     {
@@ -138,7 +140,10 @@ export default function CoreProfilePopOver(props) {
           variant="contained"
           fullWidth={true}
           OnClick={() => {
-            return navigate(urls.LOGOUT);
+            /**
+             * @todo have to make a route for logout
+             */
+            return navigate("/logout");
           }}
         />
 

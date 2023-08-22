@@ -16,6 +16,7 @@ import {
   UPDATE_USER_SETTINGS
 } from "../config/api";
 import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
+import { CoreRouteRegistryContext } from "../config/contextHandler";
 import { apiRequestAction } from "../store/action/appActions";
 import { toggleLeftMenuState } from "../store/action/menuAction";
 import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store/types/authTypes";
@@ -35,10 +36,10 @@ import {
 } from "../store/types/settingsTypes";
 import CoreClasses from "../styles/CoreClasses";
 
-export var globalAccessToken = null;
-export var globalRefreshToken = null;
-export var globalTokenRequested = null;
-export var globalTokenRequestTimeStamp = null;
+export let globalAccessToken = null;
+export let globalRefreshToken = null;
+export let globalTokenRequested = null;
+export let globalTokenRequestTimeStamp = null;
 
 function AppContainer(props) {
   const windowWidth = window.innerWidth;
@@ -55,6 +56,8 @@ function AppContainer(props) {
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
   const currentPendingRequest = useSelector((state) => state.pendingRequests.pendingRequest);
   const recallState = useSelector((state) => state?.pendingRequests?.recall);
+  const _routes = useSelector((state) => state?.route?.routes);
+  const [routeRegistry, setRouteRegistry] = useState({});
 
   // user settings
   const reload = useSelector((state) => state?.settings?.reload);
@@ -109,7 +112,6 @@ function AppContainer(props) {
     if (hasError) {
       setHasError(false);
     }
-    console.log(location);
   }, [location]);
 
   const handleDrawer = () => {
@@ -133,7 +135,6 @@ function AppContainer(props) {
 
   React.useEffect(() => {
     if (currentPendingRequest && recallState === RECALL_TOKEN_REJUVINDATED) {
-      console.log("---REJUVINATED CALL------------", currentPendingRequest);
       dispatch(
         apiRequestAction(
           currentPendingRequest.method,
@@ -170,6 +171,15 @@ function AppContainer(props) {
     });
   }, []);
 
+  React.useEffect(() => {
+    let registry = {};
+
+    for(let i = 0;i < _routes?.length;i++){
+      registry[_routes[i].entityRef] = _routes[i].url;
+    }
+    setRouteRegistry(registry);
+  }, [_routes]);
+
   const getAppBar = () => {
     return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} /> : null;
   };
@@ -193,19 +203,21 @@ function AppContainer(props) {
   globalTokenRequestTimeStamp = tokenRequestTimeStamp;
 
   return (
-    <NativeAppContainer
-      appBar={getAppBar}
-      leftDrawer={getLeftDrawer}
-      footer={getFooter}
-      coreClasses={CoreClasses}
-      uid={auth?.uid}
-    >
-      <CoreRequestProgressBar />
+    <CoreRouteRegistryContext.Provider value={{ ...routeRegistry }}>
+      <NativeAppContainer
+        appBar={getAppBar}
+        leftDrawer={getLeftDrawer}
+        footer={getFooter}
+        coreClasses={CoreClasses}
+        uid={auth?.uid}
+      >
+        <CoreRequestProgressBar />
 
-      <ErrorBoundary hasError={hasError} setHasError={setHasError}>
-        {props.children}
-      </ErrorBoundary>
-    </NativeAppContainer>
+        <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+          {props.children}
+        </ErrorBoundary>
+      </NativeAppContainer>
+    </CoreRouteRegistryContext.Provider>
   );
 }
 

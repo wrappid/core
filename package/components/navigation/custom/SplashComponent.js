@@ -1,11 +1,11 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
+import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomNavigate, nativeUseLocation } from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 
-import { urls } from "../../../config/constants";
+import { CoreRouteRegistryContext } from "../../../config/contextHandler";
 import CoreClasses from "../../../styles/CoreClasses";
 import CoreComponent from "../../CoreComponent";
 import CoreTypographyBody1 from "../../dataDisplay/paragraph/CoreTypographyBody1";
@@ -14,13 +14,31 @@ import CoreGrid from "../../layouts/CoreGrid";
 
 export default function SplashComponent() {
   const _routes = useSelector(state => state.route.routes);
+  const routeRegistry = useContext(CoreRouteRegistryContext);
   const auth = useSelector(state => state.auth);
   let location = nativeUseLocation();
 
+  const checkAuthRouteReg = ()=>{
+    let authRoutes = _routes.filter(route => route.authRequired);
+
+    if(authRoutes?.length < 1){
+      return false;
+    }
+
+    for(let i = 0;i < authRoutes?.length;i++){
+      if(!routeRegistry[authRoutes[i].entityRef]){
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   const checkAppLoadDependencies = () => {
-    if (_routes && Array.isArray(_routes) && _routes?.length > 0) {
+    if (_routes && Array.isArray(_routes) && _routes?.length > 0 
+      && routeRegistry && Object.keys(routeRegistry).length > 0) {
       if (auth?.uid) {
-        if (_routes.filter(route => route.authRequired)?.length > 0) {
+        if (checkAuthRouteReg()) {
           return { message: "Navigating...", success: true };
         } else {
           return { message: "Loading authenticated routes...", success: false };
@@ -42,25 +60,21 @@ export default function SplashComponent() {
   if (checkAppLoadDependencies()?.success) {
     if (auth?.uid) {
       if (location?.state?.recalledPath) {
-        // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO RECALL\n&&&&&&&&&&&&&&&&&&");
         return <NativeDomNavigate to={location?.state?.recalledPath} />;
       } else {
-        // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO DASHBOARD\n&&&&&&&&&&&&&&&&&&");
-        return <NativeDomNavigate to={"/" + urls.DASHBOARD} />;
+        return <NativeDomNavigate to={"/" + routeRegistry?.dashboard} />;
       }
     } else if (
       location?.state?.sessionExpired &&
-      (location.pathname !== "/" + urls.PASSWORD_ROUTE ||
+      (location.pathname !== "/" + routeRegistry?.enterpassword ||
         location.pathname !== "/")
     ) {
-      // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO PASSWORD\n&&&&&&&&&&&&&&&&&&");
-      return <NativeDomNavigate to={"/" + urls.PASSWORD_ROUTE} />;
+      return <NativeDomNavigate to={"/" + routeRegistry?.enterpassword} />;
     } else if (
-      location.pathname !== "/" + urls.LOGIN_ROUTE ||
+      location.pathname !== "/" + routeRegistry?.checkuserexist ||
       location.pathname !== "/"
     ) {
-      // -- console.log("&&&&&&&&&&&&&&&&&&&\n GING TO CHEK USER EXIST\n&&&&&&&&&&&&&&&&&&");
-      return <NativeDomNavigate to={"/" + urls.LOGIN_ROUTE} />;
+      return <NativeDomNavigate to={"/" + routeRegistry?.checkuserexist} />;
     }
   }
 

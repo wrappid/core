@@ -1,9 +1,17 @@
-import React from "react";
+// import React, {useContext} from "react";
 
-import { FunctionsRegistryContext } from "../config/contextHandler";
+// import { FunctionsRegistryContext } from "../config/contextHandler";
 
-export const getFunctions = () => {
-  const functionsRegistry = React.useContext(FunctionsRegistryContext);
+// // export const getFunctions = () => {
+// //   const functionsRegistry = useContext(FunctionsRegistryContext);
     
-  return functionsRegistry;
-};
+// //   return functionsRegistry;
+// // };
+
+// export let functionsRegistry = {};
+
+// export default function ContextValueProvider() {
+//   functionsRegistry = useContext(FunctionsRegistryContext);
+
+//   // return functionsRegistry;
+// }

@@ -55,13 +55,6 @@ export default function CoreRoutes() {
     );
   }, [authenticated]);
 
-  React.useEffect(() => {
-    console.log("-----------------------------------------------");
-    console.log(_routes);
-    console.log("-----------------------------------------------");
-  }, [_routes]);
-
-  console.log("PROCESS ENV ", process.env);
   return (
     <NativeDomRoutes>
       {/* App related routes */}

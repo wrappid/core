@@ -2,10 +2,8 @@
 import { getConfigurationObject } from "@wrappid/styles";
 import * as yup from "yup";
 
-import { ASYNC_SELECT_FUNCTION_MAP } from "./asyncSelectFunctionMap";
 import { getGridSizeProps } from "./componentUtil";
 import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
-import { FORM_VALIDATION_MAP } from "./fromValidationMap";
 import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import {
@@ -21,7 +19,7 @@ import CoreInput from "../components/inputs/CoreInput";
 import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
 import { ENV_DEV_MODE, HTTP } from "../config/constants";
-import { mergedComponentRegistry } from "../layout/PageContainer";
+import { mergedComponentRegistry, functionsRegistry, validationsRegistry } from "../layout/PageContainer";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import authHeader from "../service/DataService";
 import {
@@ -179,7 +177,7 @@ function concateValidations(formJson, defValidations) {
     let formField = formJson.fields[i];
 
     if (formJson.validation) {
-      let formValidation = FORM_VALIDATION_MAP[formJson.validation];
+      let formValidation = validationsRegistry[formJson.validation];
 
       validationOb[formField?.id] = formValidation[formField?.id];
     } else {
@@ -311,7 +309,6 @@ export function createFormFieldProps(props, type) {
       };
     } else
       return {
-
         OnEditClick : OnEditClick,
         allowEdit   : allowEdit,
         asyncLoading: element?.asyncLoading,
@@ -337,14 +334,13 @@ export function createFormFieldProps(props, type) {
         //below field are passed on for inline actions
         fieldActions: forms[formId]?.formActions,
 
-        formik  : formikprops,
-        freeSolo: element?.freeSolo,
-
+        formik        : formikprops,
+        freeSolo      : element?.freeSolo,
         getOptionLabel: element?.getOptionLabel
-          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionLabel]
+          ? functionsRegistry[element.getOptionLabel]
           : null,
         getOptionValue: element?.getOptionValue
-          ? ASYNC_SELECT_FUNCTION_MAP[element.getOptionValue]
+          ? functionsRegistry[element.getOptionValue]
           : null,
         gridProps           : { gridSize: getGridSizeProps(element?.gridSize, true) },
         handleButtonCLick   : handleButtonCLick,
@@ -353,7 +349,7 @@ export function createFormFieldProps(props, type) {
         inlineAction        : forms[formId].inlineAction,
         inputProps          : { tabIndex: element?.tabIndex },
         isOptionEqualToValue: element?.isOptionEqualToValue
-          ? ASYNC_SELECT_FUNCTION_MAP[element.isOptionEqualToValue]
+          ? functionsRegistry[element.isOptionEqualToValue]
           : null,
         itemKey         : element?.itemKey,
         key             : "formElement" + element?.id,
@@ -362,7 +358,7 @@ export function createFormFieldProps(props, type) {
         navigateUrl     : element?.navigateUrl,
         onChange        : formikprops.handleChange,
         onChangeDispatch: element?.onChangeDispatch
-          ? ASYNC_SELECT_FUNCTION_MAP[element.onChangeDispatch]
+          ? functionsRegistry[element.onChangeDispatch]
           : null,
         onFormFocus    : onFormFocus,
         optionComp     : element?.optionComp,

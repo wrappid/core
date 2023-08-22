@@ -8,8 +8,12 @@ import CoreChip from "./components/dataDisplay/CoreChip";
 import CoreDivider from "./components/dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "./components/dataDisplay/CoreIcon";
 import CoreImage from "./components/dataDisplay/CoreImage";
+import CoreList from "./components/dataDisplay/CoreList";
+import CoreListItem from "./components/dataDisplay/CoreListItem";
+import CoreListItemAvatar from "./components/dataDisplay/CoreListItemAvatar";
 import CoreListItemIcon from "./components/dataDisplay/CoreListItemIcon";
 import CoreListItemText from "./components/dataDisplay/CoreListItemText";
+import CoreListSubheader from "./components/dataDisplay/CoreListSubheader";
 import CoreTable from "./components/dataDisplay/CoreTable";
 import CoreTableBody from "./components/dataDisplay/CoreTableBody";
 import CoreTableBodyCell from "./components/dataDisplay/CoreTableBodyCell";
@@ -86,6 +90,7 @@ import CoreInputLabel from "./components/inputs/CoreInputLabel";
 import CoreInputPassword from "./components/inputs/CoreInputPassword";
 import CoreJSONEditor from "./components/inputs/CoreJSONEditor";
 import CoreJSONInput from "./components/inputs/CoreJSONInput";
+import CoreListItemButton from "./components/inputs/CoreListItemButton";
 import CoreMenu from "./components/inputs/CoreMenu";
 import CoreMultiTimeRangePicker from "./components/inputs/CoreMultiTimeRangePicker";
 import CoreOtpInput from "./components/inputs/CoreOtpInput";
@@ -106,14 +111,11 @@ import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInpu
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
-import CoreListItemButton from "./components/inputs/CoreListItemButton";
 import CoreBox from "./components/layouts/CoreBox";
 // import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
 // import CoreGridItem from "./components/layouts/CoreGridItem";
 import CoreImageBackground from "./components/layouts/CoreImageBackground";
-import CoreList from "./components/dataDisplay/CoreList";
-import CoreListItem from "./components/dataDisplay/CoreListItem";
 import CoreSection from "./components/layouts/CoreSection";
 import CoreSpan from "./components/layouts/CoreSpan";
 import CoreStack from "./components/layouts/CoreStack";
@@ -138,6 +140,7 @@ import CoreCardActionArea from "./components/surfaces/CoreCardActionArea";
 import CoreCardActions from "./components/surfaces/CoreCardActions";
 import CoreCardContent from "./components/surfaces/CoreCardContent";
 import CoreCardHeader from "./components/surfaces/CoreCardHeader";
+import CoreCollapse from "./components/surfaces/CoreCollapse";
 import CoreDrawer from "./components/surfaces/CoreDrawer";
 import CorePaper from "./components/surfaces/CorePaper";
 import CoreRightDrawer from "./components/surfaces/CoreRightDrawer";
@@ -148,12 +151,11 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
 import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
 import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
-import CoreCollapse from "./components/surfaces/CoreCollapse";
-import CoreListItemAvatar from "./components/dataDisplay/CoreListItemAvatar";
-import CoreListSubheader from "./components/dataDisplay/CoreListSubheader";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
-import { CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext } from "./config/contextHandler";
+import {
+  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext, CoreRouteRegistryContext 
+} from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
   MENU_PARENT_ITEM,
@@ -212,6 +214,7 @@ export {
   CoreComponentsRegistryDocs,
   coreUseSearchParams,
   CoreResourceContext,
+  CoreRouteRegistryContext,
   CoreIconText,
   CoreComponent,
   config,

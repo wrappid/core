@@ -5,13 +5,14 @@ import { connect } from "react-redux";
 import CoreEditForm from "./CoreEditForm";
 import {
   FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP,
-  FORM_EDIT_MODE,
-  FORM_SANITIZATOIN_FUNCTION_MAP
+  FORM_EDIT_MODE
 } from "./coreFormConstants";
 import CoreFormDialogs from "./CoreFormDialogs";
 import CoreFormHeader from "./CoreFormHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
 import { urls } from "../../config/constants";
+// eslint-disable-next-line import/namespace
+import { functionsRegistry } from "../../layout/PageContainer";
 import { apiRequestAction } from "../../store/action/appActions";
 import {
   cancelFormEdit,
@@ -25,12 +26,8 @@ import {
 } from "../../store/action/formAction";
 import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
 import CoreClasses from "../../styles/CoreClasses";
-import {
-  createApiMeta,
-  forReloadCheck,
-  getForm,
-  hookcallCheck
-} from "../../utils/formUtils";
+// eslint-disable-next-line import/namespace
+import { createApiMeta, forReloadCheck, getForm, hookcallCheck } from "../../utils/formUtils";
 import { compareObject } from "../../utils/objectUtils";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
@@ -151,7 +148,7 @@ class CoreForm extends Component {
       let sanData = { endpoint: apiMeta.endpoint, values: values };
 
       sanData = formJson?.read?.onSubmitRefine
-        ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
+        ? functionsRegistry[formJson?.read?.onSubmitRefine](
           values,
           apiMeta,
           this.props.state,
@@ -337,14 +334,14 @@ class CoreForm extends Component {
       let sanData = { endpoint: apiMeta.endpoint, values: values };
 
       sanData = formJson?.read?.entity
-        ? FORM_SANITIZATOIN_FUNCTION_MAP[apiMeta?.onSubmitRefine](
+        ? functionsRegistry[apiMeta?.onSubmitRefine](
           values,
           apiMeta,
           this.props.state,
           this.state
         )
         : formJson?.read?.onSubmitRefine
-          ? FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.read?.onSubmitRefine](
+          ? functionsRegistry[formJson?.read?.onSubmitRefine](
             values,
             apiMeta,
             this.props.state,
@@ -417,7 +414,7 @@ class CoreForm extends Component {
 
     if (apiMeta.mode === "edit" && formJson?.edit?.onSubmitRefine) {
       // -- console.log("EDITING");
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[formJson?.edit?.onSubmitRefine](
+      sanData = functionsRegistry[formJson?.edit?.onSubmitRefine](
         values,
         apiMeta,
         this.props.state,
@@ -425,7 +422,7 @@ class CoreForm extends Component {
       );
     } else if (apiMeta.mode === "create" && formJson?.create?.onSubmitRefine) {
       // -- console.log("ADDING");
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
+      sanData = functionsRegistry[
         formJson?.create?.onSubmitRefine
       ](values, apiMeta, this.props.state, this.state);
     }
@@ -477,7 +474,7 @@ class CoreForm extends Component {
         formId  : this.props.formId,
       };
 
-      values = FORM_SANITIZATOIN_FUNCTION_MAP[data.onSubmitRefine](
+      values = functionsRegistry[data.onSubmitRefine](
         values,
         {},
         this.props.state,
@@ -570,7 +567,7 @@ class CoreForm extends Component {
 
     if (formJson?.delete?.onSubmitRefine) {
       // -- console.log("DELETING");
-      sanData = FORM_SANITIZATOIN_FUNCTION_MAP[
+      sanData = functionsRegistry[
         formJson?.delete?.onSubmitRefine
       ](
         this.props.formData[this.props.formId]?.data?.rows,
