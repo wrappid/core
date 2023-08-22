@@ -1,8 +1,11 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useContext } from "react";
 
+import {
+  NativeDomNavigate,
+  nativeUseLocation
 // eslint-disable-next-line import/no-unresolved
-import { NativeDomNavigate, nativeUseLocation } from "@wrappid/styled-components";
+} from "@wrappid/styled-components";
 import { useSelector } from "react-redux";
 
 import { CoreRouteRegistryContext } from "../../../config/contextHandler";
@@ -13,20 +16,20 @@ import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
 
 export default function SplashComponent() {
-  const _routes = useSelector(state => state.route.routes);
+  const _routes = useSelector((state) => state.route.routes);
   const routeRegistry = useContext(CoreRouteRegistryContext);
-  const auth = useSelector(state => state.auth);
+  const auth = useSelector((state) => state.auth);
   let location = nativeUseLocation();
 
-  const checkAuthRouteReg = ()=>{
-    let authRoutes = _routes.filter(route => route.authRequired);
+  const checkAuthRouteReg = () => {
+    let authRoutes = _routes.filter((route) => route.authRequired);
 
-    if(authRoutes?.length < 1){
+    if (authRoutes?.length < 1) {
       return false;
     }
 
-    for(let i = 0;i < authRoutes?.length;i++){
-      if(!routeRegistry[authRoutes[i].entityRef]){
+    for (let i = 0; i < authRoutes?.length; i++) {
+      if (!routeRegistry[authRoutes[i].entityRef]) {
         return false;
       }
     }
@@ -35,8 +38,13 @@ export default function SplashComponent() {
   };
 
   const checkAppLoadDependencies = () => {
-    if (_routes && Array.isArray(_routes) && _routes?.length > 0 
-      && routeRegistry && Object.keys(routeRegistry).length > 0) {
+    if (
+      _routes &&
+      Array.isArray(_routes) &&
+      _routes?.length > 0 &&
+      routeRegistry &&
+      Object.keys(routeRegistry).length > 0
+    ) {
       if (auth?.uid) {
         if (checkAuthRouteReg()) {
           return { message: "Navigating...", success: true };
@@ -61,18 +69,20 @@ export default function SplashComponent() {
     if (auth?.uid) {
       if (location?.state?.recalledPath) {
         return <NativeDomNavigate to={location?.state?.recalledPath} />;
-      } else {
+      } else if (routeRegistry?.dashboard) {
         return <NativeDomNavigate to={"/" + routeRegistry?.dashboard} />;
       }
     } else if (
+      routeRegistry?.enterpassword &&
       location?.state?.sessionExpired &&
       (location.pathname !== "/" + routeRegistry?.enterpassword ||
         location.pathname !== "/")
     ) {
       return <NativeDomNavigate to={"/" + routeRegistry?.enterpassword} />;
     } else if (
-      location.pathname !== "/" + routeRegistry?.checkuserexist ||
-      location.pathname !== "/"
+      routeRegistry?.checkuserexist &&
+      (location.pathname !== "/" + routeRegistry?.checkuserexist ||
+        location.pathname !== "/")
     ) {
       return <NativeDomNavigate to={"/" + routeRegistry?.checkuserexist} />;
     }
@@ -86,16 +96,19 @@ export default function SplashComponent() {
         CoreClasses.WIDTH.W_100,
         CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
         CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-      ]}>
+      ]}
+    >
       <CoreBox
         gridProps={{ gridSize: 6 }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+      >
         <CoreBox styleClasses={[CoreClasses?.MARGIN?.MB1]}>
           <CoreComponent componentName={"AppLogoGif"} />
         </CoreBox>
 
         <CoreTypographyBody1
-          styleClasses={!auth?.uid ? [CoreClasses?.COLOR?.TEXT_WHITE] : []}>
+          styleClasses={!auth?.uid ? [CoreClasses?.COLOR?.TEXT_WHITE] : []}
+        >
           {checkAppLoadDependencies()?.message}
         </CoreTypographyBody1>
       </CoreBox>
