@@ -1,4 +1,4 @@
-import { FORM_SANITIZATOIN_FUNCTION_MAP } from "../../components/forms/coreFormConstants";
+import { functionsRegistry } from "../../layout/PageContainer";
 import { LOGOUT_SUCCESS } from "../../store/types/authTypes";
 import { createInitialData } from "../../utils/formUtils";
 import {
@@ -29,11 +29,9 @@ function getData(action, dataOb) {
       dataOb.data.rows = d;
       dataOb.data.totalRecords = d.length;
     } else {
-      // console.log("FORM DATA SAVE 1B", d);
       dataOb.data = { rows: d };
     }
   }
-  // console.log("FORM DATA SAVE B", dataOb);
   return dataOb;
 }
 const initState = {};
@@ -59,9 +57,8 @@ const entityDefaultState = {
 };
 const apiReducer = (state = initState, action) => {
   switch (action.type) {
-    case FORM_DATA_SAVE:
-      // console.log("FORM DATA SAVE A", action?.payload);
-      var dataOb = { ...entityDefaultState };
+    case FORM_DATA_SAVE: {
+      let dataOb = { ...entityDefaultState };
 
       dataOb.timestamp = Date.now();
       dataOb.api = action?.payload?.apiDetails;
@@ -71,12 +68,11 @@ const apiReducer = (state = initState, action) => {
 
       dataOb = getData(action, dataOb);
 
-      // console.log("FORM DATA SAVE C", dataOb);
-
       return {
         ...state,
         [action.payload.id]: { ...dataOb },
       };
+    }
 
     case FORM_DATA_READ_LOADING:
       return {
@@ -90,26 +86,23 @@ const apiReducer = (state = initState, action) => {
         },
       };
 
-    case FORM_INIT_UPDATE:
-      console.log("INIT UPDATE API------", state[action.payload.formId]);
+    case FORM_INIT_UPDATE: {
       //TODO: haveto put support for created forms like in datatable forms
-      var sanity = state[action.payload.formId]?.api?.onGetRefine;
-      var sanitizedData = getData(action, state[action.payload.formId])?.data
+      let sanity = state[action.payload.formId]?.api?.onGetRefine;
+      let sanitizedData = getData(action, state[action.payload.formId])?.data
         ?.rows;
 
       if (sanity) {
-        sanitizedData = FORM_SANITIZATOIN_FUNCTION_MAP[
+        sanitizedData = functionsRegistry [
           state[action.payload.formId]?.api?.onGetRefine
         ](action?.payload?.data?.data, action?.payload?.data);
-        console.log("API REDUCER sanity------", sanitizedData);
       }
 
-      var initData = createInitialData(action.payload.formJson, sanitizedData);
+      let initData = createInitialData(action.payload.formJson, sanitizedData);
 
       if (Array.isArray(initData) && initData.length === 0) {
         initData = state[action.payload.formId]?.data?.rows;
       }
-      console.log("API REDUCER FORMINIT DATA------", initData);
 
       return {
         ...state,
@@ -125,16 +118,17 @@ const apiReducer = (state = initState, action) => {
           timestamp: Date.now(),
         },
       };
+    }
 
-    case UPDATE_API_META:
+    case UPDATE_API_META: {
       let newApiMeta = {};
       let removeKeys = ["values", "reduxData", "files"];
       let keys = Object.keys(action.payload?.apiMeta);
 
-      for(let i = 0;i < keys.length;i++){
+      for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
 
-        if(!removeKeys.includes(key)){
+        if (!removeKeys.includes(key)) {
           newApiMeta[key] = action.payload?.apiMeta[key];
         }
       }
@@ -142,9 +136,10 @@ const apiReducer = (state = initState, action) => {
         ...state,
         [action.payload.formId]: {
           ...(state[action.payload.formId] || {}),
-          api: newApiMeta
-        }
+          api: newApiMeta,
+        },
       };
+    }
 
     case LOGOUT_SUCCESS:
       return initState;
