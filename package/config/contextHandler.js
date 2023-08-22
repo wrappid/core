@@ -17,3 +17,4 @@ export const CoreApplicationContext = createContext({
   version       : ""
 });
 export const ValidationsRegistryContext = createContext({});
+export const CoreRouteRegistryContext = createContext({});
