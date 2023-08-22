@@ -90,99 +90,96 @@ export const apiRequestAction =
               reloadFormJson = await getForm(reloadForm);
             }
             if (!response) throw new Error("Response is undefined");
-            switch (response.status) {
-              case 200:
-
-              case 201:
-                if (method !== HTTP.GET)
-                  dispatch({
-                    payload: { data: { ...reduxData, ...response.data }, formId },
-                    type   : FORM_SUBMIT_SUCCESS,
-                  });
-                else if (reload && method === HTTP.GET) {
-                  if(reloadForm){
-                    dispatch({
-                      payload: {
-                        data    : { ...reduxData, ...response.data },
-                        formId  : reloadForm,
-                        formJson: reloadFormJson,
-                      },
-                      type: FORM_INIT_UPDATE,
-                    });
-                  }
+            
+            if(response?.status === 200 || response?.status === 201){
+              if (method !== HTTP.GET)
+                dispatch({
+                  payload: { data: { ...reduxData, ...response.data }, formId },
+                  type   : FORM_SUBMIT_SUCCESS,
+                });
+              else if (reload && method === HTTP.GET) {
+                if(reloadForm){
                   dispatch({
                     payload: {
-                      data  : { ...reduxData, ...response.data },
-                      formId: formId,
-                      formJson,
+                      data    : { ...reduxData, ...response.data },
+                      formId  : reloadForm,
+                      formJson: reloadFormJson,
                     },
                     type: FORM_INIT_UPDATE,
                   });
                 }
+                dispatch({
+                  payload: {
+                    data  : { ...reduxData, ...response.data },
+                    formId: formId,
+                    formJson,
+                  },
+                  type: FORM_INIT_UPDATE,
+                });
+              }
 
-                if (localAction) {
-                  dispatch({
-                    payload: { ...reduxData, ...data },
-                    type   : localAction,
-                  });
-                }
-                if (typeof successType === "string") {
-                  dispatch({
-                    payload: { ...reduxData, ...response.data },
-                    type   : successType,
-                  });
-                } else if (typeof successType === "object") {
-                  if (Array.isArray(successType)) {
-                    for (let i = 0; i < successType.length; i++) {
-                      dispatch({
-                        payload: { ...reduxData, ...response.data },
-                        type   : successType[i],
-                      });
-                    }
-                  } else {
+              if (localAction) {
+                dispatch({
+                  payload: { ...reduxData, ...data },
+                  type   : localAction,
+                });
+              }
+              if (typeof successType === "string") {
+                dispatch({
+                  payload: { ...reduxData, ...response.data },
+                  type   : successType,
+                });
+              } else if (typeof successType === "object") {
+                if (Array.isArray(successType)) {
+                  for (let i = 0; i < successType.length; i++) {
                     dispatch({
                       payload: { ...reduxData, ...response.data },
-                      type   : successType[response.status],
+                      type   : successType[i],
                     });
                   }
                 } else {
-                  throw new Error("Unknown successType of this form");
+                  dispatch({
+                    payload: { ...reduxData, ...response.data },
+                    type   : successType[response.status],
+                  });
                 }
-                break;
-
-              case 204:
-                if (reload && method === HTTP.GET) {
-                  if(reloadForm){
-                    dispatch({
-                      payload: {
-                        data    : { ...reduxData, ...response.data },
-                        formId  : reloadForm,
-                        formJson: reloadFormJson,
-                      },
-                      type: FORM_INIT_UPDATE,
-                    });
-                  }
+              } else {
+                throw new Error("Unknown successType of this form");
+              }
+            }
+            else if(response?.status === 204){
+              if (reload && method === HTTP.GET) {
+                if(reloadForm){
                   dispatch({
                     payload: {
-                      data  : { ...reduxData, ...response.data },
-                      formId: formId,
-                      formJson,
+                      data    : { ...reduxData, ...response.data },
+                      formId  : reloadForm,
+                      formJson: reloadFormJson,
                     },
                     type: FORM_INIT_UPDATE,
                   });
                 }
                 dispatch({
-                  payload: { ...reduxData, ...response.data },
-                  type   : HTTP_NO_CONTENT,
+                  payload: {
+                    data  : { ...reduxData, ...response.data },
+                    formId: formId,
+                    formJson,
+                  },
+                  type: FORM_INIT_UPDATE,
                 });
-                break;
-
-              default:
-                dispatch({
-                  payload: { ...reduxData, ...response },
-                  type   : HTTP_UNHANDLED_SUCCESS_TYPE,
-                });
+              }
+              dispatch({
+                payload: { ...reduxData, ...response.data },
+                type   : HTTP_NO_CONTENT,
+              });
             }
+            else{
+              dispatch({
+                payload: { ...reduxData, ...response },
+                type   : HTTP_UNHANDLED_SUCCESS_TYPE,
+              });
+            }
+
             dispatch({ type: resetLoadingType });
             if (pushSnack) {
               dispatch(
@@ -195,6 +192,7 @@ export const apiRequestAction =
             return Promise.resolve();
           })
           .catch((error) => {
+            // eslint-disable-next-line no-console
             console.error("ERROR inaction layer", error);
             //CHECK FOR 401|403 AND SENT REQUEST TO STACK
             if (
@@ -233,6 +231,7 @@ export const apiRequestAction =
               });
             } else {
               if (formId) {
+                // eslint-disable-next-line no-console
                 console.log("DISPATH REDUCER FORM ERROR");
                 dispatch({
                   payload: { ...reduxData, data: error, formId },
@@ -281,6 +280,7 @@ export const apiRequestAction =
           })
           .finally(() => {dispatch({ type: RESET_PROGRESS_BAR });});
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error("Something went wrong.", error);
         dispatch({ type: RESET_PROGRESS_BAR });
       }
@@ -291,6 +291,7 @@ export const apiRequestAction =
  * Snack message related action
  */
 export const pushSnackMessage = (type, message) => (dispatch) => {
+  // eslint-disable-next-line etc/no-commented-out-code
   // enqueueSnackbar(message, { variant: type });
   dispatch({
     payload: {
@@ -302,6 +303,7 @@ export const pushSnackMessage = (type, message) => (dispatch) => {
   });
 };
 export const clearSnackMessages = () => (dispatch) => {
+  // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
   dispatch({ type: CLEAR_SNACK_MESSAGE });
 };
