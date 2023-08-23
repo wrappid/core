@@ -4,7 +4,7 @@ import React from "react";
 import CoreClasses from "../../../styles/CoreClasses";
 import { getLabel } from "../../../utils/stringUtils";
 import CoreIcon from "../../dataDisplay/CoreIcon";
-import CoreFormControlLabel from "../../forms/CoreFormGroupLabel";
+import CoreFormControlLabel from "../../forms/CoreFormControlLabel";
 import CoreCheckbox from "../../inputs/CoreCheckbox";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import CoreInputAdornment from "../../inputs/CoreInputAdornment";

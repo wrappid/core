@@ -8,7 +8,7 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreFormGroup from "../forms/CoreFormGroup";
-import CoreFormControlLabel from "../forms/CoreFormGroupLabel";
+import CoreFormControlLabel from "../forms/CoreFormControlLabel";
 import CoreCheckbox from "../inputs/CoreCheckbox";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreBox from "../layouts/CoreBox";

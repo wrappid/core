@@ -151,6 +151,7 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
 import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
 import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
+import CoreFormControlLabel from "./components/forms/CoreFormControlLabel";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import {
@@ -210,6 +211,7 @@ export {
   CoreCollapse,
   CoreListItemAvatar,
   CoreListSubheader,
+  CoreFormControlLabel,
   CoreComponentsRegistry,
   CoreComponentsRegistryDocs,
   coreUseSearchParams,

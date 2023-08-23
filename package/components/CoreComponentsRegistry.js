@@ -86,7 +86,7 @@ import CoreFormContainer from "./forms/CoreFormContainer.js";
 import CoreFormDialogs from "./forms/CoreFormDialogs.js";
 import CoreFormField from "./forms/CoreFormField.js";
 import CoreFormGroup from "./forms/CoreFormGroup.js";
-import CoreFormGroupLabel from "./forms/CoreFormGroupLabel.js";
+import CoreFormGroupLabel from "./forms/CoreFormControlLabel.js";
 import CoreFormHeader from "./forms/CoreFormHeader.js";
 import CoreFormHeaderActions from "./forms/CoreFormHeaderActions.js";
 import CoreSpecificForm from "./forms/CoreSpecificForm.js";
