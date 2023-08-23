@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeTimeRangePicker } from "@wrappid/styled-components";
+import { NativeTimeRangePicker } from "@wrappid/native";
 
 export default function CoreTimeRangePicker(props) {
   return <NativeTimeRangePicker {...props} />;

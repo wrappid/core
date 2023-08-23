@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFormErrorText } from "@wrappid/styled-components";
+import { NativeFormErrorText } from "@wrappid/native";
 
 export default function CoreFormErrorText(props) {
   return <NativeFormErrorText {...props} />;

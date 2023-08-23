@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeCollapse } from "@wrappid/styled-components";
+import { NativeCollapse } from "@wrappid/native";
 
 export default function CoreCollapse(props) {
   return <NativeCollapse {...props} />;

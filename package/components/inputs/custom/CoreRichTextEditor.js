@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeRichTextEditor } from "@wrappid/styled-components";
+import { NativeRichTextEditor } from "@wrappid/native";
 
 import CoreInputLabel from "../CoreInputLabel";
 
@@ -13,9 +13,7 @@ export default function CoreRichTextEditor(props) {
     <>
       <CoreInputLabel
         shrink={true}
-        error={
-          props.touched && props.error && props.error.length > 0 ? true : false
-        }
+        error={props.touched && props.error && props.error.length > 0 ? true : false}
         htmlFor={props.id}
       >
         {props.label}
@@ -27,8 +25,8 @@ export default function CoreRichTextEditor(props) {
           props.formik?.values && props.formik?.values[props.id]
             ? props.formik?.values[props.id]
             : props.value
-              ? props.value
-              : ""
+            ? props.value
+            : ""
         }
         onChange={props.onChange}
         ref={props.ref || ref}
@@ -37,8 +35,8 @@ export default function CoreRichTextEditor(props) {
           props.onBlur
             ? props.onBlur
             : (value) => {
-              props.formik?.setFieldValue(props.id, value);
-            }
+                props.formik?.setFieldValue(props.id, value);
+              }
         }
       />
     </>

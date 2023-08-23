@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeJSONInput } from "@wrappid/styled-components";
+import { NativeJSONInput } from "@wrappid/native";
 
 export default function CoreJSONInput(props) {
   return <NativeJSONInput {...props} />;

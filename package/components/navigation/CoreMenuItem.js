@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeMenuItem } from "@wrappid/styled-components";
+import { NativeMenuItem } from "@wrappid/native";
 
 export default function CoreMenuItem(props) {
   return <NativeMenuItem {...props} />;

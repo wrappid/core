@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAutocomplete } from "@wrappid/styled-components";
+import { NativeAutocomplete } from "@wrappid/native";
 
 export default function CoreAutocomplete(props) {
   return <NativeAutocomplete {...props} />;

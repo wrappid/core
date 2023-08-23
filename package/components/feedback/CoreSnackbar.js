@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeSnackbar } from "@wrappid/styled-components";
+import { NativeSnackbar } from "@wrappid/native";
 
 export default function CoreSnackbar(props) {
   return <NativeSnackbar {...props}>{props.children}</NativeSnackbar>;

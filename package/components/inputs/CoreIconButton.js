@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeIconButton } from "@wrappid/styled-components";
+import { NativeIconButton } from "@wrappid/native";
 
 export default function CoreIconButton(props) {
   return <NativeIconButton {...props} />;

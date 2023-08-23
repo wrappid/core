@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeModal } from "@wrappid/styled-components";
+import { NativeModal } from "@wrappid/native";
 
 import { toggleModalState } from "../../store/action/modalAction";
 

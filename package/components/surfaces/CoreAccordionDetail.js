@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAccordionDetail } from "@wrappid/styled-components";
+import { NativeAccordionDetail } from "@wrappid/native";
 
 export default function CoreAccordionDetail(props) {
   return <NativeAccordionDetail {...props} />;

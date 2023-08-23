@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseLocation } from "@wrappid/styled-components";
+import { nativeUseLocation } from "@wrappid/native";
 
 import CoreH6 from "../components/dataDisplay/heading/CoreH6";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
@@ -16,9 +16,7 @@ export default function Error500() {
   return (
     <CoreCard>
       <CoreCardContent>
-        <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>
-          Error Reported
-        </CoreH6>
+        <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>Error Reported</CoreH6>
 
         <CoreTypographyBody1>{error?.message}</CoreTypographyBody1>
 

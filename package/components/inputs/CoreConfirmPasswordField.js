@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeConfirmPasswordField } from "@wrappid/styled-components";
+import { NativeConfirmPasswordField } from "@wrappid/native";
 
 export default function CoreConfirmPasswordField(props) {
   return <NativeConfirmPasswordField {...props} />;

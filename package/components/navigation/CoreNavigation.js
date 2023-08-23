@@ -2,10 +2,8 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeNavigation } from "@wrappid/styled-components";
+import { NativeNavigation } from "@wrappid/native";
 
 export default function CoreNavigation(props) {
-  return (
-    <NativeNavigation>{props.children}</NativeNavigation>
-  );
+  return <NativeNavigation>{props.children}</NativeNavigation>;
 }

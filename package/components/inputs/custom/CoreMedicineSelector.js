@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeMedicineSelector } from "@wrappid/styled-components";
+import { NativeMedicineSelector } from "@wrappid/native";
 
 export default function CoreMedicineSelector(props) {
   return <NativeMedicineSelector {...props} />;

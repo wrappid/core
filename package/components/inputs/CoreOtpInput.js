@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeOtpInput } from "@wrappid/styled-components";
+import { NativeOtpInput } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreFormErrorText from "./CoreFormErrorText";
@@ -18,15 +18,15 @@ import CoreBox from "../layouts/CoreBox";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
-  const sendOtpLoading = useSelector(state => state?.app?.sendOtpLoading);
+  const sendOtpLoading = useSelector((state) => state?.app?.sendOtpLoading);
 
-  useEffect(()=>{
+  useEffect(() => {
     sendOtp();
   }, []);
 
-  const sendOtp = ()=>{
-    if(props.to){
-      if(props.sendOtp !== false){
+  const sendOtp = () => {
+    if (props.to) {
+      if (props.sendOtp !== false) {
         let data = { data: props.to };
 
         dispatch(
@@ -48,32 +48,32 @@ export default function CoreOtpInput(props) {
             null //resetLoadingType,
           )
         );
-      }else{
+      } else {
         // -- console.log("Not sending otp");
       }
-    }else{
+    } else {
       // -- console.log("Can not send OTP 'to' props not found");
     }
-  }; 
+  };
 
-  return (
-    sendOtpLoading ?
-      <CoreSkeleton variant="rectangular"/>
-      :
-      <CoreBox>
-        <NativeOtpInput {...props} />
+  return sendOtpLoading ? (
+    <CoreSkeleton variant="rectangular" />
+  ) : (
+    <CoreBox>
+      <NativeOtpInput {...props} />
 
-        {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
+      {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
 
-        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-          {props.helperText}
-        </CoreFormHelperText>
+      <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+        {props.helperText}
+      </CoreFormHelperText>
 
-        <CoreTimer
-          action={sendOtp}
-          actionLabel="Resend OTP"
-          seconds={20}
-          timerLabel={"Resend after: "}/>
-      </CoreBox>
+      <CoreTimer
+        action={sendOtp}
+        actionLabel="Resend OTP"
+        seconds={20}
+        timerLabel={"Resend after: "}
+      />
+    </CoreBox>
   );
 }

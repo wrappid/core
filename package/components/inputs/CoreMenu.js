@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseLocation } from "@wrappid/styled-components";
+import { nativeUseLocation } from "@wrappid/native";
 
 import { ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
@@ -38,8 +38,7 @@ export default function CoreMenu(props) {
     <CoreStack
       direction="column"
       styleClasses={
-        miniDrawer &&
-        !open && [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START, CoreClasses.PADDING.PL1]
+        miniDrawer && !open && [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START, CoreClasses.PADDING.PL1]
       }
     >
       {createMultiLevelMenu(

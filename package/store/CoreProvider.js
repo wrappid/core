@@ -2,7 +2,7 @@
 import React from "react";
 
 import { configureStore } from "@reduxjs/toolkit";
-import { nativeStorage } from "@wrappid/styled-components";
+import { nativeStorage } from "@wrappid/native";
 import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
 import { Provider } from "react-redux";
 import { combineReducers } from "redux";
@@ -11,11 +11,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import thunk from "redux-thunk";
 
 import coreReducer from "./reducers/rootReducer";
-import {
-  AppStylesContext,
-  IconContext,
-  ThemeContext
-} from "../config/contextHandler";
+import { AppStylesContext, IconContext, ThemeContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
 import { defaultCoreStyles } from "../styles/DefaultCoreStyles";
 import { largeCoreStyles } from "../styles/LargeCoreStyles";
@@ -33,7 +29,7 @@ function createFullStore(appReducer, persistFlag = true) {
   for (var i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
-        key    : keys[i],
+        key: keys[i],
         storage: nativeStorage,
       },
       coreReducer[keys[i]]
@@ -46,7 +42,7 @@ function createFullStore(appReducer, persistFlag = true) {
     for (var i = 0; i < appReducerKeys.length; i++) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
-          key    : appReducerKeys[i],
+          key: appReducerKeys[i],
           storage: nativeStorage,
         },
         appReducer[appReducerKeys[i]]
@@ -57,9 +53,9 @@ function createFullStore(appReducer, persistFlag = true) {
   finalReducer = { ...finalReducer, ...appReducer };
 
   const store = configureStore({
-    devTools  : true,
+    devTools: true,
     middleware: [thunk],
-    reducer   : combineReducers(finalReducer),
+    reducer: combineReducers(finalReducer),
   });
 
   const persistor = persistStore(store);
@@ -82,20 +78,16 @@ export default function CoreProvider(props) {
    *  ...
    * }
    */
-  let { store, persistor } = createFullStore(
-    props.appReducer,
-    props?.persistFlag,
-    props?.storage
-  );
+  let { store, persistor } = createFullStore(props.appReducer, props?.persistFlag, props?.storage);
 
   let coreStyles = {
     classes: CoreClasses,
-    styles : {
+    styles: {
       default: defaultCoreStyles,
-      large  : largeCoreStyles,
-      medium : mediumCoreStyles,
-      small  : smallCoreStyles,
-      xLarge : xLargeCoreStyles,
+      large: largeCoreStyles,
+      medium: mediumCoreStyles,
+      small: smallCoreStyles,
+      xLarge: xLargeCoreStyles,
       xxLarge: xXLargeCoreStyles,
     },
   };

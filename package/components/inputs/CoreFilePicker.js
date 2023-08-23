@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFilePicker } from "@wrappid/styled-components";
+import { NativeFilePicker } from "@wrappid/native";
 
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
@@ -19,9 +19,7 @@ export default function CoreFilePicker(props) {
   return (
     <CoreFormControl>
       <CoreLabel
-        error={
-          props.touched && props.error && props.error.length > 0 ? true : false
-        }
+        error={props.touched && props.error && props.error.length > 0 ? true : false}
         htmlFor={props.id}
       >
         {props.label}

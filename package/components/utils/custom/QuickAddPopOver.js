@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate } from "@wrappid/styled-components";
+import { nativeUseNavigate } from "@wrappid/native";
 
 import { CoreMenuContext } from "../../../config/contextHandler";
 import CoreMenu from "../../inputs/CoreMenu";

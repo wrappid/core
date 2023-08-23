@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeListItemButton } from "@wrappid/styled-components";
+import { NativeListItemButton } from "@wrappid/native";
 
 export default function CoreListItemButton(props) {
   return <NativeListItemButton {...props} />;

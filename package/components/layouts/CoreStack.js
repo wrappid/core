@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeStack } from "@wrappid/styled-components";
+import { NativeStack } from "@wrappid/native";
 
 export default function CoreStack(props) {
   return <NativeStack {...props} />;

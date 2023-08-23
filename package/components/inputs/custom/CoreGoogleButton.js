@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeGoogleButton } from "@wrappid/styled-components";
+import { NativeGoogleButton } from "@wrappid/native";
 
 export default function CoreGoogleButton() {
   return <NativeGoogleButton />;

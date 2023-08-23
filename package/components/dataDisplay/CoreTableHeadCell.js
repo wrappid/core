@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeTableHeadCell } from "@wrappid/styled-components";
+import { NativeTableHeadCell } from "@wrappid/native";
 
 import CoreClasses from "../../styles/CoreClasses";
 

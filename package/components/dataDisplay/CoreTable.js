@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeTable } from "@wrappid/styled-components";
+import { NativeTable } from "@wrappid/native";
 
 import { getUUID } from "../../utils/appUtils";
 

@@ -1,9 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeAvatar } from "@wrappid/styled-components";
+import { NativeAvatar } from "@wrappid/native";
 
 export default function CoreAvatar(props) {
   return <NativeAvatar src={props.src || "../../assets/no_image.jpg"} {...props} />;
 }
-

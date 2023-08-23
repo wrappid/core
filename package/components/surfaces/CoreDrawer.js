@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeDrawer, nativeUseNavigate } from "@wrappid/styled-components";
+import { NativeDrawer, nativeUseNavigate } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ThemeContext } from "../../config/contextHandler";

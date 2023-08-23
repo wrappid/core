@@ -1,13 +1,13 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeIcon } from "@wrappid/styled-components";
+import { NativeIcon } from "@wrappid/native";
 
 export const __IconTypes = {
-  FONTAWESOME_V5_REGULAR_ICON: "far", 
-  FONTAWESOME_V5_SOLID_ICON  : "fas",
-  
-  MATERIAL_ICON         : "material-icons",
+  FONTAWESOME_V5_REGULAR_ICON: "far",
+  FONTAWESOME_V5_SOLID_ICON: "fas",
+
+  MATERIAL_ICON: "material-icons",
   // Default support of MUI
   MATERIAL_OUTLINED_ICON: "material-icons-outlined",
   RXICON_V1_REGULAR_ICON: "rxi",
@@ -32,14 +32,11 @@ export default function CoreIcon(props) {
       name={tmpIcon}
       size={props.size}
       childrenFlag={
-        tmpType === __IconTypes.MATERIAL_ICON ||
-        tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
+        tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
           : false
       }
-      sx={
-        type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }
-      }
+      sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
       styleClasses={props.styleClasses || []}
       {...restProps}
     />

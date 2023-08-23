@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeSpan } from "@wrappid/styled-components";
+import { NativeSpan } from "@wrappid/native";
 
 export default function CoreSpan(props) {
   return <NativeSpan {...props} />;

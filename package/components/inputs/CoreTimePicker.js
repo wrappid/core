@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeTimePicker } from "@wrappid/styled-components";
+import { NativeTimePicker } from "@wrappid/native";
 
 export default function CoreTimePicker(props) {
   return <NativeTimePicker {...props} />;

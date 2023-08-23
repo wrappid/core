@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeTablePagination } from "@wrappid/styled-components";
+import { NativeTablePagination } from "@wrappid/native";
 
 import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
 

@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeImagePicker } from "@wrappid/styled-components";
+import { NativeImagePicker } from "@wrappid/native";
 
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
@@ -10,11 +10,8 @@ import CoreFormHelperText from "./CoreFormHelperText";
 import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreImagePicker(props) {
-  const {
-    error,
-    helperText
-  } =  props;
-  
+  const { error, helperText } = props;
+
   return (
     <CoreFormControl>
       <NativeImagePicker {...props} />

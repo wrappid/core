@@ -1,4 +1,4 @@
-import { getNativeDeviceDetails } from "@wrappid/styled-components";
+import { getNativeDeviceDetails } from "@wrappid/native";
 
 export const getDeviceDetails = () => {
   return getNativeDeviceDetails();

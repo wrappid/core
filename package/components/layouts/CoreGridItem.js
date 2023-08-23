@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeGridItem } from "@wrappid/styled-components";
+import { NativeGridItem } from "@wrappid/native";
 
 export default function CoreGridItem(props) {
   return <NativeGridItem props>{props.children}</NativeGridItem>;

@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeCardActionArea } from "@wrappid/styled-components";
+import { NativeCardActionArea } from "@wrappid/native";
 
 export default function CoreCardActionArea(props) {
   return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;

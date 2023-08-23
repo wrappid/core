@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeLink } from "@wrappid/styled-components";
+import { NativeLink } from "@wrappid/native";
 
 export default function CoreLink(props) {
   return <NativeLink {...props} />;

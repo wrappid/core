@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeTextField } from "@wrappid/styled-components";
+import { NativeTextField } from "@wrappid/native";
 
 //do not use this component directly this is used for datepicker only internally
 export default function CoreTextField(props) {

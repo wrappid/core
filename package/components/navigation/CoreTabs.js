@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeTabs } from "@wrappid/styled-components";
+import { NativeTabs } from "@wrappid/native";
 
 export default function CoreTabs(props) {
   return <NativeTabs {...props} />;

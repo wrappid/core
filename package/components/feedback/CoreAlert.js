@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAlert } from "@wrappid/styled-components";
+import { NativeAlert } from "@wrappid/native";
 
 export default function CoreAlert(props) {
   return <NativeAlert {...props}>{props.children}</NativeAlert>;

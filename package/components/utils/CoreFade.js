@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate } from "@wrappid/styled-components";
+import { nativeUseNavigate } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { urls } from "../../config/constants";
@@ -17,23 +17,23 @@ export default function CoreProfilePopOver(props) {
   const { onClose } = props;
   const profileCardMenu = [
     {
-      icon : "person_outline",
-      id   : "viewProfile",
+      icon: "person_outline",
+      id: "viewProfile",
       label: "View Profile",
-      link : urls.PROFILE,
+      link: urls.PROFILE,
     },
     {
-      icon : "settings",
-      id   : "settings",
+      icon: "settings",
+      id: "settings",
       label: "Settings",
-      link : urls.SETTINGS,
+      link: urls.SETTINGS,
     },
     { type: MENU_SEPERATOR },
     {
-      icon : "logout",
-      id   : "logout",
+      icon: "logout",
+      id: "logout",
       label: "Logout",
-      link : urls.LOGOUT,
+      link: urls.LOGOUT,
     },
   ];
 
@@ -45,7 +45,12 @@ export default function CoreProfilePopOver(props) {
   return (
     <CoreBox sx={{ width: "400px" }}>
       <CoreGrid
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.LAYOUT.FULL_WIDTH, CoreClasses.PADDING.P1]}
+        styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          CoreClasses.LAYOUT.FULL_WIDTH,
+          CoreClasses.PADDING.P1,
+        ]}
       >
         <CoreAvatar
           gridProps={{ gridSize: 2 }}

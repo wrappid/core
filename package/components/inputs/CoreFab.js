@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFab } from "@wrappid/styled-components";
+import { NativeFab } from "@wrappid/native";
 
 export default function CoreFab(props) {
   return <NativeFab {...props} />;

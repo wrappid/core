@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeReactSelectInput } from "@wrappid/styled-components";
+import { NativeReactSelectInput } from "@wrappid/native";
 
 export default function CoreReactSelectInput(props) {
   return <NativeReactSelectInput {...props} />;

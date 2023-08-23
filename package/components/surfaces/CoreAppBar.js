@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAppBar } from "@wrappid/styled-components";
+import { NativeAppBar } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,8 +38,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE     : "PROFILE",
-    QUICK_MENU  : "QUICK_MENU",
+    PROFILE: "PROFILE",
+    QUICK_MENU: "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -56,8 +56,7 @@ export default function CoreAppBar(props) {
   }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
 
   /* AppBar PopOver */
-  const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
-    React.useState(null);
+  const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] = React.useState(null);
   // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
   const [_appbarContent, set_appbarContent] = React.useState(null);
@@ -74,12 +73,13 @@ export default function CoreAppBar(props) {
     <>
       <NativeAppBar {...props}>
         <CoreToolbar
-          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+          styleClasses={[
+            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+            CoreClasses.FLEX.DIRECTION_ROW,
+            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          ]}
         >
-          <CoreStack
-            direction="row"
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-          >
+          <CoreStack direction="row" styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
             <CoreIconButton
               styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
               aria-label="open drawer"
@@ -103,17 +103,19 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+              styleClasses={[
+                CoreClasses.WIDTH.W_100,
+                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+              ]}
             >
-              {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
-                ?.flag && (
+              {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value?.flag && (
                 <CoreIconButton styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
                   <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
-                ?.flag && (
+              {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Help & Support"}
@@ -125,8 +127,7 @@ export default function CoreAppBar(props) {
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
-                ?.value?.flag && (
+              {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")?.value?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Show Notification"}
@@ -138,8 +139,7 @@ export default function CoreAppBar(props) {
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
-                ?.flag && (
+              {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Quick Menu"}
@@ -175,7 +175,7 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical  : "bottom",
+            vertical: "bottom",
           }}
         >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
@@ -186,7 +186,7 @@ export default function CoreAppBar(props) {
           ) : _appbarContent === appbarPopOver.NOTIFICATION ? (
             <>
               {/* Notifications Popover */}
-              <NotificationPopOver onClose={handleAppbarPopOverClose}/>
+              <NotificationPopOver onClose={handleAppbarPopOverClose} />
             </>
           ) : _appbarContent === appbarPopOver.QUICK_MENU ? (
             <>

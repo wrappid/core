@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { NativeTypography } from "@wrappid/styled-components";
+import { NativeTypography } from "@wrappid/native";
 
 export default function CoreTypography(props) {
   //Do not use this directly use CoreParagraph

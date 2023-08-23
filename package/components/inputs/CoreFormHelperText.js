@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFormHelperText } from "@wrappid/styled-components";
+import { NativeFormHelperText } from "@wrappid/native";
 
 export default function CoreFormHelperText(props) {
   return <NativeFormHelperText {...props} />;

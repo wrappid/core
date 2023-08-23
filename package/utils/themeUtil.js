@@ -1,8 +1,8 @@
 import {
   nativeCreateTheme,
   nativeUseTheme as coreUseTheme,
-  NativeCssBaseline as CoreCssBaseline
-} from "@wrappid/styled-components";
+  NativeCssBaseline as CoreCssBaseline,
+} from "@wrappid/native";
 
 import { theme as coreTheme } from "../theme/theme";
 
@@ -23,11 +23,7 @@ function detectPlatform() {
   } catch (err) {
     nav = null;
   }
-  console.log(
-    "***************\nplatform detection\n******************",
-    doc,
-    nav
-  );
+  console.log("***************\nplatform detection\n******************", doc, nav);
   if (doc) {
     // I'm on the web!
     return WEB_PLATFORM;

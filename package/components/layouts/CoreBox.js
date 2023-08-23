@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeBox } from "@wrappid/styled-components";
+import { NativeBox } from "@wrappid/native";
 
 export default function CoreBox(props) {
   return <NativeBox {...props} />;

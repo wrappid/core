@@ -3,9 +3,9 @@ import React, { useContext } from "react";
 
 import {
   NativeDomNavigate,
-  nativeUseLocation
-// eslint-disable-next-line import/no-unresolved
-} from "@wrappid/styled-components";
+  nativeUseLocation,
+  // eslint-disable-next-line import/no-unresolved
+} from "@wrappid/native";
 import { useSelector } from "react-redux";
 
 import { CoreRouteRegistryContext } from "../../../config/contextHandler";
@@ -75,14 +75,12 @@ export default function SplashComponent() {
     } else if (
       routeRegistry?.enterpassword &&
       location?.state?.sessionExpired &&
-      (location.pathname !== "/" + routeRegistry?.enterpassword ||
-        location.pathname !== "/")
+      (location.pathname !== "/" + routeRegistry?.enterpassword || location.pathname !== "/")
     ) {
       return <NativeDomNavigate to={"/" + routeRegistry?.enterpassword} />;
     } else if (
       routeRegistry?.checkuserexist &&
-      (location.pathname !== "/" + routeRegistry?.checkuserexist ||
-        location.pathname !== "/")
+      (location.pathname !== "/" + routeRegistry?.checkuserexist || location.pathname !== "/")
     ) {
       return <NativeDomNavigate to={"/" + routeRegistry?.checkuserexist} />;
     }
@@ -100,15 +98,16 @@ export default function SplashComponent() {
     >
       <CoreBox
         gridProps={{ gridSize: 6 }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        styleClasses={[
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+        ]}
       >
         <CoreBox styleClasses={[CoreClasses?.MARGIN?.MB1]}>
           <CoreComponent componentName={"AppLogoGif"} />
         </CoreBox>
 
-        <CoreTypographyBody1
-          styleClasses={!auth?.uid ? [CoreClasses?.COLOR?.TEXT_WHITE] : []}
-        >
+        <CoreTypographyBody1 styleClasses={!auth?.uid ? [CoreClasses?.COLOR?.TEXT_WHITE] : []}>
           {checkAppLoadDependencies()?.message}
         </CoreTypographyBody1>
       </CoreBox>

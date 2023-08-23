@@ -1,9 +1,6 @@
 import React from "react";
 
-import {
-  NativeDomRoutes,
-  NativeDomRoute
-} from "@wrappid/styled-components";
+import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/custom/Logout";
@@ -28,9 +25,7 @@ export default function CoreRoutes() {
         "/noauth/business/all/RoutePages",
         true,
         {
-          _defaultFilter: encodeURIComponent(
-            JSON.stringify({ authRequired: authenticated })
-          ),
+          _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })),
         },
         GET_ROUTE_SUCCESS,
         GET_ROUTE_FAILURE
@@ -45,9 +40,7 @@ export default function CoreRoutes() {
         "/noauth/business/all/RoutePages",
         true,
         {
-          _defaultFilter: encodeURIComponent(
-            JSON.stringify({ authRequired: authenticated })
-          ),
+          _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })),
         },
         GET_ROUTE_SUCCESS,
         GET_ROUTE_FAILURE

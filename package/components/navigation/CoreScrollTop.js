@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseScrollTrigger } from "@wrappid/styled-components";
+import { nativeUseScrollTrigger } from "@wrappid/native";
 import PropTypes from "prop-types";
 
 import CoreBox from "../layouts/CoreBox";
@@ -15,14 +15,12 @@ export default function CoreScrollTop(props) {
   // This is only being set here because the demo is in an iframe.
   const trigger = nativeUseScrollTrigger({
     disableHysteresis: true,
-    target           : window ? window() : undefined,
-    threshold        : 100,
+    target: window ? window() : undefined,
+    threshold: 100,
   });
 
   const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-    );
+    const anchor = (event.target.ownerDocument || document).querySelector("#back-to-top-anchor");
 
     if (anchor) {
       anchor.scrollIntoView({ block: "center" });
@@ -48,5 +46,5 @@ CoreScrollTop.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window  : PropTypes.func,
+  window: PropTypes.func,
 };

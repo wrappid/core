@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeSelect } from "@wrappid/styled-components";
+import { NativeSelect } from "@wrappid/native";
 
 import CoreFormControl from "./CoreFormControl";
 import CoreInputLabel from "./CoreInputLabel";

@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFlatList } from "@wrappid/styled-components";
+import { NativeFlatList } from "@wrappid/native";
 
 export default function CoreFlatList(props) {
   return <NativeFlatList {...props} />;

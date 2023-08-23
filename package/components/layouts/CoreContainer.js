@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeContainer } from "@wrappid/styled-components";
+import { NativeContainer } from "@wrappid/native";
 
 export default function CoreContainer(props) {
   return <NativeContainer {...props} />;

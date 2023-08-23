@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAppDiv } from "@wrappid/styled-components";
+import { NativeAppDiv } from "@wrappid/native";
 import { useSelector } from "react-redux";
 
 export default function CoreAppDiv(props) {

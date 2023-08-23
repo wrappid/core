@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeInputLabel } from "@wrappid/styled-components";
+import { NativeInputLabel } from "@wrappid/native";
 
 export default function CoreInputLabel(props) {
   return <NativeInputLabel {...props}>{props.children}</NativeInputLabel>;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { nativeUseLocation, NativeAppContainer } from "@wrappid/styled-components";
+import { nativeUseLocation, NativeAppContainer } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
@@ -13,7 +13,7 @@ import {
   GET_ROLE_PERMISSIONS_API,
   GET_SETTINGS_META_API,
   GET_USER_SETTINGS,
-  UPDATE_USER_SETTINGS
+  UPDATE_USER_SETTINGS,
 } from "../config/api";
 import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
 import { CoreRouteRegistryContext } from "../config/contextHandler";
@@ -23,7 +23,7 @@ import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
 import {
   REMOVE_PENDING_REQUESTS,
-  RECALL_TOKEN_REJUVINDATED
+  RECALL_TOKEN_REJUVINDATED,
 } from "../store/types/pendingRequestTypes";
 import { SELECT_OPTION_SUCCESS } from "../store/types/selectOptionsTypes";
 import {
@@ -32,7 +32,7 @@ import {
   GET_USER_SETTINGS_ERROR,
   GET_USER_SETTINGS_SUCCESS,
   USER_SETTINGS_UPDATE_ERROR,
-  USER_SETTINGS_UPDATE_SUCCESS
+  USER_SETTINGS_UPDATE_SUCCESS,
 } from "../store/types/settingsTypes";
 import CoreClasses from "../styles/CoreClasses";
 
@@ -124,7 +124,7 @@ function AppContainer(props) {
         UPDATE_USER_SETTINGS,
         true,
         {
-          name : userSettingsConstants.LEFT_DRAWER_STATE,
+          name: userSettingsConstants.LEFT_DRAWER_STATE,
           value: { open: !leftMenuOpen },
         },
         USER_SETTINGS_UPDATE_SUCCESS,
@@ -167,14 +167,14 @@ function AppContainer(props) {
 
     dispatch({
       payload: { data: components, key: "ComponentRegistry" },
-      type   : SELECT_OPTION_SUCCESS,
+      type: SELECT_OPTION_SUCCESS,
     });
   }, []);
 
   React.useEffect(() => {
     let registry = {};
 
-    for(let i = 0;i < _routes?.length;i++){
+    for (let i = 0; i < _routes?.length; i++) {
       registry[_routes[i].entityRef] = _routes[i].url;
     }
     setRouteRegistry(registry);

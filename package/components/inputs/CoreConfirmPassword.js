@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeConfirmPassword } from "@wrappid/styled-components";
+import { NativeConfirmPassword } from "@wrappid/native";
 
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";

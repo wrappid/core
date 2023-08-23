@@ -1,12 +1,18 @@
 import React, { useState, useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseLocation, NativePageContainer } from "@wrappid/styled-components";
+import { nativeUseLocation, NativePageContainer } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
-import { ComponentRegistryContext, CoreDialogContext, CoreResourceContext, FunctionsRegistryContext, ValidationsRegistryContext } from "../config/contextHandler";
+import {
+  ComponentRegistryContext,
+  CoreDialogContext,
+  CoreResourceContext,
+  FunctionsRegistryContext,
+  ValidationsRegistryContext,
+} from "../config/contextHandler";
 import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import { RESET_LOADING } from "../store/types/appTypes";
@@ -30,7 +36,9 @@ export default function PageContainer(props) {
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
-  const { /* -- showHelperText = true, */ helperButtonFlag = true } = useSelector((state) => state.forms);
+  const { /* -- showHelperText = true, */ helperButtonFlag = true } = useSelector(
+    (state) => state.forms
+  );
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
 
@@ -65,7 +73,7 @@ export default function PageContainer(props) {
     // -- console.log("LOCATION SAVE______", location);
     dispatch({
       payload: { helperButtonFlag: false },
-      type   : UPDATE_HELPER_FLAG,
+      type: UPDATE_HELPER_FLAG,
     });
   }, []);
 

@@ -6,8 +6,8 @@ import {
   nativeUseLocation as coreUseLocation,
   nativeUseParams as coreUseParams,
   nativeUseSearchParams as coreUseSearchParams,
-  nativeOpenUrl as coreOpenUrl
-} from "@wrappid/styled-components";
+  nativeOpenUrl as coreOpenUrl,
+} from "@wrappid/native";
 
 export {
   CoreDomRoutes,
@@ -17,5 +17,5 @@ export {
   coreUseLocation,
   coreUseParams,
   coreUseSearchParams,
-  coreOpenUrl
+  coreOpenUrl,
 };

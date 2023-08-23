@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeDateTimePicker } from "@wrappid/styled-components";
+import { NativeDateTimePicker } from "@wrappid/native";
 
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreClasses from "../../styles/CoreClasses";

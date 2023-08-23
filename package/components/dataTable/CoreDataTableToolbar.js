@@ -1,10 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import {
-  NativeDataTableToolbar,
-  NativeDataTableToolPopover
-} from "@wrappid/styled-components";
+import { NativeDataTableToolbar, NativeDataTableToolPopover } from "@wrappid/native";
 import { useDispatch } from "react-redux";
 
 import { apiRequestAction } from "./../../store/action/appActions";
@@ -12,25 +9,18 @@ import ExportData from "./tableToolbarUtils/ExportData";
 import SortTableData from "./tableToolbarUtils/SortTableData";
 import TableDensity from "./tableToolbarUtils/TableDensity";
 import { UPDATE_USER_SETTINGS } from "../../config/api";
-import {
-  HTTP,
-  tableToolbar,
-  userSettingsConstants
-} from "../../config/constants";
+import { HTTP, tableToolbar, userSettingsConstants } from "../../config/constants";
 import {
   UPDATE_QUERY_MAXROWINPAGE_DATA,
-  UPDATE_QUERY_PAGE_DATA
+  UPDATE_QUERY_PAGE_DATA,
 } from "../../store/types/dataManagementTypes";
 import {
   USER_SETTINGS_UPDATE_ERROR,
-  USER_SETTINGS_UPDATE_SUCCESS
+  USER_SETTINGS_UPDATE_SUCCESS,
 } from "../../store/types/settingsTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
-import {
-  __TableLeftPanelGridSize,
-  __TableRightPanelGridSize
-} from "../../utils/tableUtils";
+import { __TableLeftPanelGridSize, __TableRightPanelGridSize } from "../../utils/tableUtils";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";
@@ -87,12 +77,9 @@ export default function CoreDataTableToolbar(props) {
 
   // const [_selectAllColumnFilter, set_selectAllColumnFilter] = React.useState(true);
 
-  const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] =
-    React.useState(null);
+  const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] = React.useState(null);
   const _toolbarPopoverOpen = Boolean(_toolbarPopOverAnchorEl);
-  const _toolbarID = _toolbarPopoverOpen
-    ? "toolbar-popover-" + tableUUID
-    : undefined;
+  const _toolbarID = _toolbarPopoverOpen ? "toolbar-popover-" + tableUUID : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
 
   const setPopover = (e, content) => {
@@ -134,20 +121,17 @@ export default function CoreDataTableToolbar(props) {
               {searchValue &&
               // searchValue !== "" &&
               searchValue.length > 0 ? (
-                  <CoreIconButton
-                    title="Clear search"
-                    onClick={() => {
-                      console.log("clear search clicked");
-                      setSearchValue("");
-                      clearFilterData();
-                    }}
-                  >
-                    <CoreIcon
-                      type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                      icon={"clear"}
-                    />
-                  </CoreIconButton>
-                ) : null}
+                <CoreIconButton
+                  title="Clear search"
+                  onClick={() => {
+                    console.log("clear search clicked");
+                    setSearchValue("");
+                    clearFilterData();
+                  }}
+                >
+                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
+                </CoreIconButton>
+              ) : null}
 
               <CoreIconButton
                 title="Search"
@@ -204,14 +188,14 @@ export default function CoreDataTableToolbar(props) {
     {
       leftPanel: {
         gridSize: { md: __TableLeftPanelGridSize },
-        stacks  : [[{ comp: getSearchBar, propsApp: { fullWidth: true } }]],
+        stacks: [[{ comp: getSearchBar, propsApp: { fullWidth: true } }]],
       },
       rightPanel: {
         gridSize: { md: __TableRightPanelGridSize },
-        stacks  : [
+        stacks: [
           [
             {
-              comp     : <CoreDivider orientation="vertical" flexItem={true} />,
+              comp: <CoreDivider orientation="vertical" flexItem={true} />,
               hideInApp: true,
             },
 
@@ -226,7 +210,7 @@ export default function CoreDataTableToolbar(props) {
                   <CoreIcon>refresh</CoreIcon>
                 </CoreIconButton>
               ),
-              label  : "Refresh",
+              label: "Refresh",
               onClick: (e) => {
                 filterData();
               },
@@ -243,7 +227,7 @@ export default function CoreDataTableToolbar(props) {
                   <CoreIcon>sort </CoreIcon>
                 </CoreIconButton>
               ),
-              label  : "Sort",
+              label: "Sort",
               onClick: (e) => {
                 setPopover(e, tableToolbar.SORT_DATA);
               },
@@ -257,13 +241,10 @@ export default function CoreDataTableToolbar(props) {
                     setPopover(e, tableToolbar.EXPORT_DATA);
                   }}
                 >
-                  <CoreIcon
-                    type={__IconTypes.MATERIAL_ICON}
-                    icon={"save_alt"}
-                  />
+                  <CoreIcon type={__IconTypes.MATERIAL_ICON} icon={"save_alt"} />
                 </CoreIconButton>
               ) : null,
-              label  : "Export",
+              label: "Export",
               onClick: (e) => {
                 setPopover(e, tableToolbar.EXPORT_DATA);
               },
@@ -329,7 +310,7 @@ export default function CoreDataTableToolbar(props) {
                     setPage(newPage);
                     dispatch({
                       payload: { entity: tableUUID, page: newPage },
-                      type   : UPDATE_QUERY_PAGE_DATA,
+                      type: UPDATE_QUERY_PAGE_DATA,
                     });
                   }}
                   onRowsPerPageChange={(event) => {
@@ -338,7 +319,7 @@ export default function CoreDataTableToolbar(props) {
                       setMaxRowInPage(event.target.value);
                       dispatch({
                         payload: {
-                          entity      : tableUUID,
+                          entity: tableUUID,
                           maxRowInPage: event.target.value,
                         },
                         type: UPDATE_QUERY_MAXROWINPAGE_DATA,
@@ -349,7 +330,7 @@ export default function CoreDataTableToolbar(props) {
                           UPDATE_USER_SETTINGS,
                           true,
                           {
-                            name : userSettingsConstants.MAX_ROWS_IN_PAGE,
+                            name: userSettingsConstants.MAX_ROWS_IN_PAGE,
                             value: event.target.value,
                           },
                           USER_SETTINGS_UPDATE_SUCCESS,
@@ -365,7 +346,7 @@ export default function CoreDataTableToolbar(props) {
           ],
         ],
       },
-    }
+    },
   ];
 
   return (
@@ -394,30 +375,26 @@ export default function CoreDataTableToolbar(props) {
         }}
         anchorOrigin={{
           horizontal: "left",
-          vertical  : "bottom",
+          vertical: "bottom",
         }}
       >
-        {enableTableDensity &&
-        _toolbarContent === tableToolbar.TABLE_DENSITY ? (
-            <TableDensity
-              tableDensity={tableDensity}
-              setTableDensity={setTableDensity}
-            />
-          ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
-            <ExportData />
-          ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
-            <SortTableData
-              tableUUID={tableUUID}
-              tableColumns={tableColumns}
-              // filteredColumns={filteredColumns}
-              auditColumnsKey={auditColumnsKey}
-              sortable={sortable}
-              order={order}
-              onRequestSort={onRequestSort}
-            />
-          ) : (
-            <></>
-          )}
+        {enableTableDensity && _toolbarContent === tableToolbar.TABLE_DENSITY ? (
+          <TableDensity tableDensity={tableDensity} setTableDensity={setTableDensity} />
+        ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
+          <ExportData />
+        ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
+          <SortTableData
+            tableUUID={tableUUID}
+            tableColumns={tableColumns}
+            // filteredColumns={filteredColumns}
+            auditColumnsKey={auditColumnsKey}
+            sortable={sortable}
+            order={order}
+            onRequestSort={onRequestSort}
+          />
+        ) : (
+          <></>
+        )}
       </NativeDataTableToolPopover>
 
       {/* {selectable && selected && selected.length > 0 && (

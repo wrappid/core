@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getNativeMenuItem } from "@wrappid/styled-components";
+import { getNativeMenuItem } from "@wrappid/native";
 
 import {
   MENU_HEADER_ITEM,
@@ -12,7 +12,7 @@ import {
   MENU_ITEM_TEXT,
   MENU_ITEM_WRAPPER,
   MENU_PARENT_ITEM,
-  MENU_SEPERATOR
+  MENU_SEPERATOR,
 } from "../config/menuConstants";
 
 export function createMultiLevelMenu(

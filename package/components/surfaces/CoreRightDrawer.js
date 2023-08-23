@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeRightDrawer } from "@wrappid/styled-components";
+import { NativeRightDrawer } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toggleRightMenuState } from "../../store/action/menuAction";
@@ -13,7 +13,7 @@ export default function CoreRightDrawer(props) {
   const toggleRightDrawer = () => {
     dispatch(toggleRightMenuState());
   };
-  
+
   return (
     rightMenuOpen && (
       <NativeRightDrawer

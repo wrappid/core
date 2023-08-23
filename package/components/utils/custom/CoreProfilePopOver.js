@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate } from "@wrappid/styled-components";
+import { nativeUseNavigate } from "@wrappid/native";
 import { useSelector } from "react-redux";
 
 import CoreApiVersion from "./CoreApiVersion";
@@ -43,23 +43,23 @@ export default function CoreProfilePopOver(props) {
         icon: "account_circle",
         type: __IconTypes.MATERIAL_OUTLINED_ICON,
       },
-      id   : "viewProfile",
+      id: "viewProfile",
       label: "View Profile",
-      link : routeRegistry?.profile,
+      link: routeRegistry?.profile,
     },
     {
-      icon : { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
-      id   : "settings",
+      icon: { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
+      id: "settings",
       label: "Settings",
-      link : routeRegistry?.settings,
-    }/* -- ,
+      link: routeRegistry?.settings,
+    } /* -- ,
     { type: MENU_SEPERATOR },
     {
       icon : "logout",
       id   : "logout",
       label: "Logout",
       link : urls.LOGOUT,
-    }, */
+    }, */,
   ];
 
   const OnMenuClick = (item) => {
@@ -75,7 +75,7 @@ export default function CoreProfilePopOver(props) {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
-          CoreClasses.LAYOUT.PROFILE_BAR_WIDTH
+          CoreClasses.LAYOUT.PROFILE_BAR_WIDTH,
         ]}
       >
         <CoreAvatar
@@ -98,19 +98,11 @@ export default function CoreProfilePopOver(props) {
           </CoreTypographyCaption>
 
           <CoreBox>
-            <CoreEmailLink
-              email={email}
-              verified={emailVerified}
-              limitChars={15}
-            />
+            <CoreEmailLink email={email} verified={emailVerified} limitChars={15} />
           </CoreBox>
 
           <CoreBox>
-            <CorePhoneLink
-              phone={phone}
-              verified={phoneVerified}
-              limitChars={15}
-            />
+            <CorePhoneLink phone={phone} verified={phoneVerified} limitChars={15} />
           </CoreBox>
         </CoreBox>
       </CoreGrid>
@@ -149,7 +141,6 @@ export default function CoreProfilePopOver(props) {
 
         {/* -- <CoreLoginDetails /> */}
       </CoreBox>
-
     </CoreBox>
   );
 }

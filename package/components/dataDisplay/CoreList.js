@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeList } from "@wrappid/styled-components";
+import { NativeList } from "@wrappid/native";
 
 export default function CoreList(props) {
   return <NativeList {...props} />;

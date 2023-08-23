@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeFormControlLabel } from "@wrappid/styled-components";
+import { NativeFormControlLabel } from "@wrappid/native";
 
 export default function CoreFormControlLabel(props) {
   return <NativeFormControlLabel {...props}>{props.children}</NativeFormControlLabel>;

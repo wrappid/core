@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeLinearProgress } from "@wrappid/styled-components";
+import { NativeLinearProgress } from "@wrappid/native";
 
 export default function CoreLinearProgress(props) {
   return <NativeLinearProgress {...props} />;

@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate } from "@wrappid/styled-components";
+import { nativeUseNavigate } from "@wrappid/native";
 
 import CoreResponsiveButton from "../inputs/custom/CoreResponsiveButton";
 
@@ -18,7 +18,11 @@ export default function CoreTableAction(props) {
         actions.map((action, actionIndex) =>
           action.hide && action.hide(rowData) ? null : (
             <CoreResponsiveButton
-              key={action?.id ? `${tableUUID}-action-${action?.id}` : `${tableUUID}-action-${actionIndex}`}
+              key={
+                action?.id
+                  ? `${tableUUID}-action-${action?.id}`
+                  : `${tableUUID}-action-${actionIndex}`
+              }
               label={action?.label}
               icon={action?.icon}
               disabled={action.disabled}

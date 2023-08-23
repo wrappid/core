@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativePaper } from "@wrappid/styled-components";
+import { NativePaper } from "@wrappid/native";
 
 export default function CorePaper(props) {
   return <NativePaper {...props} />;

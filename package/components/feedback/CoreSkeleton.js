@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeSkeleton } from "@wrappid/styled-components";
+import { NativeSkeleton } from "@wrappid/native";
 
 export default function CoreSkeleton(props) {
   return <NativeSkeleton {...props} />;

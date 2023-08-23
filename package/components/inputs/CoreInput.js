@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeInput } from "@wrappid/styled-components";
+import { NativeInput } from "@wrappid/native";
 
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
@@ -10,10 +10,7 @@ import CoreClasses from "../../styles/CoreClasses";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreInput(props) {
-  const {
-    error,
-    helperText
-  } =  props;
+  const { error, helperText } = props;
 
   return (
     <CoreBox>

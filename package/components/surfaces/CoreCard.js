@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeCard } from "@wrappid/styled-components";
+import { NativeCard } from "@wrappid/native";
 
 export default function CoreCard(props) {
   return <NativeCard {...props} />;

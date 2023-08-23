@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeAccordionSummary } from "@wrappid/styled-components";
+import { NativeAccordionSummary } from "@wrappid/native";
 
 export default function CoreAccordionSummary(props) {
   return <NativeAccordionSummary {...props} />;
