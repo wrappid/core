@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable id-length */
-import React from "react";
+import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/native";
+import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,13 +18,13 @@ import { apiRequestAction } from "../../store/action/appActions";
 import {
   SELECT_OPTION_ERROR,
   SELECT_OPTION_LOAD,
-  SELECT_OPTION_SUCCESS,
+  SELECT_OPTION_SUCCESS
 } from "../../store/types/selectOptionsTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreListItem from "../dataDisplay/CoreListItem";
 import CoreCircularProgress from "../feedback/CoreCircularProgress";
 import CoreFieldButton from "../forms/CoreFieldButton";
-import CoreListItem from "../dataDisplay/CoreListItem";
 
 const filter = nativeFilterOptions();
 //TODO:
@@ -35,12 +35,10 @@ const filter = nativeFilterOptions();
 // 	- page up and page down should show first and last element of the visible list [priority: low]
 
 export default function CoreAsyncSelect(props) {
-  const options = useSelector((state) => state?.selectOptions?.options);
-  const dispatch = useDispatch();
-  const navigate = nativeUseNavigate();
   const {
-    itemKey,
+    id,
     label,
+    itemKey,
     endpoint = null,
     query = {},
     optionsData = [],
@@ -58,31 +56,86 @@ export default function CoreAsyncSelect(props) {
     allowEdit,
     optionComp,
     optionCompProps,
+    multiple, 
+    value,
+    touched,
+    error,
+    helperText,
+    readOnly,
+    formik,
+    onFormFocus,
+    isOptionEqualToValue,
+    getOptionValue,
+    getOptionLabel,
+    creatable,
+    navigateUrl,
+    strictItemKey = false,
+    dependentQuery,
   } = props;
 
+  const options = useSelector((state) => state?.selectOptions?.options);
+  const dispatch = useDispatch();
+  const navigate = nativeUseNavigate();
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
   const [oldValue, setOldValue] = React.useState(null);
 
   const getKey = () => {
-    return itemKey ? itemKey : label?.toString()?.trim().toLocaleLowerCase().split(" ").join("-");
+    return itemKey
+      ? itemKey
+      : label?.toString()?.trim().toLocaleLowerCase()
+        .split(" ")
+        .join("-");
   };
 
   const loading = submitLoading
     ? true
     : open
-    ? optionsData && optionsData.length !== 0
-      ? false
-      : options[getKey()]
-      ? options[getKey()].loading
-      : true
-    : false;
+      ? optionsData && optionsData.length !== 0
+        ? false
+        : options[getKey()]
+          ? options[getKey()].loading
+          : true
+      : false;
+      
+  useEffect(() => {
+    loadData(true);
+  }, []);
 
-  // -- console.log("CoreAsyncSelect LOC props", props);
+  useEffect(() => {
+    // -- let active = true;
+    if (!open) {
+      return undefined;
+    }
+    if (asyncLoading !== false) loadData(true);
+    return () => {
+      // -- active = false;
+    };
+  }, [loading, inputValue]);
+
+  useEffect(() => {
+
+    if (!dependentQuery || (dependentQuery && Object.keys(dependentQuery).length < 1)) {
+      return undefined;
+    }
+    loadData(true, dependentQuery);
+    return () => {
+      // -- active = false;
+    };  
+  }, [dependentQuery]);
+
+  useEffect(() => {
+    if (submitSuccess) {
+      setOldValue(value);
+    }
+  }, [submitLoading]);
 
   const findOption = (options, value) => {
-    let f1 = options?.find((x) => x.id === value);
-    let f2 = options?.find((x) => x.value === value);
+    if(!Array.isArray(options)){
+      return "";
+    }
+    let f1 = options?.find((x) => String(x.id) === String(value));
+    let f2 = options?.find((x) => String(x.value) === String(value));
 
     if (f1) {
       return f1.label ? f1.label : f1.name ? f1.name : "";
@@ -99,55 +152,40 @@ export default function CoreAsyncSelect(props) {
     }
   };
 
-  React.useEffect(() => {
-    // -- let active = true;
-    if (!open) {
-      return undefined;
-    }
-    if (asyncLoading !== false) loadData(true);
-    return () => {
-      // -- active = false;
-    };
-  }, [loading, inputValue]);
-
-  React.useEffect(() => {
-    loadData(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (submitSuccess) {
-      setOldValue(props.value);
-    }
-  }, [submitLoading]);
-
   const checkValueDiff = () => {
     let flag = false;
 
-    if (props?.multiple) {
-      if (!oldValue && (!props.value || props.value.length === 0)) {
+    if (multiple) {
+      if (!oldValue && (!value || value.length === 0)) {
         return false;
       }
-      if (props?.value?.length !== oldValue?.length) {
+      if (value?.length !== oldValue?.length) {
         return true;
       }
-      for (let i = 0; i < props?.value?.length; i++) {
-        if (props?.value[i].id !== oldValue[i]?.id) {
+      for (let i = 0; i < value?.length; i++) {
+        if (value[i].id !== oldValue[i]?.id) {
           return true;
         }
       }
     } else {
-      if ((!props.value || !props.value.id || props.value.id === "") && !oldValue) {
+      if (
+        (!value || !value?.id || value?.id === "") &&
+        !oldValue
+      ) {
         return false;
       }
-      if (props?.value && !oldValue) {
+      if (value && !oldValue) {
         return true;
       }
-      if (props?.value && oldValue) {
-        if ((typeof props.value === typeof oldValue) === "string" && props.value !== oldValue) {
+      if (value && oldValue) {
+        if (
+          (typeof value === typeof oldValue) === "string" &&
+          value !== oldValue
+        ) {
           return true;
         } else if (
-          (typeof props?.value === typeof oldValue) === "object" &&
-          props?.value?.id !== oldValue.id
+          (typeof value === typeof oldValue) === "object" &&
+          value?.id !== oldValue.id
         ) {
           return true;
         }
@@ -161,26 +199,30 @@ export default function CoreAsyncSelect(props) {
     setInputValue(val);
   };
 
-  const loadData = async (noPagination) => {
+  const loadData = async (noPagination, depQuery) => {
     console.log("LADING", loading, inputValue);
-    if (props.asyncLoading !== false) {
-      query["start"] =
-        options[getKey()]?.data && !noPagination ? options[getKey()]?.data.length : 0;
-      query["length"] = 100;
-      query["input"] = encodeURIComponent(inputValue);
-      query["_searchValue"] = encodeURIComponent(inputValue);
+    let apiQuery = { ...(depQuery || query || {}) };
+
+    if (asyncLoading !== false) {
+      apiQuery["start"] =
+        options[getKey()]?.data && !noPagination
+          ? options[getKey()]?.data.length
+          : 0;
+      apiQuery["length"] = 100;
+      apiQuery["input"] = encodeURIComponent(inputValue);
+      apiQuery["_searchValue"] = encodeURIComponent(inputValue);
     }
     if ((!optionsData || optionsData.length === 0) && endpoint) {
       dispatch({
-        payload: getKey(),
-        type: SELECT_OPTION_LOAD,
+        payload: { key: getKey(), strictItemKey: strictItemKey },
+        type   : SELECT_OPTION_LOAD,
       });
       dispatch(
         apiRequestAction(
           HTTP.GET,
           endpoint,
           true,
-          query,
+          apiQuery,
           SELECT_OPTION_SUCCESS,
           SELECT_OPTION_ERROR,
           null, //localAction
@@ -188,13 +230,16 @@ export default function CoreAsyncSelect(props) {
           null, //file
           null, //formId
           null, //reload
-          { key: getKey() }
+          { key: getKey(), strictItemKey: strictItemKey }
         )
       );
     }
   };
 
-  const CustomListboxComponent = React.forwardRef(function ListboxComponent(param, ref) {
+  const CustomListboxComponent = React.forwardRef(function ListboxComponent(
+    param,
+    ref
+  ) {
     /**
      * @todo there is still some problem on keyboard navigation
      * it is not stopping on first element it rolling over and scoll not happening
@@ -209,8 +254,12 @@ export default function CoreAsyncSelect(props) {
           {...param}
           dataLength={options[getKey()]?.data.length}
           next={loadData}
-          scrollableTarget={props.id + "-listbox"}
-          hasMore={options[getKey()]?.data.length < options[getKey()].total ? true : false}
+          scrollableTarget={id + "-listbox"}
+          hasMore={
+            options[getKey()]?.data.length < options[getKey()].total
+              ? true
+              : false
+          }
           loader={
             <p style={{ backgroundColor: "#f9dc01", textAlign: "center" }}>
               <b>Loading...</b>
@@ -229,47 +278,51 @@ export default function CoreAsyncSelect(props) {
   const getEndAdornment = (params) => {
     return (
       <React.Fragment>
-        {loading && inlineAction && fieldActions && fieldActions.length === 1 && !props.readOnly ? (
-          <CoreCircularProgress color="inherit" size={20} />
-        ) : null}
+        {loading &&
+        inlineAction &&
+        fieldActions &&
+        fieldActions.length === 1 &&
+        !readOnly ? (
+            <CoreCircularProgress color="inherit" size={20} />
+          ) : null}
 
         {/* inline form submits */}
         {inlineAction && fieldActions && fieldActions.length === 1 ? (
-          !props.readOnly ? (
+          !readOnly ? (
             <>
               {checkValueDiff() &&
                 fieldActions?.map((actionElement, i) => (
                   <CoreFieldButton
                     key={i}
                     element={actionElement}
-                    formikprops={props.formik}
+                    formikprops={formik}
                     handleButtonCLick={handleButtonCLick}
                     submitLoading={submitLoading}
                   />
                 ))}
 
-              {props.value &&
-                ((props.multiple && props.value.length > 0) ||
-                  (props.value.label && props.value.id)) && (
-                  <CoreIconButton
-                    onClick={(e) => {
-                      props.multiple
-                        ? props?.formik?.setFieldValue(props.id, [])
-                        : props?.formik?.setFieldValue(props.id, {});
+              {value &&
+                ((multiple && value.length > 0) ||
+                  (value.label && value.id)) && (
+                <CoreIconButton
+                  onClick={(e) => {
+                    multiple
+                      ? formik?.setFieldValue(id, [])
+                      : formik?.setFieldValue(id, {});
 
-                      // @todo added for on clear handle change support
-                      if (handleChange) {
-                        handleChange(e, props.multiple ? [] : {});
-                      }
-                    }}
-                  >
-                    <CoreIcon fontSize="small">close</CoreIcon>
-                  </CoreIconButton>
-                )}
+                    // @todo added for on clear handle change support
+                    if (handleChange) {
+                      handleChange(e, multiple ? [] : {});
+                    }
+                  }}
+                >
+                  <CoreIcon fontSize="small">close</CoreIcon>
+                </CoreIconButton>
+              )}
             </>
           ) : (
             allowEdit !== false &&
-            !props.onFormFocus && (
+            !onFormFocus && (
               <CoreIconButton
                 onClick={() => {
                   OnEditClick(editId);
@@ -286,26 +339,28 @@ export default function CoreAsyncSelect(props) {
     );
   };
 
+  console.log("QUERY", id, query);
+
   return (
     <>
       <CoreAutocomplete
         _topLabel={label} //required for mobile layer
         _inputValue={inputValue} //required for mobile layer
         _optionComp={optionComp} //required for mobile layer
-        _onFormFocus={props.onFormFocus} //required for mobile layer
-        _editId={props.editId} //required for mobile layer
+        _onFormFocus={onFormFocus} //required for mobile layer
+        _editId={editId} //required for mobile layer
         _getEndAdornment={getEndAdornment} //required for mobile layer
-        _formik={props?.formik} //required for mobile layer
-        onBlur={props?.formik?.handleBlur(props.id)}
-        multiple={props.multiple ? props.multiple : false}
-        id={props.id ? props.id : `"async-select-"+${getKey()}`}
+        _formik={formik} //required for mobile layer
+        onBlur={formik?.handleBlur(id)}
+        multiple={multiple ? multiple : false}
+        id={id || `"async-select-"+${getKey()}`}
         disableClearable={inlineAction ? true : disableClearable ? true : false}
         open={open}
         value={props.value ? props.value : props.multiple ? [] : ""}
         autoComplete={true}
         freeSolo={true}
         loading={loading}
-        readOnly={props.readOnly}
+        readOnly={readOnly}
         onHighlightChange={() => {
           console.log("CHANGE");
         }}
@@ -313,49 +368,55 @@ export default function CoreAsyncSelect(props) {
           setOpen(true);
         }}
         onClose={() => {
-          setOpen(false);
+          setOpen(false);"";
         }}
         onFocus={
-          props.onFormFocus && editId && props.readOnly
+          onFormFocus && editId && readOnly
             ? () => {
-                console.log("CLICKED");
-                props.onFormFocus(editId);
-              }
+              console.log("CLICKED");
+              onFormFocus(editId);
+            }
             : () => {
-                console.log("CLICKED else");
-              }
+              console.log("CLICKED else");
+            }
         }
         isOptionEqualToValue={
-          props.isOptionEqualToValue
-            ? (option, value) => props.isOptionEqualToValue(option, value)
+          isOptionEqualToValue
+            ? (option, value) => isOptionEqualToValue(option, value)
             : (option, value) => {
-                // -- console.log("COMPARE", option, value);
-                if (typeof option === "string" && typeof option === typeof value) {
-                  return option === value;
-                } else return option.id === value.id;
-              }
+              // -- console.log("COMPARE", option, value);
+              if (
+                typeof option === "string" &&
+                  typeof option === typeof value
+              ) {
+                return option === value;
+              }else if(typeof value === "string"){
+                return option?.id === value;
+              } else return option.id === value.id;
+            }
         }
         getOptionLabel={(option) => {
-          return typeof option === "string"
+          return typeof option === "string" && isNaN(option)
             ? option
-            : typeof option === "number"
-            ? getLabelFromValue(option, optionsData, options)
-            : props.getOptionLabel
-            ? props.getOptionLabel(option)
-            : option.label
-            ? option.label
-            : option.name
-            ? option.name
-            : "";
+            : typeof option === "number" || (typeof option === "string" && !isNaN(option))
+              ? getLabelFromValue(option, optionsData, options)
+              : getOptionLabel
+                ? getOptionLabel(option)
+                : option.label
+                  ? option.label
+                  : option.name
+                    ? option.name
+                    : "";
         }}
         filterOptions={(options, params) => {
-          const filtered = props.asyncLoading !== false ? options : filter(options, params);
+          const filtered =
+            asyncLoading !== false ? options : filter(options, params);
 
-          if (props.creatable && params.inputValue !== "") {
+          if (creatable && params.inputValue !== "") {
             filtered.push({
               inputValue: params.inputValue,
-              label: `Add "${params.inputValue}"`,
-              name: `Add "${params.inputValue}"`,
+              label     : `Add "${params.inputValue}"`,
+              name      : `Add "${params.inputValue}"`,
             });
           }
 
@@ -366,9 +427,9 @@ export default function CoreAsyncSelect(props) {
         }}
         onChange={(e, values) => {
           console.log("VALUES", values);
-          console.log("props.navigateUrl", props.navigateUrl);
-          if (values?.inputValue && props.navigateUrl) {
-            navigate(props.navigateUrl, { state: { inputValue } });
+          console.log("navigateUrl", navigateUrl);
+          if (values?.inputValue && navigateUrl) {
+            navigate(navigateUrl, { state: { inputValue } });
           }
           if (onChangeDispatch) {
             /**
@@ -388,22 +449,25 @@ export default function CoreAsyncSelect(props) {
             } else if (typeof onChangeDispatch === "object") {
               dispatch({
                 payload: values,
-                type: onChangeDispatch.type,
+                type   : onChangeDispatch.type,
               });
             } else {
               dispatch({
                 payload: values,
-                type: onChangeDispatch,
+                type   : onChangeDispatch,
               });
             }
           }
           if (handleChange) {
             handleChange(values);
           } else {
-            if (props.getOptionValue) {
-              props?.formik?.setFieldValue(props.id, props.getOptionValue(values));
+            if (getOptionValue) {
+              formik?.setFieldValue(
+                id,
+                getOptionValue(values)
+              );
             } else {
-              if (props.multiple) {
+              if (multiple) {
                 let finalValue = "";
 
                 for (let i = 0; i < values.length; i++) {
@@ -411,12 +475,12 @@ export default function CoreAsyncSelect(props) {
                     typeof values[i] === "string"
                       ? values[i]
                       : values[i].id
-                      ? values[i].id
-                      : values[i].name
-                      ? values[i].id
-                      : values[i].name
-                      ? values[i].name
-                      : "";
+                        ? values[i].id
+                        : values[i].name
+                          ? values[i].id
+                          : values[i].name
+                            ? values[i].name
+                            : "";
 
                   finalValue += val;
                   if (i < values.length - 1) {
@@ -424,8 +488,8 @@ export default function CoreAsyncSelect(props) {
                   }
                 }
                 console.log("VALUE", finalValue);
-                props?.formik?.setFieldValue(props.id, finalValue);
-              } else props?.formik?.setFieldValue(props.id, values.id);
+                formik?.setFieldValue(id, finalValue);
+              } else formik?.setFieldValue(id, values?.id);
             }
           }
         }}
@@ -433,34 +497,38 @@ export default function CoreAsyncSelect(props) {
           optionsData.length !== 0
             ? optionsData
             : options[getKey()]?.data
-            ? options[getKey()]?.data
-            : []
+              ? options[getKey()]?.data
+              : []
         }
         renderOption={(optionProps, option, state) =>
-          props.optionComp && mergedComponentRegistry[props.optionComp]?.comp ? (
-            <React.Fragment>
-              {React.createElement(mergedComponentRegistry[props.optionComp].comp, {
-                data: option,
-                optionCompProps,
-                optionProps,
-                state,
-              })}
-            </React.Fragment>
-          ) : (
-            <CoreListItem {...optionProps}>
-              {option.inputValue
-                ? option.label
-                : props.getOptionLabel
-                ? props.getOptionLabel(option)
-                : option.label
-                ? option.label
-                : option.name
-                ? option.name
-                : ""}
-            </CoreListItem>
-          )
+          optionComp &&
+          mergedComponentRegistry[optionComp]?.comp ? (
+              <React.Fragment>
+                {React.createElement(
+                  mergedComponentRegistry[optionComp].comp,
+                  {
+                    data: option,
+                    optionCompProps,
+                    optionProps,
+                    state,
+                  }
+                )}
+              </React.Fragment>
+            ) : (
+              <CoreListItem {...optionProps}>
+                {option.inputValue
+                  ? option.label
+                  : getOptionLabel
+                    ? getOptionLabel(option)
+                    : option.label
+                      ? option.label
+                      : option.name
+                        ? option.name
+                        : ""}
+              </CoreListItem>
+            )
         }
-        ListboxComponent={props.asyncLoading ? CustomListboxComponent : null}
+        ListboxComponent={asyncLoading ? CustomListboxComponent : null}
         renderInput={(params) => (
           <CoreTextField
             {...params}
@@ -473,15 +541,15 @@ export default function CoreAsyncSelect(props) {
         )}
       />
 
-      {props?.touched && props?.error && (
+      {touched && error && (
         <CoreFormErrorText styleClasses={[CoreClasses.MARGIN.MT1]}>
-          {props.touched && props.error}
+          {touched && error}
         </CoreFormErrorText>
       )}
 
-      {props?.helperText && (
+      {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.MARGIN.MT1]}>
-          {props.helperText}
+          {helperText}
         </CoreFormHelperText>
       )}
     </>

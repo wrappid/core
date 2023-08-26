@@ -14,6 +14,9 @@ import CoreInput from "../inputs/CoreInput";
 import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
 import CoreBox from "../layouts/CoreBox";
 
+export const ON_MOUNT = "moount";
+export const ON_CHANGE = "change";
+
 export default function CoreFormInputs(props) {
   const {
     type,
@@ -35,7 +38,7 @@ export default function CoreFormInputs(props) {
     if (element?.dependencies?.props?.getProps) {
       let data = { ...(oldData || {}) };
 
-      let changeDetected = detectChange(
+      let { changeDetected, others } = detectChange(
         element,
         forms,
         elementProps?.formik,
@@ -49,31 +52,37 @@ export default function CoreFormInputs(props) {
           element?.dependencies?.props?.getProps,
           formikprops,
           element,
-          forms[formId]?.formElements
+          forms[formId]?.formElements,
+          ON_CHANGE
         );
 
         data = { ...formikprops };
         setOldData(data);
         setTempProps(changedProps);
-        
-        if(changedProps.calculatedValue && changedProps.calculatedValue !== elementProps.value){
+
+        if (
+          changedProps &&
+          Object.keys(changedProps).includes("calculatedValue") &&
+          changedProps.calculatedValue !== elementProps.value
+        ) {
           formikprops?.setFieldValue(element?.id, changedProps.calculatedValue);
         }
-
+      }
+      else if(others?.mount){
+        data = { ...formikprops };
+        setOldData(data);
       }
     }
   });
 
   useEffect(() => {
     if (element && type === INPUT_TYPE) {
-      if(element.isDependent && tempProps){
+      if (element.isDependent && tempProps) {
         let mainProps = createFormFieldProps(props, "edit");
         let newProps = { ...mainProps, ...tempProps };
-          
+
         setElementProps({ ...newProps });
-        setTempProps(null);
-      }
-      else{
+      } else {
         let mainProps = createFormFieldProps(props, "edit");
 
         setElementProps({ ...mainProps });
@@ -85,16 +94,24 @@ export default function CoreFormInputs(props) {
     formikprops?.values && formikprops?.values[element?.id],
     formikprops?.errors && formikprops?.errors[element?.id],
     formikprops?.touched && formikprops?.touched[element?.id],
-    tempProps
+    tempProps,
   ]);
 
   useEffect(() => {
     if (element && type === INPUT_TYPE) {
       let mainProps = createFormFieldProps(props, "edit");
+      let changedProps = getDependentProps(
+        element?.dependencies?.props?.getProps,
+        formikprops,
+        element,
+        forms[formId]?.formElements,
+        ON_MOUNT
+      );
+      let newProps = { ...(mainProps || []), ...(changedProps || []), mountSet: true };
 
       // eslint-disable-next-line no-console
-      console.log("CHANGE", mainProps);
-      setElementProps(mainProps);
+      console.log("CHANGE", newProps);
+      setElementProps(newProps);
     }
   }, []);
 

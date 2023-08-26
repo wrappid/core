@@ -28,17 +28,29 @@ const selectOptionsReducer = (state = initState, action) => {
         ...state,
         options:
           action?.payload?.data && action?.payload?.data[0]?.Children
-            ? {
-              ...state.options,
-              [action?.payload?.data[0].name]: {
-                data: action?.payload?.data
-                  ? action?.payload?.data[0]?.Children || []
-                  : [],
-                error  : false,
-                loading: false,
-                success: true,
-              },
-            }
+            ? action.payload.strictItemKey
+              ? {
+                ...state.options,
+                [action.payload?.key]: {
+                  data: action?.payload?.data
+                    ? action?.payload?.data[0]?.Children || []
+                    : [],
+                  error  : false,
+                  loading: false,
+                  success: true,
+                },
+              }
+              : {
+                ...state.options,
+                [action?.payload?.data[0].name]: {
+                  data: action?.payload?.data
+                    ? action?.payload?.data[0]?.Children || []
+                    : [],
+                  error  : false,
+                  loading: false,
+                  success: true,
+                },
+              }
             : action?.payload?.data?.rows
               ? {
                 ...state.options,
@@ -64,15 +76,51 @@ const selectOptionsReducer = (state = initState, action) => {
     case SELECT_OPTION_ERROR:
       return {
         ...state,
-        options: {
-          ...state.options,
-          [action?.payload?.data[0]?.name]: {
-            data   : action?.payload?.data || [],
-            error  : true,
-            loading: false,
-            success: false,
-          },
-        },
+        options:
+          action.payload?.data && action?.payload?.data[0]
+            ? action.payload.strictItemKey
+              ? {
+                ...state.options,
+                [action?.payload?.key]: {
+                  data:
+                      action?.payload?.data && action?.payload?.data?.length > 0
+                        ? action.payload.data
+                        : { ...(state.options[action?.payload?.key] || []) },
+                  error  : true,
+                  loading: false,
+                  success: false,
+                },
+              }
+              : {
+                ...state.options,
+                [action?.payload?.data[0]?.name]: {
+                  data:
+                      action?.payload?.data && action?.payload?.data?.length > 0
+                        ? action.payload.data
+                        : {
+                          ...(state.options[action?.payload?.data[0]?.name] ||
+                              []),
+                        },
+                  error  : true,
+                  loading: false,
+                  success: false,
+                },
+              }
+            : {
+              ...state.options,
+              [action?.payload?.data[0]?.name]: {
+                data:
+                    action?.payload?.data && action?.payload?.data?.length > 0
+                      ? action.payload.data
+                      : {
+                        ...(state.options[action?.payload?.data[0]?.name] ||
+                            []),
+                      },
+                error  : true,
+                loading: false,
+                success: false,
+              },
+            },
       };
 
     case LOGOUT_SUCCESS:

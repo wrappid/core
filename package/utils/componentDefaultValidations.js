@@ -29,11 +29,11 @@ export function clearValidatePhoneEmail(text) {
 
 export const defaultValidations = {
   asyncSelect: {
-    notRequired: yup.array(),
-    required   : yup.array().required(getFormikRequiredMessage("selection")),
+    notRequired: yup.string().nullable(),
+    required   : yup.string().required(getFormikRequiredMessage("selection")),
   },
   asyncSelectMulti: {
-    notRequired: yup.array(),
+    notRequired: yup.array().nullable(),
     required   : yup.array().required(getFormikRequiredMessage("selection")),
   },
   checkbox       : { required: yup.bool() },

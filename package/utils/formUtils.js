@@ -9,7 +9,6 @@ import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypogra
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
-  FORM_SANITIZATOIN_FUNCTION_MAP,
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
@@ -87,6 +86,15 @@ function getComponentArray(formJson) {
       ? mergedComponentRegistry[formField?.type]?.defaultValidation?.required
       : mergedComponentRegistry[formField?.type]?.defaultValidation?.notRequired;
 
+    if(formField?.type === "asyncSelect" && formField?.isMulti){
+      if(formField.required){
+        mergedComponentRegistry?.asyncSelectMulti?.defaultValidation?.required;
+      }
+      else{
+        mergedComponentRegistry?.asyncSelectMulti?.defaultValidation?.required;
+      }
+    }
+      
     if (formField?.helperText && formField?.helperText !== "") {
       helperButtonFlag = true;
     }
@@ -387,6 +395,8 @@ export function createFormFieldProps(props, type) {
               ? formikprops?.values[element?.id]
               : ""
             : "",
+        
+        strictItemKey: element?.strictItemKey,
         
         styleClasses: element?.styleClasses
           ? Array.isArray(element.styleClasses)
@@ -787,9 +797,9 @@ function checkConditions(dependencies, formik) {
   return eval(finalStr);
 }
 
-export function getDependentProps(getPropsFunction, formik, elem, allElements){
-  if(getPropsFunction && FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction]){
-    let newProps =  FORM_SANITIZATOIN_FUNCTION_MAP[getPropsFunction](formik, elem, allElements);
+export function getDependentProps(getPropsFunction, formik, elem, allElements, type){
+  if(getPropsFunction && functionsRegistry && functionsRegistry[getPropsFunction]){
+    let newProps =  functionsRegistry[getPropsFunction](formik, { allElements: allElements, elements: elem, type: type });
     
     if(newProps){
       return newProps;
@@ -847,7 +857,7 @@ export function getDependents(element, forms, formikprops, type, formId){
       }
       else {
         dependents = element?.dependencies?.props?.elements?.map((elem) => {
-          return formikprops && formikprops[prop] ? formikprops && formikprops[prop][elem?.id] : "";
+          return formikprops && formikprops[prop] ? formikprops && formikprops[prop][elem] : "";
         });
       }
     }
@@ -863,22 +873,28 @@ export function detectChange(element, forms, formikprops, type, formId, oldProps
   let dependentValues = getDependents(element, forms, formikprops, type, formId);
 
   if(dependentValues?.length === 0){
-    return false;
+    return { changeDetected: false };
   }
   let dependentValuesOld = getDependents(element, forms, oldProps, type, formId);
 
   if(dependentValues?.length !== dependentValuesOld?.length){
     // eslint-disable-next-line no-console
     console.error("POssible error");
-    return false;
+    return { changeDetected: false };
   }
   else{
+    let dependingOn = element?.dependencies?.props?.elements;
+
     for(let i = 0;i < dependentValues?.length;i++){
       if(dependentValues[i] !== dependentValuesOld[i]){
-        return true;
+        if(dependentValuesOld[i] === "" && dependentValues[i] === formikprops.initialValues[dependingOn[i]]){
+          return { changeDetected: false, others: { mount: true } };
+        }
+        else
+          return { changeDetected: true };
       }
     }
-    return false;
+    return { changeDetected: false };
   }
   
 }
