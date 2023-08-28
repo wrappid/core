@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/styled-components";
+import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/native";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 
