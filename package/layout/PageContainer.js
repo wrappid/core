@@ -11,7 +11,7 @@ import {
   CoreDialogContext,
   CoreResourceContext,
   FunctionsRegistryContext,
-  ValidationsRegistryContext,
+  ValidationsRegistryContext
 } from "../config/contextHandler";
 import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
@@ -73,7 +73,7 @@ export default function PageContainer(props) {
     // -- console.log("LOCATION SAVE______", location);
     dispatch({
       payload: { helperButtonFlag: false },
-      type: UPDATE_HELPER_FLAG,
+      type   : UPDATE_HELPER_FLAG,
     });
   }, []);
 

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 
 import {
   NativeDomNavigate,
-  nativeUseLocation,
+  nativeUseLocation
   // eslint-disable-next-line import/no-unresolved
 } from "@wrappid/native";
 import { useSelector } from "react-redux";
@@ -98,10 +98,7 @@ export default function SplashComponent() {
     >
       <CoreBox
         gridProps={{ gridSize: 6 }}
-        styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-        ]}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
         <CoreBox styleClasses={[CoreClasses?.MARGIN?.MB1]}>
           <CoreComponent componentName={"AppLogoGif"} />
