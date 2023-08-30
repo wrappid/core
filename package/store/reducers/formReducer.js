@@ -1,4 +1,5 @@
-// import swal from "sweetalert";
+/* eslint-disable no-console */
+/* eslint-disable no-case-declarations */
 import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
   ADD_FORM,
@@ -35,8 +36,8 @@ const initState = {
 const formReducer = (state = initState, action) => {
   switch (action.type) {
     case CREATE_FORM:
-      var data = action.payload.formData;
-      var id = action.payload.formId;
+      let data = action.payload.formData;
+      let id = action.payload.formId;
 
       return {
         ...state,
@@ -81,15 +82,15 @@ const formReducer = (state = initState, action) => {
       };
 
     case ADD_FORM:
-      var finalData = state.processedForms[action.payload.formId];
+      let finalData = state.processedForms[action.payload.formId];
 
       console.log("FORM ADD_FORM REDUCER------", action.payload.formId);
-      var ob = {};
+      let obj = {};
 
       for (let i = 0; i < finalData?.formElements?.length; i++) {
-        ob[finalData.formElements[i].id] = "";
+        obj[finalData.formElements[i].id] = "";
       }
-      finalData["formInitialOb"] = ob;
+      finalData["formInitialOb"] = obj;
       return {
         ...state,
         addForm: {
@@ -149,7 +150,7 @@ const formReducer = (state = initState, action) => {
     case FORM_SUBMIT_ERROR:
       console.log("FORM FORM_SUBMIT_ERROR REDUCER------", action);
 
-      var errorMsg = "Something went wrong!";
+      let errorMsg = "Something went wrong!";
 
       if (
         action?.payload?.data?.message &&
@@ -157,8 +158,6 @@ const formReducer = (state = initState, action) => {
       ) {
         errorMsg = action?.payload?.data?.message;
       }
-
-      // alert(errorMsg);
 
       return {
         ...state,

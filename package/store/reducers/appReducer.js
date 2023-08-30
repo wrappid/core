@@ -16,6 +16,7 @@ import {
   SEND_OTP_ERROR
 } from "./../types/appTypes";
 
+const DEFAULT_ERROR_MSG = "Something went wrong!";
 const initState = {
   apiVersion: {
     error  : false,
@@ -153,17 +154,9 @@ const appReducer = (state = initState, action) => {
       };
 
     case SEND_OTP_ERROR:
-      var errorMsg = "Something went wrong!";
-
-      if (
-        action?.payload?.data?.message &&
-                typeof action?.payload?.data?.message === "string"
-      ) {
-        errorMsg = action?.payload?.data?.message;
-      }
       return {
         ...state,
-        errorMsg      : errorMsg,
+        errorMsg      : action?.payload?.data?.message && typeof action?.payload?.data?.message === "string" ? action?.payload?.data?.message : DEFAULT_ERROR_MSG,
         sendOtpError  : false,
         sendOtpLoading: false,
         sendOtpSuccess: false
