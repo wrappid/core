@@ -7,6 +7,7 @@ import { NativeImagePicker } from "@wrappid/native";
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
+import defaultImage from "../../assets/upload.jpg";
 import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreImagePicker(props) {
@@ -14,7 +15,7 @@ export default function CoreImagePicker(props) {
 
   return (
     <CoreFormControl>
-      <NativeImagePicker {...props} />
+      <NativeImagePicker {...props} defaultImage={defaultImage}/>
 
       {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
 
