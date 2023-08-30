@@ -1,6 +1,5 @@
-
 async function tempFetch(apiConfig) {
-  console.log("API CALLL", apiConfig);
+  // -- console.log("API CALLL", apiConfig);
   let res = await fetch(apiConfig.url, {
     body   : apiConfig.data,
     headers: apiConfig.headers,
@@ -20,7 +19,7 @@ async function tempFetch(apiConfig) {
         status: res.status,
       },
     };
-    // reloadToken();
+    // -- reloadToken();
   } else if (res.status === 500 || !String(res.status).startsWith("20")) {
     throw {
       response: {
@@ -28,13 +27,15 @@ async function tempFetch(apiConfig) {
         status: res.status,
       },
     };
+  } else if (res.status === 204) {
+    return { data: {}, status: res.status };
   } else {
     return { data, status: res.status };
   }
 }
 
 async function axiosInterceptor(apiConfig) {
-  console.log("apiConfig", apiConfig);
+  // -- console.log("apiConfig", apiConfig);
   return await tempFetch(apiConfig);
 }
 

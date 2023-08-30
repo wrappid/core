@@ -1,16 +1,17 @@
+import { getConfigurationObject } from "@wrappid/styles";
+
 import authHeader from "./DataService";
-import config from "../config/config";
 import { HTTP } from "../config/constants";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import { createFormData, queryBuilder } from "../utils/helper";
 
 function getEndpoint(method, endpoint, data) {
-  let backendUrl =
-    process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;
+  let appConfig = getConfigurationObject();
+  let backendUrl = appConfig?.wrappid?.backendUrl;
   /**
    * @todo @sumanta-m review required
    */
-  /* if (endpoint.includes("http")) {
+  /* -- if (endpoint.includes("http")) {
     backendUrl = "";
   } */
 
@@ -41,26 +42,26 @@ class AppService {
         url    : getEndpoint(method, endpoint, data),
       });
 
-      // console.log("API Endpoint = " + endpoint);
-      // console.log("-----------SUCCESS RESPONSE-----------");
-      // console.log(response);
-      // console.log("--------------------------------------");
+      // -- console.log("API Endpoint = " + endpoint);
+      // -- console.log("-----------SUCCESS RESPONSE-----------");
+      // -- console.log(response);
+      // -- console.log("--------------------------------------");
 
       return response;
     } catch (error) {
-      console.error("Service layer error:", error.message);
-      console.error(error);
-      const ob = {
+      // -- console.error("Service layer error:", error.message);
+      // -- console.error(error);
+      const errorRes = {
         data   : error?.response?.data?.data,
         message: error?.response?.data?.message,
         status : error?.response?.status,
       };
 
-      // console.error("API Endpoint = " + endpoint);
-      // console.error("-------------ERROR RESPONSE-------------");
-      // console.error(error);
-      // console.error("----------------------------------------");
-      throw ob;
+      // -- console.error("API Endpoint = " + endpoint);
+      // -- console.error("-------------ERROR RESPONSE-------------");
+      // -- console.error(error);
+      // -- console.error("----------------------------------------");
+      throw errorRes;
     }
   }
 }
