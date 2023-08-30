@@ -533,6 +533,7 @@ export default function CoreAsyncSelect(props) {
           <CoreTextField
             {...params}
             label={label}
+            InputLabelProps={{ ...params.InputLabelProps, shrink: true }} 
             InputProps={{
               ...params.InputProps,
               endAdornment: getEndAdornment(params),
