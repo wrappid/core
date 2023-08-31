@@ -131,7 +131,7 @@ export default function CoreAsyncSelect(props) {
   }, [submitLoading]);
 
   const findOption = (options, value) => {
-    if(!Array.isArray(options) || (Array.isArray(options) && options.length > 0)){
+    if(!Array.isArray(options) || (Array.isArray(options) && options.length === 0)){
       return "";
     }
     let f1 = options?.find((x) => String(x.id) === String(value));
