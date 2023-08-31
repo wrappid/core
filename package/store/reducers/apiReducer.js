@@ -9,27 +9,27 @@ import {
 } from "../types/formTypes";
 
 function getData(action, dataOb) {
-  if (action.payload && action.payload.data && dataOb) {
-    let d = action.payload.data;
+  if (action?.payload && action?.payload?.data && dataOb) {
+    let payloadData = action?.payload?.data;
 
-    if (d?.data && typeof d?.data === "object") {
-      if (d.data.rows) {
-        dataOb.data.rows = d.data.rows;
-        dataOb.data.totalRecords = d.data.totalRecords;
-      } else if (Array.isArray(d.data)) {
-        dataOb.data.rows = d.data;
-        dataOb.data.totalRecords = d.data.length;
+    if (payloadData?.data && typeof payloadData?.data === "object") {
+      if (payloadData?.data?.rows) {
+        dataOb.data.rows = payloadData?.data?.rows;
+        dataOb.data.totalRecords = payloadData?.data?.totalRecords || 0;
+      } else if (Array.isArray(payloadData?.data)) {
+        dataOb.data.rows = payloadData?.data;
+        dataOb.data.totalRecords = payloadData?.data?.length || 0;
       } else {
-        dataOb.data.rows = d.data;
+        dataOb.data.rows = payloadData?.data || [];
       }
-    } else if (d?.rows) {
-      dataOb.data.rows = d.rows;
-      dataOb.data.totalRecords = d.totalRecords;
-    } else if (Array.isArray(d)) {
-      dataOb.data.rows = d;
-      dataOb.data.totalRecords = d.length;
+    } else if (payloadData?.rows) {
+      dataOb.data.rows = payloadData?.rows;
+      dataOb.data.totalRecords = payloadData?.totalRecords;
+    } else if (Array.isArray(payloadData)) {
+      dataOb.data.rows = payloadData;
+      dataOb.data.totalRecords = payloadData?.length;
     } else {
-      dataOb.data = { rows: d };
+      dataOb.data = { rows: payloadData };
     }
   }
   return dataOb;
@@ -70,15 +70,15 @@ const apiReducer = (state = initState, action) => {
 
       return {
         ...state,
-        [action.payload.id]: { ...dataOb },
+        [action?.payload?.id]: { ...dataOb },
       };
     }
 
     case FORM_DATA_READ_LOADING:
       return {
         ...state,
-        [action.payload.formId]: {
-          ...state[action.payload.formId],
+        [action?.payload?.formId]: {
+          ...state[action?.payload?.formId],
           error    : false,
           loading  : true,
           success  : false,
@@ -87,7 +87,9 @@ const apiReducer = (state = initState, action) => {
       };
 
     case FORM_INIT_UPDATE: {
-      //TODO: haveto put support for created forms like in datatable forms
+      /** 
+       * @TODO haveto put support for created forms like in datatable forms
+       */
       let sanity = state[action.payload.formId]?.api?.onGetRefine;
       let sanitizedData = getData(action, state[action.payload.formId])?.data
         ?.rows;
