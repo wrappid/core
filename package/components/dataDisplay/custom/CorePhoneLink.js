@@ -3,6 +3,7 @@ import React from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 
+import CoreIconText from "./CoreIconText";
 import CoreIcon, { __IconTypes } from "..//CoreIcon";
 import CoreClasses from "../../../styles/CoreClasses";
 import { maskEmailOrPhone } from "../../../utils/stringUtils";
@@ -20,61 +21,81 @@ export default function CorePhoneLink(props) {
     tooltipPlacement = "bottom",
     size = "medium",
     mask = false,
+    iconButton = false
   } = props;
 
   const renderPhoneLinkComp = () => {
     return (
       <>
         {phone ? (
-          <CoreStack direction={"row"} spacing={1}>
-            <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>call</CoreIcon>
-
+          iconButton ?
             <CoreLink href={`tel:${phone}`}>
-              {size === "small" ? (
-                <CoreTypographyCaption
-                  hideSeeMore={true}
-                  limitChars={limitChars}
-                  mask={mask}
+              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>
+                call
+              </CoreIcon>
+            </CoreLink>
+            :
+            <CoreStack direction={"row"} spacing={1}>
+              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>call</CoreIcon>
+
+              <CoreLink href={`tel:${phone}`}>
+                {size === "small" ? (
+                  <CoreTypographyCaption
+                    hideSeeMore={true}
+                    limitChars={limitChars}
+                    mask={mask}
+                  >
+                    {mask ? maskEmailOrPhone(phone) : phone}
+                  </CoreTypographyCaption>
+                ) : (
+                  <CoreTypographyBody2
+                    styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
+                    hideSeeMore={true}
+                    limitChars={limitChars}
+                    mask={mask}
+                  >
+                    {mask ? maskEmailOrPhone(phone) : phone}
+                  </CoreTypographyBody2>
+                )}
+              </CoreLink>
+
+              {phone && verified !== undefined && (
+                <CoreIcon
+                  type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                  styleClasses={
+                    verified
+                      ? [CoreClasses?.ICON?.VERIFIED_SUCCESS]
+                      : [CoreClasses?.ICON?.VERIFIED_WARNING]
+                  }
                 >
-                  {mask ? maskEmailOrPhone(phone) : phone}
+                  {verified ? "verified" : "error_outline"}
+                </CoreIcon>
+              )}
+            </CoreStack>
+        ) : (
+          iconButton ?
+            <CoreIconText 
+              type={__IconTypes.MATERIAL_OUTLINED_ICON} 
+              icon="call" 
+              text={"NA"} 
+            />
+            :
+            <>
+              {size === "small" ? (
+                <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
+                  {"Not Available"}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2
-                  styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
-                  hideSeeMore={true}
-                  limitChars={limitChars}
-                  mask={mask}
-                >
-                  {mask ? maskEmailOrPhone(phone) : phone}
-                </CoreTypographyBody2>
+                iconButton ?
+                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>
+                  call
+                  </CoreIcon>
+                  :
+                  <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
+                    {"Not Available"}
+                  </CoreTypographyBody2>
               )}
-            </CoreLink>
-
-            {phone && verified !== undefined && (
-              <CoreIcon
-                type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                styleClasses={
-                  verified
-                    ? [CoreClasses?.ICON?.VERIFIED_SUCCESS]
-                    : [CoreClasses?.ICON?.VERIFIED_WARNING]
-                }
-              >
-                {verified ? "verified" : "error_outline"}
-              </CoreIcon>
-            )}
-          </CoreStack>
-        ) : (
-          <>
-            {size === "small" ? (
-              <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
-                {"Not Available"}
-              </CoreTypographyCaption>
-            ) : (
-              <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                {"Not Available"}
-              </CoreTypographyBody2>
-            )}
-          </>
+            </>
         )}
       </>
     );

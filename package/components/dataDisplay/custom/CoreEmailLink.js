@@ -3,6 +3,7 @@ import React from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 
+import CoreIconText from "./CoreIconText";
 import CoreIcon, { __IconTypes } from "..//CoreIcon";
 import CoreClasses from "../../../styles/CoreClasses";
 import { maskEmailOrPhone } from "../../../utils/stringUtils";
@@ -20,59 +21,74 @@ export default function CoreEmailLink(props) {
     tooltipPlacement = "bottom",
     size = "medium",
     mask = false,
+    iconButton
   } = props;
 
   const renderEmailLinkComp = () => {
     return (
       <>
         {email ? (
-          <CoreStack direction={"row"} spacing={1}>
-            <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
-
+          iconButton ?
             <CoreLink href={`mailto:${email}`}>
-              {size === "small" ? (
-                <CoreTypographyCaption
-                  hideSeeMore={true}
-                  limitChars={limitChars}
-                  mask={mask}
+              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>
+               mail
+              </CoreIcon>
+            </CoreLink>
+            :
+            <CoreStack direction={"row"} spacing={1}>
+              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
+
+              <CoreLink href={`mailto:${email}`}>
+                {size === "small" ? (
+                  <CoreTypographyCaption
+                    hideSeeMore={true}
+                    limitChars={limitChars}
+                    mask={mask}
+                  >
+                    {mask ? maskEmailOrPhone(email) : email}
+                  </CoreTypographyCaption>
+                ) : (
+                  <CoreTypographyBody2
+                    styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
+                    hideSeeMore={true}
+                    limitChars={limitChars}
+                    mask={mask}
+                  >
+                    {mask ? maskEmailOrPhone(email) : email}
+                  </CoreTypographyBody2>
+                )}
+              </CoreLink>
+
+              {email && verified !== undefined && (
+                <CoreIcon
+                  type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                  styleClasses={
+                    [CoreClasses.MARGIN.ML_N1, ...(verified ? CoreClasses.ICON.VERIFIED_SUCCESS : CoreClasses.ICON.VERIFIED_WARNING)]
+                  }
                 >
-                  {mask ? maskEmailOrPhone(email) : email}
+                  {verified ? "verified" : "error_outline"}
+                </CoreIcon>
+              )}
+            </CoreStack>
+        ) : (
+          iconButton ?
+            <CoreIconText 
+              type={__IconTypes.MATERIAL_OUTLINED_ICON} 
+              icon="email" 
+              text={"NA"} 
+            />
+            :
+            <>
+              {size === "small" ? (
+                <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
+                  {"Not Available"}
                 </CoreTypographyCaption>
               ) : (
-                <CoreTypographyBody2
-                  styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
-                  hideSeeMore={true}
-                  limitChars={limitChars}
-                  mask={mask}
-                >
-                  {mask ? maskEmailOrPhone(email) : email}
+                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
+                  {"Not Available"}
                 </CoreTypographyBody2>
               )}
-            </CoreLink>
-
-            {email && verified !== undefined && (
-              <CoreIcon
-                type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                styleClasses={
-                  [CoreClasses.MARGIN.ML_N1, ...(verified ? CoreClasses.ICON.VERIFIED_SUCCESS : CoreClasses.ICON.VERIFIED_WARNING)]
-                }
-              >
-                {verified ? "verified" : "error_outline"}
-              </CoreIcon>
-            )}
-          </CoreStack>
-        ) : (
-          <>
-            {size === "small" ? (
-              <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
-                {"Not Available"}
-              </CoreTypographyCaption>
-            ) : (
-              <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                {"Not Available"}
-              </CoreTypographyBody2>
-            )}
-          </>
+            </>
         )}
       </>
     );
