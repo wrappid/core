@@ -131,7 +131,7 @@ export default function CoreAsyncSelect(props) {
   }, [submitLoading]);
 
   const findOption = (options, value) => {
-    if(!Array.isArray(options)){
+    if(!Array.isArray(options) || (Array.isArray(options) && options.length > 0)){
       return "";
     }
     let f1 = options?.find((x) => String(x.id) === String(value));
@@ -356,7 +356,7 @@ export default function CoreAsyncSelect(props) {
         id={id || `"async-select-"+${getKey()}`}
         disableClearable={inlineAction ? true : disableClearable ? true : false}
         open={open}
-        value={props.value ? props.value : props.multiple ? [] : ""}
+        value={value ? value : multiple ? [] : ""}
         autoComplete={true}
         freeSolo={true}
         loading={loading}
@@ -396,17 +396,32 @@ export default function CoreAsyncSelect(props) {
             }
         }
         getOptionLabel={(option) => {
-          return typeof option === "string" && isNaN(option)
-            ? option
-            : typeof option === "number" || (typeof option === "string" && !isNaN(option))
-              ? getLabelFromValue(option, optionsData, options)
-              : getOptionLabel
-                ? getOptionLabel(option)
-                : option.label
-                  ? option.label
-                  : option.name
-                    ? option.name
-                    : "";
+          let label = "";
+
+          if(typeof option === "string" && isNaN(option)){
+            label = option;
+          }
+          else if(option){
+            if(typeof option === "number" || (typeof option === "string" && !isNaN(option))){
+              label = getLabelFromValue(option, optionsData, options);
+            }
+            else if(getOptionLabel){
+              label = getOptionLabel(option);
+            }
+            else if(option.label){
+              label = option.label;
+            }
+            else if(option.name){
+              label = option.name;
+            }
+            else{
+              label = "";
+            }
+          }
+          else{
+            label = "";
+          }
+          return label;
         }}
         filterOptions={(options, params) => {
           const filtered =
