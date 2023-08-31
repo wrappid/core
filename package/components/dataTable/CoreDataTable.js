@@ -167,7 +167,8 @@ export default function CoreDataTable(props) {
     afterCreateError, // function to be called after successfull Create
     afterDeleteSuccess, // function to be called after successfull Delete
     afterDeleteError, // function to be called after successfull Delete
-    hideAuditDataDetailPane //flag for hiding audit info in details pane
+    hideAuditDataDetailPane, //flag for hiding audit info in details pane
+    preOnCreate //function to be called when create button in clicked
   } = props;
 
   // eslint-disable-next-line no-unused-vars
@@ -722,6 +723,7 @@ export default function CoreDataTable(props) {
             maxRowInPage={maxRowInPage}
             setPage={setPage}
             setMaxRowInPage={setMaxRowInPage}
+            preOnCreate={preOnCreate}
           />
         )}
 

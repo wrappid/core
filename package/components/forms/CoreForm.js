@@ -197,9 +197,10 @@ class CoreForm extends Component {
 
   onUpdateLoad = async () => {
     if (this.props.formId !== this.state.formIdAtMount) {
-      let formJson = await this.getAndStoreForm();
+      
+      this.setState({ formIdAtMount: this.props.formId }, async () => {
+        let formJson = await this.getAndStoreForm();
 
-      this.setState({ formIdAtMount: this.props.formId }, () => {
         this.props.CreateAllForms(
           this.props.formId,
           this.props.initData,
@@ -209,6 +210,10 @@ class CoreForm extends Component {
           formJson
         );
       });
+    }
+
+    if(this.props.formId !== this.state.formIdAtMount){
+      return;
     }
 
     let formSchema = this.props.rawFormSchema

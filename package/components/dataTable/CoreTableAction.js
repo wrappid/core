@@ -8,7 +8,11 @@ import CoreResponsiveButton from "../inputs/custom/CoreResponsiveButton";
 
 export default function CoreTableAction(props) {
   const navigation = nativeUseNavigate();
-  const { tableUUID, actions = [], rowData = {} } = props;
+  const {
+    tableUUID, actions = [], rowData = {}, set_showDetailsPane,
+    setDetailedRowId,
+    setDetailedRowData 
+  } = props;
 
   return (
     <>
@@ -27,6 +31,11 @@ export default function CoreTableAction(props) {
               icon={action?.icon}
               disabled={action.disabled}
               OnClick={() => {
+                if(action.clearRowData){
+                  set_showDetailsPane(true);
+                  setDetailedRowId(null);
+                  setDetailedRowData(null);
+                }
                 if (action?.action) action?.action(rowData); // TODO: support local action
                 if (action.route) {
                   navigation(action.route, rowData);

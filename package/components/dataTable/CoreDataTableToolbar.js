@@ -12,11 +12,11 @@ import { UPDATE_USER_SETTINGS } from "../../config/api";
 import { HTTP, tableToolbar, userSettingsConstants } from "../../config/constants";
 import {
   UPDATE_QUERY_MAXROWINPAGE_DATA,
-  UPDATE_QUERY_PAGE_DATA,
+  UPDATE_QUERY_PAGE_DATA
 } from "../../store/types/dataManagementTypes";
 import {
   USER_SETTINGS_UPDATE_ERROR,
-  USER_SETTINGS_UPDATE_SUCCESS,
+  USER_SETTINGS_UPDATE_SUCCESS
 } from "../../store/types/settingsTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
@@ -73,6 +73,7 @@ export default function CoreDataTableToolbar(props) {
     maxRowInPage,
     setPage,
     setMaxRowInPage,
+    preOnCreate
   } = props;
 
   // const [_selectAllColumnFilter, set_selectAllColumnFilter] = React.useState(true);
@@ -121,17 +122,17 @@ export default function CoreDataTableToolbar(props) {
               {searchValue &&
               // searchValue !== "" &&
               searchValue.length > 0 ? (
-                <CoreIconButton
-                  title="Clear search"
-                  onClick={() => {
-                    console.log("clear search clicked");
-                    setSearchValue("");
-                    clearFilterData();
-                  }}
-                >
-                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
-                </CoreIconButton>
-              ) : null}
+                  <CoreIconButton
+                    title="Clear search"
+                    onClick={() => {
+                      console.log("clear search clicked");
+                      setSearchValue("");
+                      clearFilterData();
+                    }}
+                  >
+                    <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
+                  </CoreIconButton>
+                ) : null}
 
               <CoreIconButton
                 title="Search"
@@ -188,14 +189,14 @@ export default function CoreDataTableToolbar(props) {
     {
       leftPanel: {
         gridSize: { md: __TableLeftPanelGridSize },
-        stacks: [[{ comp: getSearchBar, propsApp: { fullWidth: true } }]],
+        stacks  : [[{ comp: getSearchBar, propsApp: { fullWidth: true } }]],
       },
       rightPanel: {
         gridSize: { md: __TableRightPanelGridSize },
-        stacks: [
+        stacks  : [
           [
             {
-              comp: <CoreDivider orientation="vertical" flexItem={true} />,
+              comp     : <CoreDivider orientation="vertical" flexItem={true} />,
               hideInApp: true,
             },
 
@@ -210,7 +211,7 @@ export default function CoreDataTableToolbar(props) {
                   <CoreIcon>refresh</CoreIcon>
                 </CoreIconButton>
               ),
-              label: "Refresh",
+              label  : "Refresh",
               onClick: (e) => {
                 filterData();
               },
@@ -227,7 +228,7 @@ export default function CoreDataTableToolbar(props) {
                   <CoreIcon>sort </CoreIcon>
                 </CoreIconButton>
               ),
-              label: "Sort",
+              label  : "Sort",
               onClick: (e) => {
                 setPopover(e, tableToolbar.SORT_DATA);
               },
@@ -244,7 +245,7 @@ export default function CoreDataTableToolbar(props) {
                   <CoreIcon type={__IconTypes.MATERIAL_ICON} icon={"save_alt"} />
                 </CoreIconButton>
               ) : null,
-              label: "Export",
+              label  : "Export",
               onClick: (e) => {
                 setPopover(e, tableToolbar.EXPORT_DATA);
               },
@@ -270,6 +271,9 @@ export default function CoreDataTableToolbar(props) {
                     setDetailedRowId(null);
                     setDetailedRowData(null);
                     set_showDetailsPane(true);
+                    if(preOnCreate){
+                      preOnCreate();
+                    }
                   }}
                 />
               ) : null,
@@ -310,7 +314,7 @@ export default function CoreDataTableToolbar(props) {
                     setPage(newPage);
                     dispatch({
                       payload: { entity: tableUUID, page: newPage },
-                      type: UPDATE_QUERY_PAGE_DATA,
+                      type   : UPDATE_QUERY_PAGE_DATA,
                     });
                   }}
                   onRowsPerPageChange={(event) => {
@@ -319,7 +323,7 @@ export default function CoreDataTableToolbar(props) {
                       setMaxRowInPage(event.target.value);
                       dispatch({
                         payload: {
-                          entity: tableUUID,
+                          entity      : tableUUID,
                           maxRowInPage: event.target.value,
                         },
                         type: UPDATE_QUERY_MAXROWINPAGE_DATA,
@@ -330,7 +334,7 @@ export default function CoreDataTableToolbar(props) {
                           UPDATE_USER_SETTINGS,
                           true,
                           {
-                            name: userSettingsConstants.MAX_ROWS_IN_PAGE,
+                            name : userSettingsConstants.MAX_ROWS_IN_PAGE,
                             value: event.target.value,
                           },
                           USER_SETTINGS_UPDATE_SUCCESS,
@@ -375,7 +379,7 @@ export default function CoreDataTableToolbar(props) {
         }}
         anchorOrigin={{
           horizontal: "left",
-          vertical: "bottom",
+          vertical  : "bottom",
         }}
       >
         {enableTableDensity && _toolbarContent === tableToolbar.TABLE_DENSITY ? (

@@ -107,6 +107,9 @@ export default function CoreDataTableDetailsPane(props) {
                   columns={tableColumns}
                   rowIndex={detailedRowId}
                   rowData={detailedRowData}
+                  set_showDetailsPane={set_showDetailsPane}
+                  setDetailedRowId={setDetailedRowId}
+                  setDetailedRowData={setDetailedRowData}
                 />
               )}
 
