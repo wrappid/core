@@ -28,7 +28,8 @@ export default function CoreEmailOrPhoneLink(props) {
   const HandleModalOpen = (data) => {
     let comp = (
       <CoreForm
-        initData={{ data: data?.data || {} }}
+        initData={{ data: data?.data }}
+        initProps={{ otp: { to: data?.data } }}
         formId={
           data?.data?.includes("@")
             ? FORM_IDS.__VERIFY_EMAIL_OTP
