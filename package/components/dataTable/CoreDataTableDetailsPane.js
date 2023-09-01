@@ -22,6 +22,7 @@ import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
+import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -60,7 +61,8 @@ export default function CoreDataTableDetailsPane(props) {
     afterCreateError,
     afterDeleteSuccess,
     afterDeleteError,
-    hideAuditDataDetailPane
+    hideAuditDataDetailPane,
+    platform
   } = props;
 
   return (
@@ -181,12 +183,12 @@ export default function CoreDataTableDetailsPane(props) {
                       allowEdit={editable}
                       allowDelete={deletable}
                       initData={detailedRowData}
-                      s
                       afterCancel={() => {
                         setFormMode(FORM_VIEW_MODE);
                       }}
                       afterEditSuccess={() => {
-                        set_showDetailsPane(false);
+                        if(platform === APP_PLATFORM)
+                          set_showDetailsPane(false);
                         filterData();
                         if (
                           afterEditSuccess &&
@@ -196,7 +198,9 @@ export default function CoreDataTableDetailsPane(props) {
                         }
                       }}
                       afterDeleteSuccess={() => {
-                        set_showDetailsPane(false);
+                        if(platform === APP_PLATFORM)
+                          set_showDetailsPane(false);
+                        setDetailedRowId(null);
                         filterData();
                         if (afterDeleteSuccess) {
                           afterDeleteSuccess();
@@ -218,6 +222,7 @@ export default function CoreDataTableDetailsPane(props) {
                           afterDeleteError();
                         }
                       }}
+                      deleteId={detailedRowId}
                     />
                   </>
                 )
@@ -278,7 +283,9 @@ export default function CoreDataTableDetailsPane(props) {
                         set_showDetailsPane(false);
                       }}
                       afterCreateSuccess={() => {
-                        set_showDetailsPane(false);
+                        if(platform === APP_PLATFORM)
+                          set_showDetailsPane(false);
+
                         filterData();
                         if (
                           afterCreateSuccess &&

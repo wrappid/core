@@ -736,7 +736,8 @@ class CoreForm extends Component {
       rawFormSchema,
       preview,
       arrayDataLimit,
-      initProps
+      initProps,
+      deleteId
     } = this.props;
     const arrayFlag =
       arrayView || (rawFormSchema ? rawFormSchema[formId]?.arrayView : false);
@@ -789,7 +790,7 @@ class CoreForm extends Component {
                 ? rawFormSchema[formId]?.headerAction
                 : true
             }
-            formId={formId}
+            formId={deleteId || formId}
             action={
               arrayFlag
                 ? allowAdd !== false

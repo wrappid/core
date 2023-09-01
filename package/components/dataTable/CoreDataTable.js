@@ -861,6 +861,7 @@ export default function CoreDataTable(props) {
             afterDeleteSuccess={afterDeleteSuccess}
             afterDeleteError={afterDeleteError}
             hideAuditDataDetailPane={hideAuditDataDetailPane}
+            platform={platform}
           />
         )}
       </CoreGrid>
