@@ -21,7 +21,7 @@ export default function CoreEmailLink(props) {
     tooltipPlacement = "bottom",
     size = "medium",
     mask = false,
-    iconButton
+    iconButton = false
   } = props;
 
   const renderEmailLinkComp = () => {
@@ -63,7 +63,11 @@ export default function CoreEmailLink(props) {
                 <CoreIcon
                   type={__IconTypes.MATERIAL_OUTLINED_ICON}
                   styleClasses={
-                    [CoreClasses.MARGIN.ML_N1, ...(verified ? CoreClasses.ICON.VERIFIED_SUCCESS : CoreClasses.ICON.VERIFIED_WARNING)]
+                    [
+                      verified
+                        ? CoreClasses.ICON.VERIFIED_SUCCESS
+                        : CoreClasses.ICON.VERIFIED_WARNING
+                    ]
                   }
                 >
                   {verified ? "verified" : "error_outline"}

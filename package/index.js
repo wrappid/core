@@ -1,7 +1,9 @@
-// import CoreAppDiv from "./components/layouts/CoreAppDiv";
+// import CoreContainer from "./components/layouts/CoreContainer";
+// import CoreNavigation from "./CoreNavigation";
+// import CoreGridItem from "./components/layouts/CoreGridItem";
+// -- import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import CoreComponent from "./components/CoreComponent";
-import CoreComponentsRegistry from "./components/CoreComponentsRegistry";
-import CoreComponentsRegistryDocs from "./components/CoreComponentsRegistryDocs";
+import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/coreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
 import CoreChip from "./components/dataDisplay/CoreChip";
@@ -66,6 +68,7 @@ import {
   FORM_SANITIZATION_FUNCTION_IDS,
   FORM_SANITIZATOIN_FUNCTION_MAP
 } from "./components/forms/coreFormConstants";
+import CoreFormControlLabel from "./components/forms/CoreFormControlLabel";
 import CoreFormGroup from "./components/forms/CoreFormGroup";
 import CoreAsyncSelect from "./components/inputs/CoreAsyncSelect";
 import CoreAutocomplete from "./components/inputs/CoreAutocomplete";
@@ -112,9 +115,7 @@ import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButto
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
 import CoreBox from "./components/layouts/CoreBox";
-// import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
-// import CoreGridItem from "./components/layouts/CoreGridItem";
 import CoreImageBackground from "./components/layouts/CoreImageBackground";
 import CoreSection from "./components/layouts/CoreSection";
 import CoreSpan from "./components/layouts/CoreSpan";
@@ -128,9 +129,6 @@ import CoreTabPanel from "./components/navigation/CoreTabPanel";
 import CoreTabs from "./components/navigation/CoreTabs";
 import CoreCustomTabs from "./components/navigation/custom/CoreCustomTabs";
 import CoreTabHead from "./components/navigation/custom/CoreTabHead";
-
-// import CoreNavigation from "./CoreNavigation";
-
 import CoreAccordion from "./components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "./components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "./components/surfaces/CoreAccordionSummary";
@@ -151,7 +149,6 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreApiVersion from "./components/utils/custom/CoreApiVersion";
 import CoreLoginDetails from "./components/utils/custom/CoreLoginDetails";
 import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
-import CoreFormControlLabel from "./components/forms/CoreFormControlLabel";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import {
@@ -213,7 +210,6 @@ export {
   CoreListSubheader,
   CoreFormControlLabel,
   CoreComponentsRegistry,
-  CoreComponentsRegistryDocs,
   coreUseSearchParams,
   CoreResourceContext,
   CoreRouteRegistryContext,

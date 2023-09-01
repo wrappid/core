@@ -14,6 +14,7 @@ import {
 import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";
 import CoreProvider from "./store/CoreProvider";
+import FunctionsRegistry from "./registry/FunctionsRegistry";
 
 export default function CoreApp({
   reducers,
@@ -36,9 +37,9 @@ export default function CoreApp({
     >
       <CoreApplicationContext.Provider value={applicationRegistry}>
         <ValidationsRegistryContext.Provider value={validationsRegistry}>
-          <FunctionsRegistryContext.Provider value={functionsRegistry}>
+          <FunctionsRegistryContext.Provider value={{ ...FunctionsRegistry, ...functionsRegistry }}>
             <ComponentRegistryContext.Provider
-              value={{ ...componentRegistry, ...ComponentRegistry }}
+              value={{ ...ComponentRegistry, ...componentRegistry }}
             >
               <React.StrictMode>
                 <CoreResourceContext.Provider value={resourceRegistry}>

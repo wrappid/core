@@ -87,13 +87,23 @@ export default function CorePhoneLink(props) {
                 </CoreTypographyCaption>
               ) : (
                 iconButton ?
-                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>
-                  call
-                  </CoreIcon>
+                  <CoreIconText 
+                    type={__IconTypes.MATERIAL_OUTLINED_ICON} 
+                    icon="call" 
+                    text={"NA"} 
+                  />
                   :
-                  <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                    {"Not Available"}
-                  </CoreTypographyBody2>
+                  <>
+                    {size === "small" ? (
+                      <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
+                        {"Not Available"}
+                      </CoreTypographyCaption>
+                    ) : (
+                      <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
+                        {"Not Available"}
+                      </CoreTypographyBody2>
+                    )}
+                  </>
               )}
             </>
         )}
