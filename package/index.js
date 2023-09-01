@@ -3,7 +3,7 @@
 // import CoreGridItem from "./components/layouts/CoreGridItem";
 // -- import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import CoreComponent from "./components/CoreComponent";
-import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/coreComponentsRegistry";
+import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
 import CoreChip from "./components/dataDisplay/CoreChip";
