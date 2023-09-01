@@ -168,7 +168,8 @@ export default function CoreDataTable(props) {
     afterDeleteSuccess, // function to be called after successfull Delete
     afterDeleteError, // function to be called after successfull Delete
     hideAuditDataDetailPane, //flag for hiding audit info in details pane
-    preOnCreate //function to be called when create button in clicked
+    preOnCreate, //function to be called when create button in clicked
+    openCreateOnMount //if true the details pane will be opened and create form will be shown
   } = props;
 
   // eslint-disable-next-line no-unused-vars
@@ -344,7 +345,7 @@ export default function CoreDataTable(props) {
       set_showDetailsPane(false);
     } else {
       set_showDetailsPane(true);
-      if (!detailedRowId && tableData && tableData?.length > 0) {
+      if (!detailedRowId && tableData && tableData?.length > 0 && !openCreateOnMount) {
         setDetailedRowId(tableData[0]?.id);
         setDetailedRowData(tableData[0]);
       }
@@ -650,6 +651,11 @@ export default function CoreDataTable(props) {
 
   React.useEffect(() => {
     set_filterQuery(filterQuery);
+    if(openCreateOnMount){
+      setDetailedRowId(null);
+      setDetailedRowData(null);
+      set_showDetailsPane(true);
+    }
   }, []);
   React.useEffect(() => {
     if (compareObject(filterQuery, _filterQuery)) {
