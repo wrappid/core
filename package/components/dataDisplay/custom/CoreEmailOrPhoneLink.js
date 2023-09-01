@@ -6,14 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CoreEmailLink from "./CoreEmailLink";
 import CorePhoneLink from "./CorePhoneLink";
-import { SENT_OTP_API } from "../../../config/api";
-import { HTTP, communicationTypes } from "../../../config/constants";
-import { apiRequestAction } from "../../../store/action/appActions";
 import { toggleModalState } from "../../../store/action/modalAction";
-import {
-  OTP_SENT_ERROR,
-  OTP_SENT_SUCCESS
-} from "../../../store/types/settingsTypes";
 import CoreForm from "../../forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_IDS } from "../../forms/coreFormConstants";
 import CoreTextButton from "../../inputs/CoreTextButton";
@@ -38,22 +31,6 @@ export default function CoreEmailOrPhoneLink(props) {
         onMountRead={false}
         mode={FORM_EDIT_MODE}
       />
-    );
-
-    dispatch(
-      apiRequestAction(
-        HTTP.POST,
-        SENT_OTP_API,
-        true,
-        {
-          data: props?.data || {},
-          type: props?.data?.includes("@")
-            ? communicationTypes.MAIL
-            : communicationTypes.SMS,
-        },
-        OTP_SENT_SUCCESS,
-        OTP_SENT_ERROR
-      )
     );
 
     dispatch(
