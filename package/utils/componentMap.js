@@ -4,6 +4,7 @@ import CoreDivider from "../components/dataDisplay/CoreDivider";
 import CoreEmailOrPhoneLink from "../components/dataDisplay/custom/CoreEmailOrPhoneLink";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreDataTable from "../components/dataTable/CoreDataTable";
+import CoreSpecificForm from "../components/forms/CoreSpecificForm";
 import CoreAsyncSelect from "../components/inputs/CoreAsyncSelect";
 import CoreCheckbox from "../components/inputs/CoreCheckbox";
 import CoreConfirmPassword from "../components/inputs/CoreConfirmPassword";
@@ -38,6 +39,7 @@ having yup validation object for requires
 and not required field respectively */
 export const componentMap = {
   CoreEmailOrPhoneLink: { comp: CoreEmailOrPhoneLink },
+  CoreSpecificForm    : { comp: CoreSpecificForm },
   asyncSelect         : {
     comp             : CoreAsyncSelect,
     defaultValidation: defaultValidations.asyncSelect,
@@ -117,7 +119,7 @@ export const componentMap = {
   
   json: {
     comp: CoreJSONInput,
-    // defaultValidation: defaultValidations.json,
+    // -- defaultValidation: defaultValidations.json,
   },
   
   multiTimeRange: {

@@ -891,7 +891,7 @@ class CoreForm extends Component {
                     !this.state.hideFlag ||
                     (arrayDataLimit && index < arrayDataLimit) ? (
                         <CoreGrid key={`CoreForm-${formId}-initData-${index}`}>
-                          <CoreBox gridProps={{ gridSize: 10 }}>
+                          <CoreBox gridProps={{ gridSize: !editForm[formId]?.editing ? 10 : 12 }}>
                             <CoreEditForm
                               styleClasses={this.props.styleClasses}
                               index={index}
@@ -920,43 +920,93 @@ class CoreForm extends Component {
                               initProps={initProps}
                             />
                           </CoreBox>
-
-                          <CoreBox
-                            gridProps={{ gridSize: 2 }}
-                            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
-                            {formDataReadLoading[formId] ? null : (
-                              <CoreFormHeaderActions
-                                index={index}
-                                id={initDataOb.id}
-                                preview={preview}
-                                action={
-                                  allowEdit !== false
-                                    ? allowDelete !== false
-                                      ? [
-                                        {
-                                          OnClick:
-                                            processedForms[formId] &&
-                                            processedForms[formId]
-                                              .arrayDataNotEditable
-                                              ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
-                                                processedForms[formId]
-                                                  .arrayDataNotEditable
-                                              ](initDataOb)
-                                                ? this.OnEditClick
-                                                : () => {
-                                                  // -- swal(
-                                                  //   "Error",
-                                                  //   "Data not editable",
-                                                  //   "error"
-                                                  // );
-                                                }
-                                              : this.OnEditClick,
-                                          disable: preview,
-                                          icon   : "edit_note",
-                                          title  : "edit",
-                                        },
-                                        {
-                                          OnClick:
+                          
+                          {!editForm[formId]?.editing && (
+                            <CoreBox
+                              gridProps={{ gridSize: 2 }}
+                              styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
+                              {formDataReadLoading[formId] ? null : (
+                                <CoreFormHeaderActions
+                                  mode={mode}
+                                  index={index}
+                                  id={initDataOb.id}
+                                  preview={preview}
+                                  action={
+                                    allowEdit !== false
+                                      ? allowDelete !== false
+                                        ? [
+                                          {
+                                            OnClick:
+                                              processedForms[formId] &&
+                                              processedForms[formId]
+                                                .arrayDataNotEditable
+                                                ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotEditable
+                                                ](initDataOb)
+                                                  ? this.OnEditClick
+                                                  : () => {
+                                                    // -- swal(
+                                                    //   "Error",
+                                                    //   "Data not editable",
+                                                    //   "error"
+                                                    // );
+                                                  }
+                                                : this.OnEditClick,
+                                            disable: preview,
+                                            icon   : "edit_note",
+                                            title  : "edit",
+                                          },
+                                          {
+                                            OnClick:
+                                              processedForms[formId] &&
+                                              processedForms[formId]
+                                                .arrayDataNotDeletable
+                                                ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotDeletable
+                                                ](initDataOb)
+                                                  ? this.OnDeleteClick
+                                                  : () => {
+                                                    // -- swal(
+                                                    //   "Error",
+                                                    //   "Data not deletable",
+                                                    //   "error"
+                                                    // );
+                                                  }
+                                                : this.OnDeleteClick,
+                                            disable: preview,
+                                            icon   : "delete_outline",
+                                            title  : "delete",
+                                          },
+                                        ]
+                                        : [
+                                          mode === FORM_EDIT_MODE && {
+                                            OnClick:
+                                              processedForms[formId] &&
+                                              processedForms[formId]
+                                                .arrayDataNotEditable
+                                                ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
+                                                  processedForms[formId]
+                                                    .arrayDataNotEditable
+                                                ](initDataOb)
+                                                  ? this.OnEditClick
+                                                  : () => {
+                                                    // -- swal(
+                                                    //   "Error",
+                                                    //   "Data not editable"
+                                                    // );
+                                                  }
+                                                : this.OnEditClick,
+                                            disable: preview,
+                                            icon   : "edit_note",
+                                            title  : "edit",
+                                          },
+                                        ]
+                                      : allowDelete !== false
+                                        ? [
+                                          {
+                                            OnClick:
                                             processedForms[formId] &&
                                             processedForms[formId]
                                               .arrayDataNotDeletable
@@ -968,68 +1018,21 @@ class CoreForm extends Component {
                                                 : () => {
                                                   // -- swal(
                                                   //   "Error",
-                                                  //   "Data not deletable",
-                                                  //   "error"
+                                                  //   "Data not deletable"
                                                   // );
                                                 }
                                               : this.OnDeleteClick,
-                                          disable: preview,
-                                          icon   : "delete_outline",
-                                          title  : "delete",
-                                        },
-                                      ]
-                                      : [
-                                        {
-                                          OnClick:
-                                            processedForms[formId] &&
-                                            processedForms[formId]
-                                              .arrayDataNotEditable
-                                              ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
-                                                processedForms[formId]
-                                                  .arrayDataNotEditable
-                                              ](initDataOb)
-                                                ? this.OnEditClick
-                                                : () => {
-                                                  // -- swal(
-                                                  //   "Error",
-                                                  //   "Data not editable"
-                                                  // );
-                                                }
-                                              : this.OnEditClick,
-                                          disable: preview,
-                                          icon   : "edit_note",
-                                          title  : "edit",
-                                        },
-                                      ]
-                                    : allowDelete !== false
-                                      ? [
-                                        {
-                                          OnClick:
-                                          processedForms[formId] &&
-                                          processedForms[formId]
-                                            .arrayDataNotDeletable
-                                            ? FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP[
-                                              processedForms[formId]
-                                                .arrayDataNotDeletable
-                                            ](initDataOb)
-                                              ? this.OnDeleteClick
-                                              : () => {
-                                                // -- swal(
-                                                //   "Error",
-                                                //   "Data not deletable"
-                                                // );
-                                              }
-                                            : this.OnDeleteClick,
-                                          disable: preview,
-                                          icon   : "delete_outline",
-                                          title  : "delete",
-                                        },
-                                      ]
-                                      : []
-                                }
-                              />
-                            )}
-                          </CoreBox>
+                                            disable: preview,
+                                            icon   : "delete_outline",
+                                            title  : "delete",
+                                          },
+                                        ]
+                                        : []
+                                  }
+                                />
+                              )}
+                            </CoreBox>
+                          )}
                         </CoreGrid>
                       ) : null
                   )}
