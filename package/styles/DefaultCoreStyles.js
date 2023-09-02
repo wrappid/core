@@ -294,7 +294,7 @@ export const defaultCoreStyles = {
     fontSize: "0.9rem" + IMPORTANT,
   },
   verifiedWarning: {
-    ...defaultUtilityStyles.textSuccessWarning,
+    ...defaultUtilityStyles.textWarningDark,
     ...defaultUtilityStyles.pl1,
     fontSize: "0.9rem" + IMPORTANT,
   }
