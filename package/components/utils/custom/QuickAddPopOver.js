@@ -3,17 +3,57 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/native";
+import { getConfigurationObject } from "@wrappid/styles";
 
-import { CoreMenuContext } from "../../../config/contextHandler";
+import { CoreMenuContext, CoreRouteRegistryContext } from "../../../config/contextHandler";
+import { MENU_ITEM } from "../../../config/menuConstants";
+import { queryBuilder } from "../../../utils/helper";
 import CoreMenu from "../../inputs/CoreMenu";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
 
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
   const menuData = useContext(CoreMenuContext);
+  const routeRegistry = useContext(CoreRouteRegistryContext);
   const { onClose } = props;
 
+  function getLink(menuItem, routeRegistry){
+    if(menuItem?.type === MENU_ITEM || !menuItem?.type){
+      if(menuItem?.route && routeRegistry){
+        if(menuItem.params){
+          if(typeof menuItem.params === "string"){
+            return routeRegistry[menuItem.route] + menuItem.params;
+          }
+          else{
+            let url = queryBuilder(routeRegistry[menuItem.route], menuItem.params);
+
+            return url;
+          }
+        }
+        else{
+          return routeRegistry[menuItem.route];
+        }
+      }
+      else{
+        if(menuItem.link){
+          return menuItem.link;
+        }
+        else{
+          return "";
+        }
+      }
+    }
+    else{
+      return "javascript:void(0)";
+    }
+  }
+
   const OnMenuClick = (item) => {
-    navigate(item.link);
+    let config = getConfigurationObject();
+
+    if(config?.environment === APP_PLATFORM) {
+      navigate(getLink(item, routeRegistry));
+    }
     onClose();
   };
 

@@ -12,7 +12,7 @@ import {
   MENU_ITEM_TEXT,
   MENU_ITEM_WRAPPER,
   MENU_PARENT_ITEM,
-  MENU_SEPERATOR,
+  MENU_SEPERATOR
 } from "../config/menuConstants";
 
 export function createMultiLevelMenu(
@@ -26,7 +26,8 @@ export function createMultiLevelMenu(
   selectedID,
   setSelectedID,
   locationPathname,
-  theme
+  theme,
+  routeRegistry
 ) {
   return menu?.map((itemData) => {
     return (
@@ -50,7 +51,8 @@ export function createMultiLevelMenu(
             MENU_ITEM_WRAPPER,
             MENU_PARENT_ITEM,
             MENU_SEPERATOR,
-          }
+          },
+          routeRegistry
         )}
 
         {multiLevel &&
@@ -78,7 +80,8 @@ export function createMultiLevelMenu(
               MENU_ITEM_WRAPPER,
               MENU_PARENT_ITEM,
               MENU_SEPERATOR,
-            }
+            },
+            routeRegistry
           )}
       </>
     );

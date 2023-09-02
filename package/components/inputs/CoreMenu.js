@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/native";
 
-import { ThemeContext } from "../../config/contextHandler";
+import { CoreRouteRegistryContext, ThemeContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import CoreStack from "../layouts/CoreStack";
@@ -19,6 +19,8 @@ export default function CoreMenu(props) {
     defaultSelection = null, // this is default selection for the item to be pre select
     noNavigation = false,
   } = props;
+
+  const routeRegistry = useContext(CoreRouteRegistryContext);
 
   let location = {};
 
@@ -52,7 +54,8 @@ export default function CoreMenu(props) {
         selectedID,
         setSelectedID,
         location?.pathname,
-        theme
+        theme,
+        routeRegistry
       )}
     </CoreStack>
   );
