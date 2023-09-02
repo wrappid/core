@@ -34,7 +34,7 @@ export default function CoreTimer({ seconds, action, actionLabel, timerLabel }) 
       <CoreTypographyBody2 
         styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1]}
       >
-        {timerLabel ? timerLabel + "00:" + timer : "00:" + timer}
+        {timerLabel ? timerLabel + "00:" + timer.toString().padStart(2, "0") : "00:" + timer.toString().padStart(2, "0")}
       </CoreTypographyBody2>
   );
 }
