@@ -388,6 +388,8 @@ export default function CoreDataTable(props) {
    * Handle search value
    */
   const filterData = () => {
+    setDetailedRowId(null);
+    setDetailedRowData(null);
     dispatch({
       payload: {
         entity     : tableUUID,

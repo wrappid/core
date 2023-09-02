@@ -178,6 +178,7 @@ import {
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction } from "./store/action/appActions";
+import { reloadDataTableAction } from "./store/action/dataTableActions";
 import { onEditForm, cancelFormEdit } from "./store/action/formAction";
 import { toggleRightMenuState } from "./store/action/menuAction";
 import CoreProvider from "./store/CoreProvider";
@@ -362,6 +363,7 @@ export {
   UserChip,
   createFullStore,
   apiRequestAction,
+  reloadDataTableAction,
   ComponentRegistryContext,
   maskEmailOrPhone,
   getCoreAccessToken,

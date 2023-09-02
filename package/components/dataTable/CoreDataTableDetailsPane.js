@@ -306,7 +306,7 @@ export default function CoreDataTableDetailsPane(props) {
                   </>
                 )
               ) : (
-                <CoreH1>No data found</CoreH1>
+                <CoreTypographyBody1>No row selected</CoreTypographyBody1>
               )}
 
               {postRender_CreateData_DetailsPaneComponent && (
