@@ -169,7 +169,8 @@ export default function CoreDataTable(props) {
     afterDeleteError, // function to be called after successfull Delete
     hideAuditDataDetailPane, //flag for hiding audit info in details pane
     preOnCreate, //function to be called when create button in clicked
-    openCreateOnMount //if true the details pane will be opened and create form will be shown
+    openCreateOnMount, //if true the details pane will be opened and create form will be shown
+    navigationOnCreateUrl //if present on clicking create button naivigation will happen to mentioned url
   } = props;
 
   // eslint-disable-next-line no-unused-vars
@@ -732,6 +733,7 @@ export default function CoreDataTable(props) {
             setPage={setPage}
             setMaxRowInPage={setMaxRowInPage}
             preOnCreate={preOnCreate}
+            navigationOnCreateUrl={navigationOnCreateUrl}
           />
         )}
 

@@ -10,6 +10,7 @@ import SortTableData from "./tableToolbarUtils/SortTableData";
 import TableDensity from "./tableToolbarUtils/TableDensity";
 import { UPDATE_USER_SETTINGS } from "../../config/api";
 import { HTTP, tableToolbar, userSettingsConstants } from "../../config/constants";
+import { coreUseNavigate } from "../../helper/routerHelper";
 import {
   UPDATE_QUERY_MAXROWINPAGE_DATA,
   UPDATE_QUERY_PAGE_DATA
@@ -73,7 +74,8 @@ export default function CoreDataTableToolbar(props) {
     maxRowInPage,
     setPage,
     setMaxRowInPage,
-    preOnCreate
+    preOnCreate,
+    navigationOnCreateUrl
   } = props;
 
   // const [_selectAllColumnFilter, set_selectAllColumnFilter] = React.useState(true);
@@ -82,6 +84,7 @@ export default function CoreDataTableToolbar(props) {
   const _toolbarPopoverOpen = Boolean(_toolbarPopOverAnchorEl);
   const _toolbarID = _toolbarPopoverOpen ? "toolbar-popover-" + tableUUID : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
+  const navigate = coreUseNavigate();
 
   const setPopover = (e, content) => {
     set_toolbarContent(content);
@@ -268,6 +271,9 @@ export default function CoreDataTableToolbar(props) {
                   variant="outlined"
                   startIcon={<CoreIcon>add</CoreIcon>}
                   OnClick={(e) => {
+                    if(navigationOnCreateUrl){
+                      navigate(navigationOnCreateUrl);
+                    }
                     setDetailedRowId(null);
                     setDetailedRowData(null);
                     set_showDetailsPane(true);
