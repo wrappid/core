@@ -8,8 +8,8 @@ import { getConfigurationObject } from "@wrappid/styles";
 import { CoreMenuContext, CoreRouteRegistryContext } from "../../../config/contextHandler";
 import { MENU_ITEM } from "../../../config/menuConstants";
 import { queryBuilder } from "../../../utils/helper";
-import CoreMenu from "../../inputs/CoreMenu";
 import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreMenu from "../../inputs/CoreMenu";
 
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
@@ -27,11 +27,19 @@ export default function QuickAddPopOver(props) {
           else{
             let url = queryBuilder(routeRegistry[menuItem.route], menuItem.params);
 
+            if(typeof url === "string" && !url.startsWith("/")){
+              url = "/" + url;
+            }
             return url;
           }
         }
         else{
-          return routeRegistry[menuItem.route];
+          let url = routeRegistry[menuItem.route];
+
+          if(typeof url === "string" && !url.startsWith("/")){
+            url = "/" + url;
+          }
+          return url;
         }
       }
       else{
