@@ -1,4 +1,3 @@
-// import { setClinic } from "../store/action/prescriptionAction";
 import { getFullName } from "../utils/helper";
 
 export const changePrimaryContact = {
@@ -83,7 +82,6 @@ export const searchClinic = {
   getOptionLabel: (data) => {
     return data && data.fullName ? data.fullName : "";
   },
-  // onChangeDispatch: setClinic,
   getOptionValue: (data) => {
     return data;
   },
@@ -103,3 +101,18 @@ export const masterData = {
     return option.name === value;
   },
 };
+
+export const masterDataMap = {
+  getOptionLabel: (data) => {
+    return data?.label?.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }) || "";
+  },
+  getOptionValue: (data) => {
+    return data?.name;
+  },
+  isOptionEqualToValue: (option, value) => {
+    return option?.name === value;
+  },
+};
+

@@ -13,8 +13,8 @@ import {
 } from "./config/contextHandler";
 import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";
-import CoreProvider from "./store/CoreProvider";
 import FunctionsRegistry from "./registry/FunctionsRegistry";
+import CoreProvider from "./store/CoreProvider";
 
 export default function CoreApp({
   reducers,
@@ -45,15 +45,11 @@ export default function CoreApp({
                 <CoreResourceContext.Provider value={resourceRegistry}>
                   <CoreMenuContext.Provider value={menuRegistry}>
                     <CoreAppDiv>
-                      {/* <CoreDialogContext.Provider value={value}> */}
                       <CoreNavigation>
                         <AppContainer>
                           <CoreRoutes />
                         </AppContainer>
                       </CoreNavigation>
-
-                      {/* <CoreDialog /> */}
-                      {/* </CoreDialogContext.Provider> */}
                     </CoreAppDiv>
                   </CoreMenuContext.Provider>
                 </CoreResourceContext.Provider>

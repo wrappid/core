@@ -1,4 +1,4 @@
-import { coreComponentsRegistry } from "../components/coreComponentsRegistry";
+import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
 import { componentMap } from "../utils/componentMap";
 
 let ComponentRegistry = {

@@ -136,12 +136,16 @@ export default function CoreAsyncSelect(props) {
     }
     let f1 = options?.find((x) => String(x.id) === String(value));
     let f2 = options?.find((x) => String(x.value) === String(value));
+    let f3 = options?.find((x) => String(x.name) === String(value));
 
     if (f1) {
       return f1.label ? f1.label : f1.name ? f1.name : "";
     } else if (f2) {
       return f2.label ? f2.label : f2.name ? f2.name : "";
-    } else return "";
+    } else if (f3) {
+      return f3.label ? f3.label : f3.name ? f3.name : "";
+    }
+    else return "";
   };
 
   const getLabelFromValue = (option, optionsData, options) => {
@@ -399,14 +403,14 @@ export default function CoreAsyncSelect(props) {
           let label = "";
 
           if(typeof option === "string" && isNaN(option)){
-            label = option;
+            label = getLabelFromValue(option, optionsData, options);
           }
           else if(option){
-            if(typeof option === "number" || (typeof option === "string" && !isNaN(option))){
-              label = getLabelFromValue(option, optionsData, options);
-            }
-            else if(getOptionLabel){
+            if(getOptionLabel){
               label = getOptionLabel(option);
+            }
+            else if(typeof option === "number" || (typeof option === "string" && !isNaN(option))){
+              label = getLabelFromValue(option, optionsData, options);
             }
             else if(option.label){
               label = option.label;
