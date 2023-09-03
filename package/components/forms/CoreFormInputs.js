@@ -122,7 +122,7 @@ export default function CoreFormInputs(props) {
     element?.comp && !checkDependencies(element, formikprops)?.hide ? (
       React.createElement(
         element?.comp ? element?.comp : CoreInput,
-        elementProps,
+        element?.dependencies ? elementProps : createFormFieldProps(props, "edit"),
         element?.onlyView ? element?.label : null
       )
     ) : null
