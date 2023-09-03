@@ -197,6 +197,8 @@ import {
 } from "./utils/helper";
 import { maskEmailOrPhone } from "./utils/stringUtils";
 import {
+  APP_PLATFORM,
+  WEB_PLATFORM,
   detectPlatform,
   coreUseTheme,
   CoreCssBaseline
@@ -367,7 +369,11 @@ export {
   ComponentRegistryContext,
   maskEmailOrPhone,
   getCoreAccessToken,
+  
+  APP_PLATFORM,
+  WEB_PLATFORM,
   detectPlatform,
+  
   CoreClasses,
   IconContext,
   FORM_VIEW_MODE,
