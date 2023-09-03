@@ -7,9 +7,9 @@ import TableRowAuditData from "./TableRowAuditData";
 import { ENV_DEV_MODE } from "../../config/constants";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
+import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import StatusText from "../dataDisplay/custom/StatusText";
-import CoreH1 from "../dataDisplay/heading/CoreH1";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
@@ -22,7 +22,6 @@ import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
-import { APP_PLATFORM, WEB_PLATFORM, detectPlatform } from "../../utils/themeUtil";
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -112,6 +111,7 @@ export default function CoreDataTableDetailsPane(props) {
                   set_showDetailsPane={set_showDetailsPane}
                   setDetailedRowId={setDetailedRowId}
                   setDetailedRowData={setDetailedRowData}
+                  filterData={filterData}
                 />
               )}
 
@@ -280,7 +280,7 @@ export default function CoreDataTableDetailsPane(props) {
                       mode={FORM_EDIT_MODE}
                       initData={{}}
                       afterCancel={() => {
-                        set_showDetailsPane(false);
+                        filterData();
                       }}
                       afterCreateSuccess={() => {
                         if(platform === APP_PLATFORM)
