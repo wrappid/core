@@ -4,11 +4,9 @@ import {
   IMPORTANT
 } from "@wrappid/styles";
 
-import { LARGE_WINDOW_WIDTH, MEDIUM_WINDOW_WIDTH } from "../config/constants";
-
-const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;
-const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
-const HEADING_TOP_MARGIN = "64px";
+// -- const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;
+// -- const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
+// -- const HEADING_TOP_MARGIN = "64px";
 
 export const mediumCoreStyles = {
   /**
@@ -40,33 +38,28 @@ export const mediumCoreStyles = {
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
-  dataTableBody     : {},
+  dataTableBody         : {},
   // ----------Data Table Styles Starts----------
-  dataTableContainer: {
-    // ...defaultUtilityStyles.bgWarningLight,
-  },
+  dataTableContainer    : { /* -- ...defaultUtilityStyles.bgWarningLight, */ },
   dataTableFoot         : {},
   dataTableFullWidthPane: {
-    // ...defaultUtilityStyles.border,
-    // ...defaultUtilityStyles.bgInfoLight,
-    // ...defaultUtilityStyles.pl0,
-  },
+    /* -- ...defaultUtilityStyles.border, ...defaultUtilityStyles.bgInfoLight, ...defaultUtilityStyles.pl0, */ },
   dataTableHead: {
-    // ...defaultUtilityStyles.border,
-    // ...defaultUtilityStyles.borderBottom,
-    // ...defaultUtilityStyles.borderPrimaryLight,
-    // ...defaultUtilityStyles.shadow,
+    // -- ...defaultUtilityStyles.border,
+    // -- ...defaultUtilityStyles.borderBottom,
+    // -- ...defaultUtilityStyles.borderPrimaryLight,
+    // -- ...defaultUtilityStyles.shadow,
     top: "-8px" + IMPORTANT,
   },
   dataTableHeadTop: {
-    // top: "50px",
+    // -- top: "50px",
     top: "53px" + IMPORTANT,
   },
   dataTableMiniWidthPane: {
     ...defaultUtilityStyles.border,
     ...defaultUtilityStyles.borderRight,
     ...defaultUtilityStyles.borderPrimaryLight,
-    // ...defaultUtilityStyles.bgWarningLight,
+    // -- ...defaultUtilityStyles.bgWarningLight,
     ...defaultUtilityStyles.positionSticky,
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,
@@ -84,6 +77,8 @@ export const mediumCoreStyles = {
   
   devBorder: { boxShadow: "inset 0px 0px 1px 1px cyan" },
   
+  menuPopover: { minWidth: "25vw" },
+
   profileBarWidth: { maxWidth: "40vw" + IMPORTANT },
   
   tableCell: { ...defaultUtilityStyles.px1 },

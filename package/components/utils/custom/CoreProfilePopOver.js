@@ -43,15 +43,15 @@ export default function CoreProfilePopOver(props) {
         icon: "account_circle",
         type: __IconTypes.MATERIAL_OUTLINED_ICON,
       },
-      id: "viewProfile",
+      id   : "viewProfile",
       label: "View Profile",
-      link: routeRegistry?.profile,
+      link : routeRegistry?.profile,
     },
     {
-      icon: { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
-      id: "settings",
+      icon : { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
+      id   : "settings",
       label: "Settings",
-      link: routeRegistry?.settings,
+      link : routeRegistry?.settings,
     } /* -- ,
     { type: MENU_SEPERATOR },
     {
@@ -68,7 +68,7 @@ export default function CoreProfilePopOver(props) {
   };
 
   return (
-    <CoreBox styleClasses={[CoreClasses.WIDTH.MIN_VW_25, CoreClasses.HEIGHT.MIN_VH_25]}>
+    <CoreBox styleClasses={[CoreClasses.LAYOUT.POPOVER]}>
       <CoreGrid
         styleClasses={[
           CoreClasses.PADDING.P1,
@@ -79,8 +79,8 @@ export default function CoreProfilePopOver(props) {
         ]}
       >
         <CoreAvatar
-          gridProps={{ gridSize: 4 }}
-          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_XLARGE, CoreClasses.MARGIN.ML1]}
+          gridProps={{ gridSize: { md: 4, sm: 3, xs: 3 } }}
+          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
           src={auth?.photo ? auth?.photo : "photo.jpg"}
         />
 

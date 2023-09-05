@@ -92,6 +92,7 @@ const CoreClasses = {
     LEFT_ALIGN                  : "alignLeft",
     LOGGED_OUT_CONTENT_CONTAINER: "loggedOutContentContainer",
     LOGGED_OUT_PAGE_CONTAINER   : "loggedOutPageContainer",
+    MENU_POPOVER                : "menuPopover",
     NO_MARGIN_P                 : "noMarginP",
     PAGE_CONTAINER              : "pageContainer",
     PROFILE_BAR_WIDTH           : "profileBarWidth",

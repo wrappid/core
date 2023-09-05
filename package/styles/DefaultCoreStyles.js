@@ -199,6 +199,8 @@ export const defaultCoreStyles = {
 
   menuItemTextItem: {},
 
+  menuPopover: { minWidth: "75vw" },
+
   miniDrawerListItemButton: {},
 
   miniDrawerListItemIcon: { minWidth: 0 + IMPORTANT },
