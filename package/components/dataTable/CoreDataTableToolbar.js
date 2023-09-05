@@ -44,26 +44,19 @@ export default function CoreDataTableToolbar(props) {
     // setFilteredColumns,
     // audit columns data
     auditColumnsKey = [],
-    // showAuditColumns,
-    // setShowAuditColumns,
-    // sortable
     sortable,
     order,
     onRequestSort,
-    selectable = true,
-    selected = [],
     searchable = true,
     searchValue = "",
     setSearchValue,
     filterData,
     clearFilterData,
-    // enableColumnFilter,
     enableTableDensity,
     enableExport,
     enableSorting,
     enableCreateEntity,
     createEntityButtonText,
-    // _showDetailsPane,
     set_showDetailsPane,
     setDetailedRowId,
     setDetailedRowData,
@@ -78,18 +71,16 @@ export default function CoreDataTableToolbar(props) {
     navigationOnCreateUrl
   } = props;
 
-  // const [_selectAllColumnFilter, set_selectAllColumnFilter] = React.useState(true);
-
   const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] = React.useState(null);
   const _toolbarPopoverOpen = Boolean(_toolbarPopOverAnchorEl);
   const _toolbarID = _toolbarPopoverOpen ? "toolbar-popover-" + tableUUID : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
   const navigate = coreUseNavigate();
 
-  const setPopover = (e, content) => {
+  const setPopover = (event, content) => {
     set_toolbarContent(content);
-    if (e?.currentTarget) {
-      set_toolbarPopOverAnchorEl(e.currentTarget);
+    if (event?.currentTarget) {
+      set_toolbarPopOverAnchorEl(event.currentTarget);
     } else {
       set_toolbarPopOverAnchorEl(content);
     }
@@ -104,58 +95,46 @@ export default function CoreDataTableToolbar(props) {
             : [CoreClasses.MARGIN.MB0]
         }
         value={searchValue}
-        onKeyDown={(e) => {
-          e.keyCode === 13 && filterData();
+        onKeyDown={(event) => {
+          event.keyCode === 13 && filterData();
         }}
-        onChange={(e) => {
-          if (typeof e === "string") setSearchValue(e);
-          else setSearchValue(e.target.value);
+        onChange={(event) => {
+          if (typeof event === "string") setSearchValue(event);
+          else setSearchValue(event.target.value);
         }}
         InputProps={{
           endAdornment: (
             <CoreInputAdornment
               position="end"
-              styleClasses={
-                [
-                  // CoreClasses.PADDING.PR1,
-                  // CoreClasses.PADDING.PB1,
-                ]
-              }
             >
-              {searchValue &&
-              // searchValue !== "" &&
-              searchValue.length > 0 ? (
-                  <CoreIconButton
-                    title="Clear search"
-                    onClick={() => {
-                      console.log("clear search clicked");
-                      setSearchValue("");
-                      clearFilterData();
-                    }}
-                  >
-                    <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
-                  </CoreIconButton>
-                ) : null}
+              { searchValue && searchValue.length > 0 ? (
+                <CoreIconButton
+                  title="Clear search"
+                  onClick={() => {
+                    setSearchValue("");
+                    clearFilterData();
+                  }}
+                >
+                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
+                </CoreIconButton>
+              ) : null}
 
               <CoreIconButton
                 title="Search"
                 onClick={() => {
-                  console.log("search clicked");
                   filterData();
                 }}
               >
                 <CoreIcon>search</CoreIcon>
               </CoreIconButton>
 
-              <CoreIconButton
+              {/* -- <CoreIconButton
                 title="Advanced Search"
                 onClick={() => {
-                  console.log("Advanced Search Clicked");
-                  // filterData();
                 }}
               >
                 <CoreIcon>tune</CoreIcon>
-              </CoreIconButton>
+              </CoreIconButton> */}
             </CoreInputAdornment>
           ),
         }}
@@ -207,7 +186,7 @@ export default function CoreDataTableToolbar(props) {
               comp: (
                 <CoreIconButton
                   title={"Refresh Data"}
-                  onClick={(e) => {
+                  onClick={() => {
                     filterData();
                   }}
                 >
@@ -215,7 +194,7 @@ export default function CoreDataTableToolbar(props) {
                 </CoreIconButton>
               ),
               label  : "Refresh",
-              onClick: (e) => {
+              onClick: () => {
                 filterData();
               },
             },
@@ -224,16 +203,16 @@ export default function CoreDataTableToolbar(props) {
               comp: (
                 <CoreIconButton
                   title={"Sorting"}
-                  onClick={(e) => {
-                    setPopover(e, tableToolbar.SORT_DATA);
+                  onClick={(event) => {
+                    setPopover(event, tableToolbar.SORT_DATA);
                   }}
                 >
                   <CoreIcon>sort </CoreIcon>
                 </CoreIconButton>
               ),
               label  : "Sort",
-              onClick: (e) => {
-                setPopover(e, tableToolbar.SORT_DATA);
+              onClick: (event) => {
+                setPopover(event, tableToolbar.SORT_DATA);
               },
             },
 
@@ -241,16 +220,16 @@ export default function CoreDataTableToolbar(props) {
               comp: enableExport ? (
                 <CoreIconButton
                   title="Export"
-                  onClick={(e) => {
-                    setPopover(e, tableToolbar.EXPORT_DATA);
+                  onClick={(event) => {
+                    setPopover(event, tableToolbar.EXPORT_DATA);
                   }}
                 >
                   <CoreIcon type={__IconTypes.MATERIAL_ICON} icon={"save_alt"} />
                 </CoreIconButton>
               ) : null,
               label  : "Export",
-              onClick: (e) => {
-                setPopover(e, tableToolbar.EXPORT_DATA);
+              onClick: (event) => {
+                setPopover(event, tableToolbar.EXPORT_DATA);
               },
             },
             {
@@ -270,7 +249,7 @@ export default function CoreDataTableToolbar(props) {
                   label={`${createEntityButtonText || getLabel(tableUUID)}`}
                   variant="outlined"
                   startIcon={<CoreIcon>add</CoreIcon>}
-                  OnClick={(e) => {
+                  OnClick={() => {
                     if(navigationOnCreateUrl){
                       navigate(navigationOnCreateUrl);
                     }
@@ -283,7 +262,7 @@ export default function CoreDataTableToolbar(props) {
                   }}
                 />
               ) : null,
-              onClick: (e) => {
+              onClick: () => {
                 setDetailedRowId(null);
                 setDetailedRowData(null);
                 set_showDetailsPane(true);
@@ -316,7 +295,6 @@ export default function CoreDataTableToolbar(props) {
                   page={page}
                   rowsPerPage={maxRowInPage}
                   onPageChange={(event, newPage) => {
-                    console.log("Change page", newPage);
                     setPage(newPage);
                     dispatch({
                       payload: { entity: tableUUID, page: newPage },
@@ -324,7 +302,6 @@ export default function CoreDataTableToolbar(props) {
                     });
                   }}
                   onRowsPerPageChange={(event) => {
-                    console.log("Change max row in page ", event.target.value);
                     if (event.target.value !== maxRowInPage) {
                       setMaxRowInPage(event.target.value);
                       dispatch({
@@ -396,7 +373,6 @@ export default function CoreDataTableToolbar(props) {
           <SortTableData
             tableUUID={tableUUID}
             tableColumns={tableColumns}
-            // filteredColumns={filteredColumns}
             auditColumnsKey={auditColumnsKey}
             sortable={sortable}
             order={order}
@@ -406,14 +382,6 @@ export default function CoreDataTableToolbar(props) {
           <></>
         )}
       </NativeDataTableToolPopover>
-
-      {/* {selectable && selected && selected.length > 0 && (
-        <CoreTooltip title="Delete">
-          <CoreIconButton>
-            <CoreIcon>delete</CoreIcon>
-          </CoreIconButton>
-        </CoreTooltip>
-      )} */}
     </>
   );
 }
