@@ -115,9 +115,6 @@ export default function CoreFormInputs(props) {
     }
   }, []);
 
-  // eslint-disable-next-line no-console
-  console.log("FORM INPUTS", elementProps);
-
   return type === INPUT_TYPE ? (
     element?.comp && !checkDependencies(element, formikprops)?.hide ? (
       React.createElement(

@@ -10,20 +10,36 @@ import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 export default function CoreIconText(props) {
   const { icon, text, type, link = false, href } = props;
 
-  return (
-    (link === true)
-      ?
-      <CoreBox styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
-        <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>{icon}</CoreIcon>
-
-        {/* @todo need to change the "style" below */}
-        <CoreLink href={href || "#"} style={{ fontSize: 12 }} styleClasses={[CoreClasses.MARGIN.ML1]}>{text}</CoreLink>
+  return link === true ? (
+    <CoreBox
+      styleClasses={[CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+      <CoreBox>
+        <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>
+          {icon}
+        </CoreIcon>
       </CoreBox>
-      :
-      <CoreTypographyCaption styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
-        <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>{icon}</CoreIcon>
-      
-        <CoreTypographyCaption styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.COLOR.TEXT_SECONDARY_DARK]}>{text}</CoreTypographyCaption>
+
+      {/* @todo need to change the "style" below */}
+      <CoreLink
+        href={href || "#"}
+        style={{ fontSize: 12 }}
+        styleClasses={[CoreClasses.MARGIN.ML1]}>
+        {text}
+      </CoreLink>
+    </CoreBox>
+  ) : (
+    <CoreBox
+      styleClasses={[CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+      <CoreBox>
+        <CoreIcon styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]} type={type}>
+          {icon}
+        </CoreIcon>
+      </CoreBox>
+
+      <CoreTypographyCaption
+        styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.COLOR.TEXT_SECONDARY_DARK]}>
+        {text}
       </CoreTypographyCaption>
+    </CoreBox>
   );
 }
