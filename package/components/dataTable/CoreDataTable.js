@@ -730,9 +730,10 @@ export default function CoreDataTable(props) {
             gridProps={{
               gridSize: { sm: __TableLeftPanelGridSize },
               styleClasses: [
-                enableDetailsPane && _showDetailsPane
+                CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
+                /*enableDetailsPane && _showDetailsPane
                   ? CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
-                  : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,
+                  : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,*/
               ],
             }}
             // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE]}
@@ -802,63 +803,62 @@ export default function CoreDataTable(props) {
               page={page}
             />
           </CoreTable>
-          </>
         )}
 
-      {enableDetailsPane && _showDetailsPane && (
-        <CoreDataTableDetailsPane
-          gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}
-          tableUUID={tableUUID}
-          createFormID={detailsPaneCreateFormID}
-          updateFormID={detailsPaneUpdateFormID}
-          hideForm={hideForm}
-          hideCreateForm={hideCreateForm}
-          hideUpdateForm={hideUpdateForm}
-          formState={form}
-          formMode={formMode}
-          setFormMode={setFormMode}
-          editable={editable}
-          deletable={deletable}
-          setDetailedRowId={setDetailedRowId}
-          setDetailedRowData={setDetailedRowData}
-          detailedRowId={detailedRowId}
-          detailedRowData={detailedRowData}
-          rowActions={rowActions}
-          tableColumns={tableColumns}
-          filterData={filterData}
-          showCreateForm={showCreateForm}
-          setShowCreateForm={setShowCreateForm}
-          enableCreateEntity={enableCreateEntity}
-          createEntityButtonText={createEntityButtonText}
-          set_showDetailsPane={set_showDetailsPane}
-          preRenderDetailsPaneComponent={preRenderDetailsPaneComponent}
-          postRenderDetailsPaneComponent={postRenderDetailsPaneComponent}
-          preRender_CreateData_DetailsPaneComponent={
-            preRender_CreateData_DetailsPaneComponent
-          }
-          postRender_CreateData_DetailsPaneComponent={
-            postRender_CreateData_DetailsPaneComponent
-          }
-          preRender_UpdateData_DetailsPaneComponent={
-            preRender_UpdateData_DetailsPaneComponent
-          }
-          postRender_UpdateData_DetailsPaneComponent={
-            postRender_UpdateData_DetailsPaneComponent
-          }
-          _expandedDevJSONSchema={_expandedDevJSONSchema}
-          set_expandedDevJSONSchema={set_expandedDevJSONSchema}
-          _showDetailsPane={_showDetailsPane}
-          afterEditSuccess={afterEditSuccess}
-          afterEditError={afterEditError}
-          afterCreateSuccess={afterCreateSuccess}
-          afterCreateError={afterCreateError}
-          afterDeleteSuccess={afterDeleteSuccess}
-          afterDeleteError={afterDeleteError}
-          hideAuditDataDetailPane={hideAuditDataDetailPane}
-          platform={platform}
-        />
-      )}
-    </CoreGrid >
+        {enableDetailsPane && _showDetailsPane && (
+          <CoreDataTableDetailsPane
+            gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}
+            tableUUID={tableUUID}
+            createFormID={detailsPaneCreateFormID}
+            updateFormID={detailsPaneUpdateFormID}
+            hideForm={hideForm}
+            hideCreateForm={hideCreateForm}
+            hideUpdateForm={hideUpdateForm}
+            formState={form}
+            formMode={formMode}
+            setFormMode={setFormMode}
+            editable={editable}
+            deletable={deletable}
+            setDetailedRowId={setDetailedRowId}
+            setDetailedRowData={setDetailedRowData}
+            detailedRowId={detailedRowId}
+            detailedRowData={detailedRowData}
+            rowActions={rowActions}
+            tableColumns={tableColumns}
+            filterData={filterData}
+            showCreateForm={showCreateForm}
+            setShowCreateForm={setShowCreateForm}
+            enableCreateEntity={enableCreateEntity}
+            createEntityButtonText={createEntityButtonText}
+            set_showDetailsPane={set_showDetailsPane}
+            preRenderDetailsPaneComponent={preRenderDetailsPaneComponent}
+            postRenderDetailsPaneComponent={postRenderDetailsPaneComponent}
+            preRender_CreateData_DetailsPaneComponent={
+              preRender_CreateData_DetailsPaneComponent
+            }
+            postRender_CreateData_DetailsPaneComponent={
+              postRender_CreateData_DetailsPaneComponent
+            }
+            preRender_UpdateData_DetailsPaneComponent={
+              preRender_UpdateData_DetailsPaneComponent
+            }
+            postRender_UpdateData_DetailsPaneComponent={
+              postRender_UpdateData_DetailsPaneComponent
+            }
+            _expandedDevJSONSchema={_expandedDevJSONSchema}
+            set_expandedDevJSONSchema={set_expandedDevJSONSchema}
+            _showDetailsPane={_showDetailsPane}
+            afterEditSuccess={afterEditSuccess}
+            afterEditError={afterEditError}
+            afterCreateSuccess={afterCreateSuccess}
+            afterCreateError={afterCreateError}
+            afterDeleteSuccess={afterDeleteSuccess}
+            afterDeleteError={afterDeleteError}
+            hideAuditDataDetailPane={hideAuditDataDetailPane}
+            platform={platform}
+          />
+        )}
+      </CoreGrid >
     </>
   );
 }
