@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
@@ -115,7 +116,7 @@ export default function CoreDataTableDetailsPane(props) {
                 />
               )}
 
-              {/* <CoreIconButton
+              {/* -- <CoreIconButton
                 onClick={(e) => {
                   set_showDetailsPane(false);
                   setDetailedRowId(null);
@@ -132,31 +133,31 @@ export default function CoreDataTableDetailsPane(props) {
           {detailedRowData ? (
             <>
               {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
-                <CoreAccordion
-                  expanded={_expandedDevJSONSchema}
-                  onChange={() => {
-                    set_expandedDevJSONSchema(!_expandedDevJSONSchema);
-                  }}
-                >
-                  <CoreAccordionSummary>
-                    <CoreLabel>JSON Schema</CoreLabel>
-                  </CoreAccordionSummary>
+                <>
+                  <CoreAccordion
+                    expanded={_expandedDevJSONSchema}
+                    onChange={() => {
+                      set_expandedDevJSONSchema(!_expandedDevJSONSchema);
+                    }}
+                  >
+                    <CoreAccordionSummary>
+                      <CoreLabel>JSON Schema</CoreLabel>
+                    </CoreAccordionSummary>
 
-                  <CoreAccordionDetail>
-                    {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
-                    <CoreLabel>
-                      {JSON.stringify(detailedRowData, null, 2)}
-                    </CoreLabel>
-                  </CoreAccordionDetail>
-                </CoreAccordion>
+                    <CoreAccordionDetail>
+                      {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
+                      <CoreLabel>
+                        {JSON.stringify(detailedRowData, null, 2)}
+                      </CoreLabel>
+                    </CoreAccordionDetail>
+                  </CoreAccordion>
+
+                  <CoreDivider />
+                </>
               )}
 
               {preRenderDetailsPaneComponent && (
-                <>
-                  <CoreDivider />
-
-                  {React.createElement(preRenderDetailsPaneComponent, { data: detailedRowData })}
-                </>
+                React.createElement(preRenderDetailsPaneComponent, { data: detailedRowData })
               )}
 
               {preRender_UpdateData_DetailsPaneComponent && (

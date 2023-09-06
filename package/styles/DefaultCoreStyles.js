@@ -118,7 +118,7 @@ export const defaultCoreStyles = {
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,
     height: "calc(100vh - 118px)" + IMPORTANT,
-    top   : "53px" + IMPORTANT,
+    top   : "53px" + IMPORTANT
   },
 
   dataTableToolbar: {

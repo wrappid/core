@@ -38,8 +38,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE: "PROFILE",
-    QUICK_MENU: "QUICK_MENU",
+    PROFILE     : "PROFILE",
+    QUICK_MENU  : "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -73,11 +73,7 @@ export default function CoreAppBar(props) {
     <>
       <NativeAppBar {...props}>
         <CoreToolbar
-          styleClasses={[
-            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.FLEX.DIRECTION_ROW,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
+          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           <CoreStack direction="row" styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
             <CoreIconButton
@@ -103,11 +99,7 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[
-                CoreClasses.WIDTH.W_100,
-                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              ]}
+              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value?.flag && (
                 <CoreIconButton styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
@@ -175,7 +167,7 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical: "bottom",
+            vertical  : "bottom",
           }}
         >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
