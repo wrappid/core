@@ -56,6 +56,7 @@ export default function CoreDataTableToolbar(props) {
     enableExport,
     enableSorting,
     enableCreateEntity,
+    setShowCreateForm,
     createEntityButtonText,
     set_showDetailsPane,
     setDetailedRowId,
@@ -254,6 +255,7 @@ export default function CoreDataTableToolbar(props) {
                     setDetailedRowId(null);
                     setDetailedRowData(null);
                     set_showDetailsPane(true);
+                    setShowCreateForm(true);
                     if(preOnCreate){
                       preOnCreate();
                     }

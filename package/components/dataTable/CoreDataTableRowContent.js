@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
@@ -11,6 +12,7 @@ import {
 } from "./../../utils/tableUtils";
 import CoreTableCell from "./../dataDisplay/CoreTableCell";
 import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
+import { MEDIUM_WINDOW_WIDTH } from "../../config/constants";
 import CoreClasses from "../../styles/CoreClasses";
 import { isJson } from "../../utils/stringUtils";
 import {
@@ -30,12 +32,14 @@ export default function CoreDataTableRowContent(props) {
   const {
     tableUUID,
     tableColumns,
-    tableColumnsShown,
+    // tableColumnsShown,
     tableColumnsToShow,
     rowIndex,
     rowData,
     enableDetailsPane,
     _showDetailsPane,
+    showCreateForm,
+    detailedRowData,
     summaryRendererComponent,
   } = props;
 
@@ -43,17 +47,18 @@ export default function CoreDataTableRowContent(props) {
   const [idData, setIdData] = React.useState(null);
   const [hasStatus, setHasStatus] = React.useState(false);
   const [statusData, setStatusData] = React.useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [hasImage, setHasImage] = React.useState(false);
   const [imageData, setImageData] = React.useState(null);
-  // const [hasPriority1, setHasPriority1] = React.useState(false);
+  // -- const [hasPriority1, setHasPriority1] = React.useState(false);
   const [priority1Data, setPriority1Data] = React.useState(null);
-  // const [hasPriority2, setHasPriority2] = React.useState(false);
+  // -- const [hasPriority2, setHasPriority2] = React.useState(false);
   const [priority2Data, setPriority2Data] = React.useState(null);
-  // const [hasPriority3, setHasPriority3] = React.useState(false);
+  // -- const [hasPriority3, setHasPriority3] = React.useState(false);
   const [priority3Data, setPriority3Data] = React.useState(null);
-  // const [hasPriority4, setHasPriority4] = React.useState(false);
+  // -- const [hasPriority4, setHasPriority4] = React.useState(false);
   const [priority4Data, setPriority4Data] = React.useState(null);
-  // const [hasPriority5, setHasPriority5] = React.useState(false);
+  // -- const [hasPriority5, setHasPriority5] = React.useState(false);
   const [priority5Data, setPriority5Data] = React.useState(null);
 
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
@@ -74,7 +79,7 @@ export default function CoreDataTableRowContent(props) {
      */
 
     // let addedCount = 0;
-    // const tableColumnsToShow = tableColumns?.filter((tableCol, index) => {
+    // -- const tableColumnsToShow = tableColumns?.filter((tableCol, index) => {
     //   if (Boolean(tableCol.priority) && addedCount < DATA_TABLE_CONST.DEFAULT_MAX_COLUMNS_COUNT) {
     //     addedCount++;
     //     return true;
@@ -95,9 +100,9 @@ export default function CoreDataTableRowContent(props) {
       (firstCol, secondCol) =>
         firstCol.priority - secondCol.priority ||
         firstCol.order - secondCol.order
-    ).forEach((defaultCol, index) => {
+    ).forEach((defaultCol) => {
       if (defaultCol.priority > lastProcessedPriority) {
-        tableColumns.forEach((tableColumn, index) => {
+        tableColumns.forEach((tableColumn) => {
           if (tableColumn.id === defaultCol.id) {
             // tableColumn has defaultColumn
             if (usedColumnIds.includes(defaultCol.id) === false) {
@@ -120,7 +125,6 @@ export default function CoreDataTableRowContent(props) {
                 setPriority4Data,
                 setPriority5Data
               );
-              // tableColumnsToShow.push({ ...tableColumn, priority: defaultCol.priority });
               usedColumnIds.push(defaultCol.id);
               lastProcessedPriority = defaultCol.priority;
             }
@@ -156,7 +160,6 @@ export default function CoreDataTableRowContent(props) {
     ) : null;
   };
 
-  // export const getOtherDataComponent = () => {};
   const getIdComponent = () => {
     return (
       <CoreTypographyCaption>{"ID: " + idData?.data}</CoreTypographyCaption>
@@ -182,7 +185,7 @@ export default function CoreDataTableRowContent(props) {
 
   return (
     <>
-      {(enableDetailsPane && _showDetailsPane) || platform === APP_PLATFORM ? (
+      {(enableDetailsPane && _showDetailsPane || (window.innerWidth < MEDIUM_WINDOW_WIDTH && (!showCreateForm || !detailedRowData))) || platform === APP_PLATFORM ? (
         <CoreTableCell styleClasses={[CoreClasses.PADDING.PX1]}>
           <CoreDataTableRowSummary
             tableColumns={tableColumns}

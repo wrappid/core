@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+import { MEDIUM_WINDOW_WIDTH } from "../../config/constants";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
 import CoreTableHead from "../dataDisplay/CoreTableHead";
@@ -59,7 +60,7 @@ export default function CoreDataTableHead(props) {
               )}
 
               {/* Table Head - Columns */}
-              {_showDetailsPane ? (
+              {_showDetailsPane || window.innerWidth < MEDIUM_WINDOW_WIDTH ? (
                 <CoreTableHeadCell styleClasses={[CoreClasses.PADDING.PX1]}>
                   {getLabel(tableUUID)}
                 </CoreTableHeadCell>

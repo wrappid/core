@@ -9,7 +9,8 @@ import CoreDataTableToolbar from "./CoreDataTableToolbar";
 import {
   HTTP,
   userSettingsConstants,
-  __TableDensity
+  __TableDensity,
+  MEDIUM_WINDOW_WIDTH
 } from "../../config/constants";
 import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
 import { apiRequestAction } from "../../store/action/appActions";
@@ -205,6 +206,9 @@ export default function CoreDataTable(props) {
   const [page, setPage] = React.useState(0);
   const [maxRowInPage, setMaxRowInPage] = React.useState(maxRowsInPage);
 
+  // enable create
+  const [showCreateForm, setShowCreateForm] = React.useState(false);
+
   // audit data
   const auditColumnsKey = [
     "createdAt",
@@ -345,10 +349,14 @@ export default function CoreDataTable(props) {
     if (platform === APP_PLATFORM) {
       set_showDetailsPane(false);
     } else {
-      set_showDetailsPane(true);
-      if (!detailedRowId && tableData && tableData?.length > 0 && !openCreateOnMount) {
-        setDetailedRowId(tableData[0]?.id);
-        setDetailedRowData(tableData[0]);
+      if (window.innerWidth < MEDIUM_WINDOW_WIDTH) {
+        set_showDetailsPane(false);
+      } else {
+        set_showDetailsPane(true);
+        if (!detailedRowId && tableData && tableData?.length > 0 && !openCreateOnMount) {
+          setDetailedRowId(tableData[0]?.id);
+          setDetailedRowData(tableData[0]);
+        }
       }
     }
 
@@ -682,142 +690,149 @@ export default function CoreDataTable(props) {
         coreId="sam-data-table-container"
         // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_CONTAINER]}
       >
-        {showToolbar && (
-          <CoreDataTableToolbar
-            coreId="sam-data-table-toolbar"
-            gridProps={{
-              gridSize    : 12,
-              styleClasses: [CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER],
-            }}
-            styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR]}
-            tableUUID={tableUUID}
-            tableColumns={tableColumns}
-            // table density
-            tableDensity={tableDensity}
-            setTableDensity={setTableDensity}
-            // table columns filter
-            // filteredColumns={filteredColumns}
-            // setFilteredColumns={setFilteredColumns}
-            // audit columns data
-            auditColumnsKey={auditColumnsKey}
-            showAuditColumns={showAuditColumns}
-            setShowAuditColumns={setShowAuditColumns}
-            // sortable
-            sortable={sortable}
-            order={query?._order}
-            onRequestSort={handleRequestSort}
-            // select param
-            selectable={selectable}
-            selected={selected}
-            searchable={searchable}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            filterData={filterData}
-            clearFilterData={clearFilterData}
-            showToolbar={showToolbar}
-            enableColumnFilter={enableColumnFilter}
-            enableDataFilter={enableDataFilter}
-            enableTableDensity={enableTableDensity}
-            enableExport={enableExport}
-            enableSorting={enableSorting}
-            _showDetailsPane={_showDetailsPane}
-            set_showDetailsPane={set_showDetailsPane}
-            setDetailedRowId={setDetailedRowId}
-            setDetailedRowData={setDetailedRowData}
-            enableCreateEntity={enableCreateEntity}
-            createEntityButtonText={createEntityButtonText}
-            // --------Pagination--------
-            data={data}
-            page={page}
-            maxRowInPage={maxRowInPage}
-            setPage={setPage}
-            setMaxRowInPage={setMaxRowInPage}
-            preOnCreate={preOnCreate}
-            navigationOnCreateUrl={navigationOnCreateUrl}
-          />
+        {(window.innerWidth >= MEDIUM_WINDOW_WIDTH || !_showDetailsPane) && (
+          <>
+            {showToolbar && (
+              <CoreDataTableToolbar
+                coreId="sam-data-table-toolbar"
+                gridProps={{
+                  gridSize    : 12,
+                  styleClasses: [CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER],
+                }}
+                styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR]}
+                tableUUID={tableUUID}
+                tableColumns={tableColumns}
+                // table density
+                tableDensity={tableDensity}
+                setTableDensity={setTableDensity}
+                // table columns filter
+                // filteredColumns={filteredColumns}
+                // setFilteredColumns={setFilteredColumns}
+                // audit columns data
+                auditColumnsKey={auditColumnsKey}
+                showAuditColumns={showAuditColumns}
+                setShowAuditColumns={setShowAuditColumns}
+                // sortable
+                sortable={sortable}
+                order={query?._order}
+                onRequestSort={handleRequestSort}
+                // select param
+                selectable={selectable}
+                selected={selected}
+                searchable={searchable}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                filterData={filterData}
+                clearFilterData={clearFilterData}
+                showToolbar={showToolbar}
+                enableColumnFilter={enableColumnFilter}
+                enableDataFilter={enableDataFilter}
+                enableTableDensity={enableTableDensity}
+                enableExport={enableExport}
+                enableSorting={enableSorting}
+                _showDetailsPane={_showDetailsPane}
+                set_showDetailsPane={set_showDetailsPane}
+                setDetailedRowId={setDetailedRowId}
+                setDetailedRowData={setDetailedRowData}
+                enableCreateEntity={enableCreateEntity}
+                setShowCreateForm={setShowCreateForm}
+                createEntityButtonText={createEntityButtonText}
+                // --------Pagination--------
+                data={data}
+                page={page}
+                maxRowInPage={maxRowInPage}
+                setPage={setPage}
+                setMaxRowInPage={setMaxRowInPage}
+                preOnCreate={preOnCreate}
+                navigationOnCreateUrl={navigationOnCreateUrl}
+              />
+            )}
+            
+            <CoreTable
+              gridProps={{
+                gridSize: {
+                  sm:
+                      (enableDetailsPane && _showDetailsPane) || window.innerWidth >= MEDIUM_WINDOW_WIDTH
+                        ? __TableLeftPanelGridSize
+                        : 12,
+                },
+                styleClasses: [
+                  (enableDetailsPane && _showDetailsPane) || window.innerWidth >= MEDIUM_WINDOW_WIDTH
+                    ? CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
+                    : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,
+                ],
+              }}
+              // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE]}
+              // stickyHeader
+              hover={rowHover}
+              coreId={tableUUID}
+              size={getTableDensityValue(tableDensity)}
+              sx={{ padding: getTableDensityPaddingValue(tableDensity) }}
+              {...props.tableProps}
+            >
+              <CoreDataTableHead
+                tableHeadProps={{
+                  ...tableHeadProps,
+                  styleClasses: [CoreClasses.POSITION.STICKY_TOP, CoreClasses.DATA_TABLE.DATA_TABLE_HEAD, !_showDetailsPane && CoreClasses.DATA_TABLE.DATA_TABLE_HEAD_TOP],
+                }}
+                tableUUID={tableUUID}
+                tableColumnsShown={tableColumnsShown}
+                tableColumnsToShow={tableColumnsToShow}
+                selectable={selectable}
+                rows={tableData}
+                columns={tableColumns}
+                showAuditColumns={showAuditColumns}
+                auditColumnsKey={auditColumnsKey}
+                tableActions={rowActions}
+                // sortable
+                sortable={sortable}
+                order={query?._order}
+                onRequestSort={handleRequestSort}
+                selected={selected}
+                handleRowSelectAll={handleRowSelectAll}
+                enableDetailsPane={enableDetailsPane}
+                _showDetailsPane={_showDetailsPane}
+              />
+
+              <CoreDataTableBody
+                {...props.tableBodyProps}
+                tableUUID={tableUUID}
+                tableColumnsShown={tableColumnsShown}
+                hover={rowHover}
+                tableColumns={tableColumns}
+                tableColumnsToShow={tableColumnsToShow}
+                tableData={tableData}
+                tableActions={rowActions}
+                query={query}
+                order={query?._order}
+                editable={editable}
+                deletable={deletable}
+                auditColumnsKey={auditColumnsKey}
+                showAuditColumns={showAuditColumns}
+                selectable={selectable}
+                selected={selected}
+                handleRowSelect={handleRowSelect}
+                enableDetailsPane={enableDetailsPane}
+                _showDetailsPane={_showDetailsPane}
+                set_showDetailsPane={set_showDetailsPane}
+                showCreateForm={showCreateForm}
+                summaryRendererComponent={summaryRendererComponent}
+                detailedRowId={detailedRowId}
+                detailedRowData={detailedRowData}
+                setDetailedRowId={setDetailedRowId}
+                setDetailedRowData={setDetailedRowData}
+                setFormMode={setFormMode}
+                enableCreateEntity={enableCreateEntity}
+                createEntityButtonText={createEntityButtonText}
+                //reuired in mobile as pagination happens in infinte scroll
+                setPage={setPage}
+                page={page}
+              />
+            </CoreTable>
+          </>
         )}
 
-        <CoreTable
-          gridProps={{
-            gridSize: {
-              sm:
-                enableDetailsPane && _showDetailsPane
-                  ? __TableLeftPanelGridSize
-                  : 12,
-            },
-            styleClasses: [
-              enableDetailsPane && _showDetailsPane
-                ? CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE
-                : CoreClasses.DATA_TABLE.DATA_TABLE_FULL_WIDTH_PANE,
-            ],
-          }}
-          // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE]}
-          // stickyHeader
-          hover={rowHover}
-          coreId={tableUUID}
-          size={getTableDensityValue(tableDensity)}
-          sx={{ padding: getTableDensityPaddingValue(tableDensity) }}
-          {...props.tableProps}
-        >
-          <CoreDataTableHead
-            tableHeadProps={{
-              ...tableHeadProps,
-              styleClasses: [CoreClasses.POSITION.STICKY_TOP, CoreClasses.DATA_TABLE.DATA_TABLE_HEAD, !_showDetailsPane && CoreClasses.DATA_TABLE.DATA_TABLE_HEAD_TOP],
-            }}
-            tableUUID={tableUUID}
-            tableColumnsShown={tableColumnsShown}
-            tableColumnsToShow={tableColumnsToShow}
-            selectable={selectable}
-            rows={tableData}
-            columns={tableColumns}
-            showAuditColumns={showAuditColumns}
-            auditColumnsKey={auditColumnsKey}
-            tableActions={rowActions}
-            // sortable
-            sortable={sortable}
-            order={query?._order}
-            onRequestSort={handleRequestSort}
-            selected={selected}
-            handleRowSelectAll={handleRowSelectAll}
-            enableDetailsPane={enableDetailsPane}
-            _showDetailsPane={_showDetailsPane}
-          />
-
-          <CoreDataTableBody
-            {...props.tableBodyProps}
-            tableUUID={tableUUID}
-            tableColumnsShown={tableColumnsShown}
-            hover={rowHover}
-            tableColumns={tableColumns}
-            tableColumnsToShow={tableColumnsToShow}
-            tableData={tableData}
-            tableActions={rowActions}
-            query={query}
-            order={query?._order}
-            editable={editable}
-            deletable={deletable}
-            auditColumnsKey={auditColumnsKey}
-            showAuditColumns={showAuditColumns}
-            selectable={selectable}
-            selected={selected}
-            handleRowSelect={handleRowSelect}
-            enableDetailsPane={enableDetailsPane}
-            _showDetailsPane={_showDetailsPane}
-            set_showDetailsPane={set_showDetailsPane}
-            summaryRendererComponent={summaryRendererComponent}
-            detailedRowId={detailedRowId}
-            setDetailedRowId={setDetailedRowId}
-            setDetailedRowData={setDetailedRowData}
-            setFormMode={setFormMode}
-            enableCreateEntity={enableCreateEntity}
-            createEntityButtonText={createEntityButtonText}
-            //reuired in mobile as pagination happens in infinte scroll
-            setPage={setPage}
-            page={page}
-          />
-        </CoreTable>
-
-        {enableDetailsPane && _showDetailsPane && (
+        {enableDetailsPane && _showDetailsPane && (window.innerWidth < MEDIUM_WINDOW_WIDTH && (detailedRowData || showCreateForm)) && (
           <CoreDataTableDetailsPane
             gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}
             tableUUID={tableUUID}
@@ -838,6 +853,8 @@ export default function CoreDataTable(props) {
             rowActions={rowActions}
             tableColumns={tableColumns}
             filterData={filterData}
+            showCreateForm={showCreateForm}
+            setShowCreateForm={setShowCreateForm}
             enableCreateEntity={enableCreateEntity}
             createEntityButtonText={createEntityButtonText}
             set_showDetailsPane={set_showDetailsPane}

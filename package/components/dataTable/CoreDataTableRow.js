@@ -4,10 +4,8 @@ import React, { useContext } from "react";
 import { UtilityClasses } from "@wrappid/styles";
 import { useDispatch } from "react-redux";
 
-import CoreDataTableRowActionPopover from "./CoreDataTableRowActionPopover";
 import CoreDataTableRowContent from "./CoreDataTableRowContent";
 import CoreFlatList from "./CoreFlatList";
-import CoreTableAction from "./CoreTableAction";
 import { ThemeContext } from "../../config/contextHandler";
 import { UPDATE_QUERY_PAGE_DATA } from "../../store/types/dataManagementTypes";
 import { getLabel } from "../../utils/stringUtils";
@@ -46,15 +44,17 @@ export default function CoreDataTableRow(props) {
     set_showDetailsPane,
     summaryRendererComponent,
     detailedRowId,
+    detailedRowData,
     setDetailedRowId,
     setDetailedRowData,
     setFormMode,
     enableCreateEntity,
+    showCreateForm,
     createEntityButtonText,
-    handlePopoverClose,
+    // handlePopoverClose,
     handlePopoverOpen,
-    anchorEl,
-    _rowHoverIndex,
+    // anchorEl,
+    // _rowHoverIndex,
     page,
     setPage,
   } = props;
@@ -63,7 +63,7 @@ export default function CoreDataTableRow(props) {
     return (
       <>
         {/* Table Row Action */}
-        {!_showDetailsPane && (
+        {/* -- {!_showDetailsPane && (
           <CoreDataTableRowActionPopover
             anchorEl={anchorEl}
             _rowHoverIndex={_rowHoverIndex}
@@ -85,7 +85,7 @@ export default function CoreDataTableRow(props) {
               </CoreStack>
             </CoreBox>
           </CoreDataTableRowActionPopover>
-        )}
+        )} */}
 
         {/* Table Row Data */}
         <CoreTableRow
@@ -148,6 +148,8 @@ export default function CoreDataTableRow(props) {
             rowData={rowData}
             enableDetailsPane={enableDetailsPane}
             _showDetailsPane={_showDetailsPane}
+            showCreateForm={showCreateForm}
+            detailedRowData={detailedRowData}
             summaryRendererComponent={summaryRendererComponent}
           />
         </CoreTableRow>

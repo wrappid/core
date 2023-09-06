@@ -5,17 +5,19 @@ import React from "react";
 import CoreTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
 import CoreTableAction from "./CoreTableAction";
 import TableRowAuditData from "./TableRowAuditData";
-import { ENV_DEV_MODE } from "../../config/constants";
+import { ENV_DEV_MODE, MEDIUM_WINDOW_WIDTH } from "../../config/constants";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
 import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreDivider from "../dataDisplay/CoreDivider";
+import CoreIcon from "../dataDisplay/CoreIcon";
 import StatusText from "../dataDisplay/custom/StatusText";
 import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
 import CoreForm from "../forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../forms/coreFormConstants";
+import CoreIconButton from "../inputs/CoreIconButton";
 import CoreStack from "../layouts/CoreStack";
 import CoreAccordion from "../surfaces/CoreAccordion";
 import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
@@ -44,6 +46,8 @@ export default function CoreDataTableDetailsPane(props) {
     tableColumns,
     filterData,
     enableCreateEntity,
+    showCreateForm,
+    setShowCreateForm,
     createEntityButtonText,
     set_showDetailsPane,
     preRenderDetailsPaneComponent,
@@ -116,15 +120,18 @@ export default function CoreDataTableDetailsPane(props) {
                 />
               )}
 
-              {/* -- <CoreIconButton
-                onClick={(e) => {
-                  set_showDetailsPane(false);
-                  setDetailedRowId(null);
-                  setDetailedRowData(null);
-                }}
-              >
-                <CoreIcon>clear</CoreIcon>
-              </CoreIconButton> */}
+              {window.innerWidth < MEDIUM_WINDOW_WIDTH && (
+                <CoreIconButton
+                  onClick={() => {
+                    showCreateForm && setShowCreateForm(false);
+                    set_showDetailsPane(false);
+                    setDetailedRowId(null);
+                    setDetailedRowData(null);
+                  }}
+                >
+                  <CoreIcon>clear</CoreIcon>
+                </CoreIconButton>
+              )}
             </CoreStack>
           }
         />
@@ -269,46 +276,43 @@ export default function CoreDataTableDetailsPane(props) {
                 </>
               )}
 
-              {enableCreateEntity ? (
+              {(enableCreateEntity && showCreateForm &&
                 createFormID &&
                 !hideForm &&
-                !hideCreateForm && (
-                  <>
-                    <CoreForm
-                      apiMode={"create"}
-                      onMountRead={false}
-                      formId={createFormID}
-                      mode={FORM_EDIT_MODE}
-                      initData={{}}
-                      afterCancel={() => {
-                        filterData();
-                      }}
-                      afterCreateSuccess={() => {
-                        if(platform === APP_PLATFORM)
-                          set_showDetailsPane(false);
+                !hideCreateForm) ? (
+                  <CoreForm
+                    apiMode={"create"}
+                    onMountRead={false}
+                    formId={createFormID}
+                    mode={FORM_EDIT_MODE}
+                    initData={{}}
+                    afterCancel={() => {
+                      filterData();
+                    }}
+                    afterCreateSuccess={() => {
+                      if(platform === APP_PLATFORM)
+                        set_showDetailsPane(false);
 
-                        filterData();
-                        if (
-                          afterCreateSuccess &&
+                      filterData();
+                      if (
+                        afterCreateSuccess &&
                           typeof afterCreateSuccess === "function"
-                        ) {
-                          afterCreateSuccess();
-                        }
-                      }}
-                      afterCreateError={() => {
-                        if (
-                          afterCreateError &&
+                      ) {
+                        afterCreateSuccess();
+                      }
+                    }}
+                    afterCreateError={() => {
+                      if (
+                        afterCreateError &&
                           typeof afterCreateError === "function"
-                        ) {
-                          afterCreateError();
-                        }
-                      }}
-                    />
-                  </>
-                )
-              ) : (
-                <CoreTypographyBody1>No row selected</CoreTypographyBody1>
-              )}
+                      ) {
+                        afterCreateError();
+                      }
+                    }}
+                  />
+                ) : (
+                  <CoreTypographyBody1>No row selected</CoreTypographyBody1>
+                )}
 
               {postRender_CreateData_DetailsPaneComponent && (
                 <>
