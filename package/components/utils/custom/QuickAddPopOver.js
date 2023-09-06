@@ -3,12 +3,15 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 
-import { CoreMenuContext, CoreRouteRegistryContext } from "../../../config/contextHandler";
+import {
+  CoreMenuContext,
+  CoreRouteRegistryContext
+} from "../../../config/contextHandler";
 import { MENU_ITEM } from "../../../config/menuConstants";
 import { queryBuilder } from "../../../utils/helper";
-import { APP_PLATFORM } from "../../../utils/themeUtil";
 import CoreMenu from "../../inputs/CoreMenu";
 
 export default function QuickAddPopOver(props) {
@@ -17,49 +20,47 @@ export default function QuickAddPopOver(props) {
   const routeRegistry = useContext(CoreRouteRegistryContext);
   const { onClose } = props;
 
-  function getLink(menuItem, routeRegistry){
-    if(menuItem?.type === MENU_ITEM || !menuItem?.type){
-      if(menuItem?.route && routeRegistry){
-        if(menuItem.params){
-          if(typeof menuItem.params === "string"){
+  function getLink(menuItem, routeRegistry) {
+    if (menuItem?.type === MENU_ITEM || !menuItem?.type) {
+      if (menuItem?.route && routeRegistry) {
+        if (menuItem.params) {
+          if (typeof menuItem.params === "string") {
             return routeRegistry[menuItem.route] + menuItem.params;
-          }
-          else{
-            let url = queryBuilder(routeRegistry[menuItem.route], menuItem.params);
+          } else {
+            let url = queryBuilder(
+              routeRegistry[menuItem.route],
+              menuItem.params
+            );
 
-            if(typeof url === "string" && !url.startsWith("/")){
+            if (typeof url === "string" && !url.startsWith("/")) {
               url = "/" + url;
             }
             return url;
           }
-        }
-        else{
+        } else {
           let url = routeRegistry[menuItem.route];
 
-          if(typeof url === "string" && !url.startsWith("/")){
+          if (typeof url === "string" && !url.startsWith("/")) {
             url = "/" + url;
           }
           return url;
         }
-      }
-      else{
-        if(menuItem.link){
+      } else {
+        if (menuItem.link) {
           return menuItem.link;
-        }
-        else{
+        } else {
           return "";
         }
       }
-    }
-    else{
+    } else {
       return "javascript:void(0)";
     }
   }
 
-  const OnMenuClick = (item) => {
+  const OnMenuClick = item => {
     let config = getConfigurationObject();
 
-    if(config?.environment === APP_PLATFORM) {
+    if (config?.wrappid?.platform === "mobile") {
       navigate(getLink(item, routeRegistry));
     }
     onClose();
