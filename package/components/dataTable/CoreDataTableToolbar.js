@@ -95,8 +95,11 @@ export default function CoreDataTableToolbar(props) {
           event.keyCode === 13 && filterData();
         }}
         onChange={(event) => {
-          if (typeof event === "string") setSearchValue(event);
-          else setSearchValue(event.target.value);
+          if (typeof event === "string") {
+            setSearchValue(event);
+          } else {
+            setSearchValue(event.target.value);
+          }
         }}
         InputProps={{
           endAdornment: (
