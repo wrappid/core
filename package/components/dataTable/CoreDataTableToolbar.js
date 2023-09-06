@@ -25,10 +25,10 @@ import { __TableLeftPanelGridSize, __TableRightPanelGridSize } from "../../utils
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";
-import CoreButton from "../inputs/CoreButton";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreInputAdornment from "../inputs/CoreInputAdornment";
 import CoreMenu from "../inputs/CoreMenu";
+import CoreTextButton from "../inputs/CoreTextButton";
 import CoreTextField from "../inputs/CoreTextField";
 
 export default function CoreDataTableToolbar(props) {
@@ -86,14 +86,10 @@ export default function CoreDataTableToolbar(props) {
     }
   };
 
-  const getSearchBar = (props) => {
+  const getSearchBar = () => {
     return searchable ? (
       <CoreTextField
-        styleClasses={
-          props?.fullWidth
-            ? [CoreClasses.WIDTH.W_100, CoreClasses.MARGIN.MB0]
-            : [CoreClasses.MARGIN.MB0]
-        }
+        styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.MARGIN.MB0]}
         value={searchValue}
         onKeyDown={(event) => {
           event.keyCode === 13 && filterData();
@@ -166,7 +162,6 @@ export default function CoreDataTableToolbar(props) {
    ]
    * 
    */
-
   const allTools = [
     {
       leftPanel: {
@@ -216,7 +211,7 @@ export default function CoreDataTableToolbar(props) {
               },
             },
 
-            {
+            /* -- {
               comp: enableExport ? (
                 <CoreIconButton
                   title="Export"
@@ -231,7 +226,7 @@ export default function CoreDataTableToolbar(props) {
               onClick: (event) => {
                 setPopover(event, tableToolbar.EXPORT_DATA);
               },
-            },
+            }, */
             {
               comp: (
                 <CoreIconButton title={"More Actions"}>
@@ -244,7 +239,7 @@ export default function CoreDataTableToolbar(props) {
           [
             {
               comp: enableCreateEntity ? (
-                <CoreButton
+                <CoreTextButton
                   size="small"
                   label={`${createEntityButtonText || getLabel(tableUUID)}`}
                   variant="outlined"
