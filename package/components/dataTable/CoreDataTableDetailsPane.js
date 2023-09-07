@@ -79,7 +79,7 @@ export default function CoreDataTableDetailsPane(props) {
       <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
         <CoreCardHeader
           title={
-            detailedRowData ? (
+            detailedRowData && Object.keys(detailedRowData).length > 0 ? (
               <>
                 <CoreStack direction="row" spacing={1}>
                   <CoreTypographyCaption>
@@ -106,7 +106,7 @@ export default function CoreDataTableDetailsPane(props) {
           }
           action={
             <CoreStack direction="row">
-              {detailedRowData && rowActions && rowActions.length > 0 && (
+              {detailedRowData && Object.keys(detailedRowData).length > 0 && rowActions && rowActions.length > 0 && (
                 <CoreTableAction
                   tableUUID={tableUUID}
                   actions={rowActions}
@@ -137,7 +137,7 @@ export default function CoreDataTableDetailsPane(props) {
         />
 
         <CoreCardContent>
-          {detailedRowData ? (
+          {detailedRowData && Object.keys(detailedRowData).length > 0 ? (
             <>
               {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
                 <>
@@ -268,59 +268,61 @@ export default function CoreDataTableDetailsPane(props) {
             </>
           ) : (
             <>
-              {preRender_CreateData_DetailsPaneComponent && (
-                <>
-                  {React.createElement(
-                    preRender_CreateData_DetailsPaneComponent
-                  )}
-                </>
-              )}
-
               {(enableCreateEntity && showCreateForm &&
                 createFormID &&
                 !hideForm &&
-                !hideCreateForm) ? (
-                  <CoreForm
-                    apiMode={"create"}
-                    onMountRead={false}
-                    formId={createFormID}
-                    mode={FORM_EDIT_MODE}
-                    initData={{}}
-                    afterCancel={() => {
-                      filterData();
-                    }}
-                    afterCreateSuccess={() => {
-                      if(platform === APP_PLATFORM)
-                        set_showDetailsPane(false);
+                  !hideCreateForm) ? (
+                  <>
+                    {preRender_CreateData_DetailsPaneComponent && (
+                      <>
+                        {React.createElement(
+                          preRender_CreateData_DetailsPaneComponent
+                        )}
+                      </>
+                    )}
+              
+                    <CoreForm
+                      apiMode={"create"}
+                      onMountRead={false}
+                      formId={createFormID}
+                      mode={FORM_EDIT_MODE}
+                      initData={{}}
+                      afterCancel={() => {
+                        filterData();
+                      }}
+                      afterCreateSuccess={() => {
+                        if(platform === APP_PLATFORM)
+                          set_showDetailsPane(false);
 
-                      filterData();
-                      if (
-                        afterCreateSuccess &&
+                        filterData();
+                        if (
+                          afterCreateSuccess &&
                           typeof afterCreateSuccess === "function"
-                      ) {
-                        afterCreateSuccess();
-                      }
-                    }}
-                    afterCreateError={() => {
-                      if (
-                        afterCreateError &&
+                        ) {
+                          afterCreateSuccess();
+                        }
+                      }}
+                      afterCreateError={() => {
+                        if (
+                          afterCreateError &&
                           typeof afterCreateError === "function"
-                      ) {
-                        afterCreateError();
-                      }
-                    }}
-                  />
+                        ) {
+                          afterCreateError();
+                        }
+                      }}
+                    />
+                      
+                    {postRender_CreateData_DetailsPaneComponent && (
+                      <>
+                        {React.createElement(
+                          postRender_CreateData_DetailsPaneComponent
+                        )}
+                      </>
+                    )}
+                  </>
                 ) : (
                   <CoreTypographyBody1>No row selected</CoreTypographyBody1>
                 )}
-
-              {postRender_CreateData_DetailsPaneComponent && (
-                <>
-                  {React.createElement(
-                    postRender_CreateData_DetailsPaneComponent
-                  )}
-                </>
-              )}
             </>
           )}
         </CoreCardContent>
