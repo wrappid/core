@@ -3,28 +3,28 @@ import * as yup from "yup";
 import { getFormikRequiredMessage } from "./formUtils";
 
 export function clearValidatePhoneEmail(text) {
-  let t = text;
+  let temp = text;
 
   if (!text || (text && text.length === 0)) return false;
-  if (t[0] === "'") {
-    t = t.slice(1);
-    t = t.toLowerCase();
+  if (temp[0] === "'") {
+    temp = temp.slice(1);
+    temp = temp.toLowerCase();
   }
-  let f = String(t).match(
+  let flag = String(temp).match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 
-  if (f) {
-    if(t?.length > 255){
+  if (flag) {
+    if(temp?.length > 255){
       return false;
     }
-    return f;
-  } else if (!f) {
-    f = String(t).match(/^[4-9](\d{9})$/);
-    return f;
+    return flag;
+  } else if (!flag) {
+    flag = String(temp).match(/^[4-9](\d{9})$/);
+    return flag;
   }
 
-  return f;
+  return flag;
 }
 
 export const defaultValidations = {
@@ -167,13 +167,27 @@ export const defaultValidations = {
     required   : yup.array().required(),
   },
   password: {
-    notRequired: yup.string(),
-    required   : yup.string().required(getFormikRequiredMessage("password")),
+    notRequired: yup.string()
+      .min(8)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
+        "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
+      ),
+    required: yup.string()
+      .required(getFormikRequiredMessage("password"))
+      .min(8)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
+        "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
+      )
+      .required(getFormikRequiredMessage("password")),
   },
   phone: {
-    notRequired: yup.string().nullable(),
-    required   : yup
+    notRequired: yup.string().matches(/^[4-9](\d{9})$/, "Not a valid number").length(10)
+      .nullable(),
+    required: yup
       .string()
+      .matches(/^[4-9](\d{9})$/, "Not a valid number")
       .length(10)
       .required(getFormikRequiredMessage("Phone")),
   },
