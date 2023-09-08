@@ -50,6 +50,7 @@ export default function CoreDataTableRow(props) {
     setFormMode,
     enableCreateEntity,
     showCreateForm,
+    setShowCreateForm,
     createEntityButtonText,
     // handlePopoverClose,
     handlePopoverOpen,
@@ -214,6 +215,7 @@ export default function CoreDataTableRow(props) {
                       setDetailedRowId(null);
                       setDetailedRowData(null);
                       set_showDetailsPane(true);
+                      setShowCreateForm(true);
                     }}
                   />
                 )}

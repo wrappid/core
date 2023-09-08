@@ -268,19 +268,20 @@ export default function CoreDataTableDetailsPane(props) {
             </>
           ) : (
             <>
-              {(enableCreateEntity && showCreateForm &&
+              {showCreateForm && preRender_CreateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    preRender_CreateData_DetailsPaneComponent
+                  )}
+                </>
+              )}
+
+              {(enableCreateEntity &&
+                showCreateForm &&
                 createFormID &&
                 !hideForm &&
-                  !hideCreateForm) ? (
+                !hideCreateForm) ? (
                   <>
-                    {preRender_CreateData_DetailsPaneComponent && (
-                      <>
-                        {React.createElement(
-                          preRender_CreateData_DetailsPaneComponent
-                        )}
-                      </>
-                    )}
-              
                     <CoreForm
                       apiMode={"create"}
                       onMountRead={false}
@@ -297,7 +298,7 @@ export default function CoreDataTableDetailsPane(props) {
                         filterData();
                         if (
                           afterCreateSuccess &&
-                          typeof afterCreateSuccess === "function"
+                        typeof afterCreateSuccess === "function"
                         ) {
                           afterCreateSuccess();
                         }
@@ -305,24 +306,25 @@ export default function CoreDataTableDetailsPane(props) {
                       afterCreateError={() => {
                         if (
                           afterCreateError &&
-                          typeof afterCreateError === "function"
+                        typeof afterCreateError === "function"
                         ) {
                           afterCreateError();
                         }
                       }}
                     />
-                      
-                    {postRender_CreateData_DetailsPaneComponent && (
-                      <>
-                        {React.createElement(
-                          postRender_CreateData_DetailsPaneComponent
-                        )}
-                      </>
-                    )}
+                  
                   </>
                 ) : (
                   <CoreTypographyBody1>No row selected</CoreTypographyBody1>
                 )}
+
+              {showCreateForm && postRender_CreateData_DetailsPaneComponent && (
+                <>
+                  {React.createElement(
+                    postRender_CreateData_DetailsPaneComponent
+                  )}
+                </>
+              )}
             </>
           )}
         </CoreCardContent>
