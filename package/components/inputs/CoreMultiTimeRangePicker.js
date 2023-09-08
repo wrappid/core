@@ -64,7 +64,7 @@ export default function CoreMultiTimeRangePicker(props) {
       <CoreLabel>{label}</CoreLabel>
 
       {timeRanges.map((timeRange, index) => (
-        <CoreGrid key={`timeRange-${index}`} styleClasses={[CoreClasses.PADDING.PB3]}>
+        <CoreGrid key={`timeRange-${index}`}>
           <CoreTimePicker
             readOnly={props.readOnly}
             gridProps={{ gridSize: 5 }}

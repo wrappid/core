@@ -327,6 +327,9 @@ export function createFormFieldProps(props, type) {
         
         dependencies: element?.dependencies,
         
+        disableFuture: element?.disableFuture,
+        disablePast  : element?.disablePast,
+        
         editId: editFormId,
         
         endpoint: element?.endpoint,
@@ -338,10 +341,9 @@ export function createFormFieldProps(props, type) {
             ? FORM_DATA_TABLE_FUNCTION_MAP[element?.getEntity](formikprops)
             : "",
         
-        error       : formikprops?.errors ? formikprops?.errors[element?.id] : "",
+        error         : formikprops?.errors ? formikprops?.errors[element?.id] : "",
         //below field are passed on for inline actions
-        fieldActions: forms[formId]?.formActions,
-
+        fieldActions  : forms[formId]?.formActions,
         formik        : formikprops,
         freeSolo      : element?.freeSolo,
         getOptionLabel: element?.getOptionLabel
@@ -359,20 +361,31 @@ export function createFormFieldProps(props, type) {
         isOptionEqualToValue: element?.isOptionEqualToValue
           ? functionsRegistry[element.isOptionEqualToValue]
           : null,
-        itemKey         : element?.itemKey,
-        key             : "formElement" + element?.id,
-        label           : element?.label,
-        multiple        : element?.multiple,
-        navigateUrl     : element?.navigateUrl,
-        onChange        : formikprops.handleChange,
+        itemKey : element?.itemKey,
+        key     : "formElement" + element?.id,
+        label   : element?.label,
+        maxDate : element.maxDate,
+        maxTime : element.maxTime,
+        minDate : element.minDate,
+        minTime : element.minTime,
+        multiple: element?.multiple,
+        
+        navigateUrl: element?.navigateUrl,
+        
+        onChange: formikprops.handleChange,
+        
         onChangeDispatch: element?.onChangeDispatch
           ? functionsRegistry[element.onChangeDispatch]
           : null,
-        onFormFocus    : onFormFocus,
-        optionComp     : element?.optionComp,
+        
+        onFormFocus: onFormFocus,
+        
+        optionComp: element?.optionComp,
+        
         optionCompProps: element?.optionCompProps,
+        
         //this will be arrow function like (d) => { return d.value }to show the label
-        optionDisplay  : element?.optionDisplay,
+        optionDisplay: element?.optionDisplay,
         
         //this will be arrow function like (d) => { return d.value } to show the value
         optionValue: element?.optionValue,
@@ -387,30 +400,27 @@ export function createFormFieldProps(props, type) {
         
         readOnly: !mode || preview || element?.readOnly,
         
-        skeletonProps: element?.skeletonProps,
-        
+        shouldDisableDate: element?.shouldDisableDate ? functionsRegistry[element.shouldDisableDate] : null,
+        shouldDisableTime: element?.shouldDisableTime ? functionsRegistry[element.shouldDisableTime] : null,
+        skeletonProps    : element?.skeletonProps,
         src:
           element.type === "avatar" || element.type === "imagePicker"
             ? formikprops?.values
               ? formikprops?.values[element?.id]
               : ""
             : "",
-        
+
         strictItemKey: element?.strictItemKey,
-        
-        styleClasses: element?.styleClasses
+        styleClasses : element?.styleClasses
           ? Array.isArray(element.styleClasses)
             ? element.styleClasses
             : [element.styleClasses]
           : [],
-        
         submitLoading: submitLoading,
-        
         submitSuccess: submitSuccess,
-        
-        touched: formikprops?.touched ? formikprops?.touched[element?.id] : "",
-        type   : element?.type,
-        value  : formikprops?.values ? formikprops?.values[element?.id] : "",
+        touched      : formikprops?.touched ? formikprops?.touched[element?.id] : "",
+        type         : element?.type,
+        value        : formikprops?.values ? formikprops?.values[element?.id] : "",
         ...(initProps[element?.id] || {})
       };
   } else {
