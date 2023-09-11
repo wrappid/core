@@ -81,7 +81,7 @@ export default function CoreProfilePopOver(props) {
         <CoreAvatar
           gridProps={{ gridSize: { md: 4, sm: 3, xs: 3 } }}
           styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
-          src={auth?.photo ? auth?.photo : "photo.jpg"}
+          src={auth?.photo}
         />
 
         <CoreBox

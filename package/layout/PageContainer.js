@@ -24,6 +24,7 @@ export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
 export let functionsRegistry = {};
 export let validationsRegistry = {};
+export let formStore = {};
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
@@ -36,9 +37,11 @@ export default function PageContainer(props) {
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
-  const { /* -- showHelperText = true, */ helperButtonFlag = true } = useSelector(
+  const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
     (state) => state.forms
   );
+
+  formStore = { rawForm, rawFormStatus };
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
 

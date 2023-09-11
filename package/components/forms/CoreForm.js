@@ -51,7 +51,7 @@ class CoreForm extends Component {
     formId           : this.props.formId,
     formIdAtMount    : null,
     hideFlag         : true,
-    prevQuery        : null,
+    prevQuery        : this.props.query,
     recreateForm     : null,
     submitMode       : null,
   };
@@ -76,15 +76,15 @@ class CoreForm extends Component {
       let rawFormStatus = this.props.rawFormStatus;
 
       // eslint-disable-next-line id-length
-      let t = await getForm(this.props.formId, this.props.authenticated, {
+      let formOb = await getForm(this.props.formId, this.props.authenticated, {
         rawForm,
         rawFormStatus,
       });
 
-      formJson = t.formJson;
-      let success = t.success;
-      let formId = t.formId;
-
+      formJson = formOb.formJson;
+      let success = formOb.success;
+      let formId = formOb.formId;
+      
       if (success) {
         this.props.storeForm(GET_FORM_SUCCESS, { data: formJson, formId });
       } else {
@@ -220,7 +220,7 @@ class CoreForm extends Component {
       ? this.props.rawFormSchema[this.props.formId]
       : {};
     // eslint-disable-next-line id-length
-    let r = forReloadCheck(
+    let dataReloadFlag = forReloadCheck(
       this.props.formSubmitSuccess,
       this.props.formId,
       this.props.formJson,
@@ -282,22 +282,22 @@ class CoreForm extends Component {
     }
 
     // eslint-disable-next-line id-length
-    let r2 =
+    let dataReloadFlag2 =
       this.state.firstDataLoadFail &&
       formSchema?.read &&
       formSchema?.onMountRead !== false &&
       this.props?.onMountRead !== false;
       
     // eslint-disable-next-line id-length
-    let r3 = compareObject(this.props.query, this.state.prevQuery);
+    let dataReloadFlag3 = compareObject(this.props.query, this.state.prevQuery);
 
-    if (r || r2 || r3) {
-      if (r2) {
+    if (dataReloadFlag || dataReloadFlag2 || dataReloadFlag3) {
+      if (dataReloadFlag2) {
         this.setState({
           firstDataLoadFail: false,
           prevQuery        : this.props.query,
         });
-      } else if (r3) {
+      } else if (dataReloadFlag3) {
         this.setState({ prevQuery: this.props.query });
       }
       let tempFormSubmitSuccess = {

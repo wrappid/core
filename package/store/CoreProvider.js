@@ -26,10 +26,10 @@ function createFullStore(appReducer, persistFlag = true) {
 
   let finalReducer = {};
 
-  for (var i = 0; i < keys.length; i++) {
+  for (let i = 0; i < keys.length; i++) {
     finalReducer[keys[i]] = persistReducer(
       {
-        key: keys[i],
+        key    : keys[i],
         storage: nativeStorage,
       },
       coreReducer[keys[i]]
@@ -39,10 +39,10 @@ function createFullStore(appReducer, persistFlag = true) {
   if (persistFlag === true) {
     let appReducerKeys = Object.keys(appReducer);
 
-    for (var i = 0; i < appReducerKeys.length; i++) {
+    for (let i = 0; i < appReducerKeys.length; i++) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
-          key: appReducerKeys[i],
+          key    : appReducerKeys[i],
           storage: nativeStorage,
         },
         appReducer[appReducerKeys[i]]
@@ -53,9 +53,9 @@ function createFullStore(appReducer, persistFlag = true) {
   finalReducer = { ...finalReducer, ...appReducer };
 
   const store = configureStore({
-    devTools: true,
+    devTools  : true,
     middleware: [thunk],
-    reducer: combineReducers(finalReducer),
+    reducer   : combineReducers(finalReducer),
   });
 
   const persistor = persistStore(store);
@@ -82,12 +82,12 @@ export default function CoreProvider(props) {
 
   let coreStyles = {
     classes: CoreClasses,
-    styles: {
+    styles : {
       default: defaultCoreStyles,
-      large: largeCoreStyles,
-      medium: mediumCoreStyles,
-      small: smallCoreStyles,
-      xLarge: xLargeCoreStyles,
+      large  : largeCoreStyles,
+      medium : mediumCoreStyles,
+      small  : smallCoreStyles,
+      xLarge : xLargeCoreStyles,
       xxLarge: xXLargeCoreStyles,
     },
   };

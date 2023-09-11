@@ -1,3 +1,5 @@
+
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
@@ -41,19 +43,17 @@ export default function CoreApp({
             <ComponentRegistryContext.Provider
               value={{ ...ComponentRegistry, ...componentRegistry }}
             >
-              <React.StrictMode>
-                <CoreResourceContext.Provider value={resourceRegistry}>
-                  <CoreMenuContext.Provider value={menuRegistry}>
-                    <CoreAppDiv>
-                      <CoreNavigation>
-                        <AppContainer>
-                          <CoreRoutes />
-                        </AppContainer>
-                      </CoreNavigation>
-                    </CoreAppDiv>
-                  </CoreMenuContext.Provider>
-                </CoreResourceContext.Provider>
-              </React.StrictMode>
+              <CoreResourceContext.Provider value={resourceRegistry}>
+                <CoreMenuContext.Provider value={menuRegistry}>
+                  <CoreAppDiv>
+                    <CoreNavigation>
+                      <AppContainer>
+                        <CoreRoutes />
+                      </AppContainer>
+                    </CoreNavigation>
+                  </CoreAppDiv>
+                </CoreMenuContext.Provider>
+              </CoreResourceContext.Provider>
             </ComponentRegistryContext.Provider>
           </FunctionsRegistryContext.Provider>
         </ValidationsRegistryContext.Provider>

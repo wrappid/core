@@ -11,6 +11,7 @@ import {
   globalTokenRequestTimeStamp,
   globalTokenRequested
 } from "../../layout/AppContainer";
+import { formStore } from "../../layout/PageContainer";
 import AppService from "../../service/AppService";
 import { reloadToken } from "../../utils/appUtils";
 import { getForm } from "../../utils/formUtils";
@@ -84,10 +85,10 @@ export const apiRequestAction =
             let reloadFormJson = null;
 
             if (formId) {
-              formJson = await getForm(formId);
+              formJson = await getForm(formId, authRequired, formStore);
             }
             if(reloadForm){
-              reloadFormJson = await getForm(reloadForm);
+              reloadFormJson = await getForm(reloadForm, authRequired, formStore);
             }
             if (!response) throw new Error("Response is undefined");
             

@@ -149,7 +149,7 @@ export default function CoreAppBar(props) {
                 }}
               >
                 <CoreAvatar
-                  src={auth?.photo || "photo.jpg"}
+                  src={auth?.photo}
                   styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
                 />
               </CoreIconButton>
