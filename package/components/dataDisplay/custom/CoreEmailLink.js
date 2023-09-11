@@ -1,8 +1,6 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { UtilityClasses } from "@wrappid/styles";
-
 import CoreIconText from "./CoreIconText";
 import CoreIcon, { __IconTypes } from "..//CoreIcon";
 import CoreClasses from "../../../styles/CoreClasses";
@@ -49,7 +47,7 @@ export default function CoreEmailLink(props) {
                   </CoreTypographyCaption>
                 ) : (
                   <CoreTypographyBody2
-                    styleClasses={[UtilityClasses.LINK.PHONE_EMAIL_LINK]}
+                    styleClasses={[CoreClasses?.NAVIGATION?.PHONE_EMAIL_LINK]}
                     hideSeeMore={true}
                     limitChars={limitChars}
                     mask={mask}

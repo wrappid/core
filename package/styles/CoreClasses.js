@@ -137,6 +137,7 @@ const CoreClasses = {
     APP_BAR_LOGGED_OUT       : "appBarLoggedOut",
     APP_BAR_LOGGIN_IN        : "appBarLoggedIn",
     LINK_STYLE               : "linkStyle",
+    PHONE_EMAIL_LINK         : "phoneEmailLink",
     PROFILE_BAR_SECTION      : "profilebarSection",
     PROFILE_CARD_CONTACT     : "profileCardContact",
     PROFILE_CARD_LINK        : "profileCardLink",
@@ -144,7 +145,7 @@ const CoreClasses = {
     PROFILE_CARD_TOKEN_AMOUNT: "profileCardTokenAmount",
     PROFILE_CARD_TOKEN_DETAIL: "profileCardTokenDetail",
     PROFILE_CARD_TOKEN_TEXT  : "profileCardTokenText",
-    PROFILE_DETAIL           : "profileDetail",
+    PROFILE_DETAIL           : "profileDetail"
   },
   
   /**************************************************
