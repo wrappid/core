@@ -1,3 +1,4 @@
+
 /* eslint-disable no-prototype-builtins */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
@@ -78,6 +79,7 @@ export default function CoreDataTableDetailsPane(props) {
     >
       <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
         <CoreCardHeader
+          _tableAction={true}
           title={
             detailedRowData && Object.keys(detailedRowData).length > 0 ? (
               <>
