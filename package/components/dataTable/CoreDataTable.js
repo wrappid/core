@@ -39,6 +39,7 @@ import {
   WEB_PLATFORM,
   detectPlatform
 } from "../../utils/themeUtil";
+import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreTable from "../dataDisplay/CoreTable";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
@@ -744,13 +745,18 @@ export default function CoreDataTable(props) {
       )}
 
       {platform === APP_PLATFORM && !noHeaderInApp && (
-        <CoreBox
-          gridProps={{ gridSize: 12 }}
-          styleClasses={[CoreClasses.PADDING.P1, CoreClasses.BG.BG_PRIMARY]}>
-          <CoreTypographyBody1 styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
-            {getLabel(tableUUID)}
-          </CoreTypographyBody1>
-        </CoreBox>
+        <>
+          <CoreBox
+            gridProps={{ gridSize: 12 }}
+            styleClasses={[CoreClasses.PADDING.P1]}>
+            <CoreTypographyBody1
+              styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY_DARK, CoreClasses?.TEXT?.TEXT_WEIGHT_BOLD]}>
+              {getLabel(tableUUID)}
+            </CoreTypographyBody1>
+          </CoreBox>
+
+          <CoreDivider />
+        </>
       )}
 
       {(window.innerWidth >= MEDIUM_WINDOW_WIDTH || !_showDetailsPane) && (
