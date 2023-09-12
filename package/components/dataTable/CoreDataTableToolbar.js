@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars, import/no-unresolved
 import { NativeDataTableToolbar, NativeDataTableToolPopover } from "@wrappid/native";
 import { useDispatch } from "react-redux";
 
@@ -22,6 +23,7 @@ import {
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
 import { __TableLeftPanelGridSize, __TableRightPanelGridSize } from "../../utils/tableUtils";
+import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";
@@ -69,7 +71,8 @@ export default function CoreDataTableToolbar(props) {
     setPage,
     setMaxRowInPage,
     preOnCreate,
-    navigationOnCreateUrl
+    navigationOnCreateUrl,
+    platform
   } = props;
 
   const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] = React.useState(null);
@@ -206,7 +209,7 @@ export default function CoreDataTableToolbar(props) {
                     setPopover(event, tableToolbar.SORT_DATA);
                   }}
                 >
-                  <CoreIcon>sort </CoreIcon>
+                  <CoreIcon>sort</CoreIcon>
                 </CoreIconButton>
               ),
               label  : "Sort",
@@ -243,30 +246,50 @@ export default function CoreDataTableToolbar(props) {
           [
             {
               comp: enableCreateEntity ? (
-                <CoreTextButton
-                  size="small"
-                  label={`${createEntityButtonText || getLabel(tableUUID)}`}
-                  variant="outlined"
-                  startIcon={<CoreIcon>add</CoreIcon>}
-                  OnClick={() => {
-                    if(navigationOnCreateUrl){
-                      navigate(navigationOnCreateUrl);
-                    }
-                    setDetailedRowId(null);
-                    setDetailedRowData(null);
-                    set_showDetailsPane(true);
-                    setShowCreateForm(true);
-                    if(preOnCreate){
-                      preOnCreate();
-                    }
-                  }}
-                />
+                platform === APP_PLATFORM ?
+                  <CoreIconButton
+                    title={"Create"}
+                    onClick={() => {
+                      if(navigationOnCreateUrl){
+                        navigate(navigationOnCreateUrl);
+                      }
+                      setDetailedRowId(null);
+                      setDetailedRowData(null);
+                      set_showDetailsPane(true);
+                      setShowCreateForm(true);
+                      if(preOnCreate){
+                        preOnCreate();
+                      }
+                    }}
+                  >
+                    <CoreIcon>add</CoreIcon>
+                  </CoreIconButton>
+                  :
+                  <CoreTextButton
+                    size="small"
+                    label={`${createEntityButtonText || getLabel(tableUUID)}`}
+                    variant="outlined"
+                    startIcon={<CoreIcon>add</CoreIcon>}
+                    OnClick={() => {
+                      if(navigationOnCreateUrl){
+                        navigate(navigationOnCreateUrl);
+                      }
+                      setDetailedRowId(null);
+                      setDetailedRowData(null);
+                      set_showDetailsPane(true);
+                      setShowCreateForm(true);
+                      if(preOnCreate){
+                        preOnCreate();
+                      }
+                    }}
+                  />
               ) : null,
+              label  : `${createEntityButtonText || getLabel(tableUUID)}`,
               onClick: () => {
                 setDetailedRowId(null);
                 setDetailedRowData(null);
                 set_showDetailsPane(true);
-              },
+              }
             },
             {
               comp: (
