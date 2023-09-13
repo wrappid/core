@@ -336,6 +336,7 @@ export default function CoreDataTableDetailsPane(props) {
                     initData={{}}
                     afterCancel={() => {
                       filterData();
+                      showCreateForm && setShowCreateForm(false);
                       if (platform === APP_PLATFORM) set_showDetailsPane(false);
                     }}
                     afterCreateSuccess={() => {
