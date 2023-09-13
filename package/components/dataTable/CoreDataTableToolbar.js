@@ -10,7 +10,11 @@ import ExportData from "./tableToolbarUtils/ExportData";
 import SortTableData from "./tableToolbarUtils/SortTableData";
 import TableDensity from "./tableToolbarUtils/TableDensity";
 import { UPDATE_USER_SETTINGS } from "../../config/api";
-import { HTTP, tableToolbar, userSettingsConstants } from "../../config/constants";
+import {
+  HTTP,
+  tableToolbar,
+  userSettingsConstants
+} from "../../config/constants";
 import { coreUseNavigate } from "../../helper/routerHelper";
 import {
   UPDATE_QUERY_MAXROWINPAGE_DATA,
@@ -22,7 +26,10 @@ import {
 } from "../../store/types/settingsTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import { getLabel } from "../../utils/stringUtils";
-import { __TableLeftPanelGridSize, __TableRightPanelGridSize } from "../../utils/tableUtils";
+import {
+  __TableLeftPanelGridSize,
+  __TableRightPanelGridSize
+} from "../../utils/tableUtils";
 import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
@@ -72,12 +79,15 @@ export default function CoreDataTableToolbar(props) {
     setMaxRowInPage,
     preOnCreate,
     navigationOnCreateUrl,
-    platform
+    platform,
   } = props;
 
-  const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] = React.useState(null);
+  const [_toolbarPopOverAnchorEl, set_toolbarPopOverAnchorEl] =
+    React.useState(null);
   const _toolbarPopoverOpen = Boolean(_toolbarPopOverAnchorEl);
-  const _toolbarID = _toolbarPopoverOpen ? "toolbar-popover-" + tableUUID : undefined;
+  const _toolbarID = _toolbarPopoverOpen
+    ? "toolbar-popover-" + tableUUID
+    : undefined;
   const [_toolbarContent, set_toolbarContent] = React.useState(null);
   const navigate = coreUseNavigate();
 
@@ -95,10 +105,10 @@ export default function CoreDataTableToolbar(props) {
       <CoreTextField
         styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.MARGIN.MB0]}
         value={searchValue}
-        onKeyDown={(event) => {
+        onKeyDown={event => {
           event.keyCode === 13 && filterData();
         }}
-        onChange={(event) => {
+        onChange={event => {
           if (typeof event === "string") {
             setSearchValue(event);
           } else {
@@ -107,18 +117,18 @@ export default function CoreDataTableToolbar(props) {
         }}
         InputProps={{
           endAdornment: (
-            <CoreInputAdornment
-              position="end"
-            >
-              { searchValue && searchValue.length > 0 ? (
+            <CoreInputAdornment position="end">
+              {searchValue && searchValue.length > 0 ? (
                 <CoreIconButton
                   title="Clear search"
                   onClick={() => {
                     setSearchValue("");
                     clearFilterData();
-                  }}
-                >
-                  <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={"clear"} />
+                  }}>
+                  <CoreIcon
+                    type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                    icon={"clear"}
+                  />
                 </CoreIconButton>
               ) : null}
 
@@ -126,8 +136,7 @@ export default function CoreDataTableToolbar(props) {
                 title="Search"
                 onClick={() => {
                   filterData();
-                }}
-              >
+                }}>
                 <CoreIcon>search</CoreIcon>
               </CoreIconButton>
 
@@ -190,8 +199,7 @@ export default function CoreDataTableToolbar(props) {
                   title={"Refresh Data"}
                   onClick={() => {
                     filterData();
-                  }}
-                >
+                  }}>
                   <CoreIcon>refresh</CoreIcon>
                 </CoreIconButton>
               ),
@@ -205,15 +213,14 @@ export default function CoreDataTableToolbar(props) {
               comp: (
                 <CoreIconButton
                   title={"Sorting"}
-                  onClick={(event) => {
+                  onClick={event => {
                     setPopover(event, tableToolbar.SORT_DATA);
-                  }}
-                >
+                  }}>
                   <CoreIcon>sort</CoreIcon>
                 </CoreIconButton>
               ),
               label  : "Sort",
-              onClick: (event) => {
+              onClick: event => {
                 setPopover(event, tableToolbar.SORT_DATA);
               },
             },
@@ -246,50 +253,57 @@ export default function CoreDataTableToolbar(props) {
           [
             {
               comp: enableCreateEntity ? (
-                platform === APP_PLATFORM ?
+                platform === APP_PLATFORM ? (
                   <CoreIconButton
                     title={"Create"}
                     onClick={() => {
-                      if(navigationOnCreateUrl){
+                      if (navigationOnCreateUrl) {
                         navigate(navigationOnCreateUrl);
                       }
                       setDetailedRowId(null);
                       setDetailedRowData(null);
                       set_showDetailsPane(true);
                       setShowCreateForm(true);
-                      if(preOnCreate){
+                      if (preOnCreate) {
                         preOnCreate();
                       }
-                    }}
-                  >
+                    }}>
                     <CoreIcon>add</CoreIcon>
                   </CoreIconButton>
-                  :
+                ) : (
                   <CoreTextButton
                     size="small"
                     label={`${createEntityButtonText || getLabel(tableUUID)}`}
                     variant="outlined"
                     startIcon={<CoreIcon>add</CoreIcon>}
                     OnClick={() => {
-                      if(navigationOnCreateUrl){
+                      if (navigationOnCreateUrl) {
                         navigate(navigationOnCreateUrl);
                       }
                       setDetailedRowId(null);
                       setDetailedRowData(null);
                       set_showDetailsPane(true);
                       setShowCreateForm(true);
-                      if(preOnCreate){
+                      if (preOnCreate) {
                         preOnCreate();
                       }
                     }}
                   />
+                )
               ) : null,
               label  : `${createEntityButtonText || getLabel(tableUUID)}`,
               onClick: () => {
+                if (navigationOnCreateUrl) {
+                  navigate(navigationOnCreateUrl);
+                }
                 setDetailedRowId(null);
                 setDetailedRowData(null);
                 set_showDetailsPane(true);
-              }
+                setShowCreateForm(true);
+                if (preOnCreate) {
+                  preOnCreate();
+                }
+              },
             },
             {
               comp: (
@@ -324,7 +338,7 @@ export default function CoreDataTableToolbar(props) {
                       type   : UPDATE_QUERY_PAGE_DATA,
                     });
                   }}
-                  onRowsPerPageChange={(event) => {
+                  onRowsPerPageChange={event => {
                     if (event.target.value !== maxRowInPage) {
                       setMaxRowInPage(event.target.value);
                       dispatch({
@@ -364,7 +378,7 @@ export default function CoreDataTableToolbar(props) {
       <NativeDataTableToolbar
         styleClasses={props.styleClasses}
         allTools={allTools}
-        menuRenderFunction={(menu) => (
+        menuRenderFunction={menu => (
           <CoreMenu
             menu={menu}
             miniDrawer={false}
@@ -386,24 +400,27 @@ export default function CoreDataTableToolbar(props) {
         anchorOrigin={{
           horizontal: "left",
           vertical  : "bottom",
-        }}
-      >
-        {enableTableDensity && _toolbarContent === tableToolbar.TABLE_DENSITY ? (
-          <TableDensity tableDensity={tableDensity} setTableDensity={setTableDensity} />
-        ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
-          <ExportData />
-        ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
-          <SortTableData
-            tableUUID={tableUUID}
-            tableColumns={tableColumns}
-            auditColumnsKey={auditColumnsKey}
-            sortable={sortable}
-            order={order}
-            onRequestSort={onRequestSort}
-          />
-        ) : (
-          <></>
-        )}
+        }}>
+        {enableTableDensity &&
+        _toolbarContent === tableToolbar.TABLE_DENSITY ? (
+            <TableDensity
+              tableDensity={tableDensity}
+              setTableDensity={setTableDensity}
+            />
+          ) : enableExport && _toolbarContent === tableToolbar.EXPORT_DATA ? (
+            <ExportData />
+          ) : enableSorting && _toolbarContent === tableToolbar.SORT_DATA ? (
+            <SortTableData
+              tableUUID={tableUUID}
+              tableColumns={tableColumns}
+              auditColumnsKey={auditColumnsKey}
+              sortable={sortable}
+              order={order}
+              onRequestSort={onRequestSort}
+            />
+          ) : (
+            <></>
+          )}
       </NativeDataTableToolPopover>
     </>
   );

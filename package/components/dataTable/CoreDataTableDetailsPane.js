@@ -74,54 +74,6 @@ export default function CoreDataTableDetailsPane(props) {
 
   const config = getConfigurationObject();
 
-  const getActionObjects = () => {
-    return (
-      <>
-        {detailedRowData &&
-          Object.keys(detailedRowData).length > 0 &&
-          rowActions &&
-          rowActions.length > 0 && (
-          <CoreTableAction
-            gridProps={
-              window.windowWidth < MEDIUM_WINDOW_WIDTH ||
-                config?.wrappid?.platform === APP_PLATFORM
-                ? { gridSize: { sm: 6, xs: 10 } }
-                : { gridSize: 12 }
-            }
-            tableUUID={tableUUID}
-            actions={rowActions}
-            columns={tableColumns}
-            rowIndex={detailedRowId}
-            rowData={detailedRowData}
-            set_showDetailsPane={set_showDetailsPane}
-            setDetailedRowId={setDetailedRowId}
-            setDetailedRowData={setDetailedRowData}
-            filterData={filterData}
-          />
-        )}
-
-        {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
-          config?.wrappid?.platform === APP_PLATFORM) && (
-          <CoreIconButton
-            gridProps={
-              detailedRowData
-                ? { gridSize: { sm: 6, xs: 2 } }
-                : { gridSize: 12 }
-            }
-            onClick={() => {
-              showCreateForm && setShowCreateForm(false);
-              set_showDetailsPane(false);
-              setDetailedRowId(null);
-              setDetailedRowData(null);
-            }}
-          >
-            <CoreIcon>clear</CoreIcon>
-          </CoreIconButton>
-        )}
-      </>
-    );
-  };
-
   return (
     <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
       <CoreCardHeader
@@ -134,11 +86,10 @@ export default function CoreDataTableDetailsPane(props) {
                   {"ID: " + detailedRowData["id"]}
                 </CoreTypographyCaption>
 
-                {detailedRowData.hasOwnProperty("id") &&
-                  detailedRowData.hasOwnProperty("_status") && (
+                {detailedRowData?.hasOwnProperty("id") &&
+                  detailedRowData?.hasOwnProperty("_status") && (
                   <CoreTypographyCaption
-                    styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
-                  >
+                    styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}>
                     {"|"}
                   </CoreTypographyCaption>
                 )}
@@ -154,12 +105,88 @@ export default function CoreDataTableDetailsPane(props) {
         }
         action={
           config?.wrappid?.platform === APP_PLATFORM ? (
-            <CoreGrid>{getActionObjects()}</CoreGrid>
+            <CoreGrid>
+              {detailedRowData &&
+                Object.keys(detailedRowData).length > 0 &&
+                rowActions &&
+                rowActions.length > 0 && (
+                <CoreTableAction
+                  gridProps={
+                    window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                      config?.wrappid?.platform === APP_PLATFORM
+                      ? { gridSize: 10 }
+                      : { gridSize: 12 }
+                  }
+                  tableUUID={tableUUID}
+                  actions={rowActions}
+                  columns={tableColumns}
+                  rowIndex={detailedRowId}
+                  rowData={detailedRowData}
+                  set_showDetailsPane={set_showDetailsPane}
+                  setDetailedRowId={setDetailedRowId}
+                  setDetailedRowData={setDetailedRowData}
+                  filterData={filterData}
+                />
+              )}
+
+              {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                config?.wrappid?.platform === APP_PLATFORM) && (
+                <CoreIconButton
+                  gridProps={detailedRowData ? { gridSize: 2 } : { gridSize: 12 }}
+                  onClick={() => {
+                    showCreateForm && setShowCreateForm(false);
+                    set_showDetailsPane(false);
+                    setDetailedRowId(null);
+                    setDetailedRowData(null);
+                  }}>
+                  <CoreIcon>clear</CoreIcon>
+                </CoreIconButton>
+              )}
+            </CoreGrid>
           ) : (
-            <CoreStack direction="row">{getActionObjects()}</CoreStack>
+            <CoreStack direction="row">
+              {detailedRowData &&
+                Object.keys(detailedRowData).length > 0 &&
+                rowActions &&
+                rowActions.length > 0 && (
+                <CoreTableAction
+                  gridProps={
+                    window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                      config?.wrappid?.platform === APP_PLATFORM
+                      ? { gridSize: 10 }
+                      : { gridSize: 12 }
+                  }
+                  tableUUID={tableUUID}
+                  actions={rowActions}
+                  columns={tableColumns}
+                  rowIndex={detailedRowId}
+                  rowData={detailedRowData}
+                  set_showDetailsPane={set_showDetailsPane}
+                  setDetailedRowId={setDetailedRowId}
+                  setDetailedRowData={setDetailedRowData}
+                  filterData={filterData}
+                />
+              )}
+
+              {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                config?.wrappid?.platform === APP_PLATFORM) && (
+                <CoreIconButton
+                  gridProps={detailedRowData ? { gridSize: 2 } : { gridSize: 12 }}
+                  onClick={() => {
+                    showCreateForm && setShowCreateForm(false);
+                    set_showDetailsPane(false);
+                    setDetailedRowId(null);
+                    setDetailedRowData(null);
+                  }}>
+                  <CoreIcon>clear</CoreIcon>
+                </CoreIconButton>
+              )}
+            </CoreStack>
           )
         }
       />
+
+      {config?.wrappid?.platform === APP_PLATFORM && <CoreDivider />}
 
       <CoreCardContent>
         {detailedRowData && Object.keys(detailedRowData).length > 0 ? (
@@ -170,8 +197,7 @@ export default function CoreDataTableDetailsPane(props) {
                   expanded={_expandedDevJSONSchema}
                   onChange={() => {
                     set_expandedDevJSONSchema(!_expandedDevJSONSchema);
-                  }}
-                >
+                  }}>
                   <CoreAccordionSummary>
                     <CoreLabel>JSON Schema</CoreLabel>
                   </CoreAccordionSummary>
@@ -310,6 +336,7 @@ export default function CoreDataTableDetailsPane(props) {
                     initData={{}}
                     afterCancel={() => {
                       filterData();
+                      if (platform === APP_PLATFORM) set_showDetailsPane(false);
                     }}
                     afterCreateSuccess={() => {
                       if (platform === APP_PLATFORM) set_showDetailsPane(false);

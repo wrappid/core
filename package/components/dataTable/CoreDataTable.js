@@ -239,7 +239,7 @@ export default function CoreDataTable(props) {
   // selection
   const [selected, setSelected] = React.useState([]);
   const [detailedRowId, setDetailedRowId] = React.useState(null);
-  const [detailedRowData, setDetailedRowData] = React.useState({});
+  const [detailedRowData, setDetailedRowData] = React.useState(null);
   const [formMode, setFormMode] = React.useState(FORM_VIEW_MODE);
 
   React.useEffect(() => {
@@ -336,7 +336,11 @@ export default function CoreDataTable(props) {
 
   React.useEffect(() => {
     if (platform === APP_PLATFORM) {
-      set_showDetailsPane(false);
+      if (openCreateOnMount) {
+        return;
+      } else {
+        set_showDetailsPane(false);
+      }
     } else {
       if (window.innerWidth < MEDIUM_WINDOW_WIDTH) {
         set_showDetailsPane(false);
@@ -660,9 +664,11 @@ export default function CoreDataTable(props) {
   }, []);
 
   React.useEffect(() => {
-    setDetailedRowId(null);
-    setDetailedRowData(null);
-    set_showDetailsPane(true);
+    if (showCreateForm) {
+      setDetailedRowId(null);
+      setDetailedRowData(null);
+      set_showDetailsPane(true);
+    }
   }, [showCreateForm]);
 
   React.useEffect(() => {
@@ -745,7 +751,7 @@ export default function CoreDataTable(props) {
         />
       )}
 
-      {platform === APP_PLATFORM && !noHeaderInApp && (
+      {platform === APP_PLATFORM && !noHeaderInApp && !_showDetailsPane && (
         <>
           <CoreBox
             gridProps={{ gridSize: 12 }}
