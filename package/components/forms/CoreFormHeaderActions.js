@@ -4,6 +4,7 @@ import React from "react";
 import { getConfigurationObject } from "@wrappid/styles";
 
 import CoreClasses from "../../styles/CoreClasses";
+import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreBox from "../layouts/CoreBox";
@@ -18,7 +19,7 @@ export default function CoreFormHeaderActions(props) {
         {props.action.map((action, i) => (
           <CoreIconButton
             style={
-              getConfigurationObject()?.wrappid?.platform === "mobile"
+              getConfigurationObject()?.wrappid?.platform === APP_PLATFORM
                 ? { marginRight: -10 }
                 : {}
             }

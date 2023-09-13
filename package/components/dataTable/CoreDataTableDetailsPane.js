@@ -1,9 +1,10 @@
-
 /* eslint-disable no-prototype-builtins */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
+// eslint-disable-next-line import/no-unresolved
+import { getConfigurationObject } from "@wrappid/styles";
+
 import CoreTableAction from "./CoreTableAction";
 import TableRowAuditData from "./TableRowAuditData";
 import { ENV_DEV_MODE, MEDIUM_WINDOW_WIDTH } from "../../config/constants";
@@ -19,6 +20,7 @@ import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaptio
 import CoreForm from "../forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import CoreIconButton from "../inputs/CoreIconButton";
+import CoreGrid from "../layouts/CoreGrid";
 import CoreStack from "../layouts/CoreStack";
 import CoreAccordion from "../surfaces/CoreAccordion";
 import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
@@ -59,7 +61,7 @@ export default function CoreDataTableDetailsPane(props) {
     postRender_UpdateData_DetailsPaneComponent,
     _expandedDevJSONSchema,
     set_expandedDevJSONSchema,
-    _showDetailsPane,
+    // _showDetailsPane,
     afterEditSuccess,
     afterEditError,
     afterCreateSuccess,
@@ -67,270 +69,283 @@ export default function CoreDataTableDetailsPane(props) {
     afterDeleteSuccess,
     afterDeleteError,
     hideAuditDataDetailPane,
-    platform
+    platform,
   } = props;
 
+  const config = getConfigurationObject();
+
+  const getActionObjects = () => {
+    return (
+      <>
+        {detailedRowData &&
+          Object.keys(detailedRowData).length > 0 &&
+          rowActions &&
+          rowActions.length > 0 && (
+          <CoreTableAction
+            gridProps={
+              window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                config?.wrappid?.platform === APP_PLATFORM
+                ? { gridSize: { sm: 6, xs: 10 } }
+                : { gridSize: 12 }
+            }
+            tableUUID={tableUUID}
+            actions={rowActions}
+            columns={tableColumns}
+            rowIndex={detailedRowId}
+            rowData={detailedRowData}
+            set_showDetailsPane={set_showDetailsPane}
+            setDetailedRowId={setDetailedRowId}
+            setDetailedRowData={setDetailedRowData}
+            filterData={filterData}
+          />
+        )}
+
+        {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+          config?.wrappid?.platform === APP_PLATFORM) && (
+          <CoreIconButton
+            gridProps={
+              detailedRowData
+                ? { gridSize: { sm: 6, xs: 2 } }
+                : { gridSize: 12 }
+            }
+            onClick={() => {
+              showCreateForm && setShowCreateForm(false);
+              set_showDetailsPane(false);
+              setDetailedRowId(null);
+              setDetailedRowData(null);
+            }}
+          >
+            <CoreIcon>clear</CoreIcon>
+          </CoreIconButton>
+        )}
+      </>
+    );
+  };
+
   return (
-    <CoreTableDetailsPaneContainer
-      open={_showDetailsPane}
-      onClose={() => {
-        set_showDetailsPane(false);
-      }}
-    >
-      <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
-        <CoreCardHeader
-          _tableAction={true}
-          title={
-            detailedRowData && Object.keys(detailedRowData).length > 0 ? (
-              <>
-                <CoreStack direction="row" spacing={1}>
-                  <CoreTypographyCaption>
-                    {"ID: " + detailedRowData["id"]}
+    <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
+      <CoreCardHeader
+        _tableAction={detailedRowData ? true : false}
+        title={
+          detailedRowData && Object.keys(detailedRowData).length > 0 ? (
+            <>
+              <CoreStack direction="row" spacing={1}>
+                <CoreTypographyCaption>
+                  {"ID: " + detailedRowData["id"]}
+                </CoreTypographyCaption>
+
+                {detailedRowData.hasOwnProperty("id") &&
+                  detailedRowData.hasOwnProperty("_status") && (
+                  <CoreTypographyCaption
+                    styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+                  >
+                    {"|"}
                   </CoreTypographyCaption>
+                )}
 
-                  {detailedRowData.hasOwnProperty("id") &&
-                    detailedRowData.hasOwnProperty("_status") && (
-                    <CoreTypographyCaption
-                      styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
-                    >
-                      {"|"}
-                    </CoreTypographyCaption>
-                  )}
+                <StatusText status={detailedRowData["_status"]} />
+              </CoreStack>
+            </>
+          ) : (
+            !hideForm &&
+            createFormID &&
+            (createEntityButtonText || `Create ${getLabel(tableUUID)}`)
+          )
+        }
+        action={
+          config?.wrappid?.platform === APP_PLATFORM ? (
+            <CoreGrid>{getActionObjects()}</CoreGrid>
+          ) : (
+            <CoreStack direction="row">{getActionObjects()}</CoreStack>
+          )
+        }
+      />
 
-                  <StatusText status={detailedRowData["_status"]} />
-                </CoreStack>
-              </>
-            ) : (
-              !hideForm &&
-              createFormID &&
-              (createEntityButtonText || `Create ${getLabel(tableUUID)}`)
-            )
-          }
-          action={
-            <CoreStack direction="row">
-              {detailedRowData && Object.keys(detailedRowData).length > 0 && rowActions && rowActions.length > 0 && (
-                <CoreTableAction
-                  tableUUID={tableUUID}
-                  actions={rowActions}
-                  columns={tableColumns}
-                  rowIndex={detailedRowId}
-                  rowData={detailedRowData}
-                  set_showDetailsPane={set_showDetailsPane}
-                  setDetailedRowId={setDetailedRowId}
-                  setDetailedRowData={setDetailedRowData}
-                  filterData={filterData}
-                />
-              )}
-
-              {window.innerWidth < MEDIUM_WINDOW_WIDTH && (
-                <CoreIconButton
-                  onClick={() => {
-                    showCreateForm && setShowCreateForm(false);
-                    set_showDetailsPane(false);
-                    setDetailedRowId(null);
-                    setDetailedRowData(null);
+      <CoreCardContent>
+        {detailedRowData && Object.keys(detailedRowData).length > 0 ? (
+          <>
+            {config?.wrappid?.envvironment === ENV_DEV_MODE && (
+              <>
+                <CoreAccordion
+                  expanded={_expandedDevJSONSchema}
+                  onChange={() => {
+                    set_expandedDevJSONSchema(!_expandedDevJSONSchema);
                   }}
                 >
-                  <CoreIcon>clear</CoreIcon>
-                </CoreIconButton>
-              )}
-            </CoreStack>
-          }
-        />
+                  <CoreAccordionSummary>
+                    <CoreLabel>JSON Schema</CoreLabel>
+                  </CoreAccordionSummary>
 
-        <CoreCardContent>
-          {detailedRowData && Object.keys(detailedRowData).length > 0 ? (
-            <>
-              {process.env.REACT_APP_ENV === ENV_DEV_MODE && (
+                  <CoreAccordionDetail>
+                    {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
+                    <CoreLabel>
+                      {JSON.stringify(detailedRowData, null, 2)}
+                    </CoreLabel>
+                  </CoreAccordionDetail>
+                </CoreAccordion>
+
+                <CoreDivider />
+              </>
+            )}
+
+            {preRenderDetailsPaneComponent &&
+              React.createElement(preRenderDetailsPaneComponent, { data: detailedRowData })}
+
+            {preRender_UpdateData_DetailsPaneComponent && (
+              <>
+                {React.createElement(
+                  preRender_UpdateData_DetailsPaneComponent,
+                  { data: detailedRowData }
+                )}
+              </>
+            )}
+
+            {detailedRowId && detailedRowData ? (
+              updateFormID &&
+              !hideForm &&
+              !hideUpdateForm && (
                 <>
-                  <CoreAccordion
-                    expanded={_expandedDevJSONSchema}
-                    onChange={() => {
-                      set_expandedDevJSONSchema(!_expandedDevJSONSchema);
-                    }}
-                  >
-                    <CoreAccordionSummary>
-                      <CoreLabel>JSON Schema</CoreLabel>
-                    </CoreAccordionSummary>
-
-                    <CoreAccordionDetail>
-                      {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
-                      <CoreLabel>
-                        {JSON.stringify(detailedRowData, null, 2)}
-                      </CoreLabel>
-                    </CoreAccordionDetail>
-                  </CoreAccordion>
-
                   <CoreDivider />
+
+                  <CoreForm
+                    apiMode={"edit"}
+                    onMountRead={false}
+                    formId={updateFormID}
+                    mode={formMode}
+                    allowEdit={editable}
+                    allowDelete={deletable}
+                    initData={detailedRowData}
+                    afterCancel={() => {
+                      setFormMode(FORM_VIEW_MODE);
+                    }}
+                    afterEditSuccess={() => {
+                      if (platform === APP_PLATFORM) set_showDetailsPane(false);
+                      filterData();
+                      if (
+                        afterEditSuccess &&
+                        typeof afterEditSuccess === "function"
+                      ) {
+                        afterEditSuccess();
+                      }
+                    }}
+                    afterDeleteSuccess={() => {
+                      if (platform === APP_PLATFORM) set_showDetailsPane(false);
+                      setDetailedRowId(null);
+                      filterData();
+                      if (afterDeleteSuccess) {
+                        afterDeleteSuccess();
+                      }
+                    }}
+                    afterEditError={() => {
+                      if (
+                        afterEditError &&
+                        typeof afterEditError === "function"
+                      ) {
+                        afterEditError();
+                      }
+                    }}
+                    afterDeleteError={() => {
+                      if (
+                        afterDeleteError &&
+                        typeof afterDeleteError === "function"
+                      ) {
+                        afterDeleteError();
+                      }
+                    }}
+                    deleteId={detailedRowId}
+                  />
                 </>
-              )}
+              )
+            ) : (
+              <CoreTypographyBody1>No row selected</CoreTypographyBody1>
+            )}
 
-              {preRenderDetailsPaneComponent && (
-                React.createElement(preRenderDetailsPaneComponent, { data: detailedRowData })
-              )}
+            {postRender_UpdateData_DetailsPaneComponent && (
+              <>
+                {React.createElement(
+                  postRender_UpdateData_DetailsPaneComponent,
+                  { data: detailedRowData }
+                )}
+              </>
+            )}
 
-              {preRender_UpdateData_DetailsPaneComponent && (
+            {/**
+             * @todo check if it's available show flag ticked
+             */}
+            {postRenderDetailsPaneComponent && (
+              <>
+                <CoreDivider />
+
+                {React.createElement(postRenderDetailsPaneComponent, { data: detailedRowData })}
+              </>
+            )}
+
+            {!hideAuditDataDetailPane && (
+              <>
+                <CoreDivider />
+
+                <TableRowAuditData rowData={detailedRowData} />
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            {showCreateForm && preRender_CreateData_DetailsPaneComponent && (
+              <>
+                {React.createElement(preRender_CreateData_DetailsPaneComponent)}
+              </>
+            )}
+
+            {enableCreateEntity &&
+            showCreateForm &&
+            createFormID &&
+            !hideForm &&
+            !hideCreateForm ? (
                 <>
-                  {React.createElement(
-                    preRender_UpdateData_DetailsPaneComponent,
-                    { data: detailedRowData }
-                  )}
+                  <CoreForm
+                    apiMode={"create"}
+                    onMountRead={false}
+                    formId={createFormID}
+                    mode={FORM_EDIT_MODE}
+                    initData={{}}
+                    afterCancel={() => {
+                      filterData();
+                    }}
+                    afterCreateSuccess={() => {
+                      if (platform === APP_PLATFORM) set_showDetailsPane(false);
+
+                      filterData();
+                      if (
+                        afterCreateSuccess &&
+                      typeof afterCreateSuccess === "function"
+                      ) {
+                        afterCreateSuccess();
+                      }
+                    }}
+                    afterCreateError={() => {
+                      if (
+                        afterCreateError &&
+                      typeof afterCreateError === "function"
+                      ) {
+                        afterCreateError();
+                      }
+                    }}
+                  />
                 </>
-              )}
-
-              {detailedRowId && detailedRowData ? (
-                updateFormID &&
-                !hideForm &&
-                !hideUpdateForm && (
-                  <>
-                    <CoreDivider />
-
-                    <CoreForm
-                      apiMode={"edit"}
-                      onMountRead={false}
-                      formId={updateFormID}
-                      mode={formMode}
-                      allowEdit={editable}
-                      allowDelete={deletable}
-                      initData={detailedRowData}
-                      afterCancel={() => {
-                        setFormMode(FORM_VIEW_MODE);
-                      }}
-                      afterEditSuccess={() => {
-                        if(platform === APP_PLATFORM)
-                          set_showDetailsPane(false);
-                        filterData();
-                        if (
-                          afterEditSuccess &&
-                          typeof afterEditSuccess === "function"
-                        ) {
-                          afterEditSuccess();
-                        }
-                      }}
-                      afterDeleteSuccess={() => {
-                        if(platform === APP_PLATFORM)
-                          set_showDetailsPane(false);
-                        setDetailedRowId(null);
-                        filterData();
-                        if (afterDeleteSuccess) {
-                          afterDeleteSuccess();
-                        }
-                      }}
-                      afterEditError={() => {
-                        if (
-                          afterEditError &&
-                          typeof afterEditError === "function"
-                        ) {
-                          afterEditError();
-                        }
-                      }}
-                      afterDeleteError={() => {
-                        if (
-                          afterDeleteError &&
-                          typeof afterDeleteError === "function"
-                        ) {
-                          afterDeleteError();
-                        }
-                      }}
-                      deleteId={detailedRowId}
-                    />
-                  </>
-                )
               ) : (
                 <CoreTypographyBody1>No row selected</CoreTypographyBody1>
               )}
 
-              {postRender_UpdateData_DetailsPaneComponent && (
-                <>
-                  {React.createElement(
-                    postRender_UpdateData_DetailsPaneComponent,
-                    { data: detailedRowData }
-                  )}
-                </>
-              )}
-
-              {/**
-               * @todo check if it's available show flag ticked
-               */}
-              {postRenderDetailsPaneComponent && (
-                <>
-                  <CoreDivider />
-
-                  {React.createElement(postRenderDetailsPaneComponent, { data: detailedRowData })}
-                </>
-              )}
-
-              {!hideAuditDataDetailPane && (
-                <>
-                  <CoreDivider />
-
-                  <TableRowAuditData rowData={detailedRowData} />
-                </>
-              )}
-            </>
-          ) : (
-            <>
-              {showCreateForm && preRender_CreateData_DetailsPaneComponent && (
-                <>
-                  {React.createElement(
-                    preRender_CreateData_DetailsPaneComponent
-                  )}
-                </>
-              )}
-
-              {(enableCreateEntity &&
-                showCreateForm &&
-                createFormID &&
-                !hideForm &&
-                !hideCreateForm) ? (
-                  <>
-                    <CoreForm
-                      apiMode={"create"}
-                      onMountRead={false}
-                      formId={createFormID}
-                      mode={FORM_EDIT_MODE}
-                      initData={{}}
-                      afterCancel={() => {
-                        filterData();
-                      }}
-                      afterCreateSuccess={() => {
-                        if(platform === APP_PLATFORM)
-                          set_showDetailsPane(false);
-
-                        filterData();
-                        if (
-                          afterCreateSuccess &&
-                        typeof afterCreateSuccess === "function"
-                        ) {
-                          afterCreateSuccess();
-                        }
-                      }}
-                      afterCreateError={() => {
-                        if (
-                          afterCreateError &&
-                        typeof afterCreateError === "function"
-                        ) {
-                          afterCreateError();
-                        }
-                      }}
-                    />
-                  
-                  </>
-                ) : (
-                  <CoreTypographyBody1>No row selected</CoreTypographyBody1>
+            {showCreateForm && postRender_CreateData_DetailsPaneComponent && (
+              <>
+                {React.createElement(
+                  postRender_CreateData_DetailsPaneComponent
                 )}
-
-              {showCreateForm && postRender_CreateData_DetailsPaneComponent && (
-                <>
-                  {React.createElement(
-                    postRender_CreateData_DetailsPaneComponent
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </CoreCardContent>
-      </CoreCard>
-    </CoreTableDetailsPaneContainer>
+              </>
+            )}
+          </>
+        )}
+      </CoreCardContent>
+    </CoreCard>
   );
 }

@@ -12,6 +12,7 @@ import {
 } from "../../../config/contextHandler";
 import { MENU_ITEM } from "../../../config/menuConstants";
 import { queryBuilder } from "../../../utils/helper";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
 import CoreMenu from "../../inputs/CoreMenu";
 
 export default function QuickAddPopOver(props) {
@@ -60,7 +61,7 @@ export default function QuickAddPopOver(props) {
   const OnMenuClick = item => {
     let config = getConfigurationObject();
 
-    if (config?.wrappid?.platform === "mobile") {
+    if (config?.wrappid?.platform === APP_PLATFORM) {
       navigate(getLink(item, routeRegistry));
     }
     onClose();

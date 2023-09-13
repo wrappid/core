@@ -684,6 +684,7 @@ export default function CoreDataTable(props) {
   return (
     <CoreGrid
       coreId="sam-data-table-container"
+      spacing={platform === APP_PLATFORM && 0}
       // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_CONTAINER]}
     >
       {(window.innerWidth >= MEDIUM_WINDOW_WIDTH || !_showDetailsPane) &&

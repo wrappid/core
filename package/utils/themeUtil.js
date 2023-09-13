@@ -1,13 +1,13 @@
 import {
   nativeCreateTheme,
   nativeUseTheme as coreUseTheme,
-  NativeCssBaseline as CoreCssBaseline,
+  NativeCssBaseline as CoreCssBaseline
 } from "@wrappid/native";
 
 import { theme as coreTheme } from "../theme/theme";
 
 export const WEB_PLATFORM = "web";
-export const APP_PLATFORM = "app";
+export const APP_PLATFORM = "mobile";
 
 function detectPlatform() {
   let doc = null;
