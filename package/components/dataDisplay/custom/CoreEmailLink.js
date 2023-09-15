@@ -5,11 +5,8 @@ import CoreIconText from "./CoreIconText";
 import CoreIcon, { __IconTypes } from "..//CoreIcon";
 import CoreClasses from "../../../styles/CoreClasses";
 import { maskEmailOrPhone } from "../../../utils/stringUtils";
-import CoreStack from "../../layouts/CoreStack";
 import CoreLink from "../../navigation/CoreLink";
 import CoreTooltip from "../CoreTooltip";
-import CoreTypographyBody2 from "../paragraph/CoreTypographyBody2";
-import CoreTypographyCaption from "../paragraph/CoreTypographyCaption";
 
 export default function CoreEmailLink(props) {
   const {
@@ -17,80 +14,61 @@ export default function CoreEmailLink(props) {
     email,
     verified,
     tooltipPlacement = "bottom",
-    size = "medium",
+    size,
     mask = false,
-    iconButton = false
+    iconButton = false,
   } = props;
 
   const renderEmailLinkComp = () => {
     return (
       <>
         {email ? (
-          iconButton ?
+          iconButton ? (
             <CoreLink href={`mailto:${email}`}>
-              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>
-               mail
+              <CoreIcon
+                type={__IconTypes.MATERIAL_OUTLINED_ICON}
+                styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}
+              >
+                mail
               </CoreIcon>
             </CoreLink>
-            :
-            <CoreStack direction={"row"} spacing={1}>
-              <CoreIcon type={__IconTypes.MATERIAL_OUTLINED_ICON} styleClasses={[CoreClasses.COLOR.TEXT_PRIMARY]}>mail</CoreIcon>
-
-              <CoreLink href={`mailto:${email}`}>
-                {size === "small" ? (
-                  <CoreTypographyCaption
-                    hideSeeMore={true}
-                    limitChars={limitChars}
-                    mask={mask}
-                  >
-                    {mask ? maskEmailOrPhone(email) : email}
-                  </CoreTypographyCaption>
-                ) : (
-                  <CoreTypographyBody2
-                    styleClasses={[CoreClasses?.NAVIGATION?.PHONE_EMAIL_LINK]}
-                    hideSeeMore={true}
-                    limitChars={limitChars}
-                    mask={mask}
-                  >
-                    {mask ? maskEmailOrPhone(email) : email}
-                  </CoreTypographyBody2>
-                )}
-              </CoreLink>
-
-              {email && verified !== undefined && (
-                <CoreIcon
-                  type={__IconTypes.MATERIAL_OUTLINED_ICON}
-                  styleClasses={
-                    [
-                      verified
-                        ? CoreClasses.ICON.VERIFIED_SUCCESS
-                        : CoreClasses.ICON.VERIFIED_WARNING
-                    ]
-                  }
-                >
-                  {verified ? "verified" : "error_outline"}
-                </CoreIcon>
-              )}
-            </CoreStack>
-        ) : (
-          iconButton ?
-            <CoreIconText 
-              type={__IconTypes.MATERIAL_OUTLINED_ICON} 
-              icon="email" 
-              text={"NA"} 
+          ) : (
+            <CoreIconText
+              styleClasses={[CoreClasses?.NAVIGATION?.PHONE_EMAIL_LINK]}
+              href={`mailto:${email}`}
+              limitChars={limitChars}
+              hideSeeMore={true}
+              type={__IconTypes.MATERIAL_OUTLINED_ICON}
+              size={size}
+              link={true}
+              text={mask ? maskEmailOrPhone(email) : email}
+              icon="mail"
+              tailIconColor={
+                email && verified !== undefined && verified
+                  ? [CoreClasses?.ICON?.VERIFIED_SUCCESS]
+                  : [CoreClasses?.ICON?.VERIFIED_WARNING]
+              }
+              tailIcon={
+                email && verified !== undefined
+                  ? verified
+                    ? "verified"
+                    : "error_outline"
+                  : null
+              }
             />
-            :
-            <>
-              {size === "small" ? (
-                <CoreTypographyCaption hideSeeMore={true} limitChars={limitChars}>
-                  {"Not Available"}
-                </CoreTypographyCaption>
-              ) : (
-                <CoreTypographyBody2 hideSeeMore={true} limitChars={limitChars}>
-                  {"Not Available"}
-                </CoreTypographyBody2>
-              )}
-            </>
+          )
+        ) : iconButton ? (
+          <CoreIconText
+            type={__IconTypes.MATERIAL_OUTLINED_ICON}
+            icon="email"
+            text={"NA"}
+          />
+        ) : (
+          <CoreIconText
+            type={__IconTypes.MATERIAL_OUTLINED_ICON}
+            icon="email"
+            text={"Not Available"}
+          />
         )}
       </>
     );

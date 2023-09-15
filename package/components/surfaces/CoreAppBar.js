@@ -2,16 +2,17 @@
 import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
+import { WEB_PLATFORM } from "@wrappid/core";
+// eslint-disable-next-line import/no-unresolved
 import { NativeAppBar } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses } from "@wrappid/styles";
+import { UtilityClasses, getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { urls } from "../../config/constants";
 import { coreUseNavigate } from "../../helper/routerHelper";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
-import { detectPlatform } from "../../utils/themeUtil";
 import CoreComponent from "../CoreComponent";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -26,8 +27,8 @@ import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const mdm = useSelector((state) => state.mdm);
+  const auth = useSelector(state => state.auth);
+  const mdm = useSelector(state => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
@@ -43,7 +44,7 @@ export default function CoreAppBar(props) {
   };
 
   React.useEffect(() => {
-    setPlatform(detectPlatform());
+    setPlatform(getConfigurationObject()?.wrappid?.platform);
   }, []);
 
   useEffect(() => {
@@ -56,7 +57,8 @@ export default function CoreAppBar(props) {
   }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
 
   /* AppBar PopOver */
-  const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] = React.useState(null);
+  const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
+    React.useState(null);
   // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
   const [_appbarContent, set_appbarContent] = React.useState(null);
@@ -66,24 +68,24 @@ export default function CoreAppBar(props) {
   };
   const handleAppbarPopOverOpen = (e, appBarPopOverCons) => {
     set_appbarContent(appBarPopOverCons);
-    set_appbarPopOverAnchorEl(e.currentTarget);
+    set_appbarPopOverAnchorEl(e?.currentTarget);
   };
 
   return (
     <>
       <NativeAppBar {...props}>
         <CoreToolbar
-          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-        >
-          <CoreStack direction="row" styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+          <CoreStack
+            direction="row"
+            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
             <CoreIconButton
               styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
               disabled={!auth?.uid}
-              sx={{ marginLeft: "-16px" }}
-            >
+              sx={{ marginLeft: "-16px" }}>
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
 
@@ -99,55 +101,54 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-            >
-              {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value?.flag && (
+              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+              {mdm?.settingMeta?.find(f => f.name === "appBarWalet")?.value
+                ?.flag && (
                 <CoreIconButton styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
                   <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value?.flag && (
+              {mdm?.settingMeta?.find(f => f.name === "appBarHelp")?.value
+                ?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Help & Support"}
-                  onClick={(e) => {
+                  onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
-                  }}
-                >
+                  }}>
                   <CoreIcon>help_outline</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")?.value?.flag && (
+              {mdm?.settingMeta?.find(f => f.name === "appBarNotification")
+                ?.value?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Show Notification"}
-                  onClick={(e) => {
+                  onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
-                  }}
-                >
+                  }}>
                   <CoreIcon>notifications_none_outlined</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value?.flag && (
+              {mdm?.settingMeta?.find(f => f.name === "appBarAdd")?.value
+                ?.flag && (
                 <CoreIconButton
                   styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
                   title={"Quick Menu"}
-                  onClick={(e) => {
+                  onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
-                  }}
-                >
+                  }}>
                   <CoreIcon>add_circle_outlined</CoreIcon>
                 </CoreIconButton>
               )}
 
               <CoreIconButton
-                onClick={(e) => {
+                onClick={e => {
                   handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
-                }}
-              >
+                }}>
                 <CoreAvatar
                   src={auth?.photo}
                   styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
@@ -162,14 +163,17 @@ export default function CoreAppBar(props) {
       {_appbarContent && (
         <CorePopover
           id={_appbarID}
-          open={_appbarPopOverAnchorEl != null}
+          open={
+            platform === WEB_PLATFORM
+              ? _appbarPopOverAnchorEl !== null
+              : _appbarPopOverAnchorEl !== null
+          }
           anchorEl={_appbarPopOverAnchorEl}
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
             vertical  : "bottom",
-          }}
-        >
+          }}>
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
             <>
               {/* Help & Support Popover */}

@@ -13,7 +13,7 @@ export default function NotificationPopOver() {
     <>
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreBox
-          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.LAYOUT.VERTICAL_CENTER]}
+          styleClasses={[CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.LAYOUT.VERTICAL_CENTER]}
         >
           <CoreTypographyBody1>Notifications</CoreTypographyBody1>
 

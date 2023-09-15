@@ -56,22 +56,22 @@ export const apiRequestAction =
     resetLoadingType = RESET_LOADING,
     reloadForm
   ) =>
-    (dispatch) => {
+    dispatch => {
       try {
         dispatch({ type: SET_PROGRESS_BAR }); //show progress bar
         dispatch({ type: loadingType });
         formId &&
-      method !== HTTP.GET &&
-      dispatch({
-        payload: { formId },
-        type   : FORM_SUBMIT_LOADING,
-      });
+        method !== HTTP.GET &&
+        dispatch({
+          payload: { formId },
+          type   : FORM_SUBMIT_LOADING,
+        });
         formId &&
-      method === HTTP.GET &&
-      dispatch({
-        payload: { formId },
-        type   : FORM_DATA_READ_LOADING,
-      });
+        method === HTTP.GET &&
+        dispatch({
+          payload: { formId },
+          type   : FORM_DATA_READ_LOADING,
+        });
         return AppService.apiRequest(
           method,
           endpoint,
@@ -80,26 +80,26 @@ export const apiRequestAction =
           includeFile,
           file
         )
-          .then(async (response) => {
+          .then(async response => {
             let formJson = null;
             let reloadFormJson = null;
 
             if (formId) {
               formJson = await getForm(formId, authRequired, formStore);
             }
-            if(reloadForm){
+            if (reloadForm) {
               reloadFormJson = await getForm(reloadForm, authRequired, formStore);
             }
             if (!response) throw new Error("Response is undefined");
-            
-            if(response?.status === 200 || response?.status === 201){
+
+            if (response?.status === 200 || response?.status === 201) {
               if (method !== HTTP.GET)
                 dispatch({
                   payload: { data: { ...reduxData, ...response.data }, formId },
                   type   : FORM_SUBMIT_SUCCESS,
                 });
               else if (reload && method === HTTP.GET) {
-                if(reloadForm){
+                if (reloadForm) {
                   dispatch({
                     payload: {
                       data    : { ...reduxData, ...response.data },
@@ -147,10 +147,38 @@ export const apiRequestAction =
               } else {
                 throw new Error("Unknown successType of this form");
               }
-            }
-            else if(response?.status === 204){
+            } else if (response?.status === 204) {
+
+              /**
+               * 204 should update reducer otherwise data does not 
+               * change 
+               */
+              if (typeof successType === "string") {
+                dispatch({
+                  payload: { ...reduxData, data: null },
+                  type   : successType,
+                });
+              } else if (typeof successType === "object") {
+                if (Array.isArray(successType)) {
+                  for (let i = 0; i < successType.length; i++) {
+                    dispatch({
+                      payload: { ...reduxData, data: null },
+                      type   : successType[i],
+                    });
+                  }
+                } else {
+                  dispatch({
+                    payload: { ...reduxData, data: null },
+                    type   : successType[response.status],
+                  });
+                }
+              } else {
+                throw new Error("Unknown successType of this form");
+              }
+
+              //form related
               if (reload && method === HTTP.GET) {
-                if(reloadForm){
+                if (reloadForm) {
                   dispatch({
                     payload: {
                       data    : { ...reduxData, ...response.data },
@@ -173,8 +201,7 @@ export const apiRequestAction =
                 payload: { ...reduxData, ...response.data },
                 type   : HTTP_NO_CONTENT,
               });
-            }
-            else{
+            } else {
               dispatch({
                 payload: { ...reduxData, ...response },
                 type   : HTTP_UNHANDLED_SUCCESS_TYPE,
@@ -192,16 +219,16 @@ export const apiRequestAction =
             }
             return Promise.resolve();
           })
-          .catch((error) => {
-            // eslint-disable-next-line no-console
+          .catch(error => {
+          // eslint-disable-next-line no-console
             console.error("ERROR inaction layer", error);
             //CHECK FOR 401|403 AND SENT REQUEST TO STACK
             if (
               (error.status === 401 || error.status === 403) &&
-          endpoint !== LOGIN_WITH_OTP_API &&
-          endpoint !== LOGIN_WITH_PASSWORD_API &&
-          endpoint !== LOGIN_WITH_URL_API &&
-          endpoint !== LOGIN_WITH_RESET_PASSWORD_API
+            endpoint !== LOGIN_WITH_OTP_API &&
+            endpoint !== LOGIN_WITH_PASSWORD_API &&
+            endpoint !== LOGIN_WITH_URL_API &&
+            endpoint !== LOGIN_WITH_RESET_PASSWORD_API
             ) {
               reloadToken(
                 globalRefreshToken,
@@ -232,7 +259,7 @@ export const apiRequestAction =
               });
             } else {
               if (formId) {
-                // eslint-disable-next-line no-console
+              // eslint-disable-next-line no-console
                 console.log("DISPATH REDUCER FORM ERROR");
                 dispatch({
                   payload: { ...reduxData, data: error, formId },
@@ -277,21 +304,22 @@ export const apiRequestAction =
               }
             }
 
-            // return Promise.reject();
+          // return Promise.reject();
           })
-          .finally(() => {dispatch({ type: RESET_PROGRESS_BAR });});
+          .finally(() => {
+            dispatch({ type: RESET_PROGRESS_BAR });
+          });
       } catch (error) {
-        // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
         console.error("Something went wrong.", error);
         dispatch({ type: RESET_PROGRESS_BAR });
       }
-    
     };
 
 /**
  * Snack message related action
  */
-export const pushSnackMessage = (type, message) => (dispatch) => {
+export const pushSnackMessage = (type, message) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // enqueueSnackbar(message, { variant: type });
   dispatch({
@@ -303,7 +331,7 @@ export const pushSnackMessage = (type, message) => (dispatch) => {
     type: PUSH_SNACK_MESSAGE,
   });
 };
-export const clearSnackMessages = () => (dispatch) => {
+export const clearSnackMessages = () => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
   dispatch({ type: CLEAR_SNACK_MESSAGE });
