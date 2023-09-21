@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { WEB_PLATFORM } from "@wrappid/core";
+import { CoreTypographyBody1, WEB_PLATFORM } from "@wrappid/core";
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppBar } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
@@ -10,7 +10,7 @@ import { UtilityClasses, getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { urls } from "../../config/constants";
-import { coreUseNavigate } from "../../helper/routerHelper";
+import { coreUseLocation, coreUseNavigate } from "../../helper/routerHelper";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreComponent from "../CoreComponent";
@@ -27,14 +27,16 @@ import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
+  const location = coreUseLocation();
   const auth = useSelector(state => state.auth);
   const mdm = useSelector(state => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
+  const [appbarType, setAppbarType] = useState("primary");
   const navigate = coreUseNavigate();
 
-  const { handleDrawer } = props;
+  const { handleDrawer, routes } = props;
 
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
@@ -44,7 +46,10 @@ export default function CoreAppBar(props) {
   };
 
   React.useEffect(() => {
-    setPlatform(getConfigurationObject()?.wrappid?.platform);
+    let config = getConfigurationObject();
+
+    setPlatform(config?.wrappid?.platform);
+    setAppbarType(config?.wrappid?.appbarType);
   }, []);
 
   useEffect(() => {
@@ -71,16 +76,28 @@ export default function CoreAppBar(props) {
     set_appbarPopOverAnchorEl(e?.currentTarget);
   };
 
+  const appBarTextStyle = !appbarType
+    ? [CoreClasses.COLOR.TEXT_WHITE]
+    : appbarType?.includes("light")
+      ? []
+      : appbarType?.includes("contrast")
+        ? [CoreClasses.COLOR.TEXT_PRIMARY]
+        : [CoreClasses.COLOR.TEXT_WHITE];
+
   return (
     <>
-      <NativeAppBar {...props}>
+      <NativeAppBar
+        {...props}
+        styleClasses={
+          (!appbarType || appbarType?.includes("primary")) ? [] : [CoreClasses?.BG?.BG_WHITE]
+        }>
         <CoreToolbar
           styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
           <CoreStack
             direction="row"
             styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
             <CoreIconButton
-              styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
+              styleClasses={appBarTextStyle}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
@@ -89,12 +106,21 @@ export default function CoreAppBar(props) {
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
 
-            <CoreComponent
-              componentName={"AppLogoAppBar"}
-              onClick={() => {
-                navigate("/" + urls.DASHBOARD);
-              }}
-            />
+            {appbarType?.includes("text") ? (
+              <CoreTypographyBody1>
+                {
+                  routes?.find(route => "/" + route?.url === location?.pathname)
+                    ?.Page?.name
+                }
+              </CoreTypographyBody1>
+            ) : (
+              <CoreComponent
+                componentName={"AppLogoAppBar"}
+                onClick={() => {
+                  navigate("/" + urls.DASHBOARD);
+                }}
+              />
+            )}
           </CoreStack>
 
           {auth && auth.uid && (
@@ -104,7 +130,7 @@ export default function CoreAppBar(props) {
               styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
               {mdm?.settingMeta?.find(f => f.name === "appBarWalet")?.value
                 ?.flag && (
-                <CoreIconButton styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>
+                <CoreIconButton styleClasses={appBarTextStyle}>
                   <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
                 </CoreIconButton>
               )}
@@ -112,7 +138,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find(f => f.name === "appBarHelp")?.value
                 ?.flag && (
                 <CoreIconButton
-                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
+                  styleClasses={appBarTextStyle}
                   title={"Help & Support"}
                   onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
@@ -124,7 +150,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find(f => f.name === "appBarNotification")
                 ?.value?.flag && (
                 <CoreIconButton
-                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
+                  styleClasses={appBarTextStyle}
                   title={"Show Notification"}
                   onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
@@ -136,7 +162,7 @@ export default function CoreAppBar(props) {
               {mdm?.settingMeta?.find(f => f.name === "appBarAdd")?.value
                 ?.flag && (
                 <CoreIconButton
-                  styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}
+                  styleClasses={appBarTextStyle}
                   title={"Quick Menu"}
                   onClick={e => {
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);

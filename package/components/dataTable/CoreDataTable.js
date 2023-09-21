@@ -1,5 +1,6 @@
 import React from "react";
 
+import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDataTableBody from "./CoreDataTableBody";
@@ -180,7 +181,8 @@ export default function CoreDataTable(props) {
     preOnCreate, //function to be called when create button in clicked
     openCreateOnMount, //if true the details pane will be opened and create form will be shown
     navigationOnCreateUrl, //if present on clicking create button naivigation will happen to mentioned url,
-    noHeaderInApp, // table deetai header not to be shown
+    noHeaderInApp, // table deetai header not to be shown,
+    mobileHeight, // table deetai header not to be shown,
   } = props;
 
   // eslint-disable-next-line no-unused-vars
@@ -335,7 +337,7 @@ export default function CoreDataTable(props) {
   };
 
   React.useEffect(() => {
-    if (platform === APP_PLATFORM) {
+    if (getConfigurationObject()?.wrappid?.platform === APP_PLATFORM) {
       if (openCreateOnMount) {
         return;
       } else {
@@ -361,7 +363,10 @@ export default function CoreDataTable(props) {
 
     //max row in page
     // eslint-disable-next-line no-prototype-builtins
-    if (userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)) {
+    if (
+      userSettings &&
+      userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)
+    ) {
       setMaxRowsInPage(userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]);
     }
   }, [tableData]);
@@ -405,7 +410,11 @@ export default function CoreDataTable(props) {
       },
       type: UPDATE_QUERY_SEARCH_VALUE_DATA,
     });
+    if (platform === APP_PLATFORM) {
+      set_showDetailsPane(false);
+    }
   };
+
   const clearFilterData = () => {
     dispatch({
       payload: {
@@ -847,6 +856,7 @@ export default function CoreDataTable(props) {
             //reuired in mobile as pagination happens in infinte scroll
             setPage={setPage}
             page={page}
+            mobileHeight={mobileHeight}
           />
         </CoreTable>
       )}

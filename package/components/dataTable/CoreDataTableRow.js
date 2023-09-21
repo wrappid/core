@@ -59,6 +59,7 @@ export default function CoreDataTableRow(props) {
     // _rowHoverIndex,
     page,
     setPage,
+    mobileHeight
   } = props;
 
   const renderItem = (rowData, rowIndex) => {
@@ -185,6 +186,7 @@ export default function CoreDataTableRow(props) {
             onEndReached={onPaginate}
             page={page}
             boundingBox={true}
+            listHeight={mobileHeight}
           />
         ) : (
           <CoreTableRow>

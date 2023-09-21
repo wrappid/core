@@ -2,6 +2,7 @@
 import { getConfigurationObject } from "@wrappid/styles";
 import * as yup from "yup";
 
+import { defaultValidations } from "./componentDefaultValidations";
 import { getGridSizeProps } from "./componentUtil";
 import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
 import { queryBuilder } from "./helper";
@@ -86,12 +87,12 @@ function getComponentArray(formJson) {
       ? mergedComponentRegistry[formField?.type]?.defaultValidation?.required
       : mergedComponentRegistry[formField?.type]?.defaultValidation?.notRequired;
 
-    if(formField?.type === "asyncSelect" && formField?.isMulti){
+    if(formField?.type === "asyncSelect" && formField?.multiple){
       if(formField.required){
-        mergedComponentRegistry?.asyncSelectMulti?.defaultValidation?.required;
+        allValidations[formField?.id] = defaultValidations.asyncSelectMulti.required;
       }
       else{
-        mergedComponentRegistry?.asyncSelectMulti?.defaultValidation?.required;
+        allValidations[formField?.id] = defaultValidations.asyncSelectMulti.notRequired;
       }
     }
       

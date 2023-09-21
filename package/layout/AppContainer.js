@@ -181,7 +181,7 @@ function AppContainer(props) {
   }, [_routes]);
 
   const getAppBar = () => {
-    return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} /> : null;
+    return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
   };
 
   const getFooter = () => {
