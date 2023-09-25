@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+// eslint-disable-next-line import/no-unresolved
+import { getConfigurationObject } from "@wrappid/styles";
+
 import CoreFormButton from "./CoreFormButton";
 import { BUTTON_TYPE, INPUT_TYPE } from "./coreFormConstants";
+import CoreClasses from "../../styles/CoreClasses";
 import {
   checkDependencies,
   createFormActionProps,
@@ -9,10 +13,13 @@ import {
   detectChange,
   getDependentProps
 } from "../../utils/formUtils";
+import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreContainedButton from "../inputs/CoreContainedButton";
 import CoreInput from "../inputs/CoreInput";
 import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
+import CoreSpeechToText from "../inputs/custom/CoreSpeechToText";
 import CoreBox from "../layouts/CoreBox";
+import CoreGrid from "../layouts/CoreGrid";
 
 export const ON_MOUNT = "moount";
 export const ON_CHANGE = "change";
@@ -28,6 +35,7 @@ export default function CoreFormInputs(props) {
     handleButtonCLick,
     submitLoading,
     OnCancelClick,
+    mode
   } = props;
 
   const [elementProps, setElementProps] = useState({});
@@ -67,8 +75,7 @@ export default function CoreFormInputs(props) {
         ) {
           formikprops?.setFieldValue(element?.id, changedProps.calculatedValue);
         }
-      }
-      else if(others?.mount){
+      } else if (others?.mount) {
         data = { ...formikprops };
         setOldData(data);
       }
@@ -107,7 +114,11 @@ export default function CoreFormInputs(props) {
         forms[formId]?.formElements,
         ON_MOUNT
       );
-      let newProps = { ...(mainProps || []), ...(changedProps || []), mountSet: true };
+      let newProps = {
+        ...(mainProps || []),
+        ...(changedProps || []),
+        mountSet: true,
+      };
 
       // eslint-disable-next-line no-console
       console.log("CHANGE", newProps);
@@ -116,13 +127,41 @@ export default function CoreFormInputs(props) {
   }, []);
 
   return type === INPUT_TYPE ? (
-    element?.comp && !checkDependencies(element, formikprops)?.hide ? (
-      React.createElement(
-        element?.comp ? element?.comp : CoreInput,
-        element?.dependencies ? elementProps : createFormFieldProps(props, "edit"),
-        element?.onlyView ? element?.label : null
-      )
-    ) : null
+    element?.speechToText ?
+      getConfigurationObject()?.wrappid?.platform === APP_PLATFORM &&
+      <CoreGrid coreId="speecToText">
+        {element?.comp && !checkDependencies(element, formikprops)?.hide ? (
+          React.createElement(
+            element?.comp ? element?.comp : CoreInput,
+            element?.dependencies
+              ? elementProps
+              : { ...createFormFieldProps(props, "edit"), gridProps: { gridSize: 11 } },
+            element?.onlyView ? element?.label : null
+          )
+        ) : null}
+
+        {element?.speechToText && (
+          <CoreBox gridProps={{ gridSize: 1 }} styleClasses={[CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+            <CoreSpeechToText 
+              element={element}
+              formikprops={formikprops}
+              mode={mode}
+              preview={preview}
+            />
+          </CoreBox>
+        )}
+
+      </CoreGrid>
+      :
+      element?.comp && !checkDependencies(element, formikprops)?.hide ? (
+        React.createElement(
+          element?.comp ? element?.comp : CoreInput,
+          element?.dependencies
+            ? elementProps
+            : createFormFieldProps(props, "edit"),
+          element?.onlyView ? element?.label : null
+        )
+      ) : null
   ) : type === BUTTON_TYPE ? (
     <CoreBox xs={12} {...createFormActionProps(forms[formId])}>
       {forms[formId]?.formActions?.map((actionElement, i) => (

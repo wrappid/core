@@ -470,10 +470,37 @@ class CoreForm extends Component {
     if (this.props.afterSave) this.props.afterSave();
   };
 
-  handleButtonClick = data => {
-    let values = {};
+  handleButtonClick = (data, values = {}) => {
 
-    if (data.onSubmitRefine) {
+    if(data?.functionName){
+      let othersFormData = {
+        editForm: this.props.editForm,
+        formId  : this.props.formId,
+      };
+
+      if(typeof data.functionName === "function"){
+        data.functionName(values,
+          {},
+          this.props.state,
+          othersFormData);
+        return true;
+      }
+      else if(functionsRegistry[data.functionName]){
+        functionsRegistry[data.functionName](
+          values,
+          {},
+          this.props.state,
+          othersFormData
+        );
+        return true;
+      }
+      else{
+        // eslint-disable-next-line no-console
+        console.error("Button click function not available inregistry");
+        return false;
+      }
+    }
+    else if (data.onSubmitRefine) {
       let othersFormData = {
         editForm: this.props.editForm,
         formId  : this.props.formId,

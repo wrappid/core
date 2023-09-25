@@ -1,5 +1,6 @@
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { Formik } from "formik";
 import { useSelector } from "react-redux";
 
@@ -83,8 +84,8 @@ export default function CoreEditForm(props) {
                     allowEdit={allowEdit}
                     onFormFocus={onFormFocus}
                     OnCancelClick={OnCancelClick}
-                    mode={props.mode}
-                  />
+                    mode={mode}
+                  /> 
                 )
               )}
 
@@ -107,7 +108,7 @@ export default function CoreEditForm(props) {
                   allowEdit={allowEdit}
                   onFormFocus={onFormFocus}
                   OnCancelClick={OnCancelClick}
-                  mode={props.mode}
+                  mode={mode}
                 />
               ) : null}
             </CoreGrid>

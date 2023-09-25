@@ -113,6 +113,7 @@ import CoreMedicineSelector from "./components/inputs/custom/CoreMedicineSelecto
 import CoreReactSelectInput from "./components/inputs/custom/CoreReactSelectInput";
 import CoreResponsiveButton from "./components/inputs/custom/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/custom/CoreRichTextEditor";
+import CoreSpeechToText from "./components/inputs/custom/CoreSpeechToText";
 import ParentChildMap from "./components/inputs/custom/ParentChildMap";
 import CoreBox from "./components/layouts/CoreBox";
 import CoreGrid from "./components/layouts/CoreGrid";
@@ -319,6 +320,7 @@ export {
   CoreResponsiveButton,
   CoreRichTextEditor,
   ParentChildMap,
+  CoreSpeechToText,
   CoreAlert,
   CoreBackdrop,
   CoreCircularProgress,

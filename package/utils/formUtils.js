@@ -3,7 +3,6 @@ import { getConfigurationObject } from "@wrappid/styles";
 import * as yup from "yup";
 
 import { defaultValidations } from "./componentDefaultValidations";
-import { getGridSizeProps } from "./componentUtil";
 import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
 import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
@@ -108,11 +107,12 @@ function getComponentArray(formJson) {
   ) {
     let action = formJson.actions[actionIndex];
 
-    actionComps.push({
-      box : { comp: CoreBox },
-      comp: mergedComponentRegistry[action?.type]?.comp,
-      ...action,
-    });
+    if(mergedComponentRegistry[action?.type])
+      actionComps.push({
+        box : { comp: CoreBox },
+        comp: mergedComponentRegistry[action?.type]?.comp,
+        ...action,
+      });
   }
 
   return {
@@ -353,7 +353,6 @@ export function createFormFieldProps(props, type) {
         getOptionValue: element?.getOptionValue
           ? functionsRegistry[element.getOptionValue]
           : null,
-        gridProps           : { gridSize: getGridSizeProps(element?.gridSize, true) },
         handleButtonCLick   : handleButtonCLick,
         helperText          : element?.helperText,
         id                  : String(element?.id),
@@ -458,7 +457,7 @@ export function createFormButtonProps(element, formikprops, handleButtonCLick) {
     OnClick: element.onClick
       ? typeof element.onClick === "object"
         ? () => {
-          handleButtonCLick(element.onClick);
+          handleButtonCLick(element.onClick, formikprops?.values);
         }
         : element.onClick
       : () => {

@@ -12,7 +12,7 @@ const MD_DEFAULT_GRID_SIZE = 12;
 const LG_DEFAULT_GRID_SIZE = 12;
 const XL_DEFAULT_GRID_SIZE = 12;
 
-export function getGridSizeProps(gridSize, formFlag) {
+export function getGridSizeProps(gridSize, formFlag, speechToText) {
   let finalProps = {
     lg: formFlag ? FORM_LG_DEFAULT_GRID_SIZE : LG_DEFAULT_GRID_SIZE,
     md: formFlag ? FORM_MD_DEFAULT_GRID_SIZE : MD_DEFAULT_GRID_SIZE,
@@ -69,6 +69,14 @@ export function getGridSizeProps(gridSize, formFlag) {
         xl: gridSize.xl,
       };
     }
+  }
+
+  if(formFlag && speechToText){
+    finalProps.xs = finalProps.xs - 1; 
+    finalProps.sm = finalProps.sm - 1; 
+    finalProps.md = finalProps.md - 1; 
+    finalProps.lg = finalProps.lg - 1; 
+    finalProps.xl = finalProps.xl - 1; 
   }
 
   return finalProps;
