@@ -71,13 +71,19 @@ export function getGridSizeProps(gridSize, formFlag, speechToText) {
     }
   }
 
-  if(formFlag && speechToText){
-    finalProps.xs = finalProps.xs - 1; 
-    finalProps.sm = finalProps.sm - 1; 
-    finalProps.md = finalProps.md - 1; 
-    finalProps.lg = finalProps.lg - 1; 
-    finalProps.xl = finalProps.xl - 1; 
+  if (formFlag && speechToText) {
+    finalProps.xs = finalProps.xs - 1;
+    finalProps.sm = finalProps.sm - 1;
+    finalProps.md = finalProps.md - 1;
+    finalProps.lg = finalProps.lg - 1;
+    finalProps.xl = finalProps.xl - 1;
   }
 
   return finalProps;
+}
+
+export function sanitizeComponentProps(component, props) {
+  console.log(`component.validProps`);
+  console.log(component.validProps);
+  return props;
 }
