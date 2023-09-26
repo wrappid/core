@@ -18,26 +18,27 @@ export default function CoreAvatar(props) {
 CoreAvatar.validProps = [
   {
     description: "Used in combination with src or srcSet to provide an alt attribute for the rendered img element.",
-    name: "alt",
-    types: [{ type: "string" }]
+    name       : "alt",
+    types      : [{ type: "string" }]
   },
   {
     description: "The src attribute for the img element.",
-    name: "src",
-    types: [{ type: "string" }]
+    name       : "src",
+    required   : true,
+    types      : [{ type: "string" }]
   },
   {
     description: "The shape of the avatar.",
-    name: "variant",
-    types: [
+    name       : "variant",
+    types      : [
       {
-        default: "circular",
-        type: "string",
+        default    : "circular",
+        type       : "string",
         validValues: ["circular", "rounded", "square"]
       },
       {
-        default: true,
-        type: "boolean",
+        default    : true,
+        type       : "boolean",
         validValues: [true, false]
       }
     ]
