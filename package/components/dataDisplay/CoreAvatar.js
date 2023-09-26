@@ -8,9 +8,7 @@ import defaultImage from "../../assets/no_image.png";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreAvatar(props) {
-  let sanitizedProps = sanitizeComponentProps(CoreAvatar, props);
-
-  console.log(`----------------sanitizedProps=${Object.keys(sanitizedProps)}`);
+  props = sanitizeComponentProps(CoreAvatar, props);
 
   let src = props.src && props.src?.length > 0 ? props.src : defaultImage;
 
@@ -26,7 +24,7 @@ CoreAvatar.validProps = [
   {
     description: "The src attribute for the img element.",
     name: "src",
-    types: [{}]
+    types: [{ type: "string" }]
   },
   {
     description: "The shape of the avatar.",
@@ -34,12 +32,12 @@ CoreAvatar.validProps = [
     types: [
       {
         default: "circular",
-        type: String,
+        type: "string",
         validValues: ["circular", "rounded", "square"]
       },
       {
         default: true,
-        type: Boolean,
+        type: "boolean",
         validValues: [true, false]
       }
     ]
