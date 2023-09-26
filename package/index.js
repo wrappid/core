@@ -153,7 +153,7 @@ import CoreProfilePopOver from "./components/utils/custom/CoreProfilePopOver";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import {
-  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext, CoreRouteRegistryContext 
+  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext, CoreRouteRegistryContext
 } from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
@@ -188,6 +188,7 @@ import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 import CoreClasses from "./styles/CoreClasses";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
+import { defaultValidProps } from "./utils/componentUtil";
 import { getForm, createApiMeta, getFormikRequiredMessage } from "./utils/formUtils";
 import {
   getFullName,
@@ -196,7 +197,7 @@ import {
   getAge,
   viewFormattedDate
 } from "./utils/helper";
-import { maskEmailOrPhone } from "./utils/stringUtils";
+import stringUtils from "./utils/stringUtils";
 import {
   APP_PLATFORM,
   WEB_PLATFORM,
@@ -206,6 +207,8 @@ import {
 } from "./utils/themeUtil";
 
 export {
+  stringUtils,
+  defaultValidProps,
   clearValidatePhoneEmail,
   getFormikRequiredMessage,
   CoreMarkdownViewer,
@@ -369,13 +372,12 @@ export {
   apiRequestAction,
   reloadDataTableAction,
   ComponentRegistryContext,
-  maskEmailOrPhone,
   getCoreAccessToken,
-  
+
   APP_PLATFORM,
   WEB_PLATFORM,
   detectPlatform,
-  
+
   CoreClasses,
   IconContext,
   FORM_VIEW_MODE,

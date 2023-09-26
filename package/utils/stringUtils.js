@@ -44,3 +44,10 @@ export function maskEmailOrPhone(userLogin) {
 export function getDateString(dateStr) {
   return new Date(dateStr).toDateString();
 }
+
+export default {
+  getDateString,
+  getLabel,
+  isJson,
+  maskEmailOrPhone
+};
