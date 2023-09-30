@@ -18,7 +18,11 @@ import CoreInput from "../components/inputs/CoreInput";
 import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
 import { ENV_DEV_MODE, HTTP } from "../config/constants";
-import { mergedComponentRegistry, functionsRegistry, validationsRegistry } from "../layout/PageContainer";
+import {
+  mergedComponentRegistry,
+  functionsRegistry,
+  validationsRegistry
+} from "../layout/PageContainer";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import authHeader from "../service/DataService";
 import {
@@ -53,7 +57,7 @@ function getComponentArray(formJson) {
     mergedComponentRegistry[formJson?.skeletonRender]?.comp || null;
 
   if (formJson?.fields) {
-    let temp = formJson?.fields?.map((fields) => {
+    let temp = formJson?.fields?.map(fields => {
       return {
         ...fields,
         order: fields.order ? fields.order : 0,
@@ -76,7 +80,9 @@ function getComponentArray(formJson) {
           : CoreInput,
       dependencies: formField?.dependencies,
       onlyView:
-        mergedComponentRegistry[formField?.type]?.onlyView === true ? true : false,
+        mergedComponentRegistry[formField?.type]?.onlyView === true
+          ? true
+          : false,
       tabIndex: formField?.tabIndex ? formField?.tabIndex : i + 1,
       viewComp: mergedComponentRegistry[formField?.viewComp]
         ? mergedComponentRegistry[formField?.viewComp].comp
@@ -84,17 +90,19 @@ function getComponentArray(formJson) {
     });
     allValidations[formField?.id] = formField?.required
       ? mergedComponentRegistry[formField?.type]?.defaultValidation?.required
-      : mergedComponentRegistry[formField?.type]?.defaultValidation?.notRequired;
+      : mergedComponentRegistry[formField?.type]?.defaultValidation
+        ?.notRequired;
 
-    if(formField?.type === "asyncSelect" && formField?.multiple){
-      if(formField.required){
-        allValidations[formField?.id] = defaultValidations.asyncSelectMulti.required;
-      }
-      else{
-        allValidations[formField?.id] = defaultValidations.asyncSelectMulti.notRequired;
+    if (formField?.type === "asyncSelect" && formField?.multiple) {
+      if (formField.required) {
+        allValidations[formField?.id] =
+          defaultValidations.asyncSelectMulti.required;
+      } else {
+        allValidations[formField?.id] =
+          defaultValidations.asyncSelectMulti.notRequired;
       }
     }
-      
+
     if (formField?.helperText && formField?.helperText !== "") {
       helperButtonFlag = true;
     }
@@ -107,7 +115,7 @@ function getComponentArray(formJson) {
   ) {
     let action = formJson.actions[actionIndex];
 
-    if(mergedComponentRegistry[action?.type])
+    if (mergedComponentRegistry[action?.type])
       actionComps.push({
         box : { comp: CoreBox },
         comp: mergedComponentRegistry[action?.type]?.comp,
@@ -296,7 +304,7 @@ export function createFormFieldProps(props, type) {
     element,
     formikprops,
     initProps,
-    mode, 
+    mode,
     preview,
     handleButtonCLick,
     submitLoading,
@@ -306,7 +314,7 @@ export function createFormFieldProps(props, type) {
     allowEdit,
     onFormFocus,
   } = props;
-  
+
   if (type === "edit") {
     if (element?.onlyView) {
       return {
@@ -314,44 +322,48 @@ export function createFormFieldProps(props, type) {
         key         : "formElement" + element?.id,
         label       : element?.label,
         styleClasses: element?.styleClasses,
-        ...(initProps[element?.id] || {})
+        ...(initProps[element?.id] || {}),
       };
     } else
       return {
         OnEditClick : OnEditClick,
         allowEdit   : allowEdit,
         asyncLoading: element?.asyncLoading,
-        
+
         coreId: "coreFormElement-" + element?.id,
-        
+
         creatable: element?.creatable,
-        
+
         dependencies: element?.dependencies,
-        
+
         disableFuture: element?.disableFuture,
         disablePast  : element?.disablePast,
-        
+
         editId: editFormId,
-        
+
         endpoint: element?.endpoint,
-        
+
         //data table
         entity: element?.entity
           ? element?.entity
           : element?.getEntity
             ? FORM_DATA_TABLE_FUNCTION_MAP[element?.getEntity](formikprops)
             : "",
-        
+
         error         : formikprops?.errors ? formikprops?.errors[element?.id] : "",
         //below field are passed on for inline actions
         fieldActions  : forms[formId]?.formActions,
         formik        : formikprops,
         freeSolo      : element?.freeSolo,
         getOptionLabel: element?.getOptionLabel
-          ? functionsRegistry[element.getOptionLabel]
+          ? typeof element?.getOptionLabel === "string"
+            ? functionsRegistry[element.getOptionLabel]
+            : element.getOptionLabel
           : null,
         getOptionValue: element?.getOptionValue
-          ? functionsRegistry[element.getOptionValue]
+          ? typeof element?.getOptionValue === "string"
+            ? functionsRegistry[element.getOptionValue]
+            : element.getOptionValue
           : null,
         handleButtonCLick   : handleButtonCLick,
         helperText          : element?.helperText,
@@ -359,50 +371,57 @@ export function createFormFieldProps(props, type) {
         inlineAction        : forms[formId].inlineAction,
         inputProps          : { tabIndex: element?.tabIndex },
         isOptionEqualToValue: element?.isOptionEqualToValue
-          ? functionsRegistry[element.isOptionEqualToValue]
+          ? typeof element?.isOptionEqualToValue === "string"
+            ? functionsRegistry[element.isOptionEqualToValue]
+            : element.isOptionEqualToValue
           : null,
-        itemKey : element?.itemKey,
-        key     : "formElement" + element?.id,
-        label   : element?.label,
-        maxDate : element.maxDate,
-        maxTime : element.maxTime,
-        minDate : element.minDate,
-        minTime : element.minTime,
+        itemKey        : element?.itemKey,
+        key            : "formElement" + element?.id,
+        label          : element?.label,
+        maxDate        : element.maxDate,
+        maxTime        : element.maxTime,
+        minDate        : element.minDate,
+        minTime        : element.minTime,
+        mountValueMatch: element?.mountValueMatch,
+
         multiple: element?.multiple,
-        
+
         navigateUrl: element?.navigateUrl,
-        
+
         onChange: formikprops.handleChange,
-        
+
         onChangeDispatch: element?.onChangeDispatch
           ? functionsRegistry[element.onChangeDispatch]
           : null,
-        
+
         onFormFocus: onFormFocus,
-        
+
         optionComp: element?.optionComp,
-        
+
         optionCompProps: element?.optionCompProps,
-        
+
         //this will be arrow function like (d) => { return d.value }to show the label
         optionDisplay: element?.optionDisplay,
-        
+
         //this will be arrow function like (d) => { return d.value } to show the value
         optionValue: element?.optionValue,
-        
-        options: element?.options,
-        
+
+        options    : element?.options,
         optionsData: element?.optionsData,
-        
+
         preview: preview,
-        
+
         query: element?.query,
-        
+
         readOnly: !mode || preview || element?.readOnly,
-        
-        shouldDisableDate: element?.shouldDisableDate ? functionsRegistry[element.shouldDisableDate] : null,
-        shouldDisableTime: element?.shouldDisableTime ? functionsRegistry[element.shouldDisableTime] : null,
-        skeletonProps    : element?.skeletonProps,
+
+        shouldDisableDate: element?.shouldDisableDate
+          ? functionsRegistry[element.shouldDisableDate]
+          : null,
+        shouldDisableTime: element?.shouldDisableTime
+          ? functionsRegistry[element.shouldDisableTime]
+          : null,
+        skeletonProps: element?.skeletonProps,
         src:
           element.type === "avatar" || element.type === "imagePicker"
             ? formikprops?.values
@@ -421,13 +440,13 @@ export function createFormFieldProps(props, type) {
         touched      : formikprops?.touched ? formikprops?.touched[element?.id] : "",
         type         : element?.type,
         value        : formikprops?.values ? formikprops?.values[element?.id] : "",
-        ...(initProps[element?.id] || {})
+        ...(initProps[element?.id] || {}),
       };
   } else {
     return {
       id   : element?.id ? String(element?.id) : "",
       label: element?.label,
-      ...(initProps[element?.id] || {})
+      ...(initProps[element?.id] || {}),
     };
   }
 }
@@ -463,9 +482,10 @@ export function createFormButtonProps(element, formikprops, handleButtonCLick) {
       : () => {
         alert("error in button action");
       },
-    alignment: element.actionContainerStyle ? null : "end",
-    label    : element.label,
-    type     : element.actionType === "submit" ? "submit" : "button",
+    alignment   : element.actionContainerStyle ? null : "end",
+    label       : element.label,
+    styleClasses: element.styleClasses || [],
+    type        : element.actionType === "submit" ? "submit" : "button",
   };
 }
 
@@ -501,9 +521,9 @@ export function createApiMeta(state, formJson, values, props) {
   return {
     authRequired: apiAction?.authRequired,
     endpoint:
-    apiAction?.method === HTTP.GET && state.query
-      ? queryBuilder(apiAction.endpoint, state.query)
-      : apiAction.endpoint,
+      apiAction?.method === HTTP.GET && state.query
+        ? queryBuilder(apiAction.endpoint, state.query)
+        : apiAction.endpoint,
     errorType  : apiAction.errorType,
     files      : [],
     includeFile: apiAction?.includeFile,
@@ -526,7 +546,7 @@ export function createTableFormJson(
 ) {
   let initOb = {};
 
-  for (let i = 0; i < dataJson.filter((data) => data?.input).length; i++) {
+  for (let i = 0; i < dataJson.filter(data => data?.input).length; i++) {
     initOb[dataJson[i]?.id] = dataJson[i].value;
   }
 
@@ -609,7 +629,7 @@ export function createTableFormJson(
   }
 
   // remove common fields
-  dataJson = dataJson.filter((data) => data?.input);
+  dataJson = dataJson.filter(data => data?.input);
 
   return {
     form: {
@@ -625,7 +645,7 @@ export function createTableFormJson(
           type      : "coreContainedButton",
         },
       ],
-      fields: dataJson.map((data) => {
+      fields: dataJson.map(data => {
         return {
           id      : data?.id,
           label   : data?.label,
@@ -807,18 +827,30 @@ function checkConditions(dependencies, formik) {
   return eval(finalStr);
 }
 
-export function getDependentProps(getPropsFunction, formik, elem, allElements, type){
-  if(getPropsFunction && functionsRegistry && functionsRegistry[getPropsFunction]){
-    let newProps =  functionsRegistry[getPropsFunction](formik, { allElements: allElements, elements: elem, type: type });
-    
-    if(newProps){
+export function getDependentProps(
+  getPropsFunction,
+  formik,
+  elem,
+  allElements,
+  type
+) {
+  if (
+    getPropsFunction &&
+    functionsRegistry &&
+    functionsRegistry[getPropsFunction]
+  ) {
+    let newProps = functionsRegistry[getPropsFunction](formik, {
+      allElements: allElements,
+      elements   : elem,
+      type       : type,
+    });
+
+    if (newProps) {
       return newProps;
-    }
-    else{
+    } else {
       return {};
     }
-  }
-  else{
+  } else {
     return {};
   }
 }
@@ -827,7 +859,7 @@ export function checkDependencies(element, formik) {
   let finalStr = "";
 
   if (element?.dependencies) {
-    if(element?.dependencies?.hide)
+    if (element?.dependencies?.hide)
       finalStr += String(checkConditions(element?.dependencies?.hide, formik));
     return { hide: eval(finalStr) };
   } else {
@@ -835,14 +867,19 @@ export function checkDependencies(element, formik) {
   }
 }
 
-export function getDependents(element, forms, formikprops, type, formId){
-  if(element && element.isDependent && type === INPUT_TYPE && element?.dependencies?.props?.elements){
+export function getDependents(element, forms, formikprops, type, formId) {
+  if (
+    element &&
+    element.isDependent &&
+    type === INPUT_TYPE &&
+    element?.dependencies?.props?.elements
+  ) {
     let dependents = [];
     let dependentOn = element?.dependencies?.props?.elements;
     let dependentProps = element?.dependencies?.props?.dependentProps || [];
 
-    if(dependentProps){
-      if(Array.isArray( dependentProps) && dependentProps.length === 0){
+    if (dependentProps) {
+      if (Array.isArray(dependentProps) && dependentProps.length === 0) {
         dependentProps = ["values"];
       }
     }
@@ -852,59 +889,79 @@ export function getDependents(element, forms, formikprops, type, formId){
      * only considering formik props for now as dependent props.
      * This may have extend to all props of depending elements
      */
-    for(let i = 0;i < dependentProps.length;i++){
+    for (let i = 0; i < dependentProps.length; i++) {
       let prop = dependentProps[[i]];
 
-      if(element?.dependencies?.props?.identifier){
+      if (element?.dependencies?.props?.identifier) {
         const identifier = element?.dependencies?.props?.identifier;
-        let elemIds = forms[formId]?.formElements?.
-          filter(elem=>dependentOn.includes(elem[identifier]))
-          .map(elem=>{
+        let elemIds = forms[formId]?.formElements
+          ?.filter(elem => dependentOn.includes(elem[identifier]))
+          .map(elem => {
             return elem?.id;
           });
-  
-        dependents = elemIds?.map(id=> formikprops && formikprops[prop] ? formikprops[prop][id] : "");
-      }
-      else {
-        dependents = element?.dependencies?.props?.elements?.map((elem) => {
-          return formikprops && formikprops[prop] ? formikprops && formikprops[prop][elem] : "";
+
+        dependents = elemIds?.map(id =>
+          formikprops && formikprops[prop] ? formikprops[prop][id] : ""
+        );
+      } else {
+        dependents = element?.dependencies?.props?.elements?.map(elem => {
+          return formikprops && formikprops[prop]
+            ? formikprops && formikprops[prop][elem]
+            : "";
         });
       }
     }
 
     return dependents;
-  }
-  else{
+  } else {
     return [];
   }
 }
 
-export function detectChange(element, forms, formikprops, type, formId, oldProps){
-  let dependentValues = getDependents(element, forms, formikprops, type, formId);
+export function detectChange(
+  element,
+  forms,
+  formikprops,
+  type,
+  formId,
+  oldProps
+) {
+  let dependentValues = getDependents(
+    element,
+    forms,
+    formikprops,
+    type,
+    formId
+  );
 
-  if(dependentValues?.length === 0){
+  if (dependentValues?.length === 0) {
     return { changeDetected: false };
   }
-  let dependentValuesOld = getDependents(element, forms, oldProps, type, formId);
+  let dependentValuesOld = getDependents(
+    element,
+    forms,
+    oldProps,
+    type,
+    formId
+  );
 
-  if(dependentValues?.length !== dependentValuesOld?.length){
+  if (dependentValues?.length !== dependentValuesOld?.length) {
     // eslint-disable-next-line no-console
     console.error("POssible error");
     return { changeDetected: false };
-  }
-  else{
+  } else {
     let dependingOn = element?.dependencies?.props?.elements;
 
-    for(let i = 0;i < dependentValues?.length;i++){
-      if(dependentValues[i] !== dependentValuesOld[i]){
-        if(dependentValuesOld[i] === "" && dependentValues[i] === formikprops.initialValues[dependingOn[i]]){
+    for (let i = 0; i < dependentValues?.length; i++) {
+      if (dependentValues[i] !== dependentValuesOld[i]) {
+        if (
+          dependentValuesOld[i] === "" &&
+          dependentValues[i] === formikprops.initialValues[dependingOn[i]]
+        ) {
           return { changeDetected: false, others: { mount: true } };
-        }
-        else
-          return { changeDetected: true };
+        } else return { changeDetected: true };
       }
     }
     return { changeDetected: false };
   }
-  
 }
