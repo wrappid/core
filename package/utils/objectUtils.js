@@ -41,19 +41,23 @@ export const compareObject = (obj1, obj2) => {
 };
 
 export const getAsyncSelectValue = (value, params) => {
-  const { getOptionValue, getOptionLabel, isOptionEqualToValue, multiple, options } = params || {};
+  const {
+    getOptionValue,
+    getOptionLabel,
+    isOptionEqualToValue,
+    multiple,
+    options,
+  } = params || {};
 
   console.log("ASYNCSELECT mountValueMatch", value, options);
   if (typeof value === "string") {
     for (let i = 0; i < options?.length; i++) {
       let field = "";
-      
-      if(getOptionLabel){
-        field = getOptionLabel(field);
-      }
-      else{
-        options[i]?.label || options[i]?.name;
 
+      if (getOptionLabel) {
+        field = getOptionLabel(options[i]);
+      } else {
+        options[i]?.label || options[i]?.name;
       }
       field = field?.trim();
       field = field?.toLowerCase();
@@ -68,7 +72,7 @@ export const getAsyncSelectValue = (value, params) => {
           newValue    : options[i]?.name,
           stringFlag  : true,
         };
-      } else if (value.startsWith(field) || field.startsWith(value)) {
+      } else if (value?.startsWith(field) || field?.startsWith(value)) {
         console.log("ASYNCSELECT mountValueMatch 2 ");
         return {
           misMatchFlag: false,
@@ -76,7 +80,7 @@ export const getAsyncSelectValue = (value, params) => {
           stringFlag  : true,
         };
       }
-      if (value.includes(field) || field.includes(value)) {
+      if (value?.includes(field) || field?.includes(value)) {
         console.log("ASYNCSELECT mountValueMatch 3 ");
         return {
           misMatchFlag: false,
@@ -102,14 +106,22 @@ export const getAsyncSelectValue = (value, params) => {
      * @todo have to do for non string
      */
     for (let i = 0; i < options?.length; i++) {
-      value = getOptionValue ? getOptionValue(options[i]) : value?.id || value.name;
+      value = getOptionValue
+        ? getOptionValue(options[i])
+        : value?.id || value.name;
 
-      if (isOptionEqualToValue(options[i], value) || options[i].id === value?.id || options[i].value === value?.value) {
+      if (
+        isOptionEqualToValue(options[i], value) ||
+        options[i].id === value?.id ||
+        options[i].value === value?.value
+      ) {
         console.log("ASYNCSELECT mountValueMatch 3 ");
         return {
           misMatchFlag: false,
-          newValue    : getOptionValue ? getOptionValue(options[i]) : options[i]?.name,
-          stringFlag  : true,
+          newValue    : getOptionValue
+            ? getOptionValue(options[i])
+            : options[i]?.name,
+          stringFlag: true,
         };
       }
     }
@@ -125,4 +137,3 @@ export const getAsyncSelectValue = (value, params) => {
     };
   }
 };
-
