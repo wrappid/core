@@ -62,8 +62,8 @@ export const getAsyncSelectValue = (value, params) => {
       field = field?.trim();
       field = field?.toLowerCase();
 
-      value = value.trim();
-      value = value.toLowerCase();
+      value = value?.trim();
+      value = value?.toLowerCase();
 
       if (field === value) {
         console.log("ASYNCSELECT mountValueMatch 1 ");

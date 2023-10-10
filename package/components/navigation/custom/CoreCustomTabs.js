@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 
 import CoreTabHead from "./CoreTabHead";
 import { ComponentRegistryContext } from "../../../config/contextHandler";
+import { coreUseSearchParams } from "../../../helper/routerHelper";
 import CoreTabPanel from "../CoreTabPanel";
 
 export default function CoreCustomTabs(props) {
@@ -11,10 +12,15 @@ export default function CoreCustomTabs(props) {
   );
   const mergedComponentRegistry = useContext(ComponentRegistryContext);
   const tabRef = useRef(null);
+  const [searchParams, setSearchParams] = coreUseSearchParams();
 
   // -- React.useEffect(() => {
   //   setTabValue(tabsContent[0]?.id);
   // }, [tabsContent]);
+
+  React.useEffect(()=>{
+    console.log("Search params", searchParams);
+  }, [searchParams]);
 
   React.useEffect(() => {
     const initialIndex = 0; //random number

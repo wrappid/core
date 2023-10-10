@@ -9,7 +9,7 @@ import { CoreDialogContext } from "../../config/contextHandler";
 
 export const CORE_DIALOG_TYPES = {
   FAILURE: "error",
-  INFO: "info",
+  INFO   : "info",
   SUCCESS: "success",
 };
 

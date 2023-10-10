@@ -51,7 +51,7 @@ export function queryBuilder(url, query) {
 export function createFormData(files, body) {
   //console.log(file, field, body);
   const data = new FormData();
-
+  
   //console.log("IN form data", file, body);
 
   if (file) {

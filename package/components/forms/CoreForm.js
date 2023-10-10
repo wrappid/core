@@ -27,7 +27,12 @@ import {
 import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
 import CoreClasses from "../../styles/CoreClasses";
 // eslint-disable-next-line import/namespace
-import { createApiMeta, forReloadCheck, getForm, hookcallCheck } from "../../utils/formUtils";
+import {
+  createApiMeta,
+  forReloadCheck,
+  getForm,
+  hookcallCheck
+} from "../../utils/formUtils";
 import { compareObject } from "../../utils/objectUtils";
 import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
 import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
@@ -84,7 +89,7 @@ class CoreForm extends Component {
       formJson = formOb.formJson;
       let success = formOb.success;
       let formId = formOb.formId;
-      
+
       if (success) {
         this.props.storeForm(GET_FORM_SUCCESS, { data: formJson, formId });
       } else {
@@ -197,7 +202,6 @@ class CoreForm extends Component {
 
   onUpdateLoad = async () => {
     if (this.props.formId !== this.state.formIdAtMount) {
-      
       this.setState({ formIdAtMount: this.props.formId }, async () => {
         let formJson = await this.getAndStoreForm();
 
@@ -212,7 +216,7 @@ class CoreForm extends Component {
       });
     }
 
-    if(this.props.formId !== this.state.formIdAtMount){
+    if (this.props.formId !== this.state.formIdAtMount) {
       return;
     }
 
@@ -287,7 +291,7 @@ class CoreForm extends Component {
       formSchema?.read &&
       formSchema?.onMountRead !== false &&
       this.props?.onMountRead !== false;
-      
+
     // eslint-disable-next-line id-length
     let dataReloadFlag3 = compareObject(this.props.query, this.state.prevQuery);
 
@@ -427,9 +431,12 @@ class CoreForm extends Component {
       );
     } else if (apiMeta.mode === "create" && formJson?.create?.onSubmitRefine) {
       // -- console.log("ADDING");
-      sanData = functionsRegistry[
-        formJson?.create?.onSubmitRefine
-      ](values, apiMeta, this.props.state, this.state);
+      sanData = functionsRegistry[formJson?.create?.onSubmitRefine](
+        values,
+        apiMeta,
+        this.props.state,
+        this.state
+      );
     }
 
     // -- console.log("SANITIZED DATA", sanData);
@@ -471,47 +478,50 @@ class CoreForm extends Component {
   };
 
   handleButtonClick = (data, values = {}) => {
-
-    if(data?.functionName){
+    if (data?.functionName) {
       let othersFormData = {
         editForm: this.props.editForm,
         formId  : this.props.formId,
       };
 
-      if(typeof data.functionName === "function"){
-        data.functionName(values,
-          {},
-          this.props.state,
-          othersFormData);
+      if (typeof data.functionName === "function") {
+        data.functionName(values, data, this.props.state, othersFormData);
         return true;
-      }
-      else if(functionsRegistry[data.functionName]){
+      } else if (functionsRegistry[data.functionName]) {
         functionsRegistry[data.functionName](
           values,
-          {},
+          data,
           this.props.state,
           othersFormData
         );
         return true;
-      }
-      else{
+      } else {
         // eslint-disable-next-line no-console
         console.error("Button click function not available inregistry");
         return false;
       }
-    }
-    else if (data.onSubmitRefine) {
+    } else if (data.onSubmitRefine) {
       let othersFormData = {
         editForm: this.props.editForm,
         formId  : this.props.formId,
       };
 
-      values = functionsRegistry[data.onSubmitRefine](
+      let sanData = functionsRegistry[data.onSubmitRefine](
         values,
-        {},
+        data,
         this.props.state,
         othersFormData
       );
+
+      if (sanData.values) {
+        data.values = sanData.values;
+      }
+      if (sanData.endpoint) {
+        data.endpoint = sanData.endpoint;
+      }
+      if (sanData.reduxData) {
+        data.reduxData = sanData.reduxData;
+      }
     }
 
     if (data.localAction) {
@@ -599,9 +609,7 @@ class CoreForm extends Component {
 
     if (formJson?.delete?.onSubmitRefine) {
       // -- console.log("DELETING");
-      sanData = functionsRegistry[
-        formJson?.delete?.onSubmitRefine
-      ](
+      sanData = functionsRegistry[formJson?.delete?.onSubmitRefine](
         this.props.formData[this.props.formId]?.data?.rows,
         apiMeta,
         this.props.state,
@@ -764,7 +772,7 @@ class CoreForm extends Component {
       preview,
       arrayDataLimit,
       initProps,
-      deleteId
+      deleteId,
     } = this.props;
     const arrayFlag =
       arrayView || (rawFormSchema ? rawFormSchema[formId]?.arrayView : false);
@@ -840,9 +848,8 @@ class CoreForm extends Component {
                         title  : "edit",
                       },
                       {
-                        
                         OnClick: this.OnDeleteClick,
-                        
+
                         // -- OnClick: () => {
                         //   // alert("Single component delete tobe done");
                         // },
@@ -863,9 +870,9 @@ class CoreForm extends Component {
                     ? [
                       {
                         OnClick: this.OnDeleteClick,
-                      
+
                         disable: preview,
-                        
+
                         icon : "delete_outline",
                         // -- OnClick: () => {
                         //   alert("Single component delete tobe done");
@@ -918,7 +925,8 @@ class CoreForm extends Component {
                     !this.state.hideFlag ||
                     (arrayDataLimit && index < arrayDataLimit) ? (
                         <CoreGrid key={`CoreForm-${formId}-initData-${index}`}>
-                          <CoreBox gridProps={{ gridSize: !editForm[formId]?.editing ? 10 : 12 }}>
+                          <CoreBox
+                            gridProps={{ gridSize: !editForm[formId]?.editing ? 10 : 12 }}>
                             <CoreEditForm
                               styleClasses={this.props.styleClasses}
                               index={index}
@@ -947,7 +955,7 @@ class CoreForm extends Component {
                               initProps={initProps}
                             />
                           </CoreBox>
-                          
+
                           {!editForm[formId]?.editing && (
                             <CoreBox
                               gridProps={{ gridSize: 2 }}
