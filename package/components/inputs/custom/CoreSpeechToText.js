@@ -13,7 +13,7 @@ import { FORM_EDIT_MODE } from "../../forms/coreFormConstants";
 export default function CoreSpeechToText(props) {
   const DYNAMIC_FORM = "dynamicForm";
   const [processComplete, setProcessComplete] = useState(false);
-  const [localFormData, setLocalFormData] = useState(false);
+  const [formProps, setFormProps] = useState(null);
   const uid = useSelector(state => state?.auth?.uid);
   const {
     element, formikprops, mode, preview, beforeSpeechStart, ...restProps
@@ -28,7 +28,7 @@ export default function CoreSpeechToText(props) {
           functionName: values => {
             formikprops?.setFieldValue(element?.id, values?.text);
             setProcessComplete(true);
-            setLocalFormData(null);
+            setFormProps(null);
           },
         },
         type: "coreOutlinedButton",
@@ -47,8 +47,15 @@ export default function CoreSpeechToText(props) {
     ],
   };
 
-  const getDynamicForm = async (element, values) => {
-    let spToTextOb = element?.speechToText;
+  const getDynamicForm = async values => {
+    let currentElement = { ...element };
+    let spToTextOb = { ...(currentElement?.speechToText || {}) };
+
+    // eslint-disable-next-line no-console
+    console.log("DYNAMIC FORM INSIDE");
+    let formId = DYNAMIC_FORM;
+    let formJson = { [DYNAMIC_FORM]: { ...defaultForm } };
+    let initData = { text: values[0] };
 
     if (spToTextOb?.textProcessor) {
       let callingFunction = null;
@@ -62,60 +69,73 @@ export default function CoreSpeechToText(props) {
         callingFunction = spToTextOb?.textProcessor;
       }
 
-      let { formJson, initData } = callingFunction
-        ? await callingFunction(element, values)
+      let data = callingFunction
+        ? await callingFunction(
+          { ...(currentElement || {}) },
+          { ...(values || {}) }
+        )
         : {};
 
-      formJson["actions"] = formJson?.actions.map(action => {
-        return {
-          ...(action || {}),
-          onClick: {
-            functionName: values => {
-              if (
-                action?.onClick?.functionName &&
-                typeof action?.onClick?.functionName === "function"
-              ) {
-                action?.onClick?.functionName(values);
-              } else if (
-                action?.onClick?.functionName &&
-                typeof action?.onClick?.functionName === "string" &&
-                functionsRegistry[action?.onClick?.functionName]
-              ) {
-                functionsRegistry[action?.onClick?.functionName](values);
-              }
-              alert("HERE");
-              setProcessComplete(true);
-              setLocalFormData(null);
+      // eslint-disable-next-line no-console
+      console.log("FUNCTION DATA", data);
+
+      let tempFormJson = { ...defaultForm, ...(data?.formJson || {}) };
+
+      initData = { ...(data?.initData || {}) };
+
+      tempFormJson["actions"] = tempFormJson?.actions
+        ? tempFormJson?.actions?.map(action => {
+          return {
+            ...(action || {}),
+            onClick: {
+              functionName: values => {
+                if (
+                  action?.onClick?.functionName &&
+                    typeof action?.onClick?.functionName === "function"
+                ) {
+                  action?.onClick?.functionName(values);
+                } else if (
+                  action?.onClick?.functionName &&
+                    typeof action?.onClick?.functionName === "string" &&
+                    functionsRegistry[action?.onClick?.functionName]
+                ) {
+                  functionsRegistry[action?.onClick?.functionName](values);
+                }
+                setProcessComplete(true);
+                setFormProps(null);
+              },
             },
-          },
-        };
+          };
+        })
+        : defaultForm.actions;
+
+      formJson = { [DYNAMIC_FORM]: { ...(tempFormJson || {}) } };
+      // eslint-disable-next-line no-console
+      console.log("FUNCTION DATA FINAL", {
+        formId  : formId,
+        formJson: formJson,
+        initData: initData,
+        mode    : FORM_EDIT_MODE,
       });
 
-      setLocalFormData({
-        form: (
-          <CoreForm
-            formId={DYNAMIC_FORM}
-            formJson={{ [DYNAMIC_FORM]: { ...defaultForm, ...formJson } }}
-            initData={initData}
-            mode={FORM_EDIT_MODE}
-          />
-        ),
-        formId: DYNAMIC_FORM,
+      setFormProps({
+        formId  : DYNAMIC_FORM,
+        formJson: formJson,
+        initData: initData,
+        mode    : FORM_EDIT_MODE,
       });
     } else {
-      setLocalFormData({
-        form: (
-          <CoreForm
-            formId={DYNAMIC_FORM}
-            formJson={{ [DYNAMIC_FORM]: defaultForm }}
-            initData={{ text: values[0] }}
-            mode={FORM_EDIT_MODE}
-          />
-        ),
-        formId: DYNAMIC_FORM,
+      setFormProps({
+        formId  : formId,
+        formJson: formJson,
+        initData: initData,
+        mode    : FORM_EDIT_MODE,
       });
     }
   };
+
+  // eslint-disable-next-line no-console
+  console.log("CORE SPEECH TO TEXT", formProps, defaultForm, element);
 
   return (
     <NativeSpeechToText
@@ -123,16 +143,16 @@ export default function CoreSpeechToText(props) {
       formik={formikprops}
       disabled={!mode || preview || element?.readOnly}
       generateCoreForm={getDynamicForm}
-      formData={localFormData}
       processComplete={processComplete}
       mode={uid ? "light" : "dark"}
       setProcessComplete={setProcessComplete}
       buttonStyle={uid ? [] : [CoreClasses?.COLOR?.TEXT_WHITE]}
       beforeSpeechStart={event => {
         beforeSpeechStart && beforeSpeechStart(event);
-        setLocalFormData(null);
+        setFormProps(null);
       }}
-      {...restProps}
-    />
+      {...restProps}>
+      {formProps && <CoreForm {...formProps} />}
+    </NativeSpeechToText>
   );
 }
