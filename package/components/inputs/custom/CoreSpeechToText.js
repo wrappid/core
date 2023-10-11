@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeSpeechToText } from "@wrappid/native";
@@ -11,7 +11,7 @@ import CoreForm from "../../forms/CoreForm";
 import { FORM_EDIT_MODE } from "../../forms/coreFormConstants";
 
 export default function CoreSpeechToText(props) {
-  const DYNAMIC_FORM = "dynamicForm";
+  const [dynamicFormId, setDynamicFormId] = useState("dynamicForm");
   const [processComplete, setProcessComplete] = useState(false);
   const [formProps, setFormProps] = useState(null);
   const uid = useSelector(state => state?.auth?.uid);
@@ -19,6 +19,10 @@ export default function CoreSpeechToText(props) {
     element, formikprops, mode, preview, beforeSpeechStart, ...restProps
   } =
     props;
+
+  useEffect(() => {
+    setDynamicFormId(dynamicFormId + "-" + element?.id);
+  }, []);
 
   const defaultForm = {
     actions: [
@@ -51,10 +55,7 @@ export default function CoreSpeechToText(props) {
     let currentElement = { ...element };
     let spToTextOb = { ...(currentElement?.speechToText || {}) };
 
-    // eslint-disable-next-line no-console
-    console.log("DYNAMIC FORM INSIDE");
-    let formId = DYNAMIC_FORM;
-    let formJson = { [DYNAMIC_FORM]: { ...defaultForm } };
+    let formJson = { [dynamicFormId]: { ...defaultForm } };
     let initData = { text: values[0] };
 
     if (spToTextOb?.textProcessor) {
@@ -109,33 +110,30 @@ export default function CoreSpeechToText(props) {
         })
         : defaultForm.actions;
 
-      formJson = { [DYNAMIC_FORM]: { ...(tempFormJson || {}) } };
+      formJson = { [dynamicFormId]: { ...(tempFormJson || {}) } };
       // eslint-disable-next-line no-console
       console.log("FUNCTION DATA FINAL", {
-        formId  : formId,
+        formId  : dynamicFormId,
         formJson: formJson,
         initData: initData,
         mode    : FORM_EDIT_MODE,
       });
 
       setFormProps({
-        formId  : DYNAMIC_FORM,
+        formId  : dynamicFormId,
         formJson: formJson,
         initData: initData,
         mode    : FORM_EDIT_MODE,
       });
     } else {
       setFormProps({
-        formId  : formId,
+        formId  : dynamicFormId,
         formJson: formJson,
         initData: initData,
         mode    : FORM_EDIT_MODE,
       });
     }
   };
-
-  // eslint-disable-next-line no-console
-  console.log("CORE SPEECH TO TEXT", formProps, defaultForm, element);
 
   return (
     <NativeSpeechToText
