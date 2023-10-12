@@ -73,7 +73,7 @@ export default function CoreAsyncSelect(props) {
     strictItemKey = false,
     dependentQuery,
     mountValueMatch,
-    freeSolo
+    freeSolo,
   } = props;
 
   const options = useSelector(state => state?.selectOptions?.options);
@@ -83,8 +83,12 @@ export default function CoreAsyncSelect(props) {
   const [inputValue, setInputValue] = React.useState("");
   const [oldValue, setOldValue] = React.useState(null);
   const [mountMatch, setMountMatch] = React.useState(false);
-  const [misMatch, setMisMatch] = React.useState(false);
+  const [missMatch, setMissMatch] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+
+  const mounMatchLoading = mountValueMatch
+    ? mountValueMatch && value && value?.length > 0 && !mountMatch
+    : false;
 
   const getKey = () => {
     return itemKey
@@ -96,13 +100,11 @@ export default function CoreAsyncSelect(props) {
 
   const loading = submitLoading
     ? true
-    : open
-      ? optionsData && optionsData.length !== 0
-        ? false
-        : options[getKey()]
-          ? options[getKey()].loading
-          : true
-      : false;
+    : optionsData && optionsData.length !== 0
+      ? false
+      : options[getKey()]
+        ? options[getKey()].loading
+        : false;
 
   useEffect(() => {
     loadData(true, null, true);
@@ -144,11 +146,10 @@ export default function CoreAsyncSelect(props) {
       value &&
       value?.length > 0 &&
       mountValueMatch &&
-      !mountMatch &&
       !loading &&
-      options[getKey()]?.data?.length > 0 &&
       mounted
     ) {
+      console.log("ASYNC VALUE MOUNT");
       setMountMatch(true);
       let { newValue, misMatchFlag, stringFlag } =
         getAsyncSelectValue(value, {
@@ -159,9 +160,7 @@ export default function CoreAsyncSelect(props) {
           options: options[getKey()]?.data,
         }) || {};
 
-      if (misMatchFlag) {
-        setMisMatch(true);
-      }
+      setMissMatch(misMatchFlag);
       if (stringFlag) {
         setInputValue(newValue);
       }
@@ -169,6 +168,12 @@ export default function CoreAsyncSelect(props) {
       formik.setFieldValue(id, newValue);
     }
   }, [loading, options]);
+
+  useEffect(() => {
+    if (mountValueMatch) {
+      loadData(true, null, true);
+    }
+  }, [value]);
 
   const findOption = (options, value) => {
     if (
@@ -255,6 +260,7 @@ export default function CoreAsyncSelect(props) {
       apiQuery["_searchValue"] = encodeURIComponent(inputValue);
     }
     if ((!optionsData || optionsData.length === 0) && endpoint) {
+      setMountMatch(false);
       dispatch({
         payload: { key: getKey(), strictItemKey: strictItemKey },
         type   : SELECT_OPTION_LOAD,
@@ -379,6 +385,22 @@ export default function CoreAsyncSelect(props) {
     );
   };
 
+  const getFreeSoloValue = (option, oldLabel) => {
+    let newLabel = "";
+
+    if (!loading && (freeSolo || creatable) && oldLabel?.length < 1) {
+      console.log("CREATABLE OPTION SINGLE", option);
+      if (typeof option === "string") {
+        newLabel = value;
+      } else {
+        newLabel = getOptionLabel(value);
+      }
+    }
+
+    return newLabel;
+  };
+
+  console.log("Core ASYNC SELECT", props);
   return (
     <>
       <CoreAutocomplete
@@ -389,7 +411,7 @@ export default function CoreAsyncSelect(props) {
         _editId={editId} //required for mobile layer
         _getEndAdornment={getEndAdornment} //required for mobile layer
         _formik={formik} //required for mobile layer
-        _misMatch={misMatch} //required for mobile layer not matched values
+        _missMatch={missMatch} //required for mobile layer not matched values
         onBlur={formik?.handleBlur(id)}
         multiple={multiple ? multiple : false}
         id={id || `"async-select-"+${getKey()}`}
@@ -397,8 +419,8 @@ export default function CoreAsyncSelect(props) {
         open={open}
         value={value ? value : multiple ? [] : ""}
         autoComplete={true}
-        freeSolo={freeSolo || true}
-        loading={loading}
+        freeSolo={freeSolo || creatable || true}
+        loading={loading || mounMatchLoading}
         readOnly={readOnly}
         onHighlightChange={() => {
           console.log("CHANGE");
@@ -438,7 +460,7 @@ export default function CoreAsyncSelect(props) {
         getOptionLabel={option => {
           let label = "";
 
-          console.log("OPTION", option);
+          console.log("OPTION", option, !loading && (freeSolo || creatable));
           if (typeof option === "string" && isNaN(option)) {
             label = getLabelFromValue(option, optionsData, options);
           } else if (option) {
@@ -458,6 +480,16 @@ export default function CoreAsyncSelect(props) {
             }
           } else {
             label = "";
+          }
+
+          if ((freeSolo || creatable) && label?.length < 1) {
+            if (mountValueMatch) {
+              if (mountMatch && missMatch) {
+                label = getFreeSoloValue(option, label);
+              }
+            } else {
+              label = getFreeSoloValue(option, label);
+            }
           }
           return label;
         }}
@@ -479,7 +511,7 @@ export default function CoreAsyncSelect(props) {
           OnChangeInput(v);
         }}
         onChange={(e, values) => {
-          setMisMatch(false);
+          setMissMatch(false);
           console.log("VALUES", values);
           console.log("navigateUrl", navigateUrl);
           if (values?.inputValue && navigateUrl) {

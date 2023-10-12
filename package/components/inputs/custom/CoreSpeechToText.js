@@ -71,10 +71,7 @@ export default function CoreSpeechToText(props) {
       }
 
       let data = callingFunction
-        ? await callingFunction(
-          { ...(currentElement || {}) },
-          { ...(values || {}) }
-        )
+        ? await callingFunction(currentElement, values)
         : {};
 
       // eslint-disable-next-line no-console
@@ -150,7 +147,14 @@ export default function CoreSpeechToText(props) {
         setFormProps(null);
       }}
       {...restProps}>
-      {formProps && <CoreForm {...formProps} />}
+      {formProps && (
+        <CoreForm
+          formId={formProps.formId}
+          formJson={{ ...formProps.formJson }}
+          initData={{ ...formProps.initData }}
+          mode={formProps.mode}
+        />
+      )}
     </NativeSpeechToText>
   );
 }
