@@ -73,7 +73,7 @@ import CoreBackdrop from "./feedback/CoreBackdrop.js";
 import CoreCircularProgress from "./feedback/CoreCircularProgress.js";
 import CoreDialog from "./feedback/CoreDialog.js";
 import CoreLinearProgress from "./feedback/CoreLinearProgress.js";
-import CoreRequestProgressBar from "./feedback/CoreRequestProgressBar.js";
+import CoreRequestProgressBar from "./feedback/custom/CoreRequestProgressBar.js";
 import CoreSkeleton from "./feedback/CoreSkeleton.js";
 import CoreSnackbar from "./feedback/CoreSnackbar.js";
 import CoreEditForm from "./forms/CoreEditForm.js";
