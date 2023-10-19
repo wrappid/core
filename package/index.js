@@ -54,6 +54,7 @@ import CoreTypographySubtitle2 from "./components/dataDisplay/paragraph/CoreTypo
 import CoreDataTable from "./components/dataTable/CoreDataTable";
 import CoreFlatList from "./components/dataTable/CoreFlatList";
 import CoreAlert from "./components/feedback/CoreAlert";
+import CoreAlertTitle from "./components/feedback/CoreAlertTitle";
 import CoreBackdrop from "./components/feedback/CoreBackdrop";
 import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreDialog, { CORE_DIALOG_TYPES } from "./components/feedback/CoreDialog";
@@ -325,6 +326,7 @@ export {
   ParentChildMap,
   CoreSpeechToText,
   CoreAlert,
+  CoreAlertTitle,
   CoreBackdrop,
   CoreCircularProgress,
   CoreLinearProgress,
