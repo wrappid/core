@@ -32,7 +32,7 @@ export default function CoreDivider(props) {
   );
 }
 
-CoreDivider.valid.props = [
+CoreDivider.validProps = [
   {
     description: "Absolutely position the element.",
     name       : "absolute",
@@ -110,3 +110,5 @@ CoreDivider.valid.props = [
     ],
   },
 ];
+
+CoreDivider.invalidProps = ["sx", "classes"];
