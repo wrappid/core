@@ -6,7 +6,7 @@ import { NativeBadge } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreBadge(props) {
-  props = sanitizeComponentProps(CoreBadge, props);
+  // props = sanitizeComponentProps(CoreBadge, props);
 
   const {
     anchorOrigin,
@@ -116,7 +116,7 @@ CoreBadge.validProps = [
     name       : "invisible",
     types      : [
       {
-        default    : "false",
+        default    : false,
         type       : "bool",
         validValues: [true, false],
       },
@@ -127,7 +127,7 @@ CoreBadge.validProps = [
     name       : "max",
     types      : [
       {
-        default    : "99",
+        default    : 99,
         type       : "number",
         validValues: "",
       },
@@ -150,7 +150,7 @@ CoreBadge.validProps = [
     name : "showZero",
     types: [
       {
-        default    : "false",
+        default    : false,
         type       : "bool",
         validValues: [true, false],
       },

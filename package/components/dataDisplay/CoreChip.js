@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeChip } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
@@ -9,8 +10,7 @@ export default function CoreChip(props) {
   props = sanitizeComponentProps(CoreChip, props);
 
   const {
-    avtar,
-    children,
+    avatar,
     clickable,
     color,
     component,
@@ -21,12 +21,12 @@ export default function CoreChip(props) {
     onDelete,
     size,
     skipFocusWhenDisabled,
-    varient
+    variant
   } = props;
 
   return (
     <NativeChip 
-      avtar={avtar}
+      avatar={avatar}
       clickable={clickable}
       color={color}
       component={component}
@@ -37,22 +37,16 @@ export default function CoreChip(props) {
       onDelete={onDelete}
       size={size}
       skipFocusWhenDisabled={skipFocusWhenDisabled}
-      varient={varient}>
-      {children}
-    </NativeChip>
+      variant={variant}
+    />
   );
 }
 
 CoreChip.validProps = [
   {
     description: "The Avatar element to display.",
-    name       : "avtar",
+    name       : "avatar",
     types      : [{ type: "element" }],
-  },
-  {
-    description: "This prop isn't supported. Use the component prop if you need to change the children structure.",
-    name       : "children",
-    types      : [{ type: "unsupportedProp" }],
   },
   {
     description: "If true, the chip will appear clickable, and will raise when pressed, even if the onClick prop is not defined. If false, the chip will not appear clickable, even if onClick prop is defined. This can be used, for example, along with the component prop to indicate an anchor Chip is clickable. Note: this controls the UI and does not affect the onClick event.",
@@ -151,7 +145,7 @@ CoreChip.validProps = [
   {
     description:
       "The variant to use.",
-    name : "varient",
+    name : "variant",
     types: [
       {
         default    : "filled",

@@ -7,3 +7,6 @@ import { NativeBox } from "@wrappid/native";
 export default function CoreBox(props) {
   return <NativeBox {...props} />;
 }
+
+CoreBox.validProps = [];
+CoreBox.invalidProps = [];

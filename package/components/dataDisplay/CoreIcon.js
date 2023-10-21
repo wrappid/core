@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeIcon } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
@@ -23,12 +24,11 @@ export const __IconTypes = {
  * @returns
  */
 export default function CoreIcon(props) {
+  props = sanitizeComponentProps(CoreIcon, props);
   const { type, icon, options, sx, ...restProps } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
   let tmpIcon = props.children || icon || options?.icon || "";
-
-  props = sanitizeComponentProps(CoreIcon, props);
 
   const {
     baseClassName,
@@ -40,10 +40,19 @@ export default function CoreIcon(props) {
 
   return (
     <NativeIcon
+      type={tmpType}
+      name={tmpIcon}
       baseClassName={baseClassName}
       color={color}
       component={component}
-      fontSize={fontSize}>
+      fontSize={fontSize}
+      childrenFlag={
+        tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
+          ? true
+          : false
+      }
+      sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
+    >
       {children}
     </NativeIcon>
   );
@@ -51,21 +60,33 @@ export default function CoreIcon(props) {
   // return (
   //   <NativeIcon
   //     type={tmpType}
-      //     name={tmpIcon}
-      //     size={props.size}
-      //     childrenFlag={
-        //       tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
-          //         ? true
-          //         : false
-      //     }
+  //     name={tmpIcon}
+  //     size={props.size}
+  //     childrenFlag={
+  //       tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
+  //         ? true
+  //         : false
+  //     }
   //     sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
-      //     styleClasses={props.styleClasses || []}
-      //     {...restProps}
-    //   />
+  //     styleClasses={props.styleClasses || []}
+  //     {...restProps}
+  //   />
   // );
 }
 
 CoreIcon.validProps = [
+  {
+    name : "type",
+    types: [{ default: __IconTypes.MATERIAL_ICON, type: "string", validValues: [__IconTypes.MATERIAL_ICON, __IconTypes.FONTAWESOME_V5_REGULAR_ICON, __IconTypes.FONTAWESOME_V5_SOLID_ICON] }]
+  },
+  {
+    name : "icon",
+    types: [{ type: "string" }]
+  },
+  {
+    name : "options",
+    types: [{ type: "object" }]
+  },
   {
     description: "The base class applied to the icon. Defaults to 'material-icons', but can be changed to any other base class that suits the icon font you're using (e.g. material-icons-rounded, fas, etc).",
     name       : "baseClassName",
