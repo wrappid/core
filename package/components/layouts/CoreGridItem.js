@@ -7,3 +7,6 @@ import { NativeGridItem } from "@wrappid/native";
 export default function CoreGridItem(props) {
   return <NativeGridItem props>{props.children}</NativeGridItem>;
 }
+CoreGridItem.validProps = [];
+
+CoreGridItem.invalidPros = ["sx", "classes"];

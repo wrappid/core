@@ -28,8 +28,8 @@ import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();
   const location = coreUseLocation();
-  const auth = useSelector(state => state.auth);
-  const mdm = useSelector(state => state.mdm);
+  const auth = useSelector((state) => state.auth);
+  const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
@@ -41,8 +41,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE     : "PROFILE",
-    QUICK_MENU  : "QUICK_MENU",
+    PROFILE: "PROFILE",
+    QUICK_MENU: "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -59,7 +59,12 @@ export default function CoreAppBar(props) {
       }
       dispatch(getSettingMeta(null, auth.accessToken));
     }
-  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
+  }, [
+    getSettingMetaFlag,
+    mdm.getSettingMetaSuccess,
+    dispatch,
+    auth.accessToken,
+  ]);
 
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
@@ -79,38 +84,49 @@ export default function CoreAppBar(props) {
   const appBarTextStyle = !appbarType
     ? [CoreClasses.COLOR.TEXT_WHITE]
     : appbarType?.includes("light")
-      ? []
-      : appbarType?.includes("contrast")
-        ? [CoreClasses.COLOR.TEXT_PRIMARY]
-        : [CoreClasses.COLOR.TEXT_WHITE];
+    ? []
+    : appbarType?.includes("contrast")
+    ? [CoreClasses.COLOR.TEXT_PRIMARY]
+    : [CoreClasses.COLOR.TEXT_WHITE];
 
   return (
     <>
       <NativeAppBar
         {...props}
         styleClasses={
-          (!appbarType || appbarType?.includes("primary")) ? [] : [CoreClasses?.BG?.BG_WHITE]
-        }>
+          !appbarType || appbarType?.includes("primary")
+            ? []
+            : [CoreClasses?.BG?.BG_WHITE]
+        }
+      >
         <CoreToolbar
-          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+          styleClasses={[
+            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+            CoreClasses.FLEX.DIRECTION_ROW,
+            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          ]}
+        >
           <CoreStack
             direction="row"
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+          >
             <CoreIconButton
               styleClasses={appBarTextStyle}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
               disabled={!auth?.uid}
-              sx={{ marginLeft: "-16px" }}>
+              sx={{ marginLeft: "-16px" }}
+            >
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
 
             {appbarType?.includes("text") ? (
               <CoreTypographyBody1>
                 {
-                  routes?.find(route => "/" + route?.url === location?.pathname)
-                    ?.Page?.name
+                  routes?.find(
+                    (route) => "/" + route?.url === location?.pathname
+                  )?.Page?.name
                 }
               </CoreTypographyBody1>
             ) : (
@@ -127,54 +143,63 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
-              {mdm?.settingMeta?.find(f => f.name === "appBarWalet")?.value
+              styleClasses={[
+                CoreClasses.WIDTH.W_100,
+                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+              ]}
+            >
+              {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
                 <CoreIconButton styleClasses={appBarTextStyle}>
                   <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find(f => f.name === "appBarHelp")?.value
+              {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
                 ?.flag && (
                 <CoreIconButton
                   styleClasses={appBarTextStyle}
                   title={"Help & Support"}
-                  onClick={e => {
+                  onClick={(e) => {
                     handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
-                  }}>
+                  }}
+                >
                   <CoreIcon>help_outline</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find(f => f.name === "appBarNotification")
+              {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
                 ?.value?.flag && (
                 <CoreIconButton
                   styleClasses={appBarTextStyle}
                   title={"Show Notification"}
-                  onClick={e => {
+                  onClick={(e) => {
                     handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
-                  }}>
+                  }}
+                >
                   <CoreIcon>notifications_none_outlined</CoreIcon>
                 </CoreIconButton>
               )}
 
-              {mdm?.settingMeta?.find(f => f.name === "appBarAdd")?.value
+              {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
                 ?.flag && (
                 <CoreIconButton
                   styleClasses={appBarTextStyle}
                   title={"Quick Menu"}
-                  onClick={e => {
+                  onClick={(e) => {
                     handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
-                  }}>
+                  }}
+                >
                   <CoreIcon>add_circle_outlined</CoreIcon>
                 </CoreIconButton>
               )}
 
               <CoreIconButton
-                onClick={e => {
+                onClick={(e) => {
                   handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
-                }}>
+                }}
+              >
                 <CoreAvatar
                   src={auth?.photo}
                   styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
@@ -198,8 +223,9 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical  : "bottom",
-          }}>
+            vertical: "bottom",
+          }}
+        >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
             <>
               {/* Help & Support Popover */}
@@ -228,3 +254,46 @@ export default function CoreAppBar(props) {
     </>
   );
 }
+
+CoreAppBar.validProps = [
+  {
+    description:
+      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name: "color",
+    types: [
+      {
+        default: "primary'",
+        type: "string",
+        validValues: [
+          "inherit",
+          "primary",
+          "secondary",
+          "transparent",
+          "error",
+          "info",
+          "success",
+          "warning",
+        ],
+      },
+    ],
+  },
+  {
+    description: "If true, the color prop is applied in dark mode.",
+    name: "enableColorOnDark",
+    types: [{ default: "FALSE", type: "bool" }],
+  },
+  {
+    description:
+      "The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.",
+    name: "position",
+    types: [
+      {
+        default: "fixed'",
+        type: "string",
+        validValues: ["alignabsolute", "fixed", "relative", "static", "sticky"],
+      },
+    ],
+  },
+];
+
+CoreAppBar.invalidProps = ["sx", "classes"];

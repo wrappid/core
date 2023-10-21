@@ -7,3 +7,13 @@ import { NativeCardActions } from "@wrappid/native";
 export default function CoreCardActions(props) {
   return <NativeCardActions {...props} />;
 }
+
+CoreCardActions.validProps = [
+  {
+    description: "If true, the actions do not have additional margin.",
+    name: "disableSpacing",
+    types: [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+  },
+];
+
+CoreCardActions.invalidProps = ["sx", "classes"];

@@ -7,3 +7,98 @@ import { NativeCheckbox } from "@wrappid/native";
 export default function CoreCheckbox(props) {
   return <NativeCheckbox {...props} />;
 }
+CoreCheckbox.validProps = [
+  {
+    description: "If true, the component is checked.",
+    name: "checked",
+    types: [{ default: "", type: "bool" }],
+  },
+  {
+    description: "The icon to display when the component is checked.",
+    name: "checkedIcon",
+    types: [{ default: "<CheckBoxIcon />", type: "node" }],
+  },
+  
+  {
+    description:
+      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name: "color",
+    types: [
+      {
+        default: "primary",
+        type: "string",
+        validValues: [ 'default', 'primary', 'secondary', 'error', 'info', 'success', 'warning']
+      },
+    ],
+  },
+  {
+    description:
+      "The default checked state. Use when the component is not controlled.",
+    name: "defaultChecked",
+    types: [{ default: "", type: "bool" }],
+  },
+  {
+    description: "If true, the component is disabled.",
+    name: "disabled",
+    types: [{ default: "FALSE", type: "bool" }],
+  },
+  {
+    description: "If true, the ripple effect is disabled.",
+    name: "disableRipple",
+    types: [{ default: "FALSE", type: "bool" }],
+  },
+  {
+    description: "The icon to display when the component is unchecked.",
+    name: "icon",
+    types: [{ default: "<CheckBoxOutlineBlankIcon />", type: "node" }],
+  },
+  {
+    description: "The id of the input element.",
+    name: "id",
+    types: [{ default: "", type: "string" }],
+  },
+  {
+    description:
+      "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+    name: "indeterminate",
+    types: [{ default: "FALSE", type: "bool" }],
+  },
+  {
+    description: "The icon to display when the component is indeterminate.",
+    name: "indeterminateIcon",
+    types: [{ default: "<IndeterminateCheckBoxIcon />", type: "node" }],
+  },
+  {
+    description: "Attributes applied to the input element.",
+    name: "inputProps",
+    types: [{ default: "", type: "object" }],
+  },
+  {
+    description: "Pass a ref to the input element.",
+    name: "inputRef",
+    types: [{ default: "", type: "ref" }],
+  },
+  {
+    description:
+      "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
+    name: "onChange",
+    types: [{ default: "", type: "func" }],
+  },
+  {
+    description: "If true, the input element is required.",
+    name: "required",
+    types: [{ default: "FALSE", type: "bool" }],
+  },
+  {
+    description:
+      "The size of the component. small is equivalent to the dense checkbox styling.",
+    name: "size",
+    types: [{ default: "medium'", type: "medium'| 'small'| string" }],
+  },
+  {
+    description: `The value of the component. The DOM API casts this to a string. The browser uses "on" as the default value.`,
+    name: "value",
+    types: [{ default: "", type: "any" }],
+  },
+];
+CoreCheckbox.invalidProps = ["sx", "classes"];
