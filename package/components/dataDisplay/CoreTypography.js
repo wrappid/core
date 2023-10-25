@@ -42,7 +42,7 @@ CoreTypography.validProps = [
   {
     description: "The content of the component need to show as it is like a code block.",
     name       : "code",
-    types      : [{ default: false, type: "boolean", validValues: [true, false] }]
+    types      : [{ default: "false", type: "boolean", validValues: [true, false] }]
   },
   {
     description: "Set the text-align on the component.",
@@ -70,19 +70,19 @@ CoreTypography.validProps = [
   {
     description: "If true, the text will have a bottom margin.",
     name       : "gutterBottom",
-    types      : [{ default: "false", type: "bool" }],
+    types      : [{ default: "false", type: "boolean", validValues: [true, false] }]
   },
   {
     description:
       "If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.\
     Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).",
     name : "noWrap",
-    types: [{ default: "false", type: "bool" }],
+    types: [{ default: "false", type: "boolean", validValues: [true, false] }]
   },
   {
     description: "If true, the element will be a paragraph element.",
     name       : "paragraph",
-    types      : [{ default: "false", type: "bool" }],
+    types      : [{ default: "false", type: "boolean", validValues: [true, false] }]
   },
   {
     description: "Applies the theme typography styles.",

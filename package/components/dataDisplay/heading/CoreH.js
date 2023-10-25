@@ -9,8 +9,28 @@ export default function CoreH(props) {
     <CoreTypography
       {...props}
       component={props.__level}
-      variant={props.variant ? props.variant : props.__level}>
+      variant={props.variant ? props.variant : props.__level}
+    >
       {props.children}
     </CoreTypography>
   );
 }
+CoreH.validProps = [
+  ...CoreTypography.validProps,
+  {
+    description: "",
+    name       : "__level",
+    type       : [
+      {
+        default    : "h1",
+        type       : "string",
+        validValues: ["h1",
+          "h2",
+          "h3", 
+          "h4", 
+          "h5"
+        ],
+      },
+    ],
+  },
+];

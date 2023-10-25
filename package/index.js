@@ -44,6 +44,7 @@ import CoreH4 from "./components/dataDisplay/heading/CoreH4";
 import CoreH5 from "./components/dataDisplay/heading/CoreH5";
 import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 import CoreLabel from "./components/dataDisplay/paragraph/CoreLabel";
+import CoreTypography from "./components/dataDisplay/CoreTypography";
 import CoreTypographyBody1 from "./components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyBody2 from "./components/dataDisplay/paragraph/CoreTypographyBody2";
 import CoreTypographyButton from "./components/dataDisplay/paragraph/CoreTypographyButton";
@@ -208,6 +209,7 @@ import {
 } from "./utils/themeUtil";
 
 export {
+  CoreTypography,
   stringUtils,
   defaultValidProps,
   clearValidatePhoneEmail,
