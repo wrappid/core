@@ -10,45 +10,43 @@ export default function CoreGrid(props) {
 CoreGrid.validProps = [
   {
     description: "The number of columns.",
-    name: "columns",
-    types: [{ default: "12", type: "Array<number>| number| object" }],
+    name       : "columns",
+    types      : [{ default: "12", type: "Array<number>| number| object" }],
   },
   {
     description:
       "Defines the horizontal space between the type item components. It overrides the value of the spacing prop.",
-    name: "columnSpacing",
-    types: [
-      { default: "", type: "Array<number| string>| number| object| string" },
-    ],
+    name : "columnSpacing",
+    types: [{ default: "", type: "Array<number| string>| number| object| string" }],
   },
   {
     description: "",
-    name: "component",
-    types: [{ default: "", type: "elementType" }],
+    name       : "component",
+    types      : [{ default: "", type: "elementType" }],
   },
   {
     description:
       "If true, the component will have the flex container behavior. You should be wrapping items with a container.",
-    name: "container",
+    name : "container",
     types: [{ default: "FALSE", type: "bool" }],
   },
   {
     description:
       "Defines the flex-direction style property. It is applied for all screen sizes.",
-    name: "direction",
+    name : "direction",
     types: [
       {
-        default: "row'",
-        type: "string",
+        default    : "row'",
+        type       : "string",
         validValues: [
           "column-reverse",
           "column",
           "row-reverse",
           "row",
-          ` Array<'column-reverse'`,
+          " Array<'column-reverse'",
           "column",
           "row-reverse",
-          `'row'>`,
+          "'row'>",
           "object",
         ],
       },
@@ -56,52 +54,48 @@ CoreGrid.validProps = [
   },
   {
     description: "",
-    name: "item",
-    types: [{ default: "FALSE", type: "string", validValues: [componentbool] }],
+    name       : "item",
+    types      : [{ default: "FALSE", type: "boolean" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
-    name: "lg",
+    name : "lg",
     types: [{ default: "FALSE", type: "auto number bool" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
-    name: "md",
+    name : "md",
     types: [{ default: "FALSE", type: "auto number bool" }],
   },
   {
     description:
       "Defines the vertical space between the type item components. It overrides the value of the spacing prop.",
-    name: "rowSpacing",
-    types: [
-      { default: "", type: `Array<number| string>| number| object| string]` },
-    ],
+    name : "rowSpacing",
+    types: [{ default: "", type: "Array<number| string>| number| object| string]" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
-    name: "sm",
+    name : "sm",
     types: [{ default: "FALSE", type: "auto number bool" }],
   },
   {
     description:
       "Defines the space between the type item components. It can only be used on a type container component.",
-    name: "spacing",
-    types: [
-      { default: "0", type: `Array<number| string>| number| object| string` },
-    ],
+    name : "spacing",
+    types: [{ default: "0", type: "Array<number| string>| number| object| string" }],
   },
 
   {
     description:
       "Defines the flex-wrap style property. It's applied for all screen sizes.",
-    name: "wrap",
+    name : "wrap",
     types: [
       {
-        default: "wrap'",
-        type: "string",
+        default    : "wrap'",
+        type       : "string",
         validValues: ["nowrap", "wrap-reverse", "wrap"],
       },
     ],
@@ -109,19 +103,19 @@ CoreGrid.validProps = [
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the xl breakpoint and wider screens if not overridden.",
-    name: "xl",
+    name : "xl",
     types: [{ default: "FALSE", type: "auto number bool" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for all the screen sizes with the lowest priority.",
-    name: "xs",
+    name : "xs",
     types: [{ default: "FALSE", type: "auto number bool" }],
   },
   {
     description: "",
-    name: "zeroMinWidth",
-    types: [{ default: "FALSE", type: "string", validValues: [wrapbool] }],
+    name       : "zeroMinWidth",
+    types      : [{ default: "FALSE", type: "boolean" }],
   },
 ];
 CoreGrid.invalidPros = ["sx", "classes"];
