@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
@@ -85,24 +86,26 @@ export function getGridSizeProps(gridSize, formFlag, speechToText) {
 export const defaultValidProps = [
   {
     description: "Override or extend the styles applied to the component. See UtilityClasses in @wrappid/styles for more details.",
-    name: "styleClasses",
-    types: [{ type: "object" }]
+    name       : "styleClasses",
+    types      : [{ type: "object" }]
   },
   {
     description: "A “key” is a special string attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted. Keys are used to give an identity to the elements in the lists.It is recommended to use a string as a key that uniquely identifies the items in the list.",
-    name: "key",
-    types: [{ type: "string" }]
+    name       : "key",
+    types      : [{ type: "string" }]
   },
   {
     description: "Refs provide a way to access DOM nodes or React or React Native elements created in the render method.",
-    name: "ref",
-    types: [{ type: "object" }]
+    name       : "ref",
+    types      : [{ type: "object" }]
   },
   {
     description: "Used to render node elements inside the node element. This can be an element, or just a string.",
-    name: "children"
+    name       : "children"
   },
 ];
+
+export const defaultInvalidProps = ["sx", "classes"];
 
 export function sanitizeComponentProps(component, props) {
   console.log(`----------------Props=${Object.keys(props)}`);
@@ -128,8 +131,10 @@ export function sanitizeComponentProps(component, props) {
           let validPropTypes = propObj?.types?.map(eachType => eachType?.type);
           let typeOfPropValue = typeof props[eachPropKey];
 
-          // check if prop value type is valid type
-          if (validPropTypes.includes(typeOfPropValue)) {
+          /**
+           * @todo check if prop value type is valid type
+           */
+          if (validPropTypes.includes(typeOfPropValue) || 1 === 1) {
             // do nothing
             let propTypeObj = propObj?.types?.filter(eachType => eachType?.type === typeOfPropValue)[0];
 
@@ -161,6 +166,6 @@ export function sanitizeComponentProps(component, props) {
     validProps = props;
   }
 
-  console.log(`----------------sanitizedProps=${Object.keys(sanitizedProps)}`);
+  console.log(`----------------sanitizedProps[${component.toString()}]=${Object.keys(sanitizedProps)}`);
   return sanitizedProps;
 }
