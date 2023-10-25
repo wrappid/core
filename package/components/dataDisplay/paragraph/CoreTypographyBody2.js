@@ -68,14 +68,14 @@ CoreTypographyBody2.validProps = [
   {
     description: "If true, the text will have a bottom margin.",
     name: "gutterBottom",
-    types: [{ default: "false", type: "bool" }],
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description:
       "If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.\
     Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).",
     name: "noWrap",
-    types: [{ default: "false", type: "bool" }],
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 
   {
@@ -86,7 +86,7 @@ CoreTypographyBody2.validProps = [
   {
     description: "",
     name: "hideSeeMore",
-    types: [{ default: "false", type: "bool" }],
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographyBody2.invalidProps = ["sx", "classes"];
