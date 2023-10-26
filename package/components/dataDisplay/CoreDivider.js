@@ -1,32 +1,18 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeDivider } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreDivider(props) {
-  props = sanitizeComponentProps(CoreDivider, props);
-  const {
-    absolute,
-    component,
-    children,
-    orientation,
-    flexItem,
-    light,
-    textAlign,
-    variant
-  } = props;
+  let sanitizedProps = sanitizeComponentProps(CoreDivider, props);
+
+  const { children, ...restProps } = sanitizedProps;
 
   return (
-    <NativeDivider
-      absolute={absolute}
-      component={component}
-      orientation={orientation}
-      flexItem={flexItem}
-      light={light}
-      textAlign={textAlign}
-      variant={variant}>
+    <NativeDivider {...restProps}>
       {children} 
     </NativeDivider>
   );
@@ -39,15 +25,10 @@ CoreDivider.validProps = [
     types      : [
       {
         default    : false,
-        type       : "bool",
+        type       : "boolean",
         validValues: [true, false]
       },
     ],
-  },
-  {
-    description: "The content of the component.",
-    name       : "children",
-    types      : [{ type: "node" }],
   },
   {
     description: "The component used for the root node. Either a string to use a HTML element or a component.",
@@ -60,7 +41,7 @@ CoreDivider.validProps = [
     types      : [
       {
         default    : false,
-        type       : "bool",
+        type       : "boolean",
         validValues: [true, false]
       },
     ],
@@ -71,7 +52,7 @@ CoreDivider.validProps = [
     types      : [
       {
         default    : false,
-        type       : "bool",
+        type       : "boolean",
         validValues: [true, false]
       },
     ],

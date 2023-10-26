@@ -38,12 +38,6 @@ CoreAlert.validProps = [
   {
     description: "The action to display. It renders after the message, at the end of the alert.",
     name       : "action",
-    types      : [{ type: "node" }]
-  },
-  {
-    description: "The content of the component.",
-    name       : "children",
-    types      : [{ type: "node" }]
   },
   {
     description: "Override the default label for the close popup icon button.",
@@ -97,7 +91,6 @@ CoreAlert.validProps = [
   {
     description: "Override the icon displayed before the children. Unless provided, the icon is mapped to the value of the severity prop. Set to false to remove the icon.",
     name       : "icon",
-    types      : [{ type: "node" }]
   },
   {
     description: "The component maps the severity prop to a range of different icons, for instance success to <SuccessOutlined>. If you wish to change this mapping, you can provide your own. Alternatively, you can use the icon prop to override the icon displayed.",
@@ -112,7 +105,7 @@ CoreAlert.validProps = [
   {
     description: "Callback fired when the component requests to be closed. When provided and no action prop is set, a close icon button is displayed that triggers the callback when clicked.",
     name       : "onClose",
-    types      : [{ type: "func" }]
+    types      : [{ type: "function" }]
   },
   {
     description: "The ARIA role attribute of the element.",
