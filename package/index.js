@@ -5,6 +5,7 @@
 import CoreComponent from "./components/CoreComponent";
 import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
+import CoreAvatarGroup from "./components/dataDisplay/CoreAvatarGroup";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
 import CoreChip from "./components/dataDisplay/CoreChip";
 import CoreDivider from "./components/dataDisplay/CoreDivider";
@@ -28,6 +29,7 @@ import CoreTablePagination from "./components/dataDisplay/CoreTablePagination";
 import CoreTableRow from "./components/dataDisplay/CoreTableRow";
 import CoreTableSortLabel from "./components/dataDisplay/CoreTableSortLabel";
 import CoreTooltip from "./components/dataDisplay/CoreTooltip";
+import CoreTypography from "./components/dataDisplay/CoreTypography";
 import CoreEmailLink from "./components/dataDisplay/custom/CoreEmailLink";
 import CoreEmailOrPhoneLink from "./components/dataDisplay/custom/CoreEmailOrPhoneLink";
 import CoreIconText from "./components/dataDisplay/custom/CoreIconText";
@@ -44,7 +46,6 @@ import CoreH4 from "./components/dataDisplay/heading/CoreH4";
 import CoreH5 from "./components/dataDisplay/heading/CoreH5";
 import CoreH6 from "./components/dataDisplay/heading/CoreH6";
 import CoreLabel from "./components/dataDisplay/paragraph/CoreLabel";
-import CoreTypography from "./components/dataDisplay/CoreTypography";
 import CoreTypographyBody1 from "./components/dataDisplay/paragraph/CoreTypographyBody1";
 import CoreTypographyBody2 from "./components/dataDisplay/paragraph/CoreTypographyBody2";
 import CoreTypographyButton from "./components/dataDisplay/paragraph/CoreTypographyButton";
@@ -336,6 +337,7 @@ export {
   CoreSnackbar,
   CoreDataTable,
   CoreAvatar,
+  CoreAvatarGroup,
   CoreBadge,
   CoreChip,
   CoreDivider,
