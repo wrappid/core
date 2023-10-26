@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.330",
+  "version": "0.0.331",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "directories": {
