@@ -191,7 +191,7 @@ import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 import CoreClasses from "./styles/CoreClasses";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
-import { defaultValidProps } from "./utils/componentUtil";
+import { defaultValidProps, defaultInvalidProps } from "./utils/componentUtil";
 import { getForm, createApiMeta, getFormikRequiredMessage } from "./utils/formUtils";
 import {
   getFullName,
@@ -213,6 +213,7 @@ export {
   CoreTypography,
   stringUtils,
   defaultValidProps,
+  defaultInvalidProps,
   clearValidatePhoneEmail,
   getFormikRequiredMessage,
   CoreMarkdownViewer,
