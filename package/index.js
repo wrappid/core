@@ -24,6 +24,7 @@ import CoreTableContainer from "./components/dataDisplay/CoreTableContainer";
 import CoreTableFooter from "./components/dataDisplay/CoreTableFooter";
 import CoreTableHead from "./components/dataDisplay/CoreTableHead";
 import CoreTableHeadCell from "./components/dataDisplay/CoreTableHeadCell";
+import CoreTableHeadRow from "./components/dataDisplay/CoreTableHeadRow";
 import CoreTablePagination from "./components/dataDisplay/CoreTablePagination";
 import CoreTableRow from "./components/dataDisplay/CoreTableRow";
 import CoreTableSortLabel from "./components/dataDisplay/CoreTableSortLabel";
@@ -353,6 +354,7 @@ export {
   CoreTableContainer,
   CoreTableFooter,
   CoreTableHead,
+  CoreTableHeadRow,
   CoreTableHeadCell,
   CoreTablePagination,
   CoreTableRow,
