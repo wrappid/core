@@ -27,6 +27,7 @@ export default function CoreApp({
   menuRegistry,
   applicationRegistry,
   resourceRegistry,
+  routesRegistry,
   functionsRegistry,
   validationsRegistry,
 }) {
@@ -48,7 +49,7 @@ export default function CoreApp({
                   <CoreAppDiv>
                     <CoreNavigation>
                       <AppContainer>
-                        <CoreRoutes />
+                        <CoreRoutes routes={routesRegistry} />
                       </AppContainer>
                     </CoreNavigation>
                   </CoreAppDiv>

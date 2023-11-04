@@ -365,6 +365,7 @@ export default function CoreDataTable(props) {
     // eslint-disable-next-line no-prototype-builtins
     if (
       userSettings &&
+      // eslint-disable-next-line no-prototype-builtins
       userSettings.hasOwnProperty(userSettingsConstants?.MAX_ROWS_IN_PAGE)
     ) {
       setMaxRowsInPage(userSettings[userSettingsConstants?.MAX_ROWS_IN_PAGE]);

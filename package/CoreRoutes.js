@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
+import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/custom/Logout";
 import SplashComponent from "./components/navigation/custom/SplashComponent";
+import WrappidComponent from "./components/WrappidComponent";
 import { HTTP } from "./config/constants";
+import { ComponentRegistryContext } from "./config/contextHandler";
 import Error404 from "./error/Error404";
 import Error500 from "./error/Error500";
 import PageContainer from "./layout/PageContainer";
 import { apiRequestAction } from "./store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
-export default function CoreRoutes() {
+export default function CoreRoutes(props) {
+  const { routes } = props;
   const dispatch = useDispatch();
+  const componentRegistry = useContext(ComponentRegistryContext);
   const auth = useSelector((state) => state?.auth);
   const _routes = useSelector((state) => state?.route?.routes);
   let authenticated = auth?.uid ? true : false;
+  let appConfig = getConfigurationObject();
 
   React.useEffect(() => {
-    dispatch(
+    appConfig?.wrappid?.backendUrl && dispatch(
       apiRequestAction(
         HTTP.GET,
         "/noauth/business/all/RoutePages",
         true,
-        {
-          _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })),
-        },
+        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
         GET_ROUTE_SUCCESS,
         GET_ROUTE_FAILURE
       )
@@ -34,14 +39,12 @@ export default function CoreRoutes() {
   }, []);
 
   React.useEffect(() => {
-    dispatch(
+    appConfig?.wrappid?.backendUrl && dispatch(
       apiRequestAction(
         HTTP.GET,
         "/noauth/business/all/RoutePages",
         true,
-        {
-          _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })),
-        },
+        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
         GET_ROUTE_SUCCESS,
         GET_ROUTE_FAILURE
       )
@@ -50,8 +53,31 @@ export default function CoreRoutes() {
 
   return (
     <NativeDomRoutes>
+      
+      {/* Splash cmponent or redirection component or loader page  */}
+      <NativeDomRoute
+        exact
+        path="/"
+        element={
+          appConfig?.wrappid?.defaultRoute ? (
+            <PageContainer
+              page={{
+                auth: false,
+                comp: routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent ? componentRegistry[routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent] : WrappidComponent
+              }} />
+          ) : (
+            <PageContainer
+              page={{
+                auth: false,
+                comp: SplashComponent,
+              }}
+            />
+          )
+        }
+      />
+
       {/* App related routes */}
-      {_routes?.map((route) => {
+      {[...Object.values(routes), ..._routes]?.map((route) => {
         return (
           <NativeDomRoute
             key={route.url}
@@ -61,20 +87,6 @@ export default function CoreRoutes() {
           />
         );
       })}
-
-      {/* Splash cmponent or redirection component or loader page  */}
-      <NativeDomRoute
-        exact
-        path="/"
-        element={
-          <PageContainer
-            page={{
-              auth: false,
-              comp: SplashComponent,
-            }}
-          />
-        }
-      />
 
       {/* LOGOUT PAGE  */}
       <NativeDomRoute
