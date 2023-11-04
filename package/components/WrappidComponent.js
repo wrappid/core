@@ -1,4 +1,4 @@
-import CoreH1 from "./dataDisplay/heading/CoreH1";
+import CoreH1 from "./dataDisplay/CoreH1";
 
 export default function WrappidComponent() {
   return (

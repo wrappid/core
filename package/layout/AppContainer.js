@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation, NativeAppContainer } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +9,7 @@ import CoreDrawer from "./../components/surfaces/CoreDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
 import ComponentRegistry from "./../config/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
-import CoreRequestProgressBar from "../components/feedback/custom/CoreRequestProgressBar";
+import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
 import {
   GET_ROLE_PERMISSIONS_API,
   GET_SETTINGS_META_API,
@@ -60,7 +61,7 @@ function AppContainer(props) {
   const [routeRegistry, setRouteRegistry] = useState({});
 
   // user settings
-  const reload = useSelector((state) => state?.settings?.reload);
+  // const reload = useSelector((state) => state?.settings?.reload);
 
   React.useEffect(() => {
     if (accessToken) {

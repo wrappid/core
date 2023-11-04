@@ -13,7 +13,7 @@ import { HTTP } from "../../config/constants";
 import { apiRequestAction } from "../../store/action/appActions";
 import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/types/appTypes";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreTimer from "../dataDisplay/custom/CoreTimer";
+import CoreTimer from "../dataDisplay/CoreTimer";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreBox from "../layouts/CoreBox";
 

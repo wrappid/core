@@ -1,8 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreImage from "../components/dataDisplay/custom/CoreImage";
-import CoreH6 from "../components/dataDisplay/heading/CoreH6";
+import CoreImage from "../components/dataDisplay/CoreImage";
+import CoreH6 from "../components/dataDisplay/CoreH6";
 import CoreStack from "../components/layouts/CoreStack";
 import CoreClasses from "../styles/CoreClasses";
 

@@ -5,8 +5,8 @@ import {
   createFormFieldProps,
   createFormGridProps
 } from "../../utils/formUtils";
-import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreLabel from "../dataDisplay/CoreLabel";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreGrid from "../layouts/CoreGrid";
 
 export default function CoreViewField(props) {

@@ -4,7 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate, NativeFlatList } from "@wrappid/native";
 
-import CoreResponsiveButton from "../inputs/custom/CoreResponsiveButton";
+import CoreResponsiveButton from "../inputs/CoreResponsiveButton";
 
 export default function CoreTableAction(props) {
   const navigation = nativeUseNavigate();

@@ -42,7 +42,7 @@ import {
 } from "../../utils/themeUtil";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreTable from "../dataDisplay/CoreTable";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";

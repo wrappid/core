@@ -2,7 +2,7 @@
 import React from "react";
 
 import CoreClasses from "../../styles/CoreClasses";
-import CoreH5 from "../dataDisplay/heading/CoreH5";
+import CoreH5 from "../dataDisplay/CoreH5";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreCardHeader from "../surfaces/CoreCardHeader";

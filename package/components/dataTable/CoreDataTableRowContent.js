@@ -24,9 +24,9 @@ import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableBodyCell from "../dataDisplay/CoreTableBodyCell";
-import StatusText from "../dataDisplay/custom/StatusText";
-import CoreTypographyBody2 from "../dataDisplay/paragraph/CoreTypographyBody2";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
+import StatusText from "../dataDisplay/StatusText";
+import CoreTypographyBody2 from "../dataDisplay/CoreTypographyBody2";
+import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 
 export default function CoreDataTableRowContent(props) {
   const {

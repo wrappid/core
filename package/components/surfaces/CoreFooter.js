@@ -4,11 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/order
 import { getConfigurationObject } from "@wrappid/styles";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
+import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
-import CoreAppVersion from "../utils/custom/CoreAppVersion";
-import CoreTermsPrivacyLink from "../utils/custom/CoreTermsPrivacyLink";
+import CoreAppVersion from "../utils/CoreAppVersion";
+import CoreTermsPrivacyLink from "../utils/CoreTermsPrivacyLink";
 
 // eslint-disable-next-line no-unused-vars
 export default function CoreFooter(props) {

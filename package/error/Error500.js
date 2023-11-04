@@ -4,8 +4,8 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/native";
 
-import CoreH6 from "../components/dataDisplay/heading/CoreH6";
-import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreH6 from "../components/dataDisplay/CoreH6";
+import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import CoreCard from "../components/surfaces/CoreCard";
 import CoreCardContent from "../components/surfaces/CoreCardContent";
 import CoreClasses from "../styles/CoreClasses";

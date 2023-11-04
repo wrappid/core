@@ -34,7 +34,7 @@ import {
   hookcallCheck
 } from "../../utils/formUtils";
 import { compareObject } from "../../utils/objectUtils";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreBox from "../layouts/CoreBox";

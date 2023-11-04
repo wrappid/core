@@ -6,7 +6,7 @@ import TableBulkAction from "./CoreTableBulkAction";
 import config from "../../config/config";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTooltip from "../dataDisplay/CoreTooltip";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreFormGroup from "../forms/CoreFormGroup";
 import CoreFormControlLabel from "../forms/CoreFormControlLabel";
 import CoreCheckbox from "../inputs/CoreCheckbox";

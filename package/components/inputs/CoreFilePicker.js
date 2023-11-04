@@ -8,7 +8,7 @@ import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
+import CoreLabel from "../dataDisplay/CoreLabel";
 
 export default function CoreFilePicker(props) {
   // -- const inputRef = useRef(null);

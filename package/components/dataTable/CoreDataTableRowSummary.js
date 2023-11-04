@@ -4,9 +4,9 @@ import React from "react";
 import { UtilityClasses } from "@wrappid/styles";
 
 import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
-import CoreTypographyBody1 from "./../dataDisplay/paragraph/CoreTypographyBody1";
-import CoreTypographyCaption from "./../dataDisplay/paragraph/CoreTypographyCaption";
-import CoreTypographySubtitle1 from "./../dataDisplay/paragraph/CoreTypographySubtitle1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
+import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
+import CoreTypographySubtitle1 from "../dataDisplay/CoreTypographySubtitle1";
 import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreStack from "../layouts/CoreStack";
 import CoreCardHeader from "../surfaces/CoreCardHeader";

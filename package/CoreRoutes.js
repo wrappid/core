@@ -5,8 +5,8 @@ import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
 import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
-import Logout from "./components/navigation/custom/Logout";
-import SplashComponent from "./components/navigation/custom/SplashComponent";
+import Logout from "./components/navigation/Logout";
+import SplashComponent from "./components/navigation/SplashComponent";
 import WrappidComponent from "./components/WrappidComponent";
 import { HTTP } from "./config/constants";
 import { ComponentRegistryContext } from "./config/contextHandler";

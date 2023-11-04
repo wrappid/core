@@ -9,7 +9,7 @@ import CoreFormContainer from "./CoreFormContainer";
 import CoreFormInputs from "./CoreFormInputs";
 import { getGridSizeProps } from "../../utils/componentUtil";
 import { createFieldSkeletonProps } from "../../utils/formUtils";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreGrid from "../layouts/CoreGrid";
 

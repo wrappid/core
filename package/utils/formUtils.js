@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { defaultValidations } from "./componentDefaultValidations";
 import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
 import { queryBuilder } from "./helper";
-import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,

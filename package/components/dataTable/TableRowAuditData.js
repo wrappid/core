@@ -5,8 +5,8 @@ import { CoreClasses } from "@wrappid/core";
 
 import { auditTypes } from "../../config/constants";
 import { getLabel } from "../../utils/stringUtils";
-import UserChip from "../dataDisplay/custom/UserChip";
-import CoreTypographyCaption from "../dataDisplay/paragraph/CoreTypographyCaption";
+import UserChip from "../dataDisplay/UserChip";
+import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 

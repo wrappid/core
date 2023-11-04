@@ -17,7 +17,7 @@ import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreContainedButton from "../inputs/CoreContainedButton";
 import CoreInput from "../inputs/CoreInput";
 import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
-import CoreSpeechToText from "../inputs/custom/CoreSpeechToText";
+import CoreSpeechToText from "../inputs/CoreSpeechToText";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 

@@ -13,7 +13,7 @@ import { getLabel } from "../../utils/stringUtils";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTableCell from "../dataDisplay/CoreTableCell";
 import CoreTableRow from "../dataDisplay/CoreTableRow";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
 import CoreCheckbox from "../inputs/CoreCheckbox";
 import CoreTextButton from "../inputs/CoreTextButton";

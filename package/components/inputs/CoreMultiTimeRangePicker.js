@@ -9,7 +9,7 @@ import CoreIconButton from "./CoreIconButton";
 import CoreTimePicker from "./CoreTimePicker";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreLabel from "../dataDisplay/paragraph/CoreLabel";
+import CoreLabel from "../dataDisplay/CoreLabel";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 

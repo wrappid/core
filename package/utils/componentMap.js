@@ -1,8 +1,8 @@
 import { defaultValidations } from "./componentDefaultValidations";
 import CoreAvatar from "../components/dataDisplay/CoreAvatar";
 import CoreDivider from "../components/dataDisplay/CoreDivider";
-import CoreEmailOrPhoneLink from "../components/dataDisplay/custom/CoreEmailOrPhoneLink";
-import CoreTypographyBody1 from "../components/dataDisplay/paragraph/CoreTypographyBody1";
+import CoreEmailOrPhoneLink from "../components/dataDisplay/CoreEmailOrPhoneLink";
+import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import CoreDataTable from "../components/dataTable/CoreDataTable";
 import CoreSpecificForm from "../components/forms/CoreSpecificForm";
 import CoreAsyncSelect from "../components/inputs/CoreAsyncSelect";
@@ -27,9 +27,9 @@ import CoreTextarea from "../components/inputs/CoreTextarea";
 import CoreTextButton from "../components/inputs/CoreTextButton";
 import CoreTimePicker from "../components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "../components/inputs/CoreTimeRangePicker";
-import CoreFormLabelCheckbox from "../components/inputs/custom/CoreFormLabelCheckbox";
-import CoreRichTextEditor from "../components/inputs/custom/CoreRichTextEditor";
-import ParentChildMap from "../components/inputs/custom/ParentChildMap";
+import CoreFormLabelCheckbox from "../components/inputs/CoreFormLabelCheckbox";
+import CoreRichTextEditor from "../components/inputs/CoreRichTextEditor";
+import ParentChildMap from "../components/inputs/ParentChildMap";
 import CoreSpan from "../components/layouts/CoreSpan";
 
 /* com key will have component reference, 

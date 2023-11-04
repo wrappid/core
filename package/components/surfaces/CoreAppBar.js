@@ -20,10 +20,10 @@ import CoreIconButton from "../inputs/CoreIconButton";
 import CoreStack from "../layouts/CoreStack";
 import CoreToolbar from "../surfaces/CoreToolbar";
 import CorePopover from "../utils/CorePopover";
-import CoreProfilePopOver from "../utils/custom/CoreProfilePopOver";
-import HelpAndSupportPopOver from "../utils/custom/HelpAndSupportPopOver";
-import NotificationPopOver from "../utils/custom/NotificationPopOver";
-import QuickAddPopOver from "../utils/custom/QuickAddPopOver";
+import CoreProfilePopOver from "../utils/CoreProfilePopOver";
+import HelpAndSupportPopOver from "../utils/HelpAndSupportPopOver";
+import NotificationPopOver from "../utils/NotificationPopOver";
+import QuickAddPopOver from "../utils/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
   const dispatch = useDispatch();

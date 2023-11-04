@@ -6,9 +6,9 @@ import { NativeDataTableToolbar, NativeDataTableToolPopover } from "@wrappid/nat
 import { useDispatch } from "react-redux";
 
 import { apiRequestAction } from "./../../store/action/appActions";
-import ExportData from "./tableToolbarUtils/ExportData";
-import SortTableData from "./tableToolbarUtils/SortTableData";
-import TableDensity from "./tableToolbarUtils/TableDensity";
+import ExportData from "./ExportData";
+import SortTableData from "./SortTableData";
+import TableDensity from "./TableDensity";
 import { UPDATE_USER_SETTINGS } from "../../config/api";
 import {
   HTTP,

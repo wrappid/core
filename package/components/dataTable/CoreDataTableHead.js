@@ -8,7 +8,7 @@ import CoreTableHead from "../dataDisplay/CoreTableHead";
 import CoreTableHeadCell from "../dataDisplay/CoreTableHeadCell";
 import CoreTableHeadRow from "../dataDisplay/CoreTableHeadRow";
 import CoreTableSortLabel from "../dataDisplay/CoreTableSortLabel";
-import CoreTypographyBody1 from "../dataDisplay/paragraph/CoreTypographyBody1";
+import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreCheckbox from "../inputs/CoreCheckbox";
 
 export default function CoreDataTableHead(props) {
