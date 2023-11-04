@@ -114,7 +114,7 @@ import CoreInputLabel from "./inputs/CoreInputLabel.js";
 import CoreInputPassword from "./inputs/CoreInputPassword.js";
 import CoreJSONEditor from "./inputs/CoreJSONEditor.js";
 import CoreJSONInput from "./inputs/CoreJSONInput.js";
-import CoreListItemButton from "./inputs/CoreListItemButton.js";
+import CoreListItemButton from "./dataDisplay/CoreListItemButton.js";
 import CoreMenu from "./inputs/CoreMenu.js";
 import CoreMultiTimeRangePicker from "./inputs/CoreMultiTimeRangePicker.js";
 import CoreOtpInput from "./inputs/CoreOtpInput.js";
