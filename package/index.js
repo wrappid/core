@@ -102,7 +102,6 @@ import CoreInputPassword from "./components/inputs/CoreInputPassword";
 import CoreJSONEditor from "./components/inputs/CoreJSONEditor";
 import CoreJSONInput from "./components/inputs/CoreJSONInput";
 import CoreMedicineSelector from "./components/inputs/CoreMedicineSelector";
-import CoreMenu from "./components/navigation/CoreMenu";
 import CoreMultiTimeRangePicker from "./components/inputs/CoreMultiTimeRangePicker";
 import CoreOtpInput from "./components/inputs/CoreOtpInput";
 import CoreOutlinedButton from "./components/inputs/CoreOutlinedButton";
@@ -127,6 +126,7 @@ import CoreSpan from "./components/layouts/CoreSpan";
 import CoreStack from "./components/layouts/CoreStack";
 import CoreCustomTabs from "./components/navigation/CoreCustomTabs";
 import CoreLink from "./components/navigation/CoreLink";
+import CoreMenu from "./components/navigation/CoreMenu";
 import CoreMenuItem from "./components/navigation/CoreMenuItem";
 import CoreMenuList from "./components/navigation/CoreMenuList";
 import CoreScrollTop from "./components/navigation/CoreScrollTop";
@@ -134,6 +134,7 @@ import CoreTab from "./components/navigation/CoreTab";
 import CoreTabHead from "./components/navigation/CoreTabHead";
 import CoreTabPanel from "./components/navigation/CoreTabPanel";
 import CoreTabs from "./components/navigation/CoreTabs";
+import CoreTOC, { getPageTOC } from "./components/navigation/CoreTOC";
 import CoreAccordion from "./components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "./components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "./components/surfaces/CoreAccordionSummary";
@@ -211,6 +212,8 @@ import {
 } from "./utils/themeUtil";
 
 export {
+  CoreTOC,
+  getPageTOC,
   CoreTypography,
   stringUtils,
   defaultValidProps,
