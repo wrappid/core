@@ -17,7 +17,7 @@ import CorePhoneLink from "../dataDisplay/CorePhoneLink";
 import CoreTypographyBody2 from "../dataDisplay/CoreTypographyBody2";
 import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreButton from "../inputs/CoreButton";
-import CoreMenu from "../inputs/CoreMenu";
+import CoreMenu from "../navigation/CoreMenu";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreStack from "../layouts/CoreStack";

@@ -2,7 +2,7 @@
 import React from "react";
 
 import { __TableDensity } from "../../config/constants";
-import CoreMenu from "../inputs/CoreMenu";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function TableDensity(props) {
   // eslint-disable-next-line no-unused-vars

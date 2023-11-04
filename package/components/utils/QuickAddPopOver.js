@@ -13,7 +13,7 @@ import {
 import { MENU_ITEM } from "../../config/menuConstants";
 import { queryBuilder } from "../../utils/helper";
 import { APP_PLATFORM } from "../../utils/themeUtil";
-import CoreMenu from "../inputs/CoreMenu";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();

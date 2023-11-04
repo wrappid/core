@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { nativeUseNavigate } from "@wrappid/native";
 
 import { CoreMenuContext } from "../../config/contextHandler";
-import CoreMenu from "../inputs/CoreMenu";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function HelpAndSupportPopOver(props) {
   const navigate = nativeUseNavigate();

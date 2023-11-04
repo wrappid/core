@@ -11,7 +11,7 @@ import {
   WEB_PLATFORM,
   detectPlatform
 } from "../../utils/themeUtil";
-import CoreMenu from "../inputs/CoreMenu";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreDrawer(props) {
   const dispatch = useDispatch();

@@ -102,7 +102,7 @@ import CoreInputPassword from "./components/inputs/CoreInputPassword";
 import CoreJSONEditor from "./components/inputs/CoreJSONEditor";
 import CoreJSONInput from "./components/inputs/CoreJSONInput";
 import CoreMedicineSelector from "./components/inputs/CoreMedicineSelector";
-import CoreMenu from "./components/inputs/CoreMenu";
+import CoreMenu from "./components/navigation/CoreMenu";
 import CoreMultiTimeRangePicker from "./components/inputs/CoreMultiTimeRangePicker";
 import CoreOtpInput from "./components/inputs/CoreOtpInput";
 import CoreOutlinedButton from "./components/inputs/CoreOutlinedButton";

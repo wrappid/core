@@ -36,9 +36,9 @@ import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreTablePagination from "../dataDisplay/CoreTablePagination";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreInputAdornment from "../inputs/CoreInputAdornment";
-import CoreMenu from "../inputs/CoreMenu";
 import CoreTextButton from "../inputs/CoreTextButton";
 import CoreTextField from "../inputs/CoreTextField";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreDataTableToolbar(props) {
   const dispatch = useDispatch();
