@@ -77,7 +77,7 @@ export default function CoreRoutes(props) {
       />
 
       {/* App related routes */}
-      {[...Object.values(routes), ..._routes]?.map((route) => {
+      {[...Object.values((routes || {})), ...(_routes || [])]?.map((route) => {
         return (
           <NativeDomRoute
             key={route.url}
