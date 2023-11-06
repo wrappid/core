@@ -48,7 +48,7 @@ import {
   SanStatusUpdate,
   getBmi,
   SanReadAppointment
-} from "../../utils/formSubmitSanitizations";
+} from "../../../utils/formSubmitSanitizations";
 
 export const FORM_EDIT_MODE = "edit";
 export const FORM_VIEW_MODE = "view";

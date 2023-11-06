@@ -5,21 +5,21 @@ import { getConfigurationObject } from "@wrappid/styles";
 
 import CoreFormButton from "./CoreFormButton";
 import { BUTTON_TYPE, INPUT_TYPE } from "./coreFormConstants";
-import CoreClasses from "../../styles/CoreClasses";
+import CoreClasses from "../../../styles/CoreClasses";
 import {
   checkDependencies,
   createFormActionProps,
   createFormFieldProps,
   detectChange,
   getDependentProps
-} from "../../utils/formUtils";
-import { APP_PLATFORM } from "../../utils/themeUtil";
-import CoreContainedButton from "../inputs/CoreContainedButton";
-import CoreInput from "../inputs/CoreInput";
-import CoreOutlinedButton from "../inputs/CoreOutlinedButton";
-import CoreSpeechToText from "../inputs/CoreSpeechToText";
-import CoreBox from "../layouts/CoreBox";
-import CoreGrid from "../layouts/CoreGrid";
+} from "../../../utils/formUtils";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreContainedButton from "../CoreContainedButton";
+import CoreInput from "../CoreInput";
+import CoreOutlinedButton from "../CoreOutlinedButton";
+import CoreSpeechToText from "../CoreSpeechToText";
 
 export const ON_MOUNT = "moount";
 export const ON_CHANGE = "change";

@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 import { BUTTON_TYPE, INPUT_TYPE } from "./coreFormConstants";
 import CoreFormContainer from "./CoreFormContainer";
 import CoreFormInputs from "./CoreFormInputs";
-import { getGridSizeProps } from "../../utils/componentUtil";
-import { createFieldSkeletonProps } from "../../utils/formUtils";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreSkeleton from "../feedback/CoreSkeleton";
-import CoreGrid from "../layouts/CoreGrid";
+import { getGridSizeProps } from "../../../utils/componentUtil";
+import { createFieldSkeletonProps } from "../../../utils/formUtils";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreSkeleton from "../../feedback/CoreSkeleton";
+import CoreGrid from "../../layouts/CoreGrid";
 
 export const FormContext = React.createContext();
 
