@@ -3,12 +3,12 @@ import React from "react";
 
 import { CoreClasses } from "@wrappid/core";
 
-import { auditTypes } from "../../config/constants";
-import { getLabel } from "../../utils/stringUtils";
-import UserChip from "../dataDisplay/UserChip";
-import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
-import CoreBox from "../layouts/CoreBox";
-import CoreGrid from "../layouts/CoreGrid";
+import { auditTypes } from "../../../config/constants";
+import { getLabel } from "../../../utils/stringUtils";
+import UserChip from "../UserChip";
+import CoreTypographyCaption from "../CoreTypographyCaption";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
 
 /**
  *

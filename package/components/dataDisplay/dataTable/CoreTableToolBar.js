@@ -3,17 +3,17 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import TableBulkAction from "./CoreTableBulkAction";
-import config from "../../config/config";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreTooltip from "../dataDisplay/CoreTooltip";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreFormGroup from "../forms/CoreFormGroup";
-import CoreFormControlLabel from "../forms/CoreFormControlLabel";
-import CoreCheckbox from "../inputs/CoreCheckbox";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreBox from "../layouts/CoreBox";
-import CoreToolBar from "../surfaces/CoreToolbar";
-import CorePopover from "../utils/CorePopover";
+import config from "../../../config/config";
+import CoreCheckbox from "../../inputs/CoreCheckbox";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreFormControlLabel from "../../inputs/forms/CoreFormControlLabel";
+import CoreFormGroup from "../../inputs/forms/CoreFormGroup";
+import CoreBox from "../../layouts/CoreBox";
+import CoreToolBar from "../../surfaces/CoreToolbar";
+import CorePopover from "../../utils/CorePopover";
+import CoreIcon from "../CoreIcon";
+import CoreTooltip from "../CoreTooltip";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
 
 export default function CoreTableToolBar(props) {
   const { HandleColumnFilter, columns, bulkActions, selected } = props;

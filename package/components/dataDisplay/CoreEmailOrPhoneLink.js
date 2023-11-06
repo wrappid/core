@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CoreEmailLink from "./CoreEmailLink";
 import CorePhoneLink from "./CorePhoneLink";
-import { toggleModalState } from "../../store/action/modalAction";
-import CoreForm from "../forms/CoreForm";
-import { FORM_EDIT_MODE, FORM_IDS } from "../forms/coreFormConstants";
-import CoreTextButton from "../inputs/CoreTextButton";
 import CoreTypographyBody1 from "./CoreTypographyBody1";
+import { toggleModalState } from "../../store/action/modalAction";
+import CoreTextButton from "../inputs/CoreTextButton";
+import CoreForm from "../inputs/forms/CoreForm";
+import { FORM_EDIT_MODE, FORM_IDS } from "../inputs/forms/coreFormConstants";
 
 export default function CoreEmailOrPhoneLink(props) {
   const dispatch = useDispatch();

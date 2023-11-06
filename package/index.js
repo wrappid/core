@@ -53,10 +53,10 @@ import CoreTypographyCaption from "./components/dataDisplay/CoreTypographyCaptio
 import CoreTypographyOverline from "./components/dataDisplay/CoreTypographyOverline";
 import CoreTypographySubtitle1 from "./components/dataDisplay/CoreTypographySubtitle1";
 import CoreTypographySubtitle2 from "./components/dataDisplay/CoreTypographySubtitle2";
+import CoreDataTable from "./components/dataDisplay/dataTable/CoreDataTable";
+import CoreFlatList from "./components/dataDisplay/dataTable/CoreFlatList";
 import StatusText from "./components/dataDisplay/StatusText";
 import UserChip from "./components/dataDisplay/UserChip";
-import CoreDataTable from "./components/dataTable/CoreDataTable";
-import CoreFlatList from "./components/dataTable/CoreFlatList";
 import CoreAlert from "./components/feedback/CoreAlert";
 import CoreAlertTitle from "./components/feedback/CoreAlertTitle";
 import CoreBackdrop from "./components/feedback/CoreBackdrop";
@@ -65,16 +65,6 @@ import CoreDialog, { CORE_DIALOG_TYPES } from "./components/feedback/CoreDialog"
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
-import CoreForm from "./components/forms/CoreForm";
-import {
-  FORM_VIEW_MODE,
-  FORM_EDIT_MODE,
-  FORM_IDS,
-  FORM_SANITIZATION_FUNCTION_IDS,
-  FORM_SANITIZATOIN_FUNCTION_MAP
-} from "./components/forms/coreFormConstants";
-import CoreFormControlLabel from "./components/forms/CoreFormControlLabel";
-import CoreFormGroup from "./components/forms/CoreFormGroup";
 import ChildMap from "./components/inputs/ChildMap";
 import CoreAsyncSelect from "./components/inputs/CoreAsyncSelect";
 import CoreAutocomplete from "./components/inputs/CoreAutocomplete";
@@ -117,6 +107,16 @@ import CoreTextButton from "./components/inputs/CoreTextButton";
 import CoreTextField from "./components/inputs/CoreTextField";
 import CoreTimePicker from "./components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "./components/inputs/CoreTimeRangePicker";
+import CoreForm from "./components/inputs/forms/CoreForm";
+import {
+  FORM_VIEW_MODE,
+  FORM_EDIT_MODE,
+  FORM_IDS,
+  FORM_SANITIZATION_FUNCTION_IDS,
+  FORM_SANITIZATOIN_FUNCTION_MAP
+} from "./components/inputs/forms/coreFormConstants";
+import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel";
+import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
 import ParentChildMap from "./components/inputs/ParentChildMap";
 import CoreBox from "./components/layouts/CoreBox";
 import CoreGrid from "./components/layouts/CoreGrid";

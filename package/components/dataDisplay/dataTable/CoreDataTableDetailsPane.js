@@ -8,27 +8,27 @@ import { getConfigurationObject } from "@wrappid/styles";
 import CoreDataTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
 import CoreTableAction from "./CoreTableAction";
 import TableRowAuditData from "./TableRowAuditData";
-import { ENV_DEV_MODE, MEDIUM_WINDOW_WIDTH } from "../../config/constants";
-import CoreClasses from "../../styles/CoreClasses";
-import { getLabel } from "../../utils/stringUtils";
-import { APP_PLATFORM } from "../../utils/themeUtil";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import StatusText from "../dataDisplay/StatusText";
-import CoreLabel from "../dataDisplay/CoreLabel";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
-import CoreForm from "../forms/CoreForm";
-import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreGrid from "../layouts/CoreGrid";
-import CoreStack from "../layouts/CoreStack";
-import CoreAccordion from "../surfaces/CoreAccordion";
-import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
-import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
-import CoreCard from "../surfaces/CoreCard";
-import CoreCardContent from "../surfaces/CoreCardContent";
-import CoreCardHeader from "../surfaces/CoreCardHeader";
+import { ENV_DEV_MODE, MEDIUM_WINDOW_WIDTH } from "../../../config/constants";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getLabel } from "../../../utils/stringUtils";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreDivider from "../../dataDisplay/CoreDivider";
+import CoreIcon from "../../dataDisplay/CoreIcon";
+import CoreLabel from "../../dataDisplay/CoreLabel";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreTypographyCaption from "../../dataDisplay/CoreTypographyCaption";
+import StatusText from "../../dataDisplay/StatusText";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreForm from "../../inputs/forms/CoreForm";
+import { FORM_EDIT_MODE, FORM_VIEW_MODE } from "../../inputs/forms/coreFormConstants";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreStack from "../../layouts/CoreStack";
+import CoreAccordion from "../../surfaces/CoreAccordion";
+import CoreAccordionDetail from "../../surfaces/CoreAccordionDetail";
+import CoreAccordionSummary from "../../surfaces/CoreAccordionSummary";
+import CoreCard from "../../surfaces/CoreCard";
+import CoreCardContent from "../../surfaces/CoreCardContent";
+import CoreCardHeader from "../../surfaces/CoreCardHeader";
 
 export default function CoreDataTableDetailsPane(props) {
   const {
@@ -210,10 +210,9 @@ export default function CoreDataTableDetailsPane(props) {
                     </CoreAccordionSummary>
 
                     <CoreAccordionDetail>
-                      {/* <pre>{JSON.stringify(detailedRowData, null, 2)}</pre> */}
-                      <CoreLabel>
+                      <CoreTypographyBody1 code={true}>
                         {JSON.stringify(detailedRowData, null, 2)}
-                      </CoreLabel>
+                      </CoreTypographyBody1>
                     </CoreAccordionDetail>
                   </CoreAccordion>
 

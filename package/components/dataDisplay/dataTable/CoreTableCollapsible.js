@@ -2,12 +2,12 @@
 import React, { useSelector } from "react-redux";
 
 import TableRowAuditData from "./TableRowAuditData";
-import CoreClasses from "../../styles/CoreClasses";
-import CoreTableCell from "../dataDisplay/CoreTableCell";
-import CoreTableRow from "../dataDisplay/CoreTableRow";
-import CoreForm from "../forms/CoreForm";
-import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreCollapse from "../surfaces/CoreCollapse";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreForm from "../../inputs/forms/CoreForm";
+import { FORM_VIEW_MODE } from "../../inputs/forms/coreFormConstants";
+import CoreCollapse from "../../surfaces/CoreCollapse";
+import CoreTableCell from "../CoreTableCell";
+import CoreTableRow from "../CoreTableRow";
 
 export default function CoreTableCollapsible({
   rowIndex,
@@ -15,16 +15,16 @@ export default function CoreTableCollapsible({
   open,
   ToggleOpen,
   mode = FORM_VIEW_MODE,
-  columns,
+  // columns,
   columnsLength,
   rowData,
-  endpoint,
-  successType,
-  errorType,
+  // endpoint,
+  // successType,
+  // errorType,
   editable,
   deletable,
 }) {
-  const forms = useSelector((state) => state?.forms?.rawform) || {};
+  // -- const forms = useSelector((state) => state?.forms?.rawform) || {};
 
   return (
     <>

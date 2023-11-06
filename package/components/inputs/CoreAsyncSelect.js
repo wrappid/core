@@ -25,7 +25,7 @@ import { getAsyncSelectValue } from "../../utils/objectUtils";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreListItem from "../dataDisplay/CoreListItem";
 import CoreCircularProgress from "../feedback/CoreCircularProgress";
-import CoreFieldButton from "../forms/CoreFieldButton";
+import CoreFieldButton from "../inputs/forms/CoreFieldButton";
 
 const filter = nativeFilterOptions();
 //TODO:

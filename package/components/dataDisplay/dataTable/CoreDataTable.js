@@ -12,9 +12,9 @@ import {
   userSettingsConstants,
   __TableDensity,
   MEDIUM_WINDOW_WIDTH
-} from "../../config/constants";
-import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
-import { apiRequestAction } from "../../store/action/appActions";
+} from "../../../config/constants";
+import { DATA_TABLE_CONST } from "../../../config/dataTableConstants";
+import { apiRequestAction } from "../../../store/action/appActions";
 import {
   READ_DATA_ERROR,
   READ_DATA_LOADING,
@@ -22,30 +22,30 @@ import {
   UPDATE_FILTER_DATA,
   UPDATE_QUERY_ORDER_DATA,
   UPDATE_QUERY_SEARCH_VALUE_DATA
-} from "../../store/types/dataManagementTypes";
-import { FORM_INIT_UPDATE } from "../../store/types/formTypes";
-import CoreClasses from "../../styles/CoreClasses";
-import { getUUID } from "../../utils/appUtils";
-import { compareObject } from "../../utils/objectUtils";
-import { getLabel } from "../../utils/stringUtils";
+} from "../../../store/types/dataManagementTypes";
+import { FORM_INIT_UPDATE } from "../../../store/types/formTypes";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getUUID } from "../../../utils/appUtils";
+import { compareObject } from "../../../utils/objectUtils";
+import { getLabel } from "../../../utils/stringUtils";
 import {
   getTableDensityPaddingValue,
   getTableDensityValue,
   prepareTableAPIQuery,
   __TableLeftPanelGridSize,
   __TableRightPanelGridSize
-} from "../../utils/tableUtils";
+} from "../../../utils/tableUtils";
 import {
   APP_PLATFORM,
   WEB_PLATFORM,
   detectPlatform
-} from "../../utils/themeUtil";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreTable from "../dataDisplay/CoreTable";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreBox from "../layouts/CoreBox";
-import CoreGrid from "../layouts/CoreGrid";
+} from "../../../utils/themeUtil";
+import { FORM_VIEW_MODE } from "../../inputs/forms/coreFormConstants";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreDivider from "../CoreDivider";
+import CoreTable from "../CoreTable";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
 
 /**
  * @TODO

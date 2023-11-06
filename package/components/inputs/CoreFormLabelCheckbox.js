@@ -1,8 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreFormControlLabel from "../forms/CoreFormControlLabel";
 import CoreCheckbox from "./CoreCheckbox";
+import CoreFormControlLabel from "../inputs/forms/CoreFormControlLabel";
 
 export default function CoreFormLabelCheckbox(props) {
   // -- console.log("props", props);

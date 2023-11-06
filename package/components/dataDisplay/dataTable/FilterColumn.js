@@ -4,16 +4,16 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreClasses from "../../styles/CoreClasses";
-import { getLabel } from "../../utils/stringUtils";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreFormControlLabel from "../forms/CoreFormControlLabel";
-import CoreCheckbox from "../inputs/CoreCheckbox";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreInputAdornment from "../inputs/CoreInputAdornment";
-import CoreTextField from "../inputs/CoreTextField";
-import CoreBox from "../layouts/CoreBox";
-import CoreStack from "../layouts/CoreStack";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getLabel } from "../../../utils/stringUtils";
+import CoreCheckbox from "../../inputs/CoreCheckbox";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreInputAdornment from "../../inputs/CoreInputAdornment";
+import CoreTextField from "../../inputs/CoreTextField";
+import CoreFormControlLabel from "../../inputs/forms/CoreFormControlLabel";
+import CoreBox from "../../layouts/CoreBox";
+import CoreStack from "../../layouts/CoreStack";
+import CoreIcon from "../CoreIcon";
 
 export default function FilterColumn(props) {
   const {

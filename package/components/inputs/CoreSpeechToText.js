@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 import { functionsRegistry } from "../../layout/PageContainer";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreForm from "../forms/CoreForm";
-import { FORM_EDIT_MODE } from "../forms/coreFormConstants";
+import CoreForm from "../inputs/forms/CoreForm";
+import { FORM_EDIT_MODE } from "../inputs/forms/coreFormConstants";
 
 export default function CoreSpeechToText(props) {
   const [dynamicFormId, setDynamicFormId] = useState("dynamicForm");

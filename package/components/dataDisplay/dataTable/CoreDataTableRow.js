@@ -7,18 +7,18 @@ import { useDispatch } from "react-redux";
 
 import CoreDataTableRowContent from "./CoreDataTableRowContent";
 import CoreFlatList from "./CoreFlatList";
-import { ThemeContext } from "../../config/contextHandler";
-import { UPDATE_QUERY_PAGE_DATA } from "../../store/types/dataManagementTypes";
-import { getLabel } from "../../utils/stringUtils";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreTableCell from "../dataDisplay/CoreTableCell";
-import CoreTableRow from "../dataDisplay/CoreTableRow";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import { FORM_VIEW_MODE } from "../forms/coreFormConstants";
-import CoreCheckbox from "../inputs/CoreCheckbox";
-import CoreTextButton from "../inputs/CoreTextButton";
-import CoreBox from "../layouts/CoreBox";
-import CoreStack from "../layouts/CoreStack";
+import { ThemeContext } from "../../../config/contextHandler";
+import { UPDATE_QUERY_PAGE_DATA } from "../../../store/types/dataManagementTypes";
+import { getLabel } from "../../../utils/stringUtils";
+import CoreIcon from "../../dataDisplay/CoreIcon";
+import CoreTableCell from "../../dataDisplay/CoreTableCell";
+import CoreTableRow from "../../dataDisplay/CoreTableRow";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreCheckbox from "../../inputs/CoreCheckbox";
+import CoreTextButton from "../../inputs/CoreTextButton";
+import { FORM_VIEW_MODE } from "../../inputs/forms/coreFormConstants";
+import CoreBox from "../../layouts/CoreBox";
+import CoreStack from "../../layouts/CoreStack";
 
 export default function CoreDataTableRow(props) {
   const theme = useContext(ThemeContext);
