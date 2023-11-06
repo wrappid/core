@@ -1,14 +1,15 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { CoreClasses } from "@wrappid/core";
 
 import { auditTypes } from "../../../config/constants";
 import { getLabel } from "../../../utils/stringUtils";
-import UserChip from "../UserChip";
-import CoreTypographyCaption from "../CoreTypographyCaption";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
+import CoreTypographyCaption from "../CoreTypographyCaption";
+import UserChip from "../UserChip";
 
 /**
  *
