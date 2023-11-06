@@ -14,7 +14,7 @@ export const theme = {
   palette    : {
     background: {
       default: "#FAFAFA",
-      // default: "#F00",
+      // -- default: "#F00",
     },
     primary: {
       contrastText: "#FFFFFF",

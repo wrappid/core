@@ -34,7 +34,7 @@ const settingsReducer = (state = initState, action) => {
         getUserSettingsSuccess: false,
       };
 
-    case GET_USER_SETTINGS_SUCCESS:
+    case GET_USER_SETTINGS_SUCCESS: {
       let userSettings = {};
 
       action.payload?.data?.forEach((data) => {
@@ -48,6 +48,7 @@ const settingsReducer = (state = initState, action) => {
         reload                : false,
         userSettings          : { ...state.userSettings, ...userSettings },
       };
+    }
 
     case GET_USER_SETTINGS_ERROR:
       return {
@@ -64,7 +65,7 @@ const settingsReducer = (state = initState, action) => {
       return { ...state, deleteAccoountSuccess: true };
 
     case LOGOUT_SUCCESS:
-      console.log("FORM LOGOUT_SUCCESS REDUCER------", action);
+      // -- console.log("FORM LOGOUT_SUCCESS REDUCER------", action);
       return initState;
 
     default:

@@ -1,4 +1,4 @@
-import { FORM_IDS } from "../components/forms/coreFormConstants";
+import { FORM_IDS } from "../components/inputs/forms/coreFormConstants";
 import { communicationTypes, __EntityStatus } from "../config/constants";
 
 function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {

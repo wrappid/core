@@ -1,7 +1,8 @@
 export function isJson(str) {
   try {
     JSON.parse(str);
-  } catch (e) {
+  } catch (error) {
+    //--console.error(error);
     return false;
   }
   return isNaN(str);
@@ -27,15 +28,15 @@ export function maskEmailOrPhone(userLogin) {
     return (
       userLogin?.replace(
         /^(.)(.*)(@.)([a-z].)([a-z0-9]*)(.)([a-z0-9]*)([a-z].)$/,
-        (_, a, b, c, d, e, f, g, h) =>
-          a + b.replace(/./g, "*") + c + d + e.replace(/./g, "*") + f + g.replace(/./g, "*") + h
+        (tmp, tmpA, tmpB, tmpC, tmpD, tmpE, tmpF, tmpG, tmpH) =>
+          tmpA + tmpB.replace(/./g, "*") + tmpC + tmpD + tmpE.replace(/./g, "*") + tmpF + tmpG.replace(/./g, "*") + tmpH
       ) || ""
     );
   } else if (type === "phone") {
     return (
       userLogin?.replace(
         /^(.)(.)([0-9]*)(.)(.)$/,
-        (_, a, b, c, d, e) => a + b + c.replace(/./g, "*") + d + e
+        (tmp, tmpA, tmpB, tmpC, tmpD, tmpE) => tmpA + tmpB + tmpC.replace(/./g, "*") + tmpD + tmpE
       ) || ""
     );
   } else return userLogin;

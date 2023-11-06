@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { LOGOUT_SUCCESS } from "../types/authTypes";
 import { HANDLE_MODAL } from "../types/settingsTypes";
 

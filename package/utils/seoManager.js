@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 
 export const DocumentTitle = ({ title, prevailOnUnmount = false }) => {
-  // const defaultTitle = useRef(document.title);
+  // --const defaultTitle = useRef(document.title);
 
-  // useEffect(() => {
+  // --useEffect(() => {
   //   document.title = title;
   // }, [title]);
 
   useEffect(
     () => () => {
       if (!prevailOnUnmount) {
-        document.title = title /* defaultTitle.current */;
+        document.title = title /* ---> + defaultTitle.current */;
       }
     },
     []

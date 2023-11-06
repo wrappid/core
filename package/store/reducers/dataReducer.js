@@ -107,6 +107,7 @@ const dataReducer = (state = initState, action) => {
       return case_ResetQueryData(state, action);
 
     case RESET_DATA:
+      return initState;
 
     case LOGOUT_SUCCESS:
       return initState;
@@ -147,12 +148,12 @@ const dataReducer = (state = initState, action) => {
 };
 
 const case_ReadDataLoading = (state, action) => {
-  console.log(
+  /* -- console.log(
     `------READ_DATA_LOADING REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
     } ------`
   );
-  console.log("WITH PAYLOAD = ", action?.payload);
+  console.log("WITH PAYLOAD = ", action?.payload); */
   return {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
@@ -170,12 +171,12 @@ const case_ReadDataLoading = (state, action) => {
 };
 
 const case_ReadDataSuccess = (state, action) => {
-  console.log(
+  /* -- console.log(
     `------READ_DATA_SUCCESS REDUCER TYPE CALLED FOR ${
       action?.payload?.entity || "UNKNOWN ENTITY"
     } ------`
   );
-  console.log("WITH PAYLOAD = ", action?.payload);
+  console.log("WITH PAYLOAD = ", action?.payload); */
   if (!state[action?.payload?.entity || "UNKNOWN"]?.loading) {
     return state;
   }

@@ -1,21 +1,21 @@
-// import { FORM_IDS } from "../components/forms/coreFormConstants";
+// --import { FORM_IDS } from "../components/inputs/forms/coreFormConstants";
 // import { communicationTypes, __EntityStatus } from "../config/constants";
 // import { queryBuilder } from "./helper";
 
-// export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
+// --export function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
 //   return {
 //     values: formData,
 //     endpoint: apiMeta.endpoint + "/" + formData?.id,
 //   };
 // }
 
-// export function SanAddEmailOrPhone(formData, apiMeta, state) {
+// --export function SanAddEmailOrPhone(formData, apiMeta, state) {
 //   formData["emailOrPhone"] = state?.auth?.navData?.emailOrPhone;
 //   console.log("--SANITIZATION", formData);
 //   return { values: formData };
 // }
 
-// export function SanAddEmailOrPhoneRemoveConfirmPassword(
+// --export function SanAddEmailOrPhoneRemoveConfirmPassword(
 //   formData,
 //   apiMeta,
 //   state
@@ -27,7 +27,7 @@
 //   return { values: newFormData };
 // }
 
-// export function SanBasicEditUrlChange(formData, apiMeta, state, others) {
+// --export function SanBasicEditUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   if (formData.gender) {
 //     formData.gender = formData.gender.id;
@@ -41,7 +41,7 @@
 //   };
 // }
 
-// export function SanClinicAddUrlChange(formData, apiMeta, state, others) {
+// --export function SanClinicAddUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   formData["addressTypeId"] = state?.common?.addressTypes?.find(
 //     (a) => a.type.toLowerCase() === "clinic"
@@ -52,7 +52,7 @@
 //   };
 // }
 
-// export function SanClinicEditUrlChange(formData, apiMeta, state, others) {
+// --export function SanClinicEditUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   for (let key in formData) {
 //     if (formData[key] === null) {
@@ -65,7 +65,7 @@
 //   };
 // }
 
-// export function SanClinicDeleteUrlChange(formData, apiMeta, state, others) {
+// --export function SanClinicDeleteUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -73,7 +73,7 @@
 //   };
 // }
 
-// export function SanClinicReadUrlChange(formData, apiMeta, state, others) {
+// --export function SanClinicReadUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -81,7 +81,7 @@
 //   };
 // }
 
-// export function SanProfileClinicRead(data) {
+// --export function SanProfileClinicRead(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return data?.rows?.map((m) => {
 //     return {
@@ -101,7 +101,7 @@
 //   });
 // }
 
-// export function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
+// --export function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: {
@@ -113,7 +113,7 @@
 // }
 
 // //PROFILE EDUCATION SANITIZATION FUNCTIONS
-// export function SanEducationAddUrlChange(formData, apiMeta, state, others) {
+// --export function SanEducationAddUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: formData,
@@ -121,7 +121,7 @@
 //   };
 // }
 
-// export function SanEducationEditUrlChange(formData, apiMeta, state, others) {
+// --export function SanEducationEditUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -129,7 +129,7 @@
 //   };
 // }
 
-// export function SanEducationReadUrlChange(formData, apiMeta, state, others) {
+// --export function SanEducationReadUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -137,7 +137,7 @@
 //   };
 // }
 
-// export function SanProfileEducationRead(data) {
+// --export function SanProfileEducationRead(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return data?.rows?.map((m) => {
 //     return {
@@ -155,7 +155,7 @@
 // }
 
 // //PROFILE EXP SANITIZATION FUNCTIONS
-// export function SanExperienceAddUrlChange(formData, apiMeta, state, others) {
+// --export function SanExperienceAddUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: formData,
@@ -163,7 +163,7 @@
 //   };
 // }
 
-// export function SanExperienceEditUrlChange(formData, apiMeta, state, others) {
+// --export function SanExperienceEditUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -171,7 +171,7 @@
 //   };
 // }
 
-// export function SanExperienceReadUrlChange(formData, apiMeta, state, others) {
+// --export function SanExperienceReadUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
@@ -179,7 +179,7 @@
 //   };
 // }
 
-// export function SanProfileBasicRead(data) {
+// --export function SanProfileBasicRead(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     firstName: data?.data.firstName ? data.data.firstName : "",
@@ -194,7 +194,7 @@
 //   };
 // }
 
-// export function SanProfileRegistrationRead(data, otherData) {
+// --export function SanProfileRegistrationRead(data, otherData) {
 //   console.log("Registration SANITING", otherData?.AllDepartments);
 //   if (data && data.departmentId) {
 //     var dept = otherData?.AllDepartments?.find(
@@ -214,7 +214,7 @@
 //   }
 // }
 
-// export function SanRegistrationReadUrlChange(formData, apiMeta, state, others) {
+// --export function SanRegistrationReadUrlChange(formData, apiMeta, state, others) {
 //   return {
 //     values: formData,
 //     endpoint: apiMeta.endpoint,
@@ -222,7 +222,7 @@
 //   };
 // }
 
-// export function SanProfileExperienceRead(data) {
+// --export function SanProfileExperienceRead(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return data?.rows?.map((m) => {
 //     return {
@@ -246,25 +246,25 @@
 //   prescriptionHistory: { field: "Histories" },
 //   prescriptionRefferedTo: { field: "Reffers" },
 // };
-// export function SanPrescription(formData, apiMeta, state, others) {
+// --export function SanPrescription(formData, apiMeta, state, others) {
 //   console.log("SANITING", state.prescription);
 //   var prescriptionInStore = state.prescription?.prescription;
 //   var data = {};
 //   const formId = others?.formId;
 
-//   if (prescriptionInStore?.id) {
+//--   if (prescriptionInStore?.id) {
 //     data["id"] = prescriptionInStore.id;
 //   }
 
-//   data["doctorId"] = state?.profile?.basic?.id;
+//--   data["doctorId"] = state?.profile?.basic?.id;
 //   data["patientId"] = state?.prescription?.navData?.Person?.id;
 //   data["clinicId"] = state?.prescription?.clinic?.Clinic?.id;
 //   data["templateId"] = state?.prescription?.template?.id;
 
-//   data["appointmentId"] = state.prescription?.navData?.appointment?.id;
+//--   data["appointmentId"] = state.prescription?.navData?.appointment?.id;
 //   data["languageId"] = state.prescription?.language?.id;
 
-//   if (formToFieldMap[formId]) {
+//--   if (formToFieldMap[formId]) {
 //     data = {
 //       ...data,
 //       [formToFieldMap[formId]?.field]:
@@ -332,7 +332,7 @@
 // }
 
 // //settings
-// export function SanContactEmailsCreate(formData, apiMeta, state, others) {
+// --export function SanContactEmailsCreate(formData, apiMeta, state, others) {
 //   return {
 //     values: { data: formData.data, type: communicationTypes.MAIL },
 //     endpoint: apiMeta.endpoint,
@@ -340,7 +340,7 @@
 //   };
 // }
 
-// export function SanContactsRead(data) {
+// --export function SanContactsRead(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return data?.rows
 //     ?.filter((d) => d.isActive)
@@ -353,7 +353,7 @@
 //     });
 // }
 
-// export function SanContactsReadUrlChange(formData, apiMeta, state, others) {
+// --export function SanContactsReadUrlChange(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta, others);
 //   let endUrl = apiMeta.endpoint?.includes('?')?apiMeta.endpoint: queryBuilder(apiMeta.endpoint, {
 //      _defaultFilter: encodeURIComponent(JSON.stringify({ personId: state.profile.basic.id })) 
@@ -364,7 +364,7 @@
 //     reduxData: apiMeta.reduxData,
 //   };
 // }
-// export function SanContactPhonesCreate(formData, apiMeta, state, others) {
+// --export function SanContactPhonesCreate(formData, apiMeta, state, others) {
 //   return {
 //     values: { data: formData.data, type: communicationTypes.SMS },
 //     endpoint: apiMeta.endpoint,
@@ -372,7 +372,7 @@
 //   };
 // }
 
-// export function SanContactWapCreate(formData, apiMeta, state, others) {
+// --export function SanContactWapCreate(formData, apiMeta, state, others) {
 //   return {
 //     values: { data: formData.data, type: communicationTypes.WHATSAPP },
 //     endpoint: apiMeta.endpoint,
@@ -380,7 +380,7 @@
 //   };
 // }
 
-// export function SanChangePrimaryContact(formData, apiMeta, state, others) {
+// --export function SanChangePrimaryContact(formData, apiMeta, state, others) {
 //   return {
 //     values: { data: formData.data.data, id: formData.data.id },
 //     endpoint: apiMeta.endpoint,
@@ -388,7 +388,7 @@
 //   };
 // }
 
-// export function SanReadPrimaryPhone(data) {
+// --export function SanReadPrimaryPhone(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     data: data.phone,
@@ -396,7 +396,7 @@
 //   };
 // }
 
-// export function SanReadPrimaryEmail(data) {
+// --export function SanReadPrimaryEmail(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     data: data.email,
@@ -404,7 +404,7 @@
 //   };
 // }
 
-// export function SanPatientCreate(formData, apiMeta, state, others) {
+// --export function SanPatientCreate(formData, apiMeta, state, others) {
 //   return {
 //     values: { ...formData, gender: formData?.gender?.label },
 //     endpoint: apiMeta.endpoint,
@@ -412,7 +412,7 @@
 //   };
 // }
 
-// export function SanPatientRelativeCreate(formData, apiMeta, state, others) {
+// --export function SanPatientRelativeCreate(formData, apiMeta, state, others) {
 //   return {
 //     values: {
 //       ...formData,
@@ -424,7 +424,7 @@
 //   };
 // }
 
-// export function SanDoctorCreate(formData, apiMeta, state, others) {
+// --export function SanDoctorCreate(formData, apiMeta, state, others) {
 //   console.error("formData", formData);
 //   console.error("endpoint", apiMeta.endpoint);
 //   console.error("reduxData", apiMeta.reduxData);
@@ -438,7 +438,7 @@
 //   };
 // }
 
-// export function SanRxRexharge(formData, apiMeta, state, others) {
+// --export function SanRxRexharge(formData, apiMeta, state, others) {
 //   console.error("formData", formData);
 //   console.error("endpoint", apiMeta.endpoint.replace(":id", state?.auth?.uid));
 //   console.error("reduxData", apiMeta.reduxData);
@@ -461,7 +461,7 @@
 //   };
 // }
 
-// export function SanCreateAppointment(formData, apiMeta, state, others) {
+// --export function SanCreateAppointment(formData, apiMeta, state, others) {
 //   console.log("formData", formData);
 //   return {
 //     values: {
@@ -478,14 +478,14 @@
 //   };
 // }
 
-// export function SanReadAppointment(data) {
+// --export function SanReadAppointment(data) {
 //   return {
 //       ...data,
 //       clinicId: {id: data?.Clinic?.id, label: data?.Clinic?.Address?.fullName, fullName: data?.Clinic?.Address?.fullName}
 //     }
 // }
 
-// export function SanEditAppointment(form, apiMeta, state, others) {
+// --export function SanEditAppointment(form, apiMeta, state, others) {
 //   let formData = { ...form };
 //   const endpoint = apiMeta.endpoint.replace(":id", form?.id);
 //   console.error("form", form);
@@ -509,7 +509,7 @@
 //   };
 // }
 
-// export function SanStringValueAdd(formData, apiMeta, state, others) {
+// --export function SanStringValueAdd(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: {
@@ -521,7 +521,7 @@
 //   };
 // }
 
-// export function SanStringValueEdit(formData, apiMeta, state, others) {
+// --export function SanStringValueEdit(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: {
@@ -533,7 +533,7 @@
 //   };
 // }
 
-// export function SanChemDeptReadMap(data) {
+// --export function SanChemDeptReadMap(data) {
 //   // console.log("SANITING", apiMeta, others);
 //   let temp = data?.rows?.map((m) => {
 //     return {
@@ -555,7 +555,7 @@
 //   return { chemDeptMap: nLevelGroup(temp, null) };
 // }
 
-// export function SanChemDeptMap(formData, apiMeta, state, others) {
+// --export function SanChemDeptMap(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: nLevelFlat(formData, {
@@ -569,7 +569,7 @@
 //  * EDIt delete fucntions
 //  */
 
-// export function DefaultLangEditDel(data) {
+// --export function DefaultLangEditDel(data) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return data.locale !== 1;
 // }
@@ -591,7 +591,7 @@
 //   return finalData;
 // }
 
-// function nLevelFlat(data, finalData) {
+//-- function nLevelFlat(data, finalData) {
 //   for (var i = 0; i < data.length; i++) {
 //     let ob = { ...data[i] };
 //     delete ob.__children;
@@ -601,13 +601,13 @@
 //   return finalData;
 // }
 
-// export function SanRolePermissionReadMap(data, otherData) {
+// --export function SanRolePermissionReadMap(data, otherData) {
 //   // console.log("SANITING", apiMeta, others);
 //   let roleId = otherData?.reduxData?.query?.roleId;
 
-//   console.log("SANITING0", roleId, roleId);
+//--   console.log("SANITING0", roleId, roleId);
 
-//   let temp = data?.rows?.map((m) => {
+//--   let temp = data?.rows?.map((m) => {
 //     return {
 //       id: m?.id,
 //       name: m?.label,
@@ -638,7 +638,7 @@
 //   return { rolePermissionMap: nLevelGroup(temp, null) };
 // }
 
-// export function SanRolePermission(formData, apiMeta, state, others) {
+// --export function SanRolePermission(formData, apiMeta, state, others) {
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: nLevelFlat(formData, {
@@ -651,7 +651,7 @@
 //   };
 // }
 
-// export function SanCreateCommunicationTemplate(
+// --export function SanCreateCommunicationTemplate(
 //   formData,
 //   apiMeta,
 //   state,
@@ -666,7 +666,7 @@
 //   };
 // }
 
-// export function SanEditCommunicationTemplate(formData, apiMeta, state, others) {
+// --export function SanEditCommunicationTemplate(formData, apiMeta, state, others) {
 //   return {
 //     values: {
 //       ...formData,
@@ -676,7 +676,7 @@
 //   };
 // }
 
-// export function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
+// --export function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
 //   const obj = {
 //     values: {
 //       ...formData,
@@ -686,7 +686,7 @@
 //   return obj;
 // }
 
-// export function SanStatusUpdate(formData, apiMeta, state, others) {
+// --export function SanStatusUpdate(formData, apiMeta, state, others) {
 //   const id = formData.id;
 //   const model = apiMeta?.reduxData?.reduxData?.query?.model;
 //   const data = { ...formData };
@@ -698,9 +698,7 @@
 //   return obj;
 // }
 
-
-
-// export function getBmi(formik, elem, allElements) {
+// --export function getBmi(formik, elem, allElements) {
 //   const heightId = allElements?.find(el => el.name === 'height')?.id
 //   const weightId = allElements?.find(el => el.name === 'weight')?.id
 

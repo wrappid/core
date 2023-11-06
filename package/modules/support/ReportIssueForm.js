@@ -18,11 +18,11 @@ import { useSelector } from "react-redux";
  * should be the package json of user application
  */
 
-import CoreForm from "../../components/forms/CoreForm";
+import CoreForm from "../../components/inputs/forms/CoreForm";
 import {
   FORM_IDS,
   FORM_EDIT_MODE
-} from "../../components/forms/coreFormConstants";
+} from "../../components/inputs/forms/coreFormConstants";
 import CoreCard from "../../components/surfaces/CoreCard";
 import CoreCardContent from "../../components/surfaces/CoreCardContent";
 import packageJSON from "../../package.json";

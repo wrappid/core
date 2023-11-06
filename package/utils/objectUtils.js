@@ -12,8 +12,8 @@
  * @returns [TRUE or FALSE]
  */
 export const compareObject = (obj1, obj2) => {
-  let keysObj1 = obj1 && typeof obj1 === 'object' ? Object.keys(obj1) : [];
-  let keysObj2 = obj2 && typeof obj2 === 'object' ? Object.keys(obj2) : [];
+  let keysObj1 = obj1 && typeof obj1 === "object" ? Object.keys(obj1) : [];
+  let keysObj2 = obj2 && typeof obj2 === "object" ? Object.keys(obj2) : [];
 
   if (keysObj1.length !== keysObj2.length) {
     return true;
@@ -21,22 +21,22 @@ export const compareObject = (obj1, obj2) => {
     for (let i = 0; i < keysObj1.length; i++) {
       let key = keysObj1[i];
 
-      console.log('Key', key);
+      // -- console.log("Key", key);
       if (
         !keysObj2?.includes(key) ||
         (typeof obj1[key] === typeof obj1[key] &&
-          typeof obj1[key] !== 'object' &&
+          typeof obj1[key] !== "object" &&
           obj1[key] !== obj2[key])
       ) {
-        console.log('FOUND', obj1[key], obj2[key]);
-        console.log('TRUE RETURN');
+        // -- console.log("FOUND", obj1[key], obj2[key]);
+        // -- console.log("TRUE RETURN");
         return true;
       } else {
-        console.log('NOT FOUND', obj1[key], obj2[key]);
+        // -- console.log("NOT FOUND", obj1[key], obj2[key]);
       }
     }
   }
-  console.log('FALSE RETURN');
+  // -- console.log("FALSE RETURN");
   return false;
 };
 
@@ -45,14 +45,14 @@ export const getAsyncSelectValue = (value, params) => {
     getOptionValue,
     getOptionLabel,
     isOptionEqualToValue,
-    multiple,
+    // multiple,
     options,
   } = params || {};
 
-  console.log('ASYNCSELECT mountValueMatch', value, options);
-  if (typeof value === 'string') {
+  // -- console.log("ASYNCSELECT mountValueMatch", value, options);
+  if (typeof value === "string") {
     for (let i = 0; i < options?.length; i++) {
-      let field = '';
+      let field = "";
 
       if (getOptionLabel) {
         field = getOptionLabel(options[i]);
@@ -66,41 +66,41 @@ export const getAsyncSelectValue = (value, params) => {
       value = value?.toLowerCase();
 
       if (field === value) {
-        console.log('ASYNCSELECT mountValueMatch 1 ');
+        // -- console.log("ASYNCSELECT mountValueMatch 1 ");
         return {
           misMatchFlag: false,
-          newValue: options[i]?.name,
-          stringFlag: true,
+          newValue    : options[i]?.name,
+          stringFlag  : true,
         };
       } else if (value?.startsWith(field) || field?.startsWith(value)) {
-        console.log('ASYNCSELECT mountValueMatch 2 ');
+        // -- console.log("ASYNCSELECT mountValueMatch 2 ");
         return {
           misMatchFlag: false,
-          newValue: options[i]?.name,
-          stringFlag: true,
+          newValue    : options[i]?.name,
+          stringFlag  : true,
         };
       }
       if (value?.includes(field) || field?.includes(value)) {
-        console.log('ASYNCSELECT mountValueMatch 3 ');
+        // -- console.log("ASYNCSELECT mountValueMatch 3 ");
         return {
           misMatchFlag: false,
-          newValue: options[i]?.name,
-          stringFlag: true,
+          newValue    : options[i]?.name,
+          stringFlag  : true,
         };
       }
     }
-    console.log(
-      'ASYNCSELECT mountValueMatch NOT FOUND',
+    /* -- console.log(
+      "ASYNCSELECT mountValueMatch NOT FOUND",
       value,
-      options[0]?.label,
-    );
+      options[0]?.label
+    );*/
     return {
       misMatchFlag: true,
-      newValue: value,
-      stringFlag: true,
+      newValue    : value,
+      stringFlag  : true,
     };
   } else {
-    console.log('ASYNCSELECT mountValueMatch 5');
+    // -- console.log("ASYNCSELECT mountValueMatch 5");
 
     /**
      * @todo have to do for non string
@@ -115,25 +115,25 @@ export const getAsyncSelectValue = (value, params) => {
         options[i].id === value?.id ||
         options[i].value === value?.value
       ) {
-        console.log('ASYNCSELECT mountValueMatch 3 ');
+        // -- console.log("ASYNCSELECT mountValueMatch 3 ");
         return {
           misMatchFlag: false,
-          newValue: getOptionValue
+          newValue    : getOptionValue
             ? getOptionValue(options[i])
             : options[i]?.name,
           stringFlag: true,
         };
       }
     }
-    console.log(
-      'ASYNCSELECT mountValueMatch NOT FOUND',
+    /*--console.log(
+      "ASYNCSELECT mountValueMatch NOT FOUND",
       value,
-      options[0]?.label,
-    );
+      options[0]?.label
+    );*/
     return {
       misMatchFlag: false,
-      newValue: value,
-      stringFlag: true,
+      newValue    : value,
+      stringFlag  : true,
     };
   }
 };

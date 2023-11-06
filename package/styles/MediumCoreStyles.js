@@ -42,24 +42,13 @@ export const mediumCoreStyles = {
   // ----------Data Table Styles Starts----------
   dataTableContainer    : { /* -- ...defaultUtilityStyles.bgWarningLight, */ },
   dataTableFoot         : {},
-  dataTableFullWidthPane: {
-    /* -- ...defaultUtilityStyles.border, ...defaultUtilityStyles.bgInfoLight, ...defaultUtilityStyles.pl0, */ },
-  dataTableHead: {
-    // -- ...defaultUtilityStyles.border,
-    // -- ...defaultUtilityStyles.borderBottom,
-    // -- ...defaultUtilityStyles.borderPrimaryLight,
-    // -- ...defaultUtilityStyles.shadow,
-    top: "-8px" + IMPORTANT,
-  },
-  dataTableHeadTop: {
-    // -- top: "50px",
-    top: "53px" + IMPORTANT,
-  },
+  dataTableFullWidthPane: {},
+  dataTableHead         : { top: "-8px" + IMPORTANT },
+  dataTableHeadTop      : { top: "53px" + IMPORTANT },
   dataTableMiniWidthPane: {
     ...defaultUtilityStyles.border,
     ...defaultUtilityStyles.borderRight,
     ...defaultUtilityStyles.borderPrimaryLight,
-    // -- ...defaultUtilityStyles.bgWarningLight,
     ...defaultUtilityStyles.positionSticky,
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,

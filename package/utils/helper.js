@@ -1,18 +1,18 @@
 import moment from "moment";
 
 export function getFullName(data) {
-  let n = "";
+  let name = "";
 
   if (data?.firstName) {
-    n += data?.firstName;
+    name += data?.firstName;
   }
   if (data?.middleName) {
-    n += " " + data?.middleName;
+    name += " " + data?.middleName;
   }
   if (data?.lastName) {
-    n += " " + data?.lastName;
+    name += " " + data?.lastName;
   }
-  return n && n.length > 0 ? n : "Unnamed";
+  return name && name.length > 0 ? name : "Unnamed";
 }
 
 export function queryBuilder(url, query) {
@@ -27,21 +27,21 @@ export function queryBuilder(url, query) {
     let keys = Object.keys(query);
 
     for (let index = 0; index < keys.length; index++) {
-      let q = keys[index];
+      let tmpQuery = keys[index];
 
       // not needed below if statement,
       // because it is not considering the value 0 i.e.treated as false
       // although 0 should be as a parameter value for api query params
-      /* if (query[q]) {
+      /* -if (query[q]) {
       } */
       if (index > 0 && newUrl.charAt(newUrl.length - 1) !== "?") {
         newUrl +=
           "&" +
-          q +
+          tmpQuery +
           "=" +
-          (typeof query[q] === "object" ? JSON.stringify(query[q]) : query[q]);
+          (typeof query[tmpQuery] === "object" ? JSON.stringify(query[tmpQuery]) : query[tmpQuery]);
       } else {
-        newUrl += q + "=" + query[q];
+        newUrl += tmpQuery + "=" + query[tmpQuery];
       }
     }
   }
@@ -49,47 +49,50 @@ export function queryBuilder(url, query) {
 }
 
 export function createFormData(files, body) {
-  //console.log(file, field, body);
+  //--console.log(file, field, body);
   const data = new FormData();
   
-  //console.log("IN form data", file, body);
+  //--console.log("IN form data", file, body);
 
-  if (file) {
-    for (let i = 0; i < files.length; i++) var file = files[i];
-    data.append(file.name, file.data);
+  if (files) {
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+
+      data.append(file.name, file.data);
+    }
   }
-  //console.log("IN form data", data);
+  //--console.log("IN form data", data);
   Object.keys(body).forEach((key) => {
-    //console.log(body[key]);
+    //--console.log(body[key]);
     data.append(key, body[key]);
   });
-  console.log("data inside foreach", data);
+  //--console.log("data inside foreach", data);
   return data;
 }
 
 export function clearValidatePhoneEmail(text) {
-  let t = text;
+  let txt = text;
 
   if (!text || (text && text.length === 0)) return false;
-  if (t[0] === "'") {
-    t = t.slice(1);
-    t = t.toLowerCase();
+  if (txt[0] === "'") {
+    txt = txt.slice(1);
+    txt = txt.toLowerCase();
   }
-  let f = String(t).match(
+  let matchResult = String(txt).match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 
-  if (f) {
-    return f;
-  } else if (!f) {
-    f = String(t).match(
+  if (matchResult) {
+    return matchResult;
+  } else if (!matchResult) {
+    matchResult = String(txt).match(
       /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/
     );
 
-    return f;
+    return matchResult;
   }
 
-  return f;
+  return matchResult;
 }
 
 export function getAge(birthDate) {

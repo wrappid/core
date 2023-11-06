@@ -1,12 +1,12 @@
 import { IMPORTANT } from "@wrappid/styles";
 
-import {
+/* -- import {
   XX_LARGE_WINDOW_WIDTH,
   X_LARGE_WINDOW_WIDTH
-} from "../config/constants";
+} from "../config/constants"; */
 
-const MIN_WIDTH = X_LARGE_WINDOW_WIDTH;
-const MAX_WIDTH = XX_LARGE_WINDOW_WIDTH - 1;
+// -- const MIN_WIDTH = X_LARGE_WINDOW_WIDTH;
+// -- const MAX_WIDTH = XX_LARGE_WINDOW_WIDTH - 1;
 
 export const xLargeCoreStyles = {
   authBanner: {

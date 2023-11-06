@@ -5,7 +5,7 @@ import {
   FORM_SM_DEFAULT_GRID_SIZE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE
-} from "../components/forms/coreFormConstants";
+} from "../components/inputs/forms/coreFormConstants";
 
 const XS_DEFAULT_GRID_SIZE = 12;
 const SM_DEFAULT_GRID_SIZE = 12;

@@ -1,8 +1,5 @@
-import {
-  nativeCreateTheme,
-  nativeUseTheme as coreUseTheme,
-  NativeCssBaseline as CoreCssBaseline
-} from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
+import { nativeCreateTheme, nativeUseTheme as coreUseTheme, NativeCssBaseline as CoreCssBaseline } from "@wrappid/native";
 
 import { theme as coreTheme } from "../theme/theme";
 
@@ -23,7 +20,7 @@ function detectPlatform() {
   } catch (err) {
     nav = null;
   }
-  console.log("***************\nplatform detection\n******************", doc, nav);
+  // -- console.log("***************\nplatform detection\n******************", doc, nav);
   if (doc) {
     // I'm on the web!
     return WEB_PLATFORM;
@@ -39,21 +36,21 @@ function detectPlatform() {
 let theme = null;
 
 try {
-  let p = "../../../../src/config.json";
-  let config = require(p);
+  // eslint-disable-next-line no-undef
+  let config = require("../../../../src/config.json");
 
   if (config?.theme) {
     theme = nativeCreateTheme({ ...coreTheme, ...config?.theme });
   } else {
-    console.warn("No custom theme provided in config.json");
+    // -- console.warn("No custom theme provided in config.json");
     theme = nativeCreateTheme(coreTheme);
   }
 } catch (err) {
-  console.warn("No custom config provided");
+  // -- console.warn("No custom config provided");
   theme = nativeCreateTheme(coreTheme);
 }
 
-console.log("THEME", theme);
+// -- console.log("THEME", theme);
 
 export default theme;
 

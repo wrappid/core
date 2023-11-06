@@ -13,17 +13,17 @@ import {
   TOKEN_REQUESTED
 } from "../store/types/pendingRequestTypes";
 
-const AUTH_STORE = "persist:auth";
+// -- const AUTH_STORE = "persist:auth";
 
 export const getUUID = () => {
-  let dt = new Date().getTime();
+  let date = new Date().getTime();
   let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
     /[xy]/g,
-    function (c) {
-      let r = (dt + Math.random() * 16) % 16 | 0;
+    function (param) {
+      let result = (date + Math.random() * 16) % 16 | 0;
 
-      dt = Math.floor(dt / 16);
-      return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+      date = Math.floor(date / 16);
+      return (param === "x" ? result : (result & 0x3) | 0x8).toString(16);
     }
   );
 
@@ -44,7 +44,7 @@ export async function reloadToken(
 ) {
   let diff = moment().diff(tokenRequestTimeStamp, "seconds");
 
-  console.log("__tokenRequested__", tokenRequested, diff);
+  // -- console.log("__tokenRequested__", tokenRequested, diff);
   if (!tokenRequested || diff > 60) {
     const backendUrl = config?.wrappid
       ? config.wrappid.backendUrl
@@ -63,7 +63,7 @@ export async function reloadToken(
         tokenResponse
           .json()
           .then((tokenResponseParsed) => {
-            console.log("-----REJUVINATE IN RELOAD TOKEN--------");
+            // -- console.log("-----REJUVINATE IN RELOAD TOKEN--------");
             if (tokenResponse.status === 200) {
               dispatch({
                 payload: { accessToken: tokenResponseParsed?.accessToken },
@@ -79,8 +79,8 @@ export async function reloadToken(
               dispatch({ type: LOGOUT_SUCCESS });
             }
           })
-          .catch((err) => {
-            console.error("Error in toke response parse", err);
+          .catch((/* err */) => {
+            // -- console.error("Error in toke response parse", err);
             dispatch({ type: SESSION_EXPIRED });
           });
       })

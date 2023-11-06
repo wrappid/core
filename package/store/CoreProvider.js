@@ -2,6 +2,7 @@
 import React from "react";
 
 import { configureStore } from "@reduxjs/toolkit";
+// eslint-disable-next-line import/no-unresolved
 import { nativeStorage } from "@wrappid/native";
 import { overrideThemeConfiguration, StylesProvider } from "@wrappid/styles";
 import { Provider } from "react-redux";

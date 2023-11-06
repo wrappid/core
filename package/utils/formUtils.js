@@ -6,6 +6,7 @@ import { defaultValidations } from "./componentDefaultValidations";
 import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
 import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
+import CoreInput from "../components/inputs/CoreInput";
 import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
@@ -13,8 +14,7 @@ import {
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
   INPUT_TYPE
-} from "../components/forms/coreFormConstants";
-import CoreInput from "../components/inputs/CoreInput";
+} from "../components/inputs/forms/coreFormConstants";
 import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
 import { ENV_DEV_MODE, HTTP } from "../config/constants";

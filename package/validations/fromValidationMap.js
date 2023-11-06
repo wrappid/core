@@ -1,4 +1,3 @@
-import { changePrimaryContact } from "./asyncSelectCustomFunctions";
 import {
   checkEmailorPhone,
   complaint,
@@ -35,7 +34,8 @@ import {
   updateWhatsappTemplateSchema,
   whatsappCommunicationTemplateSchema
 } from "./formikSchema";
-import { FORM_IDS } from "../components/forms/coreFormConstants";
+import { FORM_IDS } from "../components/inputs/forms/coreFormConstants";
+import { changePrimaryContact } from "../functions/asyncSelectCustomFunctions";
 
 export const FORM_VALIDATION_MAP = {
   changePrimaryContact               : changePrimaryContact,

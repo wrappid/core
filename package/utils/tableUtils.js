@@ -41,22 +41,26 @@ export const prepareTableAPIQuery = (
     filter: {},
     order : {},
   },
+  // eslint-disable-next-line no-unused-vars
   totalRecords = 0
 ) => {
   const {
     currentRows = 0,
+    // eslint-disable-next-line no-unused-vars
     page = 0,
     maxRowInPage = DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
     pagesToCache = DATA_TABLE_CONST.PAGES_TO_CACHE,
     _order = {},
+    // eslint-disable-next-line no-unused-vars
     _filter = {},
     _searchValue = "",
   } = query;
+  // eslint-disable-next-line no-unused-vars
   const { order = {}, filter = {} } = filterQuery;
 
   let offset = notifyFilterChange ? 0 : currentRows;
   let limit = maxRowInPage * pagesToCache;
-  // if (totalRecords !== 0 && Math.trunc(totalRecords / maxRowInPage) === page) {
+  // -- if (totalRecords !== 0 && Math.trunc(totalRecords / maxRowInPage) === page) {
   //   // limit = totalRecords - offset;
   //   offset = totalRecords - limit;
   // }
@@ -72,14 +76,14 @@ export const prepareTableAPIQuery = (
     _searchValue: "",
 
     limit : limit,
-    // start: filtering ? 0 : currentRows || 0,
+    // --start: filtering ? 0 : currentRows || 0,
     // length: maxRowInPage * pagesToCache,
     offset: offset,
   };
 
-  // if (filtering) {
+  // -- if (filtering) {
   //   Object.keys(filter).forEach((eachFilter) => {
-  //     console.log("Each Filter" + eachFilter);
+  //     // -- console.log("Each Filter" + eachFilter);
   //     _query[eachFilter.toString()] = filter[eachFilter];
   //   });
   // }
@@ -88,14 +92,14 @@ export const prepareTableAPIQuery = (
 
   if (_order) {
     Object.keys(_order).forEach((eachOrder) => {
-      console.log("Each order" + eachOrder);
+      // -- console.log("Each order" + eachOrder);
       orderOb[eachOrder.toString()] = _order[eachOrder];
     });
   }
   if (orderOb && Object.keys(orderOb).length > 0) {
-    console.log("------------------------------------");
-    console.log(encodeURIComponent(JSON.stringify(orderOb)));
-    console.log("------------------------------------");
+    // -- console.log("------------------------------------");
+    // -- console.log(encodeURIComponent(JSON.stringify(orderOb)));
+    // -- console.log("------------------------------------");
     _query._order = encodeURIComponent(JSON.stringify(orderOb));
   }
 
@@ -103,14 +107,14 @@ export const prepareTableAPIQuery = (
 
   if (filterQuery?.filter) {
     Object.keys(filterQuery?.filter).forEach((eachFilter) => {
-      console.log("Each Filter" + eachFilter);
+      // -- console.log("Each Filter" + eachFilter);
       filterOb[eachFilter.toString()] = filterQuery?.filter[eachFilter];
     });
   }
   if (filterOb && Object.keys(filterOb).length > 0) {
-    console.log("------------------------------------");
-    console.log(encodeURIComponent(JSON.stringify(filterOb)));
-    console.log("------------------------------------");
+    // -- console.log("------------------------------------");
+    // -- console.log(encodeURIComponent(JSON.stringify(filterOb)));
+    // -- console.log("------------------------------------");
     _query._defaultFilter = encodeURIComponent(JSON.stringify(filterOb));
   }
 
@@ -181,7 +185,7 @@ function prepareColumnsObjectFromTableData(tableData = []) {
  * @returns
  */
 function prepareColumnsObject(columns = []) {
-  console.log(`prepareColumnsObject = ${columns}`);
+  // -- console.log(`prepareColumnsObject = ${columns}`);
   if (columns && Array.isArray(columns) && columns.length > 0) {
     if (typeof columns[0] === "string") {
       return columns.map((col) => {
@@ -195,11 +199,11 @@ function prepareColumnsObject(columns = []) {
   }
 }
 
-export function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
+export function descendingComparator(firstObj, secondObj, orderBy) {
+  if (secondObj[orderBy] < firstObj[orderBy]) {
     return -1;
   }
-  if (b[orderBy] > a[orderBy]) {
+  if (secondObj[orderBy] > firstObj[orderBy]) {
     return 1;
   }
   return 0;
@@ -207,25 +211,25 @@ export function descendingComparator(a, b, orderBy) {
 
 export function getComparator(order, orderBy) {
   return order === "desc"
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    ? (firstObj, secondObj) => descendingComparator(firstObj, secondObj, orderBy)
+    : (firstObj, secondObj) => -descendingComparator(firstObj, secondObj, orderBy);
 }
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
 // this is a local sort functionality
 export function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  const stabilizedThis = array.map((elem, index) => [elem, index]);
 
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
+  stabilizedThis.sort((firstObj, secondObj) => {
+    const order = comparator(firstObj[0], secondObj[0]);
 
     if (order !== 0) {
       return order;
     }
-    return a[1] - b[1];
+    return firstObj[1] - secondObj[1];
   });
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((elem) => elem[0]);
 }
 
 export function filterProcessing(tableFilters) {
@@ -251,6 +255,7 @@ export const getTableDensityIconName = (tableDensity) => {
       return "density_medium";
 
     case __TableDensity.COMPACT:
+      return "density_small";
 
     default:
       return "density_small";
@@ -265,6 +270,7 @@ export const getTableDensityPaddingValue = (tableDensity) => {
       return "8px 0px";
 
     case __TableDensity.COMPACT:
+      return "6px 0px";
 
     default:
       return "6px 0px";
@@ -280,6 +286,7 @@ export const getTableDensityValue = (tableDensity) => {
       return "medium";
 
     case __TableDensity.COMPACT:
+      return "small";
 
     default:
       return "small";
@@ -287,7 +294,7 @@ export const getTableDensityValue = (tableDensity) => {
 };
 
 export const getStatusTextColorClass = (status) => {
-  // DEFAULT: "active", - secondary
+  // --DEFAULT: "active", - secondary
   // UNKNOWN: "unknown", - secondary
   // NEW: "new", - info
   // ACTIVE: "active", - success
@@ -296,11 +303,13 @@ export const getStatusTextColorClass = (status) => {
 
   switch (status) {
     case __EntityStatus.NEW:
+      return CoreClasses.COLOR.TEXT_INFO;
 
     case __EntityStatus.DRAFT:
       return CoreClasses.COLOR.TEXT_INFO;
 
     case __EntityStatus.ACTIVE:
+      return CoreClasses.COLOR.TEXT_SUCCESS;
 
     case __EntityStatus.APPROVED:
       return CoreClasses.COLOR.TEXT_SUCCESS;
@@ -309,13 +318,16 @@ export const getStatusTextColorClass = (status) => {
       return CoreClasses.COLOR.TEXT_PRIMARY;
 
     case __EntityStatus.INACTIVE:
+      return CoreClasses.COLOR.TEXT_WARNING;
 
     case __EntityStatus.CHANGE_REQUESTED:
+      return CoreClasses.COLOR.TEXT_WARNING;
 
     case __EntityStatus.REVIEW_REQUESTED:
       return CoreClasses.COLOR.TEXT_WARNING;
 
     case __EntityStatus.DELETED:
+      return CoreClasses.COLOR.TEXT_ERROR;
 
     case __EntityStatus.REJECTED:
       return CoreClasses.COLOR.TEXT_ERROR;
@@ -347,19 +359,21 @@ export const setPriorityBasedData = (
   setPriority5Data
 ) => {
   switch (defaultCol.priority) {
-    case -2:
+    case -2: {
       let tmpIdData = prepareData(rowData, tableColumn, defaultCol);
 
       setIdData(tmpIdData);
       setHasId(tmpIdData?.data ? true : false);
       break;
-
-    case -1:
+    }
+      
+    case -1: {
       let tmpStatusData = prepareData(rowData, tableColumn, defaultCol);
 
       setStatusData(tmpStatusData);
       setHasStatus(tmpStatusData ? true : false);
       break;
+    }
 
     case 0:
       setImageData(prepareData(rowData, tableColumn, defaultCol, true));
@@ -368,27 +382,27 @@ export const setPriorityBasedData = (
 
     case 1:
       setPriority1Data(prepareData(rowData, tableColumn, defaultCol));
-      // hasPriority1 = priority1Data ? true : false;
+      // -- hasPriority1 = priority1Data ? true : false;
       break;
 
     case 2:
       setPriority2Data(prepareData(rowData, tableColumn, defaultCol));
-      // hasPriority2 = priority2Data ? true : false;
+      // -- hasPriority2 = priority2Data ? true : false;
       break;
 
     case 3:
       setPriority3Data(prepareData(rowData, tableColumn, defaultCol));
-      // hasPriority3 = priority3Data ? true : false;
+      // -- hasPriority3 = priority3Data ? true : false;
       break;
 
     case 4:
       setPriority4Data(prepareData(rowData, tableColumn, defaultCol));
-      // hasPriority4 = priority4Data ? true : false;
+      // -- hasPriority4 = priority4Data ? true : false;
       break;
 
     case 5:
       setPriority5Data(prepareData(rowData, tableColumn, defaultCol));
-      // hasPriority5 = priority5Data ? true : false;
+      // -- hasPriority5 = priority5Data ? true : false;
       break;
 
     default:
@@ -422,7 +436,7 @@ export const getColumnLabel = (column) => {
       : "";
 };
 export const getData = (rowData, columnData) => {
-  // tableColumnsToShow[2] && rowData[tableColumnsToShow[2]?.id];
+  // > tableColumnsToShow[2] && rowData[tableColumnsToShow[2]?.id];
   return columnData?.type === "BOOLEAN"
     ? rowData[columnData?.id] === true
       ? "True"

@@ -15,9 +15,8 @@ const initState = {
 
 const menuReducer = (state = initState, action) => {
   switch (action.type) {
-    case BUILD_MENU_ROLE_PERMISSIONS:
-      // console.log("---------MENU REDUCER-------", action.data);
-      var data = [];
+    case BUILD_MENU_ROLE_PERMISSIONS: {
+      let data = [];
 
       if (action?.payload?.data?.permissions) {
         data = action.payload.data.permissions;
@@ -37,6 +36,7 @@ const menuReducer = (state = initState, action) => {
         ...state,
         menu: data,
       };
+    }
 
     case TOGGLE_LEFT_MENU:
       return {

@@ -5,10 +5,10 @@ import {
   PX_TAG
 } from "@wrappid/styles";
 
-import { MEDIUM_WINDOW_WIDTH, SMALL_WINDOW_WIDTH } from "../config/constants";
+// -- import { MEDIUM_WINDOW_WIDTH, SMALL_WINDOW_WIDTH } from "../config/constants";
 
-const MIN_WIDTH = SMALL_WINDOW_WIDTH;
-const MAX_WIDTH = MEDIUM_WINDOW_WIDTH - 1;
+// -- const MIN_WIDTH = SMALL_WINDOW_WIDTH;
+// -- const MAX_WIDTH = MEDIUM_WINDOW_WIDTH - 1;
 
 const HEADING_TOP_MARGIN = "64px";
 
@@ -28,10 +28,13 @@ export const smallCoreStyles = {
   auditData           : {},
   authAppLogo         : { width: 190 },
 
-  authAppLogo: {
-    height: "auto",
-    width : 190
-  },
+  /**
+   * @todo review required 
+    authAppLogo: {
+      height: "auto",
+      width : 190
+    }, 
+  */
   authBanner: {
     backgroundImage   : "url(./images/welcome-bg.png)" + IMPORTANT,
     backgroundPosition: "center" + IMPORTANT,
@@ -52,24 +55,17 @@ export const smallCoreStyles = {
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
-  dataTableBody     : {},
+  dataTableBody         : {},
   // ----------Data Table Styles Starts----------
-  dataTableContainer: {
-    // ...defaultUtilityStyles.bgSuccessLight,
-  },
+  dataTableContainer    : {},
   dataTableFoot         : {},
-  dataTableFullWidthPane: {
-    // ...defaultUtilityStyles.border,
-    // ...defaultUtilityStyles.bgInfoLight,
-    // ...defaultUtilityStyles.pl0,
-  },
+  dataTableFullWidthPane: {},
   dataTableHead         : {},
   dataTableHeadTop      : {},
   dataTableMiniWidthPane: {
     ...defaultUtilityStyles.border,
     ...defaultUtilityStyles.borderRight,
     ...defaultUtilityStyles.borderPrimaryLight,
-    // ...defaultUtilityStyles.bgWarningLight,
     ...defaultUtilityStyles.positionSticky,
     ...defaultUtilityStyles.overflowYAuto,
     ...defaultUtilityStyles.overflowXHidden,
