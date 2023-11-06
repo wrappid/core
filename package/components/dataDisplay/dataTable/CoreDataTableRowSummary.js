@@ -3,21 +3,21 @@ import React from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 
-import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
-import CoreTypographySubtitle1 from "../dataDisplay/CoreTypographySubtitle1";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreStack from "../layouts/CoreStack";
-import CoreCardHeader from "../surfaces/CoreCardHeader";
+import { DATA_TABLE_CONST } from "../../../config/dataTableConstants";
+import CoreStack from "../../layouts/CoreStack";
+import CoreCardHeader from "../../surfaces/CoreCardHeader";
+import CoreDivider from "../CoreDivider";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
+import CoreTypographyCaption from "../CoreTypographyCaption";
+import CoreTypographySubtitle1 from "../CoreTypographySubtitle1";
 
 export default function CoreDataTableRowSummary(props) {
   const {
     tableColumns,
     rowData,
     summaryRendererComponent,
-    hasId,
-    hasStatus,
+    // hasId,
+    // hasStatus,
     getIdComponent,
     getStatusComponent,
     getImageComponent,

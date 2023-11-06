@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CorePopover from "../utils/CorePopover";
+import CorePopover from "../../utils/CorePopover";
 
 export default function CoreDataTableRowActionPopover(props) {
   const { anchorEl, _rowHoverIndex, rowIndex } = props;

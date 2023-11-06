@@ -4,29 +4,29 @@ import React from "react";
 
 import { UtilityClasses } from "@wrappid/styles";
 
-import { DATA_TABLE_CONST } from "./../../config/dataTableConstants";
+import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
+import { MEDIUM_WINDOW_WIDTH } from "../../../config/constants";
+import { DATA_TABLE_CONST } from "../../../config/dataTableConstants";
+import CoreClasses from "../../../styles/CoreClasses";
+import { isJson } from "../../../utils/stringUtils";
 import {
   getColumnLabel,
   getStatusTextColorClass,
   setPriorityBasedData
-} from "./../../utils/tableUtils";
-import CoreTableCell from "./../dataDisplay/CoreTableCell";
-import CoreDataTableRowSummary from "./CoreDataTableRowSummary";
-import { MEDIUM_WINDOW_WIDTH } from "../../config/constants";
-import CoreClasses from "../../styles/CoreClasses";
-import { isJson } from "../../utils/stringUtils";
+} from "../../../utils/tableUtils";
 import {
   APP_PLATFORM,
   WEB_PLATFORM,
   detectPlatform
-} from "../../utils/themeUtil";
-import CoreAvatar from "../dataDisplay/CoreAvatar";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreTableBodyCell from "../dataDisplay/CoreTableBodyCell";
-import StatusText from "../dataDisplay/StatusText";
-import CoreTypographyBody2 from "../dataDisplay/CoreTypographyBody2";
-import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
+} from "../../../utils/themeUtil";
+import CoreAvatar from "../CoreAvatar";
+import CoreDivider from "../CoreDivider";
+import CoreIcon from "../CoreIcon";
+import CoreTableBodyCell from "../CoreTableBodyCell";
+import CoreTableCell from "../CoreTableCell";
+import CoreTypographyBody2 from "../CoreTypographyBody2";
+import CoreTypographyCaption from "../CoreTypographyCaption";
+import StatusText from "../StatusText";
 
 export default function CoreDataTableRowContent(props) {
   const {

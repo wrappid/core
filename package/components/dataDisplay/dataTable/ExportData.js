@@ -1,9 +1,9 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreClasses from "../../styles/CoreClasses";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreBox from "../layouts/CoreBox";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreBox from "../../layouts/CoreBox";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
 
 export default function ExportData() {
 

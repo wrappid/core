@@ -2,7 +2,7 @@
 import React from "react";
 
 import CoreDataTableRow from "./CoreDataTableRow";
-import CoreTableBody from "../dataDisplay/CoreTableBody";
+import CoreTableBody from "../CoreTableBody";
 
 export default function CoreDataTableBody(props) {
   const { tableActions } = props;

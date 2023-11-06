@@ -1,15 +1,15 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import { MEDIUM_WINDOW_WIDTH } from "../../config/constants";
-import CoreClasses from "../../styles/CoreClasses";
-import { getLabel } from "../../utils/stringUtils";
-import CoreTableHead from "../dataDisplay/CoreTableHead";
-import CoreTableHeadCell from "../dataDisplay/CoreTableHeadCell";
-import CoreTableHeadRow from "../dataDisplay/CoreTableHeadRow";
-import CoreTableSortLabel from "../dataDisplay/CoreTableSortLabel";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreCheckbox from "../inputs/CoreCheckbox";
+import { MEDIUM_WINDOW_WIDTH } from "../../../config/constants";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getLabel } from "../../../utils/stringUtils";
+import CoreCheckbox from "../../inputs/CoreCheckbox";
+import CoreTableHead from "../CoreTableHead";
+import CoreTableHeadCell from "../CoreTableHeadCell";
+import CoreTableHeadRow from "../CoreTableHeadRow";
+import CoreTableSortLabel from "../CoreTableSortLabel";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
 
 export default function CoreDataTableHead(props) {
   const {

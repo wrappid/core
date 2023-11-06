@@ -1,9 +1,9 @@
 import React from "react";
 
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreTooltip from "../dataDisplay/CoreTooltip";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreBox from "../layouts/CoreBox";
+import CoreIcon from "../../dataDisplay/CoreIcon";
+import CoreTooltip from "../../dataDisplay/CoreTooltip";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreBox from "../../layouts/CoreBox";
 
 export default function CoreTableFilter(props) {
   const { head, filtering, ApplyFilter } = props;
@@ -51,17 +51,17 @@ export default function CoreTableFilter(props) {
               ? props.filters[head.id].filter
               : ""
           }
-          onChange={(e) => {
-            props.HandleFilterChange(e, head);
+          onChange={(event) => {
+            props.HandleFilterChange(event, head);
           }}
           style={{ width: "85%" }}
           className="browser-default"
         >
           <option value="">Select filter</option>
 
-          {head.dropdowns.map((d) => (
-            <option value={head.dropdownValue(d)}>
-              {head.dropdownLabel(d)}
+          {head.dropdowns.map((data, index) => (
+            <option key={`${head.dropdownLabel(data).trim("")}-${index}`} value={head.dropdownValue(data)}>
+              {head.dropdownLabel(data)}
             </option>
           ))}
         </select>
@@ -72,8 +72,8 @@ export default function CoreTableFilter(props) {
               ? props.filters[head.id].filter
               : ""
           }
-          onChange={(e) => {
-            props.HandleFilterChange(e, head);
+          onChange={(event) => {
+            props.HandleFilterChange(event, head);
           }}
           style={{ width: "85%" }}
           placeholder="Search Text"
@@ -86,8 +86,8 @@ export default function CoreTableFilter(props) {
               ? props.filters[head.id].filter
               : ""
           }
-          onChange={(e) => {
-            props.HandleFilterChange(e, head);
+          onChange={(event) => {
+            props.HandleFilterChange(event, head);
           }}
           style={{ width: "85%" }}
           placeholder="Pick date"
@@ -100,8 +100,8 @@ export default function CoreTableFilter(props) {
               ? props.filters[head.id].filter
               : ""
           }
-          onChange={(e) => {
-            props.HandleFilterChange(e, head);
+          onChange={(event) => {
+            props.HandleFilterChange(event, head);
           }}
           style={{ width: "85%" }}
           placeholder="Pick date"
@@ -118,7 +118,3 @@ export default function CoreTableFilter(props) {
     </CoreBox>
   );
 }
-
-// EnhancedTableToolbar.propTypes = {
-//   numSelected: PropTypes.number.isRequired,
-// };

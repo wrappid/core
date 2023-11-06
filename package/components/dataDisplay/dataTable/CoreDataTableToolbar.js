@@ -5,40 +5,40 @@ import React from "react";
 import { NativeDataTableToolbar, NativeDataTableToolPopover } from "@wrappid/native";
 import { useDispatch } from "react-redux";
 
-import { apiRequestAction } from "./../../store/action/appActions";
 import ExportData from "./ExportData";
 import SortTableData from "./SortTableData";
 import TableDensity from "./TableDensity";
-import { UPDATE_USER_SETTINGS } from "../../config/api";
+import { UPDATE_USER_SETTINGS } from "../../../config/api";
 import {
   HTTP,
   tableToolbar,
   userSettingsConstants
-} from "../../config/constants";
-import { coreUseNavigate } from "../../helper/routerHelper";
+} from "../../../config/constants";
+import { coreUseNavigate } from "../../../helper/routerHelper";
+import { apiRequestAction } from "../../../store/action/appActions";
 import {
   UPDATE_QUERY_MAXROWINPAGE_DATA,
   UPDATE_QUERY_PAGE_DATA
-} from "../../store/types/dataManagementTypes";
+} from "../../../store/types/dataManagementTypes";
 import {
   USER_SETTINGS_UPDATE_ERROR,
   USER_SETTINGS_UPDATE_SUCCESS
-} from "../../store/types/settingsTypes";
-import CoreClasses from "../../styles/CoreClasses";
-import { getLabel } from "../../utils/stringUtils";
+} from "../../../store/types/settingsTypes";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getLabel } from "../../../utils/stringUtils";
 import {
   __TableLeftPanelGridSize,
   __TableRightPanelGridSize
-} from "../../utils/tableUtils";
-import { APP_PLATFORM } from "../../utils/themeUtil";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
-import CoreTablePagination from "../dataDisplay/CoreTablePagination";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreInputAdornment from "../inputs/CoreInputAdornment";
-import CoreTextButton from "../inputs/CoreTextButton";
-import CoreTextField from "../inputs/CoreTextField";
-import CoreMenu from "../navigation/CoreMenu";
+} from "../../../utils/tableUtils";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreInputAdornment from "../../inputs/CoreInputAdornment";
+import CoreTextButton from "../../inputs/CoreTextButton";
+import CoreTextField from "../../inputs/CoreTextField";
+import CoreMenu from "../../navigation/CoreMenu";
+import CoreDivider from "../CoreDivider";
+import CoreIcon, { __IconTypes } from "../CoreIcon";
+import CoreTablePagination from "../CoreTablePagination";
 
 export default function CoreDataTableToolbar(props) {
   const dispatch = useDispatch();

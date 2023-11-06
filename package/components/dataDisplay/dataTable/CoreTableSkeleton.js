@@ -1,18 +1,18 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreTable from "../dataDisplay/CoreTable";
-import CoreTableBody from "../dataDisplay/CoreTableBody";
-import CoreTableCell from "../dataDisplay/CoreTableCell";
-import CoreTableRow from "../dataDisplay/CoreTableRow";
-import CoreSkeleton from "../feedback/CoreSkeleton";
+import CoreSkeleton from "../../feedback/CoreSkeleton";
+import CoreTable from "../CoreTable";
+import CoreTableBody from "../CoreTableBody";
+import CoreTableCell from "../CoreTableCell";
+import CoreTableRow from "../CoreTableRow";
 
 export default function CoreTableSkeleton(props) {
   const { maxRowInPage } = props;
 
   return (
     <CoreTable>
-      {/* <CoreTableHead>
+      {/*-- <CoreTableHead>
         {showData && (
           <CoreTableRow>
             <CoreTableCell
@@ -32,10 +32,10 @@ export default function CoreTableSkeleton(props) {
         </CoreTableRow>
       </CoreTableHead> */}
       <CoreTableBody>
-        {[...Array(maxRowInPage)].map((e, ri) => (
-          <CoreTableRow key={`skeleton-cell-${ri}`}>
-            {[...Array(5)].map((e, ci) => (
-              <CoreTableCell key={`skeleton-cell-${ci}`}>
+        {[...Array(maxRowInPage)].map((eachEl, index) => (
+          <CoreTableRow key={`skeleton-cell-${index}`}>
+            {[...Array(5)].map((eachEl, cIndex) => (
+              <CoreTableCell key={`skeleton-cell-${cIndex}`}>
                 <CoreSkeleton variant="text" />
               </CoreTableCell>
             ))}

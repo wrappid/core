@@ -1,19 +1,20 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreClasses from "../../styles/CoreClasses";
-import { getLabel } from "../../utils/stringUtils";
-import CoreDivider from "../dataDisplay/CoreDivider";
-import CoreIcon, { __IconTypes } from "../dataDisplay/CoreIcon";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreInputAdornment from "../inputs/CoreInputAdornment";
-import CoreTextField from "../inputs/CoreTextField";
-import CoreBox from "../layouts/CoreBox";
-import CoreStack from "../layouts/CoreStack";
+import CoreClasses from "../../../styles/CoreClasses";
+import { getLabel } from "../../../utils/stringUtils";
+import CoreIconButton from "../../inputs/CoreIconButton";
+import CoreInputAdornment from "../../inputs/CoreInputAdornment";
+import CoreTextField from "../../inputs/CoreTextField";
+import CoreBox from "../../layouts/CoreBox";
+import CoreStack from "../../layouts/CoreStack";
+import CoreDivider from "../CoreDivider";
+import CoreIcon, { __IconTypes } from "../CoreIcon";
+import CoreTypographyBody1 from "../CoreTypographyBody1";
 
 export default function SortTableData(props) {
-  const { tableUUID, tableColumns, auditColumnsKey, order, onRequestSort } =
+  const { /* tableUUID */ tableColumns, auditColumnsKey, order, onRequestSort } =
     props;
 
   const [searchString, setSearchString] = React.useState(null);
@@ -49,6 +50,7 @@ export default function SortTableData(props) {
         })
       );
     } else {
+      // do nothing
     }
   }, [searchString]);
 
@@ -57,11 +59,10 @@ export default function SortTableData(props) {
       <CoreBox styleClasses={[CoreClasses.POPOVER.HEADER]}>
         <CoreTextField
           styleClasses={[CoreClasses.MARGIN.MB0]}
-          // label="Find column"
           placeholder="Search column"
           value={searchString}
-          onChange={(e) => {
-            setSearchString(e.target.value);
+          onChange={(event) => {
+            setSearchString(event.target.value);
           }}
           InputProps={{
             endAdornment: (
@@ -126,8 +127,8 @@ export default function SortTableData(props) {
                   styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
                 >
                   <CoreIconButton
-                    onClick={(e) => {
-                      onRequestSort(e, col.id, "asc");
+                    onClick={(event) => {
+                      onRequestSort(event, col.id, "asc");
                     }}
                   >
                     <CoreIcon
@@ -137,8 +138,8 @@ export default function SortTableData(props) {
                   </CoreIconButton>
 
                   <CoreIconButton
-                    onClick={(e) => {
-                      onRequestSort(e, col.id, "desc");
+                    onClick={(event) => {
+                      onRequestSort(event, col.id, "desc");
                     }}
                   >
                     <CoreIcon
