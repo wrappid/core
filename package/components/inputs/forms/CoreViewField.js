@@ -4,10 +4,10 @@ import React from "react";
 import {
   createFormFieldProps,
   createFormGridProps
-} from "../../utils/formUtils";
-import CoreLabel from "../dataDisplay/CoreLabel";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreGrid from "../layouts/CoreGrid";
+} from "../../../utils/formUtils";
+import CoreLabel from "../../dataDisplay/CoreLabel";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreGrid from "../../layouts/CoreGrid";
 
 export default function CoreViewField(props) {
   const { element, data } = props;

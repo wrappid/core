@@ -10,10 +10,10 @@ import {
 import CoreFormDialogs from "./CoreFormDialogs";
 import CoreFormHeader from "./CoreFormHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
-import { urls } from "../../config/constants";
+import { urls } from "../../../config/constants";
 // eslint-disable-next-line import/namespace
-import { functionsRegistry } from "../../layout/PageContainer";
-import { apiRequestAction } from "../../store/action/appActions";
+import { functionsRegistry } from "../../../layout/PageContainer";
+import { apiRequestAction } from "../../../store/action/appActions";
 import {
   cancelFormEdit,
   createAllForms,
@@ -23,23 +23,23 @@ import {
   resetFormReducer,
   storeForm,
   updateApiMeta
-} from "../../store/action/formAction";
-import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../store/types/formTypes";
-import CoreClasses from "../../styles/CoreClasses";
+} from "../../../store/action/formAction";
+import { GET_FORM_ERROR, GET_FORM_SUCCESS } from "../../../store/types/formTypes";
+import CoreClasses from "../../../styles/CoreClasses";
 // eslint-disable-next-line import/namespace
 import {
   createApiMeta,
   forReloadCheck,
   getForm,
   hookcallCheck
-} from "../../utils/formUtils";
-import { compareObject } from "../../utils/objectUtils";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import { CORE_DIALOG_TYPES } from "../feedback/CoreDialog";
-import CoreSkeleton from "../feedback/CoreSkeleton";
-import CoreBox from "../layouts/CoreBox";
-import CoreGrid from "../layouts/CoreGrid";
-import CoreLink from "../navigation/CoreLink";
+} from "../../../utils/formUtils";
+import { compareObject } from "../../../utils/objectUtils";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import { CORE_DIALOG_TYPES } from "../../feedback/CoreDialog";
+import CoreSkeleton from "../../feedback/CoreSkeleton";
+import CoreBox from "../../layouts/CoreBox";
+import CoreGrid from "../../layouts/CoreGrid";
+import CoreLink from "../../navigation/CoreLink";
 
 /**
  * @TODO

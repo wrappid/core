@@ -3,11 +3,11 @@ import React from "react";
 
 import { getConfigurationObject } from "@wrappid/styles";
 
-import CoreClasses from "../../styles/CoreClasses";
-import { APP_PLATFORM } from "../../utils/themeUtil";
-import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreIconButton from "../inputs/CoreIconButton";
-import CoreBox from "../layouts/CoreBox";
+import CoreClasses from "../../../styles/CoreClasses";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreIcon from "../../dataDisplay/CoreIcon";
+import CoreBox from "../../layouts/CoreBox";
+import CoreIconButton from "../CoreIconButton";
 
 export default function CoreFormHeaderActions(props) {
   //TODO: add tooltop component to CoreIconButton with label

@@ -2,10 +2,10 @@
 import React from "react";
 
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
-import CoreClasses from "../../styles/CoreClasses";
-import { viewString } from "../../utils/formUtils";
-import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
-import CoreCardHeader from "../surfaces/CoreCardHeader";
+import CoreClasses from "../../../styles/CoreClasses";
+import { viewString } from "../../../utils/formUtils";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreCardHeader from "../../surfaces/CoreCardHeader";
 
 export default function CoreFormHeader(props) {
   const {

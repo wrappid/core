@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import CoreForm from "./CoreForm";
 import { FORM_VIEW_MODE } from "./coreFormConstants";
-import { coreUseParams, coreUseSearchParams } from "../../helper/routerHelper";
+import { coreUseParams, coreUseSearchParams } from "../../../helper/routerHelper";
 
 export default function CoreSpecificForm() {
   const { formId } = coreUseParams();
