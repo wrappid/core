@@ -63,7 +63,7 @@ export default function CoreRoutes(props) {
             <PageContainer
               page={{
                 auth: false,
-                comp: routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent ? componentRegistry[routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent] : WrappidComponent
+                comp: routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent ? componentRegistry[routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent]?.comp : WrappidComponent
               }} />
           ) : (
             <PageContainer
