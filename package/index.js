@@ -1,4 +1,3 @@
-// import CoreContainer from "./components/layouts/CoreContainer";
 // import CoreNavigation from "./CoreNavigation";
 // import CoreGridItem from "./components/layouts/CoreGridItem";
 // -- import CoreAppDiv from "./components/layouts/CoreAppDiv";
@@ -119,6 +118,7 @@ import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel
 import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
 import ParentChildMap from "./components/inputs/ParentChildMap";
 import CoreBox from "./components/layouts/CoreBox";
+import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
 import CoreImageBackground from "./components/layouts/CoreImageBackground";
 import CoreSection from "./components/layouts/CoreSection";
@@ -144,6 +144,7 @@ import CoreCardActionArea from "./components/surfaces/CoreCardActionArea";
 import CoreCardActions from "./components/surfaces/CoreCardActions";
 import CoreCardContent from "./components/surfaces/CoreCardContent";
 import CoreCardHeader from "./components/surfaces/CoreCardHeader";
+import CoreCardMedia from "./components/surfaces/CoreCardMedia";
 import CoreCollapse from "./components/surfaces/CoreCollapse";
 import CoreDrawer from "./components/surfaces/CoreDrawer";
 import CorePaper from "./components/surfaces/CorePaper";
@@ -212,6 +213,7 @@ import {
 } from "./utils/themeUtil";
 
 export {
+  CoreCardMedia,
   CoreTOC,
   getPageTOC,
   CoreTypography,
@@ -255,7 +257,7 @@ export {
   CoreProvider,
   // CoreAppDiv,
   CoreBox,
-  // CoreContainer,
+  CoreContainer,
   CoreGrid,
   // CoreGridItem,
   CoreList,
