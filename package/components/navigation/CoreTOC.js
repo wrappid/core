@@ -2,123 +2,59 @@ import React from "react";
 
 import CoreMenu from "./CoreMenu";
 
-export function getPageTOC() {
+export function getPageTOC(props) {
+  const {
+    contentRef,
+    headerElements = [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ],
+    disableHeaders = []
+  } = props || {};
   const [tocMenu, setTocMenu] = React.useState([]);
+
+  const getHeaderElem = (contentDOM, headerElementTag) => {
+    return Array.from(contentDOM.querySelectorAll(headerElementTag))
+      .map((elem, index) => ({
+        id   : `${(elem?.innerText || "")?.trim().toLowerCase()}-${index}`,
+        label: (elem?.innerText || "")?.trim(),
+        name : (elem?.innerText || "")?.trim(),
+        type : "menuitem"
+      }));
+  };
 
   React.useEffect(() => {
     /**
      * @todo find toc from a component
     */
-    let sampleMenuContent = [
-      {
-        Children: [
-          {
-            Children: [],
-            id: "Menu-1.1",
-            label: "Menu 1.1",
-            name: "Menu 1.1",
-            type: "menuitem"
-          },
-          {
-            Children: [],
-            id: "Menu-1.2",
-            label: "Menu 1.2",
-            name: "Menu 1.2",
-            type: "separator"
-          },
-          {
-            Children: [
-              {
-                Children: [],
-                id: "Menu-1.3.1",
-                label: "Menu 1.3.1",
-                name: "Menu 1.3.1",
-                type: "menuitem"
-              },
-              {
-                Children: [],
-                id: "Menu-1.3.2",
-                label: "Menu 1.3.2",
-                name: "Menu 1.3.2",
-                type: "separator"
-              },
-              {
-                Children: [],
-                id: "Menu-1.3.3",
-                label: "Menu 1.3.3",
-                name: "Menu 1.3.3",
-                type: "parent"
+    let menuElem = [];
+    let content = contentRef?.current || document;
 
-              }
-            ],
-            id: "Menu-1",
-            label: "Menu 1.3",
-            name: "Menu 1.3",
-            type: "parent"
+    let elements = Array.from((contentRef?.current || document).querySelectorAll(headerElements))
+      .map((elem) => ({ elem: elem, text: elem.innerText }));
 
-          }
-        ],
-        id: "Menu-1",
-        label: "Menu 1",
-        name: "Menu 1",
-        type: "header"
-      },
-      {
-        Children: [
-          {
-            Children: [],
-            id: "Menu-2.1",
-            label: "Menu 2.1",
-            name: "Menu 2.1",
-            type: "menuitem"
-          },
-          {
-            Children: [],
-            id: "Menu-2.2",
-            label: "Menu 2.2",
-            name: "Menu 2.2",
-            type: "separator"
-          },
-          {
-            Children: [
-              {
-                Children: [],
-                id: "Menu-2.3.1",
-                label: "Menu 2.3.1",
-                name: "Menu 2.3.1",
-                type: "menuitem"
-              },
-              {
-                Children: [],
-                id: "Menu-2.3.2",
-                label: "Menu 2.3.2",
-                name: "Menu 2.3.2",
-                type: "separator"
-              },
-              {
-                Children: [],
-                id: "Menu-2.3.3",
-                label: "Menu 2.3.3",
-                name: "Menu 2.3.3",
-                type: "parent"
+    console.log("#####################################");
+    console.log(elements);
 
-              }
-            ],
-            id: "Menu-2",
-            label: "Menu 2.3",
-            name: "Menu 2.3",
-            type: "parent"
-
-          }
-        ],
-        id: "Menu-2",
-        label: "Menu 2",
-        name: "Menu 2",
-        type: "header"
+    let headerElementsSorted = headerElements.sort();
+    
+    elements.forEach(elem => {
+      if (headerElementsSorted.indexOf(elem?.elem?.tagName?.toLowerCase()) === 0) {
+        menuElem.push({
+          Children: [],
+          id      : elem?.text?.trim()?.replaceAll(" ", "-"),
+          label   : elem?.text?.trim(),
+          name    : elem?.text?.trim(),
+          type    : "menuitem"
+        });
       }
-    ];
+    });
 
-    setTocMenu(sampleMenuContent);
+    setTocMenu(menuElem);
 
     return () => {
       // remove listener
