@@ -1,6 +1,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useState } from "react";
 
+// eslint-disable-next-line import/no-unresolved
+
 import CoreTypography from "./CoreTypography";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreSpan from "../layouts/CoreSpan";
@@ -12,11 +14,7 @@ export default function CoreTypographyOverline(props) {
     hideSeeMore = false,
     limitChars,
     styleClasses,
-    code,
-    align,
-    component,
-    gutterBottom,
-    noWrap,
+    ...restProps
   } = props;
   const [seeMore, setSeeMore] = useState(true);
   const toggleSeeMore = () => {
@@ -25,14 +23,10 @@ export default function CoreTypographyOverline(props) {
 
   return props?.limitChars ? (
     <CoreTypography
-      code={code}
-      align={align}
-      component={component}
-      gutterBottom={gutterBottom}
-      noWrap={noWrap}
-      variant="overline"
+      variant="caption"
       paragraph={true}
       gutterBottom={true}
+      {...restProps}
     >
       <CoreSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
@@ -50,10 +44,11 @@ export default function CoreTypographyOverline(props) {
     </CoreTypography>
   ) : (
     <CoreTypography
-      {...props}
-      variant="overline"
+      variant="caption"
       paragraph={true}
       gutterBottom={true}
+      styleClasses={styleClasses}
+      {...restProps}
     >
       {props?.children}
     </CoreTypography>
@@ -64,18 +59,18 @@ CoreTypographyOverline.validProps = [
   {
     description:
       "The content of the component need to show as it is like a code block.",
-    name: "code",
+    name : "code",
     types: [{ default: "false", type: "boolean", validValues: [true, false] }],
   },
   {
     description: "",
-    name: "limitChars",
-    types: [{ type: "number" }],
+    name       : "limitChars",
+    types      : [{ type: "number" }],
   },
   {
     description: "",
-    name: "hideSeeMore",
-    types: [{ default: "false", type: "boolean", validValues: [true, false] }],
+    name       : "hideSeeMore",
+    types      : [{ default: "false", type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographyOverline.invalidProps = ["sx", "classes"];

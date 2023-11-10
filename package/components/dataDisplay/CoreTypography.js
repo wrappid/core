@@ -10,31 +10,8 @@ export default function CoreTypography(props) {
   //Do not use this directly use CoreParagraph
   props = sanitizeComponentProps(CoreTypography, props);
 
-  const {
-    align,
-    children,
-    component,
-    gutterBottom,
-    noWrap,
-    paragraph,
-    variant,
-    variantMapping,
-    code
-  } = props;
-
   return (
-    <NativeTypography
-      align={align}
-      component={component}
-      gutterBottom={gutterBottom}
-      noWrap={noWrap}
-      paragraph={paragraph}
-      variant={variant}
-      variantMapping={variantMapping}
-      code={code}
-    >
-      {children}
-    </NativeTypography>
+    <NativeTypography {...props} />
   );
 }
 

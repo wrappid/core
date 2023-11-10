@@ -2,12 +2,11 @@
 import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses } from "@wrappid/styles";
 
+import CoreTypography from "./CoreTypography";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreSpan from "../layouts/CoreSpan";
 import CoreLink from "../navigation/CoreLink";
-import CoreTypography from "./CoreTypography";
 
 export default function CoreTypographyBody1(props) {
   props = sanitizeComponentProps(CoreTypographyBody1, props);
@@ -15,11 +14,7 @@ export default function CoreTypographyBody1(props) {
     hideSeeMore = false,
     limitChars,
     styleClasses,
-    code,
-    align,
-    component,
-    gutterBottom,
-    noWrap,
+    ...restProps
   } = props;
   const [seeMore, setSeeMore] = useState(true);
   const toggleSeeMore = () => {
@@ -28,14 +23,10 @@ export default function CoreTypographyBody1(props) {
 
   return props?.limitChars ? (
     <CoreTypography
-      code={code}
-      align={align}
-      component={component}
-      gutterBottom={gutterBottom}
-      noWrap={noWrap}
       variant="body1"
       paragraph={true}
       gutterBottom={true}
+      {...restProps}
     >
       <CoreSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
@@ -55,13 +46,11 @@ export default function CoreTypographyBody1(props) {
     </CoreTypography>
   ) : (
     <CoreTypography
-      {...props}
       variant="body1"
       paragraph={true}
       gutterBottom={true}
-    >
-      {props?.children}
-    </CoreTypography>
+      {...restProps}
+    />
   );
 }
 
@@ -70,18 +59,18 @@ CoreTypographyBody1.validProps = [
   {
     description:
       "The content of the component need to show as it is like a code block.",
-    name: "code",
+    name : "code",
     types: [{ default: "false", type: "boolean", validValues: [true, false] }],
   },
   {
     description: "",
-    name: "limitChars",
-    types: [{ type: "number" }],
+    name       : "limitChars",
+    types      : [{ type: "number" }],
   },
   {
     description: "",
-    name: "hideSeeMore",
-    types: [{ default: "false", type: "boolean", validValues: [true, false] }],
+    name       : "hideSeeMore",
+    types      : [{ default: "false", type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographyBody1.invalidProps = ["sx", "classes"];
