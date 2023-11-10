@@ -26,9 +26,10 @@ export default function CoreTypographyOverline(props) {
       variant="caption"
       paragraph={true}
       gutterBottom={true}
+      styleClasses={styleClasses}
       {...restProps}
     >
-      <CoreSpan styleClasses={[...(styleClasses || [])]}>
+      <CoreSpan>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
             ? props?.children

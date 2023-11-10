@@ -24,9 +24,10 @@ export default function CoreTypographyBody2(props) {
       variant="body2"
       paragraph={true}
       gutterBottom={true}
+      styleClasses={styleClasses}
       {...restProps}
     >
-      <CoreSpan styleClasses={[...(styleClasses || [])]}>
+      <CoreSpan>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
             ? props?.children

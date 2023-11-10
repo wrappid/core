@@ -55,6 +55,7 @@ export default function CoreTypographySubtitle2(props) {
     </CoreTypography>
   );
 }
+
 CoreTypographySubtitle2.validProps = [
   ...CoreTypography.validProps,
   {
