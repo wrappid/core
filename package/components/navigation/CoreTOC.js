@@ -1,21 +1,29 @@
 import React from "react";
 
 import CoreMenu from "./CoreMenu";
+import CoreH1 from "../dataDisplay/CoreH1";
+import CoreH2 from "../dataDisplay/CoreH2";
+import CoreH3 from "../dataDisplay/CoreH3";
+import CoreH4 from "../dataDisplay/CoreH4";
+import CoreH5 from "../dataDisplay/CoreH5";
+import CoreH6 from "../dataDisplay/CoreH6";
 
-export function getPageTOC(props) {
+export default function CoreTOC(props) {
+  const [tocMenu, setTocMenu] = React.useState([]);
   const {
+    // eslint-disable-next-line no-console
+    OnMenuClick = () => { console.log("menu clicked"); },
     contentRef,
-    headerElements = [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
+    headerComponents = [
+      CoreH1,
+      CoreH2,
+      CoreH3,
+      CoreH4,
+      CoreH5,
+      CoreH6
     ],
     disableHeaders = []
   } = props || {};
-  const [tocMenu, setTocMenu] = React.useState([]);
 
   const getHeaderElem = (contentDOM, headerElementTag) => {
     return Array.from(contentDOM.querySelectorAll(headerElementTag))
@@ -28,22 +36,18 @@ export function getPageTOC(props) {
   };
 
   React.useEffect(() => {
-    /**
-     * @todo find toc from a component
-    */
     let menuElem = [];
     let content = contentRef?.current || document;
 
-    let elements = Array.from((contentRef?.current || document).querySelectorAll(headerElements))
+    let domHeaderElements = headerComponents.map(component => component?.name?.replaceAll("Core", ""));
+
+    let contentElements = Array.from((content).querySelectorAll(domHeaderElements))
       .map((elem) => ({ elem: elem, text: elem.innerText }));
 
-    console.log("#####################################");
-    console.log(elements);
-
-    let headerElementsSorted = headerElements.sort();
+    let headerElementsSorted = domHeaderElements.sort();
     
-    elements.forEach(elem => {
-      if (headerElementsSorted.indexOf(elem?.elem?.tagName?.toLowerCase()) === 0) {
+    contentElements.forEach(elem => {
+      if (headerElementsSorted.indexOf(elem?.elem?.tagName) === 0) {
         menuElem.push({
           Children: [],
           id      : elem?.text?.trim()?.replaceAll(" ", "-"),
@@ -60,14 +64,6 @@ export function getPageTOC(props) {
       // remove listener
     };
   }, []);
-
-  return tocMenu;
-}
-
-export default function CoreTOC(props) {
-
-  // eslint-disable-next-line no-console
-  const { tocMenu, OnMenuClick = () => { console.log("menu clicked"); } } = props;
 
   return <CoreMenu
     multiLevel={true}

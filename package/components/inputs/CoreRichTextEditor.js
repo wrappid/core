@@ -25,8 +25,8 @@ export default function CoreRichTextEditor(props) {
           props.formik?.values && props.formik?.values[props.id]
             ? props.formik?.values[props.id]
             : props.value
-            ? props.value
-            : ""
+              ? props.value
+              : ""
         }
         onChange={props.onChange}
         ref={props.ref || ref}
@@ -35,8 +35,8 @@ export default function CoreRichTextEditor(props) {
           props.onBlur
             ? props.onBlur
             : (value) => {
-                props.formik?.setFieldValue(props.id, value);
-              }
+              props.formik?.setFieldValue(props.id, value);
+            }
         }
       />
     </>
