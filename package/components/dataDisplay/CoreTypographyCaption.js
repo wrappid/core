@@ -24,8 +24,6 @@ export default function CoreTypographyCaption(props) {
   return props?.limitChars ? (
     <CoreTypography
       variant="caption"
-      paragraph={true}
-      gutterBottom={true}
       styleClasses={styleClasses}
       {...restProps}
     >
@@ -46,8 +44,6 @@ export default function CoreTypographyCaption(props) {
   ) : (
     <CoreTypography
       variant="caption"
-      paragraph={true}
-      gutterBottom={true}
       styleClasses={styleClasses}
       {...restProps}
     >
