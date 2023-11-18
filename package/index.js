@@ -211,6 +211,7 @@ import {
   coreUseTheme,
   CoreCssBaseline
 } from "./utils/themeUtil";
+import CoreRating from "./components/inputs/CoreRating";
 
 export {
   CoreCardMedia,
@@ -431,5 +432,6 @@ export {
   CORE_DIALOG_TYPES,
   coreOpenUrl,
   CoreThemeProvider,
-  ThemeContext
+  ThemeContext,
+  CoreRating
 };

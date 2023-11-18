@@ -183,6 +183,7 @@ import CoreTermsPrivacyLink from "./utils/CoreTermsPrivacyLink.js";
 import HelpAndSupportPopOver from "./utils/HelpAndSupportPopOver.js";
 import NotificationPopOver from "./utils/NotificationPopOver.js";
 import QuickAddPopOver from "./utils/QuickAddPopOver.js";
+import CoreRating from "./inputs/CoreRating.js";
 
 export const coreComponentsRegistry = {
   "ChildMap"                     : { comp: ChildMap },
@@ -301,6 +302,7 @@ export const coreComponentsRegistry = {
   "CorePhoneLink"                : { comp: CorePhoneLink },
   "CorePopover"                  : { comp: CorePopover },
   "CoreProfilePopOver"           : { comp: CoreProfilePopOver },
+  "CoreRating"                   : { comp: CoreRating },
   "CoreReactSelectInput"         : { comp: CoreReactSelectInput },
   "CoreRequestProgressBar"       : { comp: CoreRequestProgressBar },
   "CoreResponsiveButton"         : { comp: CoreResponsiveButton },
