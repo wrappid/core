@@ -134,7 +134,7 @@ import CoreTab from "./components/navigation/CoreTab";
 import CoreTabHead from "./components/navigation/CoreTabHead";
 import CoreTabPanel from "./components/navigation/CoreTabPanel";
 import CoreTabs from "./components/navigation/CoreTabs";
-import CoreTOC, { getPageTOC } from "./components/navigation/CoreTOC";
+import CoreTOC from "./components/navigation/CoreTOC";
 import CoreAccordion from "./components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "./components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "./components/surfaces/CoreAccordionSummary";
@@ -156,6 +156,7 @@ import CoreLoginDetails from "./components/utils/CoreLoginDetails";
 import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
+import CoreFooter from "./components/surfaces/CoreFooter";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
 import {
@@ -216,7 +217,6 @@ import CoreRating from "./components/inputs/CoreRating";
 export {
   CoreCardMedia,
   CoreTOC,
-  getPageTOC,
   CoreTypography,
   stringUtils,
   defaultValidProps,
@@ -433,5 +433,6 @@ export {
   coreOpenUrl,
   CoreThemeProvider,
   ThemeContext,
-  CoreRating
+  CoreRating,
+  CoreFooter
 };
