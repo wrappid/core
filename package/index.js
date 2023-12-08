@@ -95,6 +95,7 @@ import CoreMultiTimeRangePicker from "./components/inputs/CoreMultiTimeRangePick
 import CoreOtpInput from "./components/inputs/CoreOtpInput";
 import CoreOutlinedButton from "./components/inputs/CoreOutlinedButton";
 import CorePhone from "./components/inputs/CorePhone";
+import CoreRating from "./components/inputs/CoreRating";
 import CoreReactSelectInput from "./components/inputs/CoreReactSelectInput";
 import CoreResponsiveButton from "./components/inputs/CoreResponsiveButton";
 import CoreRichTextEditor from "./components/inputs/CoreRichTextEditor";
@@ -147,6 +148,7 @@ import CoreCardHeader from "./components/surfaces/CoreCardHeader";
 import CoreCardMedia from "./components/surfaces/CoreCardMedia";
 import CoreCollapse from "./components/surfaces/CoreCollapse";
 import CoreDrawer from "./components/surfaces/CoreDrawer";
+import CoreFooter from "./components/surfaces/CoreFooter";
 import CorePaper from "./components/surfaces/CorePaper";
 import CoreRightDrawer from "./components/surfaces/CoreRightDrawer";
 import CoreToolbar from "./components/surfaces/CoreToolbar";
@@ -156,12 +158,9 @@ import CoreLoginDetails from "./components/utils/CoreLoginDetails";
 import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
-import CoreFooter from "./components/surfaces/CoreFooter";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
-import {
-  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, ThemeContext, CoreRouteRegistryContext
-} from "./config/contextHandler";
+import { CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, CoreRouteRegistryContext } from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
   MENU_PARENT_ITEM,
@@ -185,7 +184,7 @@ import {
 } from "./helper/routerHelper";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
-import { apiRequestAction } from "./store/action/appActions";
+import { apiRequestAction, setUserTheme } from "./store/action/appActions";
 import { reloadDataTableAction } from "./store/action/dataTableActions";
 import { onEditForm, cancelFormEdit } from "./store/action/formAction";
 import { toggleRightMenuState } from "./store/action/menuAction";
@@ -209,10 +208,8 @@ import {
   APP_PLATFORM,
   WEB_PLATFORM,
   detectPlatform,
-  coreUseTheme,
   CoreCssBaseline
 } from "./utils/themeUtil";
-import CoreRating from "./components/inputs/CoreRating";
 
 export {
   CoreCardMedia,
@@ -422,7 +419,6 @@ export {
   toggleRightMenuState,
   FORM_SANITIZATION_FUNCTION_IDS,
   FORM_SANITIZATOIN_FUNCTION_MAP,
-  coreUseTheme,
   CoreCssBaseline,
   CoreFlatList,
   CorePhoneLink,
@@ -432,7 +428,7 @@ export {
   CORE_DIALOG_TYPES,
   coreOpenUrl,
   CoreThemeProvider,
-  ThemeContext,
   CoreRating,
-  CoreFooter
+  CoreFooter,
+  setUserTheme
 };

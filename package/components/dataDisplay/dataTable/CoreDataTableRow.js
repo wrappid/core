@@ -2,12 +2,12 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses } from "@wrappid/styles";
+import { UtilityClasses, ThemeContext } from "@wrappid/styles";
 import { useDispatch } from "react-redux";
 
 import CoreDataTableRowContent from "./CoreDataTableRowContent";
 import CoreFlatList from "./CoreFlatList";
-import { ThemeContext } from "../../../config/contextHandler";
+// eslint-disable-next-line import/no-unresolved
 import { UPDATE_QUERY_PAGE_DATA } from "../../../store/types/dataManagementTypes";
 import { getLabel } from "../../../utils/stringUtils";
 import CoreCheckbox from "../../inputs/CoreCheckbox";

@@ -21,7 +21,8 @@ import {
   RESET_LOADING,
   RESET_PROGRESS_BAR,
   SET_LOADING,
-  SET_PROGRESS_BAR
+  SET_PROGRESS_BAR,
+  SET_USER_THEME
 } from "../types/appTypes";
 import {
   HTTP_NO_CONTENT,
@@ -335,4 +336,10 @@ export const clearSnackMessages = () => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
   dispatch({ type: CLEAR_SNACK_MESSAGE });
+};
+
+export const setUserTheme = (theme) => dispatch => {
+  // eslint-disable-next-line etc/no-commented-out-code
+  // closeSnackbar();
+  dispatch({ payload: theme, type: SET_USER_THEME });
 };

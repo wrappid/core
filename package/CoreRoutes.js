@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -51,6 +52,8 @@ export default function CoreRoutes(props) {
     );
   }, [authenticated]);
 
+  const defRoute = _routes?.find(route => route.url === appConfig?.wrappid?.defaultRoute);
+
   return (
     <NativeDomRoutes>
       
@@ -63,7 +66,7 @@ export default function CoreRoutes(props) {
             <PageContainer
               page={{
                 auth: false,
-                comp: routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent ? componentRegistry[routes[appConfig?.wrappid?.defaultRoute]?.Page?.appComponent]?.comp : WrappidComponent
+                comp: defRoute?.Page?.appComponent ? componentRegistry[defRoute?.Page?.appComponent]?.comp : WrappidComponent
               }} />
           ) : (
             <PageContainer

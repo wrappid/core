@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
+import { ThemeContext } from "@wrappid/styles";
 
-import { CoreRouteRegistryContext, ThemeContext } from "../../config/contextHandler";
+import { CoreRouteRegistryContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import CoreStack from "../layouts/CoreStack";

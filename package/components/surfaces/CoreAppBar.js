@@ -41,8 +41,8 @@ export default function CoreAppBar(props) {
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
-    PROFILE: "PROFILE",
-    QUICK_MENU: "QUICK_MENU",
+    PROFILE     : "PROFILE",
+    QUICK_MENU  : "QUICK_MENU",
   };
 
   React.useEffect(() => {
@@ -59,12 +59,7 @@ export default function CoreAppBar(props) {
       }
       dispatch(getSettingMeta(null, auth.accessToken));
     }
-  }, [
-    getSettingMetaFlag,
-    mdm.getSettingMetaSuccess,
-    dispatch,
-    auth.accessToken,
-  ]);
+  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
 
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
@@ -84,10 +79,10 @@ export default function CoreAppBar(props) {
   const appBarTextStyle = !appbarType
     ? [CoreClasses.COLOR.TEXT_WHITE]
     : appbarType?.includes("light")
-    ? []
-    : appbarType?.includes("contrast")
-    ? [CoreClasses.COLOR.TEXT_PRIMARY]
-    : [CoreClasses.COLOR.TEXT_WHITE];
+      ? []
+      : appbarType?.includes("contrast")
+        ? [CoreClasses.COLOR.TEXT_PRIMARY]
+        : [CoreClasses.COLOR.TEXT_WHITE];
 
   return (
     <>
@@ -100,11 +95,7 @@ export default function CoreAppBar(props) {
         }
       >
         <CoreToolbar
-          styleClasses={[
-            UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-            CoreClasses.FLEX.DIRECTION_ROW,
-            CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          ]}
+          styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           <CoreStack
             direction="row"
@@ -116,7 +107,7 @@ export default function CoreAppBar(props) {
               onClick={handleDrawer}
               edge="start"
               disabled={!auth?.uid}
-              sx={{ marginLeft: "-16px" }}
+              // sx={{ marginLeft: "-16px" }}
             >
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
@@ -143,11 +134,7 @@ export default function CoreAppBar(props) {
             <CoreStack
               direction="row"
               NativeId="appBarMenuGrid"
-              styleClasses={[
-                CoreClasses.WIDTH.W_100,
-                CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-              ]}
+              styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
               {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
                 ?.flag && (
@@ -223,7 +210,7 @@ export default function CoreAppBar(props) {
           onClose={handleAppbarPopOverClose}
           anchorOrigin={{
             horizontal: "left",
-            vertical: "bottom",
+            vertical  : "bottom",
           }}
         >
           {_appbarContent === appbarPopOver.HELP_SUPPORT ? (
@@ -259,11 +246,11 @@ CoreAppBar.validProps = [
   {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name: "color",
+    name : "color",
     types: [
       {
-        default: "primary'",
-        type: "string",
+        default    : "primary'",
+        type       : "string",
         validValues: [
           "inherit",
           "primary",
@@ -279,18 +266,24 @@ CoreAppBar.validProps = [
   },
   {
     description: "If true, the color prop is applied in dark mode.",
-    name: "enableColorOnDark",
-    types: [{ default: "FALSE", type: "bool" }],
+    name       : "enableColorOnDark",
+    types      : [{ default: "FALSE", type: "bool" }],
   },
   {
     description:
       "The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.",
-    name: "position",
+    name : "position",
     types: [
       {
-        default: "fixed'",
-        type: "string",
-        validValues: ["alignabsolute", "fixed", "relative", "static", "sticky"],
+        default    : "fixed'",
+        type       : "string",
+        validValues: [
+          "alignabsolute",
+          "fixed",
+          "relative",
+          "static",
+          "sticky"
+        ],
       },
     ],
   },

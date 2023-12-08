@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
-
-import { ThemeContext } from "../config/contextHandler";
+// eslint-disable-next-line import/no-unresolved
+import { ThemeContext } from "@wrappid/styles";
 
 export default function CoreThemeProvider(props) {
   const theme = props.theme || useContext(ThemeContext);

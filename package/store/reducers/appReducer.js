@@ -13,7 +13,8 @@ import {
   RESET_PROGRESS_BAR,
   SEND_OTP_LOADING,
   SEND_OTP_SUCCESS,
-  SEND_OTP_ERROR
+  SEND_OTP_ERROR,
+  SET_USER_THEME
 } from "./../types/appTypes";
 
 const DEFAULT_ERROR_MSG = "Something went wrong!";
@@ -33,6 +34,8 @@ const initState = {
   sendOtpSuccess       : false,
   snackMessages        : [],
   snackMessagesMaxCount: 5,
+  userTheme            : null,
+  userThemeId          : null,
 };
 
 const appReducer = (state = initState, action) => {
@@ -160,6 +163,13 @@ const appReducer = (state = initState, action) => {
         sendOtpError  : false,
         sendOtpLoading: false,
         sendOtpSuccess: false
+      };
+
+    case SET_USER_THEME:
+      return {
+        ...state,
+        userTheme  : { ...(action.payload.theme || {}) },
+        userThemeId: action.payload.id
       };
       // case LOGOUT_SUCCESS:
       //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };

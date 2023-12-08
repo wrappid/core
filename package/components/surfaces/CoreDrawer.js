@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeDrawer, nativeUseNavigate } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
+import { ThemeContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ThemeContext } from "../../config/contextHandler";
 import { toggleMenuItemState } from "../../store/action/menuAction";
 import {
   APP_PLATFORM,
