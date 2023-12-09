@@ -192,6 +192,7 @@ import CoreProvider from "./store/CoreProvider";
 import { createFullStore } from "./store/store";
 import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 import CoreClasses from "./styles/CoreClasses";
+import { DefaultCoreStyles } from "./styles/DefaultCoreStyles";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
 import { defaultValidProps, defaultInvalidProps } from "./utils/componentUtil";
@@ -430,5 +431,6 @@ export {
   CoreThemeProvider,
   CoreRating,
   CoreFooter,
-  setUserTheme
+  setUserTheme,
+  DefaultCoreStyles
 };

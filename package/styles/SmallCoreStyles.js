@@ -1,5 +1,5 @@
 import {
-  defaultUtilityStyles,
+  DefaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT,
   PX_TAG
@@ -50,8 +50,8 @@ export const smallCoreStyles = {
   contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
   
   dataTable: {
-    ...defaultUtilityStyles.mtN1,
-    ...defaultUtilityStyles.mlN1,
+    ...new DefaultUtilityStyles().getStyle().mtN1,
+    ...new DefaultUtilityStyles().getStyle().mlN1,
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
@@ -63,18 +63,18 @@ export const smallCoreStyles = {
   dataTableHead         : {},
   dataTableHeadTop      : {},
   dataTableMiniWidthPane: {
-    ...defaultUtilityStyles.border,
-    ...defaultUtilityStyles.borderRight,
-    ...defaultUtilityStyles.borderPrimaryLight,
-    ...defaultUtilityStyles.positionSticky,
-    ...defaultUtilityStyles.overflowYAuto,
-    ...defaultUtilityStyles.overflowXHidden,
+    ...new DefaultUtilityStyles().getStyle().border,
+    ...new DefaultUtilityStyles().getStyle().borderRight,
+    ...new DefaultUtilityStyles().getStyle().borderPrimaryLight,
+    ...new DefaultUtilityStyles().getStyle().positionSticky,
+    ...new DefaultUtilityStyles().getStyle().overflowYAuto,
+    ...new DefaultUtilityStyles().getStyle().overflowXHidden,
     height: "calc(100vh - 118px)" + IMPORTANT,
     top   : "53px" + IMPORTANT,
   },
   dataTableToolbar         : {},
   dataTableToolbarContainer: {},
-  devBorder                : { ...defaultUtilityStyles.borderError },
+  devBorder                : { ...new DefaultUtilityStyles().getStyle().borderError },
   
   // ----------Data Table Styles Ends------------
   fiContentWidth: { width: "fit-content" + IMPORTANT },
@@ -88,15 +88,15 @@ export const smallCoreStyles = {
   
   profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
   
-  tableCell: { ...defaultUtilityStyles.px1 },
+  tableCell: { ...new DefaultUtilityStyles().getStyle().px1 },
   
   /**
    * Table
    */
   tableHeadCell: {
-    ...defaultUtilityStyles.bgSecondaryLight,
-    ...defaultUtilityStyles.textPrimaryDark,
-    ...defaultUtilityStyles.px1,
+    ...new DefaultUtilityStyles().getStyle().bgSecondaryLight,
+    ...new DefaultUtilityStyles().getStyle().textPrimaryDark,
+    ...new DefaultUtilityStyles().getStyle().px1,
   },
   
   /**

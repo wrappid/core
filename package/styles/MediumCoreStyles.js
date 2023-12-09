@@ -1,5 +1,5 @@
 import {
-  defaultUtilityStyles,
+  DefaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT
 } from "@wrappid/styles";
@@ -33,34 +33,34 @@ export const mediumCoreStyles = {
   authFormContainer: { width: "60%" + IMPORTANT },
   
   dataTable: {
-    ...defaultUtilityStyles.mtN1,
-    ...defaultUtilityStyles.mlN1,
+    ...new DefaultUtilityStyles().getStyle().mtN1,
+    ...new DefaultUtilityStyles().getStyle().mlN1,
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
   dataTableBody         : {},
   // ----------Data Table Styles Starts----------
-  dataTableContainer    : { /* -- ...defaultUtilityStyles.bgWarningLight, */ },
+  dataTableContainer    : { /* -- ...new DefaultUtilityStyles().getStyle().bgWarningLight, */ },
   dataTableFoot         : {},
   dataTableFullWidthPane: {},
   dataTableHead         : { top: "-8px" + IMPORTANT },
   dataTableHeadTop      : { top: "53px" + IMPORTANT },
   dataTableMiniWidthPane: {
-    ...defaultUtilityStyles.border,
-    ...defaultUtilityStyles.borderRight,
-    ...defaultUtilityStyles.borderPrimaryLight,
-    ...defaultUtilityStyles.positionSticky,
-    ...defaultUtilityStyles.overflowYAuto,
-    ...defaultUtilityStyles.overflowXHidden,
+    ...new DefaultUtilityStyles().getStyle().border,
+    ...new DefaultUtilityStyles().getStyle().borderRight,
+    ...new DefaultUtilityStyles().getStyle().borderPrimaryLight,
+    ...new DefaultUtilityStyles().getStyle().positionSticky,
+    ...new DefaultUtilityStyles().getStyle().overflowYAuto,
+    ...new DefaultUtilityStyles().getStyle().overflowXHidden,
     height: "calc(100vh - 118px)" + IMPORTANT,
     top   : "53px" + IMPORTANT,
   },
   dataTableToolbar: {
-    ...defaultUtilityStyles.mtN2,
-    ...defaultUtilityStyles.pr0,
+    ...new DefaultUtilityStyles().getStyle().mtN2,
+    ...new DefaultUtilityStyles().getStyle().pr0,
   },
   dataTableToolbarContainer: {
-    ...defaultUtilityStyles.stickyTop,
+    ...new DefaultUtilityStyles().getStyle().stickyTop,
     zIndex: "1025" + IMPORTANT,
   },
   
@@ -70,7 +70,7 @@ export const mediumCoreStyles = {
 
   profileBarWidth: { maxWidth: "40vw" + IMPORTANT },
   
-  tableCell: { ...defaultUtilityStyles.px1 },
+  tableCell: { ...new DefaultUtilityStyles().getStyle().px1 },
   
   tableFilterColumnBox: {
     maxHeight: "70vh" + IMPORTANT,
@@ -82,9 +82,9 @@ export const mediumCoreStyles = {
    * Table
    */
   tableHeadCell: {
-    ...defaultUtilityStyles.bgSecondaryLight,
-    ...defaultUtilityStyles.textPrimaryDark,
-    ...defaultUtilityStyles.px1,
+    ...new DefaultUtilityStyles().getStyle().bgSecondaryLight,
+    ...new DefaultUtilityStyles().getStyle().textPrimaryDark,
+    ...new DefaultUtilityStyles().getStyle().px1,
   },
 
   /**

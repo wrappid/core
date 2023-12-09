@@ -16,7 +16,7 @@ import CoreContextProvider from "./CoreContextProvider";
 import coreReducer from "./reducers/rootReducer";
 import { IconContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
-import { defaultCoreStyles } from "../styles/DefaultCoreStyles";
+import { DefaultCoreStyles } from "../styles/DefaultCoreStyles";
 import { largeCoreStyles } from "../styles/LargeCoreStyles";
 import { mediumCoreStyles } from "../styles/MediumCoreStyles";
 import { smallCoreStyles } from "../styles/SmallCoreStyles";
@@ -86,7 +86,7 @@ export default function CoreProvider(props) {
   let coreStyles = {
     classes: CoreClasses,
     styles : {
-      default: defaultCoreStyles,
+      default: DefaultCoreStyles,
       large  : largeCoreStyles,
       medium : mediumCoreStyles,
       small  : smallCoreStyles,
