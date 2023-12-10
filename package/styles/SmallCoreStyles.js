@@ -50,8 +50,8 @@ export const smallCoreStyles = {
   contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
   
   dataTable: {
-    ...new DefaultUtilityStyles().getStyle().mtN1,
-    ...new DefaultUtilityStyles().getStyle().mlN1,
+    ...new DefaultUtilityStyles().style.mtN1,
+    ...new DefaultUtilityStyles().style.mlN1,
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
@@ -63,18 +63,18 @@ export const smallCoreStyles = {
   dataTableHead         : {},
   dataTableHeadTop      : {},
   dataTableMiniWidthPane: {
-    ...new DefaultUtilityStyles().getStyle().border,
-    ...new DefaultUtilityStyles().getStyle().borderRight,
-    ...new DefaultUtilityStyles().getStyle().borderPrimaryLight,
-    ...new DefaultUtilityStyles().getStyle().positionSticky,
-    ...new DefaultUtilityStyles().getStyle().overflowYAuto,
-    ...new DefaultUtilityStyles().getStyle().overflowXHidden,
+    ...new DefaultUtilityStyles().style.border,
+    ...new DefaultUtilityStyles().style.borderRight,
+    ...new DefaultUtilityStyles().style.borderPrimaryLight,
+    ...new DefaultUtilityStyles().style.positionSticky,
+    ...new DefaultUtilityStyles().style.overflowYAuto,
+    ...new DefaultUtilityStyles().style.overflowXHidden,
     height: "calc(100vh - 118px)" + IMPORTANT,
     top   : "53px" + IMPORTANT,
   },
   dataTableToolbar         : {},
   dataTableToolbarContainer: {},
-  devBorder                : { ...new DefaultUtilityStyles().getStyle().borderError },
+  devBorder                : { ...new DefaultUtilityStyles().style.borderError },
   
   // ----------Data Table Styles Ends------------
   fiContentWidth: { width: "fit-content" + IMPORTANT },
@@ -88,15 +88,15 @@ export const smallCoreStyles = {
   
   profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
   
-  tableCell: { ...new DefaultUtilityStyles().getStyle().px1 },
+  tableCell: { ...new DefaultUtilityStyles().style.px1 },
   
   /**
    * Table
    */
   tableHeadCell: {
-    ...new DefaultUtilityStyles().getStyle().bgSecondaryLight,
-    ...new DefaultUtilityStyles().getStyle().textPrimaryDark,
-    ...new DefaultUtilityStyles().getStyle().px1,
+    ...new DefaultUtilityStyles().style.bgSecondaryLight,
+    ...new DefaultUtilityStyles().style.textPrimaryDark,
+    ...new DefaultUtilityStyles().style.px1,
   },
   
   /**

@@ -8,7 +8,7 @@ const HEADING_TOP_MARGIN = "56px";
 export const DEFAULT_SPACING = 1;
 
 export class DefaultCoreStyles extends BaseStyle {
-  defUtil = new DefaultUtilityStyles().getStyle();
+  defaultUtilityStyles = new DefaultUtilityStyles().style;
   
   constructor(){
     super();
@@ -34,10 +34,10 @@ export class DefaultCoreStyles extends BaseStyle {
       },
     
       authWrapper: {
-        ...this.defUtil.justifyContentCenter,
-        ...this.defUtil.alignContentCenter,
-        ...this.defUtil.flexWrapWrap,
-        ...this.defUtil.vh100,
+        ...this.defaultUtilityStyles.justifyContentCenter,
+        ...this.defaultUtilityStyles.alignContentCenter,
+        ...this.defaultUtilityStyles.flexWrapWrap,
+        ...this.defaultUtilityStyles.vh100,
         width: "98vw" + IMPORTANT,
       },
     
@@ -56,46 +56,46 @@ export class DefaultCoreStyles extends BaseStyle {
       basicInfoCard: {},
     
       contentContainer: {
-        ...this.defUtil.w100,
-        ...this.defUtil.overflowYAuto,
+        ...this.defaultUtilityStyles.w100,
+        ...this.defaultUtilityStyles.overflowYAuto,
         marginTop: HEADING_TOP_MARGIN + IMPORTANT,
       },
     
-      counterWidgetCard: { ...this.defUtil.mb1 },
+      counterWidgetCard: { ...this.defaultUtilityStyles.mb1 },
     
       counterWidgetCardActions: {},
     
-      counterWidgetCardContent: { ...this.defUtil.p1 },
+      counterWidgetCardContent: { ...this.defaultUtilityStyles.p1 },
     
-      counterWidgetCardHeader: { ...this.defUtil.p1 },
+      counterWidgetCardHeader: { ...this.defaultUtilityStyles.p1 },
     
       counterWidgetCardIcon: {
         bottom  : "-16px" + IMPORTANT,
-        color   : this.defUtil.bgDefault + IMPORTANT,
+        color   : this.defaultUtilityStyles.bgDefault + IMPORTANT,
         fontSize: "120px" + IMPORTANT,
         right   : "-16px" + IMPORTANT,
       },
     
       counterWidgetCounter: {
-        ...this.defUtil.flexDirectionColumn,
-        ...this.defUtil.justifyContentFlexEnd,
-        ...this.defUtil.alignItemsCenter,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.justifyContentFlexEnd,
+        ...this.defaultUtilityStyles.alignItemsCenter,
       },
     
-      counterWidgetCounterPrimary: { color: this.defUtil.bgPrimary + IMPORTANT },
+      counterWidgetCounterPrimary: { color: this.defaultUtilityStyles.bgPrimary + IMPORTANT },
     
-      counterWidgetCounterStack: { ...this.defUtil.justifyContentSpaceEvenly },
+      counterWidgetCounterStack: { ...this.defaultUtilityStyles.justifyContentSpaceEvenly },
     
       dataTable: {
-        ...this.defUtil.mtN1,
-        ...this.defUtil.mlN1,
+        ...this.defaultUtilityStyles.mtN1,
+        ...this.defaultUtilityStyles.mlN1,
         width: "calc(100% + 8px)" + IMPORTANT,
       },
     
       dataTableBody: {},
     
       dataTableContainer: {
-        ...this.defUtil.bgWhite,
+        ...this.defaultUtilityStyles.bgWhite,
         width: "calc(100% + 16px)" + IMPORTANT,
       },
     
@@ -104,33 +104,33 @@ export class DefaultCoreStyles extends BaseStyle {
       dataTableFullWidthPane: {},
     
       dataTableHead: {
-        ...this.defUtil.stickyTop,
+        ...this.defaultUtilityStyles.stickyTop,
         top: "-1px" + IMPORTANT,
       },
     
       dataTableHeadTop: {},
     
       dataTableMiniWidthPane: {
-        ...this.defUtil.border,
-        ...this.defUtil.borderRight,
-        ...this.defUtil.borderPrimaryLight,
-        ...this.defUtil.positionSticky,
-        ...this.defUtil.overflowYAuto,
-        ...this.defUtil.overflowXHidden,
+        ...this.defaultUtilityStyles.border,
+        ...this.defaultUtilityStyles.borderRight,
+        ...this.defaultUtilityStyles.borderPrimaryLight,
+        ...this.defaultUtilityStyles.positionSticky,
+        ...this.defaultUtilityStyles.overflowYAuto,
+        ...this.defaultUtilityStyles.overflowXHidden,
         height: "calc(100vh - 118px)" + IMPORTANT,
         top   : "53px" + IMPORTANT
       },
     
       dataTableToolbar: {
-        ...this.defUtil.border,
-        ...this.defUtil.borderBottom,
-        ...this.defUtil.borderPrimaryLight,
-        ...this.defUtil.pr1,
+        ...this.defaultUtilityStyles.border,
+        ...this.defaultUtilityStyles.borderBottom,
+        ...this.defaultUtilityStyles.borderPrimaryLight,
+        ...this.defaultUtilityStyles.pr1,
       },
     
-      dataTableToolbarContainer: { ...this.defUtil.bgWhite },
+      dataTableToolbarContainer: { ...this.defaultUtilityStyles.bgWhite },
     
-      devBorder: { ...this.defUtil.border },
+      devBorder: { ...this.defaultUtilityStyles.border },
     
       fiContentWidth: {},
     
@@ -142,7 +142,7 @@ export class DefaultCoreStyles extends BaseStyle {
        * App Styles
        */
       footer: {
-        backgroundColor: this.defUtil.bgSecondaryLight + IMPORTANT,
+        backgroundColor: this.defaultUtilityStyles.bgSecondaryLight + IMPORTANT,
         padding        : DEFAULT_PADDING + PX_TAG + IMPORTANT,
         textAlign      : "center" + IMPORTANT,
       },
@@ -170,7 +170,7 @@ export class DefaultCoreStyles extends BaseStyle {
       },
     
       includedModelCard: {
-        borderLeft : `1px solid ${this.defUtil.bgPrimaryLight}` + IMPORTANT,
+        borderLeft : `1px solid ${this.defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
         margin     : "8px" + IMPORTANT,
         paddingLeft: "8px" + IMPORTANT,
       },
@@ -184,8 +184,8 @@ export class DefaultCoreStyles extends BaseStyle {
       listItemText: {},
     
       loggedOutContentContainer: {
-        ...this.defUtil.w100,
-        ...this.defUtil.overflowYAuto,
+        ...this.defaultUtilityStyles.w100,
+        ...this.defaultUtilityStyles.overflowYAuto,
       },
     
       loggedOutPageContainer: { minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT },
@@ -273,12 +273,12 @@ export class DefaultCoreStyles extends BaseStyle {
     
       seperatorTextItem: { height: 0 + IMPORTANT, minHeight: 0 + IMPORTANT },
     
-      tableCell: { ...this.defUtil.px1 },
+      tableCell: { ...this.defaultUtilityStyles.px1 },
     
       tableHeadCell: {
-        ...this.defUtil.bgSecondaryLight,
-        ...this.defUtil.textPrimaryDark,
-        ...this.defUtil.px1,
+        ...this.defaultUtilityStyles.bgSecondaryLight,
+        ...this.defaultUtilityStyles.textPrimaryDark,
+        ...this.defaultUtilityStyles.px1,
       },
     
       tableRowActionPopover: { backgroundColor: "transparent" + IMPORTANT },
@@ -290,13 +290,13 @@ export class DefaultCoreStyles extends BaseStyle {
       },
       ucImg          : { width: "50%" + IMPORTANT },
       verifiedSuccess: {
-        ...this.defUtil.textSuccessDark,
-        ...this.defUtil.pl1,
+        ...this.defaultUtilityStyles.textSuccessDark,
+        ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
       },
       verifiedWarning: {
-        ...this.defUtil.textWarningDark,
-        ...this.defUtil.pl1,
+        ...this.defaultUtilityStyles.textWarningDark,
+        ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
       }
     };

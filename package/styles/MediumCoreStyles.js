@@ -33,34 +33,34 @@ export const mediumCoreStyles = {
   authFormContainer: { width: "60%" + IMPORTANT },
   
   dataTable: {
-    ...new DefaultUtilityStyles().getStyle().mtN1,
-    ...new DefaultUtilityStyles().getStyle().mlN1,
+    ...new DefaultUtilityStyles().style.mtN1,
+    ...new DefaultUtilityStyles().style.mlN1,
     width: "calc(100% + 8px)" + IMPORTANT,
   },
   
   dataTableBody         : {},
   // ----------Data Table Styles Starts----------
-  dataTableContainer    : { /* -- ...new DefaultUtilityStyles().getStyle().bgWarningLight, */ },
+  dataTableContainer    : { /* -- ...new DefaultUtilityStyles().style.bgWarningLight, */ },
   dataTableFoot         : {},
   dataTableFullWidthPane: {},
   dataTableHead         : { top: "-8px" + IMPORTANT },
   dataTableHeadTop      : { top: "53px" + IMPORTANT },
   dataTableMiniWidthPane: {
-    ...new DefaultUtilityStyles().getStyle().border,
-    ...new DefaultUtilityStyles().getStyle().borderRight,
-    ...new DefaultUtilityStyles().getStyle().borderPrimaryLight,
-    ...new DefaultUtilityStyles().getStyle().positionSticky,
-    ...new DefaultUtilityStyles().getStyle().overflowYAuto,
-    ...new DefaultUtilityStyles().getStyle().overflowXHidden,
+    ...new DefaultUtilityStyles().style.border,
+    ...new DefaultUtilityStyles().style.borderRight,
+    ...new DefaultUtilityStyles().style.borderPrimaryLight,
+    ...new DefaultUtilityStyles().style.positionSticky,
+    ...new DefaultUtilityStyles().style.overflowYAuto,
+    ...new DefaultUtilityStyles().style.overflowXHidden,
     height: "calc(100vh - 118px)" + IMPORTANT,
     top   : "53px" + IMPORTANT,
   },
   dataTableToolbar: {
-    ...new DefaultUtilityStyles().getStyle().mtN2,
-    ...new DefaultUtilityStyles().getStyle().pr0,
+    ...new DefaultUtilityStyles().style.mtN2,
+    ...new DefaultUtilityStyles().style.pr0,
   },
   dataTableToolbarContainer: {
-    ...new DefaultUtilityStyles().getStyle().stickyTop,
+    ...new DefaultUtilityStyles().style.stickyTop,
     zIndex: "1025" + IMPORTANT,
   },
   
@@ -70,7 +70,7 @@ export const mediumCoreStyles = {
 
   profileBarWidth: { maxWidth: "40vw" + IMPORTANT },
   
-  tableCell: { ...new DefaultUtilityStyles().getStyle().px1 },
+  tableCell: { ...new DefaultUtilityStyles().style.px1 },
   
   tableFilterColumnBox: {
     maxHeight: "70vh" + IMPORTANT,
@@ -82,9 +82,9 @@ export const mediumCoreStyles = {
    * Table
    */
   tableHeadCell: {
-    ...new DefaultUtilityStyles().getStyle().bgSecondaryLight,
-    ...new DefaultUtilityStyles().getStyle().textPrimaryDark,
-    ...new DefaultUtilityStyles().getStyle().px1,
+    ...new DefaultUtilityStyles().style.bgSecondaryLight,
+    ...new DefaultUtilityStyles().style.textPrimaryDark,
+    ...new DefaultUtilityStyles().style.px1,
   },
 
   /**
