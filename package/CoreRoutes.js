@@ -1,30 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { /* getConfigurationObject */CoreConfigContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/Logout";
-import SplashComponent from "./components/navigation/SplashComponent";
-import WrappidComponent from "./components/WrappidComponent";
 import { HTTP } from "./config/constants";
-import { ComponentRegistryContext } from "./config/contextHandler";
+import { CoreRoutesContext } from "./config/contextHandler";
 import Error404 from "./error/Error404";
 import Error500 from "./error/Error500";
 import PageContainer from "./layout/PageContainer";
 import { apiRequestAction } from "./store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
-export default function CoreRoutes(props) {
-  const { routes } = props;
+const DEFAULT_ROUTE = {
+  Page        : { appComponent: "WrappidComponent", layout: "WrappidAppLayout" },
+  authRequired: false,
+  entityRef   : "defaultAppRoute",
+  url         : "defaultAppRoute"
+};
+
+export default function CoreRoutes() {
   const dispatch = useDispatch();
-  const componentRegistry = useContext(ComponentRegistryContext);
+  const routesRegistry = useContext(CoreRoutesContext);
   const auth = useSelector((state) => state?.auth);
-  const _routes = useSelector((state) => state?.route?.routes);
+  const routesFromStore = useSelector((state) => state?.route?.routes);
+  const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   let authenticated = auth?.uid ? true : false;
-  let appConfig = getConfigurationObject();
+  let appConfig = useContext(CoreConfigContext);
+  // -- let appConfig = getConfigurationObject();
 
   React.useEffect(() => {
     appConfig?.wrappid?.backendUrl && dispatch(
@@ -37,6 +43,15 @@ export default function CoreRoutes(props) {
         GET_ROUTE_FAILURE
       )
     );
+
+    let defaultRouteName = appConfig?.wrappid?.defaultRoute;
+
+    if (defaultRouteName
+      && Object.keys(routesRegistry).includes(defaultRouteName)
+    /** @todo we need to check if it's exist in the routesFromStore or not */
+    ) {
+      setDefaultRoute(routesRegistry[defaultRouteName]);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -52,46 +67,44 @@ export default function CoreRoutes(props) {
     );
   }, [authenticated]);
 
-  const defRoute = _routes?.find(route => route.url === appConfig?.wrappid?.defaultRoute);
+  useEffect(() => {
+    let defaultRouteName = appConfig?.wrappid?.defaultRoute;
+
+    if (defaultRouteName
+      && Object.keys(routesRegistry).includes(defaultRouteName)) {
+      setDefaultRoute(routesRegistry[defaultRouteName]);
+    }
+  }, [appConfig]);
 
   return (
     <NativeDomRoutes>
-      
-      {/* Splash cmponent or redirection component or loader page  */}
       <NativeDomRoute
         exact
         path="/"
         element={
-          appConfig?.wrappid?.defaultRoute ? (
-            <PageContainer
-              page={{
-                auth: false,
-                comp: defRoute?.Page?.appComponent ? componentRegistry[defRoute?.Page?.appComponent]?.comp : WrappidComponent
-              }} />
-          ) : (
-            <PageContainer
-              page={{
-                auth: false,
-                comp: SplashComponent,
-              }}
-            />
-          )
+          <PageContainer
+            route={defaultRoute} />
         }
+        end
       />
 
       {/* App related routes */}
-      {[...Object.values((routes || {})), ...(_routes || [])]?.map((route) => {
+      {[...Object.values((routesRegistry || {})), ...(routesFromStore || [])]?.map((route) => {
         return (
           <NativeDomRoute
             key={route.url}
             exact
             path={"/" + route.url}
-            element={<PageContainer page={""} route={route} />}
+            element={<PageContainer route={route} />}
           />
         );
       })}
 
-      {/* LOGOUT PAGE  */}
+      {/**
+        * @todo
+        * need to remove
+        * LOGOUT PAGE
+        */}
       <NativeDomRoute
         exact
         path="/logout"
@@ -105,7 +118,7 @@ export default function CoreRoutes(props) {
         }
       />
 
-      {/* Error 500 */}
+      {/* 500: Server Error */}
       <NativeDomRoute
         path="/error"
         element={
@@ -118,7 +131,7 @@ export default function CoreRoutes(props) {
         }
       />
 
-      {/* Not Found */}
+      {/* 404: Not Found */}
       <NativeDomRoute
         path="*"
         element={

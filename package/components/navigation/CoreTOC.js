@@ -25,20 +25,14 @@ export default function CoreTOC(props) {
     disableHeaders = []
   } = props || {};
 
-  const getHeaderElem = (contentDOM, headerElementTag) => {
-    return Array.from(contentDOM.querySelectorAll(headerElementTag))
-      .map((elem, index) => ({
-        id   : `${(elem?.innerText || "")?.trim().toLowerCase()}-${index}`,
-        label: (elem?.innerText || "")?.trim(),
-        name : (elem?.innerText || "")?.trim(),
-        type : "menuitem"
-      }));
-  };
-
   React.useEffect(() => {
     let menuElem = [];
     let content = contentRef?.current || document;
 
+    /**
+     * @todo
+     * remove disabled header components
+     */
     let domHeaderElements = headerComponents.map(component => component?.name?.replaceAll("Core", ""));
 
     let contentElements = Array.from((content).querySelectorAll(domHeaderElements))

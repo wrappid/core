@@ -1,8 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { useEffect } from "react";
-
-// eslint-disable-next-line import/no-unresolved
-import { theme } from "@wrappid/styles";
+import React from "react";
 
 import ComponentRegistry from "../config/ComponentRegistry";
 import {
@@ -11,38 +8,47 @@ import {
   CoreApplicationContext,
   CoreMenuContext,
   CoreResourceContext,
+  CoreRoutesContext,
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
 import FunctionsRegistry from "../registry/FunctionsRegistry";
 
 export default function CoreContextProvider(props) {
-  // eslint-disable-next-line no-console
-  console.log("******************************************");
-  // eslint-disable-next-line no-console
-  console.log("THEME: ", theme);
-  // eslint-disable-next-line no-console
-  console.log("******************************************");
+
+  const {
+    appStyles,
+    applicationRegistry,
+    routesRegistry,
+    menusRegistry,
+    componentsRegistry,
+    resourcesRegistry,
+    validationsRegistry,
+    functionsRegistry,
+    children,
+  } = props;
 
   return (
-    <CoreApplicationContext.Provider value={props.applicationRegistry}>
-      <ValidationsRegistryContext.Provider value={props.validationsRegistry}>
-        <FunctionsRegistryContext.Provider
-          value={{ ...FunctionsRegistry, ...props.functionsRegistry }}
-        >
-          <ComponentRegistryContext.Provider
-            value={{ ...ComponentRegistry, ...props.componentRegistry }}
+    <CoreApplicationContext.Provider value={applicationRegistry}>
+      <CoreRoutesContext.Provider value={routesRegistry}>
+        <ValidationsRegistryContext.Provider value={validationsRegistry}>
+          <FunctionsRegistryContext.Provider
+            value={{ ...FunctionsRegistry, ...functionsRegistry }}
           >
-            <CoreResourceContext.Provider value={props.resourceRegistry}>
-              <CoreMenuContext.Provider value={props.menuRegistry}>
-                <AppStylesContext.Provider value={props.appStyles}>
-                  {props.children}
-                </AppStylesContext.Provider>
-              </CoreMenuContext.Provider>
-            </CoreResourceContext.Provider>
-          </ComponentRegistryContext.Provider>
-        </FunctionsRegistryContext.Provider>
-      </ValidationsRegistryContext.Provider>
+            <ComponentRegistryContext.Provider
+              value={{ ...ComponentRegistry, ...componentsRegistry }}
+            >
+              <CoreResourceContext.Provider value={resourcesRegistry}>
+                <CoreMenuContext.Provider value={menusRegistry}>
+                  <AppStylesContext.Provider value={appStyles}>
+                    {children}
+                  </AppStylesContext.Provider>
+                </CoreMenuContext.Provider>
+              </CoreResourceContext.Provider>
+            </ComponentRegistryContext.Provider>
+          </FunctionsRegistryContext.Provider>
+        </ValidationsRegistryContext.Provider>
+      </CoreRoutesContext.Provider>
     </CoreApplicationContext.Provider>
   );
 }

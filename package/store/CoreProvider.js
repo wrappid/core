@@ -5,7 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // eslint-disable-next-line import/no-unresolved
 import { nativeStorage } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { StylesProvider, ConfigProvider } from "@wrappid/styles";
+import { StylesProvider, ConfigProvider, StylesThemesContext } from "@wrappid/styles";
 import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
@@ -67,21 +67,34 @@ function createFullStore(appReducer, persistFlag = true) {
 }
 
 export default function CoreProvider(props) {
-  /**
-   * @description
-   *
-   * props should have a json object for reducer
-   *
-   * like
-   * {
-   *  app: appReducer //appReducer is a reducer
-   * }
-   *
-   * const modalReducer = (state = initState, action) => {
-   *  ...
-   * }
-   */
-  let { store, persistor } = createFullStore(props.appReducer, props?.persistFlag, props?.storage);
+  const {
+    applicationConfig,
+    appStyles,
+    customIcons,
+    applicationRegistry,
+    routesRegistry,
+    menusRegistry,
+    componentsRegistry,
+    reducersRegistry,
+    resourcesRegistry,
+    functionsRegistry,
+    validationsRegistry,
+    themesRegistry,
+    children
+  } = props;
+
+  const [store, setStore] = React.useState(null);
+  const [persistor, setPersistor] = React.useState(null);
+
+  React.useEffect(() => {
+    let { store, persistor } = createFullStore(
+      reducersRegistry,
+      applicationRegistry?.persistFlag
+    );
+
+    setStore(store);
+    setPersistor(persistor);
+  }, []);
 
   let coreStyles = {
     classes: CoreClasses,
@@ -95,38 +108,33 @@ export default function CoreProvider(props) {
     },
   };
 
-  // eslint-disable-next-line no-console
-  console.log("******************************************");
-  // eslint-disable-next-line no-console
-  console.log("THEME provider: ", props.theme);
-  // eslint-disable-next-line no-console
-  console.log("******************************************");
-
-  return (
+  return store && persistor && (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ConfigProvider config={props.config}>
-          <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
-            <CoreContextProvider
-              applicationRegistry={props.applicationRegistry}
-              validationsRegistry={props.validationsRegistry}
-              functionsRegistry={props.functionsRegistry}
-              componentRegistry={props.componentRegistry}
-              resourceRegistry={props.resourceRegistry}
-              menuRegistry={props.menuRegistry}
-              appStyles={props.appStyles}
-            >
-              <CoreThemeProvider>
-                <IconContext.Provider value={props.customIcons}>
-                  {props.children}
-                </IconContext.Provider>
-              </CoreThemeProvider>
-            </CoreContextProvider>
-          </StylesProvider>
+        <ConfigProvider config={applicationConfig}>{/** @todo need to wrap it in parent */}
+          <StylesThemesContext.Provider value={themesRegistry}>
+            <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
+              <CoreContextProvider
+                appStyles={appStyles}
+                applicationRegistry={applicationRegistry}
+                routesRegistry={routesRegistry}
+                menusRegistry={menusRegistry}
+                componentsRegistry={componentsRegistry}
+                resourcesRegistry={resourcesRegistry}
+                functionsRegistry={functionsRegistry}
+                validationsRegistry={validationsRegistry}
+              >
+                <CoreThemeProvider>
+                  <IconContext.Provider value={customIcons}>
+                    {children}
+                  </IconContext.Provider>
+                </CoreThemeProvider>
+              </CoreContextProvider>
+            </StylesProvider>
+          </StylesThemesContext.Provider>
         </ConfigProvider>
       </PersistGate>
-    </Provider>
-  );
+    </Provider>);
 }
 
 export { createFullStore };

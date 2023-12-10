@@ -9,38 +9,43 @@ import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";
 import CoreProvider from "./store/CoreProvider";
 
-export default function CoreApp({
-  reducers,
-  storage,
-  componentRegistry,
-  appStyles,
-  customIcons,
-  menuRegistry,
-  applicationRegistry,
-  resourceRegistry,
-  routesRegistry,
-  functionsRegistry,
-  validationsRegistry,
-  customConfig
-}) {
+export default function CoreApp(props) {
+  const {
+    storage,
+    appStyles,
+    customIcons,
+    applicationRegistry,
+    themesRegistry,
+    routesRegistry,
+    menusRegistry,
+    componentsRegistry,
+    reducersRegistry,
+    resourcesRegistry,
+    functionsRegistry,
+    validationsRegistry,
+    applicationConfig
+  } = props;
+
   return (
     <CoreProvider
-      appReducer={reducers}
+      applicationConfig={{ ...(applicationConfig || {}) }}
       storage={storage}
       appStyles={appStyles}
       customIcons={customIcons}
       applicationRegistry={applicationRegistry}
-      componentRegistry={componentRegistry}
+      themesRegistry={themesRegistry}
+      routesRegistry={routesRegistry}
+      menusRegistry={menusRegistry}
+      componentsRegistry={componentsRegistry}
+      reducersRegistry={reducersRegistry}
+      resourcesRegistry={resourcesRegistry}
       functionsRegistry={functionsRegistry}
-      menuRegistry={menuRegistry}
-      resourceRegistry={resourceRegistry}
       validationsRegistry={validationsRegistry} 
-      config={{ ...(customConfig || {}), ...config }}
     >
       <CoreAppDiv>
         <CoreNavigation>
           <AppContainer>
-            <CoreRoutes routes={routesRegistry} />
+            <CoreRoutes />
           </AppContainer>
         </CoreNavigation>
       </CoreAppDiv>

@@ -4,6 +4,7 @@ import React, { useState, useContext } from "react";
 import { nativeUseLocation, NativePageContainer } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
+import CoreComponent from "../components/CoreComponent";
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
 import {
@@ -94,20 +95,39 @@ export default function PageContainer(props) {
     }
   };
 
+  /**
+   * This function will return page layout component based on the JSON schema
+   * 
+   * @returns PageLayout Component
+   */
+  const pageLayout = () => {
+    if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
+      return route?.Page?.layout;
+    } else if (props.page?.layout) {
+      return React.createElement(props.page?.comp, props?.page?.props, null);
+    } else {
+      return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
+    }
+  };
+
   return auth?.sessionExpired && !auth?.uid && route?.authRequired ? (
     <CoreDomNavigate to="/" replace={true} />
   ) : (
-    <NativePageContainer uid={auth?.uid} route={route} coreClasses={CoreClasses}>
-      <CoreModal open={true} />
+    <CoreComponent componentName={pageLayout()}>
+      <NativePageContainer
+        uid={auth?.uid}
+        route={route}
+        coreClasses={CoreClasses}>
+        <CoreModal open={true} />
 
-      {/* Show Helper Text Toggle */}
-      {/* -- {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
+        {/* Show Helper Text Toggle */}
+        {/* -- {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
           <CoreAlert
             // severity="info"
             styleClasses={[
               // CoreClasses.LAYOUT.FULL_WIDTH,
               // CoreClasses.LAYOUT.HORIZONTAL_RIGHT,
-              // CoreClasses.MARGIN.MB1,
+              // CoreClasses.MARGIN.MB1,``
             ]}
             action={
               <CoreSwitch
@@ -121,11 +141,12 @@ export default function PageContainer(props) {
             Toggle to see/hide helper texts from forms.
           </CoreAlert>
         )} */}
-      <CoreDialogContext.Provider value={value}>
-        {pageChild()}
+        <CoreDialogContext.Provider value={value}>
+          {pageChild()}
 
-        <CoreDialog />
-      </CoreDialogContext.Provider>
-    </NativePageContainer>
+          <CoreDialog />
+        </CoreDialogContext.Provider>
+      </NativePageContainer>
+    </CoreComponent>
   );
 }

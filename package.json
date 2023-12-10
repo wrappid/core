@@ -38,7 +38,6 @@
     ]
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
     "formik": "^2.2.9",
     "mdi": "^2.2.43",
     "moment": "^2.29.4",
@@ -55,6 +54,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
     "@babel/polyfill": "^7.12.1",

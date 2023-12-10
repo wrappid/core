@@ -1,4 +1,5 @@
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import { layoutComponents } from "../layout";
 import { componentMap } from "../utils/componentMap";
 
 let ComponentRegistry = {
@@ -6,7 +7,8 @@ let ComponentRegistry = {
    * componentMap is form specific map for elements
    */
   ...componentMap,
-  ...coreComponentsRegistry
+  ...coreComponentsRegistry,
+  ...layoutComponents
 };
 
 export default ComponentRegistry;

@@ -11,7 +11,7 @@ const routeReducer = (state = initState, action) => {
     case GET_ROUTE_SUCCESS:
       return {
         ...state,
-        routes: action?.payload?.data?.rows || [],
+        routes: [...(action?.payload?.data?.rows || [])],
       };
 
     case GET_ROUTE_FAILURE:
