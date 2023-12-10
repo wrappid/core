@@ -33,8 +33,6 @@ import {
 } from "../store/types/dataManagementTypes";
 import CoreClasses from "../styles/CoreClasses";
 
-let configuration = getConfigurationObject();
-
 export function getFormikRequiredMessage(name = "", isShort = false) {
   let message = "";
 
@@ -662,6 +660,8 @@ export function createTableFormJson(
 }
 
 export function viewString(text, type) {
+  let configuration = getConfigurationObject();
+
   if (text) {
     return text;
   } else if (configuration?.wrappid?.env === ENV_DEV_MODE) {
@@ -718,6 +718,8 @@ export function hookcallCheck(
 }
 
 export async function getForm(formId, auth = true, formReducer) {
+  let configuration = getConfigurationObject();
+
   if (formReducer?.rawForm && formReducer?.rawForm[formId]) {
     return {
       formId,
