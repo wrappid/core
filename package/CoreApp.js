@@ -4,6 +4,7 @@ import React from "react";
 
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import CoreNavigation from "./components/navigation/CoreNavigation";
+import config from "./config/config";
 import CoreRoutes from "./CoreRoutes";
 import AppContainer from "./layout/AppContainer";
 import CoreProvider from "./store/CoreProvider";
@@ -20,6 +21,7 @@ export default function CoreApp({
   routesRegistry,
   functionsRegistry,
   validationsRegistry,
+  customConfig
 }) {
   return (
     <CoreProvider
@@ -33,6 +35,7 @@ export default function CoreApp({
       menuRegistry={menuRegistry}
       resourceRegistry={resourceRegistry}
       validationsRegistry={validationsRegistry} 
+      config={{ ...(customConfig || {}), ...config }}
     >
       <CoreAppDiv>
         <CoreNavigation>

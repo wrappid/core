@@ -5,7 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // eslint-disable-next-line import/no-unresolved
 import { nativeStorage } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { StylesProvider } from "@wrappid/styles";
+import { StylesProvider, ConfigProvider } from "@wrappid/styles";
 import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
@@ -105,23 +105,25 @@ export default function CoreProvider(props) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
-          <CoreContextProvider
-            applicationRegistry={props.applicationRegistry}
-            validationsRegistry={props.validationsRegistry}
-            functionsRegistry={props.functionsRegistry}
-            componentRegistry={props.componentRegistry}
-            resourceRegistry={props.resourceRegistry}
-            menuRegistry={props.menuRegistry}
-            appStyles={props.appStyles}
-          >
-            <CoreThemeProvider>
-              <IconContext.Provider value={props.customIcons}>
-                {props.children}
-              </IconContext.Provider>
-            </CoreThemeProvider>
-          </CoreContextProvider>
-        </StylesProvider>
+        <ConfigProvider config={props.config}>
+          <StylesProvider appStyles={props.appStyles} coreStyles={coreStyles}>
+            <CoreContextProvider
+              applicationRegistry={props.applicationRegistry}
+              validationsRegistry={props.validationsRegistry}
+              functionsRegistry={props.functionsRegistry}
+              componentRegistry={props.componentRegistry}
+              resourceRegistry={props.resourceRegistry}
+              menuRegistry={props.menuRegistry}
+              appStyles={props.appStyles}
+            >
+              <CoreThemeProvider>
+                <IconContext.Provider value={props.customIcons}>
+                  {props.children}
+                </IconContext.Provider>
+              </CoreThemeProvider>
+            </CoreContextProvider>
+          </StylesProvider>
+        </ConfigProvider>
       </PersistGate>
     </Provider>
   );
