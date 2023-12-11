@@ -5,7 +5,7 @@
 // import CoreEmailLink from "./dataDisplay/CoreEmailLink.js";
 // import CoreEmailOrPhoneLink from "./dataDisplay/CoreEmailOrPhoneLink.js";
 // import CoreH from "./dataDisplay/CoreH.js";
-// import CoreH1 from "./dataDisplay/CoreH1.js";
+import CoreH1 from "./dataDisplay/CoreH1.js";
 // import CoreH2 from "./dataDisplay/CoreH2.js";
 // import CoreH3 from "./dataDisplay/CoreH3.js";
 // import CoreH4 from "./dataDisplay/CoreH4.js";
@@ -261,7 +261,7 @@ export const coreComponentsRegistry = {
   // "CoreGrid"                     : { comp: CoreGrid },
   // "CoreGridItem"                 : { comp: CoreGridItem },
   // "CoreH"                        : { comp: CoreH },
-  // "CoreH1"                       : { comp: CoreH1 },
+  "CoreH1"          : { comp: CoreH1 },
   // "CoreH2"                       : { comp: CoreH2 },
   // "CoreH3"                       : { comp: CoreH3 },
   // "CoreH4"                       : { comp: CoreH4 },
