@@ -46,11 +46,12 @@ export default function CoreRoutes() {
 
     let defaultRouteName = appConfig?.wrappid?.defaultRoute;
 
-    if (defaultRouteName
-      && Object.keys(routesRegistry).includes(defaultRouteName)
-    /** @todo we need to check if it's exist in the routesFromStore or not */
-    ) {
-      setDefaultRoute(routesRegistry[defaultRouteName]);
+    if (defaultRouteName) {
+      if (Object.keys(routesRegistry).includes(defaultRouteName)) {
+        setDefaultRoute(routesRegistry[defaultRouteName]);
+      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRoute)?.length > 0) {
+        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRoute)[0]);
+      }
     }
   }, []);
 
@@ -70,9 +71,12 @@ export default function CoreRoutes() {
   useEffect(() => {
     let defaultRouteName = appConfig?.wrappid?.defaultRoute;
 
-    if (defaultRouteName
-      && Object.keys(routesRegistry).includes(defaultRouteName)) {
-      setDefaultRoute(routesRegistry[defaultRouteName]);
+    if (defaultRouteName) {
+      if (Object.keys(routesRegistry).includes(defaultRouteName)) {
+        setDefaultRoute(routesRegistry[defaultRouteName]);
+      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRoute)?.length > 0) {
+        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRoute)[0]);
+      }
     }
   }, [appConfig]);
 
