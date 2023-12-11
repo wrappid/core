@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { /* getConfigurationObject */CoreConfigContext } from "@wrappid/styles";
+import { getConfigurationObject, CoreConfigContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/Logout";
@@ -29,8 +29,8 @@ export default function CoreRoutes() {
   const routesFromStore = useSelector((state) => state?.route?.routes);
   const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   let authenticated = auth?.uid ? true : false;
-  let appConfig = useContext(CoreConfigContext);
-  // -- let appConfig = getConfigurationObject();
+  // let appConfig = useContext(CoreConfigContext);
+  let appConfig = getConfigurationObject();
 
   React.useEffect(() => {
     appConfig?.wrappid?.backendUrl && dispatch(
@@ -49,8 +49,8 @@ export default function CoreRoutes() {
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
         setDefaultRoute(routesRegistry[defaultRouteName]);
-      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRoute)?.length > 0) {
-        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRoute)[0]);
+      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)?.length > 0) {
+        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
       }
     }
   }, []);
@@ -74,11 +74,11 @@ export default function CoreRoutes() {
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
         setDefaultRoute(routesRegistry[defaultRouteName]);
-      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRoute)?.length > 0) {
-        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRoute)[0]);
+      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)?.length > 0) {
+        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
       }
     }
-  }, [appConfig]);
+  }, [appConfig,routesFromStore]);
 
   return (
     <NativeDomRoutes>
