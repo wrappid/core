@@ -16,7 +16,7 @@ import { apiRequestAction } from "./store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
 const DEFAULT_ROUTE = {
-  Page        : { appComponent: "WrappidComponent", layout: "WrappidAppLayout" },
+  Page        : { appComponent: "WrappidComponent", layout: "WrappidGuestLayout" },
   authRequired: false,
   entityRef   : "defaultAppRoute",
   url         : "defaultAppRoute"

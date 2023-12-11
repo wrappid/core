@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
 import CoreDrawer from "./../components/surfaces/CoreDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
-import ComponentRegistry from "./../config/ComponentRegistry";
+import ComponentRegistry from "../registry/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
 import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
 import {

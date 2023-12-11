@@ -104,7 +104,7 @@ export default function PageContainer(props) {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
     } else if (props.page?.layout) {
-      return React.createElement(props.page?.comp, props?.page?.props, null);
+      return props?.page?.layout;
     } else {
       return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
     }
@@ -119,28 +119,7 @@ export default function PageContainer(props) {
         route={route}
         coreClasses={CoreClasses}>
         <CoreModal open={true} />
-
-        {/* Show Helper Text Toggle */}
-        {/* -- {process.env.REACT_APP_ENV === ENV_DEV_MODE && helperButtonFlag && (
-          <CoreAlert
-            // severity="info"
-            styleClasses={[
-              // CoreClasses.LAYOUT.FULL_WIDTH,
-              // CoreClasses.LAYOUT.HORIZONTAL_RIGHT,
-              // CoreClasses.MARGIN.MB1,``
-            ]}
-            action={
-              <CoreSwitch
-                checked={showHelperText}
-                onChange={(e) => {
-                  dispatch({ type: UPDATE_HELPER_TEXT_VIEW });
-                }}
-              />
-            }
-          >
-            Toggle to see/hide helper texts from forms.
-          </CoreAlert>
-        )} */}
+        
         <CoreDialogContext.Provider value={value}>
           {pageChild()}
 

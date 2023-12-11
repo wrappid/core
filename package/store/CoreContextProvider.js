@@ -1,7 +1,6 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import ComponentRegistry from "../config/ComponentRegistry";
 import {
   AppStylesContext,
   ComponentRegistryContext,
@@ -12,6 +11,7 @@ import {
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
+import ComponentRegistry from "../registry/ComponentRegistry";
 import FunctionsRegistry from "../registry/FunctionsRegistry";
 
 export default function CoreContextProvider(props) {
