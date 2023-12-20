@@ -31,7 +31,7 @@ export default function CoreTooltip(props) {
     open,
     PopperComponen,
     PopperProp,
-    titl,
+    title,
     TransitionComponen,
     TransitionProp,
     placement,
@@ -60,7 +60,7 @@ export default function CoreTooltip(props) {
       open={open}
       PopperComponen={PopperComponen}
       PopperProp={PopperProp}
-      titl={titl}
+      title={title}
       TransitionComponen={TransitionComponen}
       TransitionProp={TransitionProp}
       placement={placement}
