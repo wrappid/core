@@ -3,15 +3,15 @@ import React from "react";
 
 import { getConfigurationObject } from "@wrappid/styles";
 
+import CoreAvatar from "./CoreAvatar";
+import CoreChip from "./CoreChip";
+import CoreTooltip from "./CoreTooltip";
+import CoreTypographyCaption from "./CoreTypographyCaption";
 import { HTTP } from "../../config/constants";
 import axiosInterceptor from "../../middleware/axiosInterceptor";
 import authHeader from "../../service/DataService";
 import CoreClasses from "../../styles/CoreClasses";
 import { getFullName } from "../../utils/helper";
-import CoreAvatar from "./CoreAvatar";
-import CoreChip from "./CoreChip";
-import CoreTooltip from "./CoreTooltip";
-import CoreTypographyCaption from "./CoreTypographyCaption";
 
 export default function UserChip(props) {
   const {
@@ -76,10 +76,10 @@ export default function UserChip(props) {
   return titleVisible ? (
     <CoreChip
       title={displayName}
-      size="small"
+      size="medium"
       avatar={
         <CoreAvatar
-          styleClasses={[CoreClasses.BORDER.BORDER_0]}
+          styleClasses={[CoreClasses.BORDER.BORDER_0, CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
           src={photoUrl || "photo.jpg"}
         />
       }
