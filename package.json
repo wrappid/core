@@ -3,20 +3,16 @@
   "version": "0.0.390",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
     "code:lint": "eslint --ignore-path .gitignore ./package",
     "code:format": "npm run code:lint --fix ./package",
     "test": "exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
-    "build-app": "npx babel package --out-dir ../wrappid-app/.wrappid/runtime/mobile/node_modules/@wrappid/core --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://techoneel: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@github.com/wrappid/core.git"
+    "url": "git+https://github.com/wrappid/core.git"
   },
   "keywords": [
     "wrappid",
