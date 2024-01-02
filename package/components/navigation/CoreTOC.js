@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import CoreMenu from "./CoreMenu";
 import CoreH1 from "../dataDisplay/CoreH1";
@@ -10,19 +10,19 @@ import CoreH6 from "../dataDisplay/CoreH6";
 
 export default function CoreTOC(props) {
   const [tocMenu, setTocMenu] = React.useState([]);
+  // const myElementRef = useRef(null);
   const {
+    tocItemRefArr,
     // eslint-disable-next-line no-console
-    OnMenuClick = () => { console.log("menu clicked"); },
+    OnMenuClick = (menuItem) => {
+      console.log("menu clicked");
+      let itemRef = tocItemRefArr.get(menuItem.id);
+
+      itemRef?.current?.scrollIntoView({ behavior: "smooth" });
+    },
     contentRef,
-    headerComponents = [
-      CoreH1,
-      CoreH2,
-      CoreH3,
-      CoreH4,
-      CoreH5,
-      CoreH6
-    ],
-    disableHeaders = []
+    headerComponents = [CoreH1, CoreH2, CoreH3, CoreH4, CoreH5, CoreH6],
+    disableHeaders = [],
   } = props || {};
 
   React.useEffect(() => {
@@ -33,21 +33,31 @@ export default function CoreTOC(props) {
      * @todo
      * remove disabled header components
      */
-    let domHeaderElements = headerComponents.map(component => component?.name?.replaceAll("Core", ""));
+    let domHeaderElements = headerComponents.map((component) => {
+      console.log("inside headerElement");
+      if (component?.name) {
+        return component?.name?.replaceAll("Core", "");
+      } else {
+        return component?.displayName?.replaceAll("Core", "");
+      }
+    });
 
-    let contentElements = Array.from((content).querySelectorAll(domHeaderElements))
-      .map((elem) => ({ elem: elem, text: elem.innerText }));
+    let contentElements = Array.from(
+      content.querySelectorAll(domHeaderElements)
+    ).map((elem) => ({ elem: elem, text: elem.innerText }));
 
     let headerElementsSorted = domHeaderElements.sort();
-    
-    contentElements.forEach(elem => {
-      if (headerElementsSorted.indexOf(elem?.elem?.tagName) === 0) {
+
+    contentElements.forEach((elem) => {
+      if (headerElementsSorted.includes(elem?.elem?.tagName)) {
+        // if (headerElementsSorted.indexOf(elem?.elem?.tagName) === 0) {
+
         menuElem.push({
           Children: [],
-          id      : elem?.text?.trim()?.replaceAll(" ", "-"),
-          label   : elem?.text?.trim(),
-          name    : elem?.text?.trim(),
-          type    : "menuitem"
+          id: elem?.text?.trim()?.replaceAll(" ", "-"),
+          label: elem?.text?.trim(),
+          name: elem?.text?.trim(),
+          type: "menuitem",
         });
       }
     });
@@ -59,8 +69,12 @@ export default function CoreTOC(props) {
     };
   }, []);
 
-  return <CoreMenu
-    multiLevel={true}
-    menu={tocMenu}
-    OnMenuClick={OnMenuClick} />;
+  return (
+    <CoreMenu
+      multiLevel={true}
+      menu={tocMenu}
+      OnMenuClick={OnMenuClick}
+      open={true}
+    />
+  );
 }
