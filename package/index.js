@@ -171,6 +171,7 @@ import {
   MENU_ITEM_TEXT,
   MENU_ITEM_ICON
 } from "./config/menuConstants";
+import useDynamicRefs from "./config/referenceMap";
 import CoreApp from "./CoreApp";
 import {
   CoreDomRoutes,
@@ -213,6 +214,7 @@ import {
 } from "./utils/themeUtil";
 
 export {
+  useDynamicRefs,
   CoreCardMedia,
   CoreTOC,
   CoreTypography,

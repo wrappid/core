@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import CoreMenu from "./CoreMenu";
 import CoreH1 from "../dataDisplay/CoreH1";
@@ -7,21 +7,30 @@ import CoreH3 from "../dataDisplay/CoreH3";
 import CoreH4 from "../dataDisplay/CoreH4";
 import CoreH5 from "../dataDisplay/CoreH5";
 import CoreH6 from "../dataDisplay/CoreH6";
+import useDynamicRefs from "../../config/referenceMap";
 
 export default function CoreTOC(props) {
   const [tocMenu, setTocMenu] = React.useState([]);
-  // const myElementRef = useRef(null);
+
+  const { getRef } = useDynamicRefs();
+
   const {
-    tocItemRefArr,
     // eslint-disable-next-line no-console
     OnMenuClick = (menuItem) => {
-      console.log("menu clicked");
-      let itemRef = tocItemRefArr.get(menuItem.id);
+      // console.log("menu clicked");
+      let itemRef = getRef(menuItem?.id);
 
       itemRef?.current?.scrollIntoView({ behavior: "smooth" });
     },
     contentRef,
-    headerComponents = [CoreH1, CoreH2, CoreH3, CoreH4, CoreH5, CoreH6],
+    headerComponents = [
+      CoreH1,
+      CoreH2,
+      CoreH3,
+      CoreH4,
+      CoreH5,
+      CoreH6
+    ],
     disableHeaders = [],
   } = props || {};
 
@@ -51,13 +60,14 @@ export default function CoreTOC(props) {
     contentElements.forEach((elem) => {
       if (headerElementsSorted.includes(elem?.elem?.tagName)) {
         // if (headerElementsSorted.indexOf(elem?.elem?.tagName) === 0) {
+        let elemID = elem?.text?.trim()?.replaceAll(" ", "-");
 
         menuElem.push({
           Children: [],
-          id: elem?.text?.trim()?.replaceAll(" ", "-"),
-          label: elem?.text?.trim(),
-          name: elem?.text?.trim(),
-          type: "menuitem",
+          id      : elemID,
+          label   : elem?.text?.trim(),
+          name    : elem?.text?.trim(),
+          type    : "menuitem",
         });
       }
     });
