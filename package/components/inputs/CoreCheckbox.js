@@ -4,9 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeCheckbox } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreIcon from "../dataDisplay/CoreIcon";
 
 export default function CoreCheckbox(props) {
+  props = sanitizeComponentProps(CoreCheckbox, props);
   return <NativeCheckbox {...props} />;
 }
 CoreCheckbox.validProps = [

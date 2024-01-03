@@ -5,7 +5,6 @@ import React from "react";
 import { NativeCardActionArea } from "@wrappid/native";
 
 export default function CoreCardActionArea(props) {
+
   return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;
 }
-CoreCardActionArea.validProps = [];
-CoreCardActionArea.invalidProps = ["sx", "classes"];

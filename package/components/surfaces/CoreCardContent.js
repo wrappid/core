@@ -4,7 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeCardContent } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreCardContent(props) {
+  props = sanitizeComponentProps(CoreCardContent, props);
+
   return <NativeCardContent {...props} />;
 }
 CoreCardContent.validProps = [

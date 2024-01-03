@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
@@ -23,6 +24,12 @@ export default function UserChip(props) {
     _email = "",
     _photoUrl = "",
   } = props;
+
+  console.log("id", userid);
+   
+  // eslint-disable-next-line no-console
+  console.log("userchip", props);
+
   const [firstName, setFirstName] = React.useState(_firstName);
   const [middleName, setMiddleName] = React.useState(_middleName);
   const [lastName, setLastName] = React.useState(_lastName);
@@ -72,6 +79,8 @@ export default function UserChip(props) {
   } else {
     displayName = getFullName({ firstName, lastName, middleName });
   }
+
+  console.log("userchip name", firstName);
 
   return titleVisible ? (
     <CoreChip

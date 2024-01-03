@@ -43,6 +43,26 @@ CoreAvatar.validProps = [
         validValues: [true, false]
       }
     ]
-  }
+  },
+  {
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ default: "", type: "elementType" }]
+  },
+  {
+    description: "Attributes applied to the img element if the component is used to display an image. It can be used to listen for the loading error event.",
+    name       : "imgProps",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "The sizes attribute for the img element.",
+    name       : "sizes",
+    types      : "string",
+  },
+  {
+    description: "The srcSet attribute for the img element. Use this attribute for responsive image display.",
+    name       : "srcSet",
+    types      : "string",
+  },
 ];
 CoreAvatar.invalidProps = ["sx", "classes"];

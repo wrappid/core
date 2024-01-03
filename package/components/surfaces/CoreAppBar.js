@@ -13,6 +13,7 @@ import { urls } from "../../config/constants";
 import { coreUseLocation, coreUseNavigate } from "../../helper/routerHelper";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreComponent from "../CoreComponent";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -26,6 +27,8 @@ import NotificationPopOver from "../utils/NotificationPopOver";
 import QuickAddPopOver from "../utils/QuickAddPopOver";
 
 export default function CoreAppBar(props) {
+  props = sanitizeComponentProps(CoreAppBar, props);
+
   const dispatch = useDispatch();
   const location = coreUseLocation();
   const auth = useSelector((state) => state.auth);

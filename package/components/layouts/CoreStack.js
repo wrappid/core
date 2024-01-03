@@ -4,7 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeStack } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreStack(props) {
+  props = sanitizeComponentProps(CoreStack, props);
+
   return <NativeStack {...props} />;
 }
 

@@ -6,7 +6,7 @@ import { NativeBadge } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreBadge(props) {
-  // props = sanitizeComponentProps(CoreBadge, props);
+  props = sanitizeComponentProps(CoreBadge, props);
 
   const {
     anchorOrigin,
@@ -60,11 +60,6 @@ CoreBadge.validProps = [
   {
     description: "The content rendered within the badge.",
     name       : "badgeContent",
-    types      : [{ type: "node" }],
-  },
-  {
-    description: "The badge will be added relative to this node.",
-    name       : "children",
     types      : [{ type: "node" }],
   },
   {

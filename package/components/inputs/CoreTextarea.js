@@ -2,8 +2,11 @@
 import React from "react";
 
 import CoreInput from "./CoreInput";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTextarea(props) {
+  props = sanitizeComponentProps(CoreTextarea, props);
+
   return (
     <CoreInput
       {...props}
@@ -14,3 +17,17 @@ export default function CoreTextarea(props) {
     />
   );
 }
+
+CoreTextarea.validProps = [
+  {
+    description: "Maximum number of rows to display.",
+    name       : "maxrows",
+    type       : "number"
+  },
+  {
+    description: "Minimum number of rows to display.",
+    name       : "minrows",
+    type       : "number"
+  },
+];
+CoreTextarea.invalidProps = [];

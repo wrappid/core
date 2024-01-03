@@ -4,7 +4,10 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeGrid } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreGrid(props) {
+  props = sanitizeComponentProps(CoreGrid, props);
   return <NativeGrid {...props} />;
 }
 CoreGrid.validProps = [

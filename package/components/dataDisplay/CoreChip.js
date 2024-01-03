@@ -21,7 +21,8 @@ export default function CoreChip(props) {
     onDelete,
     size,
     skipFocusWhenDisabled,
-    variant
+    variant,
+    disabled
   } = props;
 
   return (
@@ -38,6 +39,7 @@ export default function CoreChip(props) {
       size={size}
       skipFocusWhenDisabled={skipFocusWhenDisabled}
       variant={variant}
+      disabled={disabled}
     />
   );
 }
@@ -58,7 +60,6 @@ CoreChip.validProps = [
       },
     ],
   },
-
   {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
@@ -153,6 +154,11 @@ CoreChip.validProps = [
         validValues: ["filled", "outlined"],
       },
     ],
+  },
+  {
+    description: "If true, the component is disabled.",
+    name       : "disabled",
+    types      : [{ default: "false", type: "bool" }],
   },
 ];
 

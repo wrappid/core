@@ -7,10 +7,12 @@ import { ThemeContext } from "@wrappid/styles";
 
 import { CoreRouteRegistryContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
 import CoreStack from "../layouts/CoreStack";
 
 export default function CoreMenu(props) {
+  props = sanitizeComponentProps(CoreMenu, props);
   const {
     menu, //menu data schema
     OnMenuClick, //menu click operation
@@ -62,3 +64,57 @@ export default function CoreMenu(props) {
     </CoreStack>
   );
 }
+
+CoreMenu.validProps = [
+  {
+    description: "A ref with imperative actions that can be performed on the menu.",
+    name       : "actions",
+    types      : [{ default: "", type: "ref" }],
+  },
+  {
+    description: "Side from which the drawer will appear.",
+    name       : "anchor",
+    types      : [
+      {
+        default    : "left'",
+        type       : "string",
+        validValues: ["bottom", "left", "right", "top"],
+      },
+    ],
+  },
+  {
+    description: "Function called when the items displayed in the menu change.",
+    name       : "onItemChange",
+    types      : "function",
+  },
+  {
+    description: "The props used for each slot inside the Badge.",
+    name       : "slotProps",
+    types      : [
+      {
+        default    : {},
+        type       : "object",
+        validValues: [
+          {
+            badge: "func",
+            root : "func",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description:
+      "The components used for each slot inside the Badge. Either a string to use a HTML element or a component.",
+    name : "slot",
+    types: [
+      {
+        default    : {},
+        type       : "object",
+        validValues: [{ badge: "elementType", root: "elementType" }],
+      },
+    ],
+  },
+];
+
+CoreMenu.invalidProps = [];

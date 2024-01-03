@@ -7,6 +7,7 @@ import { ThemeContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toggleMenuItemState } from "../../store/action/menuAction";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import {
   APP_PLATFORM,
   WEB_PLATFORM,
@@ -15,6 +16,8 @@ import {
 import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreDrawer(props) {
+  props = sanitizeComponentProps(CoreDrawer, props);
+
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state?.auth);

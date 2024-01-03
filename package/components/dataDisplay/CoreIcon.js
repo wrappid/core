@@ -98,11 +98,6 @@ CoreIcon.validProps = [
     ],
   },
   {
-    description: "The name of the icon font ligature.",
-    name       : "children",
-    types      : [{ type: "node" }],
-  },
-  {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
     name : "color",

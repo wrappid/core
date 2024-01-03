@@ -1,14 +1,16 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreIconText from "./CoreIconText";
 import CoreIcon, { __IconTypes } from "./CoreIcon";
+import CoreIconText from "./CoreIconText";
+import CoreTooltip from "./CoreTooltip";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { maskEmailOrPhone } from "../../utils/stringUtils";
 import CoreLink from "../navigation/CoreLink";
-import CoreTooltip from "./CoreTooltip";
 
 export default function CorePhoneLink(props) {
+  props = sanitizeComponentProps(CorePhoneLink, props);
   const {
     limitChars = 30,
     phone,
@@ -85,3 +87,17 @@ export default function CorePhoneLink(props) {
     </>
   );
 }
+
+CorePhoneLink.validProps = [
+  {
+    description: "",
+    name       : "limitChars",
+    types      : [{ type: "number" }],
+  },
+  {
+    description: "",
+    name       : "sizes",
+    types      : "string",
+  },
+];
+CorePhoneLink.invalidProps = ["sx", "classes"];
