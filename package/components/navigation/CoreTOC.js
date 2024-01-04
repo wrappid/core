@@ -1,13 +1,13 @@
 import React from "react";
 
 import CoreMenu from "./CoreMenu";
+import useDynamicRefs from "../../config/referenceMap";
 import CoreH1 from "../dataDisplay/CoreH1";
 import CoreH2 from "../dataDisplay/CoreH2";
 import CoreH3 from "../dataDisplay/CoreH3";
 import CoreH4 from "../dataDisplay/CoreH4";
 import CoreH5 from "../dataDisplay/CoreH5";
 import CoreH6 from "../dataDisplay/CoreH6";
-import useDynamicRefs from "../../config/referenceMap";
 
 export default function CoreTOC(props) {
   const [tocMenu, setTocMenu] = React.useState([]);
@@ -17,7 +17,6 @@ export default function CoreTOC(props) {
   const {
     // eslint-disable-next-line no-console
     OnMenuClick = (menuItem) => {
-      // console.log("menu clicked");
       let itemRef = getRef(menuItem?.id);
 
       itemRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,6 +30,7 @@ export default function CoreTOC(props) {
       CoreH5,
       CoreH6
     ],
+    // eslint-disable-next-line no-unused-vars
     disableHeaders = [],
   } = props || {};
 
@@ -43,7 +43,6 @@ export default function CoreTOC(props) {
      * remove disabled header components
      */
     let domHeaderElements = headerComponents.map((component) => {
-      console.log("inside headerElement");
       if (component?.name) {
         return component?.name?.replaceAll("Core", "");
       } else {
