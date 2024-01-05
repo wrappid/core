@@ -66,6 +66,14 @@ export default function CoreMenu(props) {
 }
 
 CoreMenu.validProps = [
+  { name: "menu", types: [{ type: "object" }] }, 
+  { name: "OnMenuClick", types: [{ type: "function" }] }, 
+  { name: "miniDrawer", types: [{ type: "boolean" }] }, 
+  { name: "multiLevel", types: [{ type: "boolean" }] }, 
+  { name: "open", types: [{ type: "boolean" }] }, 
+  { name: "openCollapse", types: [{ type: "boolean" }] }, 
+  { name: "defaultSelection", types: [{ type: "object" }] }, 
+  { name: "noNavigation", types: [{ type: "boolean" }] }, 
   {
     description: "If true, the component is shown.",
     name       : "open",
