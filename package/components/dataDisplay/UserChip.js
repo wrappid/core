@@ -12,9 +12,11 @@ import { HTTP } from "../../config/constants";
 import axiosInterceptor from "../../middleware/axiosInterceptor";
 import authHeader from "../../service/DataService";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { getFullName } from "../../utils/helper";
 
 export default function UserChip(props) {
+  props = sanitizeComponentProps(UserChip, props);
   const {
     titleVisible = true,
     userid,

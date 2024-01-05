@@ -5,18 +5,20 @@ import React from "react";
 import { nativeUseScrollTrigger } from "@wrappid/native";
 import PropTypes from "prop-types";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreBox from "../layouts/CoreBox";
 import CoreFade from "../utils/CoreFade";
 
 export default function CoreScrollTop(props) {
+  props = sanitizeComponentProps(CoreScrollTop, props);
   const { children, window } = props;
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.
   const trigger = nativeUseScrollTrigger({
     disableHysteresis: true,
-    target: window ? window() : undefined,
-    threshold: 100,
+    target           : window ? window() : undefined,
+    threshold        : 100,
   });
 
   const handleClick = (event) => {
@@ -46,5 +48,5 @@ CoreScrollTop.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window: PropTypes.func,
+  window  : PropTypes.func,
 };

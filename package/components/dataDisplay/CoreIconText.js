@@ -1,14 +1,16 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import CoreClasses from "../../styles/CoreClasses";
-import CoreStack from "../layouts/CoreStack";
-import CoreLink from "../navigation/CoreLink";
 import CoreIcon from "./CoreIcon";
 import CoreTypographyBody2 from "./CoreTypographyBody2";
 import CoreTypographyCaption from "./CoreTypographyCaption";
+import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+import CoreStack from "../layouts/CoreStack";
+import CoreLink from "../navigation/CoreLink";
 
 export default function CoreIconText(props) {
+  props = sanitizeComponentProps(CoreIconText, props);
   const {
     icon,
     iconColor,

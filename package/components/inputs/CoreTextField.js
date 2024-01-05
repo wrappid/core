@@ -4,8 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeTextField } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 //do not use this component directly this is used for datepicker only internally
 export default function CoreTextField(props) {
+  props = sanitizeComponentProps(CoreTextField, props);
   return <NativeTextField variant="standard" {...props} />;
 }
 CoreTextField.validProps = [

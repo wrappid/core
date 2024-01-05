@@ -4,29 +4,32 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeToolbar } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreToolBar(props) {
+  props = sanitizeComponentProps(CoreToolBar, props);
   return <NativeToolbar {...props} />;
 }
 CoreToolBar.validProps = [
   {
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.",
-    name: "component",
-    types: [{ default: "", type: "elementType", }],
+    name : "component",
+    types: [{ default: "", type: "elementType" }],
   },
   {
     description: "If true, disables gutter padding.",
-    name: "disableGutters",
-    types: [{ default: "FALSE", type: "bool" }],
+    name       : "disableGutters",
+    types      : [{ default: "FALSE", type: "bool" }],
   },
  
   {
     description: "The variant to use.",
-    name: "variant",
-    types: [
+    name       : "variant",
+    types      : [
       {
-        default: "regular'",
-        type: "string",
+        default    : "regular'",
+        type       : "string",
         validValues: ["dense", "regular"],
       },
     ],

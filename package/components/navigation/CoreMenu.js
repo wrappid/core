@@ -67,25 +67,47 @@ export default function CoreMenu(props) {
 
 CoreMenu.validProps = [
   {
-    description: "A ref with imperative actions that can be performed on the menu.",
-    name       : "actions",
-    types      : [{ default: "", type: "ref" }],
+    description: "If true, the component is shown.",
+    name       : "open",
+    types      : [{ type: "boolean" }],
   },
   {
-    description: "Side from which the drawer will appear.",
-    name       : "anchor",
+    description:
+      "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
+    name : "anchorEl",
+    types: [{ default: "", type: "HTML element| func" }],
+  },
+  {
+    description: "If true, the list item is focused during the first mount. Focus will also be triggered if the value changes from false to true.",
+    name       : "autoFocus",
     types      : [
       {
-        default    : "left'",
-        type       : "string",
-        validValues: ["bottom", "left", "right", "top"],
+        default    : "true",
+        type       : "bool",
+        validValues: [true, false],
       },
-    ],
+    ]
+  },
+  {  
+    description: "Props applied to the MenuList element.",
+    name       : "MenuListProps",
+    types      : [
+      {
+        default    : {},
+        description: "",
+        type       : "object"
+      }
+    ]
   },
   {
-    description: "Function called when the items displayed in the menu change.",
-    name       : "onItemChange",
-    types      : "function",
+    description: "Callback fired when the component requests to be closed.",
+    name       : "onClose", 
+    types      : [{ type: "func" }]
+  }, 
+  {
+    description: "classes prop applied to the Popover element.",
+    name       : "PopoverClasses", 
+    types      : [{ type: "object" }] 
   },
   {
     description: "The props used for each slot inside the Badge.",
@@ -114,6 +136,24 @@ CoreMenu.validProps = [
         validValues: [{ badge: "elementType", root: "elementType" }],
       },
     ],
+  },
+  {
+    description:
+      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
+    name : "transitionDuration",
+    types: [
+      {
+        default: "auto",
+        type   : "number \
+      | { appear?: number, enter?: number, exit?: number }",
+      },
+    ],
+  },
+  {
+    description:
+      "Props applied to the transition element. By default, the element is based on this Transition component.",
+    name : "TransitionProps",
+    types: [{ type: "object" }],
   },
 ];
 

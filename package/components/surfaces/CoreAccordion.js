@@ -28,7 +28,6 @@ CoreAccordion.validProps = [
       },
     ],
   },
-
   {
     description: "If true, expands the accordion by default.",
     name       : "defaultExpanded",
@@ -52,10 +51,9 @@ CoreAccordion.validProps = [
     types: [{ default: "", type: "bool", validValues: [true, false] }],
   },
   {
-    description:
-      "Callback fired when the expand/collapse state is changed.Signature:function(event: React.SyntheticEvent, expanded: boolean) => voidevent The event source of the callback. Warning: This is a generic event not a change event.expanded The expanded state of the accordion.",
-    name : "onChange",
-    types: [{ default: "", type: "func" }],
+    description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
+    name       : "onChange",
+    types      : [{ default: "", type: "func" }],
   },
   {
     description: "If true, rounded corners are disabled.",

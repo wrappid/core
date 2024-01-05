@@ -2,8 +2,10 @@
 import React from "react";
 
 import CoreTypography from "./CoreTypography";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTypographyButton(props) {
+  props = sanitizeComponentProps(CoreTypographyButton, props);
   return (
     <CoreTypography {...props} variant="button">
       {props.children}

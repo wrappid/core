@@ -8,11 +8,13 @@ import CoreEmailLink from "./CoreEmailLink";
 import CorePhoneLink from "./CorePhoneLink";
 import CoreTypographyBody1 from "./CoreTypographyBody1";
 import { toggleModalState } from "../../store/action/modalAction";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreTextButton from "../inputs/CoreTextButton";
 import CoreForm from "../inputs/forms/CoreForm";
 import { FORM_EDIT_MODE, FORM_IDS } from "../inputs/forms/coreFormConstants";
 
 export default function CoreEmailOrPhoneLink(props) {
+  props = sanitizeComponentProps(CoreEmailOrPhoneLink, props);
   const dispatch = useDispatch();
   const verifyOtpSuccess = useSelector(
     (state) => state?.settings?.verifyOtpSuccess

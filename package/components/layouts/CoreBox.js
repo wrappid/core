@@ -4,22 +4,20 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeBox } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 const CoreBox = React.forwardRef((props, ref) => {
+  props = sanitizeComponentProps(CoreBox, props);
   return <NativeBox {...props} ref={ref} />;
 });
 
 CoreBox.displayName = "CoreBox";
 CoreBox.validProps = [
-  (CoreBox.validProps = [
-    {
-      description:
+  {
+    description:
         "The component used for the root node. Either a string to use a HTML element or a component.",
-      name: "component",
-      types: [{ default: "", type: "elementType" }],
-    },
-  ]),
-  (CoreBox.invalidProps = ["sx", "classes"]),
+    name : "component",
+    types: [{ default: "", type: "elementType" }],
+  },
 ];
-CoreBox.invalidProps = [];
-
 export default CoreBox;

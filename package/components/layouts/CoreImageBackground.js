@@ -4,6 +4,9 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeImageBackground } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreImageBackground(props) {
+  props = sanitizeComponentProps(CoreImageBackground, props);
   return <NativeImageBackground {...props}>{props.children}</NativeImageBackground>;
 }

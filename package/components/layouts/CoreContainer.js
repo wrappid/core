@@ -4,7 +4,10 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeContainer } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreContainer(props) {
+  props = sanitizeComponentProps(CoreContainer, props);
   return <NativeContainer {...props} />;
 }
 

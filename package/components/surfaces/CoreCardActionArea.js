@@ -4,7 +4,9 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeCardActionArea } from "@wrappid/native";
 
-export default function CoreCardActionArea(props) {
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 
+export default function CoreCardActionArea(props) {
+  props = sanitizeComponentProps(CoreCardActionArea, props);
   return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;
 }

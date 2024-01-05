@@ -2,7 +2,9 @@
 import React from "react";
 
 import CoreButton from "./CoreButton";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreOutlinedButton(props) {
+  props = sanitizeComponentProps(CoreOutlinedButton, props);
   return <CoreButton {...props} variant="outlined" />;
 }

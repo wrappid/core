@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
@@ -8,10 +9,19 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreButton(props) {
   props = sanitizeComponentProps(CoreButton, props);
+  console.log("btn props", props);
 
   return <NativeButton {...props} />;
 }
 CoreButton.validProps = [
+  {
+    name : "label",
+    types: [{ type: "string" }]
+  },
+  {
+    name : "OnClick",
+    types: [{ type: "function" }],
+  },
   {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",

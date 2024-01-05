@@ -2,12 +2,14 @@
 import React from "react";
 
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreH5 from "../dataDisplay/CoreH5";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardContent from "../surfaces/CoreCardContent";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
 
 export default function CoreSection(props) {
+  props = sanitizeComponentProps(CoreSection, props);
   const { styleClasses = [], elevated } = props;
 
   return (

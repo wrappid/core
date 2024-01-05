@@ -4,7 +4,10 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDiv } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 const CoreDiv = React.forwardRef((props, ref) => {
+  props = sanitizeComponentProps(CoreDiv, props);
   return <NativeDiv ref={ref}>{props.children}</NativeDiv>;
 });
 
