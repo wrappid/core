@@ -19,7 +19,7 @@ export default function CoreMenu(props) {
     miniDrawer, //flag for mini drawer support
     multiLevel, //flag to allow collapse on multi level menu
     open, //menu open/close state for mini drawer
-    openCollapse, //item level collapse open on close
+    openCollapse = {}, //item level collapse open on close
     defaultSelection = null, // this is default selection for the item to be pre select
     noNavigation = false,
   } = props;
@@ -71,7 +71,7 @@ CoreMenu.validProps = [
   { name: "miniDrawer", types: [{ type: "boolean" }] }, 
   { name: "multiLevel", types: [{ type: "boolean" }] }, 
   { name: "open", types: [{ type: "boolean" }] }, 
-  { name: "openCollapse", types: [{ type: "boolean" }] }, 
+  { name: "openCollapse", types: [{ type: "object" }] }, 
   { name: "defaultSelection", types: [{ type: "object" }] }, 
   { name: "noNavigation", types: [{ type: "boolean" }] }, 
   {

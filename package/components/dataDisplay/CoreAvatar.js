@@ -11,7 +11,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreAvatar(props) {
   props = sanitizeComponentProps(CoreAvatar, props);
 
-  let src = props.src && props.src?.length > 0 ? props.src : defaultImage;
+  let src = props?.src && props.src?.length > 0 ? props?.src : defaultImage;
 
   return <NativeAvatar {...props} src={src} />;
 }
@@ -57,12 +57,12 @@ CoreAvatar.validProps = [
   {
     description: "The sizes attribute for the img element.",
     name       : "sizes",
-    types      : "string",
+    types      : [{ type: "string" }],
   },
   {
     description: "The srcSet attribute for the img element. Use this attribute for responsive image display.",
     name       : "srcSet",
-    types      : "string",
+    types      : [{ type: "string" }],
   },
 ];
 CoreAvatar.invalidProps = ["sx", "classes"];

@@ -188,7 +188,7 @@ import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
 import { reloadDataTableAction } from "./store/action/dataTableActions";
 import { onEditForm, cancelFormEdit } from "./store/action/formAction";
-import { toggleRightMenuState } from "./store/action/menuAction";
+import { toggleRightMenuState, toggleMenuItemState } from "./store/action/menuAction";
 import CoreProvider from "./store/CoreProvider";
 import { createFullStore } from "./store/store";
 import { LOGOUT_SUCCESS } from "./store/types/authTypes";
@@ -420,6 +420,7 @@ export {
   AppService,
   CoreReactSelectInput,
   toggleRightMenuState,
+  toggleMenuItemState,
   FORM_SANITIZATION_FUNCTION_IDS,
   FORM_SANITIZATOIN_FUNCTION_MAP,
   CoreCssBaseline,
