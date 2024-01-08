@@ -24,11 +24,11 @@ CoreLinearProgress.validProps = [
   {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name: "color",
+    name : "color",
     types: [
       {
-        default: "primary",
-        type: "string",
+        default    : "primary",
+        type       : "string",
         validValues: ["inherit", "primary", "secondary"],
       },
     ],
@@ -36,32 +36,22 @@ CoreLinearProgress.validProps = [
   {
     description:
       "The value of the progress indicator for the determinate and buffer variants. Value between 0 and 100.",
-    name: "value",
-    types: [
-      {
-        default: "",
-        type: "number",
-      },
-    ],
+    name : "value",
+    types: [{ type: "number" }],
   },
   {
     description: "The value for the buffer variant. Value between 0 and 100.",
-    name: "valueBuffer",
-    types: [
-      {
-        default: "",
-        type: "number",
-      },
-    ],
+    name       : "valueBuffer",
+    types      : [{ type: "number" }],
   },
   {
     description:
       "The variant to use. Use indeterminate or query when there is no progress value.",
-    name: "variant",
+    name : "variant",
     types: [
       {
-        default: "indeterminate",
-        type: "string",
+        default    : "indeterminate",
+        type       : "string",
         validValues: ["sxbuffer", "determinate", "indeterminate", "query"],
       },
     ],

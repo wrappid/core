@@ -16,7 +16,7 @@ CoreTabHead.validProps = [
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.",
     name : "component",
-    types: [{ default: "", type: "elementType" }],
+    types: [{ type: "elementType" }],
   },
 ];
 CoreTabHead.invalidProps = ["sx", "classes"];

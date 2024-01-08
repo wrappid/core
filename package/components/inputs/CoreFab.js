@@ -42,16 +42,17 @@ CoreFab.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the keyboard focus ripple is disabled.",
     name       : "disableFocusRipple",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the ripple effect is disabled.",
     name       : "disableRipple",
+    type       : [{ default: false, type: "boolean" }],
   },
   {
     description: "The URL to link to when the button is clicked. If defined, an a element will be used as the root node.",

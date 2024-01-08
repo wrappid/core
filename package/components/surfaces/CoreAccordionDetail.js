@@ -11,5 +11,5 @@ export default function CoreAccordionDetail(props) {
   return <NativeAccordionDetail {...props} />;
 }
 CoreAccordionDetail.validProps = [];
-CoreAccordionDetail.invalidProps = [];
+CoreAccordionDetail.invalidProps = ["sx", "classes"];
 

@@ -5,12 +5,10 @@ import React from "react";
 import { nativeUseScrollTrigger } from "@wrappid/native";
 import PropTypes from "prop-types";
 
-import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreBox from "../layouts/CoreBox";
 import CoreFade from "../utils/CoreFade";
 
 export default function CoreScrollTop(props) {
-  props = sanitizeComponentProps(CoreScrollTop, props);
   const { children, window } = props;
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.

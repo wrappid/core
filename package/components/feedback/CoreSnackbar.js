@@ -53,12 +53,7 @@ CoreSnackbar.validProps = [
     description:
       "The action to display. It renders after the message, at the end of the snackbar.",
     name : "action",
-    types: [
-      {
-        default: "",
-        type   : "node",
-      },
-    ],
+    types: [{ type: "node" }],
   },
   {
     description:
@@ -101,22 +96,12 @@ CoreSnackbar.validProps = [
   {
     description: "Props applied to the ClickAwayListener element.",
     name       : "ClickAwayListenerProps",
-    types      : [
-      {
-        default: "",
-        type   : "object",
-      },
-    ],
+    types      : [{ type: "object" }],
   },
   {
     description: "Props applied to the SnackbarContent element.",
     name       : "ContentProps",
-    types      : [
-      {
-        default: "",
-        type   : "object",
-      },
-    ],
+    types      : [{ type: "object" }],
   },
   {
     description:
@@ -124,8 +109,8 @@ CoreSnackbar.validProps = [
     name : "disableWindowBlurListener",
     types: [
       {
-        default: "FALSE",
-        type   : "bool",
+        default: false,
+        type   : "boolean",
       },
     ],
   },
@@ -165,23 +150,13 @@ CoreSnackbar.validProps = [
   {
     description: "If true, the component is shown.",
     name       : "open",
-    types      : [
-      {
-        default: "",
-        type   : "bool",
-      },
-    ],
+    types      : [{ type: "boolean" }],
   },
   {
     description:
       "The number of milliseconds to wait before dismissing after user interaction. If autoHideDuration prop isn't specified, it does nothing. If autoHideDuration prop is specified but resumeHideDuration isn't, we default to autoHideDuration / 2 ms.",
     name : "resumeHideDuration",
-    types: [
-      {
-        default: "",
-        type   : "string",
-      },
-    ],
+    types: [{ type: "number" }],
   },
   {
     description:
@@ -190,7 +165,7 @@ CoreSnackbar.validProps = [
     types: [
       {
         default: "Grow",
-        type   : "string",
+        type   : "elementType",
       },
     ],
   },

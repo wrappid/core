@@ -22,12 +22,16 @@ CoreTextarea.validProps = [
   {
     description: "Maximum number of rows to display.",
     name       : "maxrows",
-    type       : "number"
+    types      : [{ default: 6, type: "number" }]
   },
   {
     description: "Minimum number of rows to display.",
     name       : "minrows",
-    type       : "number"
+    types      : [{ default: 3, type: "number" }]
   },
+  {
+    name : "multiline",
+    types: [{ default: true, type: "boolean" }]
+  }
 ];
 CoreTextarea.invalidProps = [];

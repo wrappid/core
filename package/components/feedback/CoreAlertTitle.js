@@ -11,3 +11,6 @@ export default function CoreAlertTitle(props) {
   return <NativeAlertTitle {...props}>{props.children}</NativeAlertTitle>;
 }
 
+CoreAlertTitle.validProps = [];
+CoreAlertTitle.invalidProps = [];
+

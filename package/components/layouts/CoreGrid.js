@@ -14,7 +14,7 @@ CoreGrid.validProps = [
   {
     description: "The number of columns.",
     name       : "columns",
-    types      : [{ default: "12", type: "Array<number>| number| object" }],
+    types      : [{ default: 12, type: "Array<number>| number| object" }],
   },
   {
     description:
@@ -31,7 +31,7 @@ CoreGrid.validProps = [
     description:
       "If true, the component will have the flex container behavior. You should be wrapping items with a container.",
     name : "container",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
@@ -58,19 +58,43 @@ CoreGrid.validProps = [
   {
     description: "",
     name       : "item",
-    types      : [{ default: "FALSE", type: "boolean" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
     name : "lg",
-    types: [{ default: "FALSE", type: "auto number bool" }],
+    types: [{ type: "auto" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
+    name : "lg",
+    types: [{ type: "number" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
+    name : "lg",
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
     name : "md",
-    types: [{ default: "FALSE", type: "auto number bool" }],
+    types: [{ default: false, type: "boolean" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
+    name : "md",
+    types: [{ type: "number" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
+    name : "md",
+    types: [{ type: "auto" }],
   },
   {
     description:
@@ -82,7 +106,19 @@ CoreGrid.validProps = [
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
     name : "sm",
-    types: [{ default: "FALSE", type: "auto number bool" }],
+    types: [{ default: false, type: "boolean" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
+    name : "sm",
+    types: [{ type: "auto" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
+    name : "sm",
+    types: [{ type: "number" }],
   },
   {
     description:
@@ -107,18 +143,42 @@ CoreGrid.validProps = [
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the xl breakpoint and wider screens if not overridden.",
     name : "xl",
-    types: [{ default: "FALSE", type: "auto number bool" }],
+    types: [{ default: false, type: "boolean" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the xl breakpoint and wider screens if not overridden.",
+    name : "xl",
+    types: [{ type: "number" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the xl breakpoint and wider screens if not overridden.",
+    name : "xl",
+    types: [{ type: "auto" }],
   },
   {
     description:
       "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for all the screen sizes with the lowest priority.",
     name : "xs",
-    types: [{ default: "FALSE", type: "auto number bool" }],
+    types: [{ default: false, type: "boolean" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for all the screen sizes with the lowest priority.",
+    name : "xs",
+    types: [{ type: "auto boolean" }],
+  },
+  {
+    description:
+      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for all the screen sizes with the lowest priority.",
+    name : "xs",
+    types: [{ type: "number" }],
   },
   {
     description: "",
     name       : "zeroMinWidth",
-    types      : [{ default: "FALSE", type: "boolean" }],
+    types      : [{ default: false, type: "boolean" }],
   },
 ];
 CoreGrid.invalidPros = ["sx", "classes"];

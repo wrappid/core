@@ -270,7 +270,7 @@ CoreAppBar.validProps = [
   {
     description: "If true, the color prop is applied in dark mode.",
     name       : "enableColorOnDark",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:

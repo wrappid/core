@@ -113,3 +113,60 @@ export default function CoreIconText(props) {
     </CoreStack>
   );
 }
+
+CoreIconText.validProps = [
+  {
+    description: "Icon element.",
+    name       : "icon",
+    types      : [{ type: "element" }],
+  },
+  {
+    name : "iconColor",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "text",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "type",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "link",
+    types: [{ default: "false", type: "boolean" }],
+  },
+  {
+    name : "href",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "tailIcon",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "tailIconType",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "size",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "tailIconSize",
+    types: [{ type: "size" }],
+  },
+  {
+    name : "tailIconColor",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "limitChars",
+    types: [{ type: "number" }],
+  },
+  {
+    name : "hideSeeMore",
+    types: [{ type: "boolean" }]
+  }
+];
+CoreIconText.invalidProps = ["sx", "classes"];

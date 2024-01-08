@@ -46,45 +46,45 @@ CoreButton.validProps = [
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.",
     name : "component",
-    types: [{ default: "", type: "elementType" }],
+    types: [{ type: "elementType" }],
   },
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, no elevation is used.",
     name       : "disableElevation",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the keyboard focus ripple is disabled.",
     name       : "disableFocusRipple",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
       "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
     name : "disableRipple",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description: "Element placed after the children.",
     name       : "endIcon",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description:
       "If true, the button will take up the full width of its container.",
     name : "fullWidth",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
       "The URL to link to when the button is clicked. If defined, an a element will be used as the root node.",
     name : "href",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
@@ -101,7 +101,7 @@ CoreButton.validProps = [
   {
     description: "Element placed before the children.",
     name       : "startIcon",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "The variant to use.",

@@ -61,7 +61,7 @@ CoreTypographySubtitle1.validProps = [
     description:
       "The content of the component need to show as it is like a code block.",
     name : "code",
-    types: [{ default: "false", type: "boolean", validValues: [true, false] }],
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description: "",
@@ -71,7 +71,7 @@ CoreTypographySubtitle1.validProps = [
   {
     description: "",
     name       : "hideSeeMore",
-    types      : [{ default: "false", type: "boolean", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographySubtitle1.invalidProps = ["sx", "classes"];

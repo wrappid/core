@@ -8,3 +8,5 @@ export default function CoreOutlinedButton(props) {
   props = sanitizeComponentProps(CoreOutlinedButton, props);
   return <CoreButton {...props} variant="outlined" />;
 }
+CoreOutlinedButton.validProps = [...CoreButton.validProps];
+CoreOutlinedButton.invalidProps = ["sx", "classes"];

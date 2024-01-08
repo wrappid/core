@@ -17,7 +17,7 @@ CoreListItemButton.invalidProps = [
     name       : "alignItems",
     types      : [
       {
-        default    : " center",
+        default    : "center",
         type       : "string",
         validValues: ["flex-start"]
       }
@@ -29,8 +29,8 @@ CoreListItemButton.invalidProps = [
     name       : "autoFocus",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -46,8 +46,8 @@ CoreListItemButton.invalidProps = [
     name       : "dense",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -57,8 +57,8 @@ CoreListItemButton.invalidProps = [
     name       : "disabled",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -68,8 +68,8 @@ CoreListItemButton.invalidProps = [
     name       : "disableGutters",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -79,8 +79,8 @@ CoreListItemButton.invalidProps = [
     name       : "divider",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -95,8 +95,8 @@ CoreListItemButton.invalidProps = [
     name       : "selected",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]

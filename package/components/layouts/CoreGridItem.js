@@ -10,4 +10,6 @@ export default function CoreGridItem(props) {
   props = sanitizeComponentProps(CoreGridItem, props);
   return <NativeGridItem props>{props.children}</NativeGridItem>;
 }
+CoreGridItem.validProps = [];
+CoreGridItem.invalidProps = ["sx", "classes"];
 

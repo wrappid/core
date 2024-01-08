@@ -69,7 +69,7 @@ CoreDialog.validProps = [
   {
     description: "If true, the component is shown.",
     name       : "open*",
-    types      : [{ type: "bool" }],
+    types      : [{ type: "boolean" }],
   },
   {
     description: "The id(s) of the element(s) that describe the dialog.",
@@ -109,19 +109,19 @@ CoreDialog.validProps = [
   {
     description: "If true, hitting escape will not fire the onClose callback.",
     name       : "disableEscapeKeyDown",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the dialog is full-screen.",
     name       : "fullScreen",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
       "If true, the dialog stretches to maxWidth.\
     Notice that the dialog width grow is limited by the default margin.",
     name : "fullWidth",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
@@ -181,7 +181,7 @@ CoreDialog.validProps = [
     description:
       "Props applied to the transition element. By default, the element is based on this Transition component.",
     name : "TransitionProps",
-    types: [{ default: "", type: "object" }],
+    types: [{ default: {}, type: "object" }],
   },
   {
     description:

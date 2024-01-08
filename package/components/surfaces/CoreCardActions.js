@@ -16,7 +16,7 @@ CoreCardActions.validProps = [
   {
     description: "If true, the actions do not have additional margin.",
     name       : "disableSpacing",
-    types      : [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 

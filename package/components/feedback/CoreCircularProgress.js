@@ -9,7 +9,9 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreCircularProgress(props) {
   props = sanitizeComponentProps(CoreCircularProgress, props);
 
-  const { color, disableShrink, size, thickness, value, variant } = props;
+  const {
+    color, disableShrink, size, thickness, value, variant 
+  } = props;
 
   return (
     <NativeCircularProgress
@@ -49,8 +51,8 @@ CoreCircularProgress.validProps = [
     name : "disableShrink",
     types: [
       {
-        default: "FALSE",
-        type   : "book",
+        default: false,
+        type   : "boolean",
       },
     ],
   },
@@ -60,7 +62,7 @@ CoreCircularProgress.validProps = [
     name : "size",
     types: [
       {
-        default: "40",
+        default: 40,
         type   : "number",
       },
     ],
@@ -70,8 +72,8 @@ CoreCircularProgress.validProps = [
     name       : "thickness",
     types      : [
       {
-        default: "3.6",
-        type: "number",
+        default: 3.6,
+        type   : "number",
       },
     ],
   },
@@ -81,7 +83,7 @@ CoreCircularProgress.validProps = [
     name : "value",
     types: [
       {
-        default: "0",
+        default: 0,
         type   : "nuumber",
       },
     ],

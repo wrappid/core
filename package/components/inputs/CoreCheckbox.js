@@ -15,7 +15,7 @@ CoreCheckbox.validProps = [
   {
     description: "If true, the component is checked.",
     name       : "checked",
-    types      : [{ default: "", type: "bool" }],
+    types      : [{ type: "boolean" }],
   },
   {
     description: "The icon to display when the component is checked.",
@@ -47,17 +47,17 @@ CoreCheckbox.validProps = [
     description:
       "The default checked state. Use when the component is not controlled.",
     name : "defaultChecked",
-    types: [{ default: "", type: "bool" }],
+    types: [{ type: "boolean" }],
   },
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the ripple effect is disabled.",
     name       : "disableRipple",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "The icon to display when the component is unchecked.",
@@ -67,7 +67,7 @@ CoreCheckbox.validProps = [
   {
     description: "The id of the input element.",
     name       : "id",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description:
@@ -83,23 +83,23 @@ CoreCheckbox.validProps = [
   {
     description: "Attributes applied to the input element.",
     name       : "inputProps",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   {
     description: "Pass a ref to the input element.",
     name       : "inputRef",
-    types      : [{ default: "", type: "ref" }],
+    types      : [{ type: "ref" }],
   },
   {
     description:
       "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
     name : "onChange",
-    types: [{ default: "", type: "func" }],
+    types: [{ type: "func" }],
   },
   {
     description: "If true, the input element is required.",
     name       : "required",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
@@ -110,7 +110,7 @@ CoreCheckbox.validProps = [
   {
     description: "The value of the component. The DOM API casts this to a string. The browser uses \"on\" as the default value.",
     name       : "value",
-    types      : [{ default: "", type: "any" }],
+    types      : [{ type: "any" }],
   },
 ];
 CoreCheckbox.invalidProps = ["sx", "classes"];

@@ -15,7 +15,7 @@ CoreCard.validProps = [
   {
     description: "If true, the card will use raised styling.",
     name       : "raised",
-    types      : [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 

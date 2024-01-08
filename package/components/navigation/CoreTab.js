@@ -15,23 +15,23 @@ CoreTab.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the keyboard focus ripple is disabled.",
     name       : "disableFocusRipple",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
       "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
     name : "disableRipple",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description: "The icon to display.",
     name       : "icon",
-    types      : [{ default: "", type: "element string" }],
+    types      : [{ type: "element string" }],
   },
   {
     description: "The position of the icon relative to the label.",
@@ -47,7 +47,7 @@ CoreTab.validProps = [
   {
     description: "The label element.",
     name       : "label",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description:
@@ -59,7 +59,7 @@ CoreTab.validProps = [
     description:
       "Tab labels appear in a single row. They can use a second line if needed.",
     name : "wrapped",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
 ];
 CoreTab.invalidProps = ["sx", "classes"];

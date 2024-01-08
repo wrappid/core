@@ -10,3 +10,6 @@ export default function CoreImageBackground(props) {
   props = sanitizeComponentProps(CoreImageBackground, props);
   return <NativeImageBackground {...props}>{props.children}</NativeImageBackground>;
 }
+
+CoreImageBackground.validProps = [];
+CoreImageBackground.invalidProps = ["sx", "classes"];

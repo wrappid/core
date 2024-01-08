@@ -26,3 +26,6 @@ export default function CoreSection(props) {
     </CoreCard>
   );
 }
+
+CoreSection.validProps = [];
+CoreSection.invalidProps = ["sx", "classes"];

@@ -10,3 +10,6 @@ export default function CoreCardActionArea(props) {
   props = sanitizeComponentProps(CoreCardActionArea, props);
   return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;
 }
+
+CoreCardActionArea.validProps = [];
+CoreCardActionArea.invalidProps = ["sx", "classes"];

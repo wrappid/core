@@ -22,7 +22,7 @@ CoreTextField.validProps = [
     description:
       "If true, the input element is focused during the first mount.",
     name : "autoFocus",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
@@ -51,61 +51,61 @@ CoreTextField.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the label is displayed in an error state.",
     name       : "error",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Props applied to the FormHelperText element.",
     name       : "FormHelperTextProps",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   {
     description:
       "If true, the input will take up the full width of its container.",
     name : "fullWidth",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description: "The helper text content.",
     name       : "helperText",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description:
       "The id of the input element. Use this prop to make label and helperText accessible for screen readers.",
     name : "id",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
       "Props applied to the InputLabel element. Pointer events like onClick are enabled if and only if shrink is true.",
     name : "InputLabelProps",
-    types: [{ default: "", type: "object" }],
+    types: [{ type: "object" }],
   },
   {
     description: "Attributes applied to the input element.",
     name       : "inputProps",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   {
     description:
       "Props applied to the Input element. It will be a FilledInput, OutlinedInput or Input component depending on the variant prop value.",
     name : "InputProps",
-    types: [{ default: "", type: "object" }],
+    types: [{ type: "object" }],
   },
   {
     description: "Pass a ref to the input element.",
     name       : "inputRef",
-    types      : [{ default: "", type: "ref" }],
+    types      : [{ type: "ref" }],
   },
   {
     description: "The label content.",
     name       : "label",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description:
@@ -134,64 +134,64 @@ CoreTextField.validProps = [
   {
     description: "If true, a textarea element is rendered instead of an input.",
     name       : "multiline",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Name attribute of the input element.",
     name       : "name",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description:
       "Callback fired when the value is changed.Signature:function(event: object) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string).",
     name : "onChange",
-    types: [{ default: "", type: "func" }],
+    types: [{ type: "func" }],
   },
   {
     description:
       "The short hint displayed in the input before the user enters a value.",
     name : "placeholder",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
       "If true, the label is displayed as required and the input element is required.",
     name : "required",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description:
       "Number of rows to display when multiline option is set to true.",
     name : "rows",
-    types: [{ default: "", type: "number| string" }],
+    types: [{ type: "number| string" }],
   },
   {
     description:
       "Render a Select element while passing the Input element to Select as input parameter. If this option is set you must pass the options of the select as children.",
     name : "select",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description: "Props applied to the Select element.",
     name       : "SelectProps",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   {
     description: "The size of the component.",
     name       : "size",
-    types      : [{ default: "", type: "string", validValues: ["medium", "small"] }],
+    types      : [{ type: "string", validValues: ["medium", "small"] }],
   },
   {
     description:
       "Type of the input element. It should be a valid HTML5 input type.",
     name : "type",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
       "The value of the input element, required for a controlled component.",
     name : "value",
-    types: [{ default: "", type: "any" }],
+    types: [{ type: "any" }],
   },
   {
     description: "The variant to use.",

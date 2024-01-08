@@ -14,12 +14,12 @@ CoreMenuList.validProps = [
   {
     description: "If true, will focus the [role=\"menu\"] container and move into tab order.",
     name       : "autoFocus",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, will focus the first menuitem if variant=\"menu\" or selected item if variant=\"selectedMenu\".",
     name       : "autoFocusItem",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "MenuList contents, normally MenuItems.",
@@ -29,12 +29,12 @@ CoreMenuList.validProps = [
   {
     description: "If true, will allow focus on disabled items.",
     name       : "disabledItemsFocusable",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the menu items will not wrap focus.",
     name       : "disableListWrap",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:

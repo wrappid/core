@@ -4,8 +4,10 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeRating } from "@wrappid/native";
 
-export default function CoreRating(props) {
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 
+export default function CoreRating(props) {
+  props = sanitizeComponentProps(CoreRating, props);
   return <NativeRating {...props} />;
 }
 CoreRating.validProps = [
@@ -17,22 +19,22 @@ CoreRating.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "false", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Removes all hover effects and pointer events.",
     name       : "readOnly",
-    types      : [{ default: "false", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }]
   },
   {
     description: "Maximum rating.",
     name       : "max",
-    types      : [{ default: "5", type: "number" }],
+    types      : [{ default: 5, type: "number" }],
   },
   {
     description: "The minimum increment value change allowed..",
     name       : "precision",
-    types      : [{ default: "1", type: "number" }],
+    types      : [{ default: 1, type: "number" }],
   },
   {
     description: "The size of the component",
@@ -42,7 +44,7 @@ CoreRating.validProps = [
   {
     description: "The rating value, The ref is forwarded to the root element.",
     name       : "value",
-    types      : [{ default: "", type: "number" }],
+    types      : [{ type: "number" }],
   },
 ];
 CoreRating.invalidProps = ["sx", "classes"];

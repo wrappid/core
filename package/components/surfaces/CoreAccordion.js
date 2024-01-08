@@ -31,34 +31,34 @@ CoreAccordion.validProps = [
   {
     description: "If true, expands the accordion by default.",
     name       : "defaultExpanded",
-    types      : [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description:
       "If true, it removes the margin between two expanded accordion items and the increase of height.",
     name : "disableGutters",
-    types: [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description:
       "If true, expands the accordion, otherwise collapse it. Setting this prop enables control over the accordion.",
     name : "expanded",
-    types: [{ default: "", type: "bool", validValues: [true, false] }],
+    types: [{ type: "boolean", validValues: [true, false] }],
   },
   {
     description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
     name       : "onChange",
-    types      : [{ default: "", type: "func" }],
+    types      : [{ type: "func" }],
   },
   {
     description: "If true, rounded corners are disabled.",
     name       : "square",
-    types      : [{ default: "FALSE", type: "bool", validValues: [true, false] }],
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
     description:

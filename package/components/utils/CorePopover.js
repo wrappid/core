@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativePopover } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
@@ -13,19 +14,19 @@ CorePopover.validProps = [
   {
     description: "If true, the component is shown.",
     name       : "open*",
-    types      : [{ default: "", type: "bool" }],
+    types      : [{ type: "boolean" }],
   },
   {
     description:
       "A ref for imperative actions. It currently only supports updatePosition() action.",
     name : "action",
-    types: [{ default: "", type: "ref" }],
+    types: [{ type: "ref" }],
   },
   {
     description:
       "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
     name : "anchorEl",
-    types: [{ default: "", type: "HTML element| func" }],
+    types: [{ type: "HTML element| func" }],
   },
   {
     description:
@@ -50,7 +51,6 @@ CorePopover.validProps = [
     name : "anchorPosition",
     types: [
       {
-        default    : "",
         type       : "object",
         validValues: [{ left: "number", top: "number" }],
       },
@@ -72,12 +72,12 @@ CorePopover.validProps = [
     description:
       "An HTML element, component instance, or function that returns either. The container will passed to the Modal component.By default, it uses the body of the anchorEl's top-level document object, so it's simply document.body most of the time.",
     name : "container",
-    types: [{ default: "", type: "HTML element| func" }],
+    types: [{ type: "HTML element| func" }],
   },
   {
     description: "Disable the scroll lock behavior.",
     name       : "disableScrollLock",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "The elevation of the popover.",
@@ -88,13 +88,13 @@ CorePopover.validProps = [
     description:
       "Specifies how close to the edge of the window the popover can appear. If null, the popover will not be constrained by the window.",
     name : "marginThreshold",
-    types: [{ default: "16", type: "number" }],
+    types: [{ default: 16, type: "number" }],
   },
   {
     description:
       "Callback fired when the component requests to be closed. The reason parameter can optionally be used to control the response to onClose.",
     name : "onClose",
-    types: [{ default: "", type: "func" }],
+    types: [{ type: "func" }],
   },
   {
     description:
@@ -102,7 +102,7 @@ CorePopover.validProps = [
     name : "PaperProps",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ component?: element type }"],
       },
@@ -114,7 +114,7 @@ CorePopover.validProps = [
     name : "slotProps",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ paper?: func| object, root?: func| object }"],
       },
@@ -125,7 +125,7 @@ CorePopover.validProps = [
     name       : "slots",
     types      : [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ paper?: elementType, root?: elementType }"],
       },
@@ -170,7 +170,7 @@ CorePopover.validProps = [
     description:
       "Props applied to the transition element. By default, the element is based on this Transition component.",
     name : "TransitionProps",
-    types: [{ default: "{}", type: "object" }],
+    types: [{ default: {}, type: "object" }],
   },
 ];
 CorePopover.invalidProps = ["sx", "classes"];

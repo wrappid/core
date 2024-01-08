@@ -20,7 +20,7 @@ CoreToolBar.validProps = [
   {
     description: "If true, disables gutter padding.",
     name       : "disableGutters",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
  
   {

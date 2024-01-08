@@ -98,32 +98,32 @@ CoreDrawer.validProps = [
   {
     description: "If true, the backdrop is not rendered.",
     name       : "hideBackdrop",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Props applied to the Modal element.",
     name       : "ModalProps",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description: "Callback fired when the component requests to be closed. The reason parameter can optionally be used to control the response to onClose.Signature:function(event: object, reason: string) => voidevent The event source of the callback.reason Can be: \"escapeKeyDown\", \"backdropClick\".",
     name       : "onClose",
-    types      : [{ default: "", type: "func" }],
+    types      : [{ type: "func" }],
   },
   {
     description: "If true, the component is shown.",
     name       : "open",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Props applied to the Paper element.",
     name       : "PaperProps",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description: "Props applied to the Slide element.",
     name       : "SlideProps",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   
   {

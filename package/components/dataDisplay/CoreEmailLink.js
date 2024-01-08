@@ -88,3 +88,14 @@ export default function CoreEmailLink(props) {
     </>
   );
 }
+
+CoreEmailLink.validProps = [
+  { name: "limitChars", types: [{ default: 30, type: "number" }] },
+  { name: "email", types: [{ type: "string" }] },
+  { name: "verified", types: [{ type: "boolean" }] },
+  { name: "tooltipPlacement", types: [{ default: "bottom", type: "string" }] },
+  { name: "size", types: [{ type: "string" }] },
+  { name: "mask", types: [{ default: false, type: "boolean" }] },
+  { name: "iconButton", types: [{ default: false, type: "boolean" }] }
+];
+CoreEmailLink.invalidProps = ["sx", "classes"];

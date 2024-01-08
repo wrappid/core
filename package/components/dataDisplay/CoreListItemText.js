@@ -1,6 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeListItemText } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
@@ -16,8 +17,8 @@ CoreListItemText.invalidProps = [
     name       : "disableTypography",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -28,8 +29,8 @@ CoreListItemText.invalidProps = [
     name       : "inset",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -46,7 +47,7 @@ CoreListItemText.invalidProps = [
     name : "primaryTypographyProps",
     types: [
       {
-        default: "{}",
+        default: {},
         type   : "object",
       },
     ],

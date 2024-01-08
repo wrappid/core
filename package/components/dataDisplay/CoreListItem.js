@@ -17,7 +17,7 @@ CoreListItem.validProps = [
     name       : "alignItems",
     types      : [
       {
-        default    : " center",
+        default    : "center",
         type       : "string",
         validValues: ["flex-start"]
       }
@@ -29,8 +29,8 @@ CoreListItem.validProps = [
     name       : "button",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -47,7 +47,7 @@ CoreListItem.validProps = [
     name : "components",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ List?: elementType, Root?: elementType }"],
       },
@@ -58,7 +58,7 @@ CoreListItem.validProps = [
     name       : "componentsProps",
     types      : [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ List?: object }"],
       }
@@ -69,8 +69,8 @@ CoreListItem.validProps = [
     name       : "dense",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -80,8 +80,8 @@ CoreListItem.validProps = [
     name       : "disableGutters",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -91,8 +91,8 @@ CoreListItem.validProps = [
     name       : "disablePadding",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -102,8 +102,8 @@ CoreListItem.validProps = [
     name       : "divider",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -118,7 +118,7 @@ CoreListItem.validProps = [
     name       : "slotProps",
     types      : [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: "{ root?: elementType }"
       }
@@ -129,7 +129,7 @@ CoreListItem.validProps = [
     name       : "slots",
     types      : [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: "{ root?: elementType }"
 

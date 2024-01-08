@@ -21,13 +21,13 @@ CoreContainer.validProps = [
   {
     description: "If true, the left and right padding is removed.",
     name       : "disableGutters",
-    types      : [{ default: "", type: "bool" }],
+    types      : [{ default: "", type: "boolean" }],
   },
   {
     description:
       "Set the max-width to match the min-width of the current breakpoint. This is useful if you'd prefer to design for a fixed set of sizes instead of trying to accommodate a fully fluid viewport. It's fluid by default.",
     name : "fixed",
-    types: [{ default: "", type: "bool" }],
+    types: [{ default: "", type: "boolean" }],
   },
   {
     description:

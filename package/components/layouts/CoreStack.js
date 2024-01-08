@@ -62,7 +62,7 @@ CoreStack.validProps = [
     description:
       "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
     name : "useFlexGap",
-    types: [{ default: "", type: "bool" }],
+    types: [{ default: "", type: "boolean" }],
   },
 ];
 CoreStack.invalidProps = ["sx", "classes"];

@@ -34,7 +34,7 @@ CoreCollapse.validProps = [
     name : "collapsedSize",
     types: [
       {
-        default: "0px'",
+        default: "0px",
         type   : "number, string ",
       },
     ],
@@ -43,7 +43,7 @@ CoreCollapse.validProps = [
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
     name : "component",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
@@ -60,7 +60,7 @@ CoreCollapse.validProps = [
   {
     description: "If true, the component will transition in.",
     name       : "in",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "The transition orientation.",

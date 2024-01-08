@@ -45,8 +45,8 @@ CoreList.validProps = [
     name       : "dense",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -56,8 +56,8 @@ CoreList.validProps = [
     name       : "disablePadding",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],

@@ -27,7 +27,7 @@ CorePaper.validProps = [
   {
     description: "If true, rounded corners are disabled.",
     name       : "square",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "The variant to use.",

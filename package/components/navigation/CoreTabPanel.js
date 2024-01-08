@@ -25,8 +25,9 @@ CoreTabPanel.validProps = [
   {
     description:
       "The value of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.",
-    name : "value*",
-    types: [{ default: "", type: "string" }],
+    name    : "value*",
+    required: "true",
+    types   : [{ default: "", type: "string" }],
   },
 ];
 CoreTabPanel.invalidProps = ["sx", "classes"];
