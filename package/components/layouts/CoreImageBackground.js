@@ -10,6 +10,15 @@ export default function CoreImageBackground(props) {
   props = sanitizeComponentProps(CoreImageBackground, props);
   return <NativeImageBackground {...props}>{props.children}</NativeImageBackground>;
 }
-
-CoreImageBackground.validProps = [];
+/**
+ * @todo: Add other valid/invalid props.
+ */
+CoreImageBackground.validProps = [
+  {
+    description:
+    "Image source path.",
+    name : "source",
+    types: [{ default: "", type: "string" }],
+  }
+];
 CoreImageBackground.invalidProps = ["sx", "classes"];
