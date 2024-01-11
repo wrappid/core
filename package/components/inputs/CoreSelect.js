@@ -110,31 +110,31 @@ CoreSelect.validProps = [
     description:
       "Callback fired when a menu item is selected.Signature:function(event: SelectChangeEvent, child?: object) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (any). Warning: This is a generic event, not a change event, unless the change event is caused by browser autofill.child The react element that was selected when native is false (default).",
     name : "onChange",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
       "Callback fired when the component requests to be closed. Use it in either controlled (see the open prop), or uncontrolled mode (to detect when the Select collapses).Signature:function(event: object) => voidevent The event source of the callback.",
     name : "onClose",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
       "Callback fired when the component requests to be opened. Use it in either controlled (see the open prop), or uncontrolled mode (to detect when the Select expands).Signature:function(event: object) => voidevent The event source of the callback.",
     name : "onOpen",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description:
       "If true, the component is shown. You can only use it when the native prop is false (default).",
     name : "open",
-    types: [{ type: "bool" }],
+    types: [{ type: "boolean" }],
   },
   {
     description:
       "Render the selected value. You can only use it when the native prop is false (default).Signature:function(value: any) => ReactNodevalue The value provided to the component.",
     name : "renderValue",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "Props applied to the clickable div element.",

@@ -11,4 +11,4 @@ export default function CoreListItemIcon(props) {
   return <NativeListItemIcon {...props} />;
 }
 CoreListItemIcon.validProps = [];
-CoreListItemIcon.invalidProps = [];
+CoreListItemIcon.invalidProps = ["sx", "classes"];

@@ -45,7 +45,7 @@ CoreInput.validProps = [
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide. The prop defaults to the value ('primary') inherited from the parent FormControl component.",
     name : "color",
-    types: [{ default: "", type: "string", validValues: ["primary", "secondary"] }],
+    types: [{ type: "string", validValues: ["primary", "secondary"] }],
   },
   {
     description:
@@ -145,7 +145,7 @@ CoreInput.validProps = [
     description:
       "Callback fired when the value is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string).",
     name : "onChange",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
@@ -201,4 +201,4 @@ CoreInput.validProps = [
     types: [{ default: "", type: "any" }],
   },
 ];
-CoreInput.invalidProps = [];
+CoreInput.invalidProps = ["sx", "classes"];

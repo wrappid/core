@@ -9,5 +9,31 @@ export default function CoreTextButton(props) {
   return <CoreButton variant="text" {...props} />;
 }
 
-CoreTextButton.validProps = [...CoreButton.validProps];
+CoreTextButton.validProps = [
+  ...CoreButton.validProps,
+  {
+    name : "activeOpacity",
+    types: [{ default: 0.2, type: "number" }]
+  },
+  {
+    name : "nextFocusDown ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusForward",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusLeft ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusRight ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusUp  ",
+    types: [{ type: "number" }]
+  }
+];
 CoreTextButton.invalidProps = ["sx", "classes"];

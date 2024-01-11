@@ -90,6 +90,33 @@ CoreDivider.validProps = [
       },
     ],
   },
+  {
+    name : "leftInset ",
+    types: [
+      {
+        type       : "boolean",
+        validValues: [true, false]
+      },
+    ],
+  },
+  {
+    name : "horizontalInset ",
+    types: [
+      {
+        type       : "boolean",
+        validValues: [true, false]
+      },
+    ],
+  },
+  {
+    name : "bold ",
+    types: [
+      {
+        type       : "boolean",
+        validValues: [true, false]
+      },
+    ],
+  }
 ];
 
-CoreDivider.invalidProps = ["sx", "classes"];
+CoreDivider.invalidProps = ["sx", "classes", "style", "theme"];

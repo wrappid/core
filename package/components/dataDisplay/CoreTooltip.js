@@ -181,7 +181,7 @@ CoreTooltip.validProps = [
     name : "enterDelay",
     types: [
       {
-        default: "100",
+        default: 100,
         type   : "number",
       },
     ],
@@ -192,7 +192,7 @@ CoreTooltip.validProps = [
     name : "enterNextDelay",
     types: [
       {
-        default: "0",
+        default: 0,
         type   : "number",
       },
     ],
@@ -203,7 +203,7 @@ CoreTooltip.validProps = [
     name : "enterTouchDelay",
     types: [
       {
-        default: "700",
+        default: 700,
         type   : "number",
       },
     ],
@@ -231,7 +231,7 @@ CoreTooltip.validProps = [
     name : "leaveDelay",
     types: [
       {
-        default: "0",
+        default: 0,
         type   : "number",
       },
     ],
@@ -242,7 +242,7 @@ CoreTooltip.validProps = [
     name : "leaveTouchDelay",
     types: [
       {
-        default: "1500",
+        default: 1500,
         type   : "number",
       },
     ],
@@ -254,7 +254,7 @@ CoreTooltip.validProps = [
     function(event: React.SyntheticEvent) => void\
     event The event source of the callback",
     name : "onClose",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
@@ -263,7 +263,7 @@ CoreTooltip.validProps = [
     function(event: React.SyntheticEvent) => void\
     event The event source of the callback",
     name : "onOpen",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "If true, the component is shown.",
@@ -278,7 +278,7 @@ CoreTooltip.validProps = [
   {
     description: "Props applied to the Popper element.",
     name       : "PopperProps",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description:

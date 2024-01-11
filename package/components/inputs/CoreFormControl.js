@@ -44,7 +44,7 @@ CoreFormControl.validProps = [
   },
   {
     name : "error",
-    types: [{ default: "false", type: "boolean" }]
+    types: [{ default: false, type: "boolean" }]
   },
   {
     name : "focused",
@@ -52,12 +52,12 @@ CoreFormControl.validProps = [
   },
   {
     name : "fulwidth",
-    types: [{ default: "false", type: "boolean" }]
+    types: [{ default: false, type: "boolean" }]
   },
   {
     description: "If true, the label is hidden. This is used to increase density for a FilledInput. Be sure to add aria-label to the input element.",
     name       : "hiddenLabel",
-    types      : [{ default: "false", type: "boolean" }]
+    types      : [{ default: false, type: "boolean" }]
   },
   {
     description:
@@ -67,7 +67,7 @@ CoreFormControl.validProps = [
   },
   {
     name : "required",
-    types: [{ default: "false", type: "boolean" }]
+    types: [{ default: false, type: "boolean" }]
   },
   {
     description:
@@ -98,4 +98,4 @@ CoreFormControl.validProps = [
     ]
   },
 ];
-CoreFormControl.invalidProps = [];
+CoreFormControl.invalidProps = ["sx", "classes"];

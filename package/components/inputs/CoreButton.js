@@ -13,6 +13,7 @@ export default function CoreButton(props) {
 
   return <NativeButton {...props} />;
 }
+
 CoreButton.validProps = [
   {
     name : "label",

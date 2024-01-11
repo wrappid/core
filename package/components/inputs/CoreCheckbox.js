@@ -73,7 +73,13 @@ CoreCheckbox.validProps = [
     description:
       "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
     name : "indeterminate",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
   {
     description: "The icon to display when the component is indeterminate.",

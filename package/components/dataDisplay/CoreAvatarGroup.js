@@ -19,17 +19,17 @@ CoreAvatarGroup.validProps = [
   {
     description: "The component used for the root node. Either a string to use a HTML element or a component.",
     name       : "component",
-    types      : [{ default: "", type: "elementType" }]
+    types      : [{ type: "elementType" }]
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones.This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.",
     name       : "componentsProps",
-    types      : [{ default: "{}", type: "{ additionalAvatar?: object }" }]
+    types      : [{ default: {}, type: "{ additionalAvatar?: object }" }]
   },
   {
     description: "Max avatars to show before +x.",
     name       : "max",
-    types      : [{ default: "5", type: "number" }]
+    types      : [{ default: 5, type: "number" }]
   },
   {
     description: "custom renderer of extraAvatarsSignature:function(surplus: number) => React.ReactNodesurplus number of extra avatarsReturns: custom element to display",
@@ -57,4 +57,4 @@ CoreAvatarGroup.validProps = [
     types      : [{ default: "circular'", type: "circular'| 'rounded'| 'square'| string" }]
   }
 ];
-CoreAvatarGroup.invalidProps = [];
+CoreAvatarGroup.invalidProps = ["sx", "classes"];

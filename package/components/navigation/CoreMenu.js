@@ -90,8 +90,8 @@ CoreMenu.validProps = [
     name       : "autoFocus",
     types      : [
       {
-        default    : "true",
-        type       : "bool",
+        default    : true,
+        type       : "boolean",
         validValues: [true, false],
       },
     ]
@@ -101,9 +101,8 @@ CoreMenu.validProps = [
     name       : "MenuListProps",
     types      : [
       {
-        default    : {},
-        description: "",
-        type       : "object"
+        default: {},
+        type   : "object"
       }
     ]
   },
@@ -165,4 +164,4 @@ CoreMenu.validProps = [
   },
 ];
 
-CoreMenu.invalidProps = [];
+CoreMenu.invalidProps = ["sx", "classes"];

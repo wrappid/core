@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 
 import { NativeListSubheader } from "@wrappid/native";
 
@@ -40,33 +41,33 @@ CoreListItemSubheader.validProps = [
     name       : "disableGutters",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
-    ]
+    ],
   }, 
   {
     description: "If true, the List Subheader will not stick to the top during scroll.",
     name       : "disableSticky",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
-    ]
+    ],
   },
   {
     description: "If true, the List Subheader is indented.",
     name       : "inset",
     types      : [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
-    ]
+    ],
   },
 ];
 

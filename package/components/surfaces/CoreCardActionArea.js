@@ -11,5 +11,11 @@ export default function CoreCardActionArea(props) {
   return <NativeCardActionArea {...props}>{props.children}</NativeCardActionArea>;
 }
 
-CoreCardActionArea.validProps = [];
+CoreCardActionArea.validProps = [
+  {
+    description: "If true, the actions do not have additional margin.",
+    name       : "disableSpacing",
+    types      : [{ default: false, type: "boolean", validValues: [true, false] }]
+  }
+];
 CoreCardActionArea.invalidProps = ["sx", "classes"];

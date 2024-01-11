@@ -220,7 +220,7 @@ CoreFormInputs.validProps = [
     description:
       "If true, the input element is focused during the first mount.",
     name : "autoFocus",
-    types: [{ default: "", type: "bool" }],
+    types: [{ default: "", type: "boolean" }],
   },
   {
     description:
@@ -267,12 +267,12 @@ CoreFormInputs.validProps = [
     description:
       "If true, the component is disabled. The prop defaults to the value (false) inherited from the parent FormControl component.",
     name : "disabled",
-    types: [{ default: "", type: "bool" }],
+    types: [{ default: "", type: "boolean" }],
   },
   {
     description: "If true, the input will not have an underline.",
     name       : "disableUnderline",
-    types      : [{ default: "", type: "bool" }],
+    types      : [{ default: "", type: "boolean" }],
   },
   {
     description: "End InputAdornment for this component.",
@@ -283,19 +283,31 @@ CoreFormInputs.validProps = [
     description:
       "If true, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
     name : "error",
-    types: [{ default: "", type: "bool" }],
+    types: [{ type: "boolean" }],
   },
   {
     description:
       "If true, the input will take up the full width of its container.",
     name : "fullWidth",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
   {
     description:
       "If true, the label is hidden. This is used to increase density for a FilledInput. Be sure to add aria-label to the input element.",
     name : "hiddenLabel",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
   {
     description: "The id of the input element.",
@@ -316,7 +328,7 @@ CoreFormInputs.validProps = [
   {
     description: "Attributes applied to the input element.",
     name       : "inputProps",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description: "Pass a ref to the input element.",
@@ -344,7 +356,13 @@ CoreFormInputs.validProps = [
   {
     description: "If true, a TextareaAutosize element is rendered.",
     name       : "multiline",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
   {
     description: "Name attribute of the input element.",
@@ -367,13 +385,13 @@ CoreFormInputs.validProps = [
     description:
       "It prevents the user from changing the value of the field (not from interacting with the field).",
     name : "readOnly",
-    types: [{ default: "", type: "bool" }],
+    types: [{ default: "", type: "boolean" }],
   },
   {
     description:
       "If true, the input element is required. The prop defaults to the value (false) inherited from the parent FormControl component.",
     name : "required",
-    types: [{ default: "", type: "bool" }],
+    types: [{ type: "boolean" }],
   },
   {
     description:
@@ -392,7 +410,7 @@ CoreFormInputs.validProps = [
     name : "slotProps",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ input?: object, root?: object }"],
       },
@@ -404,7 +422,7 @@ CoreFormInputs.validProps = [
     name : "slots",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ input?: elementType, root?: elementType }"],
       },

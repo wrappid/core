@@ -22,7 +22,7 @@ CoreAutocomplete.validProps = [
       "Render the input.Signature:function(params: object) => ReactNode",
     name    : "renderInput*",
     required: "true",
-    types   : [{ default: "", type: "func" }],
+    types   : [{ type: "function" }],
   },
   {
     description:
@@ -109,7 +109,7 @@ CoreAutocomplete.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "FALSE", type: "bool" }],
+    types      : [{ default: false, type: "boolean" }] 
   },
   {
     description: "If true, will allow focus on disabled items.",
@@ -125,13 +125,13 @@ CoreAutocomplete.validProps = [
     description:
       "If true, the Popper content will be under the DOM hierarchy of the parent component.",
     name : "disablePortal",
-    types: [{ default: "FALSE", type: "bool" }],
+    types: [{ default: false, type: "boolean" }]
   },
   {
     description:
       "A function that determines the filtered options to be rendered on search.Signature:function(options: Array, state: object) => Arrayoptions The options to render.state The state of the component.",
     name : "filterOptions",
-    types: [{ default: "createFilterOptions()", type: "func" }],
+    types: [{ default: "createFilterOptions()", type: "function" }],
   },
   {
     description: "If true, hide the selected options from the list box.",
@@ -165,7 +165,7 @@ CoreAutocomplete.validProps = [
     description:
       "Used to determine the disabled state for a given option.Signature:function(option: Value) => booleanoption The option to test.",
     name : "getOptionDisabled",
-    types: [{ default: "", type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
@@ -177,7 +177,7 @@ CoreAutocomplete.validProps = [
     description:
       "If provided, the options will be grouped under the returned string. The groupBy value is also used as the text for group headings when renderGroup is not provided.Signature:function(options: Value) => stringoptions The options to group.",
     name : "groupBy",
-    types: [{ default: "", type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "If true, the component handles the \"Home\" and \"End\" keys when the popup is open. It should move focus to the first option and last option, respectively.",
@@ -249,28 +249,28 @@ CoreAutocomplete.validProps = [
   {
     description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
     name       : "onChange",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "Callback fired when the popup requests to be closed. Use in controlled mode (see open).Signature:function(event: React.SyntheticEvent, reason: string) => voidevent The event source of the callback.reason Can be: \"toggleInput\", \"escape\", \"selectOption\", \"removeOption\", \"blur\".",
     name       : "onClose",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "Callback fired when the highlight option changes.Signature:function(event: React.SyntheticEvent, option: Value, reason: string) => voidevent The event source of the callback.option The highlighted option.reason Can be: \"keyboard\", \"auto\", \"mouse\", \"touch\".",
     name       : "onHighlightChange",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "Callback fired when the input value changes.Signature:function(event: React.SyntheticEvent, value: string, reason: string) => voidevent The event source of the callback.value The new value of the text input.reason Can be: \"input\" (user input), \"reset\" (programmatic change), \"clear\".",
     name       : "onInputChange",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description:
       "Callback fired when the popup requests to be opened. Use in controlled mode (see open).Signature:function(event: React.SyntheticEvent) => voidevent The event source of the callback.",
     name : "onOpen",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "If true, the component is shown.",
@@ -313,19 +313,19 @@ CoreAutocomplete.validProps = [
     description:
       "Render the group.Signature:function(params: AutocompleteRenderGroupParams) => ReactNodeparams The group to render.",
     name : "renderGroup",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description:
       "Render the option, use getOptionLabel by default.Signature:function(props: object, option: Value, state: object, ownerState: object) => ReactNodeprops The props to apply on the li element.option The option to render.state The state of each option.ownerState The state of the Autocomplete component.",
     name : "renderOption",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:
       "Render the selected value.Signature:function(value: Array, getTagProps: function, ownerState: object) => ReactNodevalue The value provided to the component.getTagProps A tag props getter.ownerState The state of the Autocomplete component.",
     name : "renderTags",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:

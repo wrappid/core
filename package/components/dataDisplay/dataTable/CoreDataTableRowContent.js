@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-prototype-builtins */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
@@ -238,9 +239,9 @@ export default function CoreDataTableRowContent(props) {
                         </CoreTypographyBody2>
                       ) : typeof rowData[tableColumn.id] === "boolean" ? (
                         rowData[tableColumn.id] === true ? (
-                          "True"
+                          true
                         ) : (
-                          "False"
+                          false
                         )
                       ) : tableColumn.id === "_status" ? (
                         <StatusText status={rowData[tableColumn.id]} />

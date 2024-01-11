@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
@@ -72,8 +73,9 @@ CoreTable.validProps = [
     name : "stickyHeader",
     types: [
       {
-        default: "false",
-        type   : "bool",
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
       },
     ],
   },

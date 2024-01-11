@@ -55,7 +55,7 @@ CoreChip.validProps = [
     name       : "clickable",
     types      : [
       {
-        type       : "bool",
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -98,8 +98,8 @@ CoreChip.validProps = [
     name : "showZero",
     types: [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -137,8 +137,8 @@ CoreChip.validProps = [
     name : "skipFocusWhenDisabled",
     types: [
       {
-        default    : "false",
-        type       : "bool",
+        default    : false,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -158,7 +158,13 @@ CoreChip.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: "false", type: "bool" }],
+    types      : [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
 ];
 

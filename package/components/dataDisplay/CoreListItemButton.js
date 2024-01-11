@@ -101,6 +101,30 @@ CoreListItemButton.invalidProps = [
       },
     ]
   },
+  {
+    name : "activeOpacity",
+    types: [{ default: 0.2, type: "number" }]
+  },
+  {
+    name : "nextFocusDown ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusForward",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusLeft ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusRight ",
+    types: [{ type: "number" }]
+  },
+  {
+    name : "nextFocusUp  ",
+    types: [{ type: "number" }]
+  }
 ];
 
-CoreListItemButton.invalidProps = ["sx", "classes"];
+CoreListItemButton.invalidProps = ["sx", "classes", "style"];

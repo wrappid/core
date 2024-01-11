@@ -16,13 +16,14 @@ export default function CoreBadge(props) {
     component,
     components,
     componentsProps,
-    invisible,
+    visible,
     max,
     overlap,
     showZero,
     slotProps,
     slot,
     variant,
+    size
   } = props;
 
   return (
@@ -33,12 +34,13 @@ export default function CoreBadge(props) {
       component={component}
       components={components}
       componentsProps={componentsProps}
-      invisible={invisible}
+      visible={visible}
       max={max}
       overlap={overlap}
       showZero={showZero}
       slotProps={slotProps}
       slot={slot}
+      size={size}
       variant={variant}>
       {children}
     </NativeBadge>
@@ -107,12 +109,12 @@ CoreBadge.validProps = [
     ],
   },
   {
-    description: "If true, the badge is invisible.",
-    name       : "invisible",
+    description: "If true, the badge is visible.",
+    name       : "visible",
     types      : [
       {
-        default    : false,
-        type       : "bool",
+        default    : true,
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -122,9 +124,8 @@ CoreBadge.validProps = [
     name       : "max",
     types      : [
       {
-        default    : 99,
-        type       : "number",
-        validValues: "",
+        default: 99,
+        type   : "number",
       },
     ],
   },
@@ -146,7 +147,7 @@ CoreBadge.validProps = [
     types: [
       {
         default    : false,
-        type       : "bool",
+        type       : "boolean",
         validValues: [true, false],
       },
     ],
@@ -160,8 +161,8 @@ CoreBadge.validProps = [
         type       : "object",
         validValues: [
           {
-            badge: "func",
-            root : "func",
+            badge: "function",
+            root : "function",
           },
         ],
       },
@@ -190,6 +191,15 @@ CoreBadge.validProps = [
       },
     ],
   },
+  {
+    name : "size",
+    types: [
+      {
+        default: 20,
+        type   : "number"
+      }
+    ]
+  }
 ];
 
 CoreBadge.invalidProps = ["sx", "classes"];

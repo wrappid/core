@@ -89,15 +89,14 @@ export default function CorePhoneLink(props) {
 }
 
 CorePhoneLink.validProps = [
+  { name: "limitChars", types: [{ default: 30, type: "number" }] },
+  { name: "verified", types: [{ default: true, type: "boolean", validValues: [true, false] }] },
+  { name: "tooltipPlacement", types: [{ default: "bottom", type: "string" }] },
+  { name: "mask", types: [{ default: false, type: "boolean", validValues: [true, false] }] },
+  { name: "iconButton", types: [{ default: false, type: "boolean", validValues: [true, false] }] },
   {
-    description: "",
-    name       : "limitChars",
-    types      : [{ type: "number" }],
-  },
-  {
-    description: "",
-    name       : "sizes",
-    types      : "string",
+    name : "sizes",
+    types: [{ type: "string" }] 
   },
 ];
 CorePhoneLink.invalidProps = ["sx", "classes"];

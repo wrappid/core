@@ -1,13 +1,14 @@
+/* eslint-disable etc/no-commented-out-code */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeListItemText } from "@wrappid/native";
 
-import { sanitizeComponentProps } from "../../utils/componentUtil";
+// import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreListItemText(props) {
-  props = sanitizeComponentProps(CoreListItemText, props);
+  // props = sanitizeComponentProps(CoreListItemText, props);
   return <NativeListItemText {...props} />;
 }
 

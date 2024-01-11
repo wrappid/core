@@ -134,7 +134,13 @@ CoreIconText.validProps = [
   },
   {
     name : "link",
-    types: [{ default: "false", type: "boolean" }],
+    types: [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false],
+      },
+    ],
   },
   {
     name : "href",
