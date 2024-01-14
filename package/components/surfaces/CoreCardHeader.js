@@ -33,7 +33,7 @@ CoreCardHeader.validProps = [
     description:
       "If true, subheader and title won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the title text, and optional subheader text with the Typography component.",
     name : "disableTypography",
-    types: [{ default: false, type: "bool" }],
+    types: [{ default: false, type: "boolean" }],
   },
   {
     description: "The content of the component.",

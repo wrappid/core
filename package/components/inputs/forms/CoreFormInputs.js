@@ -240,7 +240,7 @@ CoreFormInputs.validProps = [
     name : "components",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ Input?: elementType, Root?: elementType }"],
       },
@@ -252,7 +252,7 @@ CoreFormInputs.validProps = [
     name : "componentsProps",
     types: [
       {
-        default    : "{}",
+        default    : {},
         type       : "object",
         validValues: ["{ input?: object, root?: object }"],
       },

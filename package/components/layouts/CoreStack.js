@@ -64,5 +64,9 @@ CoreStack.validProps = [
     name : "useFlexGap",
     types: [{ default: "", type: "boolean" }],
   },
+  {
+    name : "flexWrap",
+    types: [{ type: "boolean", validValues: [true, false] }]
+  }
 ];
 CoreStack.invalidProps = ["sx", "classes"];
