@@ -19,5 +19,17 @@ CoreBox.validProps = [
     name : "component",
     types: [{ default: "", type: "elementType" }],
   },
+  {
+    description:
+        "The component used for setting the height.",
+    name : "height",
+    types: [{ type: "number" }],
+  },
+  {
+    description:
+        "The component used for setting the height.",
+    name : "width",
+    types: [{ type: "number" }],
+  },
 ];
 export default CoreBox;
