@@ -4,6 +4,7 @@
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "code:lint": "eslint --ignore-path .gitignore ./package",
     "code:format": "npm run code:lint --fix ./package",
     "test": "exit 0",
@@ -61,6 +62,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "eslint-plugin-unused-imports": "^2.0.0"
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.3"
   }
 }
