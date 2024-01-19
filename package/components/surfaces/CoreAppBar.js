@@ -69,7 +69,7 @@ export default function CoreAppBar(props) {
     React.useState(null);
   // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
-  const [_appbarContent, set_appbarContent] = React.useState(null);
+  const [_appbarContent, set_appbarContent] = React.useState(appbarPopOver.PROFILE);
   const handleAppbarPopOverClose = () => {
     set_appbarContent(null);
     set_appbarPopOverAnchorEl(null);
@@ -290,6 +290,14 @@ CoreAppBar.validProps = [
       },
     ],
   },
+  {
+    name : "handleDrawer",
+    types: [{ type: "elementType" }]
+  },
+  {
+    name : "routes",
+    types: [{ type: "object" }]
+  }
 ];
 
 CoreAppBar.invalidProps = ["sx", "classes"];

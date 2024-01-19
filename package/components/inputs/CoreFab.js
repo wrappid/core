@@ -61,7 +61,7 @@ CoreFab.validProps = [
   },
   {
     name : "onClick",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:

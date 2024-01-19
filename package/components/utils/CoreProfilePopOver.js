@@ -11,18 +11,20 @@ import { CoreRouteRegistryContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreDivider from "../dataDisplay/CoreDivider";
-import { __IconTypes } from "../dataDisplay/CoreIcon";
 import CoreEmailLink from "../dataDisplay/CoreEmailLink";
+import { __IconTypes } from "../dataDisplay/CoreIcon";
 import CorePhoneLink from "../dataDisplay/CorePhoneLink";
 import CoreTypographyBody2 from "../dataDisplay/CoreTypographyBody2";
 import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreButton from "../inputs/CoreButton";
-import CoreMenu from "../navigation/CoreMenu";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreStack from "../layouts/CoreStack";
+import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreProfilePopOver(props) {
+  // eslint-disable-next-line no-console
+  // console.log(props);
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
@@ -64,7 +66,7 @@ export default function CoreProfilePopOver(props) {
 
   const OnMenuClick = (item) => {
     navigate(item.link);
-    onClose();
+    onClose;
   };
 
   return (

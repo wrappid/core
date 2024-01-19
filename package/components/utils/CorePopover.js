@@ -13,7 +13,7 @@ export default function CorePopover(props) {
 CorePopover.validProps = [
   {
     description: "If true, the component is shown.",
-    name       : "open*",
+    name       : "open",
     types      : [{ type: "boolean" }],
   },
   {
@@ -26,7 +26,7 @@ CorePopover.validProps = [
     description:
       "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
     name : "anchorEl",
-    types: [{ type: "HTML element| func" }],
+    types: [{ type: "object" }],
   },
   {
     description:
@@ -94,7 +94,7 @@ CorePopover.validProps = [
     description:
       "Callback fired when the component requests to be closed. The reason parameter can optionally be used to control the response to onClose.",
     name : "onClose",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:

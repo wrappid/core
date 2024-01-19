@@ -88,7 +88,7 @@ CoreSwitch.validProps = [
     description:
       "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string). You can pull out the new checked state by accessing event.target.checked (boolean).",
     name : "onChange",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "If true, the input element is required.",

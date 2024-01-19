@@ -373,7 +373,7 @@ CoreFormInputs.validProps = [
     description:
       "Callback fired when the value is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string).",
     name : "onChange",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description:
