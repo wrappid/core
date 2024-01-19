@@ -6,7 +6,7 @@ import CoreClasses from "../styles/CoreClasses";
 
 export default function WrappidGuestLayout(props) {
   return (
-    <CoreBox styleClasses={[CoreClasses.PADDING.P1]}>
+    <CoreBox>
       {props.children}
     </CoreBox>
   );
