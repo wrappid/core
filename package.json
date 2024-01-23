@@ -6,8 +6,8 @@
   "scripts": {
     "attributions:gen": "node ./scripts/attributions.gen.js",
     "prepare": "husky install",
-    "code:lint": "eslint --ignore-path .gitignore ./package",
-    "code:format": "npm run code:lint --fix ./package",
+    "code:lint": "eslint -c .eslintrc.js --ignore-path .gitignore ./package",
+    "code:format": "npm run code:lint:app -- --fix",
     "test": "exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
