@@ -200,5 +200,9 @@ CoreInput.validProps = [
     name : "value",
     types: [{ default: "", type: "any" }],
   },
+  {
+    name : "label",
+    types: [{ types: "string" }]
+  }
 ];
 CoreInput.invalidProps = ["sx", "classes"];

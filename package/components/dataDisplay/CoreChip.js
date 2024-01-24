@@ -117,7 +117,7 @@ CoreChip.validProps = [
   {
     description: "Callback fired when the delete icon is clicked. If set, the delete icon will be shown.",
     name       : "onDelete",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description:

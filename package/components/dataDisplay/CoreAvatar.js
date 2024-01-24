@@ -25,7 +25,6 @@ CoreAvatar.validProps = [
   {
     description: "The src attribute for the img element.",
     name       : "src",
-    required   : true,
     types      : [{ type: "string" }]
   },
   {

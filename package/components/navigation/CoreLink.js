@@ -17,7 +17,7 @@ CoreLink.validProps = [
   },
   {
     name : "onClick",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     name : "href",

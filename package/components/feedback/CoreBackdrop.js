@@ -33,8 +33,8 @@ export default function CoreBackdrop(props) {
 CoreBackdrop.validProps = [
   {
     description: "If true, the component is shown.",
-    name       : "open",
-    required   : "true",
+    name       : "open*",
+    required   : true,
     types      : [
       { 
         type       : "boolean",

@@ -108,7 +108,7 @@ CoreDrawer.validProps = [
   {
     description: "Callback fired when the component requests to be closed. The reason parameter can optionally be used to control the response to onClose.Signature:function(event: object, reason: string) => voidevent The event source of the callback.reason Can be: \"escapeKeyDown\", \"backdropClick\".",
     name       : "onClose",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, the component is shown.",
