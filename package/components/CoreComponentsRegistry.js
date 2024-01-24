@@ -1,3 +1,4 @@
+// eslint-disable-next-line etc/no-commented-out-code
 // import CoreAvatar from "./dataDisplay/CoreAvatar.js";
 // import CoreBadge from "./dataDisplay/CoreBadge.js";
 // import CoreChip from "./dataDisplay/CoreChip.js";
@@ -6,6 +7,7 @@
 // import CoreEmailOrPhoneLink from "./dataDisplay/CoreEmailOrPhoneLink.js";
 // import CoreH from "./dataDisplay/CoreH.js";
 import CoreH1 from "./dataDisplay/CoreH1.js";
+// eslint-disable-next-line etc/no-commented-out-code
 // import CoreH2 from "./dataDisplay/CoreH2.js";
 // import CoreH3 from "./dataDisplay/CoreH3.js";
 // import CoreH4 from "./dataDisplay/CoreH4.js";
@@ -187,6 +189,7 @@ import CoreH1 from "./dataDisplay/CoreH1.js";
 import WrappidComponent from "./WrappidComponent.js";
 
 export const coreComponentsRegistry = {
+  // eslint-disable-next-line etc/no-commented-out-code
   // "ChildMap"                     : { comp: ChildMap },
   // "CoreAccordion"                : { comp: CoreAccordion },
   // "CoreAccordionDetail"          : { comp: CoreAccordionDetail },
@@ -262,6 +265,7 @@ export const coreComponentsRegistry = {
   // "CoreGridItem"                 : { comp: CoreGridItem },
   // "CoreH"                        : { comp: CoreH },
   "CoreH1"          : { comp: CoreH1 },
+  // eslint-disable-next-line etc/no-commented-out-code
   // "CoreH2"                       : { comp: CoreH2 },
   // "CoreH3"                       : { comp: CoreH3 },
   // "CoreH4"                       : { comp: CoreH4 },

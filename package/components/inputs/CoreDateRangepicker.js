@@ -60,7 +60,7 @@ CoreDateRangepicker.validProps = [
   {
     description: "Formats the day of week displayed in the calendar header.",
     name       : "dayOfWeekFormatter",
-    types      : [{ default: "(_day: string, date: TDate) => adapter.format(date, 'weekdayShort').charAt(0).toUpperCase()", type: "func", validValues: [] }],
+    types      : [{ default: "(_day: string, date: TDate) => adapter.format(date, 'weekdayShort').charAt(0).toUpperCase()", type: "function", validValues: [] }],
   },
   {
     description: "Default calendar month displayed when value={[null, null]}.",

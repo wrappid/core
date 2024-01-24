@@ -4,6 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeIconButton } from "@wrappid/native";
 
+import CoreButton from "./CoreButton";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreIconButton(props) {
@@ -11,6 +12,11 @@ export default function CoreIconButton(props) {
   return <NativeIconButton {...props} />;
 }
 CoreIconButton.validProps = [
+  ...CoreButton.validProps,
+  {
+    name : "OnClick", /// temporary adding 'OnClick' it should come default from CoreButton which is 'onClick'. OnClick should changed to onClick
+    types: [{ type: "function" }]
+  },
   {
     description: "The icon to display.",
     name       : "children",

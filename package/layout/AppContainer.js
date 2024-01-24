@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
 import CoreDrawer from "./../components/surfaces/CoreDrawer";
 import CoreFooter from "./../components/surfaces/CoreFooter";
-import ComponentRegistry from "../registry/ComponentRegistry";
 import ErrorBoundary from "./../middleware/ErrorBoundary";
 import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
 import {
@@ -18,6 +17,7 @@ import {
 } from "../config/api";
 import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
 import { CoreRouteRegistryContext } from "../config/contextHandler";
+import ComponentRegistry from "../registry/ComponentRegistry";
 import { apiRequestAction } from "../store/action/appActions";
 import { toggleLeftMenuState } from "../store/action/menuAction";
 import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store/types/authTypes";

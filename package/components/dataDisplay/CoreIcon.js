@@ -25,6 +25,7 @@ export const __IconTypes = {
  */
 export default function CoreIcon(props) {
   props = sanitizeComponentProps(CoreIcon, props);
+  // eslint-disable-next-line no-unused-vars
   const { type, icon, options, sx, ...restProps } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;

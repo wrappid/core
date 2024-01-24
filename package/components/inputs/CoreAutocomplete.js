@@ -14,14 +14,14 @@ CoreAutocomplete.validProps = [
   {
     description: "Array of options.",
     name       : "options*",
-    required   : "true",
+    required   : true,
     types      : [{ type: "array" }],
   },
   {
     description:
       "Render the input.Signature:function(params: object) => ReactNode",
     name    : "renderInput*",
-    required: "true",
+    required: true,
     types   : [{ type: "function" }],
   },
   {
@@ -159,7 +159,7 @@ CoreAutocomplete.validProps = [
     description:
       "The label to display when the tags are truncated (limitTags).Signature:function(more: number) => ReactNodemore The number of truncated tags.",
     name : "getLimitTagsText",
-    types: [{ default: "(more) => `+${more}`", type: "func" }],
+    types: [{ default: "(more) => `+${more}`", type: "function" }],
   },
   {
     description:
@@ -171,7 +171,7 @@ CoreAutocomplete.validProps = [
     description:
       "Used to determine the string value for a given option. It's used to fill the input (and the list box options if renderOption is not provided).If used in free solo mode, it must accept both the type of the options and a string.Signature:function(option: Value) => string",
     name : "getOptionLabel",
-    types: [{ default: "(option) => option.label ?? option", type: "func" }],
+    types: [{ default: "(option) => option.label ?? option", type: "function" }],
   },
   {
     description:
@@ -204,7 +204,7 @@ CoreAutocomplete.validProps = [
     description:
       "Used to determine if the option represents the given value. Uses strict equality by default. ⚠️ Both arguments need to be handled, an option can only match with one value.Signature:function(option: Value, value: Value) => booleanoption The option to test.value The value to test against.",
     name : "isOptionEqualToValue",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:

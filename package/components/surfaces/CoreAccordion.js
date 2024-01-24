@@ -53,7 +53,7 @@ CoreAccordion.validProps = [
   {
     description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
     name       : "onChange",
-    types      : [{ type: "func" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, rounded corners are disabled.",

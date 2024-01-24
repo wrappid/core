@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createForm } from "../../utils/formUtils";
 import {
   ADD_FORM,

@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import ChildMap from "./ChildMap";
+import CoreCheckbox from "./CoreCheckbox";
+import CoreInput from "./CoreInput";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreChip from "../dataDisplay/CoreChip";
 import CoreIcon from "../dataDisplay/CoreIcon";
@@ -15,8 +17,6 @@ import CoreStack from "../layouts/CoreStack";
 import CoreAccordion from "../surfaces/CoreAccordion";
 import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
-import CoreCheckbox from "./CoreCheckbox";
-import CoreInput from "./CoreInput";
 
 function multiLevelSerch(id, data, parentIndices) {
   let f = data.find((d) => Number(d.id) === Number(id));

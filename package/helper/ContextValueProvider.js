@@ -1,3 +1,4 @@
+/* eslint-disable etc/no-commented-out-code */
 // import React, {useContext} from "react";
 
 // import { FunctionsRegistryContext } from "../config/contextHandler";

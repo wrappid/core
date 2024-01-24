@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject, CoreConfigContext } from "@wrappid/styles";
+import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/Logout";
@@ -29,6 +29,7 @@ export default function CoreRoutes() {
   const routesFromStore = useSelector((state) => state?.route?.routes);
   const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   let authenticated = auth?.uid ? true : false;
+  // eslint-disable-next-line etc/no-commented-out-code
   // let appConfig = useContext(CoreConfigContext);
   let appConfig = getConfigurationObject();
 
@@ -78,7 +79,7 @@ export default function CoreRoutes() {
         setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
       }
     }
-  }, [appConfig,routesFromStore]);
+  }, [appConfig, routesFromStore]);
 
   return (
     <NativeDomRoutes>

@@ -94,7 +94,7 @@ CorePopover.validProps = [
     description:
       "Callback fired when the component requests to be closed. The reason parameter can optionally be used to control the response to onClose.",
     name : "onClose",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description:

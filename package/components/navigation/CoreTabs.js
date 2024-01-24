@@ -61,7 +61,7 @@ CoreTabs.validProps = [
     description:
       "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: any) => voidevent The event source of the callback. Warning: This is a generic event not a change event.value We default to the index of the child (number)",
     name : "onChange",
-    types: [{ type: "func" }],
+    types: [{ type: "function" }],
   },
   {
     description: "The component orientation (layout flow direction).",
