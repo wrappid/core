@@ -1,47 +1,72 @@
 import * as yup from "yup";
+
+// eslint-disable-next-line import/no-unresolved
 import { getFormikRequiredMessage } from "./formUtils";
 
 export function clearValidatePhoneEmail(text) {
-  var t = text;
+  let temporaryText = text;
+
   if (!text || (text && text.length === 0)) return false;
-  if (t[0] === "'") {
-    t = t.slice(1);
-    t = t.toLowerCase();
+  if (temporaryText[0] === "'") {
+    temporaryText = temporaryText.slice(1);
+    temporaryText = temporaryText.toLowerCase();
   }
-  var f = String(t).match(
+  let filterText = String(temporaryText).match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 
-  if (f) {
-    return f;
-  } else if (!f) {
-    f = String(t).match(
+  if (filterText) {
+    return filterText;
+  } else if (!filterText) {
+    filterText = String(temporaryText).match(
       /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/
     );
 
-    return f;
+    return filterText;
   }
 
-  return f;
+  return filterText;
 }
 
 export const defaultValidations = {
-  text: {
-    required: yup.string().required(getFormikRequiredMessage("text")),
-    notRequired: yup.string().nullable(),
+  asyncSelect: {
+    notRequired: yup.array(),
+    required   : yup.array().required(getFormikRequiredMessage("selection")),
   },
-  email: {
-    required: yup.string().email().required(getFormikRequiredMessage("email")),
-    notRequired: yup.string().email().nullable(),
+  asyncSelectMulti: {
+    notRequired: yup.array(),
+    required   : yup.array().required(getFormikRequiredMessage("selection")),
   },
-  phone: {
+  checkbox       : { required: yup.bool() },
+  confirmPassword: {
+    notRequired: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
     required: yup
       .string()
-      .length(10)
-      .required(getFormikRequiredMessage("Phone")),
-    notRequired: yup.string().nullable(),
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
+  },
+
+  date: {
+    notRequired: yup.string(),
+    required   : yup.string().required(getFormikRequiredMessage("Select")),
+  },
+  datetime: {
+    notRequired: yup.string(),
+    required   : yup.string().required(getFormikRequiredMessage("dateTime")),
+  },
+  email: {
+    notRequired: yup.string().email().nullable(),
+    required   : yup.string().email().required(getFormikRequiredMessage("email")),
   },
   emailOrPhone: {
+    notRequired: yup
+      .string()
+      .test(
+        "email-phone-validation",
+        "Not a valid email or phone no.",
+        clearValidatePhoneEmail
+      ),
     required: yup
       .string()
       .test(
@@ -50,16 +75,88 @@ export const defaultValidations = {
         clearValidatePhoneEmail
       )
       .required(getFormikRequiredMessage("emailOrPhone")),
+  },
+  filePicker: {
+    notRequired: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object().notRequired().nullable(); // schema for object
+
+        case "string":
+          return yup.string().url().notRequired()
+            .nullable(); // schema for string
+
+        default:
+          return yup.string().notRequired().nullable(); // here you can decide what is the default
+      }
+    }),
+    required: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object().required(); // schema for object
+
+        case "string":
+          return yup.string().url().required(); // schema for string
+
+        default:
+          return yup.string().required(); // here you can decide what is the default
+      }
+    }),
+  },
+  imagePicker: {
+    notRequired: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object().notRequired().nullable(); // schema for object
+
+        case "string":
+          return yup.string().url().notRequired()
+            .nullable(); // schema for string
+
+        default:
+          return yup.string().notRequired().nullable(); // here you can decide what is the default
+      }
+    }),
+    required: yup.lazy((value) => {
+      switch (typeof value) {
+        case "object":
+          return yup.object().required(); // schema for object
+
+        case "string":
+          return yup.string().url().required(); // schema for string
+
+        default:
+          return yup.string().required(); // here you can decide what is the default
+      }
+    }),
+  },
+  json: {
+    notRequired: yup.object().nullable(),
+    required   : yup.object().required(getFormikRequiredMessage("JSON")),
+  },
+  multiTimeRange: {
+    notRequired: yup.array(),
+    required   : yup.array().required(getFormikRequiredMessage("TimeRange")),
+  },
+  otp: {
+    notRequired: yup.string(),
+    required   : yup
+      .string()
+      .length(6)
+      .required(getFormikRequiredMessage("OneTimePassword")),
+  },
+  parentChildMap: {
+    notRequired: yup.array().nullable(),
+    required   : yup.array().required(),
+  },
+  password: {
     notRequired: yup
       .string()
-      .test(
-        "email-phone-validation",
-        "Not a valid email or phone no.",
-        clearValidatePhoneEmail
+      .min(8)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
+        "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
       ),
-  },
-
-  password: {
     required: yup
       .string()
       .required(getFormikRequiredMessage("password"))
@@ -68,114 +165,28 @@ export const defaultValidations = {
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
         "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
       ),
-    notRequired: yup
-      .string()
-      .min(8)
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%^&*])(?=.{8,})/,
-        "At least 8 Characters, a mixture of uppercase, lowercase, numbers and special  characters"
-      ),
   },
-  confirmPassword: {
-    required: yup
+  phone: {
+    notRequired: yup.string().nullable(),
+    required   : yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
-    notRequired: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .length(10)
+      .required(getFormikRequiredMessage("Phone")),
   },
   select: {
-    required: yup.string().required(getFormikRequiredMessage("Select")),
     notRequired: yup.string(),
+    required   : yup.string().required(getFormikRequiredMessage("Select")),
   },
-  date: {
-    required: yup.string().required(getFormikRequiredMessage("Select")),
-    notRequired: yup.string(),
-  },
-  datetime: {
-    required: yup.string().required(getFormikRequiredMessage("dateTime")),
-    notRequired: yup.string(),
-  },
-  checkbox: {
-    required: yup.bool(),
+  text: {
+    notRequired: yup.string().nullable(),
+    required   : yup.string().required(getFormikRequiredMessage("text")),
   },
   time: {
-    required: yup.string().required(getFormikRequiredMessage("Time")),
     notRequired: yup.string(),
-  },
-  json: {
-    required: yup.object().required(getFormikRequiredMessage("JSON")),
-    notRequired: yup.object().nullable(),
-  },
-  otp: {
-    required: yup
-      .string()
-      .length(6)
-      .required(getFormikRequiredMessage("OneTimePassword")),
-    notRequired: yup.string(),
-  },
-  asyncSelect: {
-    required: yup.array().required(getFormikRequiredMessage("selection")),
-    notRequired: yup.array(),
-  },
-  asyncSelectMulti: {
-    required: yup.array().required(getFormikRequiredMessage("selection")),
-    notRequired: yup.array(),
-  },
-  multiTimeRange: {
-    required: yup.array().required(getFormikRequiredMessage("TimeRange")),
-    notRequired: yup.array(),
+    required   : yup.string().required(getFormikRequiredMessage("Time")),
   },
   timeRange: {
-    required: yup.object().required(getFormikRequiredMessage("TimeRange")),
     notRequired: yup.object().nullable(),
-  },
-  parentChildMap: {
-    required: yup.array().required(),
-    notRequired: yup.array().nullable(),
-  },
-  imagePicker: {
-    required: yup.lazy((value) => {
-      switch (typeof value) {
-        case "object":
-          return yup.object().required(); // schema for object
-        case "string":
-          return yup.string().url().required(); // schema for string
-        default:
-          return yup.string().required(); // here you can decide what is the default
-      }
-    }),
-    notRequired: yup.lazy((value) => {
-      switch (typeof value) {
-        case "object":
-          return yup.object().notRequired().nullable(); // schema for object
-        case "string":
-          return yup.string().url().notRequired().nullable(); // schema for string
-        default:
-          return yup.string().notRequired().nullable(); // here you can decide what is the default
-      }
-    }),
-  },
-  filePicker: {
-    required: yup.lazy((value) => {
-      switch (typeof value) {
-        case "object":
-          return yup.object().required(); // schema for object
-        case "string":
-          return yup.string().url().required(); // schema for string
-        default:
-          return yup.string().required(); // here you can decide what is the default
-      }
-    }),
-    notRequired: yup.lazy((value) => {
-      switch (typeof value) {
-        case "object":
-          return yup.object().notRequired().nullable(); // schema for object
-        case "string":
-          return yup.string().url().notRequired().nullable(); // schema for string
-        default:
-          return yup.string().notRequired().nullable(); // here you can decide what is the default
-      }
-    }),
+    required   : yup.object().required(getFormikRequiredMessage("TimeRange")),
   },
 };

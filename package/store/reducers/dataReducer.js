@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { prepareColumns } from "../../utils/tableUtils";
 import { LOGOUT_SUCCESS } from "../types/authTypes";
 import {
@@ -192,7 +193,7 @@ const case_ReadDataSuccess = (state, action) => {
         ),
         rows: state[action?.payload?.entity || "UNKNOWN"]?.filtering
           ? action?.payload?.data?.rows
-          : [...state[action?.payload?.entity || "UNKNOWN"]?.data?.rows, ...action?.payload?.data?.rows],
+          : [...(state[action?.payload?.entity || "UNKNOWN"]?.data?.rows || []), ...(action?.payload?.data?.rows || [])],
         totalRecords: action?.payload?.data?.totalRecords,
       },
       error  : false,
@@ -316,7 +317,7 @@ const case_UpdateFilterData = (state, action) => {
   console.log("WITH PAYLOAD = ", action?.payload);
   let lastFilterOb = state[action?.payload?.entity || "UNKNOWN"]?.query?.filter;
   let presentFilterOb = Object.fromEntries(
-    Object.entries(action?.payload?.filterValues).map(([k, v]) => [k, v.toLowerCase()])
+    Object.entries(action?.payload?.filterValues).map(([key, value]) => [key, value.toLowerCase()])
   );
   let _loadingNotRequired = JSON.stringify(lastFilterOb) === JSON.stringify(presentFilterOb);
   let _filteringRequired = !_loadingNotRequired || !(Object.keys(presentFilterOb).length === 0);
@@ -345,6 +346,7 @@ const case_FilterData = (state, action) => {
     ...state,
     [action?.payload?.entity || "UNKNOWN"]: {
       ...state[action?.payload?.entity || "UNKNOWN"],
+      // eslint-disable-next-line etc/no-commented-out-code
       // filtering: false,
       loading: state[action?.payload?.entity || "UNKNOWN"].filtering,
     },

@@ -1,4 +1,3 @@
-import React from "react";
 
 import CoreIcon from "../../components/dataDisplay/CoreIcon";
 import CoreClasses from "../../styles/CoreClasses";
@@ -50,6 +49,7 @@ export default {
       description:
         "(stringavatar NOT IMPLEMENTED) You can use different background colors for the avatar. The following demo generates the color based on the name of the person.",
       propsGroups: [
+        // eslint-disable-next-line object-curly-newline
         {
           //   children: "SD",
           //   styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
@@ -61,6 +61,7 @@ export default {
           // {
           //   children: "AD",
           //   styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
+        // eslint-disable-next-line object-curly-newline
         },
       ],
       title: "Letter avatars",
@@ -135,9 +136,11 @@ export default {
       description:
         "If there is an error loading the avatar image, the component falls back to an alternative in the following order: the provided children, the first letter of the alt text, a generic avatar icon",
       propsGroups: [
+        // eslint-disable-next-line object-curly-newline
         {
           // alt: "",
           // src: "",
+        // eslint-disable-next-line object-curly-newline
         },
       ],
       title: "Fallbacks (NOT IMPLEMENTED)",
@@ -145,7 +148,9 @@ export default {
     {
       description:
         "AvatarGroup renders its children as a stack. Use the max prop to limit the number of avatars. ",
+      // eslint-disable-next-line array-bracket-newline
       propsGroups: [
+        // eslint-disable-next-line etc/no-commented-out-code
         // {
         //   alt: "Some Alternative",
         //   src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -171,6 +176,7 @@ export default {
         //   src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
         //   styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
         // },
+      // eslint-disable-next-line array-bracket-newline
       ],
       title: "Grouped (NOT IMPLEMENTED)",
     },
@@ -178,6 +184,7 @@ export default {
       description:
         "If you need to control the total number of avatars not shown, you can use the total prop.",
       propsGroups: [
+        // eslint-disable-next-line object-curly-newline
         {
           //   alt: "Some Alternative",
           //   src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -197,6 +204,7 @@ export default {
           //   alt: "Some Alternative",
           //   src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
           //   styleClasses: [CoreClasses.DATA_DISPLAY.AVATAR],
+        // eslint-disable-next-line object-curly-newline
         },
       ],
       title: "Total avatars (NOT IMPLEMENTED)",

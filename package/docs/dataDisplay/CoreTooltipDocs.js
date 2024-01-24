@@ -1,3 +1,4 @@
+// eslint-disable-next-line etc/no-commented-out-code
 // import React from "react";
 
 // export default {

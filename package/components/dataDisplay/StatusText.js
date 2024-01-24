@@ -1,9 +1,9 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+import CoreTypographyCaption from "./CoreTypographyCaption";
 import CoreClasses from "../../styles/CoreClasses";
 import { getStatusTextColorClass } from "../../utils/tableUtils";
-import CoreTypographyCaption from "./CoreTypographyCaption";
 
 export default function StatusText(props) {
   const { status, gridProps } = props;

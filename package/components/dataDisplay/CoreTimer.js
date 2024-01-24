@@ -1,10 +1,10 @@
-// eslint-disable-next-line unused-imports/no-unused-imports
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useEffect, useState } from "react";
 
+import CoreTypographyBody2 from "./CoreTypographyBody2";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreTextButton from "../inputs/CoreTextButton";
 import CoreBox from "../layouts/CoreBox";
-import CoreTypographyBody2 from "./CoreTypographyBody2";
 
 export default function CoreTimer({ seconds, action, actionLabel, timerLabel }) {
   /***

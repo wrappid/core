@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 
 import CoreDivider from "../components/dataDisplay/CoreDivider";
@@ -45,7 +46,7 @@ class ErrorBoundary extends React.Component {
     this.props.setHasError(true);
   }
 
-  componentDidUpdate(prevProps, _previousState) {
+  componentDidUpdate(prevProps/* , _previousState */) {
     if (!this.props.hasError && prevProps.hasError) {
       this.setState({ hasError: false });
     }

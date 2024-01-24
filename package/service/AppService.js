@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 
 import authHeader from "./DataService";
