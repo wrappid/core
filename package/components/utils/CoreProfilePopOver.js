@@ -23,6 +23,8 @@ import CoreStack from "../layouts/CoreStack";
 import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreProfilePopOver(props) {
+  // eslint-disable-next-line no-console
+  // console.log(props);
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
@@ -64,7 +66,7 @@ export default function CoreProfilePopOver(props) {
 
   const OnMenuClick = (item) => {
     navigate(item.link);
-    onClose();
+    onClose;
   };
 
   return (

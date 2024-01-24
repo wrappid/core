@@ -68,7 +68,7 @@ export default function CoreDialog(props) {
 CoreDialog.validProps = [
   {
     description: "If true, the component is shown.",
-    name       : "open*",
+    name       : "open",
     types      : [{ type: "boolean" }],
   },
   {
