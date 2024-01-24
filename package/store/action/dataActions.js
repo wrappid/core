@@ -7,6 +7,8 @@ import {
   UPDATE_DATA_LOADING,
   UPDATE_DATA_SUCCESS
 } from "../types/dataManagementTypes";
+
+// eslint-disable-next-line no-undef
 let backendUrl = config?.backendUrl || process.env.REACT_APP_BACKEND_URL;
 
 export const getDataByModel = (model, query, token) => {
@@ -34,7 +36,7 @@ export const getDataByModel = (model, query, token) => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : READ_DATA_ERROR,
         });
       });
@@ -44,7 +46,6 @@ export const getDataByModel = (model, query, token) => {
 export const updateDataByModel = (model, id, data, token) => {
   return (dispatch) => {
     dispatch({ type: UPDATE_DATA_LOADING });
-    console.log(data);
     let apiUrl = backendUrl + queryBuilder("/data/" + model + "/" + id);
 
     fetch(apiUrl, {
@@ -75,7 +76,7 @@ export const updateDataByModel = (model, id, data, token) => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : UPDATE_DATA_ERROR,
         });
       });

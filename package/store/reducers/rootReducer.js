@@ -1,4 +1,3 @@
-// import { combineReducers } from "redux";
 import apiReducer from "./apiReducer";
 import appReducer from "./appReducer";
 import dataReducer from "./dataReducer";

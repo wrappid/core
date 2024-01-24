@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeOtpInput } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 

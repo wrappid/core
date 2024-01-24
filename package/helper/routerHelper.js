@@ -6,7 +6,8 @@ import {
   nativeUseLocation as coreUseLocation,
   nativeUseParams as coreUseParams,
   nativeUseSearchParams as coreUseSearchParams,
-  nativeOpenUrl as coreOpenUrl,
+  nativeOpenUrl as coreOpenUrl
+// eslint-disable-next-line import/no-unresolved
 } from "@wrappid/native";
 
 export {
@@ -17,5 +18,5 @@ export {
   coreUseLocation,
   coreUseParams,
   coreUseSearchParams,
-  coreOpenUrl,
+  coreOpenUrl
 };

@@ -5,11 +5,11 @@ import React from "react";
 import { getConfigurationObject } from "@wrappid/styles";
 
 import CoreIconButton from "./CoreIconButton";
+import CoreOutlinedButton from "./CoreOutlinedButton";
 import CoreClasses from "../../styles/CoreClasses";
 import { isJson } from "../../utils/stringUtils";
 import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreIcon from "../dataDisplay/CoreIcon";
-import CoreOutlinedButton from "./CoreOutlinedButton";
 
 export default function CoreResponsiveButton(props) {
   let config = getConfigurationObject();

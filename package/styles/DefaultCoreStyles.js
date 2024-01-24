@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { DefaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT, BaseStyle } from "@wrappid/styles";
 
 /**

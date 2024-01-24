@@ -36,6 +36,7 @@ export default function UserChip(props) {
   const [firstName, setFirstName] = React.useState(_firstName);
   const [middleName, setMiddleName] = React.useState(_middleName);
   const [lastName, setLastName] = React.useState(_lastName);
+  // eslint-disable-next-line no-unused-vars
   const [email, setEmail] = React.useState(_email);
   const [photoUrl, setPhotoUrl] = React.useState(_photoUrl);
 

@@ -4,9 +4,9 @@ import {
   TOGGLE_RIGHT_MENU
 } from "../types/menuTypes";
 
-export const toggleLeftMenuState = (v) => {
+export const toggleLeftMenuState = (menuState) => {
   return (dispatch) => {
-    dispatch({ payload: v, type: TOGGLE_LEFT_MENU });
+    dispatch({ payload: menuState, type: TOGGLE_LEFT_MENU });
   };
 };
 
@@ -16,8 +16,8 @@ export const toggleRightMenuState = () => {
   };
 };
 
-export const toggleMenuItemState = (v) => {
+export const toggleMenuItemState = (value) => {
   return (dispatch) => {
-    dispatch({ payload: v, type: TOGGLE_LEFT_MENU_ITEM_STATE });
+    dispatch({ payload: value, type: TOGGLE_LEFT_MENU_ITEM_STATE });
   };
 };

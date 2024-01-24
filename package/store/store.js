@@ -25,6 +25,7 @@ function createFullStore(appReducer) {
   finalReducer = { ...finalReducer, ...appReducer };
 
   const store = configureStore({
+    // eslint-disable-next-line no-undef
     devTools  : process.env.REACT_APP_ENV !== ENV_PROD_MODE,
     middleware: [thunk],
     reducer   : combineReducers(finalReducer),

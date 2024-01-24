@@ -1,5 +1,6 @@
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -6,6 +6,7 @@ async function getCoreAccessToken() {
 
     return token;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error("Error in token fetch from native storage", err);
   }
 }

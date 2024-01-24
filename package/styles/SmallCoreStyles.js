@@ -3,6 +3,7 @@ import {
   DEFAULT_PADDING,
   IMPORTANT,
   PX_TAG
+// eslint-disable-next-line import/no-unresolved
 } from "@wrappid/styles";
 
 // -- import { MEDIUM_WINDOW_WIDTH, SMALL_WINDOW_WIDTH } from "../config/constants";

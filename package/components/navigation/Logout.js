@@ -35,11 +35,7 @@ export default function Logout() {
 
   return (
     <CoreBox
-      styleClasses={[
-        CoreClasses.HEIGHT.VH_100,
-        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-      ]}
+      styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
     >
       <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
     </CoreBox>

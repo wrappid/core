@@ -11,14 +11,16 @@ const DESTINATION = "/Users/kc/Desktop/test/destination/";
  * hint writeFileSync mkdirSync 
  */
 
-const { log } = require("console");
-const fs = require("fs");
-const path = require("path");
+import { readdirSync, statSync } from "fs";
+// eslint-disable-next-line no-undef
+import { extname, relative } from "path";
 
-filenames = fs.readdirSync(__dirname);
-const directory = "./";
-const fse = require("fs-extra");
+// eslint-disable-next-line no-undef
+filenames = readdirSync(__dirname);
+// eslint-disable-next-line no-undef
+import { copySync } from "fs-extra";
 
+// eslint-disable-next-line etc/no-commented-out-code
 // function getFiles (dir, files_){
 //     let allDir=[];
 //     let files = fs.readdirSync(dir);
@@ -35,24 +37,26 @@ const fse = require("fs-extra");
 // }
 // getFiles('./');
 
-
-
 function getFiles (dir, files_){
-    files_ = files_ || [];
-    var files = fs.readdirSync(dir);
-    for (var i in files){
-        var name = dir + '/' + files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, files_);
-        } else {
-            files_.push(name);
-        }
+  files_ = files_ || [];
+  let files = readdirSync(dir);
+
+  for (let i in files){
+    let name = dir + "/" + files[i];
+
+    if (statSync(name).isDirectory()){
+      getFiles(name, files_);
+    } else {
+      files_.push(name);
     }
-    return files_;
+  }
+  return files_;
 }
 
+// eslint-disable-next-line etc/no-commented-out-code
 //fs.rename
 
+// eslint-disable-next-line etc/no-commented-out-code
 // console.log(getFiles(SOURCE));
 /**
  * 
@@ -62,25 +66,33 @@ function getFiles (dir, files_){
  *  create file in destination with rename(.docs.js)
  */
 function componentDocsGenerator(source, destination){
+  // eslint-disable-next-line no-console
   console.log(source);
+  // eslint-disable-next-line no-console
   console.log(destination);
+  // eslint-disable-next-line no-undef
   files = getFiles(source);
   // console.log(files);
+  // eslint-disable-next-line no-undef
   files.forEach(file => {
-    if (path.extname(file) === '.js'){
+    if (extname(file) === ".js"){
       // console.log(typeof(file));
-      console.log(path.relative( process.cwd(), file));
-      fse.copySync(file,destination , { overwrite: true|false })
+      // eslint-disable-next-line no-console, no-undef
+      console.log(relative( process.cwd(), file));
+      copySync(file, destination, { overwrite: true | false });
 
+      // eslint-disable-next-line etc/no-commented-out-code
       // let finalPath = path.join(destination,path.relative(file));
       // console.log(finalPath);
       // fs.writeFileSync(file,'',{force: true});
       // if(fs.statSync(file).isDirectory)
       // fs.copyFileSync(file, destination);
       
+      // eslint-disable-next-line etc/no-commented-out-code
       // fs.renameSync()
     }
   });
+  // eslint-disable-next-line etc/no-commented-out-code
   // try {
   //     fse.copySync(source, destination, { overwrite: true|false })
   //     console.log('success!')
