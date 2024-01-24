@@ -1,1 +1,2 @@
-module.exports = { "**/*.{js,jsx,ts,tsx}": ["npx eslint --ignore-path .gitignore"] };
+// eslint-disable-next-line no-undef
+module.exports = { "**/*.{js,jsx,ts,tsx}": ["npm run code:lint"] };

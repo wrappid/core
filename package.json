@@ -1,12 +1,13 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.400",
+  "version": "0.0.404",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {
+    "attributions:gen": "node ./scripts/attributions.gen.js",
     "prepare": "husky install",
-    "code:lint": "eslint --ignore-path .gitignore ./package",
-    "code:format": "npm run code:lint --fix ./package",
+    "code:lint": "eslint -c .eslintrc.js --ignore-path .gitignore ./package",
+    "code:format": "npm run code:lint:app -- --fix",
     "test": "exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
@@ -24,7 +25,11 @@
     "react-native-paper",
     "redux"
   ],
-  "author": "wrappid",
+  "author": {
+		"name": "Wrappid",
+		"email": "wrappid.framework@gmail.com",
+		"url": "https://www.github.com/wrappid/core"
+	},
   "bugs": {
     "url": "https://github.com/wrappid/core/issues"
   },
@@ -66,6 +71,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^8.0.3"
+    "format-package-json": "^0.2.0",
+    "git-contributors": "^0.2.5",
+    "husky": "^8.0.3",
+    "license-checker": "^25.0.1"
   }
 }
