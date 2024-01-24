@@ -13,14 +13,14 @@ export default function CoreAutocomplete(props) {
 CoreAutocomplete.validProps = [
   {
     description: "Array of options.",
-    name       : "options*",
+    name       : "options",
     required   : "true",
     types      : [{ type: "array" }],
   },
   {
     description:
       "Render the input.Signature:function(params: object) => ReactNode",
-    name    : "renderInput*",
+    name    : "renderInput",
     required: "true",
     types   : [{ type: "function" }],
   },
