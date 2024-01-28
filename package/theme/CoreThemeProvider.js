@@ -3,11 +3,13 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
-// eslint-disable-next-line import/no-unresolved
-import { ThemeContext } from "@wrappid/styles";
+// eslint-disable-next-line import/no-unresolved, etc/no-commented-out-code
+import { /* ThemeContext,  */WrappidDataContext } from "@wrappid/styles";
 
 export default function CoreThemeProvider(props) {
-  const theme = props.theme || useContext(ThemeContext);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // const theme = props.theme || useContext(ThemeContext);
+  const { themes, defaultTheme } = useContext(WrappidDataContext);
 
-  return <NativeThemeProvider theme={theme || {}}>{props.children}</NativeThemeProvider>;
+  return <NativeThemeProvider theme={themes[defaultTheme].theme || {}}>{props.children}</NativeThemeProvider>;
 }
