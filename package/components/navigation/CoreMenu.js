@@ -109,7 +109,7 @@ CoreMenu.validProps = [
   {
     description: "Callback fired when the component requests to be closed.",
     name       : "onClose", 
-    types      : [{ type: "func" }]
+    types      : [{ type: "function" }]
   }, 
   {
     description: "classes prop applied to the Popover element.",

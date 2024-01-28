@@ -1,9 +1,10 @@
+// eslint-disable-next-line import/no-unresolved
 import { IMPORTANT } from "@wrappid/styles";
 
-import { LARGE_WINDOW_WIDTH, X_LARGE_WINDOW_WIDTH } from "../config/constants";
-
-const MIN_WIDTH = LARGE_WINDOW_WIDTH;
-const MAX_WIDTH = X_LARGE_WINDOW_WIDTH - 1;
+// eslint-disable-next-line etc/no-commented-out-code
+// import { LARGE_WINDOW_WIDTH, X_LARGE_WINDOW_WIDTH } from "../config/constants";
+// const MIN_WIDTH = LARGE_WINDOW_WIDTH;
+// const MAX_WIDTH = X_LARGE_WINDOW_WIDTH - 1;
 
 export const largeCoreStyles = {
   authBanner: {

@@ -23,13 +23,13 @@ const routeReducer = (state = initState, action) => {
     case LOGOUT_SUCCESS:
       return {
         ...initState,
-        routes: state?.routes?.filter((r) => !r.authRequired),
+        routes: state?.routes?.filter((route) => !route.authRequired),
       };
 
     case AUTHENTICATION_ERROR:
       return {
         ...initState,
-        routes: state?.routes?.filter((r) => !r.authRequired),
+        routes: state?.routes?.filter((route) => !route.authRequired),
       };
 
     default:

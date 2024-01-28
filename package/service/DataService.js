@@ -12,6 +12,7 @@ export default async function authHeader(
     headers["Authorization"] = "Bearer " + accessToken;
   }
   if (includeFile) {
+    // eslint-disable-next-line etc/no-commented-out-code
     // headers["Content-Type"] = "multipart/form-data";
   } else {
     headers["Content-Type"] = "application/json";

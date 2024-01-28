@@ -9,6 +9,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTable(props) {
   let _uuid = getUUID();
+  // eslint-disable-next-line no-unused-vars
   let containerId = props?.coreId ? "tc_" + props.coreId : "tc_" + _uuid;
 
   props = sanitizeComponentProps(CoreTable, props);

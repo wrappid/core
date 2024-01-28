@@ -68,7 +68,7 @@ export default function CoreDialog(props) {
 CoreDialog.validProps = [
   {
     description: "If true, the component is shown.",
-    name       : "open*",
+    name       : "open",
     types      : [{ type: "boolean" }],
   },
   {
@@ -147,14 +147,14 @@ CoreDialog.validProps = [
       "Callback fired when the backdrop is clicked.\
     Deprecated - Use the onClose prop with the reason argument to handle the backdropClick events.",
     name : "onBackdropClick",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description: `Callback fired when the component requests to be closed.
     Signature:function(event: object, reason: string) => voidevent The event source of the callback.
     reason Can be: "escapeKeyDown", "backdropClick".`,
     name : "onClose",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description: "The component used to render the body of the dialog.",

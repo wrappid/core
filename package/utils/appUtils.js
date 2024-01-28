@@ -48,6 +48,7 @@ export async function reloadToken(
   if (!tokenRequested || diff > 60) {
     const backendUrl = config?.wrappid
       ? config.wrappid.backendUrl
+      // eslint-disable-next-line no-undef
       : process.env.REACT_APP_WRAPPID_backendUrl;
 
     dispatch({ type: TOKEN_REQUESTED });

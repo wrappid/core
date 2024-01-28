@@ -7,10 +7,12 @@ import {
   MASTER_DATA_LOADING
 } from "../types/mdmTypes";
 
+// eslint-disable-next-line no-undef
 let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;
+// eslint-disable-next-line no-undef
 let adminUrl = process.env.REACT_APP_ADMIN_URL || config?.adminUrl;
 
-export const getScrappedDepartments = (query = {}, token = "") => {
+export const getScrappedDepartments = (query = {}/* , token = "" */) => {
   return (dispatch) => {
     dispatch({ type: MASTER_DATA_LOADING });
     let newUrl = queryBuilder("/", query);
@@ -19,6 +21,7 @@ export const getScrappedDepartments = (query = {}, token = "") => {
       headers: {
         Accept        : "application/json",
         "Content-Type": "application/json",
+        // eslint-disable-next-line etc/no-commented-out-code
         // Authorization: `Bearer ${token}`,
       },
     })
@@ -42,7 +45,7 @@ export const getScrappedDepartments = (query = {}, token = "") => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : "GET_SCRAPPED_DEPARTMENTS_ERROR",
         });
       });
@@ -81,7 +84,7 @@ export const getMainMasterData = (query = {}, token = "") => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : MAIN_MASTER_DATA_ERROR,
         });
       });
@@ -120,7 +123,7 @@ export const getSettingMeta = (query, token) => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : "GET_SETTING_META_ERROR",
         });
       });
@@ -162,7 +165,7 @@ export const createSettingMeta = (query, body, token) => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : "CREATE_SETTING_META_ERROR",
         });
       });
@@ -202,7 +205,7 @@ export const updateSettingMeta = (query, id, body, token) => {
       )
       .catch((err) => {
         dispatch({
-          message: "Internal Error",
+          message: `Internal Error: ${err?.message || "Unknown error occured"}`,
           type   : "UPDATE_SETTING_META_ERROR",
         });
       });

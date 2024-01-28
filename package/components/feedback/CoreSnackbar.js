@@ -143,7 +143,7 @@ CoreSnackbar.validProps = [
     types: [
       {
         default: "",
-        type   : "func",
+        type   : "function",
       },
     ],
   },

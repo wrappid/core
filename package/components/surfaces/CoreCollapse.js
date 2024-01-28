@@ -15,7 +15,7 @@ CoreCollapse.validProps = [
     description:
       "Add a custom transition end trigger. Called with the transitioning DOM node and a done callback. Allows for more fine grained transition end logic. Note: Timeouts are still used as a fallback if provided.",
     name : "addEndListener",
-    types: [{ default: "", type: "func" }],
+    types: [{ default: "", type: "function" }],
   },
   {
     description: "The content node to be collapsed.",

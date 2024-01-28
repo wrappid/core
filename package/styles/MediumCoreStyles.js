@@ -2,6 +2,7 @@ import {
   DefaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT
+// eslint-disable-next-line import/no-unresolved
 } from "@wrappid/styles";
 
 // -- const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;

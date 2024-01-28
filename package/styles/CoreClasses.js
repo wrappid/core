@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 
 const CoreClasses = {

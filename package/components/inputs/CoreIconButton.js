@@ -4,23 +4,24 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeIconButton } from "@wrappid/native";
 
+// eslint-disable-next-line etc/no-commented-out-code
+import CoreButton from "./CoreButton";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreIconButton(props) {
+  // eslint-disable-next-line etc/no-commented-out-code
   props = sanitizeComponentProps(CoreIconButton, props);
   return <NativeIconButton {...props} />;
 }
 CoreIconButton.validProps = [
+  ...CoreButton.validProps,
   {
-    description: "The icon to display.",
-    name       : "children",
-    types      : [{ default: "", type: "node" }],
+    name : "OnClick", /// temporary adding 'OnClick' it should come default from CoreButton which is 'onClick'. OnClick should changed to onClick
+    types: [{ type: "function" }]
   },
   {
-    description:
-      "Override or extend the styles applied to the component.See CSS API below for more details.",
-    name : "classes",
-    types: [{ default: "", type: "object" }],
+    name : "onClick", /// we have already a OnClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
+    types: [{ type: "function" }], 
   },
   {
     description:
@@ -77,7 +78,6 @@ CoreIconButton.validProps = [
       },
     ],
   },
-  
 ];
 
 CoreIconButton.invalidProps = ["sx", "classes"];

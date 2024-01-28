@@ -4,6 +4,7 @@ const map = new Map();
 
 function setRef(key) {
   if (!key) {
+    // eslint-disable-next-line no-console
     return console.warn("useDynamicRefs: Cannot set ref without key ");
   }
   const ref = React.useRef();
@@ -14,6 +15,7 @@ function setRef(key) {
 
 function getRef(key) {
   if (!key) {
+    // eslint-disable-next-line no-console
     return console.warn("useDynamicRefs: Cannot get ref without key");
   }
   return map.get(key);

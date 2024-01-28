@@ -1,7 +1,7 @@
 import { FORM_IDS } from "../components/inputs/forms/coreFormConstants";
 import { communicationTypes, __EntityStatus } from "../config/constants";
 
-function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta, state) {
+function San_URL_ADD_PATH_PARAM_ID(formData, apiMeta/* , state */) {
   return {
     endpoint: apiMeta.endpoint + "/" + formData?.id,
     values  : formData,
@@ -23,7 +23,7 @@ function SanAddEmailOrPhoneRemoveConfirmPassword(
   return { values: formData };
 }
 
-function SanBasicEditUrlChange(formData, apiMeta, state, others) {
+function SanBasicEditUrlChange(formData, apiMeta, state/* , others */) {
   if (formData.gender) {
     formData.gender = formData.gender.id;
   }
@@ -36,9 +36,9 @@ function SanBasicEditUrlChange(formData, apiMeta, state, others) {
   };
 }
 
-function SanClinicAddUrlChange(formData, apiMeta, state, others) {
+function SanClinicAddUrlChange(formData, apiMeta, state/* , others */) {
   formData["addressTypeId"] = state?.common?.addressTypes?.find(
-    (a) => a.type.toLowerCase() === "clinic"
+    (addrType) => addrType.type.toLowerCase() === "clinic"
   )?.id;
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
@@ -60,7 +60,7 @@ function SanClinicDeleteUrlChange(formData, apiMeta, state, others) {
   };
 }
 
-function SanClinicReadUrlChange(formData, apiMeta, state, others) {
+function SanClinicReadUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -68,20 +68,20 @@ function SanClinicReadUrlChange(formData, apiMeta, state, others) {
 }
 
 function SanProfileClinicRead(data) {
-  return data?.rows?.map((m) => {
+  return data?.rows?.map((eachRowItem) => {
     return {
-      addLine1  : m?.addLine1,
-      addLine2  : m?.addLine2,
-      city      : m?.city,
-      clinicLogo: m?.Clinic?.photoUrl,
-      country   : m?.country,
-      district  : m?.district,
-      fullName  : m?.fullName,
-      id        : m?.id,
-      landmark  : m?.landmark,
-      phone     : m?.phone,
-      pin       : m?.pin,
-      state     : m?.state,
+      addLine1  : eachRowItem?.addLine1,
+      addLine2  : eachRowItem?.addLine2,
+      city      : eachRowItem?.city,
+      clinicLogo: eachRowItem?.Clinic?.photoUrl,
+      country   : eachRowItem?.country,
+      district  : eachRowItem?.district,
+      fullName  : eachRowItem?.fullName,
+      id        : eachRowItem?.id,
+      landmark  : eachRowItem?.landmark,
+      phone     : eachRowItem?.phone,
+      pin       : eachRowItem?.pin,
+      state     : eachRowItem?.state,
     };
   });
 }
@@ -97,7 +97,7 @@ function SanCoreFormCancelFormId(formData, apiMeta, state, others) {
 }
 
 //PROFILE EDUCATION SANITIZATION FUNCTIONS
-function SanEducationAddUrlChange(formData, apiMeta, state, others) {
+function SanEducationAddUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -111,7 +111,7 @@ function SanEducationEditUrlChange(formData, apiMeta, state, others) {
   };
 }
 
-function SanEducationReadUrlChange(formData, apiMeta, state, others) {
+function SanEducationReadUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -119,25 +119,23 @@ function SanEducationReadUrlChange(formData, apiMeta, state, others) {
 }
 
 function SanProfileEducationRead(data) {
-  // console.log("SANITING", apiMeta, others);
-  return data?.rows?.map((m) => {
+  return data?.rows?.map((eachRowItem) => {
     return {
-      board    : m?.board,
-      degree   : m?.degree,
-      endDate  : m?.endDate,
-      field    : m?.field,
-      id       : m?.id,
-      isCurrent: m?.endDate ? false : true,
-      location : m?.location,
-      school   : m?.school,
-      startDate: m?.startDate,
+      board    : eachRowItem?.board,
+      degree   : eachRowItem?.degree,
+      endDate  : eachRowItem?.endDate,
+      field    : eachRowItem?.field,
+      id       : eachRowItem?.id,
+      isCurrent: eachRowItem?.endDate ? false : true,
+      location : eachRowItem?.location,
+      school   : eachRowItem?.school,
+      startDate: eachRowItem?.startDate,
     };
   });
 }
 
 //PROFILE EXP SANITIZATION FUNCTIONS
-function SanExperienceAddUrlChange(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta.endpoint, others);
+function SanExperienceAddUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -145,15 +143,13 @@ function SanExperienceAddUrlChange(formData, apiMeta, state, others) {
 }
 
 function SanExperienceEditUrlChange(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta, others);
   return {
     endpoint: apiMeta.endpoint.replace(":id", others.editing),
     values  : formData,
   };
 }
 
-function SanExperienceReadUrlChange(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta, others);
+function SanExperienceReadUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -161,7 +157,6 @@ function SanExperienceReadUrlChange(formData, apiMeta, state, others) {
 }
 
 function SanProfileBasicRead(data) {
-  // console.log("SANITING", apiMeta, others);
   return {
     bio      : data?.data.extraInfo ? data?.data.extraInfo.bio : "",
     dob      : data?.data.dob ? data?.data.dob : "",
@@ -176,10 +171,9 @@ function SanProfileBasicRead(data) {
 }
 
 function SanProfileRegistrationRead(data, otherData) {
-  console.log("Registration SANITING", otherData?.AllDepartments);
   if (data && data.departmentId) {
     let dept = otherData?.AllDepartments?.find(
-      (d) => d.id === data.departmentId
+      (data) => data.id === data.departmentId
     );
 
     return {
@@ -195,7 +189,7 @@ function SanProfileRegistrationRead(data, otherData) {
   }
 }
 
-function SanRegistrationReadUrlChange(formData, apiMeta, state, others) {
+function SanRegistrationReadUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: { AllDepartments: state.common.departments },
@@ -204,16 +198,15 @@ function SanRegistrationReadUrlChange(formData, apiMeta, state, others) {
 }
 
 function SanProfileExperienceRead(data) {
-  // console.log("SANITING", apiMeta, others);
-  return data?.rows?.map((m) => {
+  return data?.rows?.map((eachRowItem) => {
     return {
-      designation : m?.designation,
-      endDate     : m?.endDate,
-      id          : m?.id,
-      isCurrent   : m?.endDate ? false : true,
-      location    : m?.location,
-      organization: m?.organization,
-      startDate   : m?.startDate,
+      designation : eachRowItem?.designation,
+      endDate     : eachRowItem?.endDate,
+      id          : eachRowItem?.id,
+      isCurrent   : eachRowItem?.endDate ? false : true,
+      location    : eachRowItem?.location,
+      organization: eachRowItem?.organization,
+      startDate   : eachRowItem?.startDate,
     };
   });
 }
@@ -229,7 +222,6 @@ const formToFieldMap = {
 };
 
 function SanPrescription(formData, apiMeta, state, others) {
-  console.log("SANITING", state.prescription);
   let prescriptionInStore = state.prescription?.prescription;
   let data = {};
   const formId = others?.formId;
@@ -260,9 +252,9 @@ function SanPrescription(formData, apiMeta, state, others) {
     };
   } else if (formId === FORM_IDS.__PRESCRIPTION_VITALS) {
     let vitalIds = Object.keys(formData);
-    var finalData = [];
+    let finalData = [];
 
-    for (var i = 0; i < vitalIds.length; i++) {
+    for (let i = 0; i < vitalIds.length; i++) {
       if (formData[vitalIds[i]])
         finalData.push({
           masterDataId: vitalIds[i],
@@ -274,27 +266,27 @@ function SanPrescription(formData, apiMeta, state, others) {
       PrescriptionVitals: finalData,
     };
   } else if (formId === FORM_IDS.__PRESCRIPTION_MEDICINE) {
-    var finalData = [];
+    let finalData = [];
 
-    for (var i = 0; i < formData.length; i++) {
+    for (let i = 0; i < formData.length; i++) {
       let med = formData[i];
-      let ob = {};
+      let obj = {};
 
       if (
         prescriptionInStore?.AdvicedMedicines &&
         prescriptionInStore.AdvicedMedicines[i]
       ) {
-        ob["id"] = prescriptionInStore.AdvicedMedicines[i].id;
+        obj["id"] = prescriptionInStore.AdvicedMedicines[i].id;
       }
-      ob["medicineId"] = med?.name?.value;
-      ob["formulation"] = med?.formulation?.value;
-      ob["quantity"] = med?.quantity?.value;
-      ob["frequency"] = med?.frequency?.value;
-      ob["meal"] = med?.meal?.value;
-      ob["durationCount"] = med?.durationCount?.value;
-      ob["durationType"] = med?.durationType?.value;
-      ob["notes"] = med?.notes;
-      finalData.push(ob);
+      obj["medicineId"] = med?.name?.value;
+      obj["formulation"] = med?.formulation?.value;
+      obj["quantity"] = med?.quantity?.value;
+      obj["frequency"] = med?.frequency?.value;
+      obj["meal"] = med?.meal?.value;
+      obj["durationCount"] = med?.durationCount?.value;
+      obj["durationType"] = med?.durationType?.value;
+      obj["notes"] = med?.notes;
+      finalData.push(obj);
     }
     data = {
       ...data,
@@ -306,6 +298,7 @@ function SanPrescription(formData, apiMeta, state, others) {
       isCompleted: true,
     };
   } else {
+    // eslint-disable-next-line no-console
     console.error("NO SANTIZATION WRITTER");
   }
 
@@ -316,7 +309,7 @@ function SanPrescription(formData, apiMeta, state, others) {
 }
 
 //settings
-function SanContactEmailsCreate(formData, apiMeta, state, others) {
+function SanContactEmailsCreate(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -325,27 +318,25 @@ function SanContactEmailsCreate(formData, apiMeta, state, others) {
 }
 
 function SanContactsRead(data) {
-  // console.log("SANITING", apiMeta, others);
   return data?.rows
-    ?.filter((d) => d.isActive)
-    .map((m) => {
+    ?.filter((data) => data.isActive)
+    .map((eachData) => {
       return {
-        data    : m.data,
-        id      : m.id,
-        verified: m.verified,
+        data    : eachData?.data,
+        id      : eachData?.id,
+        verified: eachData?.verified,
       };
     });
 }
 
-function SanContactsReadUrlChange(formData, apiMeta, state, others) {
-  // console.log("SANITING", apiMeta, others);
+function SanContactsReadUrlChange(formData, apiMeta, state/* , others */) {
   return {
     endpoint : apiMeta.endpoint + "&personId=" + state.profile.basic.id,
     reduxData: apiMeta.reduxData,
     values   : apiMeta.values,
   };
 }
-function SanContactPhonesCreate(formData, apiMeta, state, others) {
+function SanContactPhonesCreate(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -353,7 +344,7 @@ function SanContactPhonesCreate(formData, apiMeta, state, others) {
   };
 }
 
-function SanContactWapCreate(formData, apiMeta, state, others) {
+function SanContactWapCreate(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -361,7 +352,7 @@ function SanContactWapCreate(formData, apiMeta, state, others) {
   };
 }
 
-function SanChangePrimaryContact(formData, apiMeta, state, others) {
+function SanChangePrimaryContact(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -370,7 +361,6 @@ function SanChangePrimaryContact(formData, apiMeta, state, others) {
 }
 
 function SanReadPrimaryPhone(data) {
-  // console.log("SANITING", apiMeta, others);
   return {
     data    : data.phone,
     verified: data.phoneVerified,
@@ -378,14 +368,13 @@ function SanReadPrimaryPhone(data) {
 }
 
 function SanReadPrimaryEmail(data) {
-  // console.log("SANITING", apiMeta, others);
   return {
     data    : data.email,
     verified: data.emailVerified,
   };
 }
 
-function SanPatientCreate(formData, apiMeta, state, others) {
+function SanPatientCreate(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -393,7 +382,7 @@ function SanPatientCreate(formData, apiMeta, state, others) {
   };
 }
 
-function SanPatientRelativeCreate(formData, apiMeta, state, others) {
+function SanPatientRelativeCreate(formData, apiMeta, state/* , others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -405,7 +394,7 @@ function SanPatientRelativeCreate(formData, apiMeta, state, others) {
   };
 }
 
-function SanDoctorCreate(formData, apiMeta, state, others) {
+function SanDoctorCreate(formData, apiMeta/* , state, others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -416,11 +405,11 @@ function SanDoctorCreate(formData, apiMeta, state, others) {
   };
 }
 
-function SanRxRexharge(formData, apiMeta, state, others) {
+function SanRxRexharge(formData, apiMeta, state/* , others */) {
   let amountWithTax =
     formData.rxPackages +
     formData.rxPackages *
-      state.mdm.settingMeta.find((f) => f.name === "rxCacheCharge")?.value?.gst;
+      state.mdm.settingMeta.find((eachMeta) => eachMeta.name === "rxCacheCharge")?.value?.gst;
 
   return {
     endpoint : apiMeta.endpoint.replace(":id", state?.auth?.uid),
@@ -429,13 +418,13 @@ function SanRxRexharge(formData, apiMeta, state, others) {
       amount: amountWithTax * 100,
       token:
         formData.rxPackages *
-        state.mdm.settingMeta.find((f) => f.name === "rxTokenRatio")?.value
+        state.mdm.settingMeta.find((eachMeta) => eachMeta.name === "rxTokenRatio")?.value
           ?.ratio,
     },
   };
 }
 
-function SanCreateAppointment(formData, apiMeta, state, others) {
+function SanCreateAppointment(formData, apiMeta, state/* , others */) {
   return {
     endpoint : apiMeta.endpoint,
     reduxData: apiMeta.reduxData,
@@ -451,7 +440,7 @@ function SanCreateAppointment(formData, apiMeta, state, others) {
   };
 }
 
-function SanEditAppointment(form, apiMeta, state, others) {
+function SanEditAppointment(form, apiMeta, state/* , others */) {
   let formData = { ...form };
   const endpoint = apiMeta.endpoint.replace(":id", form?.id);
 
@@ -472,7 +461,7 @@ function SanEditAppointment(form, apiMeta, state, others) {
   };
 }
 
-function SanStringValueAdd(formData, apiMeta, state, others) {
+function SanStringValueAdd(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint,
     values  : {
@@ -495,19 +484,19 @@ function SanStringValueEdit(formData, apiMeta, state, others) {
 }
 
 function SanChemDeptReadMap(data) {
-  let temp = data?.rows?.map((m) => {
+  let temp = data?.rows?.map((eachRowItem) => {
     return {
-      groupHead: m.parentId === null ? true : false,
+      groupHead: eachRowItem.parentId === null ? true : false,
       hasEntry:
-        m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
+        eachRowItem?.ChemicalDepartments && eachRowItem?.ChemicalDepartments?.length > 0
           ? true
           : false,
-      id      : m?.id,
-      name    : m?.name,
-      parentId: m?.parentId,
+      id      : eachRowItem?.id,
+      name    : eachRowItem?.name,
+      parentId: eachRowItem?.parentId,
       priority:
-        m?.ChemicalDepartments && m?.ChemicalDepartments?.length > 0
-          ? m?.ChemicalDepartments[0]?.priority
+        eachRowItem?.ChemicalDepartments && eachRowItem?.ChemicalDepartments?.length > 0
+          ? eachRowItem?.ChemicalDepartments[0]?.priority
           : 1,
     };
   });
@@ -515,7 +504,7 @@ function SanChemDeptReadMap(data) {
   return { chemDeptMap: nLevelGroup(temp, null) };
 }
 
-function SanChemDeptMap(formData, apiMeta, state, others) {
+function SanChemDeptMap(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.mdm?.baseChemical?.id),
     values  : nLevelFlat(formData, { chemDeptMap: nLevelFlat(formData.chemDeptMap, []) }),
@@ -540,7 +529,7 @@ function nLevelGroup(data, parentId) {
     .map((eachFilterData) => {
       return {
         ...eachFilterData,
-        __children: nLevelGroup(data, h.id),
+        __children: nLevelGroup(data, eachFilterData.id),
       };
     });
 
@@ -549,10 +538,10 @@ function nLevelGroup(data, parentId) {
 
 function nLevelFlat(data, finalData) {
   for (let i = 0; i < data.length; i++) {
-    let ob = { ...data[i] };
+    let obj = { ...data[i] };
 
-    delete ob.__children;
-    finalData.push(ob);
+    delete obj.__children;
+    finalData.push(obj);
     finalData = nLevelFlat(data[i].__children, finalData);
   }
   return finalData;
@@ -561,29 +550,29 @@ function nLevelFlat(data, finalData) {
 function SanRolePermissionReadMap(data, otherData) {
   let roleId = otherData?.reduxData?.query?.roleId;
 
-  let temp = data?.rows?.map((m) => {
+  let temp = data?.rows?.map((eachRowItem) => {
     return {
-      groupHead: m.parentId === null ? true : false,
+      groupHead: eachRowItem.parentId === null ? true : false,
       hasEntry:
-        m?.RolePermissions &&
-        m?.RolePermissions?.length > 0 &&
-        m.RolePermissions.find(
-          (rp) => rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
+        eachRowItem?.RolePermissions &&
+        eachRowItem?.RolePermissions?.length > 0 &&
+        eachRowItem.RolePermissions.find(
+          (eachRolePermission) => eachRolePermission.roleId === roleId && eachRolePermission._status === __EntityStatus.ACTIVE
         )
           ? true
           : false,
-      id      : m?.id,
-      name    : m?.label,
-      parentId: m?.parentId,
+      id      : eachRowItem?.id,
+      name    : eachRowItem?.label,
+      parentId: eachRowItem?.parentId,
       priority:
-        m?.RolePermissions &&
-        m?.RolePermissions?.length > 0 &&
-        m.RolePermissions.find(
-          (rp) => rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
+        eachRowItem?.RolePermissions &&
+        eachRowItem?.RolePermissions?.length > 0 &&
+        eachRowItem.RolePermissions.find(
+          (eachRolePermission) => eachRolePermission.roleId === roleId && eachRolePermission._status === __EntityStatus.ACTIVE
         )
-          ? m.RolePermissions.find(
-            (rp) =>
-              rp.roleId === roleId && rp._status === __EntityStatus.ACTIVE
+          ? eachRowItem.RolePermissions.find(
+            (eachRolePermission) =>
+              eachRolePermission.roleId === roleId && eachRolePermission._status === __EntityStatus.ACTIVE
           )?.priority
           : 1,
     };
@@ -592,7 +581,7 @@ function SanRolePermissionReadMap(data, otherData) {
   return { rolePermissionMap: nLevelGroup(temp, null) };
 }
 
-function SanRolePermission(formData, apiMeta, state, others) {
+function SanRolePermission(formData, apiMeta, state/* , others */) {
   return {
     endpoint: apiMeta.endpoint.replace(
       ":id",
@@ -604,9 +593,9 @@ function SanRolePermission(formData, apiMeta, state, others) {
 
 function SanCreateCommunicationTemplate(
   formData,
-  apiMeta,
+  apiMeta/* ,
   state,
-  others
+  others */
 ) {
   return {
     endpoint: apiMeta.endpoint,
@@ -617,7 +606,7 @@ function SanCreateCommunicationTemplate(
   };
 }
 
-function SanEditCommunicationTemplate(formData, apiMeta, state, others) {
+function SanEditCommunicationTemplate(formData, apiMeta/* , state, others */) {
   return {
     endpoint: apiMeta?.endpoint.replace(":id", apiMeta?.values?.id),
     values  : {
@@ -627,7 +616,7 @@ function SanEditCommunicationTemplate(formData, apiMeta, state, others) {
   };
 }
 
-function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
+function SanTestCommunicationTemplate(formData, apiMeta/* , state, others */) {
   const obj = {
     endpoint: apiMeta?.endpoint.replace(":name", formData.name),
     values  : { ...formData },
@@ -637,19 +626,19 @@ function SanTestCommunicationTemplate(formData, apiMeta, state, others) {
 }
 
 export default {
+  DefaultLangEditDel,
   SanAddEmailOrPhone,
   SanAddEmailOrPhoneRemoveConfirmPassword,
   SanBasicEditUrlChange,
   SanChangePrimaryContact,
+  SanChemDeptMap,
+  SanChemDeptReadMap,
   SanClinicAddUrlChange,
   SanClinicDeleteUrlChange,
   SanClinicEditUrlChange,
   SanClinicReadUrlChange,
-  SanChemDeptReadMap,
   SanContactEmailsCreate,
-  DefaultLangEditDel,
   SanContactPhonesCreate,
-  SanChemDeptMap,
   SanContactWapCreate,
   SanContactsRead,
   SanContactsReadUrlChange,
@@ -670,7 +659,6 @@ export default {
   SanPrescription,
   SanProfileBasicRead,
   SanProfileClinicRead,
-  San_URL_ADD_PATH_PARAM_ID,
   SanProfileEducationRead,
   SanProfileExperienceRead,
   SanProfileRegistrationRead,
@@ -682,5 +670,6 @@ export default {
   SanRxRexharge,
   SanStringValueAdd,
   SanStringValueEdit,
-  SanTestCommunicationTemplate
+  SanTestCommunicationTemplate,
+  San_URL_ADD_PATH_PARAM_ID
 };
