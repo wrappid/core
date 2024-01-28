@@ -113,6 +113,16 @@ CoreSelect.validProps = [
     types: [{ type: "function" }],
   },
   {
+    name : "options",
+    types: [{ type: "object" }]
+  },
+  {
+    description:
+      "Callback fired when a menu item is selected.Signature:function(event: SelectChangeEvent, child?: object) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (any). Warning: This is a generic event, not a change event, unless the change event is caused by browser autofill.child The react element that was selected when native is false (default).",
+    name : "handleChange",
+    types: [{ type: "function" }],
+  },
+  {
     description:
       "Callback fired when the component requests to be closed. Use it in either controlled (see the open prop), or uncontrolled mode (to detect when the Select collapses).Signature:function(event: object) => voidevent The event source of the callback.",
     name : "onClose",

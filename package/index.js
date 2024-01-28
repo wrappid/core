@@ -195,6 +195,7 @@ import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 import CoreClasses from "./styles/CoreClasses";
 import { DefaultCoreStyles } from "./styles/DefaultCoreStyles";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
+import ThemeSelector from "./theme/ThemeSelector";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
 import { defaultValidProps, defaultInvalidProps } from "./utils/componentUtil";
 import { getForm, createApiMeta, getFormikRequiredMessage } from "./utils/formUtils";
@@ -435,5 +436,10 @@ export {
   CoreRating,
   CoreFooter,
   setUserTheme,
-  DefaultCoreStyles
+  DefaultCoreStyles,
+
+  /**
+   * Themes
+   */
+  ThemeSelector
 };

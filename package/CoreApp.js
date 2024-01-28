@@ -2,6 +2,8 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+import { WrappidSyncer } from "@wrappid/styles";
+
 import CoreAppDiv from "./components/layouts/CoreAppDiv";
 import CoreNavigation from "./components/navigation/CoreNavigation";
 import CoreRoutes from "./CoreRoutes";
@@ -25,26 +27,32 @@ export default function CoreApp(props) {
   } = props;
 
   return (
-    <CoreProvider
-      applicationConfig={{ ...(applicationConfig || {}) }}
-      storage={storage}
-      appStyles={appStyles}
-      customIcons={customIcons}
-      applicationRegistry={applicationRegistry}
-      themesRegistry={themesRegistry}
-      routesRegistry={routesRegistry}
-      menusRegistry={menusRegistry}
-      componentsRegistry={componentsRegistry}
-      reducersRegistry={reducersRegistry}
-      resourcesRegistry={resourcesRegistry}
-      functionsRegistry={functionsRegistry}
-      validationsRegistry={validationsRegistry} 
-    >
-      <CoreAppDiv>
-        <CoreNavigation>
-          <CoreRoutes />
-        </CoreNavigation>
-      </CoreAppDiv>
-    </CoreProvider>
+    <WrappidSyncer data={{
+      config      : applicationConfig,
+      defaultTheme: applicationConfig?.defaultTheme,
+      themes      : themesRegistry
+    }}>
+      <CoreProvider
+        applicationConfig={{ ...(applicationConfig || {}) }}
+        storage={storage}
+        appStyles={appStyles}
+        customIcons={customIcons}
+        applicationRegistry={applicationRegistry}
+        themesRegistry={themesRegistry}
+        routesRegistry={routesRegistry}
+        menusRegistry={menusRegistry}
+        componentsRegistry={componentsRegistry}
+        reducersRegistry={reducersRegistry}
+        resourcesRegistry={resourcesRegistry}
+        functionsRegistry={functionsRegistry}
+        validationsRegistry={validationsRegistry} 
+      >
+        <CoreAppDiv>
+          <CoreNavigation>
+            <CoreRoutes />
+          </CoreNavigation>
+        </CoreAppDiv>
+      </CoreProvider>
+    </WrappidSyncer>
   );
 }
