@@ -1,5 +1,6 @@
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { UPDATE_DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 
 import CoreTypographyCaption from "../components/dataDisplay/CoreTypographyCaption";
