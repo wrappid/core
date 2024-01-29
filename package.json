@@ -25,10 +25,11 @@
     "react-native-paper",
     "redux"
   ],
+  "license":"MIT",
   "author": {
-		"name": "Wrappid",
-		"email": "wrappid.framework@gmail.com",
-		"url": "https://www.github.com/wrappid/core"
+    "name": "Wrappid",
+    "email": "wrappid.framework@gmail.com",
+    "url": "https://www.github.com/wrappid/core"
 	},
   "bugs": {
     "url": "https://github.com/wrappid/core/issues"
