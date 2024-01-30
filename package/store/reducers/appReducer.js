@@ -169,7 +169,7 @@ const appReducer = (state = initState, action) => {
       return {
         ...state,
         userTheme  : { ...(action.payload.theme || {}) },
-        userThemeId: action.payload.id
+        userThemeId: action.payload.name
       };
       // case LOGOUT_SUCCESS:
       //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };
