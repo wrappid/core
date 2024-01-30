@@ -5815,13 +5815,13 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
-  <summary>@wrappid/core@0.0.405</summary>
+  <summary>@wrappid/core@0.0.406</summary>
   
   #### Basic details about the package
   >|Key|Value|
   >|:--|:--|
-  >|**Name**|@wrappid/core@0.0.405|
-  >|**Version**|@0.0.405|
+  >|**Name**|@wrappid/core@0.0.406|
+  >|**Version**|@0.0.406|
   >|**Repository**|https://github.com/wrappid/core|
   >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/LICENSE)|
   >|**Publisher**|Wrappid|
@@ -5830,7 +5830,7 @@ This file lists the third-party libraries, frameworks, and other components used
   
   #### Use this package in your project
   ```bash
-  npm i @wrappid/core@0.0.405
+  npm i @wrappid/core@0.0.406
   ```
   </details>
 <details>
