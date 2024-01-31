@@ -3,6 +3,7 @@ import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
