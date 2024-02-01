@@ -16,12 +16,12 @@ import CoreContextProvider from "./CoreContextProvider";
 import coreReducer from "./reducers/rootReducer";
 import { IconContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
-import { DefaultCoreStyles } from "../styles/DefaultCoreStyles";
-import { LargeCoreStyles } from "../styles/LargeCoreStyles";
-import { MediumCoreStyles } from "../styles/MediumCoreStyles";
-import { SmallCoreStyles } from "../styles/SmallCoreStyles";
-import { XLargeCoreStyles } from "../styles/XLargeCoreStyles";
-import { XXLargeCoreStyles } from "../styles/XXLargeCoreStyles";
+import DefaultCoreStyles from "../styles/DefaultCoreStyles";
+import LargeCoreStyles from "../styles/LargeCoreStyles";
+import MediumCoreStyles from "../styles/MediumCoreStyles";
+import SmallCoreStyles from "../styles/SmallCoreStyles";
+import XLargeCoreStyles from "../styles/XLargeCoreStyles";
+import XXLargeCoreStyles from "../styles/XXLargeCoreStyles";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 function createFullStore(appReducer, persistFlag = true) {

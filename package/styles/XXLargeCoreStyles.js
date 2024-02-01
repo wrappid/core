@@ -6,7 +6,7 @@ import { BaseStyle, XXLargeUtilityStyles } from "@wrappid/styles";
 // --const MIN_WIDTH = XX_LARGE_WINDOW_WIDTH;
 // --const MAX_WIDTH = Number.MAX_VALUE; // setting value to very large number
 
-export class XXLargeCoreStyles extends BaseStyle {
+export default class XXLargeCoreStyles extends BaseStyle {
   xxLargeUtilityStyles = new XXLargeUtilityStyles().style;
   
   constructor() {

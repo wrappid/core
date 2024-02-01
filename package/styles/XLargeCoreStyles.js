@@ -9,7 +9,7 @@ import { BaseStyle, IMPORTANT, XLargeUtilityStyles } from "@wrappid/styles";
 // -- const MIN_WIDTH = X_LARGE_WINDOW_WIDTH;
 // -- const MAX_WIDTH = XX_LARGE_WINDOW_WIDTH - 1;
 
-export class XLargeCoreStyles extends BaseStyle {
+export default class XLargeCoreStyles extends BaseStyle {
   xLargeUtilityStyles = new XLargeUtilityStyles().style;
   
   constructor() {

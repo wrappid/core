@@ -15,7 +15,7 @@ import {
 
 const HEADING_TOP_MARGIN = "64px";
 
-export class SmallCoreStyles extends BaseStyle {
+export default class SmallCoreStyles extends BaseStyle {
   smallUtilityStyles = new SmallUtilityStyles().style;
   
   constructor() {

@@ -11,7 +11,7 @@ import {
 // -- const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
 // -- const HEADING_TOP_MARGIN = "64px";
 
-export class MediumCoreStyles extends BaseStyle {
+export default class MediumCoreStyles extends BaseStyle {
   mediumUtilityStyles = new MediumUtilityStyles().style;
   
   constructor() {

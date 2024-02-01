@@ -6,7 +6,7 @@ import { BaseStyle, IMPORTANT, LargeUtilityStyles } from "@wrappid/styles";
 // const MIN_WIDTH = LARGE_WINDOW_WIDTH;
 // const MAX_WIDTH = X_LARGE_WINDOW_WIDTH - 1;
 
-export class LargeCoreStyles extends BaseStyle {
+export default class LargeCoreStyles extends BaseStyle {
   largeUtilityStyles = new LargeUtilityStyles().style;
   
   constructor() {
