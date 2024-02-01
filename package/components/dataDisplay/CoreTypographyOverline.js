@@ -74,4 +74,4 @@ CoreTypographyOverline.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
-CoreTypographyOverline.invalidProps = ["sx", "classes"];
+CoreTypographyOverline.invalidProps = [];

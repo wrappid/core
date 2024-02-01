@@ -15,4 +15,4 @@ export default function CoreAppDiv(props) {
 }
 
 CoreAppDiv.validProps = [];
-CoreAppDiv.invalidProps = ["sx", "classes"];
+CoreAppDiv.invalidProps = [];

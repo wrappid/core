@@ -86,4 +86,4 @@ CoreDatePicker.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
 ];
-CoreDatePicker.invalidProps = ["sx", "classes"];
+CoreDatePicker.invalidProps = [];

@@ -71,4 +71,4 @@ CoreListItemSubheader.validProps = [
   },
 ];
 
-CoreListItemSubheader.invalidProps = ["sx", "classes"];
+CoreListItemSubheader.invalidProps = [];

@@ -31,4 +31,4 @@ CoreCardMedia.validProps = [
     types: [{ default: "", type: "string" }],
   },
 ];
-CoreCardMedia.invalidProps = ["sx", "classes"];
+CoreCardMedia.invalidProps = [];

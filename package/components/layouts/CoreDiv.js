@@ -14,4 +14,4 @@ const CoreDiv = React.forwardRef((props, ref) => {
 CoreDiv.displayName = CoreDiv;
 
 CoreDiv.validProps = [];
-CoreDiv.invalidProps = ["sx", "classes"];
+CoreDiv.invalidProps = [];

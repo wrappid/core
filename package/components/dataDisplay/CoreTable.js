@@ -82,4 +82,4 @@ CoreTable.validProps = [
   },
 ];
 
-CoreTable.invalidProps = ["sx", "classes"];
+CoreTable.invalidProps = [];

@@ -198,4 +198,4 @@ CoreDialog.validProps = [
   },
 ];
 
-CoreDialog.invalidProps = ["sx", "classes"];
+CoreDialog.invalidProps = [];

@@ -26,4 +26,4 @@ CoreImageBackground.validProps = [
     types      : [{ type: "ref" }]
   }
 ];
-CoreImageBackground.invalidProps = ["sx", "classes"];
+CoreImageBackground.invalidProps = [];

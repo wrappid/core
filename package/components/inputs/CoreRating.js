@@ -47,6 +47,6 @@ CoreRating.validProps = [
     types      : [{ type: "number" }],
   },
 ];
-CoreRating.invalidProps = ["sx", "classes"];
+CoreRating.invalidProps = [];
 
 //not tested props -> getLabelText,onChangeActive,emptyIcon,icon,IconContainerComponent,highlightSelectedOnly

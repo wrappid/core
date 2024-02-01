@@ -159,5 +159,5 @@ CoreAlert.validProps = [
   },
 ];
 
-CoreAlert.invalidProps = ["sx", "classes"];
+CoreAlert.invalidProps = [];
 

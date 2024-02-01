@@ -101,4 +101,4 @@ CoreCircularProgress.validProps = [
     ],
   },
 ];
-CoreCircularProgress.invalidProps = ["sx", "classes"];
+CoreCircularProgress.invalidProps = [];

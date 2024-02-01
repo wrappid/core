@@ -108,4 +108,4 @@ CoreSwitch.validProps = [
     types      : [{ type: "any" }],
   },
 ];
-CoreSwitch.invalidProps = ["sx", "classes"];
+CoreSwitch.invalidProps = [];

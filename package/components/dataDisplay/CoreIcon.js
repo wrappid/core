@@ -137,4 +137,4 @@ CoreIcon.validProps = [
     ],
   },
 ];
-CoreIcon.invalidProps = ["sx", "classes"];
+CoreIcon.invalidProps = [];

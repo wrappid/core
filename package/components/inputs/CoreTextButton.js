@@ -36,4 +36,4 @@ CoreTextButton.validProps = [
     types: [{ type: "number" }]
   }
 ];
-CoreTextButton.invalidProps = ["sx", "classes"];
+CoreTextButton.invalidProps = [];

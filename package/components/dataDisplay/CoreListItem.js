@@ -139,4 +139,4 @@ CoreListItem.validProps = [
   }
 ];
 
-CoreListItem.invalidProps = ["sx", "classes"];
+CoreListItem.invalidProps = [];

@@ -99,4 +99,4 @@ CorePhoneLink.validProps = [
     types: [{ type: "string" }] 
   },
 ];
-CorePhoneLink.invalidProps = ["sx", "classes"];
+CorePhoneLink.invalidProps = [];

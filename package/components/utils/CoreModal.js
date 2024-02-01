@@ -168,4 +168,4 @@ CoreModal.validProps = [
     ],
   },
 ];
-CoreModal.invalidProps = ["sx", "classes"];
+CoreModal.invalidProps = [];
