@@ -44,7 +44,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "Spacing between avatars.",
     name       : "spacing",
-    types      : [{ default: "medium", type: "string", validValues: ["medium", "small"] }]
+    types      : [{ default: "medium", type: "string", validValues: ["medium", "small"] }, { type: number }]
   },
   {
     description: "The total number of avatars. Used for calculating the number of extra avatars.",
@@ -54,8 +54,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "The variant to use.",
     name       : "variant",
-    types: [{
-      default: "circular", type: "string", validValues: ["circular", "rounded", "square"] }]
+    types      : [{ default: "circular'", type: "circular'| 'rounded'| 'square'| string" }]
   }
 ];
 CoreAvatarGroup.invalidProps = [];
