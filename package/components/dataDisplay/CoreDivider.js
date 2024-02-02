@@ -119,4 +119,4 @@ CoreDivider.validProps = [
   }
 ];
 
-CoreDivider.invalidProps = [, "style", "theme"];
+CoreDivider.invalidProps = ["style", "theme"];
