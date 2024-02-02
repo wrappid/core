@@ -127,4 +127,4 @@ CoreListItemButton.invalidProps = [
   }
 ];
 
-CoreListItemButton.invalidProps = ["sx", "classes", "style"];
+CoreListItemButton.invalidProps = ["style"];

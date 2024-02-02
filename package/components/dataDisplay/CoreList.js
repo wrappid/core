@@ -70,4 +70,4 @@ CoreList.validProps = [
   },
 ];
 
-CoreList.invalidProps = ["sx", "classes"];
+CoreList.invalidProps = [];

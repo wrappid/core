@@ -135,4 +135,4 @@ CoreBackdrop.validProps = [
 
 ];
 
-CoreBackdrop.invalidProps = ["sx", "classes"];
+CoreBackdrop.invalidProps = [];

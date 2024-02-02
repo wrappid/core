@@ -361,4 +361,4 @@ CoreAutocomplete.validProps = [
     types: [{ type: "any" }],
   },
 ];
-CoreAutocomplete.invalidProps = ["sx", "classes"];
+CoreAutocomplete.invalidProps = [];

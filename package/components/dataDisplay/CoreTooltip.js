@@ -342,4 +342,4 @@ CoreTooltip.validProps = [
   },
 ];
 
-CoreTooltip.invalidProps = ["sx", "classes"];
+CoreTooltip.invalidProps = [];

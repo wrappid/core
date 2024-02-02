@@ -205,4 +205,4 @@ CoreInput.validProps = [
     types: [{ types: "string" }]
   }
 ];
-CoreInput.invalidProps = ["sx", "classes"];
+CoreInput.invalidProps = [];

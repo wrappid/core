@@ -19,4 +19,4 @@ CoreCardContent.validProps = [
     types: [{ default: "", type: "elementType" }],
   },
 ];
-CoreCardContent.invalidProps = ["sx", "classes"];
+CoreCardContent.invalidProps = [];

@@ -89,4 +89,4 @@ CoreLink.validProps = [
     ],
   },
 ];
-CoreLink.invalidProps = ["sx", "classes"];
+CoreLink.invalidProps = [];

@@ -57,4 +57,4 @@ CoreMenuItem.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
 ];
-CoreMenuItem.invalidProps = ["sx", "classes"];
+CoreMenuItem.invalidProps = [];

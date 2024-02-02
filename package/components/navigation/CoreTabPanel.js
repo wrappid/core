@@ -30,4 +30,4 @@ CoreTabPanel.validProps = [
     types   : [{ default: "", type: "string" }],
   },
 ];
-CoreTabPanel.invalidProps = ["sx", "classes"];
+CoreTabPanel.invalidProps = [];

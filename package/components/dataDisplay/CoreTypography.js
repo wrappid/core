@@ -135,6 +135,6 @@ CoreTypography.validProps = [
     ],
   },
 ];
-CoreTypography.invalidProps = ["sx", "classes"];
+CoreTypography.invalidProps = [];
 
 export default CoreTypography;

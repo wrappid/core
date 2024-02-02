@@ -101,10 +101,19 @@ const convertJsonToMDFormat = (packageName, packageInfo) => {
 
   if (extractedNumbers) {
     packageVersion = extractedNumbers.join("");
-
-    // eslint-disable-next-line etc/no-commented-out-code
-    // console.log(packageVersion);
   }
+
+  // get the only name of the package without having vrsions number or charcter
+  // expected string "@babel/generator@7.21.5"
+  const extract = (nameValue) => {
+    const index = nameValue.lastIndexOf("@");
+  
+    const extractedName = nameValue.substring(0, index);
+  
+    const result = extractedName.replace("@", "");
+  
+    return result;
+  };
 
   mdContent = `<details>
   <summary>${packageName}</summary>
@@ -112,8 +121,8 @@ const convertJsonToMDFormat = (packageName, packageInfo) => {
   #### Basic details about the package
   >|Key|Value|
   >|:--|:--|
-  >|**Name**|${packageName || "NA"}|
-  >|**Version**|${"@" + packageVersion || "NA"}|
+  >|**Name**|${extract(packageName) || "NA"}|
+  >|**Version**|${packageVersion || "NA"}|
   >|**Repository**|${repository || "NA"}|
   >|**Licenses**|[${licenses || "NA"}](${licenseFile})|
   >|**Publisher**|${publisher || "NA"}|

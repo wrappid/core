@@ -83,4 +83,4 @@ CoreDateRangepicker.validProps = [
     types      : [{ default: "@media (pointer: fine)", type: "string", validValues: [] }],
   },
 ];
-CoreDateRangepicker.invalidProps = ["sx", "classes"];
+CoreDateRangepicker.invalidProps = [];

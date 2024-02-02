@@ -202,4 +202,4 @@ CoreBadge.validProps = [
   }
 ];
 
-CoreBadge.invalidProps = ["sx", "classes"];
+CoreBadge.invalidProps = [];

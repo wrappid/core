@@ -98,4 +98,4 @@ CoreSkeleton.validProps = [
     ],
   },
 ];
-CoreSkeleton.invalidProps = ["sx", "classes"];
+CoreSkeleton.invalidProps = [];

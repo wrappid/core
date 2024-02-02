@@ -49,4 +49,4 @@ CoreMenuList.validProps = [
     ],
   },
 ];
-CoreMenuList.invalidProps = ["sx", "classes"];
+CoreMenuList.invalidProps = [];

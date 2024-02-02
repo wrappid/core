@@ -49,4 +49,4 @@ CoreContainer.validProps = [
     ],
   },
 ];
-CoreContainer.invalidProps = ["sx", "classes"];
+CoreContainer.invalidProps = [];

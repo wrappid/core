@@ -18,4 +18,4 @@ CoreCardActionArea.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }]
   }
 ];
-CoreCardActionArea.invalidProps = ["sx", "classes"];
+CoreCardActionArea.invalidProps = [];

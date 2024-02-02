@@ -98,4 +98,4 @@ CoreFormControl.validProps = [
     ]
   },
 ];
-CoreFormControl.invalidProps = ["sx", "classes"];
+CoreFormControl.invalidProps = [];
