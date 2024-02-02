@@ -5818,8 +5818,8 @@
   #### Basic details about the package
   >|Key|Value|
   >|:--|:--|
-  >|**Name**|wrappid/core|
-  >|**Version**|0.0.407|
+  >|**Name**|@wrappid/core@0.0.407|
+  >|**Version**|@0.0.407|
   >|**Repository**|https://github.com/wrappid/core|
   >|**Licenses**|[MIT](C:\Users\KGN\Documents\Faisal\wrappid\git\core\LICENSE)|
   >|**Publisher**|Wrappid|
