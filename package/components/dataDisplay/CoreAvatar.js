@@ -64,4 +64,4 @@ CoreAvatar.validProps = [
     types      : [{ type: "string" }],
   },
 ];
-CoreAvatar.invalidProps = ["sx", "classes"];
+CoreAvatar.invalidProps = [];

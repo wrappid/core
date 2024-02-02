@@ -447,4 +447,4 @@ CoreFormInputs.validProps = [
     types: [{ default: "", type: "any" }],
   },
 ];
-CoreFormInputs.invalidProps = ["sx", "classes"];
+CoreFormInputs.invalidProps = [];

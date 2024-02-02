@@ -116,4 +116,4 @@ CoreButton.validProps = [
     ],
   },
 ];
-CoreButton.invalidProps = ["sx", "classes"];
+CoreButton.invalidProps = [];

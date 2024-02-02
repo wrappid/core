@@ -70,4 +70,4 @@ CoreTypographyCaption.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
-CoreTypographyCaption.invalidProps = ["sx", "classes"];
+CoreTypographyCaption.invalidProps = [];

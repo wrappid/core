@@ -57,4 +57,4 @@ CoreAvatarGroup.validProps = [
     types      : [{ default: "circular'", type: "circular'| 'rounded'| 'square'| string" }]
   }
 ];
-CoreAvatarGroup.invalidProps = ["sx", "classes"];
+CoreAvatarGroup.invalidProps = [];

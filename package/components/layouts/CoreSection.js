@@ -28,4 +28,4 @@ export default function CoreSection(props) {
 }
 
 CoreSection.validProps = [];
-CoreSection.invalidProps = ["sx", "classes"];
+CoreSection.invalidProps = [];

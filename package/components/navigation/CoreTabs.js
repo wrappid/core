@@ -166,4 +166,4 @@ CoreTabs.validProps = [
     types: [{ default: false, type: "boolean" }],
   },
 ];
-CoreTabs.invalidProps = ["sx", "classes"];
+CoreTabs.invalidProps = [];

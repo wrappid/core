@@ -12,5 +12,5 @@ export default function CoreAlertTitle(props) {
 }
 
 CoreAlertTitle.validProps = [];
-CoreAlertTitle.invalidProps = ["sx", "classes"];
+CoreAlertTitle.invalidProps = [];
 
