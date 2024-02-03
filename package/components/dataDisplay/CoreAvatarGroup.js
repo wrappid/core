@@ -43,7 +43,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "Spacing between avatars.",
     name       : "spacing",
-    types      : [{ default: "medium", type: "string", validValues: ["medium", "small", "number"] }]
+    types      : [{ default: "medium", type: "string", validValues: ["medium", "small", "number"] }, { type: "number" }]
   },
   {
     description: "The total number of avatars. Used for calculating the number of extra avatars.",
