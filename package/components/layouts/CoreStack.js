@@ -69,4 +69,4 @@ CoreStack.validProps = [
     types: [{ type: "boolean", validValues: [true, false] }]
   }
 ];
-CoreStack.invalidProps = ["sx", "classes"];
+CoreStack.invalidProps = [];

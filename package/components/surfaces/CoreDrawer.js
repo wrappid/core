@@ -151,4 +151,4 @@ CoreDrawer.validProps = [
     ],
   },
 ];
-CoreDrawer.invalidProps = ["sx", "classes"];
+CoreDrawer.invalidProps = [];

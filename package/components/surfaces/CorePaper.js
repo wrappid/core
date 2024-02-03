@@ -42,4 +42,4 @@ CorePaper.validProps = [
   },
 ];
 
-CorePaper.invalidProps = ["sx", "classes"];
+CorePaper.invalidProps = [];

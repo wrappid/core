@@ -20,4 +20,4 @@ CoreCardActions.validProps = [
   },
 ];
 
-CoreCardActions.invalidProps = ["sx", "classes"];
+CoreCardActions.invalidProps = [];

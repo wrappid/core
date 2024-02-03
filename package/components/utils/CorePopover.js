@@ -173,4 +173,4 @@ CorePopover.validProps = [
     types: [{ default: {}, type: "object" }],
   },
 ];
-CorePopover.invalidProps = ["sx", "classes"];
+CorePopover.invalidProps = [];

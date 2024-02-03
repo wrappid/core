@@ -175,4 +175,4 @@ CoreIconText.validProps = [
     types: [{ type: "boolean" }]
   }
 ];
-CoreIconText.invalidProps = ["sx", "classes"];
+CoreIconText.invalidProps = [];

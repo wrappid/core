@@ -79,4 +79,4 @@ CoreAccordion.validProps = [
   },
 ];
 
-CoreAccordion.invalidProps = ["sx", "classes"];
+CoreAccordion.invalidProps = [];

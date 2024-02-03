@@ -57,4 +57,4 @@ CoreLinearProgress.validProps = [
     ],
   },
 ];
-CoreLinearProgress.invalidProps = ["sx", "classes"];
+CoreLinearProgress.invalidProps = [];

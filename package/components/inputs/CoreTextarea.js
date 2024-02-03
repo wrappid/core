@@ -34,4 +34,4 @@ CoreTextarea.validProps = [
     types: [{ default: true, type: "boolean" }]
   }
 ];
-CoreTextarea.invalidProps = ["sx", "classes"];
+CoreTextarea.invalidProps = [];

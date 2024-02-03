@@ -14,6 +14,6 @@ const CoreH1 = React.forwardRef((props, ref) => {
 
 CoreH1.displayName = "CoreH1";
 CoreH1.validProps = [...CoreH.validProps];
-CoreH1.invalidProps = ["sx", "classes"];
+CoreH1.invalidProps = [];
 
 export default CoreH1;

@@ -119,4 +119,4 @@ CoreCheckbox.validProps = [
     types      : [{ type: "any" }],
   },
 ];
-CoreCheckbox.invalidProps = ["sx", "classes"];
+CoreCheckbox.invalidProps = [];

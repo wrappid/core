@@ -13,4 +13,4 @@ export default function CoreListItemAvatar(props) {
   return <NativeListItemAvatar {...props} />;
 }
 CoreListItemAvatar.validProps = [];
-CoreListItemAvatar.invalidProps = ["sx", "classes"];
+CoreListItemAvatar.invalidProps = [];

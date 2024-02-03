@@ -12,4 +12,4 @@ export default function CoreContainedButton(props) {
 }
 
 CoreContainedButton.validProps = [...CoreButton.validProps];
-CoreButton.invalidProps = ["sx", "classes"];
+CoreButton.invalidProps = [];
