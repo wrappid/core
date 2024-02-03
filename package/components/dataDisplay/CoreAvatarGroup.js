@@ -3,7 +3,6 @@ import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeAvatarGroup } from "@wrappid/native";
-import { number } from "yup";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
