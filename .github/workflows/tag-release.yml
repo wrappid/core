@@ -100,7 +100,7 @@ jobs:
       - name: Push Tags
         run: git push --follow-tags origin development
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEVOPS }}
 
       # - name: Create Release
       #   id: create_release
