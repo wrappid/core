@@ -5367,7 +5367,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|types/yargs|
   >|**Version**|17.0.24|
   >|**Repository**|https://github.com/DefinitelyTyped/DefinitelyTyped|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-watch-typeahead/node_modules/@types/yargs/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/tsutils-etc/node_modules/@types/yargs/LICENSE)|
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -6260,7 +6260,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|ajv|
   >|**Version**|8.12.0|
   >|**Repository**|https://github.com/ajv-validator/ajv|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-minimizer-webpack-plugin/node_modules/ajv/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/config-validator/node_modules/ajv/LICENSE)|
   >|**Publisher**|Evgeny Poberezkin|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -6564,7 +6564,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|argparse|
   >|**Version**|2.0.1|
   >|**Repository**|https://github.com/nodeca/argparse|
-  >|**Licenses**|[Python-2.0](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@eslint/eslintrc/node_modules/argparse/LICENSE)|
+  >|**Licenses**|[Python-2.0](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/load/node_modules/argparse/LICENSE)|
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -9775,7 +9775,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|debug|
   >|**Version**|2.6.9|
   >|**Repository**|https://github.com/visionmedia/debug|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/detect-port-alt/node_modules/debug/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/send/node_modules/debug/LICENSE)|
   >|**Publisher**|TJ Holowaychuk|
   >|**Contact**|tj@vision-media.ca|
   >|**Homepage**|NA|
@@ -11162,7 +11162,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|escape-string-regexp|
   >|**Version**|4.0.0|
   >|**Repository**|https://github.com/sindresorhus/escape-string-regexp|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/eslint/node_modules/escape-string-regexp/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/react-dev-utils/node_modules/escape-string-regexp/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|https://sindresorhus.com|
@@ -11485,7 +11485,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|eslint-scope|
   >|**Version**|5.1.1|
   >|**Repository**|https://github.com/eslint/eslint-scope|
-  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@nicolo-ribaudo/eslint-scope-5-internals/node_modules/eslint-scope/LICENSE)|
+  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@typescript-eslint/utils/node_modules/eslint-scope/LICENSE)|
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -11713,7 +11713,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|estraverse|
   >|**Version**|4.3.0|
   >|**Repository**|https://github.com/estools/estraverse|
-  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@nicolo-ribaudo/eslint-scope-5-internals/node_modules/estraverse/LICENSE.BSD)|
+  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@typescript-eslint/utils/node_modules/estraverse/LICENSE.BSD)|
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -12264,7 +12264,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|find-up|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/find-up|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/pkg-up/node_modules/find-up/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/find-up/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -12967,7 +12967,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|glob-parent|
   >|**Version**|6.0.2|
   >|**Repository**|https://github.com/gulpjs/glob-parent|
-  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/eslint/node_modules/glob-parent/LICENSE)|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/tailwindcss/node_modules/glob-parent/LICENSE)|
   >|**Publisher**|Gulp Team|
   >|**Contact**|team@gulpjs.com|
   >|**Homepage**|https://gulpjs.com/|
@@ -15988,7 +15988,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|js-yaml|
   >|**Version**|4.1.0|
   >|**Repository**|https://github.com/nodeca/js-yaml|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@eslint/eslintrc/node_modules/js-yaml/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/load/node_modules/js-yaml/LICENSE)|
   >|**Publisher**|Vladimir Zapparov|
   >|**Contact**|dervus.grim@gmail.com|
   >|**Homepage**|NA|
@@ -16121,7 +16121,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|json-schema-traverse|
   >|**Version**|1.0.0|
   >|**Repository**|https://github.com/epoberezkin/json-schema-traverse|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-minimizer-webpack-plugin/node_modules/json-schema-traverse/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/config-validator/node_modules/json-schema-traverse/LICENSE)|
   >|**Publisher**|Evgeny Poberezkin|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -16634,7 +16634,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|locate-path|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/locate-path|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/pkg-up/node_modules/locate-path/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/locate-path/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -17052,7 +17052,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|lru-cache|
   >|**Version**|6.0.0|
   >|**Repository**|https://github.com/isaacs/node-lru-cache|
-  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-loader/node_modules/lru-cache/LICENSE)|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/lru-cache/LICENSE)|
   >|**Publisher**|Isaac Z. Schlueter|
   >|**Contact**|i@izs.me|
   >|**Homepage**|NA|
@@ -17109,7 +17109,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|make-dir|
   >|**Version**|3.1.0|
   >|**Repository**|https://github.com/sindresorhus/make-dir|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/find-cache-dir/node_modules/make-dir/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/istanbul-lib-report/node_modules/make-dir/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -17698,7 +17698,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|ms|
   >|**Version**|2.0.0|
   >|**Repository**|https://github.com/zeit/ms|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/detect-port-alt/node_modules/ms/license.md)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/send/node_modules/debug/node_modules/ms/license.md)|
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -18724,7 +18724,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|p-locate|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/p-locate|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/pkg-up/node_modules/p-locate/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/p-locate/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -18971,7 +18971,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|path-exists|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/path-exists|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/pkg-up/node_modules/path-exists/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/path-exists/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -22353,7 +22353,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|safe-buffer|
   >|**Version**|5.1.2|
   >|**Repository**|https://github.com/feross/safe-buffer|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/compression/node_modules/safe-buffer/LICENSE)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/hpack.js/node_modules/safe-buffer/LICENSE)|
   >|**Publisher**|Feross Aboukhadijeh|
   >|**Contact**|feross@feross.org|
   >|**Homepage**|http://feross.org|
@@ -22676,7 +22676,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|semver|
   >|**Version**|7.5.4|
   >|**Repository**|https://github.com/npm/node-semver|
-  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-loader/node_modules/semver/LICENSE)|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/semver/LICENSE)|
   >|**Publisher**|GitHub Inc.|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -22961,7 +22961,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|slash|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/slash|
-  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@jest/transform/node_modules/slash/license)|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-message-util/node_modules/slash/license)|
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -23113,7 +23113,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|source-map|
   >|**Version**|0.6.1|
   >|**Repository**|https://github.com/mozilla/source-map|
-  >|**Licenses**|[BSD-3-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-tree/node_modules/source-map/LICENSE)|
+  >|**Licenses**|[BSD-3-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/escodegen/node_modules/source-map/LICENSE)|
   >|**Publisher**|Nick Fitzgerald|
   >|**Contact**|nfitzgerald@mozilla.com|
   >|**Homepage**|NA|
@@ -26856,7 +26856,7 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|yallist|
   >|**Version**|4.0.0|
   >|**Repository**|https://github.com/isaacs/yallist|
-  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/css-loader/node_modules/yallist/LICENSE)|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/yallist/LICENSE)|
   >|**Publisher**|Isaac Z. Schlueter|
   >|**Contact**|i@izs.me|
   >|**Homepage**|http://blog.izs.me/|
