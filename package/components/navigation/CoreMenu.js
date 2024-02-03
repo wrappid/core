@@ -164,4 +164,4 @@ CoreMenu.validProps = [
   },
 ];
 
-CoreMenu.invalidProps = ["sx", "classes"];
+CoreMenu.invalidProps = [];

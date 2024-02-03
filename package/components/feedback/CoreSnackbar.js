@@ -195,4 +195,4 @@ CoreSnackbar.validProps = [
     ],
   },
 ];
-CoreSnackbar.invalidProps = ["sx", "classes"];
+CoreSnackbar.invalidProps = [];

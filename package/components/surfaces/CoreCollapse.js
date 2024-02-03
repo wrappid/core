@@ -86,4 +86,4 @@ CoreCollapse.validProps = [
     ],
   },
 ];
-CoreCollapse.invalidProps = ["sx", "classes"];
+CoreCollapse.invalidProps = [];

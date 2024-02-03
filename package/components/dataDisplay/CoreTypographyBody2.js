@@ -71,5 +71,5 @@ CoreTypographyBody2.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
-CoreTypographyBody2.invalidProps = ["sx", "classes"];
+CoreTypographyBody2.invalidProps = [];
 

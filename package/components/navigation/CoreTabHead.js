@@ -19,4 +19,4 @@ CoreTabHead.validProps = [
     types: [{ type: "elementType" }],
   },
 ];
-CoreTabHead.invalidProps = ["sx", "classes"];
+CoreTabHead.invalidProps = [];

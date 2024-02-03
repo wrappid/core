@@ -160,7 +160,9 @@ import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import config from "./config/config";
 import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
-import { CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, CoreRouteRegistryContext } from "./config/contextHandler";
+import { 
+  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, CoreRouteRegistryContext, CoreRoutesContext 
+} from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
   MENU_PARENT_ITEM,
@@ -440,6 +442,7 @@ export {
   CoreRating,
   CoreFooter,
   setUserTheme,
+  CoreRoutesContext,
 
   /**
    * Styles

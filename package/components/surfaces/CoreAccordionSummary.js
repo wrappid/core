@@ -24,4 +24,4 @@ CoreAccordionSummary.validProps = [
   },
 ];
 
-CoreAccordionSummary.invalidProps = ["sx", "classes"];
+CoreAccordionSummary.invalidProps = [];

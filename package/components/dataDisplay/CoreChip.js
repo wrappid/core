@@ -168,4 +168,4 @@ CoreChip.validProps = [
   },
 ];
 
-CoreChip.invalidProps = ["sx", "classes"];
+CoreChip.invalidProps = [];

@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.407",
+  "version": "0.0.409",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "code:format": "npm run code:lint -- --fix",
     "test": "echo Testing not yet implemented && exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
+    "release": "standard-version --bumpFiles ./package.json ./package/package.json ./package-lock.json ./package/package-lock.json",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
@@ -40,23 +41,6 @@
       "@babel/preset-react"
     ]
   },
-  "dependencies": {
-    "@wrappid/styles": "latest",
-    "formik": "^2.2.9",
-    "mdi": "^2.2.43",
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-device-detect": "^2.2.3",
-    "react-dom": "^18.2.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-redux": "^8.0.2",
-    "react-scripts": "5.0.1",
-    "redux": "^4.2.0",
-    "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.4.1",
-    "uuidv4": "^6.2.13",
-    "yup": "^0.32.11"
-  },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
@@ -76,6 +60,21 @@
     "format-package-json": "^0.2.0",
     "git-contributors": "^0.2.5",
     "husky": "^8.0.3",
-    "license-checker": "^25.0.1"
+    "license-checker": "^25.0.1",
+    "standard-version": "^9.5.0",
+    "formik": "^2.2.9",
+    "mdi": "^2.2.43",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-redux": "^8.0.2",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
+    "uuidv4": "^6.2.13",
+    "yup": "^0.32.11"
   }
 }

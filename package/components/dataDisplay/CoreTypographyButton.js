@@ -67,4 +67,4 @@ CoreTypographyButton.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
-CoreTypographyButton.invalidProps = ["sx", "classes"];
+CoreTypographyButton.invalidProps = [];

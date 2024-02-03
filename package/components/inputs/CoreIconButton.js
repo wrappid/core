@@ -80,4 +80,4 @@ CoreIconButton.validProps = [
   },
 ];
 
-CoreIconButton.invalidProps = ["sx", "classes"];
+CoreIconButton.invalidProps = [];

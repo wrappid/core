@@ -300,4 +300,4 @@ CoreAppBar.validProps = [
   }
 ];
 
-CoreAppBar.invalidProps = ["sx", "classes"];
+CoreAppBar.invalidProps = [];

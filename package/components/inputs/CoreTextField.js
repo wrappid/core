@@ -205,4 +205,4 @@ CoreTextField.validProps = [
     ],
   },
 ];
-CoreTextField.invalidProps = ["sx", "classes"];
+CoreTextField.invalidProps = [];

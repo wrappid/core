@@ -100,11 +100,12 @@ jobs:
           npm --version
           npx eslint --version
 
+
       - name: Find added/changed files
         id: git_diff
         run: |
           echo Searching for files added/changed in ${{ github.event.pull_request.head.ref }}, since the last commit in ${{ github.event.pull_request.base.ref }}
-          echo "FILES_TO_LINT=$(git diff --name-only ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
+          echo "FILES_TO_LINT=$(git diff --name-only --diff-filter=AM ${{ github.event.pull_request.head.sha }}..${{ github.event.pull_request.base.sha }} \*.{js,jsx,ts,tsx} | xargs)" >> $GITHUB_OUTPUT
 
       - name: Run ESLint
         run: |

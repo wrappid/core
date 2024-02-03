@@ -74,4 +74,4 @@ CoreTypographySubtitle1.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
-CoreTypographySubtitle1.invalidProps = ["sx", "classes"];
+CoreTypographySubtitle1.invalidProps = [];

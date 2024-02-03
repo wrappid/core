@@ -1,6 +1,7 @@
 
 // --import { XX_LARGE_WINDOW_WIDTH } from "../config/constants";
 
+// eslint-disable-next-line import/no-unresolved
 import { BaseStyle, XXLargeUtilityStyles } from "@wrappid/styles";
 
 // --const MIN_WIDTH = XX_LARGE_WINDOW_WIDTH;

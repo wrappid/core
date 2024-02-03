@@ -35,4 +35,4 @@ CoreToolBar.validProps = [
     ],
   },
 ];
-CoreToolBar.invalidProps = ["sx", "classes"];
+CoreToolBar.invalidProps = [];

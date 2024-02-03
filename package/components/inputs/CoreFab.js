@@ -89,4 +89,4 @@ CoreFab.validProps = [
   },
 ];
 
-CoreFab.invalidProps = ["sx", "classes"];
+CoreFab.invalidProps = [];

@@ -98,4 +98,4 @@ CoreEmailLink.validProps = [
   { name: "mask", types: [{ default: false, type: "boolean" }] },
   { name: "iconButton", types: [{ default: false, type: "boolean" }] }
 ];
-CoreEmailLink.invalidProps = ["sx", "classes"];
+CoreEmailLink.invalidProps = [];

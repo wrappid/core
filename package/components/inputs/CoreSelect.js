@@ -163,4 +163,4 @@ CoreSelect.validProps = [
     types      : [{ default: "outlined'", type: "string", validValues: ["filled", "outlined", "standard"] }],
   },
 ];
-CoreSelect.invalidProps = ["sx", "classes"];
+CoreSelect.invalidProps = [];
