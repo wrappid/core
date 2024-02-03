@@ -195,7 +195,12 @@ import CoreProvider from "./store/CoreProvider";
 import { createFullStore } from "./store/store";
 import { LOGOUT_SUCCESS } from "./store/types/authTypes";
 import CoreClasses from "./styles/CoreClasses";
-import { DefaultCoreStyles } from "./styles/DefaultCoreStyles";
+import DefaultCoreStyles from "./styles/DefaultCoreStyles";
+import LargeCoreStyles from "./styles/LargeCoreStyles";
+import MediumCoreStyles from "./styles/MediumCoreStyles";
+import SmallCoreStyles from "./styles/SmallCoreStyles";
+import XLargeCoreStyles from "./styles/XLargeCoreStyles";
+import XXLargeCoreStyles from "./styles/XXLargeCoreStyles";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import ThemeSelector from "./theme/ThemeSelector";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
@@ -396,7 +401,6 @@ export {
   WEB_PLATFORM,
   detectPlatform,
 
-  CoreClasses,
   IconContext,
   FORM_VIEW_MODE,
   FORM_EDIT_MODE,
@@ -438,9 +442,18 @@ export {
   CoreRating,
   CoreFooter,
   setUserTheme,
-  DefaultCoreStyles,
   CoreRoutesContext,
 
+  /**
+   * Styles
+   */
+  CoreClasses,
+  DefaultCoreStyles,
+  SmallCoreStyles,
+  MediumCoreStyles,
+  LargeCoreStyles,
+  XLargeCoreStyles,
+  XXLargeCoreStyles,
   /**
    * Themes
    */
