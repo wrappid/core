@@ -8,7 +8,7 @@ const HEADING_TOP_MARGIN = "56px";
 
 export const DEFAULT_SPACING = 1;
 
-export class DefaultCoreStyles extends BaseStyle {
+export default class DefaultCoreStyles extends BaseStyle {
   defaultUtilityStyles = new DefaultUtilityStyles().style;
   
   constructor(){

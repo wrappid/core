@@ -16,12 +16,12 @@ import CoreContextProvider from "./CoreContextProvider";
 import coreReducer from "./reducers/rootReducer";
 import { IconContext } from "../config/contextHandler";
 import CoreClasses from "../styles/CoreClasses";
-import { DefaultCoreStyles } from "../styles/DefaultCoreStyles";
-import { largeCoreStyles } from "../styles/LargeCoreStyles";
-import { mediumCoreStyles } from "../styles/MediumCoreStyles";
-import { smallCoreStyles } from "../styles/SmallCoreStyles";
-import { xLargeCoreStyles } from "../styles/XLargeCoreStyles";
-import { xXLargeCoreStyles } from "../styles/XXLargeCoreStyles";
+import DefaultCoreStyles from "../styles/DefaultCoreStyles";
+import LargeCoreStyles from "../styles/LargeCoreStyles";
+import MediumCoreStyles from "../styles/MediumCoreStyles";
+import SmallCoreStyles from "../styles/SmallCoreStyles";
+import XLargeCoreStyles from "../styles/XLargeCoreStyles";
+import XXLargeCoreStyles from "../styles/XXLargeCoreStyles";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 function createFullStore(appReducer, persistFlag = true) {
@@ -100,11 +100,11 @@ export default function CoreProvider(props) {
     classes: CoreClasses,
     styles : {
       default: DefaultCoreStyles,
-      large  : largeCoreStyles,
-      medium : mediumCoreStyles,
-      small  : smallCoreStyles,
-      xLarge : xLargeCoreStyles,
-      xxLarge: xXLargeCoreStyles,
+      large  : LargeCoreStyles,
+      medium : MediumCoreStyles,
+      small  : SmallCoreStyles,
+      xLarge : XLargeCoreStyles,
+      xxLarge: XXLargeCoreStyles,
     },
   };
 
