@@ -10,6 +10,7 @@
     "code:format": "npm run code:lint -- --fix",
     "test": "echo Testing not yet implemented && exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
+    "release": "standard-version --bumpFiles ./package.json ./package/package.json ./package-lock.json ./package/package-lock.json",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
@@ -75,6 +76,7 @@
     "format-package-json": "^0.2.0",
     "git-contributors": "^0.2.5",
     "husky": "^8.0.3",
-    "license-checker": "^25.0.1"
+    "license-checker": "^25.0.1",
+    "standard-version": "^9.5.0"
   }
 }
