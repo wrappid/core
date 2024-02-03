@@ -3,7 +3,6 @@ import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeAvatarGroup } from "@wrappid/native";
-import { number } from "yup";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
@@ -44,7 +43,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "Spacing between avatars.",
     name       : "spacing",
-    types      : [{ default: "medium", type: "string", validValues: ["medium", "small"] }, { type: number }]
+    types      : [{ default: "medium", type: "string", validValues: ["medium", "small"] }, { type: "number" }]
   },
   {
     description: "The total number of avatars. Used for calculating the number of extra avatars.",
@@ -54,7 +53,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "The variant to use.",
     name       : "variant",
-    types      : [{ default: "circular'", type: "circular'| 'rounded'| 'square'| string" }]
+    types      : [{ default: "circular", type: ["circular", "rounded", "square", "string"] }]
   }
 ];
 CoreAvatarGroup.invalidProps = [];
