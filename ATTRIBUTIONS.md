@@ -3193,6 +3193,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>@hutson/parse-repository-url@3.0.2</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|hutson/parse-repository-url|
+  >|**Version**|3.0.2|
+  >|**Repository**|git+https://gitlab.com/hyper-expanse/open-source/parse-repository-url|
+  >|**Licenses**|[Apache-2.0](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@hutson/parse-repository-url/LICENSE)|
+  >|**Publisher**|Hutson Betts|
+  >|**Contact**|hutson@hyper-expanse.net|
+  >|**Homepage**|https://gitlab.com/hutson|
+  
+  #### Use this package in your project
+  ```bash
+  npm i @hutson/parse-repository-url@3.0.2
+  ```
+  </details>
+<details>
   <summary>@istanbuljs/load-nyc-config@1.1.0</summary>
   
   #### Basic details about the package
@@ -5815,13 +5834,13 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
-  <summary>@wrappid/core@0.0.408</summary>
+  <summary>@wrappid/core@0.0.409</summary>
   
   #### Basic details about the package
   >|Key|Value|
   >|:--|:--|
   >|**Name**|wrappid/core|
-  >|**Version**|0.0.408|
+  >|**Version**|0.0.409|
   >|**Repository**|https://github.com/wrappid/core|
   >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/LICENSE)|
   >|**Publisher**|Wrappid|
@@ -5830,7 +5849,7 @@ This file lists the third-party libraries, frameworks, and other components used
   
   #### Use this package in your project
   ```bash
-  npm i @wrappid/core@0.0.408
+  npm i @wrappid/core@0.0.409
   ```
   </details>
 <details>
@@ -6078,6 +6097,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i acorn@8.8.2
+  ```
+  </details>
+<details>
+  <summary>add-stream@1.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|add-stream|
+  >|**Version**|1.0.0|
+  >|**Repository**|https://github.com/wilsonjackson/add-stream|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/add-stream/README.md)|
+  >|**Publisher**|Majid Burney|
+  >|**Contact**|moocow@euphoricsoup.com|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i add-stream@1.0.0
   ```
   </details>
 <details>
@@ -8456,6 +8494,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>concat-stream@2.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|concat-stream|
+  >|**Version**|2.0.0|
+  >|**Repository**|https://github.com/maxogden/concat-stream|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/concat-stream/LICENSE)|
+  >|**Publisher**|Max Ogden|
+  >|**Contact**|max@maxogden.com|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i concat-stream@2.0.0
+  ```
+  </details>
+<details>
   <summary>confusing-browser-globals@1.0.11</summary>
   
   #### Basic details about the package
@@ -8532,6 +8589,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>conventional-changelog-angular@5.0.13</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-angular|
+  >|**Version**|5.0.13|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog/node_modules/conventional-changelog-angular/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-angular@5.0.13
+  ```
+  </details>
+<details>
   <summary>conventional-changelog-angular@6.0.0</summary>
   
   #### Basic details about the package
@@ -8548,6 +8624,82 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i conventional-changelog-angular@6.0.0
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-atom@2.0.8</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-atom|
+  >|**Version**|2.0.8|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-atom/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-atom@2.0.8
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-codemirror@2.0.8</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-codemirror|
+  >|**Version**|2.0.8|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-codemirror/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-codemirror@2.0.8
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-config-spec@2.1.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-config-spec|
+  >|**Version**|2.1.0|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog-config-spec|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-config-spec/README.md)|
+  >|**Publisher**|NA|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-config-spec@2.1.0
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-conventionalcommits@4.6.3</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-conventionalcommits|
+  >|**Version**|4.6.3|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog/node_modules/conventional-changelog-conventionalcommits/LICENSE.md)|
+  >|**Publisher**|Ben Coe|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-conventionalcommits@4.6.3
   ```
   </details>
 <details>
@@ -8570,6 +8722,215 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>conventional-changelog-core@4.2.4</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-core|
+  >|**Version**|4.2.4|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/LICENSE.md)|
+  >|**Publisher**|NA|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-core@4.2.4
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-ember@2.0.9</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-ember|
+  >|**Version**|2.0.9|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-ember/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-ember@2.0.9
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-eslint@3.0.9</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-eslint|
+  >|**Version**|3.0.9|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-eslint/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-eslint@3.0.9
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-express@2.0.6</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-express|
+  >|**Version**|2.0.6|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-express/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-express@2.0.6
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-jquery@3.0.11</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-jquery|
+  >|**Version**|3.0.11|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-jquery/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-jquery@3.0.11
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-jshint@2.0.9</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-jshint|
+  >|**Version**|2.0.9|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-jshint/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-jshint@2.0.9
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-preset-loader@2.3.4</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-preset-loader|
+  >|**Version**|2.3.4|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-preset-loader/LICENSE.md)|
+  >|**Publisher**|NA|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-preset-loader@2.3.4
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog-writer@5.0.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog-writer|
+  >|**Version**|5.0.1|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-writer/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog-writer@5.0.1
+  ```
+  </details>
+<details>
+  <summary>conventional-changelog@3.1.25</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-changelog|
+  >|**Version**|3.1.25|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog/LICENSE.md)|
+  >|**Publisher**|NA|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-changelog@3.1.25
+  ```
+  </details>
+<details>
+  <summary>conventional-commits-filter@2.0.7</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-commits-filter|
+  >|**Version**|2.0.7|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-commits-filter/LICENSE)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-commits-filter@2.0.7
+  ```
+  </details>
+<details>
+  <summary>conventional-commits-parser@3.2.4</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-commits-parser|
+  >|**Version**|3.2.4|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/conventional-commits-parser/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-commits-parser@3.2.4
+  ```
+  </details>
+<details>
   <summary>conventional-commits-parser@4.0.0</summary>
   
   #### Basic details about the package
@@ -8586,6 +8947,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i conventional-commits-parser@4.0.0
+  ```
+  </details>
+<details>
+  <summary>conventional-recommended-bump@6.1.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|conventional-recommended-bump|
+  >|**Version**|6.1.0|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-recommended-bump/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i conventional-recommended-bump@6.1.0
   ```
   </details>
 <details>
@@ -9368,6 +9748,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>dateformat@3.0.3</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|dateformat|
+  >|**Version**|3.0.3|
+  >|**Repository**|https://github.com/felixge/node-dateformat|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dateformat/LICENSE)|
+  >|**Publisher**|Steven Levithan|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i dateformat@3.0.3
+  ```
+  </details>
+<details>
   <summary>debug@2.6.9</summary>
   
   #### Basic details about the package
@@ -9745,6 +10144,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i detect-indent@0.1.4
+  ```
+  </details>
+<details>
+  <summary>detect-indent@6.1.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|detect-indent|
+  >|**Version**|6.1.0|
+  >|**Repository**|https://github.com/sindresorhus/detect-indent|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/standard-version/node_modules/detect-indent/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i detect-indent@6.1.0
   ```
   </details>
 <details>
@@ -10239,6 +10657,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i dotenv@10.0.0
+  ```
+  </details>
+<details>
+  <summary>dotgitignore@2.1.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|dotgitignore|
+  >|**Version**|2.1.0|
+  >|**Repository**|https://github.com/bcoe/dotgitignore|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/LICENSE.txt)|
+  >|**Publisher**|Ben Coe|
+  >|**Contact**|ben@npmjs.com|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i dotgitignore@2.1.0
   ```
   </details>
 <details>
@@ -11648,6 +12085,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>figures@3.2.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|figures|
+  >|**Version**|3.2.0|
+  >|**Repository**|https://github.com/sindresorhus/figures|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/standard-version/node_modules/figures/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|https://sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i figures@3.2.0
+  ```
+  </details>
+<details>
   <summary>file-entry-cache@6.0.1</summary>
   
   #### Basic details about the package
@@ -11778,6 +12234,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i find-cache-dir@3.3.2
+  ```
+  </details>
+<details>
+  <summary>find-up@2.1.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|find-up|
+  >|**Version**|2.1.0|
+  >|**Repository**|https://github.com/sindresorhus/find-up|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/find-up/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i find-up@2.1.0
   ```
   </details>
 <details>
@@ -12313,6 +12788,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>get-pkg-repo@4.2.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|get-pkg-repo|
+  >|**Version**|4.2.1|
+  >|**Repository**|https://github.com/conventional-changelog/get-pkg-repo|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/get-pkg-repo/LICENSE)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i get-pkg-repo@4.2.1
+  ```
+  </details>
+<details>
   <summary>get-stream@6.0.1</summary>
   
   #### Basic details about the package
@@ -12386,6 +12880,63 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i git-raw-commits@2.0.11
+  ```
+  </details>
+<details>
+  <summary>git-remote-origin-url@2.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|git-remote-origin-url|
+  >|**Version**|2.0.0|
+  >|**Repository**|https://github.com/sindresorhus/git-remote-origin-url|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/git-remote-origin-url/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i git-remote-origin-url@2.0.0
+  ```
+  </details>
+<details>
+  <summary>git-semver-tags@4.1.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|git-semver-tags|
+  >|**Version**|4.1.1|
+  >|**Repository**|https://github.com/conventional-changelog/conventional-changelog|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/git-semver-tags/LICENSE.md)|
+  >|**Publisher**|Steve Mao|
+  >|**Contact**|maochenyan@gmail.com|
+  >|**Homepage**|https://github.com/stevemao|
+  
+  #### Use this package in your project
+  ```bash
+  npm i git-semver-tags@4.1.1
+  ```
+  </details>
+<details>
+  <summary>gitconfiglocal@1.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|gitconfiglocal|
+  >|**Version**|1.0.0|
+  >|**Repository**|https://github.com/soldair/node-gitconfiglocal|
+  >|**Licenses**|[BSD*](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/gitconfiglocal/README.md)|
+  >|**Publisher**|Ryan Day|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i gitconfiglocal@1.0.0
   ```
   </details>
 <details>
@@ -12728,6 +13279,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i handle-thing@2.0.1
+  ```
+  </details>
+<details>
+  <summary>handlebars@4.7.8</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|handlebars|
+  >|**Version**|4.7.8|
+  >|**Repository**|https://github.com/handlebars-lang/handlebars.js|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/handlebars/LICENSE)|
+  >|**Publisher**|Yehuda Katz|
+  >|**Contact**|NA|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i handlebars@4.7.8
   ```
   </details>
 <details>
@@ -15486,6 +16056,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>json-parse-better-errors@1.0.2</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|json-parse-better-errors|
+  >|**Version**|1.0.2|
+  >|**Repository**|https://github.com/zkat/json-parse-better-errors|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/json-parse-better-errors/LICENSE.md)|
+  >|**Publisher**|Kat Marchán|
+  >|**Contact**|kzm@zkat.tech|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i json-parse-better-errors@1.0.2
+  ```
+  </details>
+<details>
   <summary>json-parse-even-better-errors@2.3.1</summary>
   
   #### Basic details about the package
@@ -15578,6 +16167,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i json-stable-stringify-without-jsonify@1.0.1
+  ```
+  </details>
+<details>
+  <summary>json-stringify-safe@5.0.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|json-stringify-safe|
+  >|**Version**|5.0.1|
+  >|**Repository**|https://github.com/isaacs/json-stringify-safe|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/json-stringify-safe/LICENSE)|
+  >|**Publisher**|Isaac Z. Schlueter|
+  >|**Contact**|i@izs.me|
+  >|**Homepage**|http://blog.izs.me|
+  
+  #### Use this package in your project
+  ```bash
+  npm i json-stringify-safe@5.0.1
   ```
   </details>
 <details>
@@ -15923,6 +16531,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>load-json-file@4.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|load-json-file|
+  >|**Version**|4.0.0|
+  >|**Repository**|https://github.com/sindresorhus/load-json-file|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/load-json-file/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i load-json-file@4.0.0
+  ```
+  </details>
+<details>
   <summary>loader-runner@4.3.0</summary>
   
   #### Basic details about the package
@@ -15977,6 +16604,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i loader-utils@3.2.1
+  ```
+  </details>
+<details>
+  <summary>locate-path@2.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|locate-path|
+  >|**Version**|2.0.0|
+  >|**Repository**|https://github.com/sindresorhus/locate-path|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/locate-path/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i locate-path@2.0.0
   ```
   </details>
 <details>
@@ -16110,6 +16756,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i lodash.isfunction@3.0.9
+  ```
+  </details>
+<details>
+  <summary>lodash.ismatch@4.4.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|lodash.ismatch|
+  >|**Version**|.4.4.0|
+  >|**Repository**|https://github.com/lodash/lodash|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/lodash.ismatch/LICENSE)|
+  >|**Publisher**|John-David Dalton|
+  >|**Contact**|john.david.dalton@gmail.com|
+  >|**Homepage**|http://allyoucanleet.com/|
+  
+  #### Use this package in your project
+  ```bash
+  npm i lodash.ismatch@4.4.0
   ```
   </details>
 <details>
@@ -16984,6 +17649,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i mkdirp@0.5.6
+  ```
+  </details>
+<details>
+  <summary>modify-values@1.0.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|modify-values|
+  >|**Version**|1.0.1|
+  >|**Repository**|https://github.com/sindresorhus/modify-values|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/modify-values/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i modify-values@1.0.1
   ```
   </details>
 <details>
@@ -17956,6 +18640,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>p-limit@1.3.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|p-limit|
+  >|**Version**|1.3.0|
+  >|**Repository**|https://github.com/sindresorhus/p-limit|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/p-limit/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i p-limit@1.3.0
+  ```
+  </details>
+<details>
   <summary>p-limit@2.3.0</summary>
   
   #### Basic details about the package
@@ -17991,6 +18694,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i p-limit@3.1.0
+  ```
+  </details>
+<details>
+  <summary>p-locate@2.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|p-locate|
+  >|**Version**|2.0.0|
+  >|**Repository**|https://github.com/sindresorhus/p-locate|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/p-locate/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i p-locate@2.0.0
   ```
   </details>
 <details>
@@ -18070,6 +18792,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>p-try@1.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|p-try|
+  >|**Version**|1.0.0|
+  >|**Repository**|https://github.com/sindresorhus/p-try|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/p-try/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i p-try@1.0.0
+  ```
+  </details>
+<details>
   <summary>p-try@2.2.0</summary>
   
   #### Basic details about the package
@@ -18124,6 +18865,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i parent-module@1.0.1
+  ```
+  </details>
+<details>
+  <summary>parse-json@4.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|parse-json|
+  >|**Version**|4.0.0|
+  >|**Repository**|https://github.com/sindresorhus/parse-json|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/load-json-file/node_modules/parse-json/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i parse-json@4.0.0
   ```
   </details>
 <details>
@@ -18317,6 +19077,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>path-type@3.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|path-type|
+  >|**Version**|3.0.0|
+  >|**Repository**|https://github.com/sindresorhus/path-type|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/path-type/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i path-type@3.0.0
+  ```
+  </details>
+<details>
   <summary>path-type@4.0.0</summary>
   
   #### Basic details about the package
@@ -18428,6 +19207,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i pify@2.3.0
+  ```
+  </details>
+<details>
+  <summary>pify@3.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|pify|
+  >|**Version**|3.0.0|
+  >|**Repository**|https://github.com/sindresorhus/pify|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/load-json-file/node_modules/pify/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i pify@3.0.0
   ```
   </details>
 <details>
@@ -20673,6 +21471,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>read-pkg-up@3.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|read-pkg-up|
+  >|**Version**|3.0.0|
+  >|**Repository**|https://github.com/sindresorhus/read-pkg-up|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/read-pkg-up/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i read-pkg-up@3.0.0
+  ```
+  </details>
+<details>
   <summary>read-pkg-up@7.0.1</summary>
   
   #### Basic details about the package
@@ -20689,6 +21506,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i read-pkg-up@7.0.1
+  ```
+  </details>
+<details>
+  <summary>read-pkg@3.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|read-pkg|
+  >|**Version**|3.0.0|
+  >|**Repository**|https://github.com/sindresorhus/read-pkg|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/read-pkg/license)|
+  >|**Publisher**|Sindre Sorhus|
+  >|**Contact**|sindresorhus@gmail.com|
+  >|**Homepage**|sindresorhus.com|
+  
+  #### Use this package in your project
+  ```bash
+  npm i read-pkg@3.0.0
   ```
   </details>
 <details>
@@ -22535,6 +23371,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>split@1.0.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|split|
+  >|**Version**|1.0.1|
+  >|**Repository**|https://github.com/dominictarr/split|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/split/LICENCE)|
+  >|**Publisher**|Dominic Tarr|
+  >|**Contact**|dominic.tarr@gmail.com|
+  >|**Homepage**|http://bit.ly/dominictarr|
+  
+  #### Use this package in your project
+  ```bash
+  npm i split@1.0.1
+  ```
+  </details>
+<details>
   <summary>sprintf-js@1.0.3</summary>
   
   #### Basic details about the package
@@ -22608,6 +23463,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i stackframe@1.3.4
+  ```
+  </details>
+<details>
+  <summary>standard-version@9.5.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|standard-version|
+  >|**Version**|9.5.0|
+  >|**Repository**|https://github.com/conventional-changelog/standard-version|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/standard-version/LICENSE.txt)|
+  >|**Publisher**|Ben Coe|
+  >|**Contact**|ben@npmjs.com|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i standard-version@9.5.0
   ```
   </details>
 <details>
@@ -22893,6 +23767,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i stringify-object@3.3.0
+  ```
+  </details>
+<details>
+  <summary>stringify-package@1.0.1</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|stringify-package|
+  >|**Version**|1.0.1|
+  >|**Repository**|https://github.com/npm/stringify-package|
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/stringify-package/LICENSE)|
+  >|**Publisher**|Kat Marchán|
+  >|**Contact**|kzm@zkat.tech|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i stringify-package@1.0.1
   ```
   </details>
 <details>
@@ -23599,6 +24492,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>through2@2.0.5</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|through2|
+  >|**Version**|22.0.5|
+  >|**Repository**|https://github.com/rvagg/through2|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/get-pkg-repo/node_modules/through2/LICENSE.md)|
+  >|**Publisher**|Rod Vagg|
+  >|**Contact**|r@va.gg|
+  >|**Homepage**|https://github.com/rvagg|
+  
+  #### Use this package in your project
+  ```bash
+  npm i through2@2.0.5
+  ```
+  </details>
+<details>
   <summary>through2@4.0.2</summary>
   
   #### Basic details about the package
@@ -24283,6 +25195,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>typedarray@0.0.6</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|typedarray|
+  >|**Version**|0.0.6|
+  >|**Repository**|https://github.com/substack/typedarray|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/typedarray/LICENSE)|
+  >|**Publisher**|James Halliday|
+  >|**Contact**|mail@substack.net|
+  >|**Homepage**|http://substack.net|
+  
+  #### Use this package in your project
+  ```bash
+  npm i typedarray@0.0.6
+  ```
+  </details>
+<details>
   <summary>typescript@4.9.5</summary>
   
   #### Basic details about the package
@@ -24318,6 +25249,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i ua-parser-js@1.0.35
+  ```
+  </details>
+<details>
+  <summary>uglify-js@3.17.4</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|uglify-js|
+  >|**Version**|3.17.4|
+  >|**Repository**|https://github.com/mishoo/UglifyJS|
+  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/uglify-js/LICENSE)|
+  >|**Publisher**|Mihai Bazon|
+  >|**Contact**|mihai.bazon@gmail.com|
+  >|**Homepage**|http://lisperator.net/|
+  
+  #### Use this package in your project
+  ```bash
+  npm i uglify-js@3.17.4
   ```
   </details>
 <details>
@@ -25366,6 +26316,25 @@ This file lists the third-party libraries, frameworks, and other components used
   ```
   </details>
 <details>
+  <summary>wordwrap@1.0.0</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|wordwrap|
+  >|**Version**|1.0.0|
+  >|**Repository**|https://github.com/substack/node-wordwrap|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/wordwrap/LICENSE)|
+  >|**Publisher**|James Halliday|
+  >|**Contact**|mail@substack.net|
+  >|**Homepage**|http://substack.net|
+  
+  #### Use this package in your project
+  ```bash
+  npm i wordwrap@1.0.0
+  ```
+  </details>
+<details>
   <summary>workbox-background-sync@6.5.4</summary>
   
   #### Basic details about the package
@@ -25819,6 +26788,25 @@ This file lists the third-party libraries, frameworks, and other components used
   #### Use this package in your project
   ```bash
   npm i xmlchars@2.2.0
+  ```
+  </details>
+<details>
+  <summary>xtend@4.0.2</summary>
+  
+  #### Basic details about the package
+  >|Key|Value|
+  >|:--|:--|
+  >|**Name**|xtend|
+  >|**Version**|4.0.2|
+  >|**Repository**|https://github.com/Raynos/xtend|
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/xtend/LICENSE)|
+  >|**Publisher**|Raynos|
+  >|**Contact**|raynos2@gmail.com|
+  >|**Homepage**|NA|
+  
+  #### Use this package in your project
+  ```bash
+  npm i xtend@4.0.2
   ```
   </details>
 <details>
