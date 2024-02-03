@@ -1,0 +1,91 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    # branches:
+    #   - 'development'
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_run:
+    workflows: ["Tag Release CI on PR Merge to Development"]
+    types:
+      - completed
+
+name: Create Release
+
+jobs:
+  create-release:
+    name: Create Release
+    if: |
+     github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    # if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+      with:
+        ref: development
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '16'
+
+    # - name: Install dependencies
+    #   run: npm install -g standard-version
+
+    # - name: Generate release notes
+    #   id: release
+    #   run: |
+    #     export RELEASE_NOTES=$(standard-version --skip.bump --skip.tag --stdout)
+    #     echo "::set-output name=release_notes::$RELEASE_NOTES"
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Display release notes
+    #   run: echo "${{ steps.release.outputs.release_notes }}"
+    
+    - name: Get tags
+      run: git fetch --tags origin
+
+    - name: Get latest tag
+      id: latest-tag
+      run: |
+        git describe --tags $(git rev-list --tags --max-count=1) > output.txt
+        echo "::set-output name=tag::$(cat output.txt)"
+
+    - name: Show tag
+      run: echo ${{ steps.latest-tag.outputs.tag }}
+  
+    - name: Install nodemodules
+      run: npm ci --omit-dev
+
+    - name: Build
+      run: npm run build
+
+## add test
+
+    - name: Create Package
+      run: npm pack ./dist/
+
+
+    - name: Create Release
+      id: create_release
+      run: gh release create ${{ steps.latest-tag.outputs.tag }} *.tgz --title ${{ steps.latest-tag.outputs.tag }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Create Release
+    #   id: create_release
+    #   uses: actions/create-release@latest
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+    #   with:
+    #     tag_name: ${{ github.ref }}
+    #     release_name: Release ${{ github.ref }}
+    #     # body: ${{ steps.release.outputs.release_notes }}
+    #     # body_path: ./CHANGELOG.md
+    #     draft: false
+    #     prerelease: false
+

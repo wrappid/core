@@ -1,0 +1,119 @@
+name: Tag Release CI on PR Merge to Development
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        type: choice
+        description: Choose version bump type
+        options: 
+        - -r major
+        - -r minor
+        - -r patch
+        - -p alpha
+        - -p beta
+        - -p build
+        - -p hotfix
+        - -p build
+        required: true
+        default: "-p build"
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'development'
+jobs:
+  # build:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v2
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 14
+
+      # - name: Install Dependencies
+      #   run: npm install
+      # - name: Run Tests
+      #   run: npm test
+
+  release_tag:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development')
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        # with:
+        #   path: development
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate ATTRIBUTIONS.md
+        run: |
+         npm run attributions:gen
+         chmod +x ./.github/scripts/attribution_header_adder.sh
+         bash ./.github/scripts/attribution_header_adder.sh ${{ github.event.repository.name }}
+
+      - name: Setup git
+        run: |
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+
+      - name: Set release type
+        id: release-type
+        run: |
+         if [ -z "${{ github.event.inputs.version_type }}" ]; then
+            echo "Setting default version type"
+            export VERSION_TYPE_DEFAULT=" -r patch"
+          else
+            export VERSION_TYPE_DEFAULT="${{ github.event.inputs.version_type }}"
+          fi
+          echo "Version type: $VERSION_TYPE_DEFAULT"
+          echo "::set-output name=version_type::$VERSION_TYPE_DEFAULT"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: commit attribuitions
+        run: |
+          git pull
+          git add ATTRIBUTIONS.md
+          git commit -m "docs(global): :memo: update attribution
+
+          update attributions content
+
+          by Publish CI"
+
+      - name: Change version
+        run:  npm run release -- ${{ steps.release-type.outputs.version_type}}
+
+  
+      - name: Push Tags
+        run: git push --follow-tags origin development
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     # body: ${{ steps.release.outputs.release_notes }}
+      #     # body_path: ./CHANGELOG.md
+      #     draft: false
+      #     prerelease: false
+
+# npm run release -- -r patch
+# npm run release -- --prerelease beta
