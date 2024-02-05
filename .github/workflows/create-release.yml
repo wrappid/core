@@ -26,17 +26,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
+          
+      - name: 🛒 Checkout repository
+        uses: actions/checkout@v4
 
       - name: 🛠 Setup gh and git
         run: |
           echo ${{secrets.PAT}} | gh auth login --with-token
-          git config user.name "${{ secrets.GITHUB_USER_NAME }}"
-          git config user.email "${{ secrets.GITHUB_USER_EMAIL }}"
+          git config user.name "${{ secrets.GHUSER_NAME }}"
+          git config user.email "${{ secrets.GHUSER_EMAIL }}"
 
 ## TODO: CHECKOUT TAG
 
-      - name: 🛒 Checkout repository
-        uses: actions/checkout@v4
 
       - name: ⬇️ Setup Project
         run: | 
