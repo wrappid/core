@@ -22,15 +22,19 @@ on:
       - closed
     branches:
       - 'development'
-jobs:
 
+jobs:        
   create_tag:
     runs-on: ubuntu-latest
     permissions: write-all
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development')
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
-    steps:
+      steps:
+
+      - name: 🛒 Checkout repository
+        uses: actions/checkout@v4
+
       - name: 🛠 Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,7 +42,7 @@ jobs:
 
       - name: 🛠 Setup gh and git
         run: |
-          echo ${{secrets.PAT}} | gh auth login --with-token
+          # echo ${{secrets.PAT}} | gh auth login --with-token
           git config user.name "${{ secrets.GITHUB_USER_NAME }}"
           git config user.email "${{ secrets.GITHUB_USER_EMAIL }}"
 
@@ -54,8 +58,6 @@ jobs:
           echo "Version type: $VERSION_TYPE_DEFAULT"
           echo "::set-output name=version_type::$VERSION_TYPE_DEFAULT"
 
-      - name: 🛒 Checkout repository
-        uses: actions/checkout@v4
 
       - name: ⬇️ Setup Project
         run: | 
