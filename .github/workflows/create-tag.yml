@@ -30,7 +30,8 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development')
     env:
       GITHUB_TOKEN: ${{ secrets.PAT }}
-      steps:
+      
+    steps:
 
       - name: 🛒 Checkout repository
         uses: actions/checkout@v4
