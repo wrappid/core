@@ -5367,7 +5367,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|types/yargs|
   >|**Version**|17.0.24|
   >|**Repository**|https://github.com/DefinitelyTyped/DefinitelyTyped|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/tsutils-etc/node_modules/@types/yargs/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/tsutils-etc/node_modules/@types/yargs/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -6260,7 +6264,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|ajv|
   >|**Version**|8.12.0|
   >|**Repository**|https://github.com/ajv-validator/ajv|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/@commitlint/config-validator/node_modules/ajv/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/config-validator/node_modules/ajv/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Evgeny Poberezkin|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -6564,7 +6572,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|argparse|
   >|**Version**|2.0.1|
   >|**Repository**|https://github.com/nodeca/argparse|
+<<<<<<< HEAD
   >|**Licenses**|[Python-2.0](/home/runner/work/core/core/node_modules/@commitlint/load/node_modules/argparse/LICENSE)|
+=======
+  >|**Licenses**|[Python-2.0](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/load/node_modules/argparse/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -9775,7 +9787,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|debug|
   >|**Version**|2.6.9|
   >|**Repository**|https://github.com/visionmedia/debug|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/send/node_modules/debug/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/send/node_modules/debug/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|TJ Holowaychuk|
   >|**Contact**|tj@vision-media.ca|
   >|**Homepage**|NA|
@@ -11162,7 +11178,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|escape-string-regexp|
   >|**Version**|4.0.0|
   >|**Repository**|https://github.com/sindresorhus/escape-string-regexp|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/react-dev-utils/node_modules/escape-string-regexp/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/react-dev-utils/node_modules/escape-string-regexp/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|https://sindresorhus.com|
@@ -11485,7 +11505,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|eslint-scope|
   >|**Version**|5.1.1|
   >|**Repository**|https://github.com/eslint/eslint-scope|
+<<<<<<< HEAD
   >|**Licenses**|[BSD-2-Clause](/home/runner/work/core/core/node_modules/@typescript-eslint/utils/node_modules/eslint-scope/LICENSE)|
+=======
+  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@typescript-eslint/utils/node_modules/eslint-scope/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -11713,7 +11737,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|estraverse|
   >|**Version**|4.3.0|
   >|**Repository**|https://github.com/estools/estraverse|
+<<<<<<< HEAD
   >|**Licenses**|[BSD-2-Clause](/home/runner/work/core/core/node_modules/@typescript-eslint/utils/node_modules/estraverse/LICENSE.BSD)|
+=======
+  >|**Licenses**|[BSD-2-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@typescript-eslint/utils/node_modules/estraverse/LICENSE.BSD)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -12264,7 +12292,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|find-up|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/find-up|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/dotgitignore/node_modules/find-up/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/find-up/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -12967,7 +12999,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|glob-parent|
   >|**Version**|6.0.2|
   >|**Repository**|https://github.com/gulpjs/glob-parent|
+<<<<<<< HEAD
   >|**Licenses**|[ISC](/home/runner/work/core/core/node_modules/tailwindcss/node_modules/glob-parent/LICENSE)|
+=======
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/tailwindcss/node_modules/glob-parent/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Gulp Team|
   >|**Contact**|team@gulpjs.com|
   >|**Homepage**|https://gulpjs.com/|
@@ -15988,7 +16024,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|js-yaml|
   >|**Version**|4.1.0|
   >|**Repository**|https://github.com/nodeca/js-yaml|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/@commitlint/load/node_modules/js-yaml/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/load/node_modules/js-yaml/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Vladimir Zapparov|
   >|**Contact**|dervus.grim@gmail.com|
   >|**Homepage**|NA|
@@ -16121,7 +16161,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|json-schema-traverse|
   >|**Version**|1.0.0|
   >|**Repository**|https://github.com/epoberezkin/json-schema-traverse|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/@commitlint/config-validator/node_modules/json-schema-traverse/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/@commitlint/config-validator/node_modules/json-schema-traverse/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Evgeny Poberezkin|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -16634,7 +16678,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|locate-path|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/locate-path|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/dotgitignore/node_modules/locate-path/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/locate-path/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -17052,7 +17100,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|lru-cache|
   >|**Version**|6.0.0|
   >|**Repository**|https://github.com/isaacs/node-lru-cache|
+<<<<<<< HEAD
   >|**Licenses**|[ISC](/home/runner/work/core/core/node_modules/jest-snapshot/node_modules/lru-cache/LICENSE)|
+=======
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/lru-cache/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Isaac Z. Schlueter|
   >|**Contact**|i@izs.me|
   >|**Homepage**|NA|
@@ -17109,7 +17161,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|make-dir|
   >|**Version**|3.1.0|
   >|**Repository**|https://github.com/sindresorhus/make-dir|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/istanbul-lib-report/node_modules/make-dir/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/istanbul-lib-report/node_modules/make-dir/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -17698,7 +17754,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|ms|
   >|**Version**|2.0.0|
   >|**Repository**|https://github.com/zeit/ms|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/send/node_modules/debug/node_modules/ms/license.md)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/send/node_modules/debug/node_modules/ms/license.md)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|NA|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -18724,7 +18784,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|p-locate|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/p-locate|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/dotgitignore/node_modules/p-locate/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/dotgitignore/node_modules/p-locate/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -18971,7 +19035,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|path-exists|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/path-exists|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/conventional-changelog-core/node_modules/path-exists/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/conventional-changelog-core/node_modules/path-exists/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -22353,7 +22421,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|safe-buffer|
   >|**Version**|5.1.2|
   >|**Repository**|https://github.com/feross/safe-buffer|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/hpack.js/node_modules/safe-buffer/LICENSE)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/hpack.js/node_modules/safe-buffer/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Feross Aboukhadijeh|
   >|**Contact**|feross@feross.org|
   >|**Homepage**|http://feross.org|
@@ -22676,7 +22748,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|semver|
   >|**Version**|7.5.4|
   >|**Repository**|https://github.com/npm/node-semver|
+<<<<<<< HEAD
   >|**Licenses**|[ISC](/home/runner/work/core/core/node_modules/jest-snapshot/node_modules/semver/LICENSE)|
+=======
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/semver/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|GitHub Inc.|
   >|**Contact**|NA|
   >|**Homepage**|NA|
@@ -22961,7 +23037,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|slash|
   >|**Version**|3.0.0|
   >|**Repository**|https://github.com/sindresorhus/slash|
+<<<<<<< HEAD
   >|**Licenses**|[MIT](/home/runner/work/core/core/node_modules/jest-message-util/node_modules/slash/license)|
+=======
+  >|**Licenses**|[MIT](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-message-util/node_modules/slash/license)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Sindre Sorhus|
   >|**Contact**|sindresorhus@gmail.com|
   >|**Homepage**|sindresorhus.com|
@@ -23113,7 +23193,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|source-map|
   >|**Version**|0.6.1|
   >|**Repository**|https://github.com/mozilla/source-map|
+<<<<<<< HEAD
   >|**Licenses**|[BSD-3-Clause](/home/runner/work/core/core/node_modules/escodegen/node_modules/source-map/LICENSE)|
+=======
+  >|**Licenses**|[BSD-3-Clause](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/escodegen/node_modules/source-map/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Nick Fitzgerald|
   >|**Contact**|nfitzgerald@mozilla.com|
   >|**Homepage**|NA|
@@ -26856,7 +26940,11 @@ This file lists the third-party libraries, frameworks, and other components used
   >|**Name**|yallist|
   >|**Version**|4.0.0|
   >|**Repository**|https://github.com/isaacs/yallist|
+<<<<<<< HEAD
   >|**Licenses**|[ISC](/home/runner/work/core/core/node_modules/jest-snapshot/node_modules/yallist/LICENSE)|
+=======
+  >|**Licenses**|[ISC](/home/runner/work/workflow-mgmt/workflow-mgmt/node_modules/jest-snapshot/node_modules/yallist/LICENSE)|
+>>>>>>> 4be11e41189549d49d2703ea98bcd1f5440a132f
   >|**Publisher**|Isaac Z. Schlueter|
   >|**Contact**|i@izs.me|
   >|**Homepage**|http://blog.izs.me/|
