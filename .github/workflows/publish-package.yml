@@ -20,13 +20,6 @@ jobs:
     name: Deploy
 
     steps:
-      - name: Checkout...
-        uses: actions/checkout@v3
-      
-      - name: get release
-        run: |
-          gh release download --pattern '*.tgz'
-
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -37,15 +30,24 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path:  ${{ github.event.repository.name }}
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_TOKEN}}
-    
-      - name: Publish Release
-        run: npm run publish
 
-      - name: Extract version
-        id: extract_version
+      - name: 🛒 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get Version
+        id: get_version
         run: echo "version=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
 
-      - name: Send mail
+      - name: ⬇️ Download Release Artifact
+        run: |
+          gh release download --pattern '*.tgz'
+
+      - name: 🚀 Publish Release
+        run: npm run publish
+
+## TODO: DIFFERENT WORKFLOW FOR EMAILS
+
+      - name: 📧 Send mail
         uses: dawidd6/action-send-mail@v3
         with:
             server_address: smtp.gmail.com
@@ -56,7 +58,7 @@ jobs:
             from: Wrappid Care
             to: ${{secrets.IDS}}
             cc: ${{secrets.MAINTAINER_ID}}
-            subject: Published - ${{ matrix.repo_names }} - ${{ steps.extract_version.outputs.version }} Package. 🚀
+            subject: Published - ${{ github.event.repository.name }} - ${{ steps.get_version.outputs.version }} Package. 🚀
             html_body: |
               <html lang="en">
 
@@ -70,7 +72,7 @@ jobs:
                 <p>Hi Wrappiders,</p>
 
                 <p>We have some exciting news to share with you! 🎉<br>
-                  We have published a new version of our ${{ github.event.repository.name }}, ${{ steps.extract_version.outputs.version }}. 🚀<br>
+                  We have published a new version of our ${{ github.event.repository.name }}, ${{ steps.get_version.outputs.version }}. 🚀<br>
                   This version comes with some amazing new features and improvements that will make your experience with our package even better.
                   You can check out the details on our <a href="https://github.com/wrappid/${{ github.event.repository.name }}/releases/latest">${{ github.event.repository.name }} page</a>.
                 </p>
@@ -89,5 +91,4 @@ jobs:
               </html>
             ignore_cert: true
             convert_markdown: true
-            # attachments: attachments.zip,git.diff
             priority: normal
