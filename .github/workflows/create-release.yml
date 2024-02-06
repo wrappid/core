@@ -94,11 +94,12 @@ jobs:
         run: |
           tag_name=${{ steps.tag-version-input.outputs.tag-version }}
           repo_name=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          gh api repos/wrappid/${repo_name}/tags | jq -r '.[].name' | grep -q '${tag_name}' > /dev/null; then
-            echo "::set-output name=tag-exists::successfull"
+          if gh api repos/wrappid/${repo_name}/tags | jq -r '.[].name' | grep -q "${tag_name}"; then
+            echo "::set-output name=tag-exists::successful"
           else
             echo "::set-output name=tag-exists::failure"
           fi
+
 
       # - name: Check if release exits
       #    #  gh release view  --json name,tagName,createdAt,publishedAt --jq .
