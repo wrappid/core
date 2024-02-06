@@ -32,14 +32,16 @@ export default class MediumCoreStyles extends BaseStyle {
         backgroundSize    : "cover" + IMPORTANT,
         height            : "100%" + IMPORTANT,
       },
+
       authCardMaxWidth: { maxWidth: "25%" + IMPORTANT },
       authCardMinWidth: { minWidth: "25%" + IMPORTANT },
-  
-      authContainer: { height: "100%" + IMPORTANT },
+      authContainer   : { height: "100%" + IMPORTANT },
   
       authForm: { height: "100%" + IMPORTANT },
   
       authFormContainer: { width: "60%" + IMPORTANT },
+  
+      authWrapper: { width: "45vw" + IMPORTANT },
   
       dataTable: {
         ...new DefaultUtilityStyles().style.mtN1,
