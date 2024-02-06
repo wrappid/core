@@ -28,9 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development')
-    env:
-      GITHUB_TOKEN: ${{ secrets.PAT }}
-      
+    # env:
+    #   GITHUB_TOKEN: ${{ secrets.PAT }}
+
     steps:
 
       - name: 🛠 Set up Node.js
@@ -44,9 +44,11 @@ jobs:
 
       - name: 🛠 Setup gh and git
         run: |
-          # echo ${{secrets.PAT}} | gh auth login --with-token
+          echo ${{secrets.PAT}} | gh auth login --with-token
           git config user.name "${{ secrets.GHUSER_NAME }}"
           git config user.email "${{ secrets.GHUSER_EMAIL }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: 👀 Process Inputs
         id: release-type-input
@@ -78,7 +80,8 @@ jobs:
          update attributions content
 
          by Publish CI"
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: ⬆️ Update version
         run:  npm run release -- ${{ steps.release-type-input.outputs.version_type}}
@@ -86,6 +89,8 @@ jobs:
 
       - name: 🚀 Update remote repository
         run: git push --follow-tags origin development
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Get Version
         id: get-version
