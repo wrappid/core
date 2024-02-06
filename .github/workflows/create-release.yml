@@ -92,9 +92,9 @@ jobs:
       - name: Check if tag exists
         id: check-tag
         run: |
-          tag_name=${{ steps.tag-version-input.outputs.tag-version }}
-          repo_name=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          if gh api repos/wrappid/${repo_name}/tags | jq -r '.[].name' | grep -q "${tag_name}"; then
+          # tag_name=${{ steps.tag-version-input.outputs.tag-version }}
+          # repo_name=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          if gh api repos/wrappid/"${{ github.event.repository.name }}"/tags | jq -r '.[].name' | grep -q "${{ steps.tag-version-input.outputs.tag-version }}"; then
             echo "::set-output name=tag-exists::successful"
           else
             echo "::set-output name=tag-exists::failure"
