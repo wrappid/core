@@ -103,6 +103,10 @@ jobs:
       # - name: Check if release exits
       #    #  gh release view  --json name,tagName,createdAt,publishedAt --jq .
 
+      - name: Print Outcome
+        run: |
+          echo ${{ steps.check-tag.outputs.tag-exists }}
+          echo ${{ steps.check-tag.outputs.tag-exists == 'successfull' }}
 
       - name: Check if release exists
         if: ${{ steps.check-tag.outputs.tag-exists == 'successfull' }}
