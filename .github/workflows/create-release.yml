@@ -104,13 +104,14 @@ jobs:
       # - name: Check if release exits
       #    #  gh release view  --json name,tagName,createdAt,publishedAt --jq .
 
-      - name: Print Outcome
+      - name: Print Tag Check Outcome
         run: |
           echo ${{ steps.check-tag.outputs.tag-exists }}
-          echo ${{ steps.check-tag.outputs.tag-exists == 'successfull' }}
+          echo "Check if equals to successful"
+          echo ${{ steps.check-tag.outputs.tag-exists == 'successful' }}
 
       - name: Check if release exists
-        if: ${{ steps.check-tag.outputs.tag-exists == 'successfull' }}
+        if: ${{ steps.check-tag.outputs.tag-exists == 'successful' }}
         id: check-release
         run: |
           tagName="${{ steps.tag-version-input.outputs.tag-version }}"
@@ -118,10 +119,16 @@ jobs:
           repo_name="${{ github.event.repository.name }}"
           release_exists=$(gh release view --repo "$repo_owner/$repo_name" --json tagName --jq ".[] | select(.tagName == \"$tagName\")")
           if [[ -n "$release_exists" ]]; then
-            echo "::set-output name=release-exists::successfull"
+            echo "::set-output name=release-exists::successful"
           else
             echo "::set-output name=release-exists::failure"
           fi
+
+      - name: Print Tag Check Outcome.
+        run: |
+          echo ${{ steps.check-release.outputs.release-exists }}
+          echo "Check if equals to failure"
+          echo ${{ steps.check-release.outputs.release-exists == 'failure' }}
 
       - name: 🚀 Create Release
         if: ${{ steps.check-tag.outputs.release-exists == 'failure' }}
