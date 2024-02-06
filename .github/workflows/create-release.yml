@@ -115,13 +115,17 @@ jobs:
         id: check-release
         run: |
           tagName="${{ steps.tag-version-input.outputs.tag-version }}"
-          repo_name="${{ github.event.repository.name }}"
-          release_exists=$(gh release view --repo "wrappid/$repo_name" --json tagName --jq ".[] | select(.tagName == \"$tagName\")" 2>/dev/null)
+          repo_name="wrappid/${{ github.event.repository.name }}"
+          gh release view "$tagName" --repo "$repo_name" &> /dev/null
+
+          if [ $? -eq 0 ]; then
+              echo "Release for tag $tagName exists!"
+              echo "::set-output name=release-exists::successful"
           
-          if [[ -n "$release_exists" ]]; then
-            echo "::set-output name=release-exists::successful"
           else
-            echo "::set-output name=release-exists::failure"
+              echo "Release for tag $tagName does not exist."
+              echo "::set-output name=release-exists::failure"
+          
           fi
         
 
