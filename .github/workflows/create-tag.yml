@@ -47,8 +47,6 @@ jobs:
           echo ${{secrets.PAT}} | gh auth login --with-token
           git config user.name "${{ secrets.GHUSER_NAME }}"
           git config user.email "${{ secrets.GHUSER_EMAIL }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: 👀 Process Inputs
         id: release-type-input
