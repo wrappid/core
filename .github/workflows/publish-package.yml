@@ -20,8 +20,8 @@ jobs:
     name: Deploy
 
     steps:
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: 🛠 Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/wrappid

@@ -1,22 +1,29 @@
 on:
-  push:
+  # push:
     # Sequence of patterns matched against refs/tags
     # branches:
     #   - 'development'
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-  workflow_run:
-    workflows: ["Tag Release CI on PR Merge to Development"]
-    types:
-      - completed
+    # tags:
+      # - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  # workflow_run:
+    # workflows: ["Tag Release CI on PR Merge to Development"]
+    # types:
+    #   - completed
+    workflow_dispatch:
+      inputs:
+        tag-name:
+          description: "Enter exact tag name to create release from."
+          # default: ""
+          # required: true
+          type: string
 
 name: Create Release
 
 jobs:
   create-release:
     name: Create Release
-    if: |
-     github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    # if: |
+    #  github.event_name == 'push' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     # if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     permissions: write-all
@@ -26,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16
-          
+
       - name: 🛒 Checkout repository
         uses: actions/checkout@v4
 
@@ -36,6 +43,22 @@ jobs:
           git config user.name "${{ secrets.GHUSER_NAME }}"
           git config user.email "${{ secrets.GHUSER_EMAIL }}"
 
+
+## TODO
+# gh release view v0.0.409 --json name,tagName,createdAt,publishedAt --jq .name
+# if release name not specified, takes latest
+
+      - name: 👀 Process Inputs
+        id: tag-version-input
+        run: |
+          if [ -z "${{ github.event.inputs.tag-name }}" ]; then
+            echo "Input Blank. \nLatest Tag will be used for release creation"
+            export TAG_VERSION_DEFAULT=""
+          else
+            export TAG_VERSION_DEFAULT="${{ github.event.inputs.tag-name }}"
+          fi
+          echo "Version type: $TAG_VERSION_DEFAULT"
+          echo "::set-output name=tag-version::$TAG_VERSION_DEFAULT"
 ## TODO: CHECKOUT TAG
 
 
@@ -47,15 +70,15 @@ jobs:
       # - name: Add Release Notes
       #   run: echo Release Notes not implemented.
     
-      - name: ⬇️ Fetch Tags
-        id: latest-tag
-        run: |
-          git fetch --tags origin
-          git describe --tags $(git rev-list --tags --max-count=1) > output.txt
-          echo "::set-output name=tag::$(cat output.txt)"
+      # - name: ⬇️ Fetch Tags
+      #   id: latest-tag
+      #   run: |
+      #     git fetch --tags origin
+      #     git describe --tags $(git rev-list --tags --max-count=1) > output.txt
+      #     echo "::set-output name=tag::$(cat output.txt)"
 
-      - name: 🕵️ Show latest fetched tag
-        run: echo ${{ steps.latest-tag.outputs.tag }}
+      # - name: 🕵️ Show latest fetched tag
+      #   run: echo ${{ steps.latest-tag.outputs.tag }}
 
       - name: 🏗️ Build Package
         run: npm run build
@@ -66,9 +89,80 @@ jobs:
       - name: 📦 Create Package
         run: npm pack ./dist/
 
+      - name: Check if tag exists
+        id: check-tag
+        run: |
+          tag_name=${{ steps.tag-version-input.outputs.tag-version }}
+          repo_name=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          if gh api repos/wrappid/${repo_name}/tags | jq -e '.[].name | contains("'${tag_name}'")' > /dev/null; then
+            echo "::set-output name=tag-exists::successfull"
+          else
+            echo "::set-output name=tag-exists::failure"
+          fi
+
+      # - name: Check if release exits
+      #    #  gh release view  --json name,tagName,createdAt,publishedAt --jq .
+
+
+      - name: Check if release exists
+        if: ${{ steps.check-tag.outputs.tag-exists == 'successfull' }}
+        id: check-release
+        run: |
+          tagName="${{ steps.tag-version-input.outputs.tag-version }}"
+          repo_owner="${{ github.repository_owner }}"
+          repo_name="${{ github.event.repository.name }}"
+          release_exists=$(gh release view --repo "$repo_owner/$repo_name" --json tagName --jq ".[] | select(.tagName == \"$tagName\")")
+          if [[ -n "$release_exists" ]]; then
+            echo "::set-output name=release-exists::successfull"
+          else
+            echo "::set-output name=release-exists::failure"
+          fi
 
       - name: 🚀 Create Release
+        if: ${{ steps.check-tag.outputs.release-exists == 'failure' }}
         id: create_release
         run: gh release create ${{ steps.latest-tag.outputs.tag }} *.tgz --title ${{ steps.latest-tag.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📧 Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{secrets.MAIL_USERNAME}}
+            password: ${{secrets.MAIL_PASSWORD}}
+            secure: true
+            from: Wrappid Care
+            to: ${{secrets.IDS}}
+            cc: ${{secrets.MAINTAINER_ID}}
+            subject: Released - ${{ github.event.repository.name }} - ${{ steps.get_version.outputs.version }}. 🚀
+            html_body: |
+              <html lang="en">
+
+              <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Exciting News from Wrappiders</title>
+              </head>
+
+              <body>
+                <p>Hi Wrappiders,</p>
+
+                <p>We have some exciting news to share with you! 🎉<br>
+                  We have a new release of ${{ github.event.repository.name }}, ${{ steps.get_version.outputs.version }}. 🚀<br>
+                  You can check out the details on our <a href="https://github.com/wrappid/${{ github.event.repository.name }}/releases/latest">${{ github.event.repository.name }} page</a>.
+                </p>
+
+                <p>We hope you enjoy using our framework, and we would love to hear your feedback.
+                  Please feel free to <a href="mailto:wrappid.framework@gmail.com">contact us</a> if you have any questions or suggestions.
+                </p>
+
+                <p>Thank you for your continued support and trust in us. 😊</p>
+
+                <p>Thanks and Regards,<br>
+                  ${{github.actor}}<br>
+                  (Generated by the create-release GitHub Action workflow)</p>
+              </body>
+
+              </html>
