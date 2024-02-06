@@ -94,7 +94,7 @@ jobs:
         run: |
           tag_name=${{ steps.tag-version-input.outputs.tag-version }}
           repo_name=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          if gh api repos/wrappid/${repo_name}/tags | jq -e '.[].name | contains("'${tag_name}'")' > /dev/null; then
+          gh api repos/wrappid/${repo_name}/tags | jq -r '.[].name' | grep -q '${tag_name}' > /dev/null; then
             echo "::set-output name=tag-exists::successfull"
           else
             echo "::set-output name=tag-exists::failure"
