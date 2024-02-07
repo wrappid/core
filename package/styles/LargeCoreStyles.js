@@ -23,8 +23,10 @@ export default class LargeCoreStyles extends BaseStyle {
       authContainer    : { height: "100%" + IMPORTANT },
       authForm         : { height: "100%" + IMPORTANT },
       authFormContainer: { width: "60%" + IMPORTANT },
+      authWrapper      : { width: "45vw" + IMPORTANT },
       devBorder        : { boxShadow: "inset 0px 0px 1px 1px green" },
-      profileBarWidth  : { maxWidth: "25vw" + IMPORTANT },
+      
+      profileBarWidth: { maxWidth: "25vw" + IMPORTANT },
     };
   }
 }
