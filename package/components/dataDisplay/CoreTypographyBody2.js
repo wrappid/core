@@ -23,7 +23,6 @@ export default function CoreTypographyBody2(props) {
     <CoreTypography
       variant="body2"
       paragraph={true}
-      gutterBottom={true}
       styleClasses={styleClasses}
       {...restProps}
     >
@@ -48,7 +47,6 @@ export default function CoreTypographyBody2(props) {
       {...restProps}
       variant="body2"
       paragraph={true}
-      gutterBottom={true}
       styleClasses={styleClasses}
 
     />
