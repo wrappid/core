@@ -55,7 +55,7 @@ CoreTypography.validProps = [
     name       : "gutterBottom",
     types      : [
       {
-        default    : false,
+        default    : true,
         type       : "boolean",
         validValues: [true, false],
       },
