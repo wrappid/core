@@ -109,11 +109,11 @@ import CoreTimePicker from "./components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "./components/inputs/CoreTimeRangePicker";
 import CoreForm from "./components/inputs/forms/CoreForm";
 import {
-  FORM_VIEW_MODE,
   FORM_EDIT_MODE,
   FORM_IDS,
   FORM_SANITIZATION_FUNCTION_IDS,
-  FORM_SANITIZATOIN_FUNCTION_MAP
+  FORM_SANITIZATOIN_FUNCTION_MAP,
+  FORM_VIEW_MODE
 } from "./components/inputs/forms/coreFormConstants";
 import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel";
 import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
@@ -158,39 +158,43 @@ import CoreLoginDetails from "./components/utils/CoreLoginDetails";
 import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
+import NotificationPopOver from "./components/utils/NotificationPopOver";
 import config from "./config/config";
-import { coreDialogInitValue, __EntityStatus, HTTP, urls } from "./config/constants";
-import { 
-  CoreDialogContext, ComponentRegistryContext, IconContext, CoreResourceContext, CoreRouteRegistryContext, CoreRoutesContext 
+import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
+import {
+  ComponentRegistryContext,
+  CoreDialogContext,
+  CoreResourceContext, CoreRouteRegistryContext, CoreRoutesContext,
+  IconContext
 } from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
-  MENU_PARENT_ITEM,
   MENU_ITEM,
-  MENU_SEPERATOR,
-  MENU_ITEM_WRAPPER,
   MENU_ITEM_BUTTON,
+  MENU_ITEM_ICON,
   MENU_ITEM_TEXT,
-  MENU_ITEM_ICON
+  MENU_ITEM_WRAPPER,
+  MENU_PARENT_ITEM,
+  MENU_SEPERATOR
 } from "./config/menuConstants";
 import useDynamicRefs from "./config/referenceMap";
 import CoreApp from "./CoreApp";
 import {
-  CoreDomRoutes,
-  CoreDomRoute,
   CoreDomNavigate,
-  coreUseNavigate,
+  CoreDomRoute,
+  CoreDomRoutes,
+  coreOpenUrl,
   coreUseLocation,
+  coreUseNavigate,
   coreUseParams,
-  coreUseSearchParams,
-  coreOpenUrl
+  coreUseSearchParams
 } from "./helper/routerHelper";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
 import { reloadDataTableAction } from "./store/action/dataTableActions";
-import { onEditForm, cancelFormEdit } from "./store/action/formAction";
-import { toggleRightMenuState, toggleMenuItemState } from "./store/action/menuAction";
+import { cancelFormEdit, onEditForm } from "./store/action/formAction";
+import { toggleMenuItemState, toggleRightMenuState } from "./store/action/menuAction";
 import CoreProvider from "./store/CoreProvider";
 import { createFullStore } from "./store/store";
 import { LOGOUT_SUCCESS } from "./store/types/authTypes";
@@ -204,258 +208,96 @@ import XXLargeCoreStyles from "./styles/XXLargeCoreStyles";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import ThemeSelector from "./theme/ThemeSelector";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
-import { defaultValidProps, defaultInvalidProps } from "./utils/componentUtil";
-import { getForm, createApiMeta, getFormikRequiredMessage } from "./utils/formUtils";
+import { defaultInvalidProps, defaultValidProps } from "./utils/componentUtil";
+import { createApiMeta, getForm, getFormikRequiredMessage } from "./utils/formUtils";
 import {
-  getFullName,
-  queryBuilder,
   createFormData,
   getAge,
+  getFullName,
+  queryBuilder,
   viewFormattedDate
 } from "./utils/helper";
 import stringUtils from "./utils/stringUtils";
 import {
   APP_PLATFORM,
-  WEB_PLATFORM,
+  CoreCssBaseline,
   detectPlatform,
-  CoreCssBaseline
+  WEB_PLATFORM
 } from "./utils/themeUtil";
 
 export {
-  useDynamicRefs,
-  CoreCardMedia,
-  CoreTOC,
-  CoreTypography,
-  stringUtils,
-  defaultValidProps,
-  defaultInvalidProps,
-  clearValidatePhoneEmail,
-  getFormikRequiredMessage,
-  CoreMarkdownViewer,
-  CoreCollapse,
-  CoreListItemAvatar,
-  CoreListSubheader,
-  CoreFormControlLabel,
-  CoreComponentsRegistry,
-  coreUseSearchParams,
-  CoreResourceContext,
-  CoreRouteRegistryContext,
-  CoreIconText,
-  CoreComponent,
-  config,
-  CoreFormGroup,
-  CoreApiVersion,
-  CoreLoginDetails,
-  CoreProfilePopOver,
-  __EntityStatus,
-  HTTP,
-  urls,
-  CoreDialog,
-  CoreDialogContext,
-  coreDialogInitValue,
-  CoreGoogleButton,
-  __IconTypes,
-  // route
-  CoreDomRoutes,
-  CoreDomRoute,
-  CoreDomNavigate,
-  coreUseNavigate,
-  coreUseLocation,
-  coreUseParams,
-  CoreApp,
-  CoreProvider,
-  // CoreAppDiv,
-  CoreBox,
-  CoreContainer,
-  CoreGrid,
-  // CoreGridItem,
-  CoreList,
-  CoreListItem,
-  CoreSection,
-  CoreSpan,
-  CoreStack,
-  CoreImageBackground,
-  CoreLink,
-  CoreMenuItem,
-  CoreMenuList,
-  CoreScrollTop,
-  CoreTab,
-  CoreTabPanel,
-  CoreTabs,
-  CoreCustomTabs,
-  CoreTabHead,
-  // CoreNavigation,
-  CoreFade,
-  CoreModal,
-  CorePopover,
-  CoreToolbar,
-  CoreForm,
-  CoreAccordion,
+  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppService, cancelFormEdit, ChildMap, clearValidatePhoneEmail, ComponentRegistryContext, config, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
-  CoreAccordionSummary,
-  CoreAppBar,
-  CoreCard,
+  CoreAccordionSummary, CoreAlert,
+  CoreAlertTitle, CoreApiVersion, CoreApp, CoreAppBar, CoreAsyncSelect,
+  CoreAutocomplete, CoreAvatar,
+  CoreAvatarGroup, CoreBackdrop, CoreBadge,
+  // CoreAppDiv,
+  CoreBox, CoreButton, CoreCard,
   CoreCardActionArea,
   CoreCardActions,
   CoreCardContent,
-  CoreCardHeader,
-  CoreDrawer,
-  CorePaper,
-  CoreRightDrawer,
-  CoreAsyncSelect,
-  CoreAutocomplete,
-  CoreButton,
-  CoreCheckbox,
-  CoreConfirmPasswordField,
-  CoreContainedButton,
-  CoreDatepicker,
+  CoreCardHeader, CoreCardMedia, CoreCheckbox, CoreChip, CoreCircularProgress,
+  /**
+   * Styles
+   */
+  CoreClasses, CoreCollapse, CoreComponent, CoreComponentsRegistry, CoreConfirmPasswordField,
+  CoreContainedButton, CoreContainer, CoreCssBaseline, CoreCustomTabs, CoreDataTable, CoreDatepicker,
   CoreDateRangepicker,
   CoreDateTimePicker,
-  CoreDateTimeRangePicker,
-  CoreFab,
-  CoreFilePicker,
-  CoreFormControl,
-  CoreFormErrorText,
-  CoreFormHelperText,
-  CoreIconButton,
-  CoreImagePicker,
-  CoreInput,
-  CoreInputAdornment,
-  CoreInputLabel,
-  CoreInputPassword,
-  CoreJSONInput,
-  CoreJSONEditor,
-  CoreMenu,
-  CoreMultiTimeRangePicker,
-  CoreOtpInput,
-  CoreOutlinedButton,
-  CorePhone,
-  CoreSelect,
-  CoreSwitch,
-  CoreTextarea,
-  CoreTextButton,
-  CoreTextField,
-  CoreTimePicker,
-  CoreTimeRangePicker,
-  CoreListItemButton,
-  ChildMap,
-  CoreFormLabelCheckbox,
-  CoreResponsiveButton,
-  CoreRichTextEditor,
-  ParentChildMap,
-  CoreSpeechToText,
-  CoreAlert,
-  CoreAlertTitle,
-  CoreBackdrop,
-  CoreCircularProgress,
-  CoreLinearProgress,
-  CoreSkeleton,
-  CoreSnackbar,
-  CoreDataTable,
-  CoreAvatar,
-  CoreAvatarGroup,
-  CoreBadge,
-  CoreChip,
-  CoreDivider,
-  CoreIcon,
-  CoreImage,
-  CoreListItemIcon,
-  CoreListItemText,
-  CoreTable,
-  CoreTableBody,
-  CoreTableBodyCell,
-  CoreTableCell,
-  CoreTableContainer,
-  CoreTableFooter,
-  CoreTableHead,
-  CoreTableHeadRow,
-  CoreTableHeadCell,
-  CoreTablePagination,
-  CoreTableRow,
-  CoreTableSortLabel,
-  CoreTooltip,
-  CoreLabel,
-  CoreTypographyBody1,
-  CoreTypographyBody2,
-  CoreTypographyButton,
-  CoreTypographyCaption,
-  CoreTypographyOverline,
-  CoreTypographySubtitle1,
-  CoreTypographySubtitle2,
-  CoreH,
+  CoreDateTimeRangePicker, CoreDialog,
+  CoreDialogContext,
+  coreDialogInitValue, CoreDivider, CoreDomNavigate, CoreDomRoute,
+  // route
+  CoreDomRoutes, CoreDrawer, CoreEmailLink,
+  CoreEmailOrPhoneLink, CoreFab,
+  // CoreNavigation,
+  CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreGoogleButton, CoreGrid, CoreH,
   CoreH1,
   CoreH2,
   CoreH3,
   CoreH4,
   CoreH5,
-  CoreH6,
-  StatusText,
-  UserChip,
-  createFullStore,
-  apiRequestAction,
-  reloadDataTableAction,
-  ComponentRegistryContext,
-  getCoreAccessToken,
-
-  APP_PLATFORM,
-  WEB_PLATFORM,
-  detectPlatform,
-
-  IconContext,
-  FORM_VIEW_MODE,
-  FORM_EDIT_MODE,
-  FORM_IDS,
-  LOGOUT_SUCCESS,
-  getFullName,
-  queryBuilder,
-  createFormData,
-  getAge,
-  viewFormattedDate,
-  getForm,
-  onEditForm,
-  cancelFormEdit,
-  createApiMeta,
-  MENU_HEADER_ITEM,
-  MENU_PARENT_ITEM,
-  MENU_ITEM,
-  MENU_SEPERATOR,
-  MENU_ITEM_WRAPPER,
-  MENU_ITEM_BUTTON,
-  MENU_ITEM_TEXT,
-  MENU_ITEM_ICON,
-  CoreMedicineSelector,
-  AppService,
-  CoreReactSelectInput,
-  toggleRightMenuState,
-  toggleMenuItemState,
-  FORM_SANITIZATION_FUNCTION_IDS,
-  FORM_SANITIZATOIN_FUNCTION_MAP,
-  CoreCssBaseline,
-  CoreFlatList,
-  CorePhoneLink,
-  CoreEmailLink,
-  CoreEmailOrPhoneLink,
-  CoreTimer,
-  CORE_DIALOG_TYPES,
-  coreOpenUrl,
-  CoreThemeProvider,
-  CoreRating,
-  CoreFooter,
-  setUserTheme,
-  CoreRoutesContext,
-
+  CoreH6, CoreIcon, CoreIconButton, CoreIconText, CoreImage, CoreImageBackground, CoreImagePicker,
+  CoreInput,
+  CoreInputAdornment,
+  CoreInputLabel,
+  CoreInputPassword, CoreJSONEditor, CoreJSONInput, CoreLabel, CoreLinearProgress, CoreLink,
+  // CoreGridItem,
+  CoreList,
+  CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon,
+  CoreListItemText, CoreListSubheader, CoreLoginDetails, CoreMarkdownViewer, CoreMedicineSelector, CoreMenu, CoreMenuItem,
+  CoreMenuList, CoreModal, CoreMultiTimeRangePicker, coreOpenUrl, CoreOtpInput,
+  CoreOutlinedButton, CorePaper, CorePhone, CorePhoneLink, CorePopover, CoreProfilePopOver, CoreProvider, CoreRating, CoreReactSelectInput, CoreResourceContext, CoreResponsiveButton,
+  CoreRichTextEditor, CoreRightDrawer, CoreRouteRegistryContext, CoreRoutesContext, CoreScrollTop, CoreSection, CoreSelect, CoreSkeleton,
+  CoreSnackbar, CoreSpan, CoreSpeechToText, CoreStack, CoreSwitch, CoreTab, CoreTabHead, CoreTable,
+  CoreTableBody,
+  CoreTableBodyCell,
+  CoreTableCell,
+  CoreTableContainer,
+  CoreTableFooter,
+  CoreTableHead, CoreTableHeadCell, CoreTableHeadRow, CoreTablePagination,
+  CoreTableRow,
+  CoreTableSortLabel, CoreTabPanel,
+  CoreTabs, CoreTextarea,
+  CoreTextButton,
+  CoreTextField, CoreThemeProvider, CoreTimePicker, CoreTimer, CoreTimeRangePicker, CoreTOC, CoreToolbar, CoreTooltip, CoreTypography, CoreTypographyBody1,
+  CoreTypographyBody2,
+  CoreTypographyButton,
+  CoreTypographyCaption,
+  CoreTypographyOverline,
+  CoreTypographySubtitle1,
+  CoreTypographySubtitle2, coreUseLocation, coreUseNavigate, coreUseParams, coreUseSearchParams, createApiMeta, createFormData, createFullStore, DefaultCoreStyles, defaultInvalidProps, defaultValidProps, detectPlatform, FORM_EDIT_MODE,
+  FORM_IDS, FORM_SANITIZATION_FUNCTION_IDS,
+  FORM_SANITIZATOIN_FUNCTION_MAP, FORM_VIEW_MODE, getAge, getCoreAccessToken, getForm, getFormikRequiredMessage, getFullName, HTTP, IconContext, LargeCoreStyles, LOGOUT_SUCCESS, MediumCoreStyles, MENU_HEADER_ITEM, MENU_ITEM, MENU_ITEM_BUTTON, MENU_ITEM_ICON, MENU_ITEM_TEXT, MENU_ITEM_WRAPPER, MENU_PARENT_ITEM, MENU_SEPERATOR,
   /**
-   * Styles
+   *
    */
-  CoreClasses,
-  DefaultCoreStyles,
-  SmallCoreStyles,
-  MediumCoreStyles,
-  LargeCoreStyles,
-  XLargeCoreStyles,
-  XXLargeCoreStyles,
+  NotificationPopOver, onEditForm, ParentChildMap, queryBuilder, reloadDataTableAction, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
   /**
    * Themes
    */
-  ThemeSelector
+  ThemeSelector, toggleMenuItemState, toggleRightMenuState, urls, useDynamicRefs, UserChip, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
+  XXLargeCoreStyles
 };
+
