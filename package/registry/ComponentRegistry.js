@@ -1,5 +1,5 @@
+import LayoutComponentsRegistry from "./LayoutComponentsRegistry";
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
-import { layoutComponents } from "../layout";
 import BlankLayoutPage from "../layout/page/BlankLayoutPage";
 import { componentMap } from "../utils/componentMap";
 
@@ -9,7 +9,7 @@ let ComponentRegistry = {
    */
   ...componentMap,
   ...coreComponentsRegistry,
-  ...layoutComponents,
+  ...LayoutComponentsRegistry,
   BlankLayoutPage: { comp: BlankLayoutPage }
 };
 
