@@ -8,7 +8,7 @@ import BlankLayout from "../BlankLayout";
 import BlankLayoutPage from "../page/BlankLayoutPage";
 
 export default function LayoutManager(props) {
-  const { pageName, layoutName, children } = props;
+  const { pageName, layoutName } = props;
   
   const [dialog, setDialog] = React.useState({});
   const dialogStates = { dialog, setDialog };
@@ -36,8 +36,17 @@ export default function LayoutManager(props) {
     setLayoutsRegistry(layoutObject);
   }, [mergedComponentRegistry]);
 
-  React.useEffect(() => { setPage(componentsRegistry[pageName].comp); }, [pageName]);
-  React.useEffect(() => { setLayout(layoutsRegistry[pageName].comp); }, [layoutName]);
+  React.useEffect(() => {
+    if(componentsRegistry && componentsRegistry[pageName]?.comp && pageName){
+      setPage(componentsRegistry[pageName]?.comp); 
+    } 
+  }, [pageName, componentsRegistry]);
+  
+  React.useEffect(() => { 
+    if(layoutsRegistry && layoutsRegistry[layoutName]?.comp && layoutName){
+      setLayout(layoutsRegistry[layoutName]?.comp); 
+    }
+  }, [layoutName, layoutsRegistry]);
 
   const replacePlaceholder = (LayoutComponent, PageComponent) => {
     let layoutChildrens = LayoutComponent;
