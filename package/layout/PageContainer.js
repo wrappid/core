@@ -1,25 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseLocation, NativePageContainer } from "@wrappid/native";
+import { nativeUseLocation } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import CoreComponent from "../components/CoreComponent";
-import CoreDialog from "../components/feedback/CoreDialog";
-import CoreModal from "../components/utils/CoreModal";
 import {
   ComponentRegistryContext,
-  CoreDialogContext,
   CoreResourceContext,
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
-import Error404 from "../error/Error404";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
-import CoreClasses from "../styles/CoreClasses";
+import LayoutManager from "./core/LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -85,13 +80,23 @@ export default function PageContainer(props) {
     // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
-  const pageChild = () => {
+  // eslint-disable-next-line etc/no-commented-out-code
+  /* const pageChild = () => {
     if (mergedComponentRegistry[route?.Page?.appComponent]?.comp) {
       return React.createElement(mergedComponentRegistry[route?.Page?.appComponent]?.comp);
     } else if (props.page?.comp) {
       return React.createElement(props.page?.comp, props?.page?.props, null);
     } else {
       return <Error404 />;
+    }
+  }; */
+  const pageChild = () => {
+    if (route?.Page?.appComponent) {
+      return route?.Page?.appComponent;
+    } else if (props.page) {
+      return props.page;
+    } else {
+      return "Error404";
     }
   };
 
@@ -113,19 +118,24 @@ export default function PageContainer(props) {
   return auth?.sessionExpired && !auth?.uid && route?.authRequired ? (
     <CoreDomNavigate to="/" replace={true} />
   ) : (
-    <CoreComponent componentName={pageLayout()}>
-      <NativePageContainer
-        uid={auth?.uid}
-        route={route}
-        coreClasses={CoreClasses}>
-        <CoreModal open={true} />
-        
-        <CoreDialogContext.Provider value={value}>
-          {pageChild()}
+    <>
+      <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
 
-          <CoreDialog />
-        </CoreDialogContext.Provider>
-      </NativePageContainer>
-    </CoreComponent>
+      {/* eslint-disable-next-line etc/no-commented-out-code */}
+      {/* <CoreComponent componentName={pageLayout()}>
+        <NativePageContainer
+          uid={auth?.uid}
+          route={route}
+          coreClasses={CoreClasses}>
+          <CoreModal open={true} />
+        
+          <CoreDialogContext.Provider value={value}>
+            {pageChild()}
+
+            <CoreDialog />
+          </CoreDialogContext.Provider>
+        </NativePageContainer>
+      </CoreComponent> */}
+    </>
   );
 }
