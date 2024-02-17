@@ -6,6 +6,10 @@ import CoreModal from "../../components/utils/CoreModal";
 import { ComponentRegistryContext, CoreDialogContext } from "../../config/contextHandler";
 import BlankLayout from "../BlankLayout";
 import BlankLayoutPage from "../page/BlankLayoutPage";
+// eslint-disable-next-line import/order
+import CoreLayoutItem from "./CoreLayoutItem";
+// eslint-disable-next-line import/order
+import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 
 export default function LayoutManager(props) {
   const { pageName, layoutName } = props;
@@ -26,8 +30,8 @@ export default function LayoutManager(props) {
     ).reduce(
       ([layoutAcc, nonLayoutAcc], [key, value]) => {
         return value.layout
-          ? [[...layoutAcc, { [key]: value }], nonLayoutAcc]
-          : [layoutAcc, [...nonLayoutAcc, { [key]: value }]];
+          ? [{ ...layoutAcc, [key]: value }, nonLayoutAcc]
+          : [layoutAcc, { ...nonLayoutAcc, [key]: value }];
       },
       [[], []]
     );
@@ -49,17 +53,43 @@ export default function LayoutManager(props) {
   }, [layoutName, layoutsRegistry]);
 
   const replacePlaceholder = (LayoutComponent, PageComponent) => {
-    let layoutChildrens = LayoutComponent;
+    let layoutChildrens = LayoutComponent.props.children;
+
+    if (layoutChildrens && !Array.isArray(layoutChildrens)) {
+      layoutChildrens = [layoutChildrens];
+    }
 
     console.log("layoutChildrens-------------------------------");
-    console.log(layoutChildrens.props.children);
+    console.log(layoutChildrens);
     console.log("layoutChildrens-------------------------------");
 
-    let pageChildrens = PageComponent;
+    let pageChildrens = PageComponent.props.children;
+
+    if (pageChildrens && !Array.isArray(pageChildrens)) {
+      pageChildrens = [pageChildrens];
+    }
 
     console.log("pageChildrens-------------------------------");
-    console.log(pageChildrens.props.children);
+    console.log(pageChildrens);
     console.log("pageChildrens-------------------------------");
+
+    layoutChildrens = layoutChildrens.map((layoutChildren) => {
+      if (layoutChildren.type.name === CoreLayoutPlaceholder.name) {
+        /**
+         * @todo
+         * 1. if it has a id in props
+         * 2. find CoreLayoutItem in pageChildrens which have similar id
+         */
+        if (layoutChildren?.props?.id) {
+          return pageChildrens.filter(eachItem => eachItem.type.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren.props.id)[0];
+        } else {
+          console.log(`placeholder content not available in page component ${pageName}`);
+        }
+      } else {
+        return layoutChildren;
+      }
+    });
+    return layoutChildrens;
   };
 
   return (

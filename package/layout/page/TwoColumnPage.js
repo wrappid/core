@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React from "react";
+
 import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
 import CoreBox from "../../components/layouts/CoreBox";
 import CoreGrid from "../../components/layouts/CoreGrid";
