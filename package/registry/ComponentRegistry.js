@@ -1,5 +1,6 @@
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
 import { layoutComponents } from "../layout";
+import BlankLayoutPage from "../layout/page/BlankLayoutPage";
 import { componentMap } from "../utils/componentMap";
 
 let ComponentRegistry = {
@@ -8,7 +9,8 @@ let ComponentRegistry = {
    */
   ...componentMap,
   ...coreComponentsRegistry,
-  ...layoutComponents
+  ...layoutComponents,
+  BlankLayoutPage: { comp: BlankLayoutPage }
 };
 
 export default ComponentRegistry;
