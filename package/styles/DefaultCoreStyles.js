@@ -24,24 +24,6 @@ export default class DefaultCoreStyles extends BaseStyle {
       appbarHeight        : { top: HEADING_TOP_MARGIN + IMPORTANT },
       auditData           : {},
     
-      authAppLogo: {
-        height: 50,
-        width : 190
-      },
-    
-      authCard: {
-        background: "transparent" + IMPORTANT,
-        boxShadow : "none" + IMPORTANT
-      },
-    
-      authWrapper: {
-        ...this.defaultUtilityStyles.justifyContentCenter,
-        ...this.defaultUtilityStyles.alignContentCenter,
-        ...this.defaultUtilityStyles.flexWrapWrap,
-        ...this.defaultUtilityStyles.vh100,
-        width: "98vw" + IMPORTANT,
-      },
-    
       avatar: {},
     
       avatarLarge: { height: "72px" + IMPORTANT, width: "72px" + IMPORTANT },
