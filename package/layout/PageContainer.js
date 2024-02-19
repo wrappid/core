@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import { nativeUseLocation } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import LayoutManager from "./core/LayoutManager";
 import {
   ComponentRegistryContext,
   CoreResourceContext,
@@ -15,6 +14,8 @@ import { CoreDomNavigate } from "../helper/routerHelper";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
+// eslint-disable-next-line import/order
+import LayoutManager from "./core/LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -106,7 +107,7 @@ export default function PageContainer(props) {
     } else if (props.page?.layout) {
       return props?.page?.layout;
     } else {
-      return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
+      return auth?.uid ? "WrappidDefaultLayout" : "BlankLayout";
     }
   };
 
