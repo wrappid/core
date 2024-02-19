@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from "react";
 
+import CoreComponent from "../../components/CoreComponent";
 import CoreDialog from "../../components/feedback/CoreDialog";
 import CoreModal from "../../components/utils/CoreModal";
 import { ComponentRegistryContext, CoreDialogContext } from "../../config/contextHandler";
@@ -53,59 +54,77 @@ export default function LayoutManager(props) {
   }, [layoutName, layoutsRegistry]);
 
   const replacePlaceholder = (LayoutComponent, PageComponent) => {
-    let layoutChildrens = LayoutComponent?.props?.children;
+    if (LayoutComponent) {
+      let layoutChildrens = LayoutComponent?.props?.children;
+  
+      if (layoutChildrens && !Array.isArray(layoutChildrens)) {
+        layoutChildrens = [layoutChildrens];
+      }
+  
+      console.log("layoutChildrens-------------------------------");
+      console.log(layoutChildrens);
+      console.log("layoutChildrens-------------------------------");
+  
+      let pageChildrens = PageComponent?.props?.children;
+  
+      if (pageChildrens && !Array.isArray(pageChildrens)) {
+        pageChildrens = [pageChildrens];
+      }
+  
+      console.log("pageChildrens-------------------------------");
+      console.log(pageChildrens);
+      console.log("pageChildrens-------------------------------");
+      
+      /**
+       * Supporting old format(s)
+       * - without layout
+       * - with layout
+       */
+      if (LayoutComponent.type.name === BlankLayout.name) {
+        return PageComponent;
+      }
+      let layoutPlaceholders = layoutChildrens.filter(layoutChild => layoutChild?.type?.name === CoreLayoutPlaceholder.name);
 
-    if (layoutChildrens && !Array.isArray(layoutChildrens)) {
-      layoutChildrens = [layoutChildrens];
-    }
+      if (!layoutPlaceholders) {
+        return <CoreComponent componentName={layoutName}>{PageComponent}</CoreComponent>;
+      }
 
-    console.log("layoutChildrens-------------------------------");
-    console.log(layoutChildrens);
-    console.log("layoutChildrens-------------------------------");
-
-    let pageChildrens = PageComponent?.props?.children;
-
-    if (pageChildrens && !Array.isArray(pageChildrens)) {
-      pageChildrens = [pageChildrens];
-    }
-
-    console.log("pageChildrens-------------------------------");
-    console.log(pageChildrens);
-    console.log("pageChildrens-------------------------------");
-
-    layoutChildrens = layoutChildrens.map((layoutChildren) => {
-      if (layoutChildren?.type?.name === CoreLayoutPlaceholder.name) {
-        /**
-         * @todo
-         * 1. if it has a id in props
-         * 2. find CoreLayoutItem in pageChildrens which have similar id
-         */
-        if (layoutChildren?.props?.id) {
+      layoutChildrens = layoutChildrens.map((layoutChildren) => {
+        if (layoutChildren?.type?.name === CoreLayoutPlaceholder.name) {
           /**
            * @todo
-           * 1. get placeholder parent
-           * 2. 
-          */
+           * 1. if it has a id in props
+           * 2. find CoreLayoutItem in pageChildrens which have similar id
+           */
+          if (layoutChildren?.props?.id) {
+            /**
+             * @todo
+             * 1. get placeholder parent
+             * 2. 
+            */
          
-          let pageChildrenPlaceholders = pageChildrens?.props?.children?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
+            let pageChildrenPlaceholders = pageChildrens?.props?.children?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
          
-          if (pageChildrenPlaceholders > 1) {
-            console.log("item has placeholders");
+            if (pageChildrenPlaceholders > 1) {
+              console.log("item has placeholders");
+            } else {
+              let pageChildren = pageChildrens.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
+  
+              console.log("pageChildren=", pageChildren);
+  
+              return pageChildren;
+            }
           } else {
-            let pageChildren = pageChildrens.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
-
-            console.log("pageChildren=", pageChildren);
-
-            return pageChildren;
+            console.log(`placeholder content not available in page component ${pageName}`);
           }
         } else {
-          console.log(`placeholder content not available in page component ${pageName}`);
+          return layoutChildren;
         }
-      } else {
-        return layoutChildren;
-      }
-    });
-    return layoutChildrens;
+      });
+      return layoutChildrens;
+    } else {
+      return PageComponent;
+    }
   };
 
   return (
