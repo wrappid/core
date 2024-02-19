@@ -11,6 +11,8 @@ export default function BlankLayoutPage() {
       <CoreTypographyBody1>Component above layout item</CoreTypographyBody1>
 
       <CoreLayoutItem id={BlankLayout.PLACEHOLDER.CONTENT}>
+        <CoreTypographyBody1>Blank Layout Page</CoreTypographyBody1>
+        
         <CoreTypographyBody1>Content for the blank layout</CoreTypographyBody1>
 
         <CoreTypographyBody1>Component inside layout item</CoreTypographyBody1>

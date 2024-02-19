@@ -8,9 +8,12 @@ import HeaderFooterLayout from "../HeaderFooterLayout";
 export default function HeaderFooterLayoutPage() {
   return (
     <>
+
       <CoreTypographyBody1>Component above {HeaderFooterLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
 
       <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.HEADER}>
+        <CoreTypographyBody1>Header Footer Layout Page</CoreTypographyBody1>
+
         <CoreTypographyBody1>Content for the {HeaderFooterLayout.PLACEHOLDER.HEADER}</CoreTypographyBody1>
 
         <CoreTypographyBody1>Component inside {HeaderFooterLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>

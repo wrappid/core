@@ -1,4 +1,5 @@
 import BlankLayout from "../layout/BlankLayout";
+import ComplexLayout from "../layout/ComplexLayout";
 import FooterLayout from "../layout/FooterLayout";
 import HeaderFooterLayout from "../layout/HeaderFooterLayout";
 import HeaderLayout from "../layout/HeaderLayout";
@@ -8,6 +9,10 @@ import WrappidGuestLayout from "../layout/WrappidGuest.layout";
 const LayoutComponentsRegistry = {
   BlankLayout: {
     comp  : BlankLayout,
+    layout: true
+  },
+  ComplexLayout: {
+    comp  : ComplexLayout,
     layout: true
   },
   FooterLayout: {

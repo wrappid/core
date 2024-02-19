@@ -11,6 +11,8 @@ export default function FooterLayoutPage() {
       <CoreTypographyBody1>Component above {FooterLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
 
       <CoreLayoutItem id={FooterLayout.PLACEHOLDER.CONTENT}>
+        <CoreTypographyBody1>Footer Layout Page</CoreTypographyBody1>
+
         <CoreTypographyBody1>Content for the {FooterLayout.PLACEHOLDER.CONTENT}</CoreTypographyBody1>
 
         <CoreTypographyBody1>Component inside {FooterLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>

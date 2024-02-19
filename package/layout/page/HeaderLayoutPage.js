@@ -8,9 +8,12 @@ import HeaderLayout from "../HeaderLayout";
 export default function HeaderLayoutPage() {
   return (
     <>
+
       <CoreTypographyBody1>Component above {HeaderLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
 
       <CoreLayoutItem id={HeaderLayout.PLACEHOLDER.HEADER}>
+        <CoreTypographyBody1>Header Layout Page</CoreTypographyBody1>
+
         <CoreTypographyBody1>Content for the {HeaderLayout.PLACEHOLDER.HEADER}</CoreTypographyBody1>
 
         <CoreTypographyBody1>Component inside {HeaderLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>

@@ -5,6 +5,12 @@ export const RoutesRegistry = {
     entityRef   : "blankLayout",
     url         : "layout/blank"
   },
+  customLayout: {
+    Page        : { appComponent: "CustomLayoutPage", layout: "CustomLayout" },
+    authRequired: false,
+    entityRef   : "customLayout",
+    url         : "layout/custom"
+  },
   footerLayout: {
     Page        : { appComponent: "FooterLayoutPage", layout: "FooterLayout" },
     authRequired: false,
