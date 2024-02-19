@@ -53,7 +53,7 @@ export default function LayoutManager(props) {
   }, [layoutName, layoutsRegistry]);
 
   const replacePlaceholder = (LayoutComponent, PageComponent) => {
-    let layoutChildrens = LayoutComponent.props.children;
+    let layoutChildrens = LayoutComponent?.props?.children;
 
     if (layoutChildrens && !Array.isArray(layoutChildrens)) {
       layoutChildrens = [layoutChildrens];
@@ -63,7 +63,7 @@ export default function LayoutManager(props) {
     console.log(layoutChildrens);
     console.log("layoutChildrens-------------------------------");
 
-    let pageChildrens = PageComponent.props.children;
+    let pageChildrens = PageComponent?.props?.children;
 
     if (pageChildrens && !Array.isArray(pageChildrens)) {
       pageChildrens = [pageChildrens];
@@ -74,14 +74,30 @@ export default function LayoutManager(props) {
     console.log("pageChildrens-------------------------------");
 
     layoutChildrens = layoutChildrens.map((layoutChildren) => {
-      if (layoutChildren.type.name === CoreLayoutPlaceholder.name) {
+      if (layoutChildren?.type?.name === CoreLayoutPlaceholder.name) {
         /**
          * @todo
          * 1. if it has a id in props
          * 2. find CoreLayoutItem in pageChildrens which have similar id
          */
         if (layoutChildren?.props?.id) {
-          return pageChildrens.filter(eachItem => eachItem.type.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren.props.id)[0];
+          /**
+           * @todo
+           * 1. get placeholder parent
+           * 2. 
+          */
+         
+          let pageChildrenPlaceholders = pageChildrens?.props?.children?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
+         
+          if (pageChildrenPlaceholders > 1) {
+            console.log("item has placeholders");
+          } else {
+            let pageChildren = pageChildrens.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
+
+            console.log("pageChildren=", pageChildren);
+
+            return pageChildren;
+          }
         } else {
           console.log(`placeholder content not available in page component ${pageName}`);
         }

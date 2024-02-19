@@ -8,7 +8,7 @@ import { componentMap } from "../utils/componentMap";
 // eslint-disable-next-line import/order
 import LayoutComponentsRegistry from "./LayoutComponentsRegistry";
 
-let ComponentRegistry = {
+let ComponentsRegistry = {
   /**
    * componentMap is form specific map for elements
    */
@@ -22,4 +22,4 @@ let ComponentRegistry = {
   HeaderLayoutPage      : { comp: HeaderLayoutPage }
 };
 
-export default ComponentRegistry;
+export default ComponentsRegistry;
