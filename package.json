@@ -11,7 +11,7 @@
     "test": "echo Testing not yet implemented && exit 0",
     "build": "npx babel package --out-dir dist --copy-files",
     "release": "standard-version --bumpFiles ./package.json ./package/package.json ./package-lock.json ./package/package-lock.json",
-    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
+    "publish": "npm publish *.tgz --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
