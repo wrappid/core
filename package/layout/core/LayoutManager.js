@@ -2,11 +2,8 @@
 import React from "react";
 
 import CoreComponent from "../../components/CoreComponent";
-import CoreDialog from "../../components/feedback/CoreDialog";
-import CoreModal from "../../components/utils/CoreModal";
-import { ComponentRegistryContext, CoreDialogContext } from "../../config/contextHandler";
+import { ComponentRegistryContext } from "../../config/contextHandler";
 import BlankLayout from "../BlankLayout";
-import BlankLayoutPage from "../page/BlankLayoutPage";
 // eslint-disable-next-line import/order
 import CoreLayoutItem from "./CoreLayoutItem";
 // eslint-disable-next-line import/order
@@ -14,15 +11,11 @@ import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 
 export default function LayoutManager(props) {
   const { pageName, layoutName } = props;
-  
-  const [dialog, setDialog] = React.useState({});
-  const dialogStates = { dialog, setDialog };
-  
   const mergedComponentRegistry = React.useContext(ComponentRegistryContext);
 
   const [componentsRegistry, setComponentsRegistry] = React.useState({});
   const [layoutsRegistry, setLayoutsRegistry] = React.useState({});
-  const [page, setPage] = React.useState(BlankLayoutPage);
+  const [page, setPage] = React.useState(/* BlankLayoutPage */);
   const [layout, setLayout] = React.useState(BlankLayout);
 
   React.useEffect(() => {
@@ -42,19 +35,34 @@ export default function LayoutManager(props) {
   }, [mergedComponentRegistry]);
 
   React.useEffect(() => {
-    if(componentsRegistry && componentsRegistry[pageName]?.comp && pageName){
-      setPage(componentsRegistry[pageName]?.comp); 
+    if(pageName && componentsRegistry && componentsRegistry[pageName]?.comp){
+      setPage(componentsRegistry[pageName].comp); 
     } 
   }, [pageName, componentsRegistry]);
   
   React.useEffect(() => { 
-    if(layoutsRegistry && layoutsRegistry[layoutName]?.comp && layoutName){
-      setLayout(layoutsRegistry[layoutName]?.comp); 
+    if(layoutName && layoutsRegistry && layoutsRegistry[layoutName]?.comp){
+      setLayout(layoutsRegistry[layoutName].comp); 
     }
   }, [layoutName, layoutsRegistry]);
 
-  const replacePlaceholder = (LayoutComponent, PageComponent) => {
-    if (LayoutComponent) {
+  /**
+   * 
+   * @param {*} LayoutComponent 
+   * @param {*} PageComponent 
+   * @returns 
+   */
+  const replacePlaceholders = (LayoutComponent, PageComponent) => {
+    /**
+     * @todo
+     * 
+     * 1. Old Layout Backward Compatibility
+     * 2. New Layout n-siblings
+     * 3. New Layout each-sibling n-child
+     * 4. LayoutPlaceholder parent flag support in the LayoutItem
+     */
+
+    if (layoutName && LayoutComponent) {
       let layoutChildrens = LayoutComponent?.props?.children;
   
       if (layoutChildrens && !Array.isArray(layoutChildrens)) {
@@ -103,16 +111,19 @@ export default function LayoutManager(props) {
              * 2. 
             */
          
-            let pageChildrenPlaceholders = pageChildrens?.props?.children?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
+            let pageChildrenPlaceholders = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
          
             if (pageChildrenPlaceholders > 1) {
               console.log("item has placeholders");
             } else {
-              let pageChildren = pageChildrens.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
+              let pageChildren = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
   
               console.log("pageChildren=", pageChildren);
-  
-              return pageChildren;
+              if (pageChildren?.props?.parent) {
+                return [...layoutChildren.children, pageChildren.children];
+              } else {
+                return pageChildren;
+              }
             }
           } else {
             console.log(`placeholder content not available in page component ${pageName}`);
@@ -123,32 +134,20 @@ export default function LayoutManager(props) {
       });
       return layoutChildrens;
     } else {
-      return PageComponent;
+      let blankLayoutChildrens = BlankLayout?.props?.children?.map(layoutChild => {
+        if (layoutChild?.type?.name === CoreLayoutPlaceholder.name && layoutChild?.props?.id === "content") {
+          return PageComponent;
+        }
+      });
+
+      return blankLayoutChildrens;
     }
   };
 
   return (
     <>
-      { /**
-         * @todo
-         * 1. get the children by id
-         * 2. check if the id of the layout placeholder 
-              are available in page as layout items
-         * Sol
-         * 1. children each child name store in child.type.name
-         */}
-
-      <CoreModal open={true} />
-        
-      <CoreDialogContext.Provider value={dialogStates}>
-        <CoreDialog />
-
-        {/* LAYOUT CONTENT */}
-        <>
-          {replacePlaceholder(layout, page)}
-        </>
-
-      </CoreDialogContext.Provider>
+      {/* LAYOUT CONTENT REPLACED BY PAGE ITEM */}
+      {replacePlaceholders(layout, page)}
     </>
   );
 }
