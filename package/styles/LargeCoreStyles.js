@@ -13,18 +13,7 @@ export default class LargeCoreStyles extends BaseStyle {
     super();
 
     this.style = {
-      authBanner: {
-        backgroundImage   : "url(./images/welcome-bg.png)",
-        backgroundPosition: "center" + IMPORTANT,
-        backgroundRepeat  : "no-repeat" + IMPORTANT,
-        backgroundSize    : "cover" + IMPORTANT,
-        height            : "100%" + IMPORTANT,
-      },
-      authContainer    : { height: "100%" + IMPORTANT },
-      authForm         : { height: "100%" + IMPORTANT },
-      authFormContainer: { width: "60%" + IMPORTANT },
-      authWrapper      : { width: "45vw" + IMPORTANT },
-      devBorder        : { boxShadow: "inset 0px 0px 1px 1px green" },
+      devBorder: { boxShadow: "inset 0px 0px 1px 1px green" },
       
       profileBarWidth: { maxWidth: "25vw" + IMPORTANT },
     };

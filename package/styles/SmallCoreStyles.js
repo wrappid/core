@@ -35,26 +35,6 @@ export default class SmallCoreStyles extends BaseStyle {
        */
       appbarHeight        : { top: HEADING_TOP_MARGIN + IMPORTANT },
       auditData           : {},
-      authAppLogo         : { width: 190 },
-
-      /**
-       * @todo review required 
-        authAppLogo: {
-          height: "auto",
-          width : 190
-        }, 
-      */
-      authBanner: {
-        backgroundImage   : "url(./images/welcome-bg.png)" + IMPORTANT,
-        backgroundPosition: "center" + IMPORTANT,
-        backgroundRepeat  : "no-repeat" + IMPORTANT,
-        backgroundSize    : "cover" + IMPORTANT,
-        height            : "100%" + IMPORTANT,
-      },
-
-      authContainer    : { height: "100%" + IMPORTANT },
-      authForm         : { height: "100%" + IMPORTANT },
-      authFormContainer: { width: "100%" + IMPORTANT },
   
       contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
   
