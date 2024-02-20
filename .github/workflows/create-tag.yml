@@ -14,7 +14,7 @@ on:
         - -p beta
         - -p build
         - -p hotfix
-        - -p build
+        - -p dev
         required: true
         default: "-r patch"
   pull_request:
@@ -29,4 +29,19 @@ jobs:
     permissions: write-all
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development')
     uses: wrappid/workflows/.github/workflows/util-create-tag.yml@main
-    secrets: inherit
+    with:
+      GIT_USER_NAME: ${{ vars.GIT_USER_NAME }}
+      VERSION_TYPE_REPOSITORY_DEFAULT: ${{ vars.VERSION_TYPE_REPOSITORY_DEFAULT }}
+      EMAIL_NOTIFY: ${{ vars.EMAIL_NOTIFY }}
+      EMAIL_SENDER_NAME: ${{ vars.EMAIL_SENDER_NAME }}
+    secrets:
+      PAT: ${{ secrets.PAT }}
+      GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+      WRAPPID_REGISTRY_TOKEN: ${{ secrets.WRAPPID_REGISTRY_TOKEN }}
+      EMAIL_SERVER_ADDRESS: ${{ secrets.EMAIL_SERVER_ADDRESS }}
+      EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
+      EMAIL_USER_ID: ${{ secrets.EMAIL_USER_ID }}
+      EMAIL_USER_PASSWORD: ${{ secrets.EMAIL_USER_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      EMAIL_CC: ${{ secrets.EMAIL_CC }}       ## Optional
+      EMAIL_BCC: ${{ secrets.EMAIL_BCC }}     ## Optional
