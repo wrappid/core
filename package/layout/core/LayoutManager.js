@@ -52,7 +52,7 @@ export default function LayoutManager(props) {
    * @param {*} PageComponent 
    * @returns 
    */
-  const replacePlaceholders = (LayoutComponent, PageComponent) => {
+  const renderLayoutEmbeddedPage = (LayoutComponent, PageComponent) => {
     /**
      * @todo
      * 
@@ -61,14 +61,12 @@ export default function LayoutManager(props) {
      * 3. New Layout each-sibling n-child
      * 4. LayoutPlaceholder parent flag support in the LayoutItem
      */
-
     if (layoutName && LayoutComponent) {
       let layoutChildrens = LayoutComponent?.props?.children;
   
       if (layoutChildrens && !Array.isArray(layoutChildrens)) {
         layoutChildrens = [layoutChildrens];
       }
-  
       console.log("layoutChildrens-------------------------------");
       console.log(layoutChildrens);
       console.log("layoutChildrens-------------------------------");
@@ -78,7 +76,6 @@ export default function LayoutManager(props) {
       if (pageChildrens && !Array.isArray(pageChildrens)) {
         pageChildrens = [pageChildrens];
       }
-  
       console.log("pageChildrens-------------------------------");
       console.log(pageChildrens);
       console.log("pageChildrens-------------------------------");
@@ -91,26 +88,23 @@ export default function LayoutManager(props) {
       if (LayoutComponent.type.name === BlankLayout.name) {
         return PageComponent;
       }
+      
+      /**
+       * Backward Compatibility
+       */
       let layoutPlaceholders = layoutChildrens.filter(layoutChild => layoutChild?.type?.name === CoreLayoutPlaceholder.name);
 
-      if (!layoutPlaceholders) {
+      if (!layoutPlaceholders || (layoutPlaceholders && layoutPlaceholders.length === 0)) {
         return <CoreComponent componentName={layoutName}>{PageComponent}</CoreComponent>;
       }
 
-      layoutChildrens = layoutChildrens.map((layoutChildren) => {
+      /**
+       * New Layout Compatibility 
+       */
+      // eslint-disable-next-line etc/no-commented-out-code
+      /* layoutChildrens = layoutChildrens.map((layoutChildren) => {
         if (layoutChildren?.type?.name === CoreLayoutPlaceholder.name) {
-          /**
-           * @todo
-           * 1. if it has a id in props
-           * 2. find CoreLayoutItem in pageChildrens which have similar id
-           */
           if (layoutChildren?.props?.id) {
-            /**
-             * @todo
-             * 1. get placeholder parent
-             * 2. 
-            */
-         
             let pageChildrenPlaceholders = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
          
             if (pageChildrenPlaceholders > 1) {
@@ -131,9 +125,18 @@ export default function LayoutManager(props) {
         } else {
           return layoutChildren;
         }
-      });
+      }); */
+
+      layoutChildrens = replacePlaceholder(layoutChildrens, pageChildrens);
       return layoutChildrens;
-    } else {
+    }
+    /**
+     * @todo
+     * review required because the below case couldn't happened
+     * remove below commented condition
+     */
+    /*  else {
+
       let blankLayoutChildrens = BlankLayout?.props?.children?.map(layoutChild => {
         if (layoutChild?.type?.name === CoreLayoutPlaceholder.name && layoutChild?.props?.id === "content") {
           return PageComponent;
@@ -141,13 +144,38 @@ export default function LayoutManager(props) {
       });
 
       return blankLayoutChildrens;
-    }
+    } */
+  };
+
+  const replacePlaceholder = (layoutChildrens, pageChildrens) => {
+    return layoutChildrens?.map(layoutChild => {
+      /**
+       * @todo
+       * placeholders = get each layout placeholder(s) from children(s)
+       * if placeholders > 0
+       *    run loop 
+       *      for each placeholder
+       *        check each placeholder
+       * 
+       * else if placeholders === 0
+       *    return layout item from page children
+       */
+      let layoutChildPlaceholders = layoutChild?.children?.filter(layoutChild => layoutChild?.type?.name === CoreLayoutPlaceholder.name);
+
+      if (layoutChildPlaceholders && layoutChildPlaceholders.length > 0) {
+        let pageChild = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChild?.props?.id)[0];
+
+        return replacePlaceholder(layoutChild?.children, pageChild);
+      } else {
+        return [...(layoutChild?.children || []), ...(pageChildrens || [])];
+      }
+    });
   };
 
   return (
     <>
       {/* LAYOUT CONTENT REPLACED BY PAGE ITEM */}
-      {replacePlaceholders(layout, page)}
+      {renderLayoutEmbeddedPage(layout, page)}
     </>
   );
 }
