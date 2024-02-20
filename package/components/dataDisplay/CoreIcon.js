@@ -78,7 +78,19 @@ export default function CoreIcon(props) {
 CoreIcon.validProps = [
   {
     name : "type",
-    types: [{ default: __IconTypes.MATERIAL_ICON, type: "string", validValues: [__IconTypes.MATERIAL_ICON, __IconTypes.FONTAWESOME_V5_REGULAR_ICON, __IconTypes.FONTAWESOME_V5_SOLID_ICON] }]
+    types: [
+      {
+        default    : __IconTypes.MATERIAL_ICON,
+        type       : "string",
+        validValues: [
+          __IconTypes.MATERIAL_ICON,
+          __IconTypes.FONTAWESOME_V5_REGULAR_ICON,
+          __IconTypes.FONTAWESOME_V5_SOLID_ICON,
+          __IconTypes.MATERIAL_OUTLINED_ICON,
+          __IconTypes.RXICON_V1_REGULAR_ICON
+        ] 
+      }
+    ]
   },
   {
     name : "icon",
