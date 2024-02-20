@@ -4,14 +4,6 @@ import { UtilityClasses } from "@wrappid/styles";
 const CoreClasses = {
   ...UtilityClasses,
   
-  AUTH: {
-    CARD          : "authCard",
-    CARD_MAX_WIDTH: "authCardMaxWidth",
-    CARD_MIN_WIDTH: "authCardMinWidth",
-    LOGO          : "authAppLogo",
-    WRAPPER       : "authWrapper"
-  },
-
   // ----------Widget Style Constants Ends-------
   /**
    * Business Entity Component
