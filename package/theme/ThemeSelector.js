@@ -16,7 +16,7 @@ function ThemeSelector() {
   const userTheme = useSelector((state) => state.app.userTheme);
   const userThemeId = useSelector((state) => state.app.userThemeId);
 
-  const { themes, defaultTheme } = React.useContext(WrappidDataContext);
+  const { config, themes, defaultTheme } = React.useContext(WrappidDataContext);
   const dispatch = React.useContext(WrappidDispatchContext);
   const storeDispatch = useDispatch();
   const [themeChangeFormEnable, setThemeChangeFormEnable] = React.useState(false);
@@ -41,8 +41,8 @@ function ThemeSelector() {
     <CoreBox styleClasses={[CoreClasses.BG.BG_WHITE]}>
       {themeChangeFormEnable ? (
         <CoreSelect
-          selectID={defaultTheme}
-          value={defaultTheme}
+          selectID={userThemeId || config[defaultTheme] || defaultTheme}
+          value={userThemeId || config[defaultTheme] || defaultTheme}
           label="Theme Selector"
           handleChange={handleChangeTheme}
           options={[
@@ -53,7 +53,7 @@ function ThemeSelector() {
       ) : (
         <>
           <CoreTypographyCaption styleClasses={[CoreClasses.BG.BG_PRIMARY]}>
-            Current Theme: {themes[defaultTheme]?.name || "Unknown"}
+            Current Theme: {themes[userThemeId || config[defaultTheme] || defaultTheme]?.name || "Unknown"}
           </CoreTypographyCaption>
 
           <CoreTextButton OnClick={() => {
