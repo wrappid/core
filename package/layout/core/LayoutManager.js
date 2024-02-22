@@ -16,7 +16,7 @@ export default function LayoutManager(props) {
   const [componentsRegistry, setComponentsRegistry] = React.useState({});
   const [layoutsRegistry, setLayoutsRegistry] = React.useState({});
   const [page, setPage] = React.useState(/* BlankLayoutPage */);
-  const [layout, setLayout] = React.useState(BlankLayout);
+  const [layout, setLayout] = React.useState(/* BlankLayout */);
 
   React.useEffect(() => {
     const [layoutObject, nonLayoutObject] = Object.entries(
@@ -99,37 +99,65 @@ export default function LayoutManager(props) {
       }
 
       /**
+       * @todo
+       * this below commented code is for rendering placeholder inside item
+       * need to review
+       */
+      // eslint-disable-next-line etc/no-commented-out-code
+      /* let pageChildrenPlaceholders = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
+        if (pageChildrenPlaceholders > 1) {
+          console.log("item has placeholders");
+        } else {
+        } */
+      /**
        * New Layout Compatibility 
        */
       // eslint-disable-next-line etc/no-commented-out-code
-      /* layoutChildrens = layoutChildrens.map((layoutChildren) => {
-        if (layoutChildren?.type?.name === CoreLayoutPlaceholder.name) {
-          if (layoutChildren?.props?.id) {
-            let pageChildrenPlaceholders = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutPlaceholder.name)[0];
-         
-            if (pageChildrenPlaceholders > 1) {
-              console.log("item has placeholders");
+      layoutChildrens = layoutChildrens.map((layoutChild) => {
+        if (layoutChild?.type?.name === CoreLayoutPlaceholder.name) {
+          if (layoutChild?.props?.id) {
+
+            let pagePlaceholderItem = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChild?.props?.id)[0];
+
+            console.log("pagePlaceholderItem=", pagePlaceholderItem);
+            let renderableChildrens = [];
+
+            if (pagePlaceholderItem?.props?.parent) {
+              renderableChildrens = [layoutChild?.props?.children, pagePlaceholderItem?.props?.children];
             } else {
-              let pageChildren = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChildren?.props?.id)[0];
-  
-              console.log("pageChildren=", pageChildren);
-              if (pageChildren?.props?.parent) {
-                return [...layoutChildren.children, pageChildren.children];
-              } else {
-                return pageChildren;
-              }
+              renderableChildrens = [pagePlaceholderItem?.props?.children];
             }
+
+            // return React.createElement(layoutChild, {}, ...(renderableChildrens || []));
+
+            let { ...mergedProps } = { ...layoutChild.props, ...pagePlaceholderItem.props };
+
+            // return (
+            //   <CoreComponent key={`placeholder-${layoutChild.props.id}`} componentName="CoreLayoutPlaceholder" {...mergedProps}>
+            //     {renderableChildrens}
+            //   </CoreComponent>
+            // );
+            // return React.createElement(CoreBox, mergedProps, renderableChildrens);
+            // return (
+            //   <CoreBox key={`${layoutName}-${pageName}-${id}`} {...mergedProps}>
+            //     {renderableChildrens}
+            //   </CoreBox>
+            // );
+            // return React.createElement(pagePlaceholderItem, { ...mergedProps }, React.createElement(renderableChildrens));
+            return pagePlaceholderItem;
           } else {
             console.log(`placeholder content not available in page component ${pageName}`);
           }
         } else {
-          return layoutChildren;
+          return layoutChild;
         }
-      }); */
+      });
 
-      layoutChildrens = replacePlaceholder(layoutChildrens, pageChildrens);
-      return layoutChildrens;
+      // eslint-disable-next-line etc/no-commented-out-code
+      // layoutChildrens = replacePlaceholder(layoutChildrens, pageChildrens);
+      return <CoreComponent componentName={pageName}>{layoutChildrens}</CoreComponent>;
     }
+
     /**
      * @todo
      * review required because the below case couldn't happened
@@ -147,33 +175,13 @@ export default function LayoutManager(props) {
     } */
   };
 
-  const replacePlaceholder = (layoutChildrens, pageChildrens) => {
-    return layoutChildrens?.map(layoutChild => {
-      /**
-       * @todo
-       * placeholders = get each layout placeholder(s) from children(s)
-       * if placeholders > 0
-       *    run loop 
-       *      for each placeholder
-       *        check each placeholder
-       * 
-       * else if placeholders === 0
-       *    return layout item from page children
-       */
-      let layoutChildPlaceholders = layoutChild?.children?.filter(layoutChild => layoutChild?.type?.name === CoreLayoutPlaceholder.name);
-
-      if (layoutChildPlaceholders && layoutChildPlaceholders.length > 0) {
-        let pageChild = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChild?.props?.id)[0];
-
-        return replacePlaceholder(layoutChild?.children, pageChild);
-      } else {
-        return [...(layoutChild?.children || []), ...(pageChildrens || [])];
-      }
-    });
-  };
-
   return (
     <>
+      {/* eslint-disable-next-line etc/no-commented-out-code */}
+      {/* {layout && React.cloneElement(layout, { children: undefined })} */}
+      {/* eslint-disable-next-line etc/no-commented-out-code */}
+      {/* {page && React.cloneElement(page, { children: undefined })} */}
+
       {/* LAYOUT CONTENT REPLACED BY PAGE ITEM */}
       {renderLayoutEmbeddedPage(layout, page)}
     </>

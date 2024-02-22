@@ -1,4 +1,6 @@
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import CoreLayoutItem from "../layout/core/CoreLayoutItem";
+import CoreLayoutPlaceholder from "../layout/core/CoreLayoutPlaceholder";
 import BlankLayoutPage from "../layout/page/BlankLayoutPage";
 import ComplexLayoutPage from "../layout/page/ComplexLayoutPage";
 import FooterLayoutPage from "../layout/page/FooterLayoutPage";
@@ -17,6 +19,8 @@ let ComponentsRegistry = {
   ...LayoutComponentsRegistry,
   BlankLayoutPage       : { comp: BlankLayoutPage },
   ComplexLayoutPage     : { comp: ComplexLayoutPage },
+  CoreLayoutItem        : { comp: CoreLayoutItem },
+  CoreLayoutPlaceholder : { comp: CoreLayoutPlaceholder },
   FooterLayoutPage      : { comp: FooterLayoutPage },
   HeaderFooterLayoutPage: { comp: HeaderFooterLayoutPage },
   HeaderLayoutPage      : { comp: HeaderLayoutPage }

@@ -114,7 +114,7 @@ export default function PageContainer(props) {
     } else if (props.page?.layout) {
       return props?.page?.layout;
     } else {
-      return /* auth?.uid ? "WrappidDefaultLayout" :  */"BlankLayout";
+      return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
     }
   };
 

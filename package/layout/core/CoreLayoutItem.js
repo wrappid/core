@@ -1,8 +1,6 @@
 import React from "react";
 
-import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
 import CoreBox from "../../components/layouts/CoreBox";
-import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreLayoutItem(props) {
   const { id, children, ...restProps } = props;
@@ -13,9 +11,7 @@ export default function CoreLayoutItem(props) {
   }, []);
     
   return (
-    <CoreBox styleClasses={[CoreClasses.BORDER.BORDER, CoreClasses.BORDER.BORDER_PRIMARY]}>
-      <CoreTypographyBody1>{id}</CoreTypographyBody1>
-
+    <CoreBox key={`item-${id}`} {...restProps}>
       {children}
     </CoreBox>
   );
