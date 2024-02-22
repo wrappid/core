@@ -58,7 +58,7 @@ export function createMultiLevelMenu(
         {multiLevel &&
           itemData?.Children &&
           itemData?.Children.length > 0 &&
-          openCollapse && Object.keys(openCollapse).length > 0 && Object.keys(openCollapse).includes(itemData?.id) && openCollapse[itemData.id] &&
+          openCollapse && Object.keys(openCollapse).length > 0 && Object.keys(openCollapse).includes(itemData?.id?.toString()) && openCollapse[itemData.id] &&
           createMultiLevelMenu(
             itemData?.Children,
             level + 1,
