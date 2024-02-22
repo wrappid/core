@@ -179,6 +179,8 @@ import {
 } from "./config/menuConstants";
 import useDynamicRefs from "./config/referenceMap";
 import CoreApp from "./CoreApp";
+import OnlineStatus from "./functions/OnlineStatus";
+import OnlineStatusSnackbar from "./functions/OnlineStatusSnackbar";
 import {
   CoreDomNavigate,
   CoreDomRoute,
@@ -294,6 +296,7 @@ export {
    *
    */
   NotificationPopOver, onEditForm, ParentChildMap, queryBuilder, reloadDataTableAction, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
+  OnlineStatus, OnlineStatusSnackbar,
   /**
    * Themes
    */
