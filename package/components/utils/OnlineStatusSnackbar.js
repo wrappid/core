@@ -1,7 +1,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useState, useEffect } from "react";
 
-import CoreSnackbar from "../components/feedback/CoreSnackbar";
+import CoreSnackbar from "../feedback/CoreSnackbar";
 
 function useOnlineStatus() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
