@@ -35,4 +35,8 @@ export default function ComplexLayout() {
     </>
   );
 }
+
+ComplexLayout.PLACEHOLDER = {
+  CONTENT1: "content1", CONTENT2: "content2", CONTENT3: "content3", CONTENT4: "content4", CONTENT5: "content5", CONTENT6: "content6", CONTENT7: "content7", CONTENT8: "content8" 
+};
  

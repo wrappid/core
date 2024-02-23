@@ -2,6 +2,8 @@
 import React from "react";
 
 import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
+import CoreBox from "../../components/layouts/CoreBox";
+import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
 import HeaderFooterLayout from "../HeaderFooterLayout";
 
@@ -9,43 +11,23 @@ export default function HeaderFooterLayoutPage() {
   return (
     <>
 
-      <CoreTypographyBody1>Component above {HeaderFooterLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.HEADER}>
-        <CoreTypographyBody1>Header Footer Layout Page</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Content for the {HeaderFooterLayout.PLACEHOLDER.HEADER}</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Component inside {HeaderFooterLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Any other component can be added here...</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.HEADER} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_25]}>
+        <CoreBox>
+          <CoreTypographyBody1>Header content</CoreTypographyBody1> 
+        </CoreBox>
       </CoreLayoutItem>
 
-      <CoreTypographyBody1>Component below {HeaderFooterLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-      <CoreTypographyBody1>Component above {HeaderFooterLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
-
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.CONTENT}>
-        <CoreTypographyBody1>Content for the {HeaderFooterLayout.PLACEHOLDER.CONTENT}</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Component inside {HeaderFooterLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Any other component can be added here...</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.BG.BG_WARNING, CoreClasses.HEIGHT.VH_50]}>
+        <CoreBox>
+          <CoreTypographyBody1>Layout content</CoreTypographyBody1> 
+        </CoreBox>
       </CoreLayoutItem>
 
-      <CoreTypographyBody1>Component below {HeaderFooterLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
-
-      <CoreTypographyBody1>Component above {HeaderFooterLayout.PLACEHOLDER.FOOTER} item</CoreTypographyBody1>
-
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.FOOTER}>
-        <CoreTypographyBody1>Content for the {HeaderFooterLayout.PLACEHOLDER.FOOTER}</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Component inside {HeaderFooterLayout.PLACEHOLDER.FOOTER} item</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Any other component can be added here...</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.FOOTER} styleClasses={[CoreClasses.BG.BG_INFO, CoreClasses.HEIGHT.VH_25]}>
+        <CoreBox>
+          <CoreTypographyBody1>Footer content</CoreTypographyBody1> 
+        </CoreBox>
       </CoreLayoutItem>
-
-      <CoreTypographyBody1>Component below {HeaderFooterLayout.PLACEHOLDER.FOOTER} item</CoreTypographyBody1>
 
     </>
   );

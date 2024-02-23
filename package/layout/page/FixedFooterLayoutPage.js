@@ -5,20 +5,21 @@ import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody
 import CoreBox from "../../components/layouts/CoreBox";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
-import FooterLayout from "../FooterLayout";
+import FixedFooterLayout from "../FixedFooterLayout";
 
-export default function FooterLayoutPage() {
+export default function FixedFooterLayoutPage() {
   return (
     <>
       <CoreLayoutItem
-        id={FooterLayout.PLACEHOLDER.CONTENT}
+        id={FixedFooterLayout.PLACEHOLDER.CONTENT}
         styleClasses={[
           CoreClasses.WIDTH.VW_100,
-          CoreClasses.HEIGHT.VH_75,
-          CoreClasses.BG.BG_PRIMARY,
+          CoreClasses.HEIGHT.VH_100,
+          CoreClasses.BG.BG_SECONDARY,
           CoreClasses.DISPLAY.FLEX,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          CoreClasses.OVERFLOW.OVERFLOW_Y_SCROLL
         ]}>
         <CoreBox>
           <CoreTypographyBody1>Content above footer</CoreTypographyBody1>
@@ -26,17 +27,18 @@ export default function FooterLayoutPage() {
       </CoreLayoutItem>
 
       <CoreLayoutItem
-        id={FooterLayout.PLACEHOLDER.FOOTER}
+        id={FixedFooterLayout.PLACEHOLDER.FOOTER}
         styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_25,
           CoreClasses.BG.BG_WARNING,
           CoreClasses.DISPLAY.FLEX,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          CoreClasses.POSITION.POSITION_FIXED
         ]}>
         <CoreBox>
-          <CoreTypographyBody1>Footer content</CoreTypographyBody1>
+          <CoreTypographyBody1>Fixed Footer content</CoreTypographyBody1>
         </CoreBox>  
       </CoreLayoutItem>
 

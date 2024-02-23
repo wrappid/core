@@ -11,6 +11,24 @@ export const RoutesRegistry = {
     entityRef   : "customLayout",
     url         : "layout/custom"
   },
+  fixedFooterLayout: {
+    Page        : { appComponent: "FixedFooterLayoutPage", layout: "FixedFooterLayout" },
+    authRequired: false,
+    entityRef   : "fixedFooterLayout",
+    url         : "layout/fixedFooter"
+  },
+  fixedHeaderFooterLayout: {
+    Page        : { appComponent: "FixedHeaderFooterLayoutPage", layout: "FixedHeaderFooterLayout" },
+    authRequired: false,
+    entityRef   : "fixedHeaderFooterLayout",
+    url         : "layout/fixedHeaderFooter"
+  },
+  fixedHeaderLayout: {
+    Page        : { appComponent: "FixedHeaderLayoutPage", layout: "FixedHeaderLayout" },
+    authRequired: false,
+    entityRef   : "fixedheaderLayout",
+    url         : "layout/fixedHeader"
+  },
   footerLayout: {
     Page        : { appComponent: "FooterLayoutPage", layout: "FooterLayout" },
     authRequired: false,
@@ -28,5 +46,17 @@ export const RoutesRegistry = {
     authRequired: false,
     entityRef   : "headerLayout",
     url         : "layout/header"
+  },
+  threeColumnLayout: {
+    Page        : { appComponent: "ThreeColumnLayoutPage", layout: "ThreeColumnLayout" },
+    authRequired: false,
+    entityRef   : "threeColumnLayout",
+    url         : "layout/threeColumn"
+  },
+  twoColumnLayout: {
+    Page        : { appComponent: "TwoColumnLayoutPage", layout: "TwoColumnLayout" },
+    authRequired: false,
+    entityRef   : "twoColumnLayout",
+    url         : "layout/twoColumn"
   }
 };

@@ -8,7 +8,7 @@ import CoreLayoutPlaceholder from "./core/CoreLayoutPlaceholder";
 export default function BlankLayout() {
   return (
     <>
-      <CoreLayoutPlaceholder id={BlankLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.PADDING.P1]} />
+      <CoreLayoutPlaceholder id={BlankLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.WIDTH.W_100]} />
     </>
   );
 }

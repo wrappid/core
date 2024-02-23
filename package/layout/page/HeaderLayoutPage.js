@@ -2,6 +2,8 @@
 import React from "react";
 
 import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
+import CoreBox from "../../components/layouts/CoreBox";
+import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
 import HeaderLayout from "../HeaderLayout";
 
@@ -9,31 +11,35 @@ export default function HeaderLayoutPage() {
   return (
     <>
 
-      <CoreTypographyBody1>Component above {HeaderLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-      <CoreLayoutItem id={HeaderLayout.PLACEHOLDER.HEADER}>
-        <CoreTypographyBody1>Header Layout Page</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Content for the {HeaderLayout.PLACEHOLDER.HEADER}</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Component inside {HeaderLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Any other component can be added here...</CoreTypographyBody1>
+      <CoreLayoutItem
+        id={HeaderLayout.PLACEHOLDER.HEADER}
+        styleClasses={[
+          CoreClasses.WIDTH.VW_100,
+          CoreClasses.HEIGHT.VH_25,
+          CoreClasses.BG.BG_PRIMARY,
+          CoreClasses.DISPLAY.FLEX,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+        ]}>
+        <CoreBox>
+          <CoreTypographyBody1>Header content</CoreTypographyBody1> 
+        </CoreBox>
       </CoreLayoutItem>
 
-      <CoreTypographyBody1>Component below {HeaderLayout.PLACEHOLDER.HEADER} item</CoreTypographyBody1>
-
-      <CoreTypographyBody1>Component above {HeaderLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
-
-      <CoreLayoutItem id={HeaderLayout.PLACEHOLDER.CONTENT}>
-        <CoreTypographyBody1>Content for the {HeaderLayout.PLACEHOLDER.CONTENT}</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Component inside {HeaderLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
-
-        <CoreTypographyBody1>Any other component can be added here...</CoreTypographyBody1>
+      <CoreLayoutItem
+        id={HeaderLayout.PLACEHOLDER.CONTENT}
+        styleClasses={[
+          CoreClasses.WIDTH.VW_100,
+          CoreClasses.HEIGHT.VH_75,
+          CoreClasses.BG.BG_WARNING,
+          CoreClasses.DISPLAY.FLEX,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+        ]}>
+        <CoreBox>
+          <CoreTypographyBody1>Outlet Content</CoreTypographyBody1>
+        </CoreBox>
       </CoreLayoutItem>
-
-      <CoreTypographyBody1>Component below {HeaderLayout.PLACEHOLDER.CONTENT} item</CoreTypographyBody1>
 
     </>
   );

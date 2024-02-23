@@ -120,18 +120,18 @@ export default function LayoutManager(props) {
             let pagePlaceholderItem = pageChildrens?.filter(eachItem => eachItem?.type?.name === CoreLayoutItem.name && eachItem?.props?.id === layoutChild?.props?.id)[0];
 
             console.log("pagePlaceholderItem=", pagePlaceholderItem);
-            let renderableChildrens = [];
-
-            if (pagePlaceholderItem?.props?.parent) {
-              renderableChildrens = [layoutChild?.props?.children, pagePlaceholderItem?.props?.children];
-            } else {
-              renderableChildrens = [pagePlaceholderItem?.props?.children];
-            }
-
+            /**
+             * @todo
+             * commenting the below code for further enhancement required by @techoneel
+             */
+            // let renderableChildrens = [];
+            // if (pagePlaceholderItem?.props?.parent) {
+            //   renderableChildrens = [layoutChild?.props?.children, pagePlaceholderItem?.props?.children];
+            // } else {
+            //   renderableChildrens = [pagePlaceholderItem?.props?.children];
+            // }
             // return React.createElement(layoutChild, {}, ...(renderableChildrens || []));
-
-            let { ...mergedProps } = { ...layoutChild.props, ...pagePlaceholderItem.props };
-
+            // let { ...mergedProps } = { ...layoutChild.props, ...pagePlaceholderItem.props };
             // return (
             //   <CoreComponent key={`placeholder-${layoutChild.props.id}`} componentName="CoreLayoutPlaceholder" {...mergedProps}>
             //     {renderableChildrens}
