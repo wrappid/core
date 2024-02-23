@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeDomRoutes, NativeDomRoute } from "@wrappid/native";
+import { NativeDomRoute, NativeDomRoutes } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { getConfigurationObject } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,11 +12,12 @@ import { CoreRoutesContext } from "./config/contextHandler";
 import Error404 from "./error/Error404";
 import Error500 from "./error/Error500";
 import PageContainer from "./layout/PageContainer";
+import { RoutesRegistry } from "./registry/RoutesRegistry";
 import { apiRequestAction } from "./store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
 const DEFAULT_ROUTE = {
-  Page        : { appComponent: "WrappidComponent", layout: "WrappidGuestLayout" },
+  Page        : { appComponent: "WrappidComponent" },
   authRequired: false,
   entityRef   : "defaultAppRoute",
   url         : "defaultAppRoute"
@@ -94,7 +95,7 @@ export default function CoreRoutes() {
       />
 
       {/* App related routes */}
-      {[...Object.values((routesRegistry || {})), ...(routesFromStore || [])]?.map((route) => {
+      {[...Object.values((routesRegistry || {})), ...Object.values((RoutesRegistry || {})), ...(routesFromStore || [])]?.map((route) => {
         return (
           <NativeDomRoute
             key={route.url}

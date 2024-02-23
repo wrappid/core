@@ -191,6 +191,8 @@ import {
   coreUseParams,
   coreUseSearchParams
 } from "./helper/routerHelper";
+import CoreLayoutItem from "./layout/core/CoreLayoutItem";
+import CoreLayoutPlaceholder from "./layout/core/CoreLayoutPlaceholder";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
@@ -301,6 +303,11 @@ export {
    * Themes
    */
   ThemeSelector, toggleMenuItemState, toggleRightMenuState, urls, useDynamicRefs, UserChip, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
-  XXLargeCoreStyles
+  XXLargeCoreStyles,
+  /**
+   * Layout related component
+   */
+  CoreLayoutPlaceholder,
+  CoreLayoutItem
 };
 
