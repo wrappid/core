@@ -9,43 +9,10 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreSnackbar(props) {
   props = sanitizeComponentProps(CoreSnackbar, props);
 
-  const {
-    action,
-    anchorOrigin,
-    autoHideDuration,
-    children,
-    ClickAwayListenerProps,
-    ContentProps,
-    disableWindowBlurListener,
-    key,
-    message,
-    onClose,
-    open,
-    resumeHideDuration,
-    TransitionComponent,
-    transitionDuration,
-    TransitionProps,
-  } = props;
-
   return (
     <NativeSnackbar
-      action={action}
-      anchorOrigin={anchorOrigin}
-      autoHideDuration={autoHideDuration}
-      ClickAwayListenerProps={ClickAwayListenerProps}
-      ContentProps={ContentProps}
-      disableWindowBlurListener={disableWindowBlurListener}
-      key={key}
-      message={message}
-      onClose={onClose}
-      open={open}
-      resumeHideDuration={resumeHideDuration}
-      TransitionComponent={TransitionComponent}
-      transitionDuration={transitionDuration}
-      TransitionProps={TransitionProps}
-    >
-      {children}{" "}
-    </NativeSnackbar>
+      {...props}
+    />
   );
 }
 CoreSnackbar.validProps = [
@@ -128,12 +95,6 @@ CoreSnackbar.validProps = [
   {
     description: "The message to display.",
     name       : "message",
-    types      : [
-      {
-        default: "",
-        type   : "node",
-      },
-    ],
   },
   {
     description: `Callback fired when the component requests to be closed. Typically onClose is used to set state in the parent component, which is used to control the Snackbar open prop. The reason parameter can optionally be used to control the response to onClose, for example ignoring clickaway.
