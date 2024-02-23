@@ -11,7 +11,7 @@ import {
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
-import ComponentRegistry from "../registry/ComponentRegistry";
+import ComponentsRegistry from "../registry/ComponentsRegistry";
 import FunctionsRegistry from "../registry/FunctionsRegistry";
 
 export default function CoreContextProvider(props) {
@@ -36,7 +36,7 @@ export default function CoreContextProvider(props) {
             value={{ ...FunctionsRegistry, ...functionsRegistry }}
           >
             <ComponentRegistryContext.Provider
-              value={{ ...ComponentRegistry, ...componentsRegistry }}
+              value={{ ...ComponentsRegistry, ...componentsRegistry }}
             >
               <CoreResourceContext.Provider value={resourcesRegistry}>
                 <CoreMenuContext.Provider value={menusRegistry}>

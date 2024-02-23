@@ -142,7 +142,14 @@ export function sanitizeComponentProps(component, props) {
               && propTypeObj?.validValues?.length > 0) {
               let validValues = propTypeObj?.validValues;
 
-              if (validValues?.includes(props[eachPropKey])) {
+              if (propTypeObj?.type !== "object" && validValues?.includes(props[eachPropKey])) {
+                sanitizedProps[eachPropKey] = props[eachPropKey];
+              }else{
+                /**
+                 * @todo
+                 * @techoneel please write proper logic for type object.
+                 * 
+                 */
                 sanitizedProps[eachPropKey] = props[eachPropKey];
               }
             } else {

@@ -63,7 +63,7 @@ export default function CoreDrawer(props) {
             miniDrawer={true}
             multiLevel={true}
             open={open}
-            openCollapse={collapse || {}}
+            openCollapse={collapse}
             OnMenuClick={OnMenuClick}
           />
         </NativeDrawer>
