@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseLocation, NativeAppContainer } from "@wrappid/native";
+import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreAppBar from "./../components/surfaces/CoreAppBar";
@@ -17,14 +17,14 @@ import {
 } from "../config/api";
 import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
 import { CoreRouteRegistryContext } from "../config/contextHandler";
-import ComponentRegistry from "../registry/ComponentRegistry";
+import ComponentsRegistry from "../registry/ComponentsRegistry";
 import { apiRequestAction } from "../store/action/appActions";
 import { toggleLeftMenuState } from "../store/action/menuAction";
 import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store/types/authTypes";
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
 import {
-  REMOVE_PENDING_REQUESTS,
-  RECALL_TOKEN_REJUVINDATED
+  RECALL_TOKEN_REJUVINDATED,
+  REMOVE_PENDING_REQUESTS
 } from "../store/types/pendingRequestTypes";
 import { SELECT_OPTION_SUCCESS } from "../store/types/selectOptionsTypes";
 import {
@@ -161,13 +161,13 @@ function AppContainer(props) {
 
   React.useEffect(() => {
     let components =
-      ComponentRegistry &&
-      Object.keys(ComponentRegistry).map((key) => {
+      ComponentsRegistry &&
+      Object.keys(ComponentsRegistry).map((key) => {
         return { id: key, label: key, value: key };
       });
 
     dispatch({
-      payload: { data: components, key: "ComponentRegistry" },
+      payload: { data: components, key: "ComponentsRegistry" },
       type   : SELECT_OPTION_SUCCESS,
     });
   }, []);

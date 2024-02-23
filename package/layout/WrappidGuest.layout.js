@@ -11,12 +11,13 @@ import CoreClasses from "../styles/CoreClasses";
 import ThemeSelector from "../theme/ThemeSelector";
 
 export default function WrappidGuestLayout(props) {
+  const { children } = props || { children: null };
 
   const { config: { packageInfo } } = React.useContext(WrappidDataContext);
 
   return (
     <>
-      {props.children}
+      {children}
 
       <CoreBox styleClasses={[
         CoreClasses.DISPLAY.FLEX,
