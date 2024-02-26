@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
