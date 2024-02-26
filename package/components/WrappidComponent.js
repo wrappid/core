@@ -9,13 +9,7 @@ import CoreBox from "./layouts/CoreBox";
 
 export default function WrappidComponent() {
   return (
-    <CoreBox styleClasses={[
-      CoreClasses.WIDTH.VW_100,
-      CoreClasses.HEIGHT.VH_100,
-      CoreClasses.DISPLAY.FLEX,
-      CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-      CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
-    ]}>
+    <CoreBox styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.HEIGHT.H_100]}>
       <CoreCircularProgress />
     </CoreBox>
   );

@@ -13,9 +13,7 @@ import {
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
-import DevelopmentInfo from "../development/DevelopmentInfo";
 import { CoreDomNavigate } from "../helper/routerHelper";
-import ErrorBoundary from "../middleware/ErrorBoundary";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
@@ -32,18 +30,7 @@ export let formStore = {};
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
-
-  /**
-   * Error related states
-   */
-  const [hasError, setHasError] = React.useState(false);
-
-  React.useEffect(() => {
-    if (hasError) {
-      setHasError(false);
-    }
-  }, [location]);
-
+  
   mergedComponentRegistry = useContext(ComponentRegistryContext);
   mergedResourceRegistry = useContext(CoreResourceContext);
   functionsRegistry = useContext(FunctionsRegistryContext);
@@ -109,9 +96,9 @@ export default function PageContainer(props) {
   const pageChild = () => {
     if (route?.Page?.appComponent) {
       return route?.Page?.appComponent;
-    } else if (props.page) {
+    } /* else if (props.page) {
       return props.page;
-    } else {
+    }  */else {
       return "Error404";
     }
   };
@@ -127,8 +114,6 @@ export default function PageContainer(props) {
     } else if (props.page?.layout) {
       return props?.page?.layout;
     } else {
-      // eslint-disable-next-line etc/no-commented-out-code
-      // return "BlankLayout";
       return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
     }
   };
@@ -137,9 +122,6 @@ export default function PageContainer(props) {
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <>
-      <ErrorBoundary hasError={hasError} setHasError={setHasError}>
-      </ErrorBoundary>
-
       <NativePageContainer
         uid={auth?.uid}
         route={route}
@@ -152,8 +134,6 @@ export default function PageContainer(props) {
           <CoreDialog />
         </CoreDialogContext.Provider>
       </NativePageContainer>
-
-      <DevelopmentInfo />
     </>
   );
 }

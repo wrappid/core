@@ -6,12 +6,6 @@ import CoreClasses from "../styles/CoreClasses";
 import CoreLayoutPlaceholder from "./core/CoreLayoutPlaceholder";
 
 export default function BlankLayout() {
-
-  React.useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log("BlankLayout::useEffect");
-  });
-
   return (
     <>
       <CoreLayoutPlaceholder id={BlankLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.WIDTH.W_100]} />

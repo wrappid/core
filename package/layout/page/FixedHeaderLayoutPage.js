@@ -9,8 +9,8 @@ import FixedHeaderLayout from "../FixedHeaderLayout";
 
 export default function FixedHeaderLayoutPage() {
   return (
-    <>  
-        
+    <>
+
       <CoreLayoutItem
         id={FixedHeaderLayout.PLACEHOLDER.HEADER}
         styleClasses={[
@@ -42,7 +42,7 @@ export default function FixedHeaderLayoutPage() {
           <CoreTypographyBody1>Outlet Content</CoreTypographyBody1>
         </CoreBox>
       </CoreLayoutItem>
-      
+
     </>
   );
 }
