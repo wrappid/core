@@ -8,6 +8,13 @@ import BlankLayout from "../BlankLayout";
 import CoreLayoutItem from "../core/CoreLayoutItem";
 
 export default function BlankLayoutPage() {
+
+  // eslint-disable-next-line etc/no-commented-out-code
+  // React.useEffect(() => {
+  //   // eslint-disable-next-line no-console
+  //   console.log("BlankLayoutPage::useEffect");
+  // });
+
   return (
     <>
       <CoreLayoutItem
