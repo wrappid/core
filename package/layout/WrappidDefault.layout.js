@@ -4,9 +4,11 @@ import React from "react";
 import AppContainer from "./AppContainer";
 
 export default function WrappidDefaultLayout(props) {
+  const { children } = props || { children: null };
+
   return (
     <AppContainer>
-      {props.children}
+      {children}
     </AppContainer>
   );
 }
