@@ -23,7 +23,7 @@ export default function LayoutManager(props) {
    * @param {*} PageComponent 
    * @returns 
    */
-  const renderLayoutEmbeddedPage = () => {
+  const renderLayoutEmbeddedPage = (layoutName, pageName) => {
     let LayoutComponent = mergedComponentRegistry[layoutName].comp();
     let PageComponent = mergedComponentRegistry[pageName].comp();
     /**
@@ -84,7 +84,7 @@ export default function LayoutManager(props) {
   return (
     <>
       {/* LAYOUT CONTENT REPLACED BY PAGE ITEM */}
-      {renderLayoutEmbeddedPage()}
+      {renderLayoutEmbeddedPage(layoutName, pageName)}
     </>
   );
 }
