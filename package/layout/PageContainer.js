@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
@@ -31,7 +32,9 @@ export let formStore = {};
 
 export default function PageContainer(props) {
   const dispatch = useDispatch();
-  let location = nativeUseLocation();
+  const location = nativeUseLocation();
+  const { config } = React.useContext(WrappidDataContext);
+  const { defaultLayout = "BlankLayout", defaultAuthenticatedLayout = "BlankLayout" } = config;
 
   /**
    * Error related states
@@ -96,22 +99,10 @@ export default function PageContainer(props) {
     // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
-  // eslint-disable-next-line etc/no-commented-out-code
-  /* const pageChild = () => {
-    if (mergedComponentRegistry[route?.Page?.appComponent]?.comp) {
-      return React.createElement(mergedComponentRegistry[route?.Page?.appComponent]?.comp);
-    } else if (props.page?.comp) {
-      return React.createElement(props.page?.comp, props?.page?.props, null);
-    } else {
-      return <Error404 />;
-    }
-  }; */
   const pageChild = () => {
     if (route?.Page?.appComponent) {
       return route?.Page?.appComponent;
-    } /* else if (props.page) {
-      return props.page;
-    }  */else {
+    } else {
       return "Error404";
     }
   };
@@ -124,12 +115,8 @@ export default function PageContainer(props) {
   const pageLayout = () => {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
-    } else if (props.page?.layout) {
-      return props?.page?.layout;
     } else {
-      // eslint-disable-next-line etc/no-commented-out-code
-      // return "BlankLayout";
-      return auth?.uid ? "WrappidDefaultLayout" : "WrappidGuestLayout";
+      return auth?.uid ? defaultAuthenticatedLayout : defaultLayout;
     }
   };
 

@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
 import React from "react";
 
-// eslint-disable-next-line import/order
-// eslint-disable-next-line import/order
 import CoreLayoutItem from "./CoreLayoutItem";
-// eslint-disable-next-line import/order
-import { ComponentRegistryContext } from "../../config/contextHandler";
-// eslint-disable-next-line import/order
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
+import WrappidComponent from "../../components/WrappidComponent";
+import { ComponentRegistryContext } from "../../config/contextHandler";
+import Error404 from "../../error/Error404";
+import BlankLayout from "../BlankLayout";
 
 export default function LayoutManager(props) {
   const { pageName = "WrappidComponent", layoutName = "BlankLayout" } = props;
@@ -24,8 +23,8 @@ export default function LayoutManager(props) {
    * @returns 
    */
   const renderLayoutEmbeddedPage = (layoutName, pageName) => {
-    let LayoutComponent = mergedComponentRegistry[layoutName].comp();
-    let PageComponent = mergedComponentRegistry[pageName].comp();
+    let LayoutComponent = mergedComponentRegistry[layoutName]?.comp() || BlankLayout();
+    let PageComponent = mergedComponentRegistry[pageName]?.comp() || WrappidComponent();
     /**
      * @todo
      * 
@@ -47,10 +46,25 @@ export default function LayoutManager(props) {
       pageChildrens = [pageChildrens];
     }
 
-    if (layoutChildrens?.filter(layoutItem => layoutItem?.type?.name === CoreLayoutPlaceholder.name)?.length === 0) {
-      // return <CoreComponent componentName={layoutName}>{pageChildrens}</CoreComponent>;
-      // return (<LayoutComponent><PageComponent /></LayoutComponent>);
-      return React.createElement(mergedComponentRegistry[layoutName].comp, {}, React.createElement(mergedComponentRegistry[pageName].comp));
+    /**
+     * Backward Compatibility
+     */
+    // layout has children but no placeholder
+    if (layoutChildrens?.length !== 0 && layoutChildrens?.filter(layoutItem => layoutItem?.type?.name === CoreLayoutPlaceholder.name)?.length === 0) {
+      return React.createElement(mergedComponentRegistry[layoutName]?.comp || BlankLayout, {}, React.createElement(mergedComponentRegistry[pageName].comp || Error404));
+    }
+    // layout present and has content placeholder and have page childrens
+    if (layoutChildrens?.filter(layoutPlaceholder => layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name
+      && layoutPlaceholder?.props?.id === BlankLayout.PLACEHOLDER.CONTENT)?.length > 0
+      && pageChildrens?.length > 0 && pageChildrens?.filter(pageLayoutItem => pageLayoutItem?.type?.name === CoreLayoutItem.name)?.length === 0) {
+      layoutChildrens = layoutChildrens?.map((layoutPlaceholder) => {
+        if (layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name && layoutPlaceholder?.props?.id === BlankLayout.PLACEHOLDER.CONTENT) {
+          return mergedComponentRegistry[pageName]?.comp || Error404;
+        } else {
+          return layoutPlaceholder;
+        }
+      });
+      return React.createElement(mergedComponentRegistry[layoutName]?.comp || BlankLayout, {}, layoutChildrens);
     }
     
     /**
@@ -61,23 +75,31 @@ export default function LayoutManager(props) {
     let combinedChildrens = [];
 
     if (layoutChildrens && pageChildrens) {
-      combinedChildrens = layoutChildrens?.map((layoutItem) => {
-        console.log("LAYOUT ITEM", layoutItem?.type?.name, layoutItem?.props?.id);
-        if (layoutItem?.type?.name === CoreLayoutPlaceholder.name) {
-          let pageElement = pageChildrens?.find(elem => elem?.type?.name === CoreLayoutItem.name && elem?.props?.id === layoutItem?.props?.id);
-
-          console.log("PAGE ITEM", pageElement);
+      combinedChildrens = layoutChildrens?.map((layoutPlaceholder) => {
+        if (layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name) {
+          let layoutItem = pageChildrens?.find(elem => elem?.type?.name === CoreLayoutItem.name
+            && elem?.props?.id === layoutPlaceholder?.props?.id);
           
-          if(pageElement){
-            return React.cloneElement(layoutItem, { ...layoutItem?.props, children: pageElement?.props?.children });
+          /**
+           * @todo
+           * will write something like this later on to support specific like styleClasses
+           */
+          // eslint-disable-next-line etc/no-commented-out-code
+          // let mergedProps = mergeJSON(CoreBox.validProps, [layoutPlaceholder?.props, layoutItem?.props]);
+
+          if(layoutItem){
+            return React.cloneElement(layoutItem, {
+              key         : `${layoutName}-${pageName}-${layoutItem?.props?.id}`,
+              ...{ ...layoutPlaceholder?.props, ...layoutItem?.props },
+              children    : layoutItem?.props?.children,
+              styleClasses: [...(layoutPlaceholder?.props?.styleClasses || []), ...(layoutItem?.props?.styleClasses || [])]
+            });
           }
         } else {
-          return layoutItem;
+          return layoutPlaceholder;
         }
       });
     }
-    
-    console.log("COMBAINED", combinedChildrens);
     return combinedChildrens;
   };
 
