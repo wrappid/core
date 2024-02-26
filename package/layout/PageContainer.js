@@ -109,9 +109,9 @@ export default function PageContainer(props) {
   const pageChild = () => {
     if (route?.Page?.appComponent) {
       return route?.Page?.appComponent;
-    } else if (props.page) {
+    } /* else if (props.page) {
       return props.page;
-    } else {
+    }  */else {
       return "Error404";
     }
   };

@@ -1,4 +1,6 @@
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import Error404 from "../error/Error404";
+import Error500 from "../error/Error500";
 import CoreLayoutItem from "../layout/core/CoreLayoutItem";
 import CoreLayoutPlaceholder from "../layout/core/CoreLayoutPlaceholder";
 import BlankLayoutPage from "../layout/page/BlankLayoutPage";
@@ -26,6 +28,8 @@ let ComponentsRegistry = {
   ComplexLayoutPage          : { comp: ComplexLayoutPage },
   CoreLayoutItem             : { comp: CoreLayoutItem },
   CoreLayoutPlaceholder      : { comp: CoreLayoutPlaceholder },
+  Error404                   : { comp: Error404 },
+  Error500                   : { comp: Error500 },
   FixedFooterLayoutPage      : { comp: FixedFooterLayoutPage },
   FixedHeaderFooterLayoutPage: { comp: FixedHeaderFooterLayoutPage },
   FixedHeaderLayoutPage      : { comp: FixedHeaderLayoutPage },
