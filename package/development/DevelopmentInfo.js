@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
-// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+// eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";

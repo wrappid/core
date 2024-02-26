@@ -9,8 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Logout from "./components/navigation/Logout";
 import { HTTP } from "./config/constants";
 import { CoreRoutesContext } from "./config/contextHandler";
-import Error404 from "./error/Error404";
-import Error500 from "./error/Error500";
 import PageContainer from "./layout/PageContainer";
 import { RoutesRegistry } from "./registry/RoutesRegistry";
 import { apiRequestAction } from "./store/action/appActions";
@@ -129,10 +127,11 @@ export default function CoreRoutes() {
         path="/error"
         element={
           <PageContainer
-            page={{
+            route={{ Page: { appComponent: "Error500" } }}
+            /* page={{
               auth: false,
               comp: Error500,
-            }}
+            }} */
           />
         }
       />
@@ -142,10 +141,11 @@ export default function CoreRoutes() {
         path="*"
         element={
           <PageContainer
-            page={{
+            /* page={{
               auth: false,
               comp: Error404,
-            }}
+            }} */
+            route={{ Page: { appComponent: "Error404" } }}
           />
         }
       />
