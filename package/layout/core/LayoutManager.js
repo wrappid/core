@@ -3,14 +3,14 @@ import React from "react";
 
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
-import WrappidComponent from "../../components/WrappidComponent";
+import BlankLayout from "../../components/layouts/_system/BlankLayout";
 import { ComponentRegistryContext } from "../../config/contextHandler";
-import Error404 from "../../error/Error404";
-import BlankLayout from "../BlankLayout";
+import ComponentNotFound from "../../error/ComponentNotFound";
+import LayoutMismatch from "../../error/LayoutMismatch";
 
 export default function LayoutManager(props) {
   const { pageName = "WrappidComponent", layoutName = "BlankLayout" } = props;
-  const mergedComponentRegistry = React.useContext(ComponentRegistryContext);
+  const componentRegistry = React.useContext(ComponentRegistryContext);
 
   /**
    * Rendering merged component of layout and page
@@ -22,9 +22,14 @@ export default function LayoutManager(props) {
    * @param {*} PageComponent 
    * @returns 
    */
-  const renderLayoutEmbeddedPage = (layoutName, pageName) => {
-    let LayoutComponent = mergedComponentRegistry[layoutName]?.comp() || BlankLayout();
-    let PageComponent = mergedComponentRegistry[pageName]?.comp() || WrappidComponent();
+  const renderLayoutEmbeddedPage = (layout, page) => {
+
+    let layoutName = layout || "BlankLayout";
+    let pageName = page;
+
+    let LayoutComponent = componentRegistry && layoutName && componentRegistry[layoutName]?.comp() || BlankLayout();
+    let PageComponent = componentRegistry && pageName && componentRegistry[pageName]?.comp();
+
     /**
      * @todo
      * 
@@ -33,7 +38,22 @@ export default function LayoutManager(props) {
      * 3. New Layout each-sibling n-child
      * 4. LayoutPlaceholder parent flag support in the LayoutItem
      */
-    
+
+    /**
+     * @todo
+     * check if PageComponent is undefined we will use ComponentNotFound and falls to BlankLayout
+     */
+    if (!PageComponent) {
+      if (!LayoutComponent) {
+        LayoutComponent = BlankLayout();
+      }
+      PageComponent = ComponentNotFound({ componentName: pageName, layout: false });
+    }
+
+    /**
+     * @todo
+     * get childrens from layout and page component
+     */
     let layoutChildrens = LayoutComponent?.props?.children;
 
     if (layoutChildrens && !Array.isArray(layoutChildrens)) {
@@ -41,32 +61,30 @@ export default function LayoutManager(props) {
     }
 
     let pageChildrens = PageComponent?.props?.children;
-    
+
     if (pageChildrens && !Array.isArray(pageChildrens)) {
       pageChildrens = [pageChildrens];
     }
 
     /**
-     * Backward Compatibility
+     * @todo
+     * if layout's LayoutPlaceholder and page's LayoutItem not matched
      */
-    // layout has children but no placeholder
-    if (layoutChildrens?.length !== 0 && layoutChildrens?.filter(layoutItem => layoutItem?.type?.name === CoreLayoutPlaceholder.name)?.length === 0) {
-      return React.createElement(mergedComponentRegistry[layoutName]?.comp || BlankLayout, {}, React.createElement(mergedComponentRegistry[pageName].comp || Error404));
+    let layoutPlaceholders = layoutChildrens?.filter(layoutPlaceholder => layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name);
+    let layoutItems = layoutChildrens?.filter(layoutPlaceholder => layoutPlaceholder?.type?.name === CoreLayoutItem.name);
+
+    if (layoutItems?.length > 0 && layoutPlaceholders?.length !== layoutItems?.length) {
+      return React.cloneElement(LayoutComponent, {}, LayoutMismatch());
     }
-    // layout present and has content placeholder and have page childrens
-    if (layoutChildrens?.filter(layoutPlaceholder => layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name
-      && layoutPlaceholder?.props?.id === BlankLayout.PLACEHOLDER.CONTENT)?.length > 0
-      && pageChildrens?.length > 0 && pageChildrens?.filter(pageLayoutItem => pageLayoutItem?.type?.name === CoreLayoutItem.name)?.length === 0) {
-      layoutChildrens = layoutChildrens?.map((layoutPlaceholder) => {
-        if (layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name && layoutPlaceholder?.props?.id === BlankLayout.PLACEHOLDER.CONTENT) {
-          return mergedComponentRegistry[pageName]?.comp || Error404;
-        } else {
-          return layoutPlaceholder;
-        }
-      });
-      return React.createElement(mergedComponentRegistry[layoutName]?.comp || BlankLayout, {}, layoutChildrens);
+
+    /**
+     * @todo
+     * if page's LayoutItem is 0
+     */
+    if (layoutItems?.length === 0) {
+      return React.cloneElement(LayoutComponent, {}, PageComponent);
     }
-    
+
     /**
      * @todo
      * One layer siblings is done as of now
@@ -79,7 +97,7 @@ export default function LayoutManager(props) {
         if (layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name) {
           let layoutItem = pageChildrens?.find(elem => elem?.type?.name === CoreLayoutItem.name
             && elem?.props?.id === layoutPlaceholder?.props?.id);
-          
+
           /**
            * @todo
            * will write something like this later on to support specific like styleClasses
@@ -87,7 +105,7 @@ export default function LayoutManager(props) {
           // eslint-disable-next-line etc/no-commented-out-code
           // let mergedProps = mergeJSON(CoreBox.validProps, [layoutPlaceholder?.props, layoutItem?.props]);
 
-          if(layoutItem){
+          if (layoutItem) {
             return React.cloneElement(layoutItem, {
               key         : `${layoutName}-${pageName}-${layoutItem?.props?.id}`,
               ...{ ...layoutPlaceholder?.props, ...layoutItem?.props },
