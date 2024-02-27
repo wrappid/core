@@ -12,8 +12,8 @@ export default function ThreeColumnLayoutPage() {
   return (
     <CoreGrid>
 
-      <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
-        <CoreBox>
+      <CoreLayoutItem>
+        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
           <CoreTypographyBody2>
                 Fisrt setion
           </CoreTypographyBody2>
@@ -21,8 +21,8 @@ export default function ThreeColumnLayoutPage() {
 
       </CoreLayoutItem>
 
-      <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
-        <CoreBox>
+      <CoreLayoutItem>
+        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
           <CoreTypographyBody2>
                 Second setion
           </CoreTypographyBody2>
@@ -31,13 +31,13 @@ export default function ThreeColumnLayoutPage() {
           
       </CoreLayoutItem>
 
-      <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3}>
-
-        <CoreTypographyBody2>
+      <CoreLayoutItem>
+       
+        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3}>
+          <CoreTypographyBody2>
                 Third setion
-        </CoreTypographyBody2>
+          </CoreTypographyBody2>
 
-        <CoreBox>
         </CoreBox>
 
       </CoreLayoutItem>

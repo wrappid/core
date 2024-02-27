@@ -17,4 +17,4 @@ export default function HeaderLayout() {
   );
 }
 
-HeaderLayout.PLACEHOLDER = { CONTENT: "content", HEADER: "header" };
+HeaderLayout.PLACEHOLDER = { CONTENT: "headerContent", HEADER: "header" };

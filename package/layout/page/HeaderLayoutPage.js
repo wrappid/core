@@ -12,8 +12,8 @@ export default function HeaderLayoutPage() {
     <>
 
       <CoreLayoutItem
-        id={HeaderLayout.PLACEHOLDER.HEADER}
-        styleClasses={[
+        id={HeaderLayout.PLACEHOLDER.HEADER}>
+        <CoreBox styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_25,
           CoreClasses.BG.BG_PRIMARY,
@@ -21,14 +21,13 @@ export default function HeaderLayoutPage() {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
         ]}>
-        <CoreBox>
           <CoreTypographyBody1>Header content</CoreTypographyBody1> 
         </CoreBox>
       </CoreLayoutItem>
 
       <CoreLayoutItem
-        id={HeaderLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[
+        id={HeaderLayout.PLACEHOLDER.CONTENT}>
+        <CoreBox styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_75,
           CoreClasses.BG.BG_WARNING,
@@ -36,7 +35,6 @@ export default function HeaderLayoutPage() {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
         ]}>
-        <CoreBox>
           <CoreTypographyBody1>Outlet Content</CoreTypographyBody1>
         </CoreBox>
       </CoreLayoutItem>

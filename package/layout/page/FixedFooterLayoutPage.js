@@ -31,7 +31,7 @@ export default function FixedFooterLayoutPage() {
         styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_25,
-          CoreClasses.BG.BG_WARNING,
+          CoreClasses.BG.BG_PRIMARY,
           CoreClasses.DISPLAY.FLEX,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
@@ -39,6 +39,10 @@ export default function FixedFooterLayoutPage() {
         ]}>
         <CoreBox>
           <CoreTypographyBody1>Fixed Footer content</CoreTypographyBody1>
+
+          <CoreBox styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.HEIGHT.H_50, CoreClasses.BG.BG_INFO_DARK]}>
+
+          </CoreBox>
         </CoreBox>  
       </CoreLayoutItem>
 

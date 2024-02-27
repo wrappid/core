@@ -1,4 +1,10 @@
 export const RoutesRegistry = {
+  CenteredBlankLayoutPage: {
+    Page        : { appComponent: "CenteredBlankLayoutPage", layout: "CenteredBlankLayout" },
+    authRequired: false,
+    entityRef   : "centerdBlank",
+    url         : "layout/centerdBlank"
+  },
   blankLayout: {
     Page        : { appComponent: "BlankLayoutPage", layout: "BlankLayout" },
     authRequired: false,
@@ -26,7 +32,7 @@ export const RoutesRegistry = {
   fixedHeaderLayout: {
     Page        : { appComponent: "FixedHeaderLayoutPage", layout: "FixedHeaderLayout" },
     authRequired: false,
-    entityRef   : "fixedheaderLayout",
+    entityRef   : "fixedheader",
     url         : "layout/fixedHeader"
   },
   footerLayout: {

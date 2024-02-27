@@ -9,13 +9,7 @@ export default function HCenteredBlankLayout() {
     <>
       <CoreLayoutPlaceholder
         id={HCenteredBlankLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[
-          CoreClasses.HEIGHT.VH_100,
-          CoreClasses.WIDTH.VW_100,
-          CoreClasses.DISPLAY.FLEX,
-          CoreClasses.FLEX.DIRECTION_COLUMN,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
-        ]} />
+        styleClasses={[CoreClasses.LAYOUT.H_CENTERED_BLANK]} />
     </>
   );
 }

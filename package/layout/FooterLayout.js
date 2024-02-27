@@ -16,4 +16,4 @@ export default function FooterLayout() {
     </>
   );
 }
-FooterLayout.PLACEHOLDER = { CONTENT: "content", FOOTER: "footer" };
+FooterLayout.PLACEHOLDER = { CONTENT: "footerContent", FOOTER: "footer" };

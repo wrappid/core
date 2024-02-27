@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 
@@ -53,7 +55,6 @@ const CoreClasses = {
    * Layout
    **************************************************/
   LAYOUT: {
-    
     AUTH_BANNER: "authBanner",
     
     AUTH_CONTAINER: "authContainer",
@@ -62,6 +63,11 @@ const CoreClasses = {
     
     AUTH_FORM_CONTAINER: "authFormContainer",
     
+    BLANK           : "blankLayout",
+    CENTERED_BLANK  : "centeredBlankLayout",
+    V_CENTERED_BLANK: "vCenteredBlankLayout",
+    H_CENTERED_BLANK: "hCenteredBlankLayout",
+   
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
     BUTTON_MARGIN: "buttonMargin",

@@ -19,4 +19,4 @@ export default function FixedHeaderFooterLayout() {
   );
 }
 
-FixedHeaderFooterLayout.PLACEHOLDER = { CONTENT: "content", FOOTER: "FixedFooter", HEADER: "fixedHeader" };
+FixedHeaderFooterLayout.PLACEHOLDER = { CONTENT: "FixedHFContent", FOOTER: "FixedHFFooter", HEADER: "fixedHFHeader" };

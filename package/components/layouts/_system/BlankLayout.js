@@ -7,7 +7,9 @@ import CoreClasses from "../../../styles/CoreClasses";
 export default function BlankLayout(props) {
   return (
     <>
-      <CoreLayoutPlaceholder id={BlankLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.WIDTH.VW_100]}>{props?.children}</CoreLayoutPlaceholder>
+      <CoreLayoutPlaceholder 
+        id={BlankLayout.PLACEHOLDER.CONTENT} 
+        styleClasses={[CoreClasses.LAYOUT.BLANK]}>{props?.children}</CoreLayoutPlaceholder>
     </>
   );
 }

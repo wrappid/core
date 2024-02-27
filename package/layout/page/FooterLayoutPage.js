@@ -11,8 +11,8 @@ export default function FooterLayoutPage() {
   return (
     <>
       <CoreLayoutItem
-        id={FooterLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[
+        id={FooterLayout.PLACEHOLDER.CONTENT}>
+        <CoreBox styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_75,
           CoreClasses.BG.BG_PRIMARY,
@@ -20,14 +20,13 @@ export default function FooterLayoutPage() {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
         ]}>
-        <CoreBox>
           <CoreTypographyBody1>Content above footer</CoreTypographyBody1>
         </CoreBox>  
       </CoreLayoutItem>
 
       <CoreLayoutItem
-        id={FooterLayout.PLACEHOLDER.FOOTER}
-        styleClasses={[
+        id={FooterLayout.PLACEHOLDER.FOOTER}>
+        <CoreBox styleClasses={[
           CoreClasses.WIDTH.VW_100,
           CoreClasses.HEIGHT.VH_25,
           CoreClasses.BG.BG_WARNING,
@@ -35,7 +34,6 @@ export default function FooterLayoutPage() {
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
         ]}>
-        <CoreBox>
           <CoreTypographyBody1>Footer content</CoreTypographyBody1>
         </CoreBox>  
       </CoreLayoutItem>

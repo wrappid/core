@@ -1,4 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
+// eslint-disable-next-line import/no-unresolved 
 import { DefaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT, BaseStyle } from "@wrappid/styles";
 
 /**
@@ -213,9 +215,9 @@ export default class DefaultCoreStyles extends BaseStyle {
     
       parentIconItem: {},
     
-      parentItem: { padding: 0 + IMPORTANT },
-    
+      parentItem    : { padding: 0 + IMPORTANT },
       parentTextItem: {},
+    
       popoverContent: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "70vw" + IMPORTANT,
@@ -264,8 +266,7 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.px1,
       },
     
-      tableRowActionPopover: { backgroundColor: "transparent" + IMPORTANT },
-    
+      tableRowActionPopover                 : { backgroundColor: "transparent" + IMPORTANT },
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
@@ -281,7 +282,33 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.textWarningDark,
         ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
-      }
+      },
+      /**
+       * BELOW STYLES ARE REALTED TO LAYOUTS AND SHOULD NOT BE CHANGED.
+       *  */ 
+      blankLayout        : { ...this.defaultUtilityStyles.vw100 },
+      centeredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.justifyContentCenter,
+        ...this.defaultUtilityStyles.alignItemsCenter,
+      },
+      vCenteredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.justifyContentCenter,
+      },
+      hCenteredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.alignItemsCenter,
+      },
     };
   }
 }

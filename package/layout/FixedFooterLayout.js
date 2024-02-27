@@ -17,4 +17,4 @@ export default function FixedFooterLayout() {
   );
 }
 
-FixedFooterLayout.PLACEHOLDER = { CONTENT: "content", FOOTER: "fixedFooter" };
+FixedFooterLayout.PLACEHOLDER = { CONTENT: "fixedFooterContent", FOOTER: "fixedFooter" };

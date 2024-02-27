@@ -17,4 +17,4 @@ export default function FixedHeaderLayout() {
   );
 }
 
-FixedHeaderLayout.PLACEHOLDER = { CONTENT: "content", HEADER: "fixedHeader" };
+FixedHeaderLayout.PLACEHOLDER = { CONTENT: "Content", HEADER: "Header" };
