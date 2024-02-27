@@ -1,6 +1,8 @@
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import ComponentNotFound from "../error/ComponentNotFound";
 import Error404 from "../error/Error404";
 import Error500 from "../error/Error500";
+import LayoutMismatch from "../error/LayoutMismatch";
 import CoreLayoutItem from "../layout/core/CoreLayoutItem";
 import CoreLayoutPlaceholder from "../layout/core/CoreLayoutPlaceholder";
 import BlankLayoutPage from "../layout/page/BlankLayoutPage";
@@ -26,6 +28,7 @@ let ComponentsRegistry = {
   ...LayoutComponentsRegistry,
   BlankLayoutPage            : { comp: BlankLayoutPage },
   ComplexLayoutPage          : { comp: ComplexLayoutPage },
+  ComponentNotFound          : { comp: ComponentNotFound },
   CoreLayoutItem             : { comp: CoreLayoutItem },
   CoreLayoutPlaceholder      : { comp: CoreLayoutPlaceholder },
   Error404                   : { comp: Error404 },
@@ -36,6 +39,7 @@ let ComponentsRegistry = {
   FooterLayoutPage           : { comp: FooterLayoutPage },
   HeaderFooterLayoutPage     : { comp: HeaderFooterLayoutPage },
   HeaderLayoutPage           : { comp: HeaderLayoutPage },
+  LayoutMismatch             : { comp: LayoutMismatch },
   ThreeColumnLayoutPage      : { comp: ThreeColumnLayoutPage },
   TwoColumnLayoutPage        : { comp: TwoColumnLayoutPage }
 };

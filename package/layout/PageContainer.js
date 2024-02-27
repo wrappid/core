@@ -52,13 +52,13 @@ export default function PageContainer(props) {
   mergedResourceRegistry = useContext(CoreResourceContext);
   functionsRegistry = useContext(FunctionsRegistryContext);
   validationsRegistry = useContext(ValidationsRegistryContext);
-  
+
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const auth = useSelector((state) => state.auth);
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
     (state) => state.forms
   );
-    
+
   const [dialog, setDialog] = React.useState({});
   const dialogStates = { dialog, setDialog };
 
@@ -100,24 +100,28 @@ export default function PageContainer(props) {
     // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
-  const pageChild = () => {
-    if (route?.Page?.appComponent) {
-      return route?.Page?.appComponent;
-    } else {
-      return "Error404";
-    }
-  };
-
   /**
-   * This function will return page layout component based on the JSON schema
+   * This function will return layout component based on the route JSON schema
    * 
-   * @returns PageLayout Component
-   */
+   * @returns Layout Component
+  */
   const pageLayout = () => {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
     } else {
-      return auth?.uid ? defaultAuthenticatedLayout : defaultLayout;
+      return (auth?.uid ? defaultAuthenticatedLayout : defaultLayout) || undefined;
+    }
+  };
+  /**
+   * This function will return page component based on the route JSON schema
+   * 
+   * @returns Page Component
+   */
+  const pageChild = () => {
+    if (route?.Page?.appComponent) {
+      return route?.Page?.appComponent;
+    } else {
+      return undefined;
     }
   };
 
@@ -133,7 +137,7 @@ export default function PageContainer(props) {
         route={route}
         coreClasses={CoreClasses}>
         <CoreModal open={true} />
-        
+
         <CoreDialogContext.Provider value={dialogStates}>
           <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
 

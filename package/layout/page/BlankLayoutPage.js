@@ -2,9 +2,9 @@
 import React from "react";
 
 import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
+import BlankLayout from "../../components/layouts/_system/BlankLayout";
 import CoreBox from "../../components/layouts/CoreBox";
 import CoreClasses from "../../styles/CoreClasses";
-import BlankLayout from "../BlankLayout";
 import CoreLayoutItem from "../core/CoreLayoutItem";
 
 export default function BlankLayoutPage() {

@@ -14,7 +14,7 @@ export default function DevelopmentInfo() {
   );
 
   return (config?.wrappid?.environment === "development") && (
-    <CoreSection styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.WIDTH.W_100]}>
+    <CoreSection styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.WIDTH.VW_100]}>
       <CoreTypographyBody1>Development Info</CoreTypographyBody1>
     </CoreSection>
   );
