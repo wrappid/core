@@ -49,7 +49,7 @@ function OnlineStatusSnackbar() {
       open={openSnackbar}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       autoHideDuration={isOnline ? 6000 : null}
-      message={`${isOnline ? "📗 You are connected" : "📕 You are not connected"} to the internet.`}
+      message={`${isOnline ? "🟢 You are connected" : "🔴 You are not connected"} to the internet.`}
       onClose={handleCloseSnackbar}
     />
   );
