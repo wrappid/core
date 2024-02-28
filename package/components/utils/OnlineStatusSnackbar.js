@@ -32,7 +32,9 @@ function OnlineStatusSnackbar() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
-    setOpenSnackbar(true);
+    if (!isOnline) {
+      setOpenSnackbar(true);
+    } 
   }, [isOnline]);
 
   const handleCloseSnackbar = (event, reason) => {
@@ -46,8 +48,8 @@ function OnlineStatusSnackbar() {
     <CoreSnackbar
       open={openSnackbar}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      autoHideDuration={6000}
-      message={`You are ${isOnline ? "connected" : "not connected"} to the internet.`}
+      autoHideDuration={isOnline ? 6000 : null}
+      message={`${isOnline ? "📗 You are connected" : "📕 You are not connected"} to the internet.`}
       onClose={handleCloseSnackbar}
     />
   );
