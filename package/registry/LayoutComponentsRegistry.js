@@ -4,6 +4,9 @@ import HCenteredBlankLayout from "../components/layouts/_system/HCenteredBlankLa
 import HeaderFooterLayout from "../components/layouts/_system/HeaderFooterLayout";
 import VCenteredBlankLayout from "../components/layouts/_system/VCenteredBlankLayout";
 import ComplexLayout from "../layout/ComplexLayout";
+import FixedFooterLayout from "../layout/FixedFooterLayout";
+import FixedHeaderFooterLayout from "../layout/FixedHeaderFooterLayout";
+import FixedHeaderLayout from "../layout/FixedHeaderLayout";
 import FooterLayout from "../layout/FooterLayout";
 import HeaderLayout from "../layout/HeaderLayout";
 import ThreeColumnLayout from "../layout/ThreeColumnLayout";
@@ -20,6 +23,18 @@ const LayoutComponentsRegistry = {
   },
   ComplexLayout: {
     comp  : ComplexLayout,
+    layout: true
+  },
+  FixedFooterLayout: {
+    comp  : FixedFooterLayout,
+    layout: true
+  },
+  FixedHeaderFooterLayout: {
+    comp  : FixedHeaderFooterLayout,
+    layout: true
+  },
+  FixedHeaderLayout: {
+    comp  : FixedHeaderLayout,
     layout: true
   },
   FooterLayout: {

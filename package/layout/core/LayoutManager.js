@@ -74,7 +74,7 @@ export default function LayoutManager(props) {
     let layoutItems = pageChildrens?.filter(layoutItem => layoutItem?.type?.name === CoreLayoutItem.name);
 
     if (layoutItems?.length > 0 && layoutPlaceholders?.length !== layoutItems?.length) {
-      return React.cloneElement(LayoutComponent, {}, LayoutMismatch());
+      return React.cloneElement(LayoutComponent, {}, LayoutMismatch({ layoutName, pageName }));
     }
 
     /**

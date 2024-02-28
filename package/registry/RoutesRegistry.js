@@ -5,6 +5,18 @@ export const RoutesRegistry = {
     entityRef   : "centerdBlank",
     url         : "layout/centerdBlank"
   },
+  HCenteredBlankLayoutPage: {
+    Page        : { appComponent: "HCenteredBlankLayoutPage", layout: "HCenteredBlankLayout" },
+    authRequired: false,
+    entityRef   : "HcenterdBlank",
+    url         : "layout/horizontal-centerdBlank"
+  },
+  VCenteredBlankLayoutPage: {
+    Page        : { appComponent: "VCenteredBlankLayoutPage", layout: "VCenteredBlankLayout" },
+    authRequired: false,
+    entityRef   : "VcenterdBlank",
+    url         : "layout/vertical-centerdBlank"
+  },
   blankLayout: {
     Page        : { appComponent: "BlankLayoutPage", layout: "BlankLayout" },
     authRequired: false,

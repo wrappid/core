@@ -6,7 +6,7 @@ import CoreStack from "../components/layouts/CoreStack";
 import CoreClasses from "../styles/CoreClasses";
 
 function LayoutMismatch(props) {
-  const { layoutName, pageName } = props;
+  const { layoutName, pageName } = props || {};
 
   return (
     <CoreStack

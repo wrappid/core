@@ -2,7 +2,6 @@
 import React from "react";
 
 import CoreTypographyBody2 from "../../components/dataDisplay/CoreTypographyBody2";
-import CoreBox from "../../components/layouts/CoreBox";
 import CoreGrid from "../../components/layouts/CoreGrid";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
@@ -10,38 +9,31 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 
 export default function ThreeColumnLayoutPage() {
   return (
-    <CoreGrid>
+    <>
+      <CoreGrid styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_CONTENT_CENTER]}>
 
-      <CoreLayoutItem>
-        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
           <CoreTypographyBody2>
-                Fisrt setion
-          </CoreTypographyBody2>
-        </CoreBox>
-
-      </CoreLayoutItem>
-
-      <CoreLayoutItem>
-        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
-          <CoreTypographyBody2>
-                Second setion
+          Fisrt setion
           </CoreTypographyBody2>
 
-        </CoreBox>
-          
-      </CoreLayoutItem>
+        </CoreLayoutItem>
 
-      <CoreLayoutItem>
-       
-        <CoreBox gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_WARNING, CoreClasses.HEIGHT.VH_100]}>
           <CoreTypographyBody2>
-                Third setion
+          Second setion
           </CoreTypographyBody2>
 
-        </CoreBox>
+        </CoreLayoutItem>
 
-      </CoreLayoutItem>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} styleClasses={[CoreClasses.BG.BG_ERROR_DARK, CoreClasses.HEIGHT.VH_100]}>
+          <CoreTypographyBody2>
+          Third setion
+          </CoreTypographyBody2>
 
-    </CoreGrid>
+        </CoreLayoutItem>
+
+      </CoreGrid>
+    </>
   );
 }

@@ -21,9 +21,7 @@ export default function FixedFooterLayoutPage() {
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.OVERFLOW.OVERFLOW_Y_SCROLL
         ]}>
-        <CoreBox>
-          <CoreTypographyBody1>Content above footer</CoreTypographyBody1>
-        </CoreBox>  
+        <CoreTypographyBody1>Content above footer</CoreTypographyBody1> 
       </CoreLayoutItem>
 
       <CoreLayoutItem
@@ -37,13 +35,11 @@ export default function FixedFooterLayoutPage() {
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.POSITION.POSITION_FIXED
         ]}>
-        <CoreBox>
-          <CoreTypographyBody1>Fixed Footer content</CoreTypographyBody1>
+        <CoreTypographyBody1>Fixed Footer content</CoreTypographyBody1>
 
-          <CoreBox styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.HEIGHT.H_50, CoreClasses.BG.BG_INFO_DARK]}>
+        <CoreBox styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.HEIGHT.H_50, CoreClasses.BG.BG_INFO_DARK]}>
 
-          </CoreBox>
-        </CoreBox>  
+        </CoreBox> 
       </CoreLayoutItem>
 
     </>

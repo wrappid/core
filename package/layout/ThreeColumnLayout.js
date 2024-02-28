@@ -2,23 +2,19 @@
 import React from "react";
 
 import CoreLayoutPlaceholder from "./core/CoreLayoutPlaceholder";
-import CoreBox from "../components/layouts/CoreBox";
 import CoreGrid from "../components/layouts/CoreGrid";
+import CoreClasses from "../styles/CoreClasses";
 
 export default function ThreeColumnLayout() {
   return (
-    <CoreGrid>
-      <CoreBox gridProps={{ gridSize: { md: 4 } }}>
-        <CoreLayoutPlaceholder id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} />
-      </CoreBox>
-
-      <CoreBox gridProps={{ gridSize: { md: 4 } }}>
-        <CoreLayoutPlaceholder id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} />
-      </CoreBox>
-
-      <CoreBox gridProps={{ gridSize: { md: 4 } }}>
-        <CoreLayoutPlaceholder id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} />
-      </CoreBox>
+    <CoreGrid styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_CONTENT_CENTER]}>
+      
+      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} />
+      
+      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} />
+      
+      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} />
+      
     </CoreGrid>
   );
 }
