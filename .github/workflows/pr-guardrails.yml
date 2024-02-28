@@ -49,8 +49,8 @@ jobs:
 
       - name: Install commitlint
         run: |
-          npm install --force conventional-changelog-conventionalcommits
-          npm install --force commitlint@latest
+          npm ci
+          npm i conventional-changelog-conventionalcommits
 
       - name: Print versions
         run: |
@@ -90,7 +90,7 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm install --force eslint
+          npm ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.WRAPPID_REGISTRY_TOKEN}}
 
@@ -99,7 +99,6 @@ jobs:
           node --version
           npm --version
           npx eslint --version
-
 
       - name: Find added/changed files
         id: git_diff
