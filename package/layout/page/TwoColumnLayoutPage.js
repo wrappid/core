@@ -2,25 +2,24 @@
 import React from "react";
 
 import CoreTypographyBody2 from "../../components/dataDisplay/CoreTypographyBody2";
+import TwoColumnLayout from "../../components/layouts/_system/TwoColumnLayout";
 import CoreGrid from "../../components/layouts/CoreGrid";
-import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
-import TwoColumnLayout from "../TwoColumnLayout";
 
 export default function TwoColumnLayoutPage() {
   return (
     <>
       <CoreGrid>
 
-        <CoreLayoutItem gridProps={{ gridSize: { md: 6 } }} id={TwoColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 6 } }} id={TwoColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[]}>
           <CoreTypographyBody2>
-                Fisrt setion
+          This is first column of TwoColumnLayout
           </CoreTypographyBody2>
         </CoreLayoutItem>
 
-        <CoreLayoutItem gridProps={{ gridSize: { md: 6 } }} id={TwoColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_SECONDARY, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 6 } }} id={TwoColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[]}>
           <CoreTypographyBody2>
-                Second setion
+          This is second column of TwoColumnLayout
           </CoreTypographyBody2>
         </CoreLayoutItem>
 

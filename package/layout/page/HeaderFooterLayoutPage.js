@@ -3,22 +3,21 @@ import React from "react";
 
 import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
 import HeaderFooterLayout from "../../components/layouts/_system/HeaderFooterLayout";
-import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
 
 export default function HeaderFooterLayoutPage() {
   return (
     <>
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.HEADER} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_25]}>
-        <CoreTypographyBody1>Header content</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.HEADER} styleClasses={[]}>
+        <CoreTypographyBody1>This is header section of HeaderFooterLayout</CoreTypographyBody1>
       </CoreLayoutItem>
 
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.CONTENT} styleClasses={[CoreClasses.BG.BG_WARNING, CoreClasses.HEIGHT.VH_50]}>
-        <CoreTypographyBody1>Layout content</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.CONTENT} styleClasses={[]}>
+        <CoreTypographyBody1>This is content section of HeaderFooterLayout</CoreTypographyBody1>
       </CoreLayoutItem>
 
-      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.FOOTER} styleClasses={[CoreClasses.BG.BG_INFO, CoreClasses.HEIGHT.VH_25]}>
-        <CoreTypographyBody1>Footer content</CoreTypographyBody1>
+      <CoreLayoutItem id={HeaderFooterLayout.PLACEHOLDER.FOOTER} styleClasses={[]}>
+        <CoreTypographyBody1>This is footer section of HeaderFooterLayout</CoreTypographyBody1>
       </CoreLayoutItem>
     </>
   );

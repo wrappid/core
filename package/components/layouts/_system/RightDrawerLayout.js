@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
-import CoreLayoutPlaceholder from "./core/CoreLayoutPlaceholder";
-import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
-import CoreBox from "../components/layouts/CoreBox";
-import CoreClasses from "../styles/CoreClasses";
+import CoreLayoutPlaceholder from "../../../layout/core/CoreLayoutPlaceholder";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreBox from "../CoreBox";
 
 /* Right Drawer with header */
 export default function RightDrawerLayout() {

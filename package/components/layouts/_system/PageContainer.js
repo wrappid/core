@@ -6,25 +6,25 @@ import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
-import CoreDialog from "../components/feedback/CoreDialog";
-import CoreModal from "../components/utils/CoreModal";
-import OnlineStatusSnackbar from "../components/utils/OnlineStatusSnackbar";
 import {
   ComponentRegistryContext,
   CoreDialogContext,
   CoreResourceContext,
   FunctionsRegistryContext,
   ValidationsRegistryContext
-} from "../config/contextHandler";
-import DevelopmentInfo from "../development/DevelopmentInfo";
-import { CoreDomNavigate } from "../helper/routerHelper";
-import ErrorBoundary from "../middleware/ErrorBoundary";
-import { RESET_LOADING } from "../store/types/appTypes";
-import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
-import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
-import CoreClasses from "../styles/CoreClasses";
+} from "../../../config/contextHandler";
+import DevelopmentInfo from "../../../development/DevelopmentInfo";
+import { CoreDomNavigate } from "../../../helper/routerHelper";
+import ErrorBoundary from "../../../middleware/ErrorBoundary";
+import { RESET_LOADING } from "../../../store/types/appTypes";
+import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../../../store/types/authTypes";
+import { UPDATE_HELPER_FLAG } from "../../../store/types/formTypes";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreDialog from "../../feedback/CoreDialog";
+import CoreModal from "../../utils/CoreModal";
+import OnlineStatusSnackbar from "../../utils/OnlineStatusSnackbar";
 // eslint-disable-next-line import/order
-import LayoutManager from "./core/LayoutManager";
+import LayoutManager from "../../../layout/core/LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};

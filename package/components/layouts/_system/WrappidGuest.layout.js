@@ -1,0 +1,41 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { WrappidDataContext } from "@wrappid/styles";
+
+import CoreClasses from "../../../styles/CoreClasses";
+import ThemeSelector from "../../../theme/ThemeSelector";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreBox from "../CoreBox";
+import CoreStack from "../CoreStack";
+
+export default function WrappidGuestLayout(props) {
+  const { children } = props || { children: null };
+
+  const { config: { packageInfo } } = React.useContext(WrappidDataContext);
+
+  return (
+    <>
+      {children}
+
+      <CoreBox styleClasses={[
+        CoreClasses.DISPLAY.FLEX,
+        CoreClasses.FLEX.DIRECTION_ROW,
+        CoreClasses.PADDING.P2,
+        CoreClasses.BG.BG_PRIMARY,
+        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN
+      ]}>
+        <CoreTypographyBody1>{packageInfo?.name}</CoreTypographyBody1>
+
+        <CoreTypographyBody1>Wrappid ©{new Date().getFullYear()}</CoreTypographyBody1>
+
+        <CoreStack direction="row">
+          <ThemeSelector />
+
+          <CoreTypographyBody1>Version: {packageInfo?.version}</CoreTypographyBody1>
+        </CoreStack>
+      </CoreBox>
+    </>
+  );
+}

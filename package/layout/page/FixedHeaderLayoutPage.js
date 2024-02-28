@@ -1,21 +1,25 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
-import CoreClasses from "../../styles/CoreClasses";
+import CoreTypographyBody1 from "../../components/dataDisplay/CoreTypographyBody1";
+import FixedHeaderLayout from "../../components/layouts/_system/FixedHeaderLayout";
 import CoreLayoutItem from "../core/CoreLayoutItem";
-import FixedHeaderLayout from "../FixedHeaderLayout";
 
 export default function FixedHeaderLayoutPage() {
   return (
     <>  
       <CoreLayoutItem
         id={FixedHeaderLayout.PLACEHOLDER.HEADER}
-        styleClasses={[CoreClasses.WIDTH.VW_100, CoreClasses.HEIGHT.VH_25, CoreClasses.BG.BG_SECONDARY, CoreClasses.POSITION.POSITION_FIXED]}>
+        styleClasses={[]}>
+        <CoreTypographyBody1>This is header section of FixedHeaderLayout</CoreTypographyBody1>
       </CoreLayoutItem>
     
       <CoreLayoutItem
         id={FixedHeaderLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[CoreClasses.WIDTH.VW_100, CoreClasses.HEIGHT.VH_75, CoreClasses.BG.BG_WARNING, CoreClasses.OVERFLOW.OVERFLOW_Y_SCROLL]}>
+        styleClasses={[]}>
+        <CoreTypographyBody1>
+          This is content section of FixedHeaderLayout
+        </CoreTypographyBody1>
       </CoreLayoutItem>
     </>
   );

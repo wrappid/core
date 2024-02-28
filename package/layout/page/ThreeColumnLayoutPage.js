@@ -2,33 +2,32 @@
 import React from "react";
 
 import CoreTypographyBody2 from "../../components/dataDisplay/CoreTypographyBody2";
+import ThreeColumnLayout from "../../components/layouts/_system/ThreeColumnLayout";
 import CoreGrid from "../../components/layouts/CoreGrid";
-import CoreClasses from "../../styles/CoreClasses";
 import CoreLayoutItem from "../core/CoreLayoutItem";
-import ThreeColumnLayout from "../ThreeColumnLayout";
 
 export default function ThreeColumnLayoutPage() {
   return (
     <>
-      <CoreGrid styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_CONTENT_CENTER]}>
+      <CoreGrid styleClasses={[]}>
 
-        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[CoreClasses.BG.BG_PRIMARY, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} styleClasses={[]}>
           <CoreTypographyBody2>
-          Fisrt setion
+          This is fisrt column of ThreeColumnLayout
           </CoreTypographyBody2>
 
         </CoreLayoutItem>
 
-        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[CoreClasses.BG.BG_WARNING, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} styleClasses={[]}>
           <CoreTypographyBody2>
-          Second setion
+          This is second column of ThreeColumnLayout
           </CoreTypographyBody2>
 
         </CoreLayoutItem>
 
-        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} styleClasses={[CoreClasses.BG.BG_ERROR_DARK, CoreClasses.HEIGHT.VH_100]}>
+        <CoreLayoutItem gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} styleClasses={[]}>
           <CoreTypographyBody2>
-          Third setion
+           This is third column of ThreeColumnLayout
           </CoreTypographyBody2>
 
         </CoreLayoutItem>
