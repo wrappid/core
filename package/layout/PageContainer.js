@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreModal from "../components/utils/CoreModal";
+import OnlineStatusSnackbar from "../components/utils/OnlineStatusSnackbar";
 import {
   ComponentRegistryContext,
   CoreDialogContext,
@@ -131,6 +132,8 @@ export default function PageContainer(props) {
     <>
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
       </ErrorBoundary>
+
+      <OnlineStatusSnackbar/>
 
       <NativePageContainer
         uid={auth?.uid}
