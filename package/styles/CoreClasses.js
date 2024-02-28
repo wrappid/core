@@ -55,19 +55,12 @@ const CoreClasses = {
    * Layout
    **************************************************/
   LAYOUT: {
-    AUTH_BANNER: "authBanner",
-    
-    AUTH_CONTAINER: "authContainer",
-    
-    AUTH_FORM: "authForm",
-    
-    AUTH_FORM_CONTAINER: "authFormContainer",
-    
+
     BLANK           : "blankLayout",
     CENTERED_BLANK  : "centeredBlankLayout",
     V_CENTERED_BLANK: "vCenteredBlankLayout",
     H_CENTERED_BLANK: "hCenteredBlankLayout",
-   
+
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
     BUTTON_MARGIN: "buttonMargin",
