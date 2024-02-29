@@ -24,7 +24,7 @@ import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes
 import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
-import LayoutManager from "./core/LayoutManager";
+import LayoutManager from "./LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};

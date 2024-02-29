@@ -3,7 +3,7 @@ import React from "react";
 
 import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
 // eslint-disable-next-line import/order
-import CoreLayoutPlaceholder from "../../../layout/core/CoreLayoutPlaceholder";
+import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 
 export default function FixedHeaderLayout() {
   return (

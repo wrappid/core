@@ -3,10 +3,10 @@ import React from "react";
 
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
-import BlankLayout from "../../components/layouts/_system/BlankLayout";
-import { ComponentRegistryContext } from "../../config/contextHandler";
-import ComponentNotFound from "../../error/ComponentNotFound";
-import LayoutMismatch from "../../error/LayoutMismatch";
+import BlankLayout from "../components/layouts/_system/BlankLayout";
+import { ComponentRegistryContext } from "../config/contextHandler";
+import ComponentNotFound from "../error/ComponentNotFound";
+import LayoutMismatch from "../error/LayoutMismatch";
 
 export default function LayoutManager(props) {
   const { pageName = "WrappidComponent", layoutName = "BlankLayout" } = props;

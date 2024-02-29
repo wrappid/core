@@ -1,6 +1,6 @@
 import React from "react";
 
-import CoreBox from "../../components/layouts/CoreBox";
+import CoreBox from "../components/layouts/CoreBox";
 
 export default function CoreLayoutItem(props) {
   const { id, children, ...restProps } = props;

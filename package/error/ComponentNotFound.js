@@ -3,7 +3,7 @@ import React from "react";
 
 import CoreH1 from "../components/dataDisplay/CoreH1";
 import CoreStack from "../components/layouts/CoreStack";
-import CoreLayoutItem from "../layout/core/CoreLayoutItem";
+import CoreLayoutItem from "../layout/CoreLayoutItem";
 import CoreClasses from "../styles/CoreClasses";
 
 function ComponentNotFound(props) {

@@ -54,12 +54,12 @@ const CoreClasses = {
   /**************************************************
    * Layout
    **************************************************/
-  LAYOUT: {  
-    BLANK           : "blankLayout",
-    CENTERED_BLANK  : "centeredBlankLayout",
-    V_CENTERED_BLANK: "vCenteredBlankLayout",
-    H_CENTERED_BLANK: "hCenteredBlankLayout",
-   
+  LAYOUT: {
+
+    BLANK              : "blankLayout",
+    CENTERED_BLANK     : "centeredBlankLayout",
+    V_CENTERED_BLANK   : "vCenteredBlankLayout",
+    H_CENTERED_BLANK   : "hCenteredBlankLayout",
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
     BUTTON_MARGIN: "buttonMargin",
