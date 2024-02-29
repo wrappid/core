@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React from "react";
 
+import { WrappidDataContext } from "@wrappid/styles";
+
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
@@ -11,6 +13,15 @@ import LayoutMismatch from "../error/LayoutMismatch";
 export default function LayoutManager(props) {
   const { pageName = "WrappidComponent", layoutName = "BlankLayout" } = props;
   const componentRegistry = React.useContext(ComponentRegistryContext);
+
+  const wrappidData = React.useContext(WrappidDataContext);
+  const { config } = React.useContext(
+    WrappidDataContext
+  );
+
+  // eslint-disable-next-line no-console
+
+  console.log("config", config);
 
   /**
    * Rendering merged component of layout and page
@@ -29,7 +40,14 @@ export default function LayoutManager(props) {
 
     let LayoutComponent = componentRegistry && layoutName && componentRegistry[layoutName]?.comp() || BlankLayout();
     let PageComponent = componentRegistry && pageName && componentRegistry[pageName]?.comp();
+    
+    // eslint-disable-next-line no-console
+    console.log("wrappidData", wrappidData);
+    wrappidData.devInfo = "faisal";
 
+    // eslint-disable-next-line no-console
+    console.log("new wrappidData", wrappidData);
+    
     /**
      * @todo
      * 

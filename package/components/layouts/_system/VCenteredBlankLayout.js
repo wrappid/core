@@ -9,7 +9,7 @@ export default function VCenteredBlankLayout() {
     <>
       <CoreLayoutPlaceholder
         id={VCenteredBlankLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[CoreClasses.LAYOUT.V_CENTERED_BLANK]} />
+        styleClasses={[CoreClasses.LAYOUT.V_CENTERED_BLANK_CONTENT]} />
     </>
   );
 }

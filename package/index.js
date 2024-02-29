@@ -177,6 +177,7 @@ import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
 import OnlineStatus from "./components/utils/OnlineStatus";
 import OnlineStatusSnackbar from "./components/utils/OnlineStatusSnackbar";
+import WrappidComponent from "./components/WrappidComponent";
 import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
 import {
@@ -244,7 +245,6 @@ import {
   detectPlatform,
   WEB_PLATFORM
 } from "./utils/themeUtil";
-// importing Layouts components
 
 export {
   __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppService, cancelFormEdit, ChildMap, clearValidatePhoneEmail, ComponentRegistryContext, config, CORE_DIALOG_TYPES, CoreAccordion,
@@ -341,6 +341,7 @@ export {
   RightDrawerLayout,
   ThreeColumnLayout,
   TwoColumnLayout,
-  VCenteredBlankLayout
+  VCenteredBlankLayout,
+  WrappidComponent
 };
 

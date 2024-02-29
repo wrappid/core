@@ -56,10 +56,26 @@ const CoreClasses = {
    **************************************************/
   LAYOUT: {
 
-    BLANK              : "blankLayout",
-    CENTERED_BLANK     : "centeredBlankLayout",
-    V_CENTERED_BLANK   : "vCenteredBlankLayout",
-    H_CENTERED_BLANK   : "hCenteredBlankLayout",
+    BLANK_CONTENT                     : "blankLayoutContent",
+    CENTERED_BLANK_CONTENT            : "centeredBlankLayoutContent",
+    V_CENTERED_BLANK_CONTENT          : "vCenteredBlankLayoutContent",
+    H_CENTERED_BLANK_CONTENT          : "hCenteredBlankLayoutContent",
+    HEADERLAYOUT_HEADER               : "headerLayout_header",
+    HEADER_LAYOUT_CONTENT             : "headerLayout_content",
+    FOOTERLAYOUT_CONTENT              : "",
+    FOOTERLAYOUT_FOOTER               : "",
+    HEADER_FOOTER_LAYOUT_HEADER       : "headerFooterLayoutHeader",
+    HEADER_FOOTER_LAYOUT_CONTENT      : "headerFooterLayoutContent",
+    HEADER_FOOTER_LAYOUT_FOOTER       : "headerFooterLayoutFooter",
+    FIXED_HEADER_LAYOUT_HEADER        : "",
+    FIXED_HEADER_LAYOUT_CONTENT       : "",
+    FIXED_FOOTER_LAYOUT_CONTENT       : "",
+    FIXED_FOOTER_LAYOUT_FOOTER        : "",
+    FIXED_HEADER_FOOTER_LAYOUT_HEADER : "",
+    FIXED_HEADER_FOOTER_LAYOUT_CONTENT: "",
+    FIXED_HEADER_FOOTER_LAYOUT_FOOTER : "",
+    LEFTDRAWER_LAYOUT_HEDAER          : "",
+
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
     BUTTON_MARGIN: "buttonMargin",

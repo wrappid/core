@@ -9,7 +9,7 @@ export default function CenteredBlankLayout() {
     <>
       <CoreLayoutPlaceholder
         id={CenteredBlankLayout.PLACEHOLDER.CONTENT}
-        styleClasses={[CoreClasses.LAYOUT.CENTERED_BLANK]} />
+        styleClasses={[CoreClasses.LAYOUT.CENTERED_BLANK_CONTENT]} />
     </>
   );
 }
