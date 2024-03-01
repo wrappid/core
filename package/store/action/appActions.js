@@ -338,8 +338,8 @@ export const clearSnackMessages = () => dispatch => {
   dispatch({ type: CLEAR_SNACK_MESSAGE });
 };
 
-export const setUserTheme = (themeName, theme) => dispatch => {
+export const setUserTheme = (themeName) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
-  dispatch({ payload: { name: themeName, theme: theme }, type: SET_USER_THEME });
+  dispatch({ payload: themeName, type: SET_USER_THEME });
 };

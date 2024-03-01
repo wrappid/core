@@ -1,30 +1,46 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { useEffect } from "react";
+import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { UPDATE_DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
+import { UPDATE_DEFAULT_THEME, UPDATE_PAGE_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setUserTheme } from "../store/action/appActions";
 
 export default function CoreThemeProvider(props) {
-  // eslint-disable-next-line etc/no-commented-out-code
-  // const theme = props.theme || useContext(ThemeContext);
+  const { themeID = undefined, children } = props || {};
+  
   const storeDispatch = useDispatch();
   const dispatch = React.useContext(WrappidDispatchContext);
-  const { config, themes, defaultTheme } = React.useContext(WrappidDataContext);
-  const userTheme = useSelector((state) => state.app.userTheme);
+  
+  const { config, themes } = React.useContext(WrappidDataContext);
+  const { defaultTheme = "wrappidTheme" } = config || {};
+  const { userThemeID } = useSelector((state) => state.app);
 
-  useEffect(() => {
-    if(!userTheme) {
-      storeDispatch(setUserTheme(config?.defaultTheme || defaultTheme, themes[config?.defaultTheme || defaultTheme].theme));
-      dispatch({ payload: config?.defaultTheme || defaultTheme, type: UPDATE_DEFAULT_THEME });
+  const [currentTheme, setCurrentTheme] = React.useState(themes[defaultTheme].theme);
 
+  React.useEffect(() => {
+    if (userThemeID && Object.keys(themes).includes(userThemeID)) {
+      dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
+      
+      let mergedTheme = themes[userThemeID].theme;
+      
+      if (themeID && Object.keys(themes).includes(themeID)) {
+        dispatch({ payload: userThemeID, type: UPDATE_PAGE_THEME });
+
+        mergedTheme = { ...mergedTheme, ...(themes[themeID].theme) };
+      } else {
+        dispatch({ payload: undefined, type: UPDATE_PAGE_THEME });
+      }
+      setCurrentTheme(mergedTheme);
+    } else {
+      storeDispatch(setUserTheme(defaultTheme));
+      setCurrentTheme(themes[defaultTheme].theme);
     }
-  }, [userTheme]);
 
-  // return <NativeThemeProvider theme={themes[defaultTheme].theme}>{props.children}</NativeThemeProvider>;
-  return <NativeThemeProvider theme={userTheme || themes[config?.defaultTheme || defaultTheme].theme}>{props.children}</NativeThemeProvider>;
+  }, [defaultTheme, userThemeID]);
+
+  return <NativeThemeProvider theme={currentTheme}>{children}</NativeThemeProvider>;
 }

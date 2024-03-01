@@ -13,10 +13,9 @@ import { setUserTheme } from "../store/action/appActions";
 import CoreClasses from "../styles/CoreClasses";
 
 function ThemeSelector() {
-  const userTheme = useSelector((state) => state.app.userTheme);
-  const userThemeId = useSelector((state) => state.app.userThemeId);
+  const { userThemeID } = useSelector((state) => state.app);
 
-  const { config, themes, defaultTheme } = React.useContext(WrappidDataContext);
+  const { themes, config } = React.useContext(WrappidDataContext);
   const dispatch = React.useContext(WrappidDispatchContext);
   const storeDispatch = useDispatch();
   const [themeChangeFormEnable, setThemeChangeFormEnable] = React.useState(false);
@@ -29,20 +28,20 @@ function ThemeSelector() {
     // eslint-disable-next-line no-console
     console.log(`Changing theme ${event?.target?.value}`);
     setThemeChangeFormEnable(false);
-    storeDispatch(setUserTheme(themeName, themes[themeName].theme));
+    storeDispatch(setUserTheme(themeName));
     navigate("/");
   };
 
   React.useEffect(() => { 
-    dispatch({ payload: userThemeId, type: UPDATE_DEFAULT_THEME });
-  }, [userTheme, userThemeId]);
+    dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
+  }, [userThemeID]);
     
   return (
     <CoreBox styleClasses={[CoreClasses.BG.BG_WHITE]}>
       {themeChangeFormEnable ? (
         <CoreSelect
-          selectID={userThemeId || config[defaultTheme] || defaultTheme}
-          value={userThemeId || config[defaultTheme] || defaultTheme}
+          selectID={userThemeID || config?.defaultTheme}
+          value={userThemeID || config?.defaultTheme}
           label="Theme Selector"
           handleChange={handleChangeTheme}
           options={[
@@ -53,7 +52,7 @@ function ThemeSelector() {
       ) : (
         <>
           <CoreTypographyCaption styleClasses={[CoreClasses.BG.BG_PRIMARY]}>
-            Current Theme: {themes[userThemeId || config[defaultTheme] || defaultTheme]?.name || "Unknown"}
+            Current Theme: {themes[userThemeID || config?.defaultTheme]?.name || "Unknown"}
           </CoreTypographyCaption>
 
           <CoreTextButton OnClick={() => {
