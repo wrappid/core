@@ -7,6 +7,7 @@ import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
+import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
 import OnlineStatusSnackbar from "../components/utils/OnlineStatusSnackbar";
 import {
@@ -35,8 +36,8 @@ export let formStore = {};
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   const location = nativeUseLocation();
-  const { config } = React.useContext(WrappidDataContext);
-  const { defaultLayout = "BlankLayout", defaultAuthenticatedLayout = "BlankLayout" } = config;
+  const { config, themes } = React.useContext(WrappidDataContext);
+  const { defaultLayout = BlankLayout.name, defaultAuthenticatedLayout = BlankLayout.name } = config;
 
   /**
    * Error related states
@@ -102,6 +103,19 @@ export default function PageContainer(props) {
   }, [helperButtonFlag]);
 
   /**
+   * This function will return theme based on the route JSON schema
+   * 
+   * @returns themeID
+  */
+  // eslint-disable-next-line no-unused-vars
+  const pageTheme = () => {
+    if (themes[route?.Page?.theme]) {
+      return route?.Page?.theme;
+    } else {
+      return undefined;
+    }
+  };
+  /**
    * This function will return layout component based on the route JSON schema
    * 
    * @returns Layout Component
@@ -130,6 +144,7 @@ export default function PageContainer(props) {
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <>
+      {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
       </ErrorBoundary>
 
@@ -149,6 +164,8 @@ export default function PageContainer(props) {
       </NativePageContainer>
 
       <DevelopmentInfo />
+
+      {/* </CoreThemeProvider> */}
     </>
   );
 }

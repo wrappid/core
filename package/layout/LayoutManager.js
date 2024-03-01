@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import React from "react";
 
-import { WrappidDataContext } from "@wrappid/styles";
-
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
@@ -10,18 +8,26 @@ import { ComponentRegistryContext } from "../config/contextHandler";
 import ComponentNotFound from "../error/ComponentNotFound";
 import LayoutMismatch from "../error/LayoutMismatch";
 
+/**
+ * @todo
+ * 
+ * Layout Manager should have the following functionality
+ * - Render Page with NEW Layout
+ *    - NEW Layouts have one or many place holder
+ * - Default Fallback Layout is Blank Layout
+ * - Default Fallback Page is WrappidComponent
+ * 
+ * - IF layout given and not present
+ *    - 
+ * 
+ * 1. Old Layout Backward Compatibility
+ * 2. New Layout n-siblings
+ * 3. New Layout each-sibling n-child
+ * 4. LayoutPlaceholder parent flag support in the LayoutItem
+ */
 export default function LayoutManager(props) {
   const { pageName = "WrappidComponent", layoutName = "BlankLayout" } = props;
   const componentRegistry = React.useContext(ComponentRegistryContext);
-
-  const wrappidData = React.useContext(WrappidDataContext);
-  const { config } = React.useContext(
-    WrappidDataContext
-  );
-
-  // eslint-disable-next-line no-console
-
-  console.log("config", config);
 
   /**
    * Rendering merged component of layout and page
@@ -33,40 +39,36 @@ export default function LayoutManager(props) {
    * @param {*} PageComponent 
    * @returns 
    */
-  const renderLayoutEmbeddedPage = (layout, page) => {
+  const renderLayoutEmbeddedPage = (layoutName, pageName) => {
+    let LayoutComponent = undefined;
+    let PageComponent = undefined;
 
-    let layoutName = layout || "BlankLayout";
-    let pageName = page;
-
-    let LayoutComponent = componentRegistry && layoutName && componentRegistry[layoutName]?.comp() || BlankLayout();
-    let PageComponent = componentRegistry && pageName && componentRegistry[pageName]?.comp();
-    
-    // eslint-disable-next-line no-console
-    console.log("wrappidData", wrappidData);
-    wrappidData.devInfo = "faisal";
-
-    // eslint-disable-next-line no-console
-    console.log("new wrappidData", wrappidData);
+    /**
+     * @todo
+     * 1. check layout not found and page not found
+     */
+    if (layoutName && componentRegistry && Object.keys(componentRegistry).includes(layoutName) && componentRegistry[layoutName]?.comp) {
+      LayoutComponent = componentRegistry[layoutName]?.comp();
+    } else {
+      LayoutComponent = BlankLayout();
+      PageComponent = ComponentNotFound({ componentName: layoutName, layout: true });
+    }
+    /**
+     * @todo
+     * 2. check component not found and page not 1found
+     */
+    if (pageName && componentRegistry && Object.keys(componentRegistry).includes(pageName) && componentRegistry[pageName]?.comp) {
+      PageComponent = componentRegistry[pageName]?.comp();
+    } else {
+      LayoutComponent = BlankLayout();
+      PageComponent = ComponentNotFound({ componentName: pageName, layout: false });
+    }
     
     /**
      * @todo
      * 
-     * 1. Old Layout Backward Compatibility
-     * 2. New Layout n-siblings
-     * 3. New Layout each-sibling n-child
-     * 4. LayoutPlaceholder parent flag support in the LayoutItem
+     
      */
-
-    /**
-     * @todo
-     * check if PageComponent is undefined we will use ComponentNotFound and falls to BlankLayout
-     */
-    if (!PageComponent) {
-      if (!LayoutComponent) {
-        LayoutComponent = BlankLayout();
-      }
-      PageComponent = ComponentNotFound({ componentName: pageName, layout: false });
-    }
 
     /**
      * @todo
@@ -115,13 +117,6 @@ export default function LayoutManager(props) {
         if (layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name) {
           let layoutItem = pageChildrens?.find(elem => elem?.type?.name === CoreLayoutItem.name
             && elem?.props?.id === layoutPlaceholder?.props?.id);
-
-          /**
-           * @todo
-           * will write something like this later on to support specific like styleClasses
-           */
-          // eslint-disable-next-line etc/no-commented-out-code
-          // let mergedProps = mergeJSON(CoreBox.validProps, [layoutPlaceholder?.props, layoutItem?.props]);
 
           if (layoutItem) {
             return React.cloneElement(layoutItem, {
