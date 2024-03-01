@@ -1,19 +1,19 @@
 import {
-  API_VERSION_SUCCESS,
   API_VERSION_ERROR,
   API_VERSION_LOADING,
+  API_VERSION_SUCCESS,
   CLEAR_SNACK_MESSAGE,
   GET_ROUTE_FAILURE,
   GET_ROUTE_SUCCESS,
   MESSAGE_SHOWED,
   PUSH_SNACK_MESSAGE,
   RESET_LOADING,
-  SET_LOADING,
-  SET_PROGRESS_BAR,
   RESET_PROGRESS_BAR,
+  SEND_OTP_ERROR,
   SEND_OTP_LOADING,
   SEND_OTP_SUCCESS,
-  SEND_OTP_ERROR,
+  SET_LOADING,
+  SET_PROGRESS_BAR,
   SET_USER_THEME
 } from "./../types/appTypes";
 
@@ -35,7 +35,7 @@ const initState = {
   snackMessages        : [],
   snackMessagesMaxCount: 5,
   userTheme            : null,
-  userThemeId          : null,
+  userThemeID          : null,
 };
 
 const appReducer = (state = initState, action) => {
@@ -168,8 +168,7 @@ const appReducer = (state = initState, action) => {
     case SET_USER_THEME:
       return {
         ...state,
-        userTheme  : { ...(action.payload.theme || {}) },
-        userThemeId: action.payload.name
+        userThemeID: action.payload
       };
       // case LOGOUT_SUCCESS:
       //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };
