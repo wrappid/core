@@ -62,7 +62,7 @@ export default function LayoutManager(props) {
   }, [layoutName, pageName, componentRegistry]);
 
   React.useEffect(() => {
-    if (checkIfLayoutMismatch(renderedLayout(), renderedPage())) {
+    if (checkIfLayoutMismatch(getLayoutComponent(renderedLayout), getPageComponent(renderedPage))) {
       dispatch({ payload: { layoutMismatch: true, renderedLayout: LayoutMismatch.name }, type: UPDATE_DEVELOPMENT_DATA });
     }
   }, [renderedLayout, renderedPage]);
@@ -83,11 +83,7 @@ export default function LayoutManager(props) {
    * @returns 
    */
   const getLayoutPlaceholders = (LayoutComponent) => {
-    let layoutChildrens = LayoutComponent?.props?.children;
-
-    if (layoutChildrens && !Array.isArray(layoutChildrens)) {
-      layoutChildrens = [layoutChildrens];
-    }
+    let layoutChildrens = getComponentChildrensArray(LayoutComponent);
 
     return layoutChildrens?.map(eachChild => {
       return eachChild?.type === CoreLayoutPlaceholder.name;
@@ -102,15 +98,26 @@ export default function LayoutManager(props) {
    * @returns 
    */
   const getLayoutItems = (PageComponent) => {
-    let pageChildrens = PageComponent?.props?.children;
-
-    if (pageChildrens && !Array.isArray(pageChildrens)) {
-      pageChildrens = [pageChildrens];
-    }
+    let pageChildrens = getComponentChildrensArray(PageComponent);
 
     return pageChildrens?.map(eachChild => {
       return eachChild?.type === CoreLayoutItem.name;
     })?.length || 0;
+  };
+
+  /**
+   * 
+   * @param {*} component 
+   * @returns 
+   */
+  const getComponentChildrensArray = (component) => {
+    let componentChildrens = component?.props?.children;
+
+    if (componentChildrens && !Array.isArray(componentChildrens)) {
+      componentChildrens = [componentChildrens];
+    }
+    
+    return componentChildrens;
   };
 
   /**
@@ -166,8 +173,8 @@ export default function LayoutManager(props) {
      * One layer siblings is done as of now
      * n-level siblings and childrens - discussion required @sumanta-m and @samhere17
      */
-    let layoutChildrens = LayoutComponent?.props?.children;
-    let pageChildrens = PageComponent?.props?.children;
+    let layoutChildrens = getComponentChildrensArray(LayoutComponent);
+    let pageChildrens = getComponentChildrensArray(PageComponent);
 
     let combinedChildrens = [];
 
