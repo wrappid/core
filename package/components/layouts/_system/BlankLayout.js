@@ -5,6 +5,12 @@ import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import CoreClasses from "../../../styles/CoreClasses";
 
 export default function BlankLayout() {
+
+  React.useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log("BlankLayoutPage::useEffect");
+  }, []);
+  
   return (
     <>
       <CoreLayoutPlaceholder 

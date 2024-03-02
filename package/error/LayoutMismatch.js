@@ -9,8 +9,10 @@ export default function LayoutMismatch(props) {
   const { layoutName, pageName } = props || {};
 
   return (
-    <CoreLayoutItem id="content">
-      <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_DANGER]}>{`Page: ${pageName} content not supported Layout: ${layoutName}.`}</CoreH6>
-    </CoreLayoutItem>
+    <>
+      <CoreLayoutItem id="content">
+        <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_DANGER]}>{`Page: ${pageName} content not supported Layout: ${layoutName}.`}</CoreH6>
+      </CoreLayoutItem>
+    </>
   );
 }

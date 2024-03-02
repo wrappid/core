@@ -7,174 +7,71 @@ import { UPDATE_DEVELOPMENT_DATA, WrappidDataContext, WrappidDispatchContext } f
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
-import WrappidComponent from "../components/WrappidComponent";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import ComponentNotFound from "../error/ComponentNotFound";
-import LayoutMismatch from "../error/LayoutMismatch";
 
-/**
- * @todo
- * 
- * Layout Manager should have the following functionality
- * - Render Page with NEW Layout
- *    - NEW Layouts have one or many place holder
- * - Default Fallback Layout is Blank Layout
- * - Default Fallback Page is WrappidComponent
- * 
- * - IF layout given and not present
- *    - Layout Not Found - ComponentNotFound Page will render
- * 
- * - IF page given and not present
- *    - Page Not Found - ComponentNotFound Page will render
- * 
- * 
- * 
- * 1. Old Layout Backward Compatibility
- * 2. New Layout n-siblings
- * 3. New Layout each-sibling n-child
- * 4. LayoutPlaceholder parent flag support in the LayoutItem
- */
 export default function LayoutManager(props) {
   const { pageName, layoutName } = props;
   const { development } = React.useContext(WrappidDataContext);
-  const {
-    layout, page, renderedLayout, renderedPage, layoutNotFound, pageNotFound, layoutMismatch 
-  } = development;
-  const dispatch = React.useContext(WrappidDispatchContext);
   const componentRegistry = React.useContext(ComponentRegistryContext);
+  const dispatch = React.useContext(WrappidDispatchContext);
+
+  // eslint-disable-next-line no-unused-vars
+  const [devData, setDevData] = React.useState(development);
 
   React.useEffect(() => {
-    let development = { layout: layoutName, page: pageName, renderedLayout: layoutName, renderedPage: pageName };
+    dispatch({ payload: devData, type: UPDATE_DEVELOPMENT_DATA });
+  }, [devData]);
 
-    if (layoutName && componentRegistry && Object.keys(componentRegistry).includes(layoutName) && componentRegistry[layoutName]?.comp) {
-      // do nothing
+  const renderData = () => {
+    /* basic checks for layout and page */
+    if (layoutName && Object.keys(componentRegistry).includes(layoutName)) {
+      devData.layoutFound = true;
+      devData.layout = layoutName;
+      devData.renderedLayout = layoutName;
     } else {
-      development = { ...development, layout: layoutName, layoutNotFound: true, renderedLayout: BlankLayout.name };
+      devData.layoutFound = false;
+      devData.layout = layoutName || "Not Provided";
+      devData.renderedLayout = BlankLayout.name;
     }
-    
-    if (pageName && componentRegistry && Object.keys(componentRegistry).includes(pageName) && componentRegistry[pageName]?.comp) {
-      // do nothing
+
+    if (pageName && Object.keys(componentRegistry).includes(pageName)) {
+      devData.pageFound = true;
+      devData.page = pageName;
+      devData.renderedPage = pageName;
     } else {
-      development = { ...development, pageNotFound: true, renderedPage: ComponentNotFound.name };
+      devData.pageFound = false;
+      devData.page = pageName || "Not Provided";
+      devData.renderedpage = ComponentNotFound.name;
     }
 
-    dispatch({ payload: development, type: UPDATE_DEVELOPMENT_DATA });
-  }, [layoutName, pageName, componentRegistry]);
+    /* mount layout and page */
+    let LayoutComponent = componentRegistry[development?.renderedLayout]?.comp();
+    let PageComponent = componentRegistry[development?.renderedPage]?.comp();
 
-  React.useEffect(() => {
-    if (checkIfLayoutMismatch(getLayoutComponent(renderedLayout), getPageComponent(renderedPage))) {
-      dispatch({ payload: { layoutMismatch: true, renderedLayout: LayoutMismatch.name }, type: UPDATE_DEVELOPMENT_DATA });
-    }
-  }, [renderedLayout, renderedPage]);
-
-  const getLayoutComponent = (layout) => {
-    return layout && Object.keys(componentRegistry).includes(layout) ? componentRegistry[layout]?.comp : BlankLayout;
-  };
-
-  const getPageComponent = (page) => {
-    return page && Object.keys(componentRegistry).includes(page) ? componentRegistry[page]?.comp : WrappidComponent;
-  };
-
-  /**
-   * @todo
-   * n-level child missing
-   * 
-   * @param {*} LayoutComponent 
-   * @returns 
-   */
-  const getLayoutPlaceholders = (LayoutComponent) => {
-    let layoutChildrens = getComponentChildrensArray(LayoutComponent);
-
-    return layoutChildrens?.map(eachChild => {
-      return eachChild?.type === CoreLayoutPlaceholder.name;
-    })?.length || 0;
-  };
-
-  /**
-   * @todo
-   * n-level child missing
-   * 
-   * @param {*} PageComponent 
-   * @returns 
-   */
-  const getLayoutItems = (PageComponent) => {
-    let pageChildrens = getComponentChildrensArray(PageComponent);
-
-    return pageChildrens?.map(eachChild => {
-      return eachChild?.type === CoreLayoutItem.name;
-    })?.length || 0;
-  };
-
-  /**
-   * 
-   * @param {*} component 
-   * @returns 
-   */
-  const getComponentChildrensArray = (component) => {
-    let componentChildrens = component?.props?.children;
-
-    if (componentChildrens && !Array.isArray(componentChildrens)) {
-      componentChildrens = [componentChildrens];
+    /* get layout childrens */
+    let layoutChildrens = LayoutComponent?.props?.children;
+    
+    if (layoutChildrens && !Array.isArray(layoutChildrens)) {
+      layoutChildrens = [layoutChildrens];
     }
     
-    return componentChildrens;
-  };
+    /* get page childrens */
+    let pageChildrens = PageComponent?.props?.children;
 
-  /**
-   * @todo
-   * n-level child matching missing
-   * 
-   * @param {*} LayoutComponent 
-   * @param {*} PageComponent 
-   * @returns 
-   */
-  const checkIfLayoutMismatch = (LayoutComponent, PageComponent) => {
-    let layoutPlaceholders = getLayoutPlaceholders(LayoutComponent);
-    let layoutItems = getLayoutItems(PageComponent);
-
-    if (layoutItems?.length > 0 && layoutPlaceholders?.length !== layoutItems?.length) {
-      return true;
-    }
-    return false;
-  };
-
-  const renderLayoutEmbeddedPage = () => {
-    let LayoutComponent = getLayoutComponent(renderedLayout)();
-    let PageComponent = getPageComponent(renderedPage)();
-
-    /**
-     * @todo
-     * check layout not found and page not found
-     */
-    if (layoutNotFound) {
-      PageComponent = ComponentNotFound({ componentName: layout, layout: true });
-      return React.cloneElement(BlankLayout, {}, PageComponent);
-    }
-    
-    /**
-     * @todo
-     * check component not found and page not 1found
-     */
-    if (pageNotFound) {
-      PageComponent = ComponentNotFound({ componentName: page, layout: false });
-      return React.cloneElement(BlankLayout, {}, PageComponent);
+    if (pageChildrens && !Array.isArray(pageChildrens)) {
+      pageChildrens = [pageChildrens];
     }
 
-    /**
-     * @todo
-     * check if layout mismatch
-     */
-    if (layoutMismatch) {
-      return React.cloneElement(BlankLayout, {}, LayoutMismatch({ renderedLayout, renderedPage }));
-    }
+    layoutChildrens?.forEach((layoutChild, index) => {
+      console.log(`layoutChild ${index}`);
+      console.log(layoutChild);
+    });
 
-    /**
-     * @todo
-     * One layer siblings is done as of now
-     * n-level siblings and childrens - discussion required @sumanta-m and @samhere17
-     */
-    let layoutChildrens = getComponentChildrensArray(LayoutComponent);
-    let pageChildrens = getComponentChildrensArray(PageComponent);
+    pageChildrens?.forEach((pageChild, index) => {
+      console.log(`pageChild ${index}`);
+      console.log(pageChild);
+    });
 
     let combinedChildrens = [];
 
@@ -198,12 +95,14 @@ export default function LayoutManager(props) {
       });
     }
     return combinedChildrens;
-  };
+
+    // return renderedData;
+  }; 
 
   return (
     <>
       {/* LAYOUT CONTENT REPLACED BY PAGE ITEM */}
-      {renderLayoutEmbeddedPage(layoutName, pageName)}
+      {renderData()}
     </>
   );
 }
