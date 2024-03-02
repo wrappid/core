@@ -1,20 +1,16 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
-import CoreH1 from "../components/dataDisplay/CoreH1";
-import CoreStack from "../components/layouts/CoreStack";
+import CoreH6 from "../components/dataDisplay/CoreH6";
+import CoreLayoutItem from "../layout/CoreLayoutItem";
 import CoreClasses from "../styles/CoreClasses";
 
-function LayoutMismatch(props) {
+export default function LayoutMismatch(props) {
   const { layoutName, pageName } = props || {};
 
   return (
-    <CoreStack
-      styleClasses={[CoreClasses.LAYOUT.FLEXBOX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-    >
-      <CoreH1>{`Page ${pageName} content not supported layout ${layoutName}.`}</CoreH1>
-    </CoreStack>
+    <CoreLayoutItem id="content">
+      <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_DANGER]}>{`Page: ${pageName} content not supported Layout: ${layoutName}.`}</CoreH6>
+    </CoreLayoutItem>
   );
 }
-
-export default LayoutMismatch;
