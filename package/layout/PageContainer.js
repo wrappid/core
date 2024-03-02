@@ -146,22 +146,22 @@ export default function PageContainer(props) {
     <>
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+
+        <OnlineStatusSnackbar/>
+
+        <NativePageContainer
+          uid={auth?.uid}
+          route={route}
+          coreClasses={CoreClasses}>
+          <CoreModal open={true} />
+
+          <CoreDialogContext.Provider value={dialogStates}>
+            <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
+
+            <CoreDialog />
+          </CoreDialogContext.Provider>
+        </NativePageContainer>
       </ErrorBoundary>
-
-      <OnlineStatusSnackbar/>
-
-      <NativePageContainer
-        uid={auth?.uid}
-        route={route}
-        coreClasses={CoreClasses}>
-        <CoreModal open={true} />
-
-        <CoreDialogContext.Provider value={dialogStates}>
-          <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
-
-          <CoreDialog />
-        </CoreDialogContext.Provider>
-      </NativePageContainer>
 
       <DevelopmentInfo />
 
