@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDomRoute, NativeDomRoutes } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import Logout from "./components/navigation/Logout";
@@ -28,12 +28,10 @@ export default function CoreRoutes() {
   const routesFromStore = useSelector((state) => state?.route?.routes);
   const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   let authenticated = auth?.uid ? true : false;
-  // eslint-disable-next-line etc/no-commented-out-code
-  // let appConfig = useContext(CoreConfigContext);
-  let appConfig = getConfigurationObject();
+  const { config } = React.useContext(WrappidDataContext);
 
   React.useEffect(() => {
-    appConfig?.wrappid?.backendUrl && dispatch(
+    config?.backendUrl && dispatch(
       apiRequestAction(
         HTTP.GET,
         "/noauth/business/all/RoutePages",
@@ -44,7 +42,7 @@ export default function CoreRoutes() {
       )
     );
 
-    let defaultRouteName = appConfig?.wrappid?.defaultRoute;
+    let defaultRouteName = authenticated ? (config?.defaultAuthenticatedRoute || config?.defaultRoute) : config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
@@ -56,7 +54,7 @@ export default function CoreRoutes() {
   }, []);
 
   React.useEffect(() => {
-    appConfig?.wrappid?.backendUrl && dispatch(
+    config?.backendUrl && dispatch(
       apiRequestAction(
         HTTP.GET,
         "/noauth/business/all/RoutePages",
@@ -69,7 +67,7 @@ export default function CoreRoutes() {
   }, [authenticated]);
 
   useEffect(() => {
-    let defaultRouteName = appConfig?.wrappid?.defaultRoute;
+    let defaultRouteName = authenticated ? (config?.defaultAuthenticatedRoute || config?.defaultRoute) : config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
@@ -78,7 +76,7 @@ export default function CoreRoutes() {
         setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
       }
     }
-  }, [appConfig, routesFromStore]);
+  }, [config, routesFromStore]);
 
   return (
     <NativeDomRoutes>
