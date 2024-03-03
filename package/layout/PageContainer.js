@@ -120,6 +120,7 @@ export default function PageContainer(props) {
    * 
    * @returns Layout Component
   */
+  // eslint-disable-next-line no-unused-vars
   const pageLayout = () => {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
@@ -158,6 +159,9 @@ export default function PageContainer(props) {
           <CoreDialogContext.Provider value={dialogStates}>
             <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
 
+            {/* eslint-disable-next-line etc/no-commented-out-code */}
+            {/* <CoreComponent componentName={pageChild()} /> */}
+              
             <CoreDialog />
           </CoreDialogContext.Provider>
         </NativePageContainer>

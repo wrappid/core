@@ -1,14 +1,15 @@
+/* eslint-disable import/order */
 /* eslint-disable no-console */
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { UPDATE_DEVELOPMENT_DATA, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 
-import CoreLayoutItem from "./CoreLayoutItem";
-import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import ComponentNotFound from "../error/ComponentNotFound";
+import CoreLayoutItem from "./CoreLayoutItem";
+import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 
 export default function LayoutManager(props) {
   const { pageName, layoutName } = props;
@@ -46,8 +47,8 @@ export default function LayoutManager(props) {
     }
 
     /* mount layout and page */
-    let LayoutComponent = componentRegistry[development?.renderedLayout]?.comp();
-    let PageComponent = componentRegistry[development?.renderedPage]?.comp();
+    let LayoutComponent = componentRegistry[devData?.renderedLayout]?.comp();
+    let PageComponent = componentRegistry[devData?.renderedPage]?.comp();
 
     /* get layout childrens */
     let layoutChildrens = LayoutComponent?.props?.children;
@@ -95,8 +96,6 @@ export default function LayoutManager(props) {
       });
     }
     return combinedChildrens;
-
-    // return renderedData;
   }; 
 
   return (
