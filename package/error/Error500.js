@@ -14,7 +14,6 @@ export default function Error500() {
   const { error = { message: "", stack: "" } } = nativeUseLocation();
 
   return (
-    
     <>
       <CoreLayoutItem id={BlankLayout.PLACEHOLDER.CONTENT}>
         <CoreH6 styleClasses={[CoreClasses.COLOR.TEXT_ERROR]}>Error Reported</CoreH6>

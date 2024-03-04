@@ -86,10 +86,10 @@ export default function LayoutManager(props) {
     /**
      * Layout Mismatch
      */
-    let layoutPlaceholders = layoutChildrens?.map((layoutPlaceholder) => {
+    let layoutPlaceholders = layoutChildrens?.filter((layoutPlaceholder) => {
       return layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name;
     });
-    let layoutItems = pageChildrens?.map((layoutItem) => {
+    let layoutItems = pageChildrens?.filter((layoutItem) => {
       return layoutItem?.type?.name === CoreLayoutItem.name;
     });
 
