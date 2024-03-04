@@ -48,11 +48,11 @@ export default function LayoutManager(props) {
     }
 
     if (!devData.layoutFound) {
-      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
+      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
     }
 
     if (!devData.pageFound) {
-      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.page, layout: true }));
+      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.page, layout: false }));
     }
 
     /* mount layout and page */
