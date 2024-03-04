@@ -8,6 +8,7 @@ import { UPDATE_DEVELOPMENT_DATA, WrappidDataContext, WrappidDispatchContext } f
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import ComponentNotFound from "../error/ComponentNotFound";
+import LayoutMismatch from "../error/LayoutMismatch";
 import CoreLayoutItem from "./CoreLayoutItem";
 import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 
@@ -46,6 +47,14 @@ export default function LayoutManager(props) {
       devData.renderedpage = ComponentNotFound.name;
     }
 
+    if (!devData.layoutFound) {
+      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
+    }
+
+    if (!devData.pageFound) {
+      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.page, layout: true }));
+    }
+
     /* mount layout and page */
     let LayoutComponent = componentRegistry[devData?.renderedLayout]?.comp();
     let PageComponent = componentRegistry[devData?.renderedPage]?.comp();
@@ -73,6 +82,32 @@ export default function LayoutManager(props) {
       console.log(`pageChild ${index}`);
       console.log(pageChild);
     });
+
+    /**
+     * Layout Mismatch
+     */
+    let layoutPlaceholders = layoutChildrens?.map((layoutPlaceholder) => {
+      return layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name;
+    });
+    let layoutItems = pageChildrens?.map((layoutItem) => {
+      return layoutItem?.type?.name === CoreLayoutItem.name;
+    });
+
+    let layoutMismatch = false;
+
+    if (layoutPlaceholders.length === layoutItems.length) {
+      let layoutItemKeys = layoutItems.map(layoutItem => layoutItem?.props?.id);
+
+      layoutPlaceholders.forEach(layoutPlaceholder => {
+        if (!layoutPlaceholder?.props?.id || !layoutItemKeys.includes(layoutPlaceholder?.props?.id)) {
+          layoutMismatch = true;
+        }
+      });
+    }
+
+    if (layoutMismatch) {
+      return React.createElement(BlankLayout, {}, LayoutMismatch);
+    }
 
     let combinedChildrens = [];
 
