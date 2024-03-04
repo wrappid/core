@@ -1,18 +1,19 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
-import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
 // eslint-disable-next-line import/order
 import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
 
 export default function FixedFooterLayout() {
   return (
     <>
       <CoreTypographyBody1>Fixed FOOTER Layout</CoreTypographyBody1>
 
-      <CoreLayoutPlaceholder id={FixedFooterLayout.PLACEHOLDER.CONTENT} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.FIXED_FOOTER_LAYOUT_CONTENT]} id={FixedFooterLayout.PLACEHOLDER.CONTENT} />
 
-      <CoreLayoutPlaceholder id={FixedFooterLayout.PLACEHOLDER.FOOTER} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.FIXED_FOOTER_LAYOUT_FOOTER]} id={FixedFooterLayout.PLACEHOLDER.FOOTER} />
     </>
   );
 }

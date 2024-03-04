@@ -9,11 +9,11 @@ export default function ThreeColumnLayout() {
   return (
     <CoreGrid styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_CONTENT_CENTER]}>
       
-      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_FIRSTCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} />
       
-      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_SECONDCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} />
       
-      <CoreLayoutPlaceholder gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_THIRDCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} />
       
     </CoreGrid>
   );

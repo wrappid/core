@@ -13,12 +13,12 @@ export default function RightDrawerLayout() {
     <>
       <CoreTypographyBody1>Right Drawr</CoreTypographyBody1>
 
-      <CoreLayoutPlaceholder id={RightDrawerLayout.PLACEHOLDER.Header} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_HEADER]} id={RightDrawerLayout.PLACEHOLDER.Header} />
 
       <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
-        <CoreLayoutPlaceholder id={RightDrawerLayout.PLACEHOLDER.RightDrawer} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_LEFT_CONTENT]} id={RightDrawerLayout.PLACEHOLDER.RightDrawer} />
 
-        <CoreLayoutPlaceholder id={RightDrawerLayout.PLACEHOLDER.Content} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER]} id={RightDrawerLayout.PLACEHOLDER.Content} />
 
       </CoreBox>
     </>

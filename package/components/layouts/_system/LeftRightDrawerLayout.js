@@ -12,15 +12,15 @@ export default function LeftRightDrawerLayout() {
     <>
       <CoreTypographyBody1>Left Right Drawr</CoreTypographyBody1>
 
-      <CoreLayoutPlaceholder id={LeftRightDrawerLayout.PLACEHOLDER.Header} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_RIGHT_DRAWER_LAYOUT_HEADER]} id={LeftRightDrawerLayout.PLACEHOLDER.Header} />
 
       <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.WIDTH.VW_100]}>
 
-        <CoreLayoutPlaceholder id={LeftRightDrawerLayout.PLACEHOLDER.LeftDrawer} styleClasses={[CoreClasses.WIDTH.VW_25]} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_RIGHT_DRAWER_LAYOUT_LEFT_DRAWER]} id={LeftRightDrawerLayout.PLACEHOLDER.LeftDrawer} />
 
-        <CoreLayoutPlaceholder id={LeftRightDrawerLayout.PLACEHOLDER.Content} styleClasses={[CoreClasses.WIDTH.VW_50]} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_RIGHT_DRAWER_LAYOUT_CONTENT]} id={LeftRightDrawerLayout.PLACEHOLDER.Content} />
 
-        <CoreLayoutPlaceholder id={LeftRightDrawerLayout.PLACEHOLDER.RightDrawer} styleClasses={[CoreClasses.WIDTH.VW_25]} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER]} id={LeftRightDrawerLayout.PLACEHOLDER.RightDrawer} />
       </CoreBox>
 
     </>

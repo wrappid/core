@@ -13,12 +13,12 @@ export default function LeftDrawerLayout() {
     <>
       <CoreTypographyBody1>Left Drawr</CoreTypographyBody1>
 
-      <CoreLayoutPlaceholder id={LeftDrawerLayout.PLACEHOLDER.Header} />
+      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_DRAWER_LAYOUT_HEDAER]} id={LeftDrawerLayout.PLACEHOLDER.Header} />
 
       <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
-        <CoreLayoutPlaceholder id={LeftDrawerLayout.PLACEHOLDER.Content} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_RIGHT_DRAWER_LAYOUT_LEFT_DRAWER]} id={LeftDrawerLayout.PLACEHOLDER.Content} />
 
-        <CoreLayoutPlaceholder id={LeftDrawerLayout.PLACEHOLDER.LeftDrawer} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_DRAWER_LAYOUT_RIGHT_CONTENT]} id={LeftDrawerLayout.PLACEHOLDER.LeftDrawer} />
       </CoreBox>
     </>
 
