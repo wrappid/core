@@ -26,10 +26,10 @@ export default function CoreRoutes() {
   const routesRegistry = useContext(CoreRoutesContext);
   const auth = useSelector((state) => state?.auth);
   const routesFromStore = useSelector((state) => state?.route?.routes);
-  const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   let authenticated = auth?.uid ? true : false;
   const { config } = React.useContext(WrappidDataContext);
-
+  const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
+  
   React.useEffect(() => {
     config?.backendUrl && dispatch(
       apiRequestAction(
@@ -42,7 +42,7 @@ export default function CoreRoutes() {
       )
     );
 
-    let defaultRouteName = authenticated ? (config?.defaultAuthenticatedRoute || config?.defaultRoute) : config?.defaultRoute;
+    let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {

@@ -1,16 +1,16 @@
 import {
+  globalAccessToken,
+  globalRefreshToken,
+  globalTokenRequestTimeStamp,
+  globalTokenRequested
+} from "../../components/layouts/_system/AppContainer";
+import {
   LOGIN_WITH_OTP_API,
   LOGIN_WITH_PASSWORD_API,
   LOGIN_WITH_RESET_PASSWORD_API,
   LOGIN_WITH_URL_API
 } from "../../config/api";
 import { HTTP, MESSAGE_TYPE } from "../../config/constants";
-import {
-  globalAccessToken,
-  globalRefreshToken,
-  globalTokenRequestTimeStamp,
-  globalTokenRequested
-} from "../../layout/AppContainer";
 import { formStore } from "../../layout/PageContainer";
 import AppService from "../../service/AppService";
 import { reloadToken } from "../../utils/appUtils";
@@ -338,8 +338,8 @@ export const clearSnackMessages = () => dispatch => {
   dispatch({ type: CLEAR_SNACK_MESSAGE });
 };
 
-export const setUserTheme = (themeName, theme) => dispatch => {
+export const setUserTheme = (themeName) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
-  dispatch({ payload: { name: themeName, theme: theme }, type: SET_USER_THEME });
+  dispatch({ payload: themeName, type: SET_USER_THEME });
 };

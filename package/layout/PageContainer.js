@@ -7,6 +7,7 @@ import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
+import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
 import OnlineStatusSnackbar from "../components/utils/OnlineStatusSnackbar";
 import {
@@ -24,7 +25,7 @@ import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes
 import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
-import LayoutManager from "./core/LayoutManager";
+import LayoutManager from "./LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -35,8 +36,8 @@ export let formStore = {};
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   const location = nativeUseLocation();
-  const { config } = React.useContext(WrappidDataContext);
-  const { defaultLayout = "BlankLayout", defaultAuthenticatedLayout = "BlankLayout" } = config;
+  const { config, themes } = React.useContext(WrappidDataContext);
+  const { defaultLayout = BlankLayout.name, defaultAuthenticatedLayout = BlankLayout.name } = config;
 
   /**
    * Error related states
@@ -102,10 +103,24 @@ export default function PageContainer(props) {
   }, [helperButtonFlag]);
 
   /**
+   * This function will return theme based on the route JSON schema
+   * 
+   * @returns themeID
+  */
+  // eslint-disable-next-line no-unused-vars
+  const pageTheme = () => {
+    if (themes[route?.Page?.theme]) {
+      return route?.Page?.theme;
+    } else {
+      return undefined;
+    }
+  };
+  /**
    * This function will return layout component based on the route JSON schema
    * 
    * @returns Layout Component
   */
+  // eslint-disable-next-line no-unused-vars
   const pageLayout = () => {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
@@ -130,25 +145,31 @@ export default function PageContainer(props) {
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <>
+      {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+
+        <OnlineStatusSnackbar/>
+
+        <NativePageContainer
+          uid={auth?.uid}
+          route={route}
+          coreClasses={CoreClasses}>
+          <CoreModal open={true} />
+
+          <CoreDialogContext.Provider value={dialogStates}>
+            <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
+
+            {/* eslint-disable-next-line etc/no-commented-out-code */}
+            {/* <CoreComponent componentName={pageChild()} /> */}
+              
+            <CoreDialog />
+          </CoreDialogContext.Provider>
+        </NativePageContainer>
       </ErrorBoundary>
 
-      <OnlineStatusSnackbar/>
-
-      <NativePageContainer
-        uid={auth?.uid}
-        route={route}
-        coreClasses={CoreClasses}>
-        <CoreModal open={true} />
-
-        <CoreDialogContext.Provider value={dialogStates}>
-          <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
-
-          <CoreDialog />
-        </CoreDialogContext.Provider>
-      </NativePageContainer>
-
       <DevelopmentInfo />
+
+      {/* </CoreThemeProvider> */}
     </>
   );
 }

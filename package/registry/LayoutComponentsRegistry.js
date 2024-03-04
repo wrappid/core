@@ -1,13 +1,19 @@
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CenteredBlankLayout from "../components/layouts/_system/CenteredBlankLayout";
+import ComplexLayout from "../components/layouts/_system/ComplexLayout";
+import FixedFooterLayout from "../components/layouts/_system/FixedFooterLayout";
+import FixedHeaderFooterLayout from "../components/layouts/_system/FixedHeaderFooterLayout";
+import FixedHeaderLayout from "../components/layouts/_system/FixedHeaderLayout";
+import FooterLayout from "../components/layouts/_system/FooterLayout";
 import HCenteredBlankLayout from "../components/layouts/_system/HCenteredBlankLayout";
 import HeaderFooterLayout from "../components/layouts/_system/HeaderFooterLayout";
+import HeaderLayout from "../components/layouts/_system/HeaderLayout";
+import LeftDrawerLayout from "../components/layouts/_system/LeftDrawerLayout";
+import LeftRightDrawerLayout from "../components/layouts/_system/LeftRightDrawerLayout";
+import RightDrawerLayout from "../components/layouts/_system/RightDrawerLayout";
+import ThreeColumnLayout from "../components/layouts/_system/ThreeColumnLayout";
+import TwoColumnLayout from "../components/layouts/_system/TwoColumnLayout";
 import VCenteredBlankLayout from "../components/layouts/_system/VCenteredBlankLayout";
-import ComplexLayout from "../layout/ComplexLayout";
-import FooterLayout from "../layout/FooterLayout";
-import HeaderLayout from "../layout/HeaderLayout";
-import ThreeColumnLayout from "../layout/ThreeColumnLayout";
-import TwoColumnLayout from "../layout/TwoColumnLayout";
 
 const LayoutComponentsRegistry = {
   BlankLayout: {
@@ -20,6 +26,18 @@ const LayoutComponentsRegistry = {
   },
   ComplexLayout: {
     comp  : ComplexLayout,
+    layout: true
+  },
+  FixedFooterLayout: {
+    comp  : FixedFooterLayout,
+    layout: true
+  },
+  FixedHeaderFooterLayout: {
+    comp  : FixedHeaderFooterLayout,
+    layout: true
+  },
+  FixedHeaderLayout: {
+    comp  : FixedHeaderLayout,
     layout: true
   },
   FooterLayout: {
@@ -36,6 +54,18 @@ const LayoutComponentsRegistry = {
   },
   HeaderLayout: {
     comp  : HeaderLayout,
+    layout: true
+  },
+  LeftDrawerLayout: {
+    comp  : LeftDrawerLayout,
+    layout: true
+  },
+  LeftRightDrawerLayout: {
+    comp  : LeftRightDrawerLayout,
+    layout: true
+  },
+  RightDrawerLayout: {
+    comp  : RightDrawerLayout,
     layout: true
   },
   ThreeColumnLayout: {

@@ -1,4 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
+// eslint-disable-next-line import/no-unresolved 
 import { DefaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT, BaseStyle } from "@wrappid/styles";
 
 /**
@@ -213,9 +215,9 @@ export default class DefaultCoreStyles extends BaseStyle {
     
       parentIconItem: {},
     
-      parentItem: { padding: 0 + IMPORTANT },
-    
+      parentItem    : { padding: 0 + IMPORTANT },
       parentTextItem: {},
+    
       popoverContent: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "70vw" + IMPORTANT,
@@ -264,8 +266,7 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.px1,
       },
     
-      tableRowActionPopover: { backgroundColor: "transparent" + IMPORTANT },
-    
+      tableRowActionPopover                 : { backgroundColor: "transparent" + IMPORTANT },
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
@@ -281,7 +282,62 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.textWarningDark,
         ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
-      }
+      },
+      /**
+       * BELOW STYLES ARE REALTED TO LAYOUTS AND SHOULD NOT BE CHANGED.
+       *  */ 
+      blankLayout        : { ...this.defaultUtilityStyles.vw100 },
+      centeredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.justifyContentCenter,
+        ...this.defaultUtilityStyles.alignItemsCenter,
+      },
+      vCenteredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.justifyContentCenter,
+      },
+      hCenteredBlankLayout: {
+        ...this.defaultUtilityStyles.vh100,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.displayFlex,
+        ...this.defaultUtilityStyles.flexDirectionColumn,
+        ...this.defaultUtilityStyles.alignItemsCenter,
+      },
+      headerLayoutHeader              : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgInfo },
+      headerLayoutContent             : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn, ...this.defaultUtilityStyles.bgInfo },
+      footerLayoutContent             : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn, ...this.defaultUtilityStyles.bgInfo },
+      footerLayoutFooter              : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgSecondaryLight },
+      headerFooterLayoutHeader        : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgPrimary },
+      headerFooterLayoutContent       : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgPrimary, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
+      headerFooterLayoutFooter        : { ...this.defaultUtilityStyles.bgSecondaryLight, ...this.defaultUtilityStyles.vw100 },
+      fixedHeaderLayoutHeader         : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgPrimary },
+      fixedHeaderLayoutContent        : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn, ...this.defaultUtilityStyles.bgPrimary },
+      fixedFooterLayoutContent        : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn, ...this.defaultUtilityStyles.bgInfo },
+      fixedFooterLayoutFooter         : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgPrimary },
+      fixedHeaderFooterLayoutHeader   : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgInfo },
+      fixedHeaderFooterLayoutContent  : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn, ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgSecondary },
+      fixedHeaderFooterLayoutFooter   : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgSecondary },
+      leftDrawerLayoutHeader          : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.bgSecondary },
+      leftDrawerLayoutLeftDrawer      : {},
+      leftDrawerLayoutRightContent    : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
+      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.vw100 },
+      rightDrawerLayoutRightDrawer    : {},
+      rightDrawerLayoutLeftContent    : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
+      leftRightDrawerLayoutHeader     : { ...this.defaultUtilityStyles.vw100 },
+      leftRightDrawerLayoutLeftDrawer : {},
+      leftRightDrawerLayoutContent    : { ...this.defaultUtilityStyles.vw100, ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
+      leftRightDrawerLayoutRightDrawer: {},
+      twoColumnLayoutFirstCol         : { ...this.defaultUtilityStyles.bgSecondary },
+      twoColumnLayoutSecondCol        : { ...this.defaultUtilityStyles.bgInfo },
+      threeColumnLayoutFirstCol       : { ...this.defaultUtilityStyles.bgSecondary },
+      threeColumnLayoutSecondCol      : {},
+      threeColumnLayoutThirdCol       : { ...this.defaultUtilityStyles.bgSecondary },
     };
   }
 }

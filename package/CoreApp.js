@@ -29,9 +29,8 @@ export default function CoreApp(props) {
 
   return (
     <WrappidSyncer data={{
-      config      : applicationConfig,
-      defaultTheme: applicationConfig?.defaultTheme,
-      themes      : themesRegistry
+      config: applicationConfig,
+      themes: themesRegistry
     }}>
       <CoreProvider
         applicationConfig={{ ...(applicationConfig || {}) }}

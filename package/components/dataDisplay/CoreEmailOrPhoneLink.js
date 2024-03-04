@@ -77,3 +77,6 @@ export default function CoreEmailOrPhoneLink(props) {
     </>
   );
 }
+
+CoreEmailOrPhoneLink.validProps = [...CoreEmailLink.validProps, ...CorePhoneLink.validProps];
+CoreEmailOrPhoneLink.invalidProps = [];

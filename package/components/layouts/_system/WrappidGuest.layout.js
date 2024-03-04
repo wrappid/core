@@ -4,11 +4,11 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 
-import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
-import CoreBox from "../components/layouts/CoreBox";
-import CoreStack from "../components/layouts/CoreStack";
-import CoreClasses from "../styles/CoreClasses";
-import ThemeSelector from "../theme/ThemeSelector";
+import CoreClasses from "../../../styles/CoreClasses";
+import ThemeSelector from "../../../theme/ThemeSelector";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
+import CoreBox from "../CoreBox";
+import CoreStack from "../CoreStack";
 
 export default function WrappidGuestLayout(props) {
   const { children } = props || { children: null };

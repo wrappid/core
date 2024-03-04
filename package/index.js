@@ -118,6 +118,22 @@ import {
 import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel";
 import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
 import ParentChildMap from "./components/inputs/ParentChildMap";
+import BlankLayout from "./components/layouts/_system/BlankLayout";
+import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
+import ComplexLayout from "./components/layouts/_system/ComplexLayout";
+import FixedFooterLayout from "./components/layouts/_system/FixedFooterLayout";
+import FixedHeaderFooterLayout from "./components/layouts/_system/FixedHeaderFooterLayout";
+import FixedHeaderLayout from "./components/layouts/_system/FixedHeaderLayout";
+import FooterLayout from "./components/layouts/_system/FooterLayout";
+import HCenteredBlankLayout from "./components/layouts/_system/HCenteredBlankLayout";
+import HeaderFooterLayout from "./components/layouts/_system/HeaderFooterLayout";
+import HeaderLayout from "./components/layouts/_system/HeaderLayout";
+import LeftDrawerLayout from "./components/layouts/_system/LeftDrawerLayout";
+import LeftRightDrawerLayout from "./components/layouts/_system/LeftRightDrawerLayout";
+import RightDrawerLayout from "./components/layouts/_system/RightDrawerLayout";
+import ThreeColumnLayout from "./components/layouts/_system/ThreeColumnLayout";
+import TwoColumnLayout from "./components/layouts/_system/TwoColumnLayout";
+import VCenteredBlankLayout from "./components/layouts/_system/VCenteredBlankLayout";
 import CoreBox from "./components/layouts/CoreBox";
 import CoreContainer from "./components/layouts/CoreContainer";
 import CoreGrid from "./components/layouts/CoreGrid";
@@ -161,6 +177,7 @@ import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
 import OnlineStatus from "./components/utils/OnlineStatus";
 import OnlineStatusSnackbar from "./components/utils/OnlineStatusSnackbar";
+import WrappidComponent from "./components/WrappidComponent";
 import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
 import {
@@ -191,8 +208,8 @@ import {
   coreUseParams,
   coreUseSearchParams
 } from "./helper/routerHelper";
-import CoreLayoutItem from "./layout/core/CoreLayoutItem";
-import CoreLayoutPlaceholder from "./layout/core/CoreLayoutPlaceholder";
+import CoreLayoutItem from "./layout/CoreLayoutItem";
+import CoreLayoutPlaceholder from "./layout/CoreLayoutPlaceholder";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
@@ -308,6 +325,23 @@ export {
    * Layout related component
    */
   CoreLayoutPlaceholder,
-  CoreLayoutItem
+  CoreLayoutItem,
+  BlankLayout,
+  CenteredBlankLayout,
+  ComplexLayout,
+  FixedFooterLayout,
+  FixedHeaderFooterLayout,
+  FixedHeaderLayout,
+  FooterLayout,
+  HCenteredBlankLayout,
+  HeaderFooterLayout,
+  HeaderLayout,
+  LeftDrawerLayout,
+  LeftRightDrawerLayout,
+  RightDrawerLayout,
+  ThreeColumnLayout,
+  TwoColumnLayout,
+  VCenteredBlankLayout,
+  WrappidComponent
 };
 

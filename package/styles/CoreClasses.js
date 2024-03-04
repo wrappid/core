@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 
@@ -53,7 +55,40 @@ const CoreClasses = {
    * Layout
    **************************************************/
   LAYOUT: {
-    
+
+    BLANK_CONTENT                        : "blankLayoutContent",
+    CENTERED_BLANK_CONTENT               : "centeredBlankLayoutContent",
+    V_CENTERED_BLANK_CONTENT             : "vCenteredBlankLayoutContent",
+    H_CENTERED_BLANK_CONTENT             : "hCenteredBlankLayoutContent",
+    HEADER_LAYOUT_HEADER                 : "headerLayoutHeader",
+    HEADER_LAYOUT_CONTENT                : "headerLayoutContent",
+    FOOTER_LAYOUT_CONTENT                : "footerLayoutContent",
+    FOOTER_LAYOUT_FOOTER                 : "footerLayoutFooter",
+    HEADER_FOOTER_LAYOUT_HEADER          : "headerFooterLayoutHeader",
+    HEADER_FOOTER_LAYOUT_CONTENT         : "headerFooterLayoutContent",
+    HEADER_FOOTER_LAYOUT_FOOTER          : "headerFooterLayoutFooter",
+    FIXED_HEADER_LAYOUT_HEADER           : "fixedHeaderLayoutHeader",
+    FIXED_HEADER_LAYOUT_CONTENT          : "fixedHeaderLayoutContent",
+    FIXED_FOOTER_LAYOUT_CONTENT          : "fixedFooterLayoutContent",
+    FIXED_FOOTER_LAYOUT_FOOTER           : "fixedFooterLayoutFooter",
+    FIXED_HEADER_FOOTER_LAYOUT_HEADER    : "fixedHeaderFooterLayoutHeader",
+    FIXED_HEADER_FOOTER_LAYOUT_CONTENT   : "fixedHeaderFooterLayoutContent",
+    FIXED_HEADER_FOOTER_LAYOUT_FOOTER    : "fixedHeaderFooterLayoutFooter",
+    LEFT_DRAWER_LAYOUT_HEDAER            : "leftDrawerLayoutHeader",
+    LEFT_DRAWER_LAYOUT_RIGHT_CONTENT     : "leftDrawerLayoutRightContent",
+    RIGHT_DRAWER_LAYOUT_HEADER           : "rightDrawerLayoutHeader",
+    RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER     : "rightDrawerLayoutRightDrawer",
+    RIGHT_DRAWER_LAYOUT_LEFT_CONTENT     : "rightDrawerLayoutLeftContent",
+    LEFT_RIGHT_DRAWER_LAYOUT_HEADER      : "leftRightDrawerLayoutHeader",
+    LEFT_RIGHT_DRAWER_LAYOUT_LEFT_DRAWER : "leftRightDrawerLayoutLeftDrawer",
+    LEFT_RIGHT_DRAWER_LAYOUT_CONTENT     : "leftRightDrawerLayoutContent",
+    LEFT_RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER: "leftRightDrawerLayoutRightDrawer",
+    TWO_COLUMN_LAYOUT_FIRSTCOL           : "twoColumnLayoutFirstCol",
+    TWO_COLUMN_LAYOUT_SECONDCOL          : "twoColumnLayoutSecondCol",
+    THREE_COLUMN_LAYOUT_FIRSTCOL         : "threeColumnLayoutFirstCol",
+    THREE_COLUMN_LAYOUT_SECONDCOL        : "threeColumnLayoutSecondCol",
+    THREE_COLUMN_LAYOUT_THIRDCOL         : "threeColumnLayoutThirdCol",
+
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
     BUTTON_MARGIN: "buttonMargin",

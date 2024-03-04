@@ -4,29 +4,25 @@ import React, { useState } from "react";
 import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import CoreAppBar from "./../components/surfaces/CoreAppBar";
-import CoreDrawer from "./../components/surfaces/CoreDrawer";
-import CoreFooter from "./../components/surfaces/CoreFooter";
-import ErrorBoundary from "./../middleware/ErrorBoundary";
-import CoreRequestProgressBar from "../components/feedback/CoreRequestProgressBar";
 import {
   GET_ROLE_PERMISSIONS_API,
   GET_SETTINGS_META_API,
   GET_USER_SETTINGS,
   UPDATE_USER_SETTINGS
-} from "../config/api";
-import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../config/constants";
-import { CoreRouteRegistryContext } from "../config/contextHandler";
-import ComponentsRegistry from "../registry/ComponentsRegistry";
-import { apiRequestAction } from "../store/action/appActions";
-import { toggleLeftMenuState } from "../store/action/menuAction";
-import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../store/types/authTypes";
-import { BUILD_MENU_ROLE_PERMISSIONS } from "../store/types/menuTypes";
+} from "../../../config/api";
+import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../../../config/constants";
+import { CoreRouteRegistryContext } from "../../../config/contextHandler";
+import ErrorBoundary from "../../../middleware/ErrorBoundary";
+import ComponentsRegistry from "../../../registry/ComponentsRegistry";
+import { apiRequestAction } from "../../../store/action/appActions";
+import { toggleLeftMenuState } from "../../../store/action/menuAction";
+import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../../../store/types/authTypes";
+import { BUILD_MENU_ROLE_PERMISSIONS } from "../../../store/types/menuTypes";
 import {
   RECALL_TOKEN_REJUVINDATED,
   REMOVE_PENDING_REQUESTS
-} from "../store/types/pendingRequestTypes";
-import { SELECT_OPTION_SUCCESS } from "../store/types/selectOptionsTypes";
+} from "../../../store/types/pendingRequestTypes";
+import { SELECT_OPTION_SUCCESS } from "../../../store/types/selectOptionsTypes";
 import {
   GET_SETTING_META_ERROR,
   GET_SETTING_META_SUCCESS,
@@ -34,8 +30,12 @@ import {
   GET_USER_SETTINGS_SUCCESS,
   USER_SETTINGS_UPDATE_ERROR,
   USER_SETTINGS_UPDATE_SUCCESS
-} from "../store/types/settingsTypes";
-import CoreClasses from "../styles/CoreClasses";
+} from "../../../store/types/settingsTypes";
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreRequestProgressBar from "../../feedback/CoreRequestProgressBar";
+import CoreAppBar from "../../surfaces/CoreAppBar";
+import CoreDrawer from "../../surfaces/CoreDrawer";
+import CoreFooter from "../../surfaces/CoreFooter";
 
 export let globalAccessToken = null;
 export let globalRefreshToken = null;

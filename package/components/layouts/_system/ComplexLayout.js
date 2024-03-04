@@ -1,6 +1,6 @@
-import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
+import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
 // eslint-disable-next-line import/order
-import CoreLayoutPlaceholder from "./core/CoreLayoutPlaceholder";
+import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 
 export default function ComplexLayout() {
   return (
