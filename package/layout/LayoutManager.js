@@ -48,11 +48,11 @@ export default function LayoutManager(props) {
     }
 
     if (!devData.layoutFound) {
-      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
+      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
     }
 
     if (!devData.pageFound) {
-      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.page, layout: true }));
+      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.page, layout: false }));
     }
 
     /* mount layout and page */
@@ -86,19 +86,19 @@ export default function LayoutManager(props) {
     /**
      * Layout Mismatch
      */
-    let layoutPlaceholders = layoutChildrens?.map((layoutPlaceholder) => {
+    let layoutPlaceholders = layoutChildrens?.filter((layoutPlaceholder) => {
       return layoutPlaceholder?.type?.name === CoreLayoutPlaceholder.name;
     });
-    let layoutItems = pageChildrens?.map((layoutItem) => {
+    let layoutItems = pageChildrens?.filter((layoutItem) => {
       return layoutItem?.type?.name === CoreLayoutItem.name;
     });
 
     let layoutMismatch = false;
 
-    if (layoutPlaceholders.length === layoutItems.length) {
-      let layoutItemKeys = layoutItems.map(layoutItem => layoutItem?.props?.id);
+    if (layoutPlaceholders?.length === layoutItems?.length) {
+      let layoutItemKeys = layoutItems?.map(layoutItem => layoutItem?.props?.id);
 
-      layoutPlaceholders.forEach(layoutPlaceholder => {
+      layoutPlaceholders?.forEach(layoutPlaceholder => {
         if (!layoutPlaceholder?.props?.id || !layoutItemKeys.includes(layoutPlaceholder?.props?.id)) {
           layoutMismatch = true;
         }
@@ -106,6 +106,7 @@ export default function LayoutManager(props) {
     }
 
     if (layoutMismatch) {
+      devData.layoutMismatch = true;
       return React.createElement(BlankLayout, {}, LayoutMismatch);
     }
 

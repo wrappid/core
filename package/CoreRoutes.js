@@ -42,7 +42,7 @@ export default function CoreRoutes() {
       )
     );
 
-    let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
+    let defaultRouteName = /* authenticated ? config?.defaultAuthenticatedRoute : */ config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
@@ -67,7 +67,7 @@ export default function CoreRoutes() {
   }, [authenticated]);
 
   useEffect(() => {
-    let defaultRouteName = authenticated ? (config?.defaultAuthenticatedRoute || config?.defaultRoute) : config?.defaultRoute;
+    let defaultRouteName = /* authenticated ? config?.defaultAuthenticatedRoute : */ config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
