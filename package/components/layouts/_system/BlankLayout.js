@@ -8,7 +8,7 @@ export default function BlankLayout() {
 
   React.useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log("BlankLayoutPage::useEffect");
+    console.log("BlankLayout::useEffect");
   }, []);
   
   return (
