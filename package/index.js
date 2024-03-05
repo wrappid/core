@@ -210,6 +210,8 @@ import {
 } from "./helper/routerHelper";
 import CoreLayoutItem from "./layout/CoreLayoutItem";
 import CoreLayoutPlaceholder from "./layout/CoreLayoutPlaceholder";
+import LayoutManager from "./layout/LayoutManager";
+import LayoutViewer from "./layout/LayoutViewer";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
@@ -342,6 +344,8 @@ export {
   ThreeColumnLayout,
   TwoColumnLayout,
   VCenteredBlankLayout,
-  WrappidComponent
+  WrappidComponent,
+  LayoutManager,
+  LayoutViewer
 };
 
