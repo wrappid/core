@@ -95,10 +95,10 @@ export default function LayoutManager(props) {
 
     let layoutMismatch = false;
 
-    if (layoutPlaceholders.length === layoutItems.length) {
-      let layoutItemKeys = layoutItems.map(layoutItem => layoutItem?.props?.id);
+    if (layoutPlaceholders?.length === layoutItems?.length) {
+      let layoutItemKeys = layoutItems?.map(layoutItem => layoutItem?.props?.id);
 
-      layoutPlaceholders.forEach(layoutPlaceholder => {
+      layoutPlaceholders?.forEach(layoutPlaceholder => {
         if (!layoutPlaceholder?.props?.id || !layoutItemKeys.includes(layoutPlaceholder?.props?.id)) {
           layoutMismatch = true;
         }
@@ -106,6 +106,7 @@ export default function LayoutManager(props) {
     }
 
     if (layoutMismatch) {
+      devData.layoutMismatch = true;
       return React.createElement(BlankLayout, {}, LayoutMismatch);
     }
 
