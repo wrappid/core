@@ -56,7 +56,8 @@ const CoreClasses = {
    **************************************************/
   LAYOUT: {
 
-    BLANK_CONTENT                        : "blankLayoutContent",
+    VIEWER_BORDER                        : "layoutViewerBorder",
+    BLANK_CONTENT                        : "blankLayout",
     CENTERED_BLANK_CONTENT               : "centeredBlankLayoutContent",
     V_CENTERED_BLANK_CONTENT             : "vCenteredBlankLayoutContent",
     H_CENTERED_BLANK_CONTENT             : "hCenteredBlankLayoutContent",
@@ -83,11 +84,13 @@ const CoreClasses = {
     LEFT_RIGHT_DRAWER_LAYOUT_LEFT_DRAWER : "leftRightDrawerLayoutLeftDrawer",
     LEFT_RIGHT_DRAWER_LAYOUT_CONTENT     : "leftRightDrawerLayoutContent",
     LEFT_RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER: "leftRightDrawerLayoutRightDrawer",
-    TWO_COLUMN_LAYOUT_FIRSTCOL           : "twoColumnLayoutFirstCol",
-    TWO_COLUMN_LAYOUT_SECONDCOL          : "twoColumnLayoutSecondCol",
-    THREE_COLUMN_LAYOUT_FIRSTCOL         : "threeColumnLayoutFirstCol",
-    THREE_COLUMN_LAYOUT_SECONDCOL        : "threeColumnLayoutSecondCol",
-    THREE_COLUMN_LAYOUT_THIRDCOL         : "threeColumnLayoutThirdCol",
+    TWO_COL_LAYOUT                       : "twoColLayout",
+    TWO_COL_LAYOUT_FIRST_COL             : "twoColLayoutFirstCol",
+    TWO_COL_LAYOUT_SECOND_COL            : "twoColLayoutSecondCol",
+    THREE_COL_LAYOUT                     : "threeColLayout",
+    THREE_COL_LAYOUT_FIRST_COL           : "threeColLayoutFirstCol",
+    THREE_COL_LAYOUT_SECOND_COL          : "threeColLayoutSecondCol",
+    THREE_COL_LAYOUT_THIRD_COL           : "threeColLayoutThirdCol",
 
     BORDER_BOTTOM_WIDTH: "borderBottomWidth",
     
@@ -104,6 +107,7 @@ const CoreClasses = {
     /*
      * Container related classes
      */
+    APPBAR_HEIGHT               : "appbarHeight",
     FULL_WIDTH                  : "fullWidth",
     FULL_WIDTH_HEIGHT           : "fullWidthHeight",
     GRID_PADDING                : "gridPadding",

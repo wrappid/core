@@ -4,20 +4,18 @@ import React from "react";
 
 import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import CoreClasses from "../../../styles/CoreClasses";
-import CoreBox from "../CoreBox";
 import CoreGrid from "../CoreGrid";
 
 export default function TwoColumnLayout() {
   return (
-    <CoreGrid>
-      <CoreBox gridProps={{ gridSize: { md: 6 } }}>
-        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.TWO_COLUMN_LAYOUT_FIRSTCOL]} id={TwoColumnLayout.PLACEHOLDER.COLUMN1} />
-      </CoreBox>
+    <>
+      <CoreGrid styleClasses={[CoreClasses.LAYOUT.TWO_COL_LAYOUT]}>
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.TWO_COL_LAYOUT_FIRST_COL]} gridProps={{ gridSize: 6 }} id={TwoColumnLayout.PLACEHOLDER.COL_1} />
+      
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.TWO_COL_LAYOUT_SECOND_COL]} gridProps={{ gridSize: 6 }} id={TwoColumnLayout.PLACEHOLDER.COL_2} />
 
-      <CoreBox gridProps={{ gridSize: { md: 6 } }}>
-        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.TWO_COLUMN_LAYOUT_SECONDCOL]} id={TwoColumnLayout.PLACEHOLDER.COLUMN2} />
-      </CoreBox>
-    </CoreGrid>
+      </CoreGrid>
+    </>
   );
 }
-TwoColumnLayout.PLACEHOLDER = { COLUMN1: "column1", COLUMN2: "column2" };
+TwoColumnLayout.PLACEHOLDER = { COL_1: "column1", COL_2: "column2" };

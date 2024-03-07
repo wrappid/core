@@ -45,13 +45,7 @@ export default function LayoutViewer(props) {
       if(layoutChild?.type?.name === CoreLayoutPlaceholder.name){
         return React.createElement(CoreBox, {
           key         : layoutChild?.props?.id,
-          styleClasses: [
-            ...(layoutChild.props.styleClasses || []), 
-            CoreClasses.BG.BG_INFO, 
-            CoreClasses.BORDER.BORDER,
-            CoreClasses.BORDER.BORDER_BLACK,
-            CoreClasses.PADDING.P1
-          ],
+          styleClasses: [...(layoutChild.props.styleClasses || []), CoreClasses.LAYOUT.VIEWER_BORDER],
         }, <CoreTypographyBody1>
           {`${layoutName} :: ${layoutChild?.props?.id}`}
         </CoreTypographyBody1>);
@@ -65,7 +59,25 @@ export default function LayoutViewer(props) {
 
   return (
     <>
-      {renderData()}
+      <CoreBox styleClasses={[
+        CoreClasses.WIDTH.W_25,
+        CoreClasses.BG.BG_GREY_100,
+        CoreClasses.PADDING.P1,
+        CoreClasses.SHADOW.SMALL,
+        CoreClasses.ASPECT_RATIO.ASPECT_RATIO_9_16
+      ]}>
+        {renderData()}
+      </CoreBox>
+
+      <CoreBox styleClasses={[
+        CoreClasses.WIDTH.W_75,
+        CoreClasses.BG.BG_GREY_100,
+        CoreClasses.PADDING.P1,
+        CoreClasses.SHADOW.SMALL,
+        CoreClasses.ASPECT_RATIO.ASPECT_RATIO_16_9
+      ]}>
+        {renderData()}
+      </CoreBox>
     </>
   );
 }
