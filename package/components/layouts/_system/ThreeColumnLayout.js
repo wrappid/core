@@ -7,15 +7,17 @@ import CoreGrid from "../CoreGrid";
 
 export default function ThreeColumnLayout() {
   return (
-    <CoreGrid styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_CONTENT_CENTER]}>
+    <>
+      <CoreGrid styleClasses={[CoreClasses.LAYOUT.THREE_COL_LAYOUT]}>
       
-      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_FIRSTCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN1} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COL_LAYOUT_FIRST_COL]} gridProps={{ gridSize: 4 }} id={ThreeColumnLayout.PLACEHOLDER.COL_1} />
       
-      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_SECONDCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN2} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COL_LAYOUT_SECOND_COL]} gridProps={{ gridSize: 4 }} id={ThreeColumnLayout.PLACEHOLDER.COL_2} />
       
-      <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COLUMN_LAYOUT_THIRDCOL]} gridProps={{ gridSize: { md: 4 } }} id={ThreeColumnLayout.PLACEHOLDER.COLUMN3} />
+        <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.THREE_COL_LAYOUT_THIRD_COL]} gridProps={{ gridSize: 4 }} id={ThreeColumnLayout.PLACEHOLDER.COL_3} />
       
-    </CoreGrid>
+      </CoreGrid>
+    </>
   );
 }
-ThreeColumnLayout.PLACEHOLDER = { COLUMN1: "column1", COLUMN2: "column2", COLUMN3: "column3" };
+ThreeColumnLayout.PLACEHOLDER = { COL_1: "column1", COL_2: "column2", COL_3: "column3" };

@@ -11,7 +11,7 @@ import CoreBox from "../components/layouts/CoreBox";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 
 export default function LayoutViewer(props) {
-  const { layoutName } = props;
+  const { layoutName, layoutType } = props;
   const componentRegistry = React.useContext(ComponentRegistryContext);
 
   const renderData = () => {
@@ -31,7 +31,7 @@ export default function LayoutViewer(props) {
 
     /* get layout childrens */
     let layoutChildren = LayoutComponent?.props?.children;
-    
+
     if (layoutChildren && !Array.isArray(layoutChildren)) {
       layoutChildren = [layoutChildren];
     }
@@ -42,17 +42,11 @@ export default function LayoutViewer(props) {
     });
 
     layoutChildren = layoutChildren?.map((layoutChild) => {
-      if(layoutChild?.type?.name === CoreLayoutPlaceholder.name){
+      if (layoutChild?.type?.name === CoreLayoutPlaceholder.name) {
         return React.createElement(CoreBox, {
           key         : layoutChild?.props?.id,
-          styleClasses: [
-            ...(layoutChild.props.styleClasses || []), 
-            CoreClasses.BG.BG_INFO, 
-            CoreClasses.BORDER.BORDER,
-            CoreClasses.BORDER.BORDER_BLACK,
-            CoreClasses.PADDING.P1
-          ],
-        }, <CoreTypographyBody1>
+          styleClasses: [...(layoutChild.props.styleClasses || []), CoreClasses.LAYOUT.VIEWER_BORDER],
+        }, <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.ALIGN_ITEMS_CENTER]}>
           {`${layoutName} :: ${layoutChild?.props?.id}`}
         </CoreTypographyBody1>);
       } else {
@@ -61,11 +55,23 @@ export default function LayoutViewer(props) {
     });
 
     return layoutChildren;
-  }; 
+  };
 
   return (
     <>
-      {renderData()}
+      <CoreBox styleClasses={[
+        CoreClasses.BG.BG_GREY_100,
+        CoreClasses.PADDING.P1,
+        CoreClasses.SHADOW.SMALL,
+        layoutType === "Web" && CoreClasses.WIDTH.W_25,
+        layoutType === "Tablet" && CoreClasses.WIDTH.W_75,
+        layoutType === "Mobile" && CoreClasses.WIDTH.W_75,
+        layoutType === "Web" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_4_3,
+        layoutType === "Tablet" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_16_9,
+        layoutType === "Mobile" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_9_20,
+      ]}>
+        {renderData()}
+      </CoreBox>
     </>
   );
 }

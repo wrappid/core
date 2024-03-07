@@ -3,7 +3,6 @@ import React from "react";
 
 import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import CoreClasses from "../../../styles/CoreClasses";
-import CoreTypographyBody1 from "../../dataDisplay/CoreTypographyBody1";
 import CoreBox from "../CoreBox";
 
 /* Left Drawer with header */
@@ -11,8 +10,6 @@ export default function LeftDrawerLayout() {
 
   return (
     <>
-      <CoreTypographyBody1>Left Drawr</CoreTypographyBody1>
-
       <CoreLayoutPlaceholder styleClasses={[CoreClasses.LAYOUT.LEFT_DRAWER_LAYOUT_HEDAER]} id={LeftDrawerLayout.PLACEHOLDER.Header} />
 
       <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
