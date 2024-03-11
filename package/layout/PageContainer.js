@@ -159,6 +159,7 @@ export default function PageContainer(props) {
           <CoreDialogContext.Provider value={dialogStates}>
             <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
 
+            {/** @todo testing purposes */}
             {/* eslint-disable-next-line etc/no-commented-out-code */}
             {/* <CoreComponent componentName={pageChild()} /> */}
               
