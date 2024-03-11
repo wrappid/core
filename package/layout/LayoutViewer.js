@@ -9,9 +9,13 @@ import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 import CoreClasses from "../styles/CoreClasses";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
+import CoreGrid from "../components/layouts/CoreGrid";
+import CoreContainedButton from "../components/inputs/CoreContainedButton";
 
 export default function LayoutViewer(props) {
-  const { layoutName, layoutType } = props;
+  const { layoutName, layoutType, showInfo, setShowInfo, potrait } = props;
+
+  console.log(potrait);
   const componentRegistry = React.useContext(ComponentRegistryContext);
 
   const renderData = () => {
@@ -59,19 +63,45 @@ export default function LayoutViewer(props) {
 
   return (
     <>
-      <CoreBox styleClasses={[
-        CoreClasses.BG.BG_GREY_100,
-        CoreClasses.PADDING.P1,
-        CoreClasses.SHADOW.SMALL,
-        layoutType === "Web" && CoreClasses.WIDTH.W_25,
-        layoutType === "Tablet" && CoreClasses.WIDTH.W_75,
-        layoutType === "Mobile" && CoreClasses.WIDTH.W_75,
-        layoutType === "Web" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_4_3,
-        layoutType === "Tablet" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_16_9,
-        layoutType === "Mobile" && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_9_20,
-      ]}>
-        {renderData()}
-      </CoreBox>
+      <CoreGrid>
+
+        <CoreBox gridProps={{ gridSize: 2 }} styleClasses={[CoreClasses.WIDTH.W_100]}>
+
+          <CoreContainedButton OnClick={() => setShowInfo((prevState) => !prevState)} >
+            show Info
+          </CoreContainedButton>
+
+          {/* eslint-disable-next-line etc/no-commented-out-code */}
+          {/* <CoreIcon
+            type="__IconTypes.MATERIAL_ICON"
+            icon="!"
+            color="primary"
+            fontSize="large">
+          </CoreIcon> */}
+
+          {showInfo && <CoreTypographyBody1>Details</CoreTypographyBody1>}
+        </CoreBox>
+
+        <CoreBox gridProps={{ gridSize: 10 }}>
+          <CoreBox styleClasses={[
+            CoreClasses.BG.BG_GREY_100,
+            CoreClasses.PADDING.P1,
+            CoreClasses.SHADOW.SMALL,
+            layoutType === "Web" && CoreClasses.WIDTH.W_100,
+            layoutType === "Tablet" && CoreClasses.WIDTH.W_100,
+            layoutType === "Mobile" && CoreClasses.WIDTH.W_100,
+            (layoutType === "Web" && potrait === true) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_4_3, //Potrait
+            (layoutType === "Tablet" && potrait === true) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_16_9, //Potrait
+            (layoutType === "Mobile" && potrait === true) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_9_16, //Potrait
+            (layoutType === "Web" && potrait === false) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_3_4, // Landscape
+            (layoutType === "Tablet" && potrait === false) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_9_16, // Landscape
+            (layoutType === "Mobile" && potrait === false) && CoreClasses.ASPECT_RATIO.ASPECT_RATIO_16_9, // Landscape
+          ]}>
+            {renderData()}
+          </CoreBox>
+        </CoreBox>
+
+      </CoreGrid>
     </>
   );
 }
