@@ -1,5 +1,5 @@
-/* eslint-disable import/order */
 /* eslint-disable no-console */
+/* eslint-disable import/order */
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -23,7 +23,7 @@ export const COMPONENT_TYPES = {
 
 export default function LayoutManager(props) {
   let layoutItems = {};
-  const { pageName, layoutName } = props;
+  const { pageName, layoutName, viewMode = false } = props;
   const { development } = React.useContext(WrappidDataContext);
   const componentRegistry = React.useContext(ComponentRegistryContext);
   const dispatch = React.useContext(WrappidDispatchContext);
@@ -32,7 +32,9 @@ export default function LayoutManager(props) {
   const [devData, setDevData] = React.useState(development);
 
   React.useEffect(() => {
-    dispatch({ payload: devData, type: UPDATE_DEVELOPMENT_DATA });
+    if (!viewMode) {
+      dispatch({ payload: devData, type: UPDATE_DEVELOPMENT_DATA });
+    }
   }, [devData]);
 
   /**
@@ -128,7 +130,11 @@ export default function LayoutManager(props) {
    */
   const componentHasPlaceholder = (component) => {
     let hasPlaceholder = false;
-    let { children } = component?.props || {};
+    /**
+     * @todo
+     * better approach to figure out if the component is mounted or not
+     */
+    let children = component?.props?.children;
 
     if (typeof children === "object"
       && !Array.isArray(children)
@@ -137,14 +143,30 @@ export default function LayoutManager(props) {
     } else if (typeof children === "object"
       && Array.isArray(children)) {
       hasPlaceholder = children?.some((child) => {
+        /**
+         * @todo
+         * better approach to figure out if the component is mounted or not
+        */
+        if (Object.keys(componentRegistry).includes(getComponentType(child))
+          && componentRegistry[getComponentType(child)]?.layout === true) {
+          return true;
+        }
+        let childChildren = child?.props?.children;
+
+        if (childChildren && !Array.isArray(childChildren)) {
+          childChildren = [childChildren];
+        }
+        
         if (getComponentType(child) === CoreLayoutPlaceholder.name) {
           return true;
         } else {
-          if (child?.props?.chidren) {
+          if (childChildren) {
             return componentHasPlaceholder(child);
           }
         }
       });
+    } else {
+      // do nothing
     }
 
     return hasPlaceholder;
@@ -185,6 +207,7 @@ export default function LayoutManager(props) {
   };
 
   /**
+   * The below function will replace placeholder with layout item
    * 
    * @param {*} component 
    * @param {*} componentProps 
@@ -194,35 +217,51 @@ export default function LayoutManager(props) {
   const replacePlaceholderWithItem = (component, componentProps, placeholderChildren) => {
     if (checkIfPlaceholder(component)) {
       let { id: placeholderID, styleClasses: placeholderStyleClasses = [], ...placeholderProps } = component?.props || {};
-      let layoutItem = layoutItems[placeholderID];
-
-      if (layoutItem) {
-        let { children: itemChildren = [], props: itemAllProps = {} } = layoutItem;
-        let { id: itemID, styleClasses: itemStyleClasses = [], ...itemProps } = itemAllProps;
+      
+      if (placeholderChildren && !Array.isArray(placeholderChildren)) {
+        placeholderChildren = [placeholderChildren];
+      }
+      
+      // convert placeholder and item children as array
+      if (!viewMode) {
+        let layoutItem = layoutItems[placeholderID];
   
-        let mergedStyleClasses = [...(placeholderStyleClasses || []), ...(itemStyleClasses || [])];
+        if (layoutItem) {
+          let { children: itemChildren = [], props: itemAllProps = {} } = layoutItem;
+          let { id: itemID, styleClasses: itemStyleClasses = [], ...itemProps } = itemAllProps;
+    
+          let mergedStyleClasses = [...(placeholderStyleClasses || []), ...(itemStyleClasses || [])];
+  
+          componentProps = {
+            ...placeholderProps,
+            ...itemProps,
+            id          : itemID,
+            styleClasses: mergedStyleClasses,
+          };
+     
+          if (itemChildren && !Array.isArray(itemChildren)) {
+            itemChildren = [itemChildren];
+          }
+          
+          placeholderChildren = [...(placeholderChildren || []), ...(itemChildren || [])]; 
+        } else {
+          // layout item is missing
+        }
 
+      } else {
+        let mergedStyleClasses = [...(placeholderStyleClasses || []), ...[CoreClasses.LAYOUT.VIEWER_BORDER]];
+        
         componentProps = {
           ...placeholderProps,
-          ...itemProps,
-          id          : itemID,
+          id          : placeholderID,
           styleClasses: mergedStyleClasses,
         };
-   
-        // convert placeholder and item children as array
-        if (placeholderChildren && !Array.isArray(placeholderChildren)) {
-          placeholderChildren = [placeholderChildren];
-        }
-        if (itemChildren && !Array.isArray(itemChildren)) {
-          itemChildren = [itemChildren];
-        }
+        let placeholderContent = React.createElement(CoreTypographyBody1, {}, `${layoutName}:${placeholderID}` );
         
-        placeholderChildren = [...(placeholderChildren || []), ...(itemChildren || [])];
-
-        component = React.createElement(CoreBox, componentProps, placeholderChildren);
-      } else {
-        // layout item is missing
+        placeholderChildren = [...(placeholderChildren || []), placeholderContent]; 
       }
+
+      component = React.createElement(CoreBox, componentProps, placeholderChildren);
     }
 
     return component;
@@ -268,7 +307,6 @@ export default function LayoutManager(props) {
     let componentProps = component.props;
 
     /* if placeholder */
-    // eslint-disable-next-line etc/no-commented-out-code
     if (checkIfPlaceholder(component)) {
       component = replacePlaceholderWithItem(component, componentProps, convertedChildren);
     } else {
@@ -295,45 +333,48 @@ export default function LayoutManager(props) {
       devData.renderedLayout = BlankLayout.name;
     }
 
-    if (pageName
-      && Object.keys(componentRegistry).includes(pageName)
-      && componentRegistry[pageName]?.comp
-      /* check if it is a react element */
-    ) {
-      devData.pageFound = true;
-      devData.page = pageName;
-      devData.renderedPage = pageName;
-    } else {
-      devData.pageFound = false;
-      devData.page = pageName || "Not Provided";
-      devData.renderedpage = ComponentNotFound.name;
-    }
-
     if (!devData.layoutFound) {
       return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
     }
-
-    if (!devData.pageFound) {
-      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.page, layout: false }));
-    }
-
-    /* mount root layout and page */
+    /* mount root layout */
     let LayoutComponent = componentRegistry[devData?.renderedLayout]?.comp();
-    let PageComponent = componentRegistry[devData?.renderedPage]?.comp();
 
-    layoutItems = prepareLayoutItems(PageComponent);
+    if (!viewMode) {
+      if (pageName
+        && Object.keys(componentRegistry).includes(pageName)
+        && componentRegistry[pageName]?.comp
+        /* check if it is a react element */
+      ) {
+        devData.pageFound = true;
+        devData.page = pageName;
+        devData.renderedPage = pageName;
+      } else {
+        devData.pageFound = false;
+        devData.page = pageName || "Not Provided";
+        devData.renderedpage = ComponentNotFound.name;
+      }
+  
+      if (!devData.pageFound) {
+        return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.page, layout: false }));
+      }
 
-    console.log("---------------------------------------------------");
-    console.log("------------------ Layout Items -------------------");
-    console.log("---------------------------------------------------");
-    console.log(layoutItems);
-    console.log("---------------------------------------------------");
-    console.log("---------------------------------------------------");
+      /* mount root layout and page */
+      let PageComponent = componentRegistry[devData?.renderedPage]?.comp();
+  
+      layoutItems = prepareLayoutItems(PageComponent);
+    
+      console.log("---------------------------------------------------");
+      console.log("------------------ Layout Items -------------------");
+      console.log("---------------------------------------------------");
+      console.log(layoutItems);
+      console.log("---------------------------------------------------");
+      console.log("---------------------------------------------------");
+    }
 
     let renderableElements = handleLayout(LayoutComponent);
 
     console.log("---------------------------------------------------");
-    console.log("---------------- Renderable Elements ----------------");
+    console.log("--------------- Renderable Elements ---------------");
     console.log("---------------------------------------------------");
     console.log(renderableElements);
     console.log("---------------------------------------------------");

@@ -6,16 +6,20 @@ import { NativeDomRoute, NativeDomRoutes } from "@wrappid/native";
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
+import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
 import Logout from "./components/navigation/Logout";
+import PageLoader from "./components/PageLoader";
 import { HTTP } from "./config/constants";
 import { CoreRoutesContext } from "./config/contextHandler";
+import Error404 from "./error/Error404";
+import Error500 from "./error/Error500";
 import PageContainer from "./layout/PageContainer";
 import { RoutesRegistry } from "./registry/RoutesRegistry";
 import { apiRequestAction } from "./store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "./store/types/appTypes";
 
 const DEFAULT_ROUTE = {
-  Page        : { appComponent: "WrappidComponent" },
+  Page        : { appComponent: PageLoader.name, layout: CenteredBlankLayout.name },
   authRequired: false,
   entityRef   : "defaultAppRoute",
   url         : "defaultAppRoute"
@@ -112,10 +116,7 @@ export default function CoreRoutes() {
         path="/logout"
         element={
           <PageContainer
-            page={{
-              auth: false,
-              comp: Logout,
-            }}
+            route={{ Page: { appComponent: Logout.name, layout: CenteredBlankLayout.name }, authRequired: true }}
           />
         }
       />
@@ -125,11 +126,7 @@ export default function CoreRoutes() {
         path="/error"
         element={
           <PageContainer
-            route={{ Page: { appComponent: "Error500" } }}
-            /* page={{
-              auth: false,
-              comp: Error500,
-            }} */
+            route={{ Page: { appComponent: Error500.name, layout: CenteredBlankLayout.name } }}
           />
         }
       />
@@ -139,11 +136,7 @@ export default function CoreRoutes() {
         path="*"
         element={
           <PageContainer
-            /* page={{
-              auth: false,
-              comp: Error404,
-            }} */
-            route={{ Page: { appComponent: "Error404" } }}
+            route={{ Page: { appComponent: Error404.name, layout: CenteredBlankLayout.name } }}
           />
         }
       />
