@@ -175,8 +175,6 @@ import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
-import OnlineStatus from "./components/utils/OnlineStatus";
-import OnlineStatusSnackbar from "./components/utils/OnlineStatusSnackbar";
 import WrappidComponent from "./components/WrappidComponent";
 import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
@@ -328,7 +326,7 @@ export {
   /**
    *
    */
-  NotificationPopOver, onEditForm, OnlineStatus, OnlineStatusSnackbar, ParentChildMap, queryBuilder, reloadDataTableAction, RightDrawerLayout, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
+  NotificationPopOver, onEditForm, ParentChildMap, queryBuilder, reloadDataTableAction, RightDrawerLayout, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
   /**
    * Themes
    */

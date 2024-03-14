@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
+import { NativePageContainer, nativeUseLocation, NativeOnlineStatusSnackbar } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CoreDialog from "../components/feedback/CoreDialog";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
-import OnlineStatusSnackbar from "../components/utils/OnlineStatusSnackbar";
 import {
   ComponentRegistryContext,
   CoreDialogContext,
@@ -148,7 +147,7 @@ export default function PageContainer(props) {
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
 
-        <OnlineStatusSnackbar/>
+        <NativeOnlineStatusSnackbar/>
 
         <NativePageContainer
           uid={auth?.uid}
