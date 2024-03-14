@@ -8,7 +8,7 @@ import CoreCircularProgress from "./feedback/CoreCircularProgress";
 import BlankLayout from "./layouts/_system/BlankLayout";
 import CoreLayoutItem from "../layout/CoreLayoutItem";
 
-export default function WrappidComponent() {
+export default function PageLoader() {
   return (
     <>
       <CoreLayoutItem id={BlankLayout.PLACEHOLDER.CONTENT}>
