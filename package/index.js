@@ -62,6 +62,7 @@ import CoreBackdrop from "./components/feedback/CoreBackdrop";
 import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreDialog, { CORE_DIALOG_TYPES } from "./components/feedback/CoreDialog";
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
+import CoreNetworkStatus from "./components/feedback/CoreNetworkStatus";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
 import ChildMap from "./components/inputs/ChildMap";
@@ -300,6 +301,7 @@ export {
   CoreTableBody,
   CoreTableBodyCell,
   CoreTableCell,
+  CoreNetworkStatus,
   CoreTableContainer,
   CoreTableFooter,
   CoreTableHead, CoreTableHeadCell, CoreTableHeadRow, CoreTablePagination,
