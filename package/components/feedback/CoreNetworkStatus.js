@@ -7,7 +7,7 @@ import { NativeNetworkStatus } from "@wrappid/native";
 
 // import { sanitizeComponentProps } from "../../utils/componentUtil";
 
-export default function CoreSnackbar(props) {
+export default function CoreNetworkStatus(props) {
 //   props = sanitizeComponentProps(CoreSnackbar, props);
 
   return (
