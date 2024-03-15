@@ -62,6 +62,7 @@ import CoreBackdrop from "./components/feedback/CoreBackdrop";
 import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreDialog, { CORE_DIALOG_TYPES } from "./components/feedback/CoreDialog";
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
+import CoreNetworkStatus from "./components/feedback/CoreNetworkStatus";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
 import ChildMap from "./components/inputs/ChildMap";
@@ -175,8 +176,6 @@ import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
-import OnlineStatus from "./components/utils/OnlineStatus";
-import OnlineStatusSnackbar from "./components/utils/OnlineStatusSnackbar";
 import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
 import {
@@ -300,6 +299,7 @@ export {
   CoreTableBody,
   CoreTableBodyCell,
   CoreTableCell,
+  CoreNetworkStatus,
   CoreTableContainer,
   CoreTableFooter,
   CoreTableHead, CoreTableHeadCell, CoreTableHeadRow, CoreTablePagination,
@@ -326,7 +326,7 @@ export {
   /**
    *
    */
-  NotificationPopOver, onEditForm, OnlineStatus, OnlineStatusSnackbar, ParentChildMap, queryBuilder, reloadDataTableAction, RightDrawerLayout, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
+  NotificationPopOver, onEditForm, ParentChildMap, queryBuilder, reloadDataTableAction, RightDrawerLayout, setUserTheme, SmallCoreStyles, StatusText, stringUtils,
   /**
    * Themes
    */
