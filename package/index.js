@@ -176,7 +176,6 @@ import CoreModal from "./components/utils/CoreModal";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
-import WrappidComponent from "./components/WrappidComponent";
 import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
 import {
@@ -211,7 +210,6 @@ import {
 import CoreLayoutItem from "./layout/CoreLayoutItem";
 import CoreLayoutPlaceholder from "./layout/CoreLayoutPlaceholder";
 import LayoutManager from "./layout/LayoutManager";
-import LayoutViewer from "./layout/LayoutViewer";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
 import { apiRequestAction, setUserTheme } from "./store/action/appActions";
@@ -323,7 +321,7 @@ export {
   FORM_SANITIZATOIN_FUNCTION_MAP, FORM_VIEW_MODE, getAge, getCoreAccessToken, getForm, getFormikRequiredMessage, getFullName, HCenteredBlankLayout,
   HeaderFooterLayout,
   HeaderLayout, HTTP, IconContext, LargeCoreStyles, LayoutManager,
-  LayoutViewer, LeftDrawerLayout,
+  LeftDrawerLayout,
   LeftRightDrawerLayout, LOGOUT_SUCCESS, MediumCoreStyles, MENU_HEADER_ITEM, MENU_ITEM, MENU_ITEM_BUTTON, MENU_ITEM_ICON, MENU_ITEM_TEXT, MENU_ITEM_WRAPPER, MENU_PARENT_ITEM, MENU_SEPERATOR,
   /**
    *
@@ -332,7 +330,7 @@ export {
   /**
    * Themes
    */
-  ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, WrappidComponent, XLargeCoreStyles,
+  ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
   XXLargeCoreStyles
 };
 
