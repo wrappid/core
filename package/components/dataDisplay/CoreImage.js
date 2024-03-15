@@ -4,10 +4,12 @@ import React from "react";
 
 import { NativeImage } from "@wrappid/native";
 
+import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreImage(props) {
+  props = sanitizeComponentProps(CoreImage, props);
   return <NativeImage {...props} />;
 }
-
 CoreImage.validProps = [
   {
     name : "src",
