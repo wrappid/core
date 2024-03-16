@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { WrappidData } from "@wrappid/styles";
 
 import { HTTP } from "../config/constants";
