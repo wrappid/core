@@ -8,28 +8,9 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreAlert(props) {
   props = sanitizeComponentProps(CoreAlert, props);
-  const {
-    action, children, closeText, color, icon, iconMapping, components, componentsProps, slotProps, slots, onClose, role, severity, variant
-  } = props;
 
   return (
-    <NativeAlert
-      action={action}
-      closeText={closeText}
-      color={color}
-      icon={icon}
-      iconMapping={iconMapping}
-      components={components}
-      componentsProps={componentsProps}
-      onClose={onClose}
-      slots={slots}
-      slotProps={slotProps}
-      role={role}
-      severity={severity}
-      variant={variant}
-    >
-      {children}
-    </NativeAlert>
+    <NativeAlert {...props} />
   );
 }
 

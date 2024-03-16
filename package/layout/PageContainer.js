@@ -7,9 +7,9 @@ import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
-import CoreNetworkStatus from "../components/feedback/CoreNetworkStatus";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
+import CoreNetworkStatus from "../components/utils/CoreNetworkStatus";
 import {
   ComponentRegistryContext,
   CoreDialogContext,
