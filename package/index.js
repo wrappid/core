@@ -1,6 +1,9 @@
 // import CoreNavigation from "./CoreNavigation";
 // import CoreGridItem from "./components/layouts/CoreGridItem";
 // -- import CoreAppDiv from "./components/layouts/CoreAppDiv";
+// eslint-disable-next-line import/no-unresolved
+import { useNetworkStatus } from "@wrappid/native";
+
 import CoreComponent from "./components/CoreComponent";
 import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
@@ -62,7 +65,6 @@ import CoreBackdrop from "./components/feedback/CoreBackdrop";
 import CoreCircularProgress from "./components/feedback/CoreCircularProgress";
 import CoreDialog, { CORE_DIALOG_TYPES } from "./components/feedback/CoreDialog";
 import CoreLinearProgress from "./components/feedback/CoreLinearProgress";
-import CoreNetworkStatus from "./components/feedback/CoreNetworkStatus";
 import CoreSkeleton from "./components/feedback/CoreSkeleton";
 import CoreSnackbar from "./components/feedback/CoreSnackbar";
 import ChildMap from "./components/inputs/ChildMap";
@@ -173,6 +175,7 @@ import CoreApiVersion from "./components/utils/CoreApiVersion";
 import CoreFade from "./components/utils/CoreFade";
 import CoreLoginDetails from "./components/utils/CoreLoginDetails";
 import CoreModal from "./components/utils/CoreModal";
+import CoreNetworkStatus from "./components/utils/CoreNetworkStatus";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
@@ -331,6 +334,8 @@ export {
    * Themes
    */
   ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
-  XXLargeCoreStyles
+  XXLargeCoreStyles,
+  // Network status custom hook
+  useNetworkStatus
 };
 
