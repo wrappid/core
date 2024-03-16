@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidData } from "@wrappid/styles";
 import * as yup from "yup";
 
 import { defaultValidations } from "./componentDefaultValidations";
@@ -19,8 +19,8 @@ import CoreBox from "../components/layouts/CoreBox";
 import { GET_FORM_API, GET_FORM_API_AUTHENTICATED } from "../config/api";
 import { ENV_DEV_MODE, HTTP } from "../config/constants";
 import {
-  mergedComponentRegistry,
   functionsRegistry,
+  mergedComponentRegistry,
   validationsRegistry
 } from "../layout/PageContainer";
 import axiosInterceptor from "../middleware/axiosInterceptor";
@@ -660,11 +660,11 @@ export function createTableFormJson(
 }
 
 export function viewString(text, type) {
-  let configuration = getConfigurationObject();
+  let { config: configuration } = WrappidData;
 
   if (text) {
     return text;
-  } else if (configuration?.wrappid?.env === ENV_DEV_MODE) {
+  } else if (configuration?.environment === ENV_DEV_MODE) {
     if (type) {
       return "No " + type + " found";
     } else return "NA";
@@ -718,7 +718,7 @@ export function hookcallCheck(
 }
 
 export async function getForm(formId, auth = true, formReducer) {
-  let configuration = getConfigurationObject();
+  let { config: configuration } = WrappidData;
 
   if (formReducer?.rawForm && formReducer?.rawForm[formId]) {
     return {
@@ -738,7 +738,7 @@ export async function getForm(formId, auth = true, formReducer) {
       formReducer?.rawFormStatus[formId]?.error)
   ) {
     try {
-      let backendUrl = configuration?.wrappid?.backendUrl;
+      let backendUrl = configuration?.backendUrl;
       let url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
       let formRes = await axiosInterceptor({
         headers: await authHeader(auth, false),

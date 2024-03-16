@@ -1,14 +1,14 @@
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidData } from "@wrappid/styles";
 
-import authHeader from "./DataService";
 import { HTTP } from "../config/constants";
 import axiosInterceptor from "../middleware/axiosInterceptor";
 import { createFormData, queryBuilder } from "../utils/helper";
+// eslint-disable-next-line import/order
+import authHeader from "./DataService";
 
 function getEndpoint(method, endpoint, data) {
-  let appConfig = getConfigurationObject();
-  let backendUrl = appConfig?.wrappid?.backendUrl;
+  let backendUrl = WrappidData?.config?.backendUrl;
   /**
    * @todo @sumanta-m review required
    */

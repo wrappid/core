@@ -12,7 +12,7 @@ import {
 } from "../../../config/api";
 import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../../../config/constants";
 import { CoreRouteRegistryContext } from "../../../config/contextHandler";
-import ErrorBoundary from "../../../middleware/ErrorBoundary";
+import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import ComponentsRegistry from "../../../registry/ComponentsRegistry";
 import { apiRequestAction } from "../../../store/action/appActions";
 import { toggleLeftMenuState } from "../../../store/action/menuAction";
@@ -42,7 +42,7 @@ export let globalRefreshToken = null;
 export let globalTokenRequested = null;
 export let globalTokenRequestTimeStamp = null;
 
-function AppContainer(props) {
+function AppContainerLayout() {
   const windowWidth = window.innerWidth;
   const dispatch = useDispatch();
   const location = nativeUseLocation();
@@ -214,12 +214,12 @@ function AppContainer(props) {
       >
         <CoreRequestProgressBar />
 
-        <ErrorBoundary hasError={hasError} setHasError={setHasError}>
-          {props.children}
-        </ErrorBoundary>
+        <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
       </NativeAppContainer>
     </CoreRouteRegistryContext.Provider>
   );
 }
 
-export default AppContainer;
+export default AppContainerLayout;
+
+AppContainerLayout.PLACEHOLDER = { CONTENT: "content" };

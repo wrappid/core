@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/order, import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreBox from "../layouts/CoreBox";
@@ -12,7 +12,7 @@ import CoreTermsPrivacyLink from "../utils/CoreTermsPrivacyLink";
 
 // eslint-disable-next-line no-unused-vars
 export default function CoreFooter(props) {
-  const config = getConfigurationObject();
+  const { config } = React.useContext(WrappidDataContext);
   
   return (
     <CoreGrid styleClasses={[

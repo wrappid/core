@@ -1,7 +1,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDataTableBody from "./CoreDataTableBody";
@@ -10,9 +10,9 @@ import CoreDataTableHead from "./CoreDataTableHead";
 import CoreDataTableToolbar from "./CoreDataTableToolbar";
 import {
   HTTP,
-  userSettingsConstants,
+  MEDIUM_WINDOW_WIDTH,
   __TableDensity,
-  MEDIUM_WINDOW_WIDTH
+  userSettingsConstants
 } from "../../../config/constants";
 import { DATA_TABLE_CONST } from "../../../config/dataTableConstants";
 import { apiRequestAction } from "../../../store/action/appActions";
@@ -30,11 +30,11 @@ import { getUUID } from "../../../utils/appUtils";
 import { compareObject } from "../../../utils/objectUtils";
 import { getLabel } from "../../../utils/stringUtils";
 import {
+  __TableLeftPanelGridSize,
+  __TableRightPanelGridSize,
   getTableDensityPaddingValue,
   getTableDensityValue,
-  prepareTableAPIQuery,
-  __TableLeftPanelGridSize,
-  __TableRightPanelGridSize
+  prepareTableAPIQuery
 } from "../../../utils/tableUtils";
 import {
   APP_PLATFORM,
@@ -101,6 +101,8 @@ import CoreTypographyBody1 from "../CoreTypographyBody1";
  */
 export default function CoreDataTable(props) {
   const dispatch = useDispatch();
+
+  const { config } = React.useContext(WrappidDataContext);
 
   // platform detection
 
@@ -338,7 +340,7 @@ export default function CoreDataTable(props) {
   };
 
   React.useEffect(() => {
-    if (getConfigurationObject()?.wrappid?.platform === APP_PLATFORM) {
+    if (config?.platform === APP_PLATFORM) {
       if (openCreateOnMount) {
         return;
       } else {

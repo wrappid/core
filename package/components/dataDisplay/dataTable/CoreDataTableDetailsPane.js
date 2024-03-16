@@ -3,7 +3,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreDataTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
 import CoreTableAction from "./CoreTableAction";
@@ -73,7 +73,7 @@ export default function CoreDataTableDetailsPane(props) {
     platform,
   } = props;
 
-  const config = getConfigurationObject();
+  const { config } = React.useContext(WrappidDataContext);
 
   return (
     <CoreDataTableDetailsPaneContainer
@@ -198,7 +198,7 @@ export default function CoreDataTableDetailsPane(props) {
         <CoreCardContent>
           {detailedRowData && Object.keys(detailedRowData).length > 0 ? (
             <>
-              {config?.wrappid?.envvironment === ENV_DEV_MODE && (
+              {config?.envvironment === ENV_DEV_MODE && (
                 <>
                   <CoreAccordion
                     expanded={_expandedDevJSONSchema}

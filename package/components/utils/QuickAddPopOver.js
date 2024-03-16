@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { nativeUseNavigate } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import {
   CoreMenuContext,
@@ -19,6 +19,9 @@ export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
   const menuData = useContext(CoreMenuContext);
   const routeRegistry = useContext(CoreRouteRegistryContext);
+  
+  let { config } = React.useContext(WrappidDataContext);
+  
   const { onClose } = props;
 
   function getLink(menuItem, routeRegistry) {
@@ -59,7 +62,6 @@ export default function QuickAddPopOver(props) {
   }
 
   const OnMenuClick = item => {
-    let config = getConfigurationObject();
 
     if (config?.wrappid?.platform === APP_PLATFORM) {
       navigate(getLink(item, routeRegistry));
