@@ -3,7 +3,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreAvatar from "./CoreAvatar";
 import CoreChip from "./CoreChip";
@@ -40,7 +40,7 @@ export default function UserChip(props) {
   const [email, setEmail] = React.useState(_email);
   const [photoUrl, setPhotoUrl] = React.useState(_photoUrl);
 
-  let appConfig = getConfigurationObject();
+  let { config: appConfig } = React.useContext(WrappidDataContext);
 
   React.useEffect(() => {
     async function apiCall() {

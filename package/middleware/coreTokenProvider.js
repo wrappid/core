@@ -1,4 +1,4 @@
-import { globalAccessToken } from "../components/layouts/_system/AppContainer";
+import { globalAccessToken } from "../components/layouts/_system/AppContainerLayout";
 
 async function getCoreAccessToken() {
   try {

@@ -1,7 +1,7 @@
+import { WrappidData } from "@wrappid/styles";
 import moment from "moment";
 
 import { REFRESH_TOKEN_API } from "../config/api";
-import config from "../config/config";
 import { HTTP } from "../config/constants";
 import {
   LOGOUT_SUCCESS,
@@ -46,10 +46,7 @@ export async function reloadToken(
 
   // -- console.log("__tokenRequested__", tokenRequested, diff);
   if (!tokenRequested || diff > 60) {
-    const backendUrl = config?.wrappid
-      ? config.wrappid.backendUrl
-      // eslint-disable-next-line no-undef
-      : process.env.REACT_APP_WRAPPID_backendUrl;
+    const backendUrl = WrappidData?.config?.backendUrl;
 
     dispatch({ type: TOKEN_REQUESTED });
     fetch(backendUrl + REFRESH_TOKEN_API, {

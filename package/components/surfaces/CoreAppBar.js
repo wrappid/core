@@ -6,7 +6,7 @@ import { CoreTypographyBody1, WEB_PLATFORM } from "@wrappid/core";
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppBar } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses, getConfigurationObject } from "@wrappid/styles";
+import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { urls } from "../../config/constants";
@@ -30,6 +30,7 @@ export default function CoreAppBar(props) {
   props = sanitizeComponentProps(CoreAppBar, props);
 
   const dispatch = useDispatch();
+  let { config } = React.useContext(WrappidDataContext);
   const location = coreUseLocation();
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
@@ -49,7 +50,6 @@ export default function CoreAppBar(props) {
   };
 
   React.useEffect(() => {
-    let config = getConfigurationObject();
 
     setPlatform(config?.wrappid?.platform);
     setAppbarType(config?.wrappid?.appbarType);

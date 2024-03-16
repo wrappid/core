@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreClasses from "../../../styles/CoreClasses";
 import { APP_PLATFORM } from "../../../utils/themeUtil";
@@ -13,6 +13,8 @@ import CoreIconButton from "../CoreIconButton";
 export default function CoreFormHeaderActions(props) {
   //TODO: add tooltop component to CoreIconButton with label
   // console.log("props", props);
+  const { config } = React.useContext(WrappidDataContext);
+
   return props.action ? (
     Array.isArray(props.action) ? (
       <CoreBox
@@ -20,7 +22,7 @@ export default function CoreFormHeaderActions(props) {
         {props.action.map((action, i) => (
           <CoreIconButton
             style={
-              getConfigurationObject()?.wrappid?.platform === APP_PLATFORM
+              config?.platform === APP_PLATFORM
                 ? { marginRight: -10 }
                 : {}
             }

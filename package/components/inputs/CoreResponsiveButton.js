@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreIconButton from "./CoreIconButton";
 import CoreOutlinedButton from "./CoreOutlinedButton";
@@ -12,7 +12,7 @@ import { APP_PLATFORM } from "../../utils/themeUtil";
 import CoreIcon from "../dataDisplay/CoreIcon";
 
 export default function CoreResponsiveButton(props) {
-  let config = getConfigurationObject();
+  let { config } = React.useContext(WrappidDataContext);
 
   return (
     <>

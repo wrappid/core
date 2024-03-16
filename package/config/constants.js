@@ -1,6 +1,6 @@
-export const ENV_DEV_MODE = "DEV";
-export const ENV_STAGE_MODE = "STAGE";
-export const ENV_PROD_MODE = "PROD";
+export const ENV_DEV_MODE = "development";
+export const ENV_STAGE_MODE = "stage";
+export const ENV_PROD_MODE = "production";
 
 export const refreshInterval = 15 * 60 * 1000; // 15 minutes
 

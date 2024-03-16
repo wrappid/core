@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeOtpInput } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreFormErrorText from "./CoreFormErrorText";
@@ -21,7 +21,7 @@ import CoreBox from "../layouts/CoreBox";
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
   const sendOtpLoading = useSelector((state) => state?.app?.sendOtpLoading);
-  let appConfig = getConfigurationObject();
+  let { config: appConfig } = React.useContext(WrappidDataContext);
 
   useEffect(() => {
     sendOtp();

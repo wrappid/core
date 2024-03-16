@@ -3,7 +3,7 @@ import {
   globalRefreshToken,
   globalTokenRequestTimeStamp,
   globalTokenRequested
-} from "../../components/layouts/_system/AppContainer";
+} from "../../components/layouts/_system/AppContainerLayout";
 import {
   LOGIN_WITH_OTP_API,
   LOGIN_WITH_PASSWORD_API,

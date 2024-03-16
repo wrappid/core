@@ -38,7 +38,7 @@ export default function CoreRoutes() {
     config?.backendUrl && dispatch(
       apiRequestAction(
         HTTP.GET,
-        "/noauth/business/all/RoutePages",
+        `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
         true,
         { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
         GET_ROUTE_SUCCESS,
@@ -46,7 +46,7 @@ export default function CoreRoutes() {
       )
     );
 
-    let defaultRouteName = /* authenticated ? config?.defaultAuthenticatedRoute : */ config?.defaultRoute;
+    let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
@@ -58,16 +58,18 @@ export default function CoreRoutes() {
   }, []);
 
   React.useEffect(() => {
-    config?.backendUrl && dispatch(
-      apiRequestAction(
-        HTTP.GET,
-        "/noauth/business/all/RoutePages",
-        true,
-        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
-        GET_ROUTE_SUCCESS,
-        GET_ROUTE_FAILURE
-      )
-    );
+    if (config?.backendUrl) {
+      dispatch(
+        apiRequestAction(
+          HTTP.GET,
+          `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
+          authenticated,
+          { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
+          GET_ROUTE_SUCCESS,
+          GET_ROUTE_FAILURE
+        )
+      );
+    }
   }, [authenticated]);
 
   useEffect(() => {

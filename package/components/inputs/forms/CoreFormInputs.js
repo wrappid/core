@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { getConfigurationObject } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 
 import CoreFormButton from "./CoreFormButton";
 import { BUTTON_TYPE, INPUT_TYPE } from "./coreFormConstants";
@@ -37,6 +37,8 @@ export default function CoreFormInputs(props) {
     OnCancelClick,
     mode,
   } = props;
+
+  const { config } = React.useContext(WrappidDataContext);
 
   const [elementProps, setElementProps] = useState({});
   const [tempProps, setTempProps] = useState({});
@@ -128,7 +130,7 @@ export default function CoreFormInputs(props) {
 
   return type === INPUT_TYPE ? (
     element?.speechToText ? (
-      getConfigurationObject()?.wrappid?.platform === APP_PLATFORM && (
+      config?.platform === APP_PLATFORM && (
         <CoreGrid coreId="speecToText">
           {element?.comp && !checkDependencies(element, formikprops)?.hide
             ? React.createElement(
