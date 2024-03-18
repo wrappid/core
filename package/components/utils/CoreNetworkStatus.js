@@ -7,7 +7,7 @@ import { useNetworkStatus } from "@wrappid/native";
 
 import CoreAlert from "../feedback/CoreAlert";
 import CoreSnackbar from "../feedback/CoreSnackbar";
-
+import CoreBox from "../layouts/CoreBox";
 // import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreNetworkStatus() {
@@ -31,20 +31,19 @@ export default function CoreNetworkStatus() {
       open={openSnackbar}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       autoHideDuration={isOnline ? 6000 : null}
-      // message={`${isOnline ? "🟢 You are connected" : "🔴 You are not connected"} to the internet.`}
       onClose={handleCloseSnackbar}
     >
-      <>
+      <CoreBox>
         <CoreAlert
-          severity="success"
+          severity={isOnline ? "success" : "error" }
           variant="filled"
+          action={handleCloseSnackbar}
         >
-          {`${isOnline ? "🟢 You are connected" : "🔴 You are not connected"} to the internet.`}
+          {`${isOnline ? "You are connected" : "You are not connected"} to the internet.`}
 
         </CoreAlert>
-      </>
+      </CoreBox>
     </CoreSnackbar>
-
   );
 }
-
+  
