@@ -7,6 +7,7 @@ import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
+import AppContainerLayout from "../components/layouts/_system/AppContainerLayout";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
 import CoreNetworkStatus from "../components/utils/CoreNetworkStatus";
@@ -125,7 +126,7 @@ export default function PageContainer(props) {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
     } else {
-      return (auth?.uid ? defaultAuthenticatedLayout : defaultLayout) || undefined;
+      return (auth?.uid ? (defaultAuthenticatedLayout || AppContainerLayout.name) : defaultLayout) || BlankLayout;
     }
   };
   /**

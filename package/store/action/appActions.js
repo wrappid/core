@@ -1,16 +1,16 @@
 import {
-  globalAccessToken,
-  globalRefreshToken,
-  globalTokenRequestTimeStamp,
-  globalTokenRequested
-} from "../../components/layouts/_system/AppContainerLayout";
-import {
   LOGIN_WITH_OTP_API,
   LOGIN_WITH_PASSWORD_API,
   LOGIN_WITH_RESET_PASSWORD_API,
   LOGIN_WITH_URL_API
 } from "../../config/api";
 import { HTTP, MESSAGE_TYPE } from "../../config/constants";
+import {
+  globalAccessToken,
+  globalRefreshToken,
+  globalTokenRequested,
+  globalTokenRequestTimeStamp
+} from "../../CoreRoutes";
 import { formStore } from "../../layout/PageContainer";
 import AppService from "../../service/AppService";
 import { reloadToken } from "../../utils/appUtils";

@@ -1,4 +1,4 @@
-import { globalAccessToken } from "../components/layouts/_system/AppContainerLayout";
+import { globalAccessToken } from "../CoreRoutes";
 
 async function getCoreAccessToken() {
   try {

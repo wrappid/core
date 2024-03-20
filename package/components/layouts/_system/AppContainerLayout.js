@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
+import { SMALL_WINDOW_WIDTH } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -10,8 +11,7 @@ import {
   GET_USER_SETTINGS,
   UPDATE_USER_SETTINGS
 } from "../../../config/api";
-import { HTTP, SMALL_WINDOW_WIDTH, userSettingsConstants } from "../../../config/constants";
-import { CoreRouteRegistryContext } from "../../../config/contextHandler";
+import { HTTP, userSettingsConstants } from "../../../config/constants";
 import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import ComponentsRegistry from "../../../registry/ComponentsRegistry";
 import { apiRequestAction } from "../../../store/action/appActions";
@@ -37,28 +37,18 @@ import CoreAppBar from "../../surfaces/CoreAppBar";
 import CoreDrawer from "../../surfaces/CoreDrawer";
 import CoreFooter from "../../surfaces/CoreFooter";
 
-export let globalAccessToken = null;
-export let globalRefreshToken = null;
-export let globalTokenRequested = null;
-export let globalTokenRequestTimeStamp = null;
-
-function AppContainerLayout() {
+export default function AppContainerLayout() {
   const windowWidth = window.innerWidth;
+  const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
+  const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
+  const _routes = useSelector((state) => state?.route?.routes);
+  
   const dispatch = useDispatch();
   const location = nativeUseLocation();
   const auth = useSelector((state) => state?.auth);
   const accessToken = useSelector((state) => state?.auth?.accessToken);
-  const refreshToken = useSelector((state) => state?.auth?.refreshToken);
-  const tokenRequested = useSelector((state) => state?.pendingRequests?.tokenRequested);
-  const tokenRequestTimeStamp = useSelector(
-    (state) => state?.pendingRequests?.tokenRequestTimeStamp
-  );
-  const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
-  const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = useState(false);
   const currentPendingRequest = useSelector((state) => state.pendingRequests.pendingRequest);
   const recallState = useSelector((state) => state?.pendingRequests?.recall);
-  const _routes = useSelector((state) => state?.route?.routes);
-  const [routeRegistry, setRouteRegistry] = useState({});
 
   // user settings
   // const reload = useSelector((state) => state?.settings?.reload);
@@ -172,23 +162,12 @@ function AppContainerLayout() {
     });
   }, []);
 
-  React.useEffect(() => {
-    let registry = {};
-
-    for (let i = 0; i < _routes?.length; i++) {
-      registry[_routes[i].entityRef] = _routes[i].url;
-    }
-    setRouteRegistry(registry);
-  }, [_routes]);
-
   const getAppBar = () => {
     return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
   };
-
   const getFooter = () => {
     return <CoreFooter />;
   };
-
   const getLeftDrawer = () => {
     return auth?.uid && auth?.accessToken ? (
       <CoreDrawer
@@ -198,13 +177,9 @@ function AppContainerLayout() {
     ) : null;
   };
 
-  globalAccessToken = accessToken;
-  globalRefreshToken = refreshToken;
-  globalTokenRequested = tokenRequested;
-  globalTokenRequestTimeStamp = tokenRequestTimeStamp;
-
   return (
-    <CoreRouteRegistryContext.Provider value={{ ...routeRegistry }}>
+    <>
+      {/* eslint-disable-next-line etc/no-commented-out-code */}
       <NativeAppContainer
         appBar={getAppBar}
         leftDrawer={getLeftDrawer}
@@ -215,11 +190,11 @@ function AppContainerLayout() {
         <CoreRequestProgressBar />
 
         <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
+
       </NativeAppContainer>
-    </CoreRouteRegistryContext.Provider>
+
+    </>
   );
 }
-
-export default AppContainerLayout;
 
 AppContainerLayout.PLACEHOLDER = { CONTENT: "content" };

@@ -25,6 +25,11 @@ const DEFAULT_ROUTE = {
   url         : "defaultAppRoute"
 };
 
+export let globalAccessToken = null;
+export let globalRefreshToken = null;
+export let globalTokenRequested = null;
+export let globalTokenRequestTimeStamp = null;
+
 export default function CoreRoutes() {
   const dispatch = useDispatch();
   const routesRegistry = useContext(CoreRoutesContext);
@@ -34,27 +39,38 @@ export default function CoreRoutes() {
   const { config } = React.useContext(WrappidDataContext);
   const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   
+  const accessToken = useSelector((state) => state?.auth?.accessToken);
+  const refreshToken = useSelector((state) => state?.auth?.refreshToken);
+  const tokenRequested = useSelector((state) => state?.pendingRequests?.tokenRequested);
+  const tokenRequestTimeStamp = useSelector(
+    (state) => state?.pendingRequests?.tokenRequestTimeStamp
+  );
+
+  globalAccessToken = accessToken;
+  globalRefreshToken = refreshToken;
+  globalTokenRequested = tokenRequested;
+  globalTokenRequestTimeStamp = tokenRequestTimeStamp;
+  
   React.useEffect(() => {
-    config?.backendUrl && dispatch(
-      apiRequestAction(
-        HTTP.GET,
-        `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
-        true,
-        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
-        GET_ROUTE_SUCCESS,
-        GET_ROUTE_FAILURE
-      )
-    );
-
-    let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
-
-    if (defaultRouteName) {
-      if (Object.keys(routesRegistry).includes(defaultRouteName)) {
-        setDefaultRoute(routesRegistry[defaultRouteName]);
-      } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)?.length > 0) {
-        setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
-      }
-    }
+    // eslint-disable-next-line etc/no-commented-out-code
+    // config?.backendUrl && dispatch(
+    //   apiRequestAction(
+    //     HTTP.GET,
+    //     `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
+    //     true,
+    //     { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
+    //     GET_ROUTE_SUCCESS,
+    //     GET_ROUTE_FAILURE
+    //   )
+    // );
+    // let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
+    // if (defaultRouteName) {
+    //   if (Object.keys(routesRegistry).includes(defaultRouteName)) {
+    //     setDefaultRoute(routesRegistry[defaultRouteName]);
+    //   } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)?.length > 0) {
+    //     setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
+    //   }
+    // }
   }, []);
 
   React.useEffect(() => {
@@ -70,10 +86,10 @@ export default function CoreRoutes() {
         )
       );
     }
-  }, [authenticated]);
+  }, [config, authenticated]);
 
   useEffect(() => {
-    let defaultRouteName = /* authenticated ? config?.defaultAuthenticatedRoute : */ config?.defaultRoute;
+    let defaultRouteName = (authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute) || config?.defaultRoute || DEFAULT_ROUTE;
 
     if (defaultRouteName) {
       if (Object.keys(routesRegistry).includes(defaultRouteName)) {
