@@ -121,6 +121,7 @@ import {
 import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel";
 import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
 import ParentChildMap from "./components/inputs/ParentChildMap";
+import AppContainerLayout from "./components/layouts/_system/AppContainerLayout";
 import BlankLayout from "./components/layouts/_system/BlankLayout";
 import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
 import ComplexLayout from "./components/layouts/_system/ComplexLayout";
@@ -250,7 +251,7 @@ import {
 } from "./utils/themeUtil";
 
 export {
-  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, config, CORE_DIALOG_TYPES, CoreAccordion,
+  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, config, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
   CoreAlertTitle, CoreApiVersion, CoreApp, CoreAppBar, CoreAsyncSelect,
@@ -295,15 +296,13 @@ export {
   CoreList,
   CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon,
   CoreListItemText, CoreListSubheader, CoreLoginDetails, CoreMarkdownViewer, CoreMedicineSelector, CoreMenu, CoreMenuItem,
-  CoreMenuList, CoreModal, CoreMultiTimeRangePicker, coreOpenUrl, CoreOtpInput,
+  CoreMenuList, CoreModal, CoreMultiTimeRangePicker, CoreNetworkStatus, coreOpenUrl, CoreOtpInput,
   CoreOutlinedButton, CorePaper, CorePhone, CorePhoneLink, CorePopover, CoreProfilePopOver, CoreProvider, CoreRating, CoreReactSelectInput, CoreResourceContext, CoreResponsiveButton,
   CoreRichTextEditor, CoreRightDrawer, CoreRouteRegistryContext, CoreRoutesContext, CoreScrollTop, CoreSection, CoreSelect, CoreSkeleton,
   CoreSnackbar, CoreSpan, CoreSpeechToText, CoreStack, CoreSwitch, CoreTab, CoreTabHead, CoreTable,
   CoreTableBody,
   CoreTableBodyCell,
-  CoreTableCell,
-  CoreNetworkStatus,
-  CoreTableContainer,
+  CoreTableCell, CoreTableContainer,
   CoreTableFooter,
   CoreTableHead, CoreTableHeadCell, CoreTableHeadRow, CoreTablePagination,
   CoreTableRow,
@@ -333,9 +332,9 @@ export {
   /**
    * Themes
    */
-  ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
-  XXLargeCoreStyles,
+  ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs,
   // Network status custom hook
-  useNetworkStatus
+  useNetworkStatus, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
+  XXLargeCoreStyles
 };
 

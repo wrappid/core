@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
+import { NativeAppContainer } from "@wrappid/native";
+
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
 import PageLoader from "../components/PageLoader";
 import ComponentNotFound from "../error/ComponentNotFound";
@@ -23,6 +26,7 @@ let ComponentsRegistry = {
   Error404             : { comp: Error404 },
   Error500             : { comp: Error500 },
   LayoutMismatch       : { comp: LayoutMismatch },
+  NativeAppContainer   : { comp: NativeAppContainer },
   PageLoader           : { comp: PageLoader },
 };
 

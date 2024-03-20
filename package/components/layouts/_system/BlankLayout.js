@@ -6,11 +6,10 @@ import CoreClasses from "../../../styles/CoreClasses";
 
 export default function BlankLayout() {
 
-  // eslint-disable-next-line etc/no-commented-out-code
-  // React.useEffect(() => {
-  //   // eslint-disable-next-line no-console
-  //   console.log("BlankLayout::useEffect");
-  // }, []);
+  React.useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log("BlankLayout::useEffect");
+  }, []);
   
   return (
     <>
