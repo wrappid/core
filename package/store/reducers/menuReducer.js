@@ -19,18 +19,16 @@ const menuReducer = (state = initState, action) => {
       let data = [];
 
       if (action?.payload?.data?.permissions) {
-        data = action.payload.data.permissions;
-        // .map((rp) => {
-        //   var ob = {
-        //     id: rp.id,
-        //     permissionId: rp?.Permission?.id,
-        //     link: rp?.Permission?.link,
-        //     label: rp?.Permission?.name,
-        //     icon: rp?.Permission?.icon,
-        //     children: [],
-        //   };
-        //   return ob;
-        // });
+        data = action.payload.data.permissions.map((rolePermission) => {
+          return {
+            children    : [],
+            icon        : rolePermission?.Permission?.icon,
+            id          : rolePermission.id,
+            label       : rolePermission?.Permission?.name,
+            link        : rolePermission?.Permission?.link,
+            permissionId: rolePermission?.Permission?.id,
+          };
+        });
       }
       return {
         ...state,
