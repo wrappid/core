@@ -2,6 +2,7 @@ import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { SMALL_WINDOW_WIDTH } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
