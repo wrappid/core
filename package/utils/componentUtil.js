@@ -84,6 +84,16 @@ export function getGridSizeProps(gridSize, formFlag, speechToText) {
 }
 
 export const defaultValidProps = [
+  { 
+    description: "This prop allows you to set the height of a component.",
+    name       : "height",
+    types      : [{ type: "number" }]
+  },
+  { 
+    description: "This prop enables you to set the width of a component",
+    name       : "width",
+    types      : [{ type: "number" }]
+  },
   {
     description: "Override or extend the styles applied to the component. See UtilityClasses in @wrappid/styles for more details.",
     name       : "styleClasses",
