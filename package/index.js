@@ -180,7 +180,6 @@ import CoreNetworkStatus from "./components/utils/CoreNetworkStatus";
 import CorePopover from "./components/utils/CorePopover";
 import CoreProfilePopOver from "./components/utils/CoreProfilePopOver";
 import NotificationPopOver from "./components/utils/NotificationPopOver";
-import config from "./config/config";
 import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/constants";
 import {
   ComponentRegistryContext,
@@ -251,7 +250,7 @@ import {
 } from "./utils/themeUtil";
 
 export {
-  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, config, CORE_DIALOG_TYPES, CoreAccordion,
+  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
   CoreAlertTitle, CoreApiVersion, CoreApp, CoreAppBar, CoreAsyncSelect,

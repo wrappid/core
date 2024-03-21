@@ -39,18 +39,19 @@ import CoreDrawer from "../../surfaces/CoreDrawer";
 import CoreFooter from "../../surfaces/CoreFooter";
 
 export default function AppContainerLayout() {
-  const windowWidth = window.innerWidth;
-  const leftMenuOpen = useSelector((state) => state?.menu?.leftMenuOpen);
-  const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
-  const _routes = useSelector((state) => state?.route?.routes);
-  
   const dispatch = useDispatch();
   const location = nativeUseLocation();
-  const auth = useSelector((state) => state?.auth);
-  const accessToken = useSelector((state) => state?.auth?.accessToken);
-  const currentPendingRequest = useSelector((state) => state.pendingRequests.pendingRequest);
-  const recallState = useSelector((state) => state?.pendingRequests?.recall);
-
+  
+  // eslint-disable-next-line etc/no-commented-out-code
+  // const { leftMenuOpen } = useSelector((state) => state?.menu);
+  const leftMenuOpen = true;
+  const { routes: _routes } = useSelector((state) => state?.route);
+  const { recall: recallState, pendingRequest: currentPendingRequest } = useSelector((state) => state?.pendingRequests);
+  const { uid, accessToken } = useSelector((state) => state.auth);
+  
+  const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
+  
+  const windowWidth = window.innerWidth;
   // user settings
   // const reload = useSelector((state) => state?.settings?.reload);
 
@@ -96,7 +97,7 @@ export default function AppContainerLayout() {
           GET_ROLE_PERMISSION_ERROR
         )
       );
-  }, [auth?.uid, accessToken]);
+  }, [uid, accessToken]);
 
   const [hasError, setHasError] = React.useState(false);
 
@@ -164,13 +165,13 @@ export default function AppContainerLayout() {
   }, []);
 
   const getAppBar = () => {
-    return auth?.uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
+    return uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
   };
   const getFooter = () => {
     return <CoreFooter />;
   };
   const getLeftDrawer = () => {
-    return auth?.uid && auth?.accessToken ? (
+    return uid && accessToken ? (
       <CoreDrawer
         open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
         toggleDrawer={handleDrawer}
@@ -186,7 +187,7 @@ export default function AppContainerLayout() {
         leftDrawer={getLeftDrawer}
         footer={getFooter}
         coreClasses={CoreClasses}
-        uid={auth?.uid}
+        uid={uid}
       >
         <CoreRequestProgressBar />
 

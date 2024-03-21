@@ -19,16 +19,7 @@ const menuReducer = (state = initState, action) => {
       let data = [];
 
       if (action?.payload?.data?.permissions) {
-        data = action.payload.data.permissions.map((rolePermission) => {
-          return {
-            children    : [],
-            icon        : rolePermission?.Permission?.icon,
-            id          : rolePermission.id,
-            label       : rolePermission?.Permission?.name,
-            link        : rolePermission?.Permission?.link,
-            permissionId: rolePermission?.Permission?.id,
-          };
-        });
+        data = action.payload.data.permissions;
       }
       return {
         ...state,

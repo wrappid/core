@@ -1,15 +1,17 @@
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
+import { WrappidDataContext } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
-import config from "../../config/config";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreBox from "../layouts/CoreBox";
 import CoreLink from "../navigation/CoreLink";
 
 export default function CoreTermsPrivacyLink() {
-  const uid = useSelector(state=>state?.auth?.uid);
+  const { config } = React.useContext(WrappidDataContext);
+  const { uid } = useSelector(state=>state?.auth);
 
   return (
     <CoreBox

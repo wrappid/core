@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeDomRoute, NativeDomRoutes } from "@wrappid/native";
-// eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,6 +11,7 @@ import { HTTP } from "./config/constants";
 import { CoreRoutesContext } from "./config/contextHandler";
 import Error404 from "./error/Error404";
 import Error500 from "./error/Error500";
+import { CoreDomRoute, CoreDomRoutes } from "./helper/routerHelper";
 import PageContainer from "./layout/PageContainer";
 import { RoutesRegistry } from "./registry/RoutesRegistry";
 import { apiRequestAction } from "./store/action/appActions";
@@ -33,45 +32,19 @@ export let globalTokenRequestTimeStamp = null;
 export default function CoreRoutes() {
   const dispatch = useDispatch();
   const routesRegistry = useContext(CoreRoutesContext);
-  const auth = useSelector((state) => state?.auth);
+  const { uid, accessToken, refreshToken } = useSelector((state) => state?.auth);
   const routesFromStore = useSelector((state) => state?.route?.routes);
-  let authenticated = auth?.uid ? true : false;
+  let authenticated = uid && accessToken ? true : false;
   const { config } = React.useContext(WrappidDataContext);
   const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
-  
-  const accessToken = useSelector((state) => state?.auth?.accessToken);
-  const refreshToken = useSelector((state) => state?.auth?.refreshToken);
-  const tokenRequested = useSelector((state) => state?.pendingRequests?.tokenRequested);
-  const tokenRequestTimeStamp = useSelector(
-    (state) => state?.pendingRequests?.tokenRequestTimeStamp
+  const { tokenRequested, tokenRequestTimeStamp } = useSelector(
+    (state) => state?.pendingRequests
   );
 
   globalAccessToken = accessToken;
   globalRefreshToken = refreshToken;
   globalTokenRequested = tokenRequested;
   globalTokenRequestTimeStamp = tokenRequestTimeStamp;
-  
-  React.useEffect(() => {
-    // eslint-disable-next-line etc/no-commented-out-code
-    // config?.backendUrl && dispatch(
-    //   apiRequestAction(
-    //     HTTP.GET,
-    //     `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
-    //     true,
-    //     { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
-    //     GET_ROUTE_SUCCESS,
-    //     GET_ROUTE_FAILURE
-    //   )
-    // );
-    // let defaultRouteName = authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute;
-    // if (defaultRouteName) {
-    //   if (Object.keys(routesRegistry).includes(defaultRouteName)) {
-    //     setDefaultRoute(routesRegistry[defaultRouteName]);
-    //   } else if (routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)?.length > 0) {
-    //     setDefaultRoute(routesFromStore?.filter((route) => route?.entityRef === defaultRouteName)[0]);
-    //   }
-    // }
-  }, []);
 
   React.useEffect(() => {
     if (config?.backendUrl) {
@@ -101,8 +74,9 @@ export default function CoreRoutes() {
   }, [config, routesFromStore]);
 
   return (
-    <NativeDomRoutes>
-      <NativeDomRoute
+    <CoreDomRoutes>
+      <CoreDomRoute
+        key="core-default-route"
         exact
         path="/"
         element={
@@ -115,7 +89,7 @@ export default function CoreRoutes() {
       {/* App related routes */}
       {[...Object.values((routesRegistry || {})), ...Object.values((RoutesRegistry || {})), ...(routesFromStore || [])]?.map((route) => {
         return (
-          <NativeDomRoute
+          <CoreDomRoute
             key={route.url}
             exact
             path={"/" + route.url}
@@ -129,7 +103,8 @@ export default function CoreRoutes() {
         * need to remove
         * LOGOUT PAGE
         */}
-      <NativeDomRoute
+      <CoreDomRoute
+        key="logout"
         exact
         path="/logout"
         element={
@@ -140,7 +115,8 @@ export default function CoreRoutes() {
       />
 
       {/* 500: Server Error */}
-      <NativeDomRoute
+      <CoreDomRoute
+        key="error-500"
         path="/error"
         element={
           <PageContainer
@@ -150,7 +126,8 @@ export default function CoreRoutes() {
       />
 
       {/* 404: Not Found */}
-      <NativeDomRoute
+      <CoreDomRoute
+        key="error-404"
         path="*"
         element={
           <PageContainer
@@ -158,6 +135,6 @@ export default function CoreRoutes() {
           />
         }
       />
-    </NativeDomRoutes>
+    </CoreDomRoutes>
   );
 }

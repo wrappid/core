@@ -1,9 +1,10 @@
 import * as React from "react";
 
+// eslint-disable-next-line import/no-unresolved
+import { WrappidDataContext } from "@wrappid/styles";
 import PropTypes from "prop-types";
 
 import TableBulkAction from "./CoreTableBulkAction";
-import config from "../../../config/config";
 import CoreCheckbox from "../../inputs/CoreCheckbox";
 import CoreIconButton from "../../inputs/CoreIconButton";
 import CoreFormControlLabel from "../../inputs/forms/CoreFormControlLabel";
@@ -18,6 +19,7 @@ import CoreTypographyBody1 from "../CoreTypographyBody1";
 export default function CoreTableToolBar(props) {
   const { HandleColumnFilter, columns, bulkActions, selected } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { config } = React.useContext(WrappidDataContext);
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
