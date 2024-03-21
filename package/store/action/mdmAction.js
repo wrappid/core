@@ -1,4 +1,6 @@
-import config from "../../config/config";
+// eslint-disable-next-line import/no-unresolved
+import { WrappidData } from "@wrappid/styles";
+
 import { queryBuilder } from "../../utils/helper";
 import {
   MAIN_MASTER_DATA_ERROR,
@@ -6,6 +8,8 @@ import {
   MAIN_MASTER_DATA_SUCCESS,
   MASTER_DATA_LOADING
 } from "../types/mdmTypes";
+
+const { config } = WrappidData;
 
 // eslint-disable-next-line no-undef
 let backendUrl = process.env.REACT_APP_WRAPPID_backendUrl || config?.wrappid?.backendUrl;

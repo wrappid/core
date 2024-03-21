@@ -4,10 +4,12 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeTab } from "@wrappid/native";
 
-import { sanitizeComponentProps } from "../../utils/componentUtil";
+// eslint-disable-next-line etc/no-commented-out-code
+// import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTab(props) {
-  props = sanitizeComponentProps(CoreTab, props);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // props = sanitizeComponentProps(CoreTab, props);
   return <NativeTab {...props} />;
 }
 
