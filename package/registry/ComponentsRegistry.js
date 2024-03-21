@@ -2,6 +2,7 @@
 import { NativeAppContainer } from "@wrappid/native";
 
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import Logout from "../components/navigation/Logout";
 import PageLoader from "../components/PageLoader";
 import ComponentNotFound from "../error/ComponentNotFound";
 import Error404 from "../error/Error404";
@@ -26,6 +27,7 @@ let ComponentsRegistry = {
   Error404             : { comp: Error404 },
   Error500             : { comp: Error500 },
   LayoutMismatch       : { comp: LayoutMismatch },
+  Logout               : { comp: Logout },
   NativeAppContainer   : { comp: NativeAppContainer },
   PageLoader           : { comp: PageLoader },
 };

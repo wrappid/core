@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { LOGOUT_API } from "../../config/api";
 import { HTTP } from "../../config/constants";
+import CoreLayoutItem from "../../layout/CoreLayoutItem";
 import { apiRequestAction } from "../../store/action/appActions";
 import { LOGOUT_ERROR, LOGOUT_SUCCESS } from "../../store/types/authTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
+import CenteredBlankLayout from "../layouts/_system/CenteredBlankLayout";
 import CoreBox from "../layouts/CoreBox";
 
 export default function Logout() {
@@ -34,10 +36,14 @@ export default function Logout() {
   }
 
   return (
-    <CoreBox
-      styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-    >
-      <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
-    </CoreBox>
+    <>
+      <CoreLayoutItem id={CenteredBlankLayout.PLACEHOLDER.CONTENT}>
+        <CoreBox
+          styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        >
+          <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
+        </CoreBox>
+      </CoreLayoutItem>
+    </>
   );
 }
