@@ -3,6 +3,7 @@ import { NativeAppContainer } from "@wrappid/native";
 
 import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
 import Logout from "../components/navigation/Logout";
+import SplashComponent from "../components/navigation/SplashComponent";
 import PageLoader from "../components/PageLoader";
 import ComponentNotFound from "../error/ComponentNotFound";
 import Error404 from "../error/Error404";
@@ -30,6 +31,7 @@ let ComponentsRegistry = {
   Logout               : { comp: Logout },
   NativeAppContainer   : { comp: NativeAppContainer },
   PageLoader           : { comp: PageLoader },
+  SplashComponent      : { comp: SplashComponent },
 };
 
 export default ComponentsRegistry;

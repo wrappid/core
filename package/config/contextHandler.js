@@ -3,7 +3,7 @@ import { createContext } from "react";
 export const CoreApplicationContext = createContext({ version: "" });
 export const CoreThemeContext = createContext({});
 export const CoreAPIContext = createContext({});
-export const CoreRoutesContext = createContext({});
+export const CoreRoutesContext = createContext([]);
 export const ComponentRegistryContext = createContext({});
 export const FunctionsRegistryContext = createContext({});
 export const AppStylesContext = createContext({});
