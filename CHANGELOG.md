@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.447](https://github.com/wrappid/core/compare/v0.0.446...v0.0.447) (2024-03-21)
+
+
+### Bug Fixes
+
+* **core:** :zap: menu and other elements fix ([0e6bf88](https://github.com/wrappid/core/commit/0e6bf88af3b5f9623d81ae4f38688a9d21d95503)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### 0.0.446 (2024-03-20)
 
 ### 0.0.445 (2024-03-20)
