@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.448](https://github.com/wrappid/core/compare/v0.0.447...v0.0.448) (2024-03-21)
+
+
+### Bug Fixes
+
+* **core:** :zap: logout added in component registry ([d6bf97c](https://github.com/wrappid/core/commit/d6bf97c3b8b6b7f8b94c94e701dd4ed9fd59b3f1)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.447](https://github.com/wrappid/core/compare/v0.0.446...v0.0.447) (2024-03-21)
 
 
