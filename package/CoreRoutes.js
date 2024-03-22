@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { WrappidDataContext } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
 import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
 import Logout from "./components/navigation/Logout";
-import SplashComponent from "./components/navigation/SplashComponent";
+import PageLoader from "./components/PageLoader";
 import { CoreRoutesContext } from "./config/contextHandler";
 import Error404 from "./error/Error404";
 import Error500 from "./error/Error500";
@@ -14,7 +13,7 @@ import { CoreDomRoute, CoreDomRoutes } from "./helper/routerHelper";
 import PageContainer from "./layout/PageContainer";
 
 const DEFAULT_ROUTE = {
-  Page        : { appComponent: SplashComponent.name, layout: CenteredBlankLayout.name },
+  Page        : { appComponent: PageLoader.name, layout: CenteredBlankLayout.name },
   authRequired: false,
   entityRef   : "defaultAppRoute",
   url         : "defaultAppRoute"
@@ -26,33 +25,18 @@ export let globalTokenRequested = null;
 export let globalTokenRequestTimeStamp = null;
 
 export default function CoreRoutes() {
-  const { uid, accessToken, refreshToken } = useSelector((state) => state?.auth);
+  const { accessToken, refreshToken } = useSelector((state) => state?.auth);
   
-  const registeredRoutes = useContext(CoreRoutesContext);
-  const { config } = React.useContext(WrappidDataContext);
+  const registeredRoutes = React.useContext(CoreRoutesContext);
   
-  const [defaultRoute, setDefaultRoute] = useState(DEFAULT_ROUTE);
   const { tokenRequested, tokenRequestTimeStamp } = useSelector(
     (state) => state?.pendingRequests
   );
-  let authenticated = uid && accessToken ? true : false;
 
   globalAccessToken = accessToken;
   globalRefreshToken = refreshToken;
   globalTokenRequested = tokenRequested;
   globalTokenRequestTimeStamp = tokenRequestTimeStamp;
-
-  useEffect(() => {
-    let defaultRouteName = (authenticated ? config?.defaultAuthRoute : config?.defaultRoute) || config?.defaultRoute || DEFAULT_ROUTE;
-
-    if (defaultRouteName) {
-      let defRouteArr = registeredRoutes?.filter((route) => route?.entityRef === defaultRouteName);
-
-      if (defRouteArr?.length > 0) {
-        setDefaultRoute(defRouteArr[0]);
-      }
-    }
-  }, [config, registeredRoutes]);
 
   return (
     <CoreDomRoutes>
@@ -62,7 +46,7 @@ export default function CoreRoutes() {
         path="/"
         element={
           <PageContainer
-            route={defaultRoute} />
+            route={DEFAULT_ROUTE} />
         }
         end
       />
