@@ -118,7 +118,8 @@ export const defaultValidProps = [
 export const defaultInvalidProps = ["sx", "classes"];
 
 export function sanitizeComponentProps(component, props) {
-  console.log(`----------------Props=${Object.keys(props)}`);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // console.log(`----------------Props=${Object.keys(props)}`);
   let validProps = [...defaultValidProps, ...(component?.validProps || [])];
   let sanitizedProps = {};
 
@@ -183,6 +184,7 @@ export function sanitizeComponentProps(component, props) {
     validProps = props;
   }
 
-  console.log(`----------------sanitizedProps[${component.toString()}]=${Object.keys(sanitizedProps)}`);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // console.log(`----------------sanitizedProps[${component.toString()}]=${Object.keys(sanitizedProps)}`);
   return sanitizedProps;
 }

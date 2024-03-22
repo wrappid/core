@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
@@ -51,13 +51,13 @@ export default function PageContainer(props) {
     }
   }, [location]);
 
-  mergedComponentRegistry = useContext(ComponentRegistryContext);
-  mergedResourceRegistry = useContext(CoreResourceContext);
-  functionsRegistry = useContext(FunctionsRegistryContext);
-  validationsRegistry = useContext(ValidationsRegistryContext);
+  mergedComponentRegistry = React.useContext(ComponentRegistryContext);
+  mergedResourceRegistry = React.useContext(CoreResourceContext);
+  functionsRegistry = React.useContext(FunctionsRegistryContext);
+  validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const auth = useSelector((state) => state.auth);
+  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state.auth);
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
     (state) => state.forms
   );
@@ -70,11 +70,11 @@ export default function PageContainer(props) {
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
 
   React.useEffect(() => {
-    if (auth?.sessionExpired && !auth?.sessionDetail) {
+    if (sessionExpired && !sessionDetail) {
       dispatch({
         payload: {
           location,
-          userId: auth.uid,
+          userId: uid,
         },
         type: SAVE_EXPIRED_SESSION,
       });
@@ -82,10 +82,10 @@ export default function PageContainer(props) {
     }
 
     if (
-      auth?.sessionExpired &&
-      auth?.sessionDetail &&
-      auth?.uid &&
-      location.pathname === auth?.sessionDetail?.location?.pathname
+      sessionExpired &&
+      sessionDetail &&
+      uid &&
+      location.pathname === sessionDetail?.location?.pathname
     ) {
       dispatch({ type: SESSION_RECALLED });
     }
@@ -126,7 +126,7 @@ export default function PageContainer(props) {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
     } else {
-      return (auth?.uid ? (defaultAuthenticatedLayout || AppContainerLayout.name) : defaultLayout) || BlankLayout;
+      return (uid ? (defaultAuthenticatedLayout || AppContainerLayout.name) : defaultLayout) || BlankLayout;
     }
   };
   /**
@@ -142,7 +142,7 @@ export default function PageContainer(props) {
     }
   };
 
-  return auth?.sessionExpired && !auth?.uid && route?.authRequired ? (
+  return sessionExpired && !uid && route?.authRequired ? (
     <CoreDomNavigate to="/" replace={true} />
   ) : (
     <>
@@ -152,7 +152,7 @@ export default function PageContainer(props) {
         <CoreNetworkStatus/>
 
         <NativePageContainer
-          uid={auth?.uid}
+          uid={uid}
           route={route}
           coreClasses={CoreClasses}>
           <CoreModal open={true} />

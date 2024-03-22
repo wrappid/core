@@ -7,12 +7,12 @@ import {
   CoreApplicationContext,
   CoreMenuContext,
   CoreResourceContext,
-  CoreRoutesContext,
   FunctionsRegistryContext,
   ValidationsRegistryContext
 } from "../config/contextHandler";
 import ComponentsRegistry from "../registry/ComponentsRegistry";
 import FunctionsRegistry from "../registry/FunctionsRegistry";
+import CoreRoutesProvider from "../route/CoreRoutesProvider";
 
 export default function CoreContextProvider(props) {
 
@@ -30,7 +30,7 @@ export default function CoreContextProvider(props) {
 
   return (
     <CoreApplicationContext.Provider value={applicationRegistry}>
-      <CoreRoutesContext.Provider value={routesRegistry}>
+      <CoreRoutesProvider routes={routesRegistry}>
         <ValidationsRegistryContext.Provider value={validationsRegistry}>
           <FunctionsRegistryContext.Provider
             value={{ ...FunctionsRegistry, ...functionsRegistry }}
@@ -48,7 +48,7 @@ export default function CoreContextProvider(props) {
             </ComponentRegistryContext.Provider>
           </FunctionsRegistryContext.Provider>
         </ValidationsRegistryContext.Provider>
-      </CoreRoutesContext.Provider>
+      </CoreRoutesProvider>
     </CoreApplicationContext.Provider>
   );
 }
