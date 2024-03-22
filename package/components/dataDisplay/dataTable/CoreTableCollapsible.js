@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars, import/default
-import React, { useSelector } from "react-redux";
+import React from "react-redux";
 
 import TableRowAuditData from "./TableRowAuditData";
 import CoreClasses from "../../../styles/CoreClasses";
@@ -24,7 +24,7 @@ export default function CoreTableCollapsible({
   editable,
   deletable,
 }) {
-  // -- const forms = useSelector((state) => state?.forms?.rawform) || {};
+  // -- const { forms: rawform } = useSelector((state) => state?.forms);
 
   return (
     <>

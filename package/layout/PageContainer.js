@@ -57,9 +57,9 @@ export default function PageContainer(props) {
   validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state.auth);
+  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state?.auth);
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
-    (state) => state.forms
+    (state) => state?.forms
   );
 
   const [dialog, setDialog] = React.useState({});

@@ -12,7 +12,7 @@ export default function CoreApiVersion(props) {
   const dispatch = useDispatch();
   const { noTitle = false } = props;
 
-  const { apiVersion } = useSelector((state) => state.app);
+  const { apiVersion } = useSelector((state) => state?.app);
 
   React.useEffect(() => {
     dispatch(

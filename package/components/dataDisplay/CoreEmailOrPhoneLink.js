@@ -17,8 +17,8 @@ import { FORM_EDIT_MODE, FORM_IDS } from "../inputs/forms/coreFormConstants";
 export default function CoreEmailOrPhoneLink(props) {
   props = sanitizeComponentProps(CoreEmailOrPhoneLink, props);
   const dispatch = useDispatch();
-  const verifyOtpSuccess = useSelector(
-    (state) => state?.settings?.verifyOtpSuccess
+  const { verifyOtpSuccess } = useSelector(
+    (state) => state?.settings
   );
 
   const HandleModalOpen = (data) => {

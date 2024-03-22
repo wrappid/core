@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import CoreLinearProgress from "./CoreLinearProgress";
 
 export default function CoreRequestProgressBar() {
-  const requestProgress = useSelector((state) => state.app.requestProgress);
+  const { requestProgress } = useSelector((state) => state?.app);
 
   return (
     <>

@@ -20,7 +20,7 @@ import CoreBox from "../layouts/CoreBox";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
-  const sendOtpLoading = useSelector((state) => state?.app?.sendOtpLoading);
+  const { sendOtpLoading } = useSelector((state) => state?.app);
   let { config: appConfig } = React.useContext(WrappidDataContext);
 
   useEffect(() => {
