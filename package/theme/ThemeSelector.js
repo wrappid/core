@@ -13,7 +13,7 @@ import { setUserTheme } from "../store/action/appActions";
 import CoreClasses from "../styles/CoreClasses";
 
 function ThemeSelector() {
-  const { userThemeID } = useSelector((state) => state.app);
+  const { userThemeID } = useSelector((state) => state?.app);
 
   const { themes, config } = React.useContext(WrappidDataContext);
   const dispatch = React.useContext(WrappidDispatchContext);

@@ -21,8 +21,7 @@ export default function CoreDrawer(props) {
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
   const auth = useSelector((state) => state?.auth);
-  const menu = useSelector((state) => state?.menu?.menu);
-  const collapse = useSelector((state) => state?.menu?.collapse);
+  const { menu, collapse } = useSelector((state) => state?.menu);
   const theme = useContext(ThemeContext);
 
   const { open, toggleDrawer } = props;

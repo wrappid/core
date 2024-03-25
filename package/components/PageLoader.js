@@ -5,7 +5,8 @@ import React from "react";
 import { WrappidDataContext } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
-import { CoreRoutesContext } from "../config/contextHandler";
+import CoreComponent from "./CoreComponent";
+import { ComponentRegistryContext, CoreRoutesContext } from "../config/contextHandler";
 import { coreUseNavigate } from "../helper/routerHelper";
 import CoreLayoutItem from "../layout/CoreLayoutItem";
 // eslint-disable-next-line import/order
@@ -23,10 +24,11 @@ export default function PageLoader() {
    * 
    */
   const navigate = coreUseNavigate();
+  const componentRegistry = React.useContext(ComponentRegistryContext);
   const { config } = React.useContext(WrappidDataContext);
   const [defaultRoute, setDefaultRoute] = React.useState(null);
   const registeredRoutes = React.useContext(CoreRoutesContext);
-  const { uid, accessToken } = useSelector((state) => state.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth);
   let authenticated = uid && accessToken ? true : false;
 
   React.useEffect(() => {
@@ -51,7 +53,7 @@ export default function PageLoader() {
   return (
     <>
       <CoreLayoutItem id={BlankLayout.PLACEHOLDER.CONTENT}>
-        <CoreCircularProgress />
+        {Object.keys(componentRegistry).includes("AppLogoGif") ? <CoreComponent componentName={"AppLogoGif"} /> : <CoreCircularProgress />}
 
         <CoreTypographyBody1 gutterBottom={false}>Loading ...</CoreTypographyBody1>
 

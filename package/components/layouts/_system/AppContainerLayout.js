@@ -43,17 +43,15 @@ export default function AppContainerLayout() {
   const location = nativeUseLocation();
   
   // eslint-disable-next-line etc/no-commented-out-code
-  // const { leftMenuOpen } = useSelector((state) => state?.menu);
-  const leftMenuOpen = true;
+  const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
   const { recall: recallState, pendingRequest: currentPendingRequest } = useSelector((state) => state?.pendingRequests);
-  const { uid, accessToken } = useSelector((state) => state.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth);
   
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
   
   const windowWidth = window.innerWidth;
-  // user settings
-  // const reload = useSelector((state) => state?.settings?.reload);
+  const { reload } = useSelector((state) => state?.settings);
 
   React.useEffect(() => {
     if (accessToken) {
@@ -78,12 +76,7 @@ export default function AppContainerLayout() {
         )
       );
     }
-  }, [accessToken]);
-
-  /**
-   * @todo commenting reload dependency for now
-   */
-  // }, [reload, accessToken]);
+  }, [reload, accessToken]);
 
   React.useEffect(() => {
     if (accessToken)

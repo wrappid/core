@@ -21,11 +21,10 @@ import CoreAccordionDetail from "../surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../surfaces/CoreAccordionSummary";
 
 export default function CoreLoginDetails() {
-  const role = useSelector((state) => state.auth?.role);
-  const dispatch = useDispatch();
-  const clientLoginInformation = useSelector(
-    (state) => state?.auth?.clientLoginInformation
+  const { role, clientLoginInformation } = useSelector(
+    (state) => state?.auth
   );
+  const dispatch = useDispatch();
   const { lastLoginDetails, ip, deviceInfo } = clientLoginInformation || {};
 
   const deviceDetails = getDeviceDetails();
