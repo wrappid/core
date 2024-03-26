@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.450](https://github.com/wrappid/core/compare/v0.0.449...v0.0.450) (2024-03-25)
+
+
+### Features
+
+* **core:** layout manager more and fewer hooks error fix ([d3638b4](https://github.com/wrappid/core/commit/d3638b480d350527e16c7351264d183beecebeb7)), closes [#183](https://github.com/wrappid/core/issues/183)
+
+
+### Bug Fixes
+
+* **core:** :zap: fix all use selector usage ([06eb4fe](https://github.com/wrappid/core/commit/06eb4fe641ab4cd6806c25ed35f7b0ecde46b718)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.449](https://github.com/wrappid/core/compare/v0.0.448...v0.0.449) (2024-03-22)
 
 

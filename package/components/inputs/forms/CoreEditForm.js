@@ -16,8 +16,7 @@ import CoreGrid from "../../layouts/CoreGrid";
 export const FormContext = React.createContext();
 
 export default function CoreEditForm(props) {
-  const rawForm = useSelector((state) => state.forms.rawForm);
-  const rawFormStatus = useSelector((state) => state.forms.rawFormStatus);
+  const { rawForm, rawFormStatus } = useSelector((state) => state?.forms);
   const {
     forms,
     formId,

@@ -17,7 +17,7 @@ export default function CoreThemeProvider(props) {
   
   const { config, themes } = React.useContext(WrappidDataContext);
   const { defaultTheme = "wrappidTheme" } = config || {};
-  const { userThemeID } = useSelector((state) => state.app);
+  const { userThemeID } = useSelector((state) => state?.app);
 
   const [currentTheme, setCurrentTheme] = React.useState(themes[defaultTheme].theme);
 

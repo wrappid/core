@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
 import AppContainerLayout from "../components/layouts/_system/AppContainerLayout";
-import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CoreModal from "../components/utils/CoreModal";
 import CoreNetworkStatus from "../components/utils/CoreNetworkStatus";
 import {
@@ -38,7 +37,7 @@ export default function PageContainer(props) {
   const dispatch = useDispatch();
   const location = nativeUseLocation();
   const { config, themes } = React.useContext(WrappidDataContext);
-  const { defaultLayout = BlankLayout.name, defaultAuthenticatedLayout = BlankLayout.name } = config;
+  const { defaultLayout, defaultAuthenticatedLayout } = config;
 
   /**
    * Error related states
@@ -57,9 +56,9 @@ export default function PageContainer(props) {
   validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state.auth);
+  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state?.auth);
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
-    (state) => state.forms
+    (state) => state?.forms
   );
 
   const [dialog, setDialog] = React.useState({});
@@ -126,7 +125,7 @@ export default function PageContainer(props) {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
     } else {
-      return (uid ? (defaultAuthenticatedLayout || AppContainerLayout.name) : defaultLayout) || BlankLayout;
+      return (uid ? defaultAuthenticatedLayout : defaultLayout) || AppContainerLayout.name;
     }
   };
   /**
@@ -158,7 +157,7 @@ export default function PageContainer(props) {
           <CoreModal open={true} />
 
           <CoreDialogContext.Provider value={dialogStates}>
-            <LayoutManager pageName={pageChild()} layoutName={pageLayout()} />
+            <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
             {/** @todo testing purposes */}
             {/* eslint-disable-next-line etc/no-commented-out-code */}

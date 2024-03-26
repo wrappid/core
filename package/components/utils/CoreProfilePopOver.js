@@ -26,11 +26,11 @@ export default function CoreProfilePopOver(props) {
   // eslint-disable-next-line no-console
   // console.log(props);
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state.auth);
-  const profile = useSelector((state) => state.profile);
+  const auth = useSelector((state) => state?.auth);
+  const profile = useSelector((state) => state?.profile);
   const routeRegistry = useContext(CoreRouteRegistryContext);
 
-  const { profileRegistration } = useSelector((state) => state.api);
+  const { profileRegistration } = useSelector((state) => state?.api);
 
   const {
     email = "",

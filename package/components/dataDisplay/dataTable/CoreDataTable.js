@@ -192,7 +192,7 @@ export default function CoreDataTable(props) {
   const { _create = {}, _read = {}, _update = {}, _delete = {} } = reduxType;
 
   // User Settings
-  const userSettings = useSelector(state => state.settings.userSettings);
+  const { userSettings } = useSelector(state => state?.settings);
 
   // max row in pages
   const [maxRowsInPage, setMaxRowsInPage] = React.useState(

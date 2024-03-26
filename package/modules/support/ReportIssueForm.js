@@ -20,8 +20,8 @@ import { useSelector } from "react-redux";
 
 import CoreForm from "../../components/inputs/forms/CoreForm";
 import {
-  FORM_IDS,
-  FORM_EDIT_MODE
+  FORM_EDIT_MODE,
+  FORM_IDS
 } from "../../components/inputs/forms/coreFormConstants";
 import CoreCard from "../../components/surfaces/CoreCard";
 import CoreCardContent from "../../components/surfaces/CoreCardContent";
@@ -31,9 +31,9 @@ import { getLabel } from "../../utils/stringUtils";
 
 export default function ReportIssueForm(props) {
   const { title, isStacktrace = true, stackTrace, labels } = props;
-  const { apiVersion } = useSelector((state) => state.app);
-  const { role } = useSelector((state) => state.auth?.role || {});
-  const profile = useSelector((state) => state.profile);
+  const { apiVersion } = useSelector((state) => state?.app);
+  const { role } = useSelector((state) => state?.auth?.role || {});
+  const profile = useSelector((state) => state?.profile);
   const basic = profile?.basic;
   const contact = profile?.contact;
 

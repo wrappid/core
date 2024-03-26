@@ -11,7 +11,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreRightDrawer(props) {
   props = sanitizeComponentProps(CoreRightDrawer, props);
   const dispatch = useDispatch();
-  const rightMenuOpen = useSelector((state) => state?.menu?.rightMenuOpen);
+  const { rightMenuOpen } = useSelector((state) => state?.menu);
   const toggleRightDrawer = () => {
     dispatch(toggleRightMenuState());
   };
