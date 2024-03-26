@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.451](https://github.com/wrappid/core/compare/v0.0.450...v0.0.451) (2024-03-26)
+
+
+### Bug Fixes
+
+* **global:** :sparkles: defaultAppBarContent added and changes made to CoreAppBar ([855b695](https://github.com/wrappid/core/commit/855b695daf2999f0cffeddb3ca40f6a6bc9ebea0)), closes [#142](https://github.com/wrappid/core/issues/142)
+
 ### [0.0.450](https://github.com/wrappid/core/compare/v0.0.449...v0.0.450) (2024-03-25)
 
 
