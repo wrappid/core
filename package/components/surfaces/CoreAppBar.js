@@ -52,6 +52,21 @@ CoreAppBar.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
+    description: "If true, you can customize the appbar icon to Show and if false it will hide the icon.",
+    name       : "iconEnabled",
+    types      : [{ default: true, type: "boolean" }],
+  },
+  {
+    description: "If true, you can customize the logo in appbar to Show and if false it will hide the icon.",
+    name       : "logoEnabled",
+    types      : [{ default: true, type: "boolean" }],
+  },
+  {
+    description: "If the logo is given it will show the logo in the appbar.",
+    name       : "logo",
+    types      : [{ type: "string" }],
+  },
+  {
     description:
       "The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.",
     name : "position",

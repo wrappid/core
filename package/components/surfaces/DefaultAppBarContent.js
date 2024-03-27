@@ -2,20 +2,19 @@
 import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { CoreTypographyBody1, WEB_PLATFORM } from "@wrappid/core";
+import { WEB_PLATFORM } from "@wrappid/core";
 // eslint-disable-next-line import/no-unresolved
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreToolbar from "./CoreToolbar";
-import { urls } from "../../config/constants";
-import { coreUseLocation, coreUseNavigate } from "../../helper/routerHelper";
+import { coreUseLocation } from "../../helper/routerHelper";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
-import CoreComponent from "../CoreComponent";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreImage from "../dataDisplay/CoreImage";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreStack from "../layouts/CoreStack";
 import CorePopover from "../utils/CorePopover";
@@ -25,9 +24,9 @@ import NotificationPopOver from "../utils/NotificationPopOver";
 import QuickAddPopOver from "../utils/QuickAddPopOver";
 
 export default function DefaultAppBarContent(props) {
-
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
+  // eslint-disable-next-line no-unused-vars
   const location = coreUseLocation();
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
@@ -35,23 +34,41 @@ export default function DefaultAppBarContent(props) {
   // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
   const [appbarType, setAppbarType] = useState("primary");
-  const navigate = coreUseNavigate();
-  
-  const { handleDrawer, routes } = props;
-  
+
+  const {
+    handleDrawer,
+    logo,
+    logoEnabled: _logoEnabled = true,
+    iconEnabled: _iconEnabled = true,
+  } = props;
+  /**
+   * state driven component enablement of the app bar content
+   */
+  // eslint-disable-next-line no-unused-vars
+  const [logoEnabled, setLogoEnabled] = useState(_logoEnabled);
+  // eslint-disable-next-line no-unused-vars
+  const [iconEnabled, setIconEnabled] = useState(_iconEnabled);
+
+  React.useEffect(() => {
+    /**
+     * @todo
+     */
+    // from the MDM data change
+    // setLogoEnabled(_logoEnabled);
+  }, [mdm]);
+
   const appbarPopOver = {
     HELP_SUPPORT: "HELP_SUPPORT",
     NOTIFICATION: "NOTIFICATION",
     PROFILE     : "PROFILE",
     QUICK_MENU  : "QUICK_MENU",
   };
-  
+
   React.useEffect(() => {
-  
     setPlatform(config?.wrappid?.platform);
     setAppbarType(config?.wrappid?.appbarType);
   }, []);
-  
+
   React.useEffect(() => {
     if (getSettingMetaFlag) {
       if (mdm.getSettingMetaSuccess) {
@@ -60,13 +77,15 @@ export default function DefaultAppBarContent(props) {
       dispatch(getSettingMeta(null, auth.accessToken));
     }
   }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
-  
+
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
-      React.useState(null);
-    // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
+    React.useState(null);
+  // -- const _appbarPopoverOpen = Boolean(_appbarPopOverAnchorEl);
   const _appbarID = "appbar-popover";
-  const [_appbarContent, set_appbarContent] = React.useState(appbarPopOver.PROFILE);
+  const [_appbarContent, set_appbarContent] = React.useState(
+    appbarPopOver.PROFILE
+  );
   const handleAppbarPopOverClose = () => {
     set_appbarContent(null);
     set_appbarPopOverAnchorEl(null);
@@ -75,7 +94,7 @@ export default function DefaultAppBarContent(props) {
     set_appbarContent(appBarPopOverCons);
     set_appbarPopOverAnchorEl(e?.currentTarget);
   };
-  
+
   const appBarTextStyle = !appbarType
     ? [CoreClasses.COLOR.TEXT_WHITE]
     : appbarType?.includes("light")
@@ -89,39 +108,35 @@ export default function DefaultAppBarContent(props) {
       <CoreToolbar
         styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
+        {logoEnabled && (
+          <CoreImage
+            height={40}
+            width={120}
+            src={logo}
+            alt="WRAPPID" />
+        )
+        }
+
         <CoreStack
           direction="row"
           styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
-          <CoreIconButton
-            styleClasses={appBarTextStyle}
-            aria-label="open drawer"
-            onClick={handleDrawer}
-            edge="start"
-            disabled={!auth?.uid}
-            // sx={{ marginLeft: "-16px" }}
-          >
-            <CoreIcon>menu</CoreIcon>
-          </CoreIconButton>
-
-          {appbarType?.includes("text") ? (
-            <CoreTypographyBody1>
-              {
-                routes?.find(
-                  (route) => "/" + route?.url === location?.pathname
-                )?.Page?.name
-              }
-            </CoreTypographyBody1>
-          ) : (
-            <CoreComponent
-              componentName={"AppLogoAppBar"}
-              onClick={() => {
-                navigate("/" + urls.DASHBOARD);
-              }}
-            />
+          {iconEnabled && (
+            <CoreIconButton
+              styleClasses={appBarTextStyle}
+              aria-label="open drawer"
+              onClick={handleDrawer}
+              edge="start"
+              disabled={!auth?.uid}
+              // sx={{ marginLeft: "-16px" }}
+            >
+              <CoreIcon>menu</CoreIcon>
+            </CoreIconButton>
           )}
+
         </CoreStack>
 
+        {/* authenticated user content */}
         {auth && auth.uid && (
           <CoreStack
             direction="row"
@@ -186,7 +201,9 @@ export default function DefaultAppBarContent(props) {
             </CoreIconButton>
           </CoreStack>
         )}
-      </CoreToolbar>{/* AppBar PopOver */}
+      </CoreToolbar>
+
+      {/* AppBar PopOver */}
       {_appbarContent && (
         <CorePopover
           id={_appbarID}
@@ -226,8 +243,7 @@ export default function DefaultAppBarContent(props) {
             <></>
           )}
         </CorePopover>
-      )
-      }
+      )}
     </>
   );
 }
