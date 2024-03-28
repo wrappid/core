@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.452](https://github.com/wrappid/core/compare/v0.0.451...v0.0.452) (2024-03-28)
+
+
+### Bug Fixes
+
+* **core:** :bug: created a new function which is setting the menu elements inside an array ([d0107eb](https://github.com/wrappid/core/commit/d0107ebf0eafc5bf64e80c4d0693c03a8e8fb2a4)), closes [#192](https://github.com/wrappid/core/issues/192)
+
 ### [0.0.451](https://github.com/wrappid/core/compare/v0.0.450...v0.0.451) (2024-03-26)
 
 
