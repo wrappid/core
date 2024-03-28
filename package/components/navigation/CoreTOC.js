@@ -34,7 +34,7 @@ export default function CoreTOC(props) {
     disableHeaders = [],
   } = props || {};
 
-  React.useEffect(() => {
+  const prepareTOCMenu = () => {
     let menuElem = [];
     let content = contentRef?.current || document;
 
@@ -72,10 +72,10 @@ export default function CoreTOC(props) {
     });
 
     setTocMenu(menuElem);
+  };
 
-    return () => {
-      // remove listener
-    };
+  React.useEffect(() => {
+    prepareTOCMenu();
   }, []);
 
   return (
