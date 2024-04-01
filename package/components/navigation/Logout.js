@@ -27,14 +27,6 @@ export default function Logout() {
     dispatch(apiRequestAction(HTTP.POST, LOGOUT_API, true, {}, LOGOUT_SUCCESS, LOGOUT_ERROR));
   }, []);
 
-  // if (!auth?.uid) {
-  //   if (auth?.sessionExpired) {
-  //     return <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />;
-  //   } else {
-  //     return <NativeDomNavigate to={"/"} />;
-  //   }
-  // }
-
   return (
     <>
       <CoreLayoutItem id={CenteredBlankLayout.PLACEHOLDER.CONTENT}>
