@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.453](https://github.com/wrappid/core/compare/v0.0.452...v0.0.453) (2024-04-03)
+
+
+### Features
+
+* **core:** :sparkles: iconEnabled and logoenabled props added ([1bd9ed6](https://github.com/wrappid/core/commit/1bd9ed6b0d6242da0dc428b0b3f0e6b9ecce13af)), closes [#190](https://github.com/wrappid/core/issues/190)
+
+
+### Bug Fixes
+
+* **core:** :zap: clean up code ([4fddee6](https://github.com/wrappid/core/commit/4fddee6fb8a2aacef82dea61b8a6b0d9b064f437)), closes [#190](https://github.com/wrappid/core/issues/190)
+* **core:** :zap: corecard onClick valid props added ([414737c](https://github.com/wrappid/core/commit/414737c0d0aa572c519656e2f49568f9e59a8d69)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: logout navigation issue fixed ([f70bd2c](https://github.com/wrappid/core/commit/f70bd2c7b9b79b647f2dc6caf883937c5721b02c)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.452](https://github.com/wrappid/core/compare/v0.0.451...v0.0.452) (2024-03-28)
 
 
