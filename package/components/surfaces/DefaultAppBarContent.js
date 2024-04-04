@@ -9,7 +9,6 @@ import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreToolbar from "./CoreToolbar";
-import { coreUseLocation } from "../../helper/routerHelper";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
@@ -26,12 +25,9 @@ import QuickAddPopOver from "../utils/QuickAddPopOver";
 export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
-  // eslint-disable-next-line no-unused-vars
-  const location = coreUseLocation();
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [platform, setPlatform] = useState(null);
   const [appbarType, setAppbarType] = useState("primary");
 
@@ -39,7 +35,7 @@ export default function DefaultAppBarContent(props) {
     handleDrawer,
     logo,
     logoEnabled: _logoEnabled = true,
-    iconEnabled: _iconEnabled = true,
+    leftMenuEnabled: _leftMenuEnabled = true,
   } = props;
   /**
    * state driven component enablement of the app bar content
@@ -47,7 +43,7 @@ export default function DefaultAppBarContent(props) {
   // eslint-disable-next-line no-unused-vars
   const [logoEnabled, setLogoEnabled] = useState(_logoEnabled);
   // eslint-disable-next-line no-unused-vars
-  const [iconEnabled, setIconEnabled] = useState(_iconEnabled);
+  const [leftMenuEnabled, setLeftMenuEnabled] = useState(_leftMenuEnabled);
 
   React.useEffect(() => {
     /**
@@ -108,20 +104,12 @@ export default function DefaultAppBarContent(props) {
       <CoreToolbar
         styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
-        {logoEnabled && (
-          <CoreImage
-            height={40}
-            width={120}
-            src={logo}
-            alt="WRAPPID" />
-        )
-        }
 
         <CoreStack
           direction="row"
           styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
-          {iconEnabled && (
+          {leftMenuEnabled && (
             <CoreIconButton
               styleClasses={appBarTextStyle}
               aria-label="open drawer"
@@ -134,6 +122,13 @@ export default function DefaultAppBarContent(props) {
             </CoreIconButton>
           )}
 
+          {logoEnabled && (
+            <CoreImage
+              height={40}
+              width={120}
+              src={logo}
+              alt="WRAPPID" />
+          )}
         </CoreStack>
 
         {/* authenticated user content */}

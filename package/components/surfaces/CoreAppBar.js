@@ -6,6 +6,7 @@ import { NativeAppBar } from "@wrappid/native";
 
 import DefaultAppBarContent from "./DefaultAppBarContent";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
+
 export default function CoreAppBar(props) {
   props = sanitizeComponentProps(CoreAppBar, props);
   const { advanceMode = false, children, ...restProps } = props;
@@ -53,7 +54,7 @@ CoreAppBar.validProps = [
   },
   {
     description: "If true, you can customize the appbar icon to Show and if false it will hide the icon.",
-    name       : "iconEnabled",
+    name       : "leftMenuEnabled",
     types      : [{ default: true, type: "boolean" }],
   },
   {
@@ -83,6 +84,10 @@ CoreAppBar.validProps = [
         ],
       },
     ],
+  },
+  {
+    name : "handleDrawer",
+    types: [{ type: "function" }], 
   },
 ];
 
