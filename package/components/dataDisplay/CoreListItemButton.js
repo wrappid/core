@@ -11,7 +11,7 @@ export default function CoreListItemButton(props) {
   return <NativeListItemButton {...props} />;
 }
 
-CoreListItemButton.invalidProps = [
+CoreListItemButton.validProps = [
   {
     description: "Defines the align-items style property.",
     name       : "alignItems",
