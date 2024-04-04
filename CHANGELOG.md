@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.454](https://github.com/wrappid/core/compare/v0.0.453...v0.0.454) (2024-04-04)
+
+
+### Bug Fixes
+
+* **core:** :bug: correct the validProps array of CoreListItemButton comp ([586bf3e](https://github.com/wrappid/core/commit/586bf3eee62858ea62a94dfcdfc2a2e4e125fbdf)), closes [#195](https://github.com/wrappid/core/issues/195)
+
 ### [0.0.453](https://github.com/wrappid/core/compare/v0.0.452...v0.0.453) (2024-04-03)
 
 
