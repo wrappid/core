@@ -18,7 +18,7 @@ CoreCard.validProps = [
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
   {
-    name : "onClick", /// we have already a OnClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
+    name : "onClick", /// we have already a onClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
     types: [{ type: "function" }], 
   },
 ];

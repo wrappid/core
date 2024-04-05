@@ -69,7 +69,7 @@ export default function CoreEmailOrPhoneLink(props) {
           {!props.verified && (
             <CoreTextButton
               label="Verify"
-              OnClick={() => HandleModalOpen(props)}
+              onClick={() => HandleModalOpen(props)}
             />
           )}
         </CoreTypographyBody1>

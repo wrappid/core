@@ -20,7 +20,7 @@ export default function CoreFieldButton(props) {
       onClick={
         element.actionType === "submit"
           ? formikprops?.handleSubmit
-          : buttonProps?.OnClick
+          : buttonProps?.onClick
       }
     >
       <CoreIcon fontSize="small">

@@ -97,7 +97,7 @@ export default function FilterData(props) {
               <CoreIcon>add</CoreIcon>&nbsp;Add Filter
             </>
           }
-          OnClick={() => {
+          onClick={() => {
             set_filterDatas([..._filterDatas, _filterOB]);
           }}
         />

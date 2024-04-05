@@ -18,7 +18,7 @@ CoreButton.validProps = [
     types: [{ type: "string" }]
   },
   {
-    name : "OnClick",
+    name : "onClick",
     types: [{ type: "function" }],
   },
   {

@@ -133,7 +133,7 @@ export default function CoreProfilePopOver(props) {
           label="Logout"
           variant="contained"
           fullWidth={true}
-          OnClick={() => {
+          onClick={() => {
             /**
              * @todo have to make a route for logout
              */

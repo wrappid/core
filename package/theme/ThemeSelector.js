@@ -55,7 +55,7 @@ function ThemeSelector() {
             Current Theme: {themes[userThemeID || config?.defaultTheme]?.name || "Unknown"}
           </CoreTypographyCaption>
 
-          <CoreTextButton OnClick={() => {
+          <CoreTextButton onClick={() => {
             setThemeChangeFormEnable(true);
           }}>Change</CoreTextButton>
         </>
