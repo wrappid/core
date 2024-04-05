@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.456](https://github.com/wrappid/core/compare/v0.0.455...v0.0.456) (2024-04-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: passing rightDrawer to native app container ([a52c85d](https://github.com/wrappid/core/commit/a52c85d922b5f6ea36a1110bf4c685a0d374255b)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.455](https://github.com/wrappid/core/compare/v0.0.454...v0.0.455) (2024-04-05)
 
 
