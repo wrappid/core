@@ -158,7 +158,7 @@ export default function AppContainerLayout() {
   }, []);
 
   const getAppBar = () => {
-    return uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
+    return <CoreAppBar handleDrawer={handleDrawer} routes={_routes} />;
   };
   const getFooter = () => {
     return <CoreFooter />;
