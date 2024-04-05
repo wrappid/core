@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.455](https://github.com/wrappid/core/compare/v0.0.454...v0.0.455) (2024-04-05)
+
+
+### Bug Fixes
+
+* :bug: reset form state while changing form state ([ae31de6](https://github.com/wrappid/core/commit/ae31de6a2748821f8e08ddfdb769ea94ce29d571)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: appbar - authentication dependency removed ([6d78b71](https://github.com/wrappid/core/commit/6d78b71a62bc6ae6a5b2d968b75389e8ed575d20)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: core appbar fix for menu ([36dbe4d](https://github.com/wrappid/core/commit/36dbe4ddf18efe3423bcd88d5d9847145eb0fe9d)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: platform added in constant ([7107046](https://github.com/wrappid/core/commit/71070464e606a4b0fc65172a781b56492ee36bbb)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.454](https://github.com/wrappid/core/compare/v0.0.453...v0.0.454) (2024-04-04)
 
 
