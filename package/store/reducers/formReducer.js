@@ -15,6 +15,7 @@ import {
   GET_FORM_ERROR,
   GET_FORM_LOADING,
   GET_FORM_SUCCESS,
+  RESET_FROM_STATE,
   UPDATE_HELPER_FLAG,
   UPDATE_HELPER_TEXT_VIEW
 } from "../types/formTypes";
@@ -268,6 +269,15 @@ const formReducer = (state = initState, action) => {
 
     case UPDATE_HELPER_FLAG:
       return { ...state, helperButtonFlag: action?.payload?.helperButtonFlag };
+    
+    case RESET_FROM_STATE:
+      return {
+        ...state,
+        formDataReadLoading: {},
+        formSubmitError    : {},
+        formSubmitLoading  : {},
+        formSubmitSuccess  : {},
+      };
 
     case LOGOUT_SUCCESS:
       console.log("FORM LOGOUT_SUCCESS REDUCER------", action);

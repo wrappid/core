@@ -22,7 +22,7 @@ import { CoreDomNavigate } from "../helper/routerHelper";
 import ErrorBoundary from "../middleware/ErrorBoundary";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
-import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
+import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
 import LayoutManager from "./LayoutManager";
@@ -67,6 +67,10 @@ export default function PageContainer(props) {
   formStore = { rawForm, rawFormStatus };
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
+
+  React.useEffect(()=>{
+    dispatch({ type: RESET_FROM_STATE });
+  }, [route]);
 
   React.useEffect(() => {
     if (sessionExpired && !sessionDetail) {
