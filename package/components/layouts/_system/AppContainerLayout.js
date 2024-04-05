@@ -164,12 +164,14 @@ export default function AppContainerLayout() {
     return <CoreFooter />;
   };
   const getLeftDrawer = () => {
-    return uid && accessToken ? (
-      <CoreDrawer
-        open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
-        toggleDrawer={handleDrawer}
-      />
-    ) : null;
+    return <CoreDrawer
+      open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
+      toggleDrawer={handleDrawer}
+    />; 
+  };
+
+  const getRightDrawer = () => {
+    return <CoreDrawer open={false} />;
   };
 
   return (
@@ -178,6 +180,7 @@ export default function AppContainerLayout() {
       <NativeAppContainer
         appBar={getAppBar}
         leftDrawer={getLeftDrawer}
+        rightDrawer={getRightDrawer}
         footer={getFooter}
         coreClasses={CoreClasses}
         uid={uid}
