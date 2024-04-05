@@ -31,7 +31,7 @@ export default function CoreTableAction(props) {
           label={action?.label}
           icon={action?.icon}
           disabled={action.disabled}
-          OnClick={() => {
+          onClick={() => {
             if (action.clearRowData) {
               set_showDetailsPane(true);
               setDetailedRowId(null);

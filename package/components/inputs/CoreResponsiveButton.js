@@ -26,7 +26,7 @@ export default function CoreResponsiveButton(props) {
       <CoreIconButton
         styleClasses={[CoreClasses.DISPLAY.BLOCK, CoreClasses.DISPLAY.SM.NONE]}
         title={props?.label || props?.title}
-        onClick={props?.OnClick || props?.onClick}
+        onClick={props?.onClick || props?.onClick}
       >
         <CoreIcon
           options={

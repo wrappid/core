@@ -73,6 +73,10 @@ export default function CoreDrawer(props) {
 
 CoreDrawer.validProps = [
   {
+    name : "toggleDrawer",
+    types: [{ type: "function" }],
+  },
+  {
     description: "Side from which the drawer will appear.",
     name       : "anchor",
     types      : [
