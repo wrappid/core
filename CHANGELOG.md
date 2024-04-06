@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.457](https://github.com/wrappid/core/compare/v0.0.456...v0.0.457) (2024-04-06)
+
+
+### Bug Fixes
+
+* **core:** :art: app logo in app bar fixed ([f746f64](https://github.com/wrappid/core/commit/f746f64ae3dc66f70ddf9595b41023568fd8808a)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :bug: rightDrawer bug fixed ([99f8984](https://github.com/wrappid/core/commit/99f8984e7abc1cd329495dfb3fb4c0815f7eec1f)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.456](https://github.com/wrappid/core/compare/v0.0.455...v0.0.456) (2024-04-05)
 
 
