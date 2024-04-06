@@ -171,7 +171,6 @@ export default function AppContainerLayout() {
   };
 
   const getRightDrawer = () => {
-    // return <CoreDrawer open={false} />;
     return null;
   };
 

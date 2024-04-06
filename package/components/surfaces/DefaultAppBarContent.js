@@ -9,6 +9,7 @@ import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreToolbar from "./CoreToolbar";
+import { CoreResourceContext } from "../../config/contextHandler";
 import { getSettingMeta } from "../../store/action/mdmAction";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
@@ -25,6 +26,7 @@ import QuickAddPopOver from "../utils/QuickAddPopOver";
 export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
+  let { appLogo } = React.useContext(CoreResourceContext);
   const auth = useSelector((state) => state.auth);
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
@@ -33,7 +35,7 @@ export default function DefaultAppBarContent(props) {
 
   const {
     handleDrawer,
-    logo,
+    logo = null,
     logoEnabled: _logoEnabled = true,
     leftMenuEnabled: _leftMenuEnabled = true,
   } = props;
@@ -126,7 +128,7 @@ export default function DefaultAppBarContent(props) {
             <CoreImage
               height={40}
               width={120}
-              src={logo}
+              src={logo || appLogo}
               alt="WRAPPID" />
           )}
         </CoreStack>
