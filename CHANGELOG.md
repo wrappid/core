@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.458](https://github.com/wrappid/core/compare/v0.0.457...v0.0.458) (2024-04-06)
+
+
+### Bug Fixes
+
+* **core:** :bug: core appbar margin-top bug fixed ([3147af3](https://github.com/wrappid/core/commit/3147af3cab757b982286ebf3527a534ff557a7a8)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.457](https://github.com/wrappid/core/compare/v0.0.456...v0.0.457) (2024-04-06)
 
 
