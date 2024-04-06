@@ -36,7 +36,7 @@ export default class SmallCoreStyles extends BaseStyle {
       appbarHeight        : { top: HEADING_TOP_MARGIN + IMPORTANT },
       auditData           : {},
   
-      contentContainer: { marginTop: HEADING_TOP_MARGIN + IMPORTANT },
+      contentContainer: {},
   
       dataTable: {
         ...new DefaultUtilityStyles().style.mtN1,
