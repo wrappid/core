@@ -9,7 +9,7 @@ import {
 
 // -- const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;
 // -- const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
-// -- const HEADING_TOP_MARGIN = "64px";
+// const HEADING_TOP_MARGIN = "64px";
 
 export default class MediumCoreStyles extends BaseStyle {
   mediumUtilityStyles = new MediumUtilityStyles().style;
@@ -24,6 +24,8 @@ export default class MediumCoreStyles extends BaseStyle {
       appBarLogo: {},
   
       auditData: {},
+
+      contentContainer: {},
   
       dataTable: {
         ...new DefaultUtilityStyles().style.mtN1,

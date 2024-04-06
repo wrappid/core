@@ -6,7 +6,7 @@ import { DefaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT, BaseStyle } f
 /**
  * @todo: have to calculate manually nav height varying depending on screen size
  */
-const HEADING_TOP_MARGIN = "56px";
+const HEADING_TOP_MARGIN = "64px";
 
 export const DEFAULT_SPACING = 1;
 
