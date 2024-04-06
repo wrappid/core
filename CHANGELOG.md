@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.459](https://github.com/wrappid/core/compare/v0.0.458...v0.0.459) (2024-04-06)
+
+
+### Bug Fixes
+
+* **core:** :bug: theme undfined bugfixed ([756a7d7](https://github.com/wrappid/core/commit/756a7d70d2957abd9d897745c2d647a26ff6a7ac)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.458](https://github.com/wrappid/core/compare/v0.0.457...v0.0.458) (2024-04-06)
 
 
