@@ -4,7 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { UPDATE_DEFAULT_THEME, UPDATE_PAGE_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
+import { DEFAULT_THEME, UPDATE_DEFAULT_THEME, UPDATE_PAGE_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setUserTheme } from "../store/action/appActions";
@@ -19,7 +19,7 @@ export default function CoreThemeProvider(props) {
   const { defaultTheme = "wrappidTheme" } = config || {};
   const { userThemeID } = useSelector((state) => state?.app);
 
-  const [currentTheme, setCurrentTheme] = React.useState(themes[defaultTheme].theme);
+  const [currentTheme, setCurrentTheme] = React.useState(DEFAULT_THEME);
 
   React.useEffect(() => {
     if (userThemeID && Object.keys(themes).includes(userThemeID)) {
