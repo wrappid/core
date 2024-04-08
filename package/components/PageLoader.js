@@ -32,7 +32,7 @@ export default function PageLoader() {
   let authenticated = uid && accessToken ? true : false;
 
   React.useEffect(() => {
-    let defaultRouteName = (authenticated ? config?.defaultAuthRoute : config?.defaultRoute) || config?.defaultRoute;
+    let defaultRouteName = (authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute) || config?.defaultRoute;
 
     if (defaultRouteName) {
       let defRouteArr = registeredRoutes?.filter((route) => route?.entityRef === defaultRouteName);
