@@ -17,6 +17,7 @@ import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreStack from "../layouts/CoreStack";
+import CoreLink from "../navigation/CoreLink";
 import CorePopover from "../utils/CorePopover";
 import CoreProfilePopOver from "../utils/CoreProfilePopOver";
 import HelpAndSupportPopOver from "../utils/HelpAndSupportPopOver";
@@ -125,11 +126,13 @@ export default function DefaultAppBarContent(props) {
           )}
 
           {logoEnabled && (
-            <CoreImage
-              height={40}
-              width={120}
-              src={logo || appLogo}
-              alt="WRAPPID" />
+            <CoreLink href="/">
+              <CoreImage
+                height={40}
+                width={120}
+                src={logo || appLogo}
+                alt="WRAPPID" />
+            </CoreLink>
           )}
         </CoreStack>
 
