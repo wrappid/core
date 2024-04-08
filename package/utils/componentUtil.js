@@ -115,12 +115,19 @@ export const defaultValidProps = [
   },
 ];
 
+export const defaultValidEvents = [
+  {
+    name : "onClick",
+    types: [{ type: "function" }],
+  }
+];
+
 export const defaultInvalidProps = ["sx", "classes"];
 
 export function sanitizeComponentProps(component, props) {
   // eslint-disable-next-line etc/no-commented-out-code
   // console.log(`----------------Props=${Object.keys(props)}`);
-  let validProps = [...defaultValidProps, ...(component?.validProps || [])];
+  let validProps = [...defaultValidProps, ...defaultValidEvents, ...(component?.validProps || [])];
   let sanitizedProps = {};
 
   let validPropKeys = validProps.map(prop => { return prop?.name; });
