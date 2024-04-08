@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.460](https://github.com/wrappid/core/compare/v0.0.459...v0.0.460) (2024-04-08)
+
+
+### Features
+
+* **core:** :sparkles: add defaulValidEvents props in sanatizeCompProps function ([2d9d9d9](https://github.com/wrappid/core/commit/2d9d9d995ee1c195789b46616a32967468a4ba72)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.459](https://github.com/wrappid/core/compare/v0.0.458...v0.0.459) (2024-04-06)
 
 
