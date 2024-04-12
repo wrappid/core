@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import thunk from "redux-thunk";
+import { thunk } from "redux-thunk";
 
 import CoreContextProvider from "./CoreContextProvider";
 import coreReducer from "./reducers/rootReducer";
