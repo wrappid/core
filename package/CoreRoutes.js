@@ -27,7 +27,7 @@ export let globalTokenRequestTimeStamp = null;
 export default function CoreRoutes() {
   const { accessToken, refreshToken } = useSelector((state) => state?.auth);
   
-  const registeredRoutes = React.useContext(CoreRoutesContext);
+  const contextRoutes = React.useContext(CoreRoutesContext);
   
   const { tokenRequested, tokenRequestTimeStamp } = useSelector(
     (state) => state?.pendingRequests
@@ -52,7 +52,7 @@ export default function CoreRoutes() {
       />
 
       {/* App related routes */}
-      {[...registeredRoutes]?.map((route) => {
+      {[...(Object.values(contextRoutes) || [])]?.map((route) => {
         return (
           <CoreDomRoute
             key={route.url}
