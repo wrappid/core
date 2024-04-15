@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.461](https://github.com/wrappid/core/compare/v0.0.460...v0.0.461) (2024-04-08)
+
+
+### Bug Fixes
+
+* :bug: deafult routes added ([c0721c5](https://github.com/wrappid/core/commit/c0721c54979ef79ddcd33ace44f8aa607ff10336)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: defaultAuthRoute to defaultAuthenticatedRoute ([4667ffa](https://github.com/wrappid/core/commit/4667ffa54b751be0d81be504dce8c25357fc4989)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.460](https://github.com/wrappid/core/compare/v0.0.459...v0.0.460) (2024-04-08)
 
 
