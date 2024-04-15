@@ -19,18 +19,17 @@ export default function CoreRoutesProvider(props) {
   const [routesList, setRoutesList] = React.useState({});
 
   React.useEffect(() => {
-    if (sync) {
-      dispatch(
-        apiRequestAction(
-          HTTP.GET,
-          `${!authenticated ? "/noauth/" : "/" }business/all/RoutePages`,
-          authenticated,
-          { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
-          GET_ROUTE_SUCCESS,
-          GET_ROUTE_FAILURE
-        )
-      );
-    }
+    // @todo post sync
+    dispatch(
+      apiRequestAction(
+        HTTP.GET,
+        `${!authenticated ? "/noauth/" : "/"}business/all/RoutePages`,
+        authenticated,
+        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
+        GET_ROUTE_SUCCESS,
+        GET_ROUTE_FAILURE
+      )
+    );
   }, [sync, authenticated]);
 
   React.useEffect(() => {
