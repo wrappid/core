@@ -6,75 +6,46 @@ import { WrappidDataContext } from "@wrappid/styles";
 import { useSelector } from "react-redux";
 
 import CoreComponent from "./CoreComponent";
-import { ComponentRegistryContext, CoreRoutesContext } from "../config/contextHandler";
-import { coreUseNavigate } from "../helper/routerHelper";
-import CoreLayoutItem from "../layout/CoreLayoutItem";
-// eslint-disable-next-line import/order
-import CoreCircularProgress from "./feedback/CoreCircularProgress";
-// eslint-disable-next-line import/order
-import BlankLayout from "./layouts/_system/BlankLayout";
-// eslint-disable-next-line import/order
 import CoreTypographyBody1 from "./dataDisplay/CoreTypographyBody1";
-// eslint-disable-next-line import/no-unresolved
+import CoreCircularProgress from "./feedback/CoreCircularProgress";
+import CenteredBlankLayout from "./layouts/_system/CenteredBlankLayout";
+import { ComponentRegistryContext, CoreRoutesContext } from "../config/contextHandler";
+import { CoreDomNavigate } from "../helper/routerHelper";
+import CoreLayoutItem from "../layout/CoreLayoutItem";
 
 export default function PageLoader() {
-/**
+  /**
    * @todo
    * navigate to default route
    * 
    */
-  const navigate = coreUseNavigate();
   const componentRegistry = React.useContext(ComponentRegistryContext);
   const { config } = React.useContext(WrappidDataContext);
   const [defaultRoute, setDefaultRoute] = React.useState(null);
-  const registeredRoutes = React.useContext(CoreRoutesContext);
+  const contextRoutes = React.useContext(CoreRoutesContext);
   const { uid, accessToken } = useSelector((state) => state?.auth);
   let authenticated = uid && accessToken ? true : false;
 
   React.useEffect(() => {
     let defaultRouteName = (authenticated ? config?.defaultAuthenticatedRoute : config?.defaultRoute) || config?.defaultRoute;
 
-    if (defaultRouteName) {
-      let defRouteArr = registeredRoutes?.filter((route) => route?.entityRef === defaultRouteName);
-
-      if (defRouteArr?.length > 0) {
-        setDefaultRoute(defRouteArr[0]);
-      }
+    if (defaultRouteName && Object.prototype.hasOwnProperty.call((contextRoutes || {}), defaultRouteName)) {
+      setDefaultRoute(contextRoutes[defaultRouteName]);
     }
-  }, [config, registeredRoutes]);
-
-  React.useEffect(() => {
-    if (defaultRoute) {
-      navigate(`/${defaultRoute?.url}`);
-    }
-  }, [defaultRoute]);
-  /* --------------------------------------------------- */
+  }, [config, contextRoutes]);
 
   return (
     <>
-      <CoreLayoutItem id={BlankLayout.PLACEHOLDER.CONTENT}>
-        {Object.keys(componentRegistry).includes("AppLogoGif") ? <CoreComponent componentName={"AppLogoGif"} /> : <CoreCircularProgress />}
-
-        <CoreTypographyBody1 gutterBottom={false}>Loading ...</CoreTypographyBody1>
-
-        {/* eslint-disable-next-line etc/no-commented-out-code */}
-        {/* <CoreGrid styleClasses={[
-          CoreClasses.WIDTH.VW_100,
-          CoreClasses.HEIGHT.VH_100,
-          CoreClasses.BG.BG_GREY_100,
-          CoreClasses.DISPLAY.FLEX,
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
-          CoreClasses.PADDING.P2
-        ]}>
-          <CoreSection
-            styleClasses={[CoreClasses.BG.BG_INFO_LIGHT, CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-            gridProps={{ gridSize: { md: 4 } }}>
-            <CoreCircularProgress />
+      <CoreLayoutItem id={CenteredBlankLayout.PLACEHOLDER.CONTENT}>
+        {defaultRoute && defaultRoute?.url ? (
+          <CoreDomNavigate to={`/${defaultRoute?.url}`} />
+        ) : (
+          <>
+            {Object.keys(componentRegistry).includes("AppLogoGif") ? <CoreComponent componentName={"AppLogoGif"} /> : <CoreCircularProgress />}
 
             <CoreTypographyBody1 gutterBottom={false}>Loading ...</CoreTypographyBody1>
-          </CoreSection>
-        </CoreGrid> */}
+          </>
+        )}
       </CoreLayoutItem>
     </>
   );
