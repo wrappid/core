@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.462](https://github.com/wrappid/core/compare/v0.0.461...v0.0.462) (2024-04-20)
+
+
+### Bug Fixes
+
+* **core:** :zap: all routes moved to context and used from it ([e66fe94](https://github.com/wrappid/core/commit/e66fe945df73c9f6a8e6929f09f7cd4a48a86614)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: fixing two components ([7c486ed](https://github.com/wrappid/core/commit/7c486ed1011a746102938e0622ded68ce97abede)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :zap: route related changes ([9bbd756](https://github.com/wrappid/core/commit/9bbd756a9917b7188225d91a844adf277e943eb0)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.461](https://github.com/wrappid/core/compare/v0.0.460...v0.0.461) (2024-04-08)
 
 
