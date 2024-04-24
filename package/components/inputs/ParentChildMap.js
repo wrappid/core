@@ -116,11 +116,12 @@ export default function ParentChildMap(props) {
   console.log("props", formData);
 
   React.useEffect(() => {
-    let temp = [...data];
+    if (data && Array.isArray(data)) {
+      let temp = [...(data || [])];
 
-    console.log("TEMP", temp);
-    setFormData(temp);
-  }, []);
+      setFormData(temp);
+    }
+  }, [data]);
 
   const handleChange = (e) => {
     let parts = e.target.id.split("-");
@@ -164,7 +165,7 @@ export default function ParentChildMap(props) {
                     </CoreTypographyBody1>
 
                     {parentOb?.__children &&
-                      parentOb?.__children?.length > 0 && (
+                        parentOb?.__children?.length > 0 && (
                       <CoreChip
                         label={
                           "has " + parentOb?.__children?.length + " children"

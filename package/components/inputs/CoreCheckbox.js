@@ -70,6 +70,11 @@ CoreCheckbox.validProps = [
     types      : [{ type: "string" }],
   },
   {
+    description: "The label of the input element.",
+    name       : "label",
+    types      : [{ type: "string" }],
+  },
+  {
     description:
       "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
     name : "indeterminate",
