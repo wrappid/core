@@ -5,10 +5,10 @@ import { configureStore } from "@reduxjs/toolkit";
 // eslint-disable-next-line import/no-unresolved
 import { nativeStorage } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { StylesProvider, ConfigProvider, StylesThemesContext } from "@wrappid/styles";
+import { StylesProvider } from "@wrappid/styles";
 import { Provider } from "react-redux";
 import { combineReducers } from "redux";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import thunk from "redux-thunk";
 
@@ -68,7 +68,6 @@ function createFullStore(appReducer, persistFlag = true) {
 
 export default function CoreProvider(props) {
   const {
-    applicationConfig,
     appStyles,
     customIcons,
     applicationRegistry,
@@ -79,7 +78,6 @@ export default function CoreProvider(props) {
     resourcesRegistry,
     functionsRegistry,
     validationsRegistry,
-    themesRegistry,
     children
   } = props;
 
@@ -111,30 +109,25 @@ export default function CoreProvider(props) {
   return store && persistor && (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ConfigProvider config={applicationConfig}>{/** @todo need to wrap it in parent */}
-          <StylesThemesContext.Provider value={themesRegistry}>
-            <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
-              <CoreContextProvider
-                appStyles={appStyles}
-                applicationRegistry={applicationRegistry}
-                routesRegistry={routesRegistry}
-                menusRegistry={menusRegistry}
-                componentsRegistry={componentsRegistry}
-                resourcesRegistry={resourcesRegistry}
-                functionsRegistry={functionsRegistry}
-                validationsRegistry={validationsRegistry}
-              >
-                <CoreThemeProvider>
-                  <IconContext.Provider value={customIcons}>
-                    {children}
-                  </IconContext.Provider>
-                </CoreThemeProvider>
-              </CoreContextProvider>
-            </StylesProvider>
-          </StylesThemesContext.Provider>
-        </ConfigProvider>
+        <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
+          <CoreContextProvider
+            appStyles={appStyles}
+            applicationRegistry={applicationRegistry}
+            routesRegistry={routesRegistry}
+            menusRegistry={menusRegistry}
+            componentsRegistry={componentsRegistry}
+            resourcesRegistry={resourcesRegistry}
+            functionsRegistry={functionsRegistry}
+            validationsRegistry={validationsRegistry}
+          >
+            <CoreThemeProvider>
+              <IconContext.Provider value={customIcons}>
+                {children}
+              </IconContext.Provider>
+            </CoreThemeProvider>
+          </CoreContextProvider>
+        </StylesProvider>
       </PersistGate>
     </Provider>);
 }
 
-export { createFullStore };
