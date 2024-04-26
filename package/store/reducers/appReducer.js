@@ -34,7 +34,6 @@ const initState = {
   sendOtpSuccess       : false,
   snackMessages        : [],
   snackMessagesMaxCount: 5,
-  userTheme            : null,
   userThemeID          : null,
 };
 
@@ -170,8 +169,6 @@ const appReducer = (state = initState, action) => {
         ...state,
         userThemeID: action.payload
       };
-      // case LOGOUT_SUCCESS:
-      //     return { ...initState, routes: state?.routes?.filter((tmp) => !tmp.authRequired) };
 
     default:
       return state;

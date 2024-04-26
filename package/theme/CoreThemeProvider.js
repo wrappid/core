@@ -7,7 +7,9 @@ import { NativeThemeProvider } from "@wrappid/native";
 import { DEFAULT_THEME, UPDATE_DEFAULT_THEME, UPDATE_PAGE_THEME, WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setUserTheme } from "../store/action/appActions";
+import { HTTP } from "../config/constants";
+import { apiRequestAction } from "../store/action/appActions";
+import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_LOCAL_THEMES_SUCCESS } from "../store/types/themeTypes";
 
 export default function CoreThemeProvider(props) {
   const { themeID = undefined, children } = props || {};
@@ -17,30 +19,67 @@ export default function CoreThemeProvider(props) {
   
   const { config, themes } = React.useContext(WrappidDataContext);
   const { defaultTheme = "wrappidTheme" } = config || {};
+  const { themes: storedThemes } = useSelector((state) => state?.theme);
+  const { local: localThemes, server: serverThemes } = storedThemes;
   const { userThemeID } = useSelector((state) => state?.app);
+  const { uid, accessToken } = useSelector((state) => state?.auth || {});
+  let authenticated = uid && accessToken ? true : false;
 
+  const [combinedThemes, setCombinedThemes] = React.useState([]);
   const [currentTheme, setCurrentTheme] = React.useState(DEFAULT_THEME);
 
   React.useEffect(() => {
-    if (userThemeID && Object.keys(themes).includes(userThemeID)) {
+    // set local themes
+    storeDispatch({ payload: Object.values(themes), type: SET_LOCAL_THEMES_SUCCESS });
+    // get server themes
+    storeDispatch(apiRequestAction(
+      HTTP.GET,
+      `${!authenticated ? "/noauth/" : "/"}business/all/ThemeSchemas`,
+      authenticated,
+      { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
+      GET_THEMES_SUCCESS,
+      GET_THEMES_FAILURE
+    ));
+  }, []);
+
+  React.useEffect(() => {
+    setCombinedThemes([...localThemes, ...serverThemes]);    
+  }, [localThemes, serverThemes]);
+
+  const getTheme = (themeID) => {
+    return combinedThemes?.find(theme => theme?.entityRef === themeID || theme?.name === themeID);
+  };
+
+  const isThemeExist = (themeID) => {
+    let themeFound = getTheme(themeID);
+
+    return themeFound ? true : false;
+  };
+  
+  const getThemeObj = (themeID) => {
+    let themeFound = getTheme(themeID);
+
+    return themeFound?.theme || themeFound?.schema || {};
+  };
+
+  React.useEffect(() => {
+    if (userThemeID && isThemeExist(userThemeID)) {
       dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
       
-      let mergedTheme = themes[userThemeID].theme;
+      let mergedTheme = getThemeObj(userThemeID);
       
-      if (themeID && Object.keys(themes).includes(themeID)) {
+      if (themeID && isThemeExist(userThemeID)) {
         dispatch({ payload: userThemeID, type: UPDATE_PAGE_THEME });
 
-        mergedTheme = { ...mergedTheme, ...(themes[themeID].theme) };
+        mergedTheme = { ...mergedTheme, ...getThemeObj(themeID) };
       } else {
         dispatch({ payload: undefined, type: UPDATE_PAGE_THEME });
       }
       setCurrentTheme(mergedTheme);
     } else {
-      storeDispatch(setUserTheme(defaultTheme));
-      setCurrentTheme(themes[defaultTheme].theme);
+      setCurrentTheme(getThemeObj(defaultTheme));
     }
-
-  }, [defaultTheme, userThemeID]);
+  }, [combinedThemes, defaultTheme, userThemeID]);
 
   return <NativeThemeProvider theme={currentTheme}>{children}</NativeThemeProvider>;
 }

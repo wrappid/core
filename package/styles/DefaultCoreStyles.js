@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
 // eslint-disable-next-line import/no-unresolved 
-import { DefaultUtilityStyles, DEFAULT_PADDING, PX_TAG, IMPORTANT, BaseStyle } from "@wrappid/styles";
+import { BaseStyle, DEFAULT_PADDING, DefaultUtilityStyles, IMPORTANT, PX_TAG } from "@wrappid/styles";
 
 /**
  * @todo: have to calculate manually nav height varying depending on screen size
@@ -43,6 +43,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       contentContainer: {
         ...this.defaultUtilityStyles.w100,
         ...this.defaultUtilityStyles.overflowYAuto,
+        ...this.defaultUtilityStyles.mxN1,
         marginTop: HEADING_TOP_MARGIN + IMPORTANT,
       },
 
