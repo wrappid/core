@@ -18,7 +18,7 @@ import CoreMenu from "../navigation/CoreMenu";
 
 export default function CoreProfilePopOver(props) {
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
   const profile = useSelector((state) => state?.profile);
   // eslint-disable-next-line no-unsafe-optional-chaining
   const { firstName = "", middleName = "", lastName = "" } = profile?.basic;

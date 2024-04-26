@@ -46,7 +46,7 @@ export default function AppContainerLayout() {
   const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
   const { recall: recallState, pendingRequest: currentPendingRequest } = useSelector((state) => state?.pendingRequests);
-  const { uid, accessToken } = useSelector((state) => state?.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth || {});
   
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
   

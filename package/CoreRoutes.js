@@ -25,7 +25,7 @@ export let globalTokenRequested = null;
 export let globalTokenRequestTimeStamp = null;
 
 export default function CoreRoutes() {
-  const { accessToken, refreshToken } = useSelector((state) => state?.auth);
+  const { accessToken, refreshToken } = useSelector((state) => state?.auth || {});
   
   const contextRoutes = React.useContext(CoreRoutesContext);
   

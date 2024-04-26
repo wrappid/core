@@ -13,7 +13,7 @@ export default function DevelopmentInfo() {
     WrappidDataContext
   );
 
-  return (config?.wrappid?.environment === "development" || config?.wrappid?.environment === "stage") && (
+  return (config?.wrappid?.environment === "development") && (
     <CoreBox styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.BG.BG_BLACK]}>
       <CoreTypographyBody1 styleClasses={[CoreClasses.COLOR.TEXT_WHITE]}>Development Info</CoreTypographyBody1>
 

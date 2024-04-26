@@ -11,7 +11,7 @@ import CoreLink from "../navigation/CoreLink";
 
 export default function CoreTermsPrivacyLink() {
   const { config } = React.useContext(WrappidDataContext);
-  const { uid } = useSelector(state=>state?.auth);
+  const { uid } = useSelector(state=>state?.auth || {});
 
   return (
     <CoreBox
