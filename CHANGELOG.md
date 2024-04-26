@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.463](https://github.com/wrappid/core/compare/v0.0.462...v0.0.463) (2024-04-26)
+
+
+### Bug Fixes
+
+* **core:** :art: fixed content container empty space in both sides ([8a9de25](https://github.com/wrappid/core/commit/8a9de257fd380c4be8e3db62cff137d1be05c1f7)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :art: theme and config related code cleanup ([852f2ad](https://github.com/wrappid/core/commit/852f2ad61b2225660a87cdf9223bab9eb2b995f9)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.462](https://github.com/wrappid/core/compare/v0.0.461...v0.0.462) (2024-04-20)
 
 
