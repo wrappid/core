@@ -23,7 +23,7 @@ export default function PageLoader() {
   const { config } = React.useContext(WrappidDataContext);
   const [defaultRoute, setDefaultRoute] = React.useState(null);
   const contextRoutes = React.useContext(CoreRoutesContext);
-  const { uid, accessToken } = useSelector((state) => state?.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth || {});
   let authenticated = uid && accessToken ? true : false;
 
   React.useEffect(() => {

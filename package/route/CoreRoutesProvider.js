@@ -13,7 +13,7 @@ export default function CoreRoutesProvider(props) {
   const { routes: localRoutes = {}, children } = props;
   const dispatch = useDispatch();
   const { sync, routes: storedRoutes = {} } = useSelector((state) => state?.route);
-  const { uid, accessToken } = useSelector((state) => state?.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth || {});
   let authenticated = uid && accessToken ? true : false;
 
   const [routesList, setRoutesList] = React.useState({});

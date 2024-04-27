@@ -18,7 +18,7 @@ import CoreBox from "../layouts/CoreBox";
 export default function Logout() {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
 
   // -- console.log("LOCALTION", location);
 

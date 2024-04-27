@@ -4,6 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/order, import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
 import CoreClasses from "../../styles/CoreClasses";
+import ThemeSelector from "../../theme/ThemeSelector";
 import CoreTypographyCaption from "../dataDisplay/CoreTypographyCaption";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
@@ -21,13 +22,13 @@ export default function CoreFooter(props) {
       // CoreClasses.FRAMEWORK.CORE_FOOTER
     ]}>
       <CoreBox
-        gridProps={{ gridSize: 4 }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
+        gridProps={{ gridSize: { md: 3 } }}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         <CoreAppVersion noTitle={true} />
       </CoreBox>
 
       <CoreBox
-        gridProps={{ gridSize: 4 }}
+        gridProps={{ gridSize: { md: 3 } }}
         styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         <CoreTypographyCaption>
           {`${config?.wrappid?.footerText || "Wrappid Default Footer"} © ${new Date().getFullYear()}`}
@@ -35,8 +36,14 @@ export default function CoreFooter(props) {
       </CoreBox>
 
       <CoreBox
-        gridProps={{ gridSize: 4 }}
-        styleClasses={[CoreClasses.PADDING.PR1, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
+        gridProps={{ gridSize: { md: 3 } }}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
+        <ThemeSelector />
+      </CoreBox>
+
+      <CoreBox
+        gridProps={{ gridSize: { md: 3 } }}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         <CoreTermsPrivacyLink />
       </CoreBox>
     </CoreGrid>

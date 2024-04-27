@@ -20,7 +20,7 @@ export default function CoreDrawer(props) {
 
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
   const { menu, collapse } = useSelector((state) => state?.menu);
   const theme = useContext(ThemeContext);
 

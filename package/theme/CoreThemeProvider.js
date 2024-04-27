@@ -42,12 +42,32 @@ export default function CoreThemeProvider(props) {
     ));
   }, []);
 
+  const processLocalThemes = (themes) => {
+    return themes?.map(theme => {
+      return {
+        id   : theme?.name,
+        theme: theme?.theme
+      };
+    });
+  };
+  const processServerThemes = (themes) => {
+    return themes?.map(theme => {
+      return {
+        id   : theme?.entityRef,
+        theme: theme?.schema
+      };
+    });
+  };
+
   React.useEffect(() => {
-    setCombinedThemes([...localThemes, ...serverThemes]);    
+    let tempLocalThemes = processLocalThemes(localThemes);
+    let tempServerThemes = processServerThemes(serverThemes);
+
+    setCombinedThemes([...tempLocalThemes, ...tempServerThemes]);    
   }, [localThemes, serverThemes]);
 
   const getTheme = (themeID) => {
-    return combinedThemes?.find(theme => theme?.entityRef === themeID || theme?.name === themeID);
+    return combinedThemes?.find(theme => theme?.id === themeID);
   };
 
   const isThemeExist = (themeID) => {
@@ -59,7 +79,7 @@ export default function CoreThemeProvider(props) {
   const getThemeObj = (themeID) => {
     let themeFound = getTheme(themeID);
 
-    return themeFound?.theme || themeFound?.schema || {};
+    return themeFound?.theme || {};
   };
 
   React.useEffect(() => {
