@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.464](https://github.com/wrappid/core/compare/v0.0.463...v0.0.464) (2024-04-27)
+
+
+### Bug Fixes
+
+* **core:** :art: themes added in footer ([08e4bed](https://github.com/wrappid/core/commit/08e4bed0da2ed486f07c4727692d482f82e89747)), closes [#183](https://github.com/wrappid/core/issues/183)
+* **core:** :bug: wrappid funtionality fix without auth module ([3819ef1](https://github.com/wrappid/core/commit/3819ef183ca1c3809f23db161199b1eaa6ddd8ea)), closes [#183](https://github.com/wrappid/core/issues/183)
+
 ### [0.0.463](https://github.com/wrappid/core/compare/v0.0.462...v0.0.463) (2024-04-26)
 
 
