@@ -72,6 +72,7 @@ import CoreAsyncSelect from "./components/inputs/CoreAsyncSelect";
 import CoreAutocomplete from "./components/inputs/CoreAutocomplete";
 import CoreButton from "./components/inputs/CoreButton";
 import CoreCheckbox from "./components/inputs/CoreCheckbox";
+import CoreColorInput from "./components/inputs/CoreColorInput";
 import CoreConfirmPasswordField from "./components/inputs/CoreConfirmPasswordField";
 import CoreContainedButton from "./components/inputs/CoreContainedButton";
 import CoreDatepicker from "./components/inputs/CoreDatepicker";
@@ -265,7 +266,7 @@ export {
   /**
    * Styles
    */
-  CoreClasses, CoreCollapse, CoreComponent, CoreComponentsRegistry, CoreConfirmPasswordField,
+  CoreClasses, CoreCollapse, CoreColorInput, CoreComponent, CoreComponentsRegistry, CoreConfirmPasswordField,
   CoreContainedButton, CoreContainer, CoreCssBaseline, CoreCustomTabs, CoreDataTable, CoreDatepicker,
   CoreDateRangepicker,
   CoreDateTimePicker,
@@ -283,8 +284,7 @@ export {
   CoreH4,
   CoreH5,
   CoreH6, CoreIcon, CoreIconButton, CoreIconText, CoreImage, CoreImageBackground, CoreImagePicker,
-  CoreInput,
-  CoreInputAdornment,
+  CoreInput, CoreInputAdornment,
   CoreInputLabel,
   CoreInputPassword, CoreJSONEditor, CoreJSONInput, CoreLabel, CoreLayoutItem,
   /**
