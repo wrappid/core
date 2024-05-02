@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.465](https://github.com/wrappid/core/compare/v0.0.464...v0.0.465) (2024-05-02)
+
+
+### Features
+
+* **core:** :art: component CoreColorInput implemented and exported ([8b365c3](https://github.com/wrappid/core/commit/8b365c37e97a8c35a1d14a6a36e99c3a28447e4a)), closes [#207](https://github.com/wrappid/core/issues/207)
+
 ### [0.0.464](https://github.com/wrappid/core/compare/v0.0.463...v0.0.464) (2024-04-27)
 
 
