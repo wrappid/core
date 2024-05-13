@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.466](https://github.com/wrappid/core/compare/v0.0.465...v0.0.466) (2024-05-13)
+
+
+### Bug Fixes
+
+* **config:** :package: added +"standard-version": "9.5.0" to package json ([60dfb90](https://github.com/wrappid/core/commit/60dfb900d1e8ec11f2998a64898193787a71cc27)), closes [#211](https://github.com/wrappid/core/issues/211)
+* **config:** :package: version changes in package.json file ([974d8ed](https://github.com/wrappid/core/commit/974d8edcb80a925e557a530d6b1b3de5db880a27)), closes [#211](https://github.com/wrappid/core/issues/211)
+
 ### [0.0.465](https://github.com/wrappid/core/compare/v0.0.464...v0.0.465) (2024-05-02)
 
 
