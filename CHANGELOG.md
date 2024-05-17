@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.467](https://github.com/wrappid/core/compare/v0.0.466...v0.0.467) (2024-05-17)
+
+
+### Bug Fixes
+
+* **core:** :bug: added peerDependenciesMeta to resolve react peerDependencies issues ([441bb8a](https://github.com/wrappid/core/commit/441bb8a1d2f2e23a8b8191e1f2368029fda929df)), closes [#214](https://github.com/wrappid/core/issues/214)
+* **core:** :bug: updated package lock file ([9234312](https://github.com/wrappid/core/commit/9234312442af43edcbcebe9798dd5473c0b32b09)), closes [#214](https://github.com/wrappid/core/issues/214)
+
 ### [0.0.466](https://github.com/wrappid/core/compare/v0.0.465...v0.0.466) (2024-05-13)
 
 
