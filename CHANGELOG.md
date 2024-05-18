@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.468](https://github.com/wrappid/core/compare/v0.0.467...v0.0.468) (2024-05-18)
+
+
+### Bug Fixes
+
+* :bug: axios request method uppercase ([b381dcc](https://github.com/wrappid/core/commit/b381dcc7340f270d56a9453e6f7b942fd42b2134)), closes [#216](https://github.com/wrappid/core/issues/216)
+
 ### [0.0.467](https://github.com/wrappid/core/compare/v0.0.466...v0.0.467) (2024-05-17)
 
 
