@@ -70,7 +70,7 @@ export default function PageContainer(props) {
 
   React.useEffect(()=>{
     dispatch({ type: RESET_FROM_STATE });
-  }, [route]);
+  }, [sessionExpired]);
 
   React.useEffect(() => {
     if (sessionExpired && !sessionDetail) {
@@ -92,7 +92,7 @@ export default function PageContainer(props) {
     ) {
       dispatch({ type: SESSION_RECALLED });
     }
-  });
+  }, []);
 
   React.useEffect(() => {
     // -- console.log("LOCATION SAVE______", location);
