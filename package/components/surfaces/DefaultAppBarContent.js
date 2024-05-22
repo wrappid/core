@@ -28,7 +28,7 @@ export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
   let { appLogo } = React.useContext(CoreResourceContext);
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state?.auth || {});
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   const [platform, setPlatform] = useState(null);
