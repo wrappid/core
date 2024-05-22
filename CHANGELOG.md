@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.470](https://github.com/wrappid/core/compare/v0.0.469...v0.0.470) (2024-05-22)
+
+
+### Bug Fixes
+
+* **core:** :bug: maximum update depth exceeded in PageContainer.js ([b35cd88](https://github.com/wrappid/core/commit/b35cd8847d7004047cb79b7502704512f1a05571)), closes [wrappid/core#219](https://github.com/wrappid/core/issues/219)
+
 ### [0.0.469](https://github.com/wrappid/core/compare/v0.0.468...v0.0.469) (2024-05-18)
 
 ### [0.0.468](https://github.com/wrappid/core/compare/v0.0.467...v0.0.468) (2024-05-18)
