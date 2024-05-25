@@ -76,6 +76,7 @@ export default function QuickAddPopOver(props) {
       multiLevel={false}
       open={true}
       OnMenuClick={OnMenuClick}
+      displayIcon={true}
     />
   );
 }

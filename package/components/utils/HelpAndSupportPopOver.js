@@ -24,6 +24,7 @@ export default function HelpAndSupportPopOver(props) {
       multiLevel={false}
       open={true}
       OnMenuClick={OnMenuClick}
+      displayIcon={true}
     />
   );
 }

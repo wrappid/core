@@ -32,6 +32,7 @@ export default function TableDensity(props) {
             label: "Comfortable",
           },
         ]}
+        displayIcon={true}
       />
     </>
   );

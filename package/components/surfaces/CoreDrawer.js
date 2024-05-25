@@ -64,6 +64,7 @@ export default function CoreDrawer(props) {
             open={open}
             openCollapse={collapse}
             OnMenuClick={OnMenuClick}
+            displayIcon={true}
           />
         </NativeDrawer>
       )}

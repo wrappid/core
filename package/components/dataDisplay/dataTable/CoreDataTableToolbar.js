@@ -385,6 +385,7 @@ export default function CoreDataTableToolbar(props) {
             multiLevel={false}
             open={true}
             OnMenuClick={() => {}}
+            displayIcon={true}
           />
         )}
       />

@@ -115,6 +115,7 @@ export default function CoreProfilePopOver(props) {
         multiLevel={false}
         open={true}
         OnMenuClick={OnMenuClick}
+        displayIcon={true}
       />
 
       <CoreDivider />

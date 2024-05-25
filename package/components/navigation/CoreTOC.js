@@ -84,6 +84,7 @@ export default function CoreTOC(props) {
       menu={tocMenu}
       OnMenuClick={OnMenuClick}
       open={true}
+      displayIcon={false}
     />
   );
 }
