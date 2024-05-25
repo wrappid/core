@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.471](https://github.com/wrappid/core/compare/v0.0.470...v0.0.471) (2024-05-25)
+
+
+### Features
+
+* **core:** :zap: displayIcon for CoreMenu ([bd6ef0f](https://github.com/wrappid/core/commit/bd6ef0f778ae7aa2dbd14abf1cad765df6220d4e)), closes [#218](https://github.com/wrappid/core/issues/218)
+
 ### [0.0.470](https://github.com/wrappid/core/compare/v0.0.469...v0.0.470) (2024-05-22)
 
 
