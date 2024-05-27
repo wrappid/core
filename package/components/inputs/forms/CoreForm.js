@@ -571,7 +571,6 @@ class CoreForm extends Component {
           this.setState({ dialogContent: null, dialogSet: false });
         },
         doneButtonLabel: "Delete",
-        noCancelButton : true,
         showDialog     : true,
         subtitle       : "Are you Sure",
         title          : "Confirm",

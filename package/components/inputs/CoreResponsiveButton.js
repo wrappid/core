@@ -16,7 +16,7 @@ export default function CoreResponsiveButton(props) {
 
   return (
     <>
-      {config?.wrappid?.platform !== APP_PLATFORM && (
+      {config?.platform !== APP_PLATFORM && (
         <CoreOutlinedButton
           {...props}
           styleClasses={[CoreClasses.DISPLAY.NONE, CoreClasses.DISPLAY.SM.BLOCK]}
