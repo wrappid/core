@@ -149,6 +149,12 @@ CoreTextField.validProps = [
   },
   {
     description:
+      "Callback fired when the keyDown event occurs.",
+    name : "onKeyDown",
+    types: [{ type: "function" }],
+  },
+  {
+    description:
       "The short hint displayed in the input before the user enters a value.",
     name : "placeholder",
     types: [{ type: "string" }],

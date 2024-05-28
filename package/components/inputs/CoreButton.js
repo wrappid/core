@@ -18,6 +18,14 @@ CoreButton.validProps = [
     types: [{ type: "string" }]
   },
   {
+    name : "title",
+    types: [{ type: "string" }]
+  },
+  {
+    name : "titlePlacement",
+    types: [{ type: "string" }]
+  },
+  {
     name : "onClick",
     types: [{ type: "function" }],
   },
