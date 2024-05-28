@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.472](https://github.com/wrappid/core/compare/v0.0.471...v0.0.472) (2024-05-28)
+
+
+### Bug Fixes
+
+* :bug: CoreButton valid props added title, titlePlacement ([6475b14](https://github.com/wrappid/core/commit/6475b14f8d119203f95a441fe2ed0c3e05d927b3)), closes [#224](https://github.com/wrappid/core/issues/224)
+
 ### [0.0.471](https://github.com/wrappid/core/compare/v0.0.470...v0.0.471) (2024-05-25)
 
 
