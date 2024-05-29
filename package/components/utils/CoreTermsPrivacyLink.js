@@ -11,46 +11,30 @@ import CoreLink from "../navigation/CoreLink";
 
 export default function CoreTermsPrivacyLink() {
   const { config } = React.useContext(WrappidDataContext);
-  const { uid } = useSelector(state=>state?.auth);
+  const { uid } = useSelector(state=>state?.auth || {});
 
   return (
     <CoreBox
       gridProps={{ gridSize: 6 }}
-      styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+      styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_AROUND]}
     >
-      {/* -- <CoreLink
-              styleClasses={[CoreClasses?.MARGIN?.MR1]}
-              href={
-                process.env?.REACT_APP_WRAPPID_helpLink ||
-                config?.wrappid?.helpLink
-              }
-            >
-              Help
-            </CoreLink> */}
+      <CoreLink
+        styleClasses={[CoreClasses?.MARGIN?.MR1]}
+        href={config?.wrappid?.helpLink}
+      >Help</CoreLink>
+
       <CoreLink
         styleClasses={uid ? [] : [CoreClasses?.COLOR?.TEXT_WHITE]}
-        href={
-          // eslint-disable-next-line no-undef
-          process.env?.REACT_APP_WRAPPID_privacyLink ||
-                    config?.wrappid?.privacyLink
-        }
-      >
-                Privacy
-      </CoreLink>
+        href={config?.wrappid?.privacyLink}
+      >Privacy</CoreLink>
 
       <CoreLink
         styleClasses={uid
           ? [CoreClasses?.MARGIN?.ML1]
           : [CoreClasses?.MARGIN?.ML1, CoreClasses?.COLOR?.TEXT_WHITE]
         }
-        href={
-          // eslint-disable-next-line no-undef
-          process.env?.REACT_APP_WRAPPID_termsLink ||
-                    config?.wrappid?.termsLink
-        }
-      >
-                Terms
-      </CoreLink>
+        href={config?.wrappid?.termsLink}
+      >Terms</CoreLink>
     </CoreBox>
   );
 }

@@ -471,7 +471,9 @@ export function createFormActionProps(element) {
 
 export function createFormButtonProps(element, formikprops, handleButtonCLick) {
   return {
-    OnClick: element.onClick
+    alignment: element.actionContainerStyle ? null : "end",
+    label    : element.label,
+    onClick  : element.onClick
       ? typeof element.onClick === "object"
         ? () => {
           handleButtonCLick(element.onClick, formikprops?.values);
@@ -480,8 +482,6 @@ export function createFormButtonProps(element, formikprops, handleButtonCLick) {
       : () => {
         alert("error in button action");
       },
-    alignment   : element.actionContainerStyle ? null : "end",
-    label       : element.label,
     styleClasses: element.styleClasses || [],
     type        : element.actionType === "submit" ? "submit" : "button",
   };

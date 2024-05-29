@@ -276,7 +276,7 @@ export default function CoreDataTableToolbar(props) {
                     label={`${createEntityButtonText || getLabel(tableUUID)}`}
                     variant="outlined"
                     startIcon={<CoreIcon>add</CoreIcon>}
-                    OnClick={() => {
+                    onClick={() => {
                       if (navigationOnCreateUrl) {
                         navigate(navigationOnCreateUrl);
                       }
@@ -385,6 +385,7 @@ export default function CoreDataTableToolbar(props) {
             multiLevel={false}
             open={true}
             OnMenuClick={() => {}}
+            displayIcon={true}
           />
         )}
       />

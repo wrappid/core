@@ -214,7 +214,7 @@ export default function CoreDataTableRow(props) {
                     label={
                       createEntityButtonText || `Add ${getLabel(tableUUID || "")}`
                     }
-                    OnClick={() => {
+                    onClick={() => {
                       setDetailedRowId(null);
                       setDetailedRowData(null);
                       set_showDetailsPane(true);

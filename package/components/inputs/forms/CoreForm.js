@@ -571,7 +571,6 @@ class CoreForm extends Component {
           this.setState({ dialogContent: null, dialogSet: false });
         },
         doneButtonLabel: "Delete",
-        noCancelButton : true,
         showDialog     : true,
         subtitle       : "Are you Sure",
         title          : "Confirm",
@@ -831,9 +830,9 @@ class CoreForm extends Component {
                 ? allowAdd !== false
                   ? [
                     {
-                      OnClick: this.OnAdd,
                       disable: preview,
                       icon   : "add",
+                      onClick: this.OnAdd,
                       title  : "add",
                     },
                   ]
@@ -842,42 +841,42 @@ class CoreForm extends Component {
                   ? allowDelete !== false
                     ? [
                       {
-                        OnClick: this.OnEditClick,
                         disable: preview,
                         icon   : "edit_note",
+                        onClick: this.OnEditClick,
                         title  : "edit",
                       },
                       {
-                        OnClick: this.OnDeleteClick,
-
-                        // -- OnClick: () => {
+                        // -- onClick: () => {
                         //   // alert("Single component delete tobe done");
                         // },
                         disable: preview,
+                        
                         icon   : "delete_outline",
+                        onClick: this.OnDeleteClick,
                         title  : "delete",
                       },
                     ]
                     : [
                       {
-                        OnClick: this.OnEditClick,
                         disable: preview,
                         icon   : "edit_note",
+                        onClick: this.OnEditClick,
                         title  : "edit",
                       },
                     ]
                   : allowDelete !== false
                     ? [
                       {
-                        OnClick: this.OnDeleteClick,
-
                         disable: preview,
 
-                        icon : "delete_outline",
-                        // -- OnClick: () => {
+                        icon: "delete_outline",
+
+                        onClick: this.OnDeleteClick,
+                        // -- onClick: () => {
                         //   alert("Single component delete tobe done");
                         // },
-                        title: "delete",
+                        title  : "delete",
                       },
                     ]
                     : []
@@ -971,7 +970,9 @@ class CoreForm extends Component {
                                       ? allowDelete !== false
                                         ? [
                                           {
-                                            OnClick:
+                                            disable: preview,
+                                            icon   : "edit_note",
+                                            onClick:
                                               processedForms[formId] &&
                                               processedForms[formId]
                                                 .arrayDataNotEditable
@@ -988,12 +989,12 @@ class CoreForm extends Component {
                                                     // );
                                                   }
                                                 : this.OnEditClick,
-                                            disable: preview,
-                                            icon   : "edit_note",
-                                            title  : "edit",
+                                            title: "edit",
                                           },
                                           {
-                                            OnClick:
+                                            disable: preview,
+                                            icon   : "delete_outline",
+                                            onClick:
                                               processedForms[formId] &&
                                               processedForms[formId]
                                                 .arrayDataNotDeletable
@@ -1010,14 +1011,14 @@ class CoreForm extends Component {
                                                     // );
                                                   }
                                                 : this.OnDeleteClick,
-                                            disable: preview,
-                                            icon   : "delete_outline",
-                                            title  : "delete",
+                                            title: "delete",
                                           },
                                         ]
                                         : [
                                           mode === FORM_EDIT_MODE && {
-                                            OnClick:
+                                            disable: preview,
+                                            icon   : "edit_note",
+                                            onClick:
                                               processedForms[formId] &&
                                               processedForms[formId]
                                                 .arrayDataNotEditable
@@ -1033,15 +1034,15 @@ class CoreForm extends Component {
                                                     // );
                                                   }
                                                 : this.OnEditClick,
-                                            disable: preview,
-                                            icon   : "edit_note",
-                                            title  : "edit",
+                                            title: "edit",
                                           },
                                         ]
                                       : allowDelete !== false
                                         ? [
                                           {
-                                            OnClick:
+                                            disable: preview,
+                                            icon   : "delete_outline",
+                                            onClick:
                                             processedForms[formId] &&
                                             processedForms[formId]
                                               .arrayDataNotDeletable
@@ -1057,9 +1058,7 @@ class CoreForm extends Component {
                                                   // );
                                                 }
                                               : this.OnDeleteClick,
-                                            disable: preview,
-                                            icon   : "delete_outline",
-                                            title  : "delete",
+                                            title: "delete",
                                           },
                                         ]
                                         : []

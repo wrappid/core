@@ -9,8 +9,6 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreButton(props) {
   props = sanitizeComponentProps(CoreButton, props);
-  console.log("btn props", props);
-
   return <NativeButton {...props} />;
 }
 
@@ -20,7 +18,15 @@ CoreButton.validProps = [
     types: [{ type: "string" }]
   },
   {
-    name : "OnClick",
+    name : "title",
+    types: [{ type: "string" }]
+  },
+  {
+    name : "titlePlacement",
+    types: [{ type: "string" }]
+  },
+  {
+    name : "onClick",
     types: [{ type: "function" }],
   },
   {

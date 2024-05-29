@@ -46,7 +46,7 @@ export default function AppContainerLayout() {
   const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
   const { recall: recallState, pendingRequest: currentPendingRequest } = useSelector((state) => state?.pendingRequests);
-  const { uid, accessToken } = useSelector((state) => state?.auth);
+  const { uid, accessToken } = useSelector((state) => state?.auth || {});
   
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
   
@@ -158,18 +158,20 @@ export default function AppContainerLayout() {
   }, []);
 
   const getAppBar = () => {
-    return uid ? <CoreAppBar handleDrawer={handleDrawer} routes={_routes} /> : null;
+    return <CoreAppBar handleDrawer={handleDrawer} routes={_routes} />;
   };
   const getFooter = () => {
     return <CoreFooter />;
   };
   const getLeftDrawer = () => {
-    return uid && accessToken ? (
-      <CoreDrawer
-        open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
-        toggleDrawer={handleDrawer}
-      />
-    ) : null;
+    return <CoreDrawer
+      open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
+      toggleDrawer={handleDrawer}
+    />; 
+  };
+
+  const getRightDrawer = () => {
+    return null;
   };
 
   return (
@@ -178,6 +180,7 @@ export default function AppContainerLayout() {
       <NativeAppContainer
         appBar={getAppBar}
         leftDrawer={getLeftDrawer}
+        rightDrawer={getRightDrawer}
         footer={getFooter}
         coreClasses={CoreClasses}
         uid={uid}

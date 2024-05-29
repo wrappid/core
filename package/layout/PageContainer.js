@@ -22,7 +22,7 @@ import { CoreDomNavigate } from "../helper/routerHelper";
 import ErrorBoundary from "../middleware/ErrorBoundary";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
-import { UPDATE_HELPER_FLAG } from "../store/types/formTypes";
+import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
 import LayoutManager from "./LayoutManager";
@@ -56,7 +56,7 @@ export default function PageContainer(props) {
   validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state?.auth);
+  const { uid, sessionExpired, sessionDetail } = useSelector((state) => state?.auth || {});
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
     (state) => state?.forms
   );
@@ -67,6 +67,10 @@ export default function PageContainer(props) {
   formStore = { rawForm, rawFormStatus };
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
+
+  React.useEffect(()=>{
+    dispatch({ type: RESET_FROM_STATE });
+  }, [sessionExpired]);
 
   React.useEffect(() => {
     if (sessionExpired && !sessionDetail) {
@@ -88,7 +92,7 @@ export default function PageContainer(props) {
     ) {
       dispatch({ type: SESSION_RECALLED });
     }
-  });
+  }, []);
 
   React.useEffect(() => {
     // -- console.log("LOCATION SAVE______", location);

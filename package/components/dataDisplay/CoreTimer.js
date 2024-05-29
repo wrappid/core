@@ -28,7 +28,7 @@ export default function CoreTimer({ seconds, action, actionLabel, timerLabel }) 
     timer === 0 ?
       <CoreBox
         styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1]}>
-        <CoreTextButton OnClick={action} label={actionLabel} />
+        <CoreTextButton onClick={action} label={actionLabel} />
       </CoreBox>
       :
       <CoreTypographyBody2 

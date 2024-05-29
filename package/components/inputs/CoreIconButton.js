@@ -16,11 +16,11 @@ export default function CoreIconButton(props) {
 CoreIconButton.validProps = [
   ...CoreButton.validProps,
   {
-    name : "OnClick", /// temporary adding 'OnClick' it should come default from CoreButton which is 'onClick'. OnClick should changed to onClick
+    name : "onClick", /// temporary adding 'onClick' it should come default from CoreButton which is 'onClick'. onClick should changed to onClick
     types: [{ type: "function" }]
   },
   {
-    name : "onClick", /// we have already a OnClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
+    name : "onClick", /// we have already a onClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
     types: [{ type: "function" }], 
   },
   {

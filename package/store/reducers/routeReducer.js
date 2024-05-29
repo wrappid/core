@@ -1,10 +1,14 @@
-import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "../types/appTypes";
+import {
+  GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS,
+  LOCAL_ROUTES_SYNCED_FAILURE,
+  LOCAL_ROUTES_SYNCED_SUCCESS
+} from "../types/appTypes";
 import {
   AUTHENTICATION_ERROR,
   LOGOUT_SUCCESS
 } from "../types/authTypes";
 
-const initState = { routes: [] };
+const initState = { routes: [], sync: false };
 
 const routeReducer = (state = initState, action) => {
   switch (action.type) {
@@ -18,6 +22,18 @@ const routeReducer = (state = initState, action) => {
       return {
         ...state,
         routes: [],
+      };
+
+    case LOCAL_ROUTES_SYNCED_SUCCESS:
+      return {
+        ...state,
+        sync: true
+      };
+
+    case LOCAL_ROUTES_SYNCED_FAILURE:
+      return {
+        ...state,
+        sync: false
       };
 
     case LOGOUT_SUCCESS:

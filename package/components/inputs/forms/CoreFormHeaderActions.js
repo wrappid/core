@@ -30,7 +30,7 @@ export default function CoreFormHeaderActions(props) {
             title={action.title}
             disabled={action.disable}
             onClick={() => {
-              action.OnClick(props.id);
+              action.onClick(props.id);
             }}>
             <CoreIcon>{action.icon}</CoreIcon>
           </CoreIconButton>
@@ -40,7 +40,7 @@ export default function CoreFormHeaderActions(props) {
       <CoreIconButton
         disabled={props.action.disable}
         title={props.action.title}
-        onClick={props.action.OnClick}>
+        onClick={props.action.onClick}>
         <CoreIcon>{props.action.icon}</CoreIcon>
       </CoreIconButton>
     )

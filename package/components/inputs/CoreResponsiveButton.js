@@ -16,7 +16,7 @@ export default function CoreResponsiveButton(props) {
 
   return (
     <>
-      {config?.wrappid?.platform !== APP_PLATFORM && (
+      {config?.platform !== APP_PLATFORM && (
         <CoreOutlinedButton
           {...props}
           styleClasses={[CoreClasses.DISPLAY.NONE, CoreClasses.DISPLAY.SM.BLOCK]}
@@ -26,7 +26,7 @@ export default function CoreResponsiveButton(props) {
       <CoreIconButton
         styleClasses={[CoreClasses.DISPLAY.BLOCK, CoreClasses.DISPLAY.SM.NONE]}
         title={props?.label || props?.title}
-        onClick={props?.OnClick || props?.onClick}
+        onClick={props?.onClick || props?.onClick}
       >
         <CoreIcon
           options={

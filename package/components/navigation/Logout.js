@@ -18,7 +18,7 @@ import CoreBox from "../layouts/CoreBox";
 export default function Logout() {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
 
   // -- console.log("LOCALTION", location);
 
@@ -27,22 +27,22 @@ export default function Logout() {
     dispatch(apiRequestAction(HTTP.POST, LOGOUT_API, true, {}, LOGOUT_SUCCESS, LOGOUT_ERROR));
   }, []);
 
-  if (!auth?.uid) {
-    if (auth?.sessionExpired) {
-      return <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />;
-    } else {
-      return <NativeDomNavigate to={"/"} />;
-    }
-  }
-
   return (
     <>
       <CoreLayoutItem id={CenteredBlankLayout.PLACEHOLDER.CONTENT}>
-        <CoreBox
-          styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-        >
-          <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
-        </CoreBox>
+        {
+          !auth?.uid ? auth?.sessionExpired ? (
+            <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />
+          ) : (
+            <NativeDomNavigate to={"/"} />
+          ) : (
+            <CoreBox
+              styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+            >
+              <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
+            </CoreBox>
+          ) 
+        }
       </CoreLayoutItem>
     </>
   );

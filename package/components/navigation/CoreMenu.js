@@ -18,10 +18,12 @@ export default function CoreMenu(props) {
     OnMenuClick, //menu click operation
     miniDrawer, //flag for mini drawer support
     multiLevel, //flag to allow collapse on multi level menu
+    displayIcon = false, //flag to display menu item icon or not
     open, //menu open/close state for mini drawer
     openCollapse = {}, //item level collapse open on close
     defaultSelection = null, // this is default selection for the item to be pre select
     noNavigation = false,
+    
   } = props;
 
   const routeRegistry = useContext(CoreRouteRegistryContext);
@@ -59,7 +61,8 @@ export default function CoreMenu(props) {
         setSelectedID,
         location?.pathname,
         theme,
-        routeRegistry
+        routeRegistry, 
+        displayIcon
       )}
     </CoreStack>
   );
@@ -162,6 +165,12 @@ CoreMenu.validProps = [
     name : "TransitionProps",
     types: [{ type: "object" }],
   },
+  {
+    description:
+      "Props applied to the menu item whether to display icon infront of menu item label. By default, the displayIcon is false",
+    name : "displayIcon",
+    types: [{ type: "boolean" }],
+  }
 ];
 
 CoreMenu.invalidProps = [];

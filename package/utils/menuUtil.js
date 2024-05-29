@@ -27,10 +27,11 @@ export function createMultiLevelMenu(
   setSelectedID,
   locationPathname,
   theme,
-  routeRegistry
+  routeRegistry,
+  displayIcon
 ) {
   return menu?.map((itemData) => {
-    return (
+    return (      
       <>
         {getNativeMenuItem(
           itemData,
@@ -52,7 +53,8 @@ export function createMultiLevelMenu(
             MENU_PARENT_ITEM,
             MENU_SEPERATOR,
           },
-          routeRegistry
+          routeRegistry,
+          displayIcon
         )}
 
         {multiLevel &&
@@ -71,17 +73,8 @@ export function createMultiLevelMenu(
             setSelectedID,
             locationPathname,
             theme,
-            {
-              MENU_HEADER_ITEM,
-              MENU_ITEM,
-              MENU_ITEM_BUTTON,
-              MENU_ITEM_ICON,
-              MENU_ITEM_TEXT,
-              MENU_ITEM_WRAPPER,
-              MENU_PARENT_ITEM,
-              MENU_SEPERATOR,
-            },
-            routeRegistry
+            routeRegistry,
+            displayIcon
           )}
       </>
     );

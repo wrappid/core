@@ -20,7 +20,7 @@ export default function CoreDrawer(props) {
 
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
   const { menu, collapse } = useSelector((state) => state?.menu);
   const theme = useContext(ThemeContext);
 
@@ -64,6 +64,7 @@ export default function CoreDrawer(props) {
             open={open}
             openCollapse={collapse}
             OnMenuClick={OnMenuClick}
+            displayIcon={true}
           />
         </NativeDrawer>
       )}
@@ -72,6 +73,10 @@ export default function CoreDrawer(props) {
 }
 
 CoreDrawer.validProps = [
+  {
+    name : "toggleDrawer",
+    types: [{ type: "function" }],
+  },
   {
     description: "Side from which the drawer will appear.",
     name       : "anchor",

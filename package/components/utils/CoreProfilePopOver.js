@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 import CoreApiVersion from "./CoreApiVersion";
 import CoreAppVersion from "./CoreAppVersion";
-import { CoreRouteRegistryContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreDivider from "../dataDisplay/CoreDivider";
@@ -26,9 +25,8 @@ export default function CoreProfilePopOver(props) {
   // eslint-disable-next-line no-console
   // console.log(props);
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
   const profile = useSelector((state) => state?.profile);
-  const routeRegistry = useContext(CoreRouteRegistryContext);
 
   const { profileRegistration } = useSelector((state) => state?.api);
 
@@ -47,13 +45,13 @@ export default function CoreProfilePopOver(props) {
       },
       id   : "viewProfile",
       label: "View Profile",
-      link : routeRegistry?.profile,
+      link : "/profile",
     },
     {
       icon : { icon: "settings", type: __IconTypes.MATERIAL_OUTLINED_ICON },
       id   : "settings",
       label: "Settings",
-      link : routeRegistry?.settings,
+      link : "/settings",
     } /* -- ,
     { type: MENU_SEPERATOR },
     {
@@ -117,6 +115,7 @@ export default function CoreProfilePopOver(props) {
         multiLevel={false}
         open={true}
         OnMenuClick={OnMenuClick}
+        displayIcon={true}
       />
 
       <CoreDivider />
@@ -133,7 +132,7 @@ export default function CoreProfilePopOver(props) {
           label="Logout"
           variant="contained"
           fullWidth={true}
-          OnClick={() => {
+          onClick={() => {
             /**
              * @todo have to make a route for logout
              */

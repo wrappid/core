@@ -37,6 +37,11 @@ export const HTTP = {
   PUT  : "put",
 };
 
+export const PLATFORM = {
+  MOBILE: "mobile",
+  WEB   : "web",
+};
+
 export const DB_CONST = {
   RXEFY_DB         : "RXEFY_DB",
   RXEFY_MEDICINE_DB: "RXEFY_MEDICINE_DB",
@@ -165,6 +170,7 @@ export const userSettingsConstants = {
   DATA_TABLE_DETAILS_PANE: "dataTableDetailsPane",
   LEFT_DRAWER_STATE      : "leftDrawerState",
   MAX_ROWS_IN_PAGE       : "maxRowsInPage",
+  RIGHT_DRAWER_STATE     : "rightDrawerState",
 };
 
 export const communicationTypes = {

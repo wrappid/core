@@ -39,7 +39,7 @@ class AppService {
               : JSON.stringify(data)
             : null,
         headers: await authHeader(authRequired, includeFile),
-        method : method,
+        method : method.toUpperCase(),
         url    : getEndpoint(method, endpoint, data),
       });
 

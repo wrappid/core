@@ -9,6 +9,7 @@ import pendingRequestReducer from "./pendingRequestReducer";
 import routeReducer from "./routeReducer";
 import selectOptionsReducer from "./selectOptionsReducer";
 import settingsReducer from "./settingsReducer";
+import themeReducer from "./themeReducer";
 
 /**
  *  Module specific reducers
@@ -26,6 +27,7 @@ const coreReducer = {
   route          : routeReducer,
   selectOptions  : selectOptionsReducer,
   settings       : settingsReducer,
+  theme          : themeReducer,
 };
 
 export default coreReducer;

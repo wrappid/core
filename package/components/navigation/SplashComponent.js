@@ -22,7 +22,7 @@ export default function SplashComponent() {
   const registeredRoutes = useContext(CoreRouteRegistryContext);
   const componentRegistry = React.useContext(ComponentRegistryContext);
 
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state) => state?.auth || {});
   let location = nativeUseLocation();
 
   const checkIfAuthRouteExist = () => {

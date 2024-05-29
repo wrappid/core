@@ -190,7 +190,7 @@ export default function CoreFormInputs(props) {
               : "Cancel"
           }
           disabled={submitLoading || preview}
-          OnClick={OnCancelClick}
+          onClick={OnCancelClick}
         />
       )}
 
@@ -204,7 +204,7 @@ export default function CoreFormInputs(props) {
           }
           disabled={submitLoading || preview}
           type="submit"
-          OnClick={formikprops.handleSubmit}
+          onClick={formikprops.handleSubmit}
         />
       )}
     </CoreBox>

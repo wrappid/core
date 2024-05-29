@@ -9,7 +9,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreAppDiv(props) {
   props = sanitizeComponentProps(CoreAppDiv, props);
-  let { uid } = useSelector((state) => state?.auth);
+  let { uid } = useSelector((state) => state?.auth || {});
 
   return <NativeAppDiv {...props} uid={uid} />;
 }
