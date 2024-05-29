@@ -571,10 +571,13 @@ class CoreForm extends Component {
           this.setState({ dialogContent: null, dialogSet: false });
         },
         doneButtonLabel: "Delete",
-        showDialog     : true,
-        subtitle       : "Are you Sure",
-        title          : "Confirm",
-        type           : CORE_DIALOG_TYPES.INFO,
+        onClose        : () => {
+          this.setState({ dialogContent: null, dialogSet: false });
+        },
+        showDialog: true,
+        subtitle  : "Are you Sure",
+        title     : "Confirm",
+        type      : CORE_DIALOG_TYPES.INFO,
       },
       dialogSet: true,
     });
@@ -731,10 +734,13 @@ class CoreForm extends Component {
               this.setState({ dialogContent: null, dialogSet: false });
             },
             noCancelButton: true,
-            showDialog    : true,
-            subtitle      : message,
-            title         : "ERROR",
-            type          : CORE_DIALOG_TYPES.FAILURE,
+            onClose       : () => {
+              this.setState({ dialogContent: null, dialogSet: false });
+            },
+            showDialog: true,
+            subtitle  : message,
+            title     : "ERROR",
+            type      : CORE_DIALOG_TYPES.FAILURE,
           },
           dialogSet: true,
         },

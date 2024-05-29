@@ -154,7 +154,7 @@ CoreDialog.validProps = [
     Signature:function(event: object, reason: string) => voidevent The event source of the callback.
     reason Can be: "escapeKeyDown", "backdropClick".`,
     name : "onClose",
-    types: [{ default: "", type: "function" }],
+    types: [{ type: "function" }],
   },
   {
     description: "The component used to render the body of the dialog.",
