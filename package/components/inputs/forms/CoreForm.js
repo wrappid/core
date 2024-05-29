@@ -575,7 +575,7 @@ class CoreForm extends Component {
           this.setState({ dialogContent: null, dialogSet: false });
         },
         showDialog: true,
-        subtitle  : "Are you Sure",
+        subtitle  : "Are you sure?",
         title     : "Confirm",
         type      : CORE_DIALOG_TYPES.INFO,
       },
