@@ -29,7 +29,7 @@ export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
   const location = coreUseLocation();
-  const auth = useSelector((state) => state?.auth||{});
+  const auth = useSelector((state) => state?.auth || {});
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
   // eslint-disable-next-line no-unused-vars
