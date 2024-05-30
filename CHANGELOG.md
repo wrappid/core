@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.474](https://github.com/wrappid/core/compare/v0.0.473...v0.0.474) (2024-05-30)
+
+
+### Bug Fixes
+
+* :bug: delete subtitle change fix ([198327b](https://github.com/wrappid/core/commit/198327b08f92f4395bf7e8ad02920281244f6edb)), closes [#224](https://github.com/wrappid/core/issues/224)
+* :bug: onclose function add to CoreFrom ([aea589a](https://github.com/wrappid/core/commit/aea589aa7b53d93237b87d4382d978fe6c9e4440)), closes [#224](https://github.com/wrappid/core/issues/224)
+
 ### [0.0.473](https://github.com/wrappid/core/compare/v0.0.472...v0.0.473) (2024-05-28)
 
 ### [0.0.472](https://github.com/wrappid/core/compare/v0.0.471...v0.0.472) (2024-05-28)
