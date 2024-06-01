@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.476](https://github.com/wrappid/core/compare/v0.0.475...v0.0.476) (2024-06-01)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix loading default theme ([87d4650](https://github.com/wrappid/core/commit/87d4650d8caede02bf0156f2e5375ea297681354)), closes [#224](https://github.com/wrappid/core/issues/224)
+
 ### [0.0.475](https://github.com/wrappid/core/compare/v0.0.474...v0.0.475) (2024-05-30)
 
 ### [0.0.474](https://github.com/wrappid/core/compare/v0.0.473...v0.0.474) (2024-05-30)
