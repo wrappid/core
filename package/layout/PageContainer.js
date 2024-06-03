@@ -26,6 +26,7 @@ import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
 import LayoutManager from "./LayoutManager";
+import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -152,24 +153,26 @@ export default function PageContainer(props) {
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
 
-        <CoreNetworkStatus/>
+        <CoreThemeProvider themeID={route?.Page?.theme}>
+          <CoreNetworkStatus/>
 
-        <NativePageContainer
-          uid={uid}
-          route={route}
-          coreClasses={CoreClasses}>
-          <CoreModal open={true} />
+          <NativePageContainer
+            uid={uid}
+            route={route}
+            coreClasses={CoreClasses}>
+            <CoreModal open={true} />
 
-          <CoreDialogContext.Provider value={dialogStates}>
-            <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+            <CoreDialogContext.Provider value={dialogStates}>
+              <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-            {/** @todo testing purposes */}
-            {/* eslint-disable-next-line etc/no-commented-out-code */}
-            {/* <CoreComponent componentName={pageChild()} /> */}
-              
-            <CoreDialog />
-          </CoreDialogContext.Provider>
-        </NativePageContainer>
+              {/** @todo testing purposes */}
+              {/* eslint-disable-next-line etc/no-commented-out-code */}
+              {/* <CoreComponent componentName={pageChild()} /> */}
+                
+              <CoreDialog />
+            </CoreDialogContext.Provider>
+          </NativePageContainer>
+        </CoreThemeProvider>
       </ErrorBoundary>
 
       <DevelopmentInfo />

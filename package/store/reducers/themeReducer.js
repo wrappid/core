@@ -2,9 +2,11 @@ import {
   AUTHENTICATION_ERROR,
   LOGOUT_SUCCESS
 } from "../types/authTypes";
-import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, LOCAL_THEMES_SYNCED_FAILURE, LOCAL_THEMES_SYNCED_SUCCESS, SET_LOCAL_THEMES_SUCCESS } from "../types/themeTypes";
+import {
+  GET_THEMES_FAILURE, GET_THEMES_SUCCESS, LOCAL_THEMES_SYNCED_FAILURE, LOCAL_THEMES_SYNCED_SUCCESS, SET_COMBINED_THEMES, SET_LOCAL_THEMES_SUCCESS 
+} from "../types/themeTypes";
 
-const initState = { sync: false, themes: { local: [], server: [] } };
+const initState = { sync: false, themes: { combined: [], local: [], server: [] } };
 
 const themeReducer = (state = initState, action) => {
   switch (action.type) {
@@ -18,6 +20,12 @@ const themeReducer = (state = initState, action) => {
       return {
         ...state,
         themes: { ...state.themes, server: [] },
+      };
+
+    case SET_COMBINED_THEMES:
+      return {
+        ...state,
+        themes: { ...state.themes, combined: [...(action?.payload || [])] },
       };
 
     case SET_LOCAL_THEMES_SUCCESS:
