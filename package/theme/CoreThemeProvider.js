@@ -2,20 +2,21 @@ import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
-// eslint-disable-next-line import/no-unresolved
-import { DEFAULT_THEME, WrappidDataContext } from "@wrappid/styles";
+import {
+  DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext, UPDATE_THEME 
+  // eslint-disable-next-line import/no-unresolved
+} from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { HTTP } from "../config/constants";
 import { apiRequestAction } from "../store/action/appActions";
-import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_LOCAL_THEMES_SUCCESS } from "../store/types/themeTypes";
+import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_LOCAL_THEMES_SUCCESS, SET_COMBINED_THEMES } from "../store/types/themeTypes";
 
 export default function CoreThemeProvider(props) {
   const { themeID = undefined, children } = props || {};
   
   const storeDispatch = useDispatch();
-  // eslint-disable-next-line etc/no-commented-out-code
-  // const dispatch = React.useContext(WrappidDispatchContext);
+  const dispatch = React.useContext(WrappidDispatchContext);
   
   const { config, themes } = React.useContext(WrappidDataContext);
   const { defaultTheme = "wrappidTheme" } = config || {};
@@ -62,8 +63,16 @@ export default function CoreThemeProvider(props) {
   React.useEffect(() => {
     let tempLocalThemes = processLocalThemes(localThemes);
     let tempServerThemes = processServerThemes(serverThemes);
+    let combinedThemes = [...tempLocalThemes, ...tempServerThemes];
 
-    setCombinedThemes([...tempLocalThemes, ...tempServerThemes]);    
+    const modifiedThemeObject = combinedThemes.reduce((acc, current) => {
+      acc[current.id] = { name: current.id, theme: { ...current.theme } };
+      return acc;
+    }, {});
+
+    dispatch({ payload: modifiedThemeObject, type: UPDATE_THEME });
+    storeDispatch({ payload: combinedThemes, type: SET_COMBINED_THEMES });
+    setCombinedThemes(combinedThemes);    
   }, [localThemes, serverThemes]);
 
   const getTheme = (themeID) => {
@@ -83,21 +92,37 @@ export default function CoreThemeProvider(props) {
   };
 
   React.useEffect(() => {
-    let mergedTheme = { ...getThemeObj(defaultTheme) };
+    let mergedTheme = { ...DEFAULT_THEME };
+    
+    /* app theme added */
+    if (defaultTheme && isThemeExist(defaultTheme)) {
+      mergedTheme = { ...mergedTheme, ...getThemeObj(defaultTheme) };
+      
+    }
     
     /* user theme added */
     if (userThemeID && isThemeExist(userThemeID)) {
-      mergedTheme = { ...getThemeObj(userThemeID) };
+      mergedTheme = { ...mergedTheme, ...getThemeObj(userThemeID) };
+      // eslint-disable-next-line etc/no-commented-out-code
+      // dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
+    }else{
+      // eslint-disable-next-line etc/no-commented-out-code
+      // dispatch({ payload: defaultTheme, type: UPDATE_DEFAULT_THEME });
     }
     
     /* page theme added */
     if (themeID && isThemeExist(themeID)) {
       mergedTheme = { ...mergedTheme, ...getThemeObj(themeID) };
+      // eslint-disable-next-line etc/no-commented-out-code
+      // dispatch({ payload: themeID, type: UPDATE_PAGE_THEME });
+    }else{
+      // eslint-disable-next-line etc/no-commented-out-code
+      // dispatch({ payload: null, type: UPDATE_PAGE_THEME });
     }
 
     setCurrentTheme(mergedTheme);
 
-  }, [combinedThemes, defaultTheme, userThemeID]);
+  }, [combinedThemes, defaultTheme, userThemeID, themeID]);
 
   return <NativeThemeProvider theme={currentTheme}>{children}</NativeThemeProvider>;
 }
