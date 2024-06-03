@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.477](https://github.com/wrappid/core/compare/v0.0.476...v0.0.477) (2024-06-03)
+
+
+### Features
+
+* **global:** :sparkles: page specfic theme suppport added ([e7fc7c1](https://github.com/wrappid/core/commit/e7fc7c19ddfdcf139672c887186d08d0f2a29b4e)), closes [#224](https://github.com/wrappid/core/issues/224)
+
+
+### Bug Fixes
+
+* **global:** :bug: page specfic theme suppport added ([f939786](https://github.com/wrappid/core/commit/f939786b85dea966291b5a8129ce1a20520ceccb)), closes [#224](https://github.com/wrappid/core/issues/224)
+
 ### [0.0.476](https://github.com/wrappid/core/compare/v0.0.475...v0.0.476) (2024-06-01)
 
 
