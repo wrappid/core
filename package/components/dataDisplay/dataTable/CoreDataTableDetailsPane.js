@@ -84,6 +84,7 @@ export default function CoreDataTableDetailsPane(props) {
     >
       <CoreCard styleClasses={[CoreClasses.LAYOUT.FULL_WIDTH_HEIGHT]}>
         <CoreCardHeader
+          styleClasses={[CoreClasses.BORDER.BORDER_BOTTOM, CoreClasses.BORDER.BORDER_PRIMARY]}
           _tableAction={detailedRowData ? true : false}
           title={
             detailedRowData && Object.keys(detailedRowData).length > 0 ? (
