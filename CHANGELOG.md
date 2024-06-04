@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.479](https://github.com/wrappid/core/compare/v0.0.478...v0.0.479) (2024-06-04)
+
+
+### Features
+
+* **core:** :lipstick: add border CoreDataTableDetailsPane ([5369bcc](https://github.com/wrappid/core/commit/5369bcc3c18f3c7aca12d2822e139bfe34b29f3f)), closes [#231](https://github.com/wrappid/core/issues/231)
+
 ### [0.0.478](https://github.com/wrappid/core/compare/v0.0.477...v0.0.478) (2024-06-04)
 
 ### [0.0.477](https://github.com/wrappid/core/compare/v0.0.476...v0.0.477) (2024-06-03)
