@@ -186,7 +186,8 @@ import {
   ComponentRegistryContext,
   CoreDialogContext,
   CoreResourceContext, CoreRouteRegistryContext, CoreRoutesContext,
-  IconContext
+  IconContext,
+  FunctionsRegistryContext as CoreFunctionsRegistryContext
 } from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
@@ -249,8 +250,8 @@ import {
   detectPlatform,
   WEB_PLATFORM
 } from "./utils/themeUtil";
-
 export {
+  CoreFunctionsRegistryContext,
   __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
