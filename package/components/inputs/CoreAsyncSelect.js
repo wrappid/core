@@ -430,7 +430,6 @@ export default function CoreAsyncSelect(props) {
         }}
         onClose={() => {
           setOpen(false);
-          ("");
         }}
         onFocus={
           onFormFocus && editId && readOnly

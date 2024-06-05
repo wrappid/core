@@ -18,5 +18,21 @@ CoreTabHead.validProps = [
     name : "component",
     types: [{ type: "elementType" }],
   },
+
+  {
+    description: "This is tabsContent",
+    name       : "tabsContent",
+    types      : [{ type: "object" }]
+  },
+  {
+    description: "This is handleChange",
+    name       : "handleChange",
+    types      : [{ type: "function" }]
+  },
+  {
+    description: "This is tabValue",
+    name       : "tabValue",
+    types      : [{ type: "object" }]
+  },
 ];
 CoreTabHead.invalidProps = [];
