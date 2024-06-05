@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.480](https://github.com/wrappid/core/compare/v0.0.479...v0.0.480) (2024-06-05)
+
+
+### Bug Fixes
+
+* **global:** :bug: valid props add to CoreTabHead ([c34c2e8](https://github.com/wrappid/core/commit/c34c2e8a0ea68f83b56f6f7e30150ea18281b62d)), closes [#224](https://github.com/wrappid/core/issues/224)
+
 ### [0.0.479](https://github.com/wrappid/core/compare/v0.0.478...v0.0.479) (2024-06-04)
 
 
