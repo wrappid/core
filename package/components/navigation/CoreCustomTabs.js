@@ -39,11 +39,12 @@ export default function CoreCustomTabs(props) {
 
   // -- console.log("TAB REF T", tabRef);
   return (
-    <>
+    <> 
       <CoreTabHead
         tabsContent={tabsContent}
         handleChange={handleChange}
         tabRef={tabRef}
+        styleClasses={props?.tabHeadClasses}
         tabValue={tabValue}
       />
 
