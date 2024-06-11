@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.482](https://github.com/wrappid/core/compare/v0.0.481...v0.0.482) (2024-06-11)
+
+
+### Features
+
+* **core:** :sparkles: styling tab headers for CoreCustomTabs ([53e99d2](https://github.com/wrappid/core/commit/53e99d2dda2170a5cce5c7094a9b414fd8fcaaaa)), closes [#233](https://github.com/wrappid/core/issues/233)
+
 ### [0.0.481](https://github.com/wrappid/core/compare/v0.0.480...v0.0.481) (2024-06-05)
 
 ### [0.0.480](https://github.com/wrappid/core/compare/v0.0.479...v0.0.480) (2024-06-05)
