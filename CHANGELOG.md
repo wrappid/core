@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.483](https://github.com/wrappid/core/compare/v0.0.482...v0.0.483) (2024-06-14)
+
+
+### Features
+
+* **utils:** :lipstick: change CoreImagePicker default image ([7760e97](https://github.com/wrappid/core/commit/7760e9781b8027759df4c5e4f9f46d54f39e1796)), closes [#236](https://github.com/wrappid/core/issues/236)
+
 ### [0.0.482](https://github.com/wrappid/core/compare/v0.0.481...v0.0.482) (2024-06-11)
 
 
