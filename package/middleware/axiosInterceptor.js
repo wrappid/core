@@ -1,11 +1,23 @@
 async function tempFetch(apiConfig) {
   // -- console.log("API CALLL", apiConfig);
   try {
-    let res = await fetch(apiConfig.url, {
-      body   : apiConfig.data,
-      headers: apiConfig.headers,
-      method : apiConfig.method,
-    });
+    let reqObj = {};
+
+    if(apiConfig.externalApi){
+      reqObj = {
+        body   : apiConfig.data ? apiConfig.data : undefined,
+        headers: apiConfig.data ? apiConfig.headers : undefined,
+        method : apiConfig.method,
+      };
+    }else{
+      reqObj = {
+        body   : apiConfig.data,
+        headers: apiConfig.headers,
+        method : apiConfig.method,
+      };
+    }
+
+    let res = await fetch(apiConfig.url, { ...reqObj });
 
     if (res.status === 401 || res.status === 403) {
       /**

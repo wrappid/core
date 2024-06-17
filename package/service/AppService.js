@@ -7,20 +7,6 @@ import { createFormData, queryBuilder } from "../utils/helper";
 // eslint-disable-next-line import/order
 import authHeader from "./DataService";
 
-function getEndpoint(method, endpoint, data) {
-  let backendUrl = WrappidData?.config?.backendUrl;
-  /**
-   * @todo @sumanta-m review required
-   */
-  /* -- if (endpoint.includes("http")) {
-    backendUrl = "";
-  } */
-
-  return method === HTTP.GET
-    ? queryBuilder(backendUrl + endpoint, data)
-    : backendUrl + endpoint;
-}
-
 class AppService {
   async apiRequest(
     method,
@@ -38,9 +24,10 @@ class AppService {
               ? createFormData(file, data)
               : JSON.stringify(data)
             : null,
-        headers: await authHeader(authRequired, includeFile),
-        method : method.toUpperCase(),
-        url    : getEndpoint(method, endpoint, data),
+        externalApi: await this.isUrl(endpoint),
+        headers    : await authHeader(authRequired, includeFile),
+        method     : method.toUpperCase(),
+        url        : await this.getEndpoint(method, endpoint, data),
       });
 
       // -- console.log("API Endpoint = " + endpoint);
@@ -63,6 +50,31 @@ class AppService {
       // -- console.error(error);
       // -- console.error("----------------------------------------");
       throw errorRes;
+    }
+  }
+  
+  /**
+ * Check if the given string is a valid URL
+ * @param {*} url 
+ * @returns {boolean} 
+ */
+  async isUrl(url) {
+    const urlPattern = /^(http:\/\/|https:\/\/)/;
+
+    return await urlPattern.test(url);
+  }
+  // eslint-disable-next-line no-unused-vars
+
+  async getEndpoint(method, endpoint, data) {
+
+    if(await this.isUrl(endpoint)){
+      return endpoint;
+    }else{
+      let backendUrl = WrappidData?.config?.backendUrl;
+
+      return method === HTTP.GET
+        ? queryBuilder(backendUrl + endpoint, data)
+        : backendUrl + endpoint;
     }
   }
 }
