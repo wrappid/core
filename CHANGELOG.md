@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.484](https://github.com/wrappid/core/compare/v0.0.483...v0.0.484) (2024-06-17)
+
+
+### Bug Fixes
+
+* **core:** :bug: 3rd party api calls via apiRequestAction ([331fc35](https://github.com/wrappid/core/commit/331fc3575ec47213974cafc299e9cdefeb9c25f4)), closes [#239](https://github.com/wrappid/core/issues/239)
+
 ### [0.0.483](https://github.com/wrappid/core/compare/v0.0.482...v0.0.483) (2024-06-14)
 
 
