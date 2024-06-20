@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.485](https://github.com/wrappid/core/compare/v0.0.484...v0.0.485) (2024-06-20)
+
+
+### Features
+
+* **core:** :zap: coreOtpInput service name ([f8ba889](https://github.com/wrappid/core/commit/f8ba889a029bc4fe1f75188ee21fc690e7374ca6)), closes [#242](https://github.com/wrappid/core/issues/242)
+
 ### [0.0.484](https://github.com/wrappid/core/compare/v0.0.483...v0.0.484) (2024-06-17)
 
 
