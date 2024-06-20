@@ -30,7 +30,7 @@ export default function CoreOtpInput(props) {
   const sendOtp = () => {
     if (props.to) {
       if (props.sendOtp !== false) {
-        let data = { data: props.to };
+        let data = { data: props.to, service: props.editId };
 
         dispatch(
           apiRequestAction(
