@@ -114,12 +114,11 @@ export default function DefaultAppBarContent(props) {
         >
           {leftMenuEnabled && (
             <CoreIconButton
-              styleClasses={appBarTextStyle}
+              styleClasses={[...appBarTextStyle, CoreClasses.MARGIN.ML_N2]}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
               disabled={!auth?.uid}
-              // sx={{ marginLeft: "-16px" }}
             >
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
