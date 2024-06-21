@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.486](https://github.com/wrappid/core/compare/v0.0.485...v0.0.486) (2024-06-21)
+
+
+### Bug Fixes
+
+* **core:** :lipstick: component CoreAppDrawer's default menu icon alignment ([13775dd](https://github.com/wrappid/core/commit/13775dd7acc31625c5894759a4081c49e96c7243)), closes [#244](https://github.com/wrappid/core/issues/244)
+
 ### [0.0.485](https://github.com/wrappid/core/compare/v0.0.484...v0.0.485) (2024-06-20)
 
 
