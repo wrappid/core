@@ -4,6 +4,7 @@ import React, { useState } from "react";
 // eslint-disable-next-line import/no-unresolved
 
 import CoreTypography from "./CoreTypography";
+import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreSpan from "../layouts/CoreSpan";
 import CoreLink from "../navigation/CoreLink";
@@ -36,7 +37,7 @@ export default function CoreTypographyCaption(props) {
       </CoreSpan>
 
       {!hideSeeMore && limitChars < props?.children?.length && (
-        <CoreLink onClick={toggleSeeMore}>
+        <CoreLink onClick={toggleSeeMore} styleClasses={[CoreClasses.CURSOR.CURSOR_POINTER]}>
           {seeMore ? " See more" : " See less"}
         </CoreLink>
       )}
