@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.489](https://github.com/wrappid/core/compare/v0.0.488...v0.0.489) (2024-06-24)
+
+
+### Bug Fixes
+
+* **global:** :bug: add valid props in CoreTextarea ([485b4eb](https://github.com/wrappid/core/commit/485b4ebae82d35e72aae6aec4afb880369a79e25)), closes [#248](https://github.com/wrappid/core/issues/248)
+
 ### [0.0.488](https://github.com/wrappid/core/compare/v0.0.487...v0.0.488) (2024-06-22)
 
 ### [0.0.487](https://github.com/wrappid/core/compare/v0.0.486...v0.0.487) (2024-06-22)
