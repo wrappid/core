@@ -13,6 +13,10 @@ export default function CoreCheckbox(props) {
 }
 CoreCheckbox.validProps = [
   {
+    description: "formik props.",
+    name       : "formik",
+  },
+  {
     description: "If true, the component is checked.",
     name       : "checked",
     types      : [{ type: "boolean" }],
