@@ -18,20 +18,5 @@ export default function CoreTextarea(props) {
   );
 }
 
-CoreTextarea.validProps = [
-  {
-    description: "Maximum number of rows to display.",
-    name       : "maxrows",
-    types      : [{ default: 6, type: "number" }]
-  },
-  {
-    description: "Minimum number of rows to display.",
-    name       : "minrows",
-    types      : [{ default: 3, type: "number" }]
-  },
-  {
-    name : "multiline",
-    types: [{ default: true, type: "boolean" }]
-  }
-];
+CoreTextarea.validProps = [...CoreInput.validProps];
 CoreTextarea.invalidProps = [];
