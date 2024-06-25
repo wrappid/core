@@ -16,10 +16,6 @@ export default function CoreSpecificForm() {
       let tmpQuery = searchParams.get("query");
       let _query = tmpQuery ? JSON.parse(tmpQuery) : null;
 
-      _query._defaultFilter = encodeURIComponent(
-        JSON.stringify(_query._defaultFilter)
-      );
-
       setQuery(_query);
     } catch (err) {
       // eslint-disable-next-line no-console
