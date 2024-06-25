@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.491](https://github.com/wrappid/core/compare/v0.0.490...v0.0.491) (2024-06-25)
+
+
+### Bug Fixes
+
+* **core:** :bug: remove unnecessary encodingURIcomponent function ([8ddab3f](https://github.com/wrappid/core/commit/8ddab3f58753a03ed86cf6b4b3f5550a2700c878)), closes [#251](https://github.com/wrappid/core/issues/251)
+
 ### [0.0.490](https://github.com/wrappid/core/compare/v0.0.489...v0.0.490) (2024-06-25)
 
 
