@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.490](https://github.com/wrappid/core/compare/v0.0.489...v0.0.490) (2024-06-25)
+
+
+### Bug Fixes
+
+* **global:** :bug: valid props add to CoreCheckbox ([e668b66](https://github.com/wrappid/core/commit/e668b668521d58d21671534d6016dbbce12726f0)), closes [#248](https://github.com/wrappid/core/issues/248)
+
 ### [0.0.489](https://github.com/wrappid/core/compare/v0.0.488...v0.0.489) (2024-06-24)
 
 
