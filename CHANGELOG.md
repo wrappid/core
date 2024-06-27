@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.492](https://github.com/wrappid/core/compare/v0.0.491...v0.0.492) (2024-06-27)
+
+
+### Features
+
+* **global:** :sparkles: update access token by refresh token ([0146acc](https://github.com/wrappid/core/commit/0146acc26b2ebe5b0b52231db144144f1d6d5fca)), closes [#253](https://github.com/wrappid/core/issues/253)
+
 ### [0.0.491](https://github.com/wrappid/core/compare/v0.0.490...v0.0.491) (2024-06-25)
 
 
