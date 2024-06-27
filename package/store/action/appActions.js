@@ -5,15 +5,8 @@ import {
   LOGIN_WITH_URL_API
 } from "../../config/api";
 import { HTTP, MESSAGE_TYPE } from "../../config/constants";
-import {
-  globalAccessToken,
-  globalRefreshToken,
-  globalTokenRequested,
-  globalTokenRequestTimeStamp
-} from "../../CoreRoutes";
 import { formStore } from "../../layout/PageContainer";
 import AppService from "../../service/AppService";
-import { reloadToken } from "../../utils/appUtils";
 import { getForm } from "../../utils/formUtils";
 import {
   CLEAR_SNACK_MESSAGE,
@@ -79,7 +72,8 @@ export const apiRequestAction =
           authRequired,
           data,
           includeFile,
-          file
+          file,
+          dispatch
         )
           .then(async response => {
             let formJson = null;
@@ -231,13 +225,6 @@ export const apiRequestAction =
             endpoint !== LOGIN_WITH_URL_API &&
             endpoint !== LOGIN_WITH_RESET_PASSWORD_API
             ) {
-              reloadToken(
-                globalRefreshToken,
-                globalAccessToken,
-                globalTokenRequested,
-                globalTokenRequestTimeStamp,
-                dispatch
-              );
               dispatch({
                 payload: {
                   authRequired,

@@ -14,7 +14,8 @@ class AppService {
     authRequired,
     data,
     includeFile = false,
-    file = null
+    file = null,
+    dispatch = null
   ) {
     try {
       let response = await axiosInterceptor({
@@ -24,10 +25,11 @@ class AppService {
               ? createFormData(file, data)
               : JSON.stringify(data)
             : null,
+        dispatch   : dispatch,
         externalApi: await this.isUrl(endpoint),
         headers    : await authHeader(authRequired, includeFile),
         method     : method.toUpperCase(),
-        url        : await this.getEndpoint(method, endpoint, data),
+        url        : await this.getEndpoint(method, endpoint, data)
       });
 
       // -- console.log("API Endpoint = " + endpoint);

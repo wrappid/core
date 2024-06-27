@@ -4,6 +4,7 @@ import moment from "moment";
 
 import { REFRESH_TOKEN_API } from "../config/api";
 import { HTTP } from "../config/constants";
+import { globalAccessToken, globalRefreshToken, globalTokenRequestTimeStamp, globalTokenRequested } from "../CoreRoutes";
 import {
   LOGOUT_SUCCESS,
   SESSION_EXPIRED,
@@ -37,23 +38,24 @@ export const getTimestamp = () => {
 };
 
 export async function reloadToken(
-  refreshToken,
-  accessToken,
-  tokenRequested,
-  tokenRequestTimeStamp,
+  // eslint-disable-next-line etc/no-commented-out-code
+  // refreshToken,
+  // accessToken,
+  // tokenRequested,
+  // tokenRequestTimeStamp,
   dispatch
 ) {
-  let diff = moment().diff(tokenRequestTimeStamp, "seconds");
+  let diff = moment().diff(globalTokenRequestTimeStamp, "seconds");
 
   // -- console.log("__tokenRequested__", tokenRequested, diff);
-  if (!tokenRequested || diff > 60) {
+  if (!globalTokenRequested || diff > 60) {
     const backendUrl = WrappidData?.config?.backendUrl;
 
     dispatch({ type: TOKEN_REQUESTED });
     fetch(backendUrl + REFRESH_TOKEN_API, {
-      body   : JSON.stringify({ refreshToken }),
+      body   : JSON.stringify({ refreshToken: globalRefreshToken }),
       headers: {
-        Authorization : "Bearer " + accessToken,
+        Authorization : "Bearer " + globalAccessToken,
         "Content-Type": "application/json",
       },
       method: HTTP.POST,

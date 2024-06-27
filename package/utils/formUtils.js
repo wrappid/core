@@ -31,6 +31,7 @@ import {
   UPDATE_DATA_ERROR,
   UPDATE_DATA_SUCCESS
 } from "../store/types/dataManagementTypes";
+import { SET_PENDING_REQUESTS } from "../store/types/pendingRequestTypes";
 import CoreClasses from "../styles/CoreClasses";
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
@@ -717,7 +718,7 @@ export function hookcallCheck(
   }
 }
 
-export async function getForm(formId, auth = true, formReducer) {
+export async function getForm(formId, auth = true, formReducer, dispatch) {
   let { config: configuration } = WrappidData;
 
   if (formReducer?.rawForm && formReducer?.rawForm[formId]) {
@@ -764,7 +765,22 @@ export async function getForm(formId, auth = true, formReducer) {
         };
       }
     } catch (err) {
-      // eslint-disable-next-line no-console
+      let url = auth ? GET_FORM_API_AUTHENTICATED : GET_FORM_API;
+      
+      if(err.status === 401 || err.status === 403){
+        dispatch({
+          payload: {
+            authRequired: auth,
+            endpoint    : url + formId,
+            formId      : formId,
+            includeFile : false,
+            localAction : false,
+            method      : HTTP.GET,
+            reload      : false, // need review
+          },
+          type: SET_PENDING_REQUESTS,
+        });
+      } // eslint-disable-next-line no-console
       console.error("Error in form fetch");
       return {
         formId,

@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/namespace
+import { reloadToken } from "../utils/appUtils";
+
 async function tempFetch(apiConfig) {
   // -- console.log("API CALLL", apiConfig);
   try {
@@ -51,7 +54,9 @@ async function tempFetch(apiConfig) {
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(error);
+    if(error?.response?.status === 401 || error?.response?.status === 403){
+      reloadToken(apiConfig?.dispatch);
+    }
     throw error;
   }
 
