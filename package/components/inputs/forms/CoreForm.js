@@ -81,9 +81,9 @@ class CoreForm extends Component {
       let rawFormStatus = this.props.rawFormStatus;
 
       // eslint-disable-next-line id-length
-      let formOb = await getForm(this.props.formId, this.props.authenticated, {
+      let formOb = await this.props.GetForm(this.props.formId, this.props.authenticated, {
         rawForm,
-        rawFormStatus,
+        rawFormStatus
       });
 
       formJson = formOb.formJson;
@@ -706,7 +706,7 @@ class CoreForm extends Component {
         let rawForm = this.props.rawFormSchema;
         let rawFormStatus = this.props.rawFormStatus;
         // eslint-disable-next-line id-length
-        let t = await getForm(this.props.formId, this.props.authenticated, {
+        let t = await this.props.GetForm(this.props.formId, this.props.authenticated, {
           rawForm,
           rawFormStatus,
         });
@@ -1198,6 +1198,16 @@ const mapDispatchToProps = dispatch => {
     },
     FormReset: data => {
       dispatch(resetFormReducer(data));
+    },
+    GetForm: (formId, authenticated, {
+      rawForm,
+      rawFormStatus
+    }) => {
+      return getForm(formId, authenticated, {
+        rawForm,
+        rawFormStatus
+      },
+      dispatch);
     },
     HandleFormSubmit: (
       method,

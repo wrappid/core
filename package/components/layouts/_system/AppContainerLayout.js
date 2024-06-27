@@ -19,10 +19,7 @@ import { apiRequestAction } from "../../../store/action/appActions";
 import { toggleLeftMenuState } from "../../../store/action/menuAction";
 import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../../../store/types/authTypes";
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../../../store/types/menuTypes";
-import {
-  RECALL_TOKEN_REJUVINDATED,
-  REMOVE_PENDING_REQUESTS
-} from "../../../store/types/pendingRequestTypes";
+import { REMOVE_PENDING_REQUESTS } from "../../../store/types/pendingRequestTypes";
 import { SELECT_OPTION_SUCCESS } from "../../../store/types/selectOptionsTypes";
 import {
   GET_SETTING_META_ERROR,
@@ -45,7 +42,7 @@ export default function AppContainerLayout() {
   // eslint-disable-next-line etc/no-commented-out-code
   const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
-  const { recall: recallState, pendingRequest: currentPendingRequest } = useSelector((state) => state?.pendingRequests);
+  const { recall: recallState, requests: allPendingReq } = useSelector((state) => state?.pendingRequests);
   const { uid, accessToken } = useSelector((state) => state?.auth || {});
   
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
@@ -120,29 +117,32 @@ export default function AppContainerLayout() {
   };
 
   React.useEffect(() => {
-    if (currentPendingRequest && recallState === RECALL_TOKEN_REJUVINDATED) {
-      dispatch(
-        apiRequestAction(
-          currentPendingRequest.method,
-          currentPendingRequest.endpoint,
-          currentPendingRequest.authRequired,
-          currentPendingRequest.data,
-          currentPendingRequest.successType,
-          currentPendingRequest.errorType,
-          currentPendingRequest.localAction,
-          currentPendingRequest.includeFile,
-          currentPendingRequest.file,
-          currentPendingRequest.formId,
-          currentPendingRequest.reload,
-          currentPendingRequest.reduxData,
-          currentPendingRequest.pushSnack,
-          currentPendingRequest.loadingType,
-          currentPendingRequest.resetLoadingType
-        )
-      );
+    if (allPendingReq?.length > 0 && recallState === "rejuvinated") {
+      allPendingReq.forEach(currentPendingRequest => {
+        dispatch(
+          apiRequestAction(
+            currentPendingRequest.method,
+            currentPendingRequest.endpoint,
+            currentPendingRequest.authRequired,
+            currentPendingRequest.data,
+            currentPendingRequest.successType,
+            currentPendingRequest.errorType,
+            currentPendingRequest.localAction,
+            currentPendingRequest.includeFile,
+            currentPendingRequest.file,
+            currentPendingRequest.formId,
+            currentPendingRequest.reload,
+            currentPendingRequest.reduxData,
+            currentPendingRequest.pushSnack,
+            currentPendingRequest.loadingType,
+            currentPendingRequest.resetLoadingType
+          )
+        );
+      });
       dispatch({ type: REMOVE_PENDING_REQUESTS });
     }
-  });
+
+  }, [accessToken]);
 
   React.useEffect(() => {
     let components =

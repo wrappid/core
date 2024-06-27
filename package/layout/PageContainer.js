@@ -147,7 +147,7 @@ export default function PageContainer(props) {
   };
 
   return sessionExpired && !uid && route?.authRequired ? (
-    <CoreDomNavigate to="/" replace={true} />
+    <CoreDomNavigate to="checkUserExist" replace={true} />
   ) : (
     <>
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
