@@ -3,7 +3,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { WrappidDataContext } from "@wrappid/styles";
+import { StylesProvider, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
@@ -153,26 +153,28 @@ export default function PageContainer(props) {
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
 
-        <CoreThemeProvider themeID={route?.Page?.theme}>
-          <CoreNetworkStatus/>
+        <StylesProvider themeID={route?.Page?.theme}>
+          <CoreThemeProvider themeID={route?.Page?.theme}>
+            <CoreNetworkStatus/>
 
-          <NativePageContainer
-            uid={uid}
-            route={route}
-            coreClasses={CoreClasses}>
-            <CoreModal open={true} />
+            <NativePageContainer
+              uid={uid}
+              route={route}
+              coreClasses={CoreClasses}>
+              <CoreModal open={true} />
 
-            <CoreDialogContext.Provider value={dialogStates}>
-              <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+              <CoreDialogContext.Provider value={dialogStates}>
+                <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-              {/** @todo testing purposes */}
-              {/* eslint-disable-next-line etc/no-commented-out-code */}
-              {/* <CoreComponent componentName={pageChild()} /> */}
+                {/** @todo testing purposes */}
+                {/* eslint-disable-next-line etc/no-commented-out-code */}
+                {/* <CoreComponent componentName={pageChild()} /> */}
                 
-              <CoreDialog />
-            </CoreDialogContext.Provider>
-          </NativePageContainer>
-        </CoreThemeProvider>
+                <CoreDialog />
+              </CoreDialogContext.Provider>
+            </NativePageContainer>
+          </CoreThemeProvider>
+        </StylesProvider>
       </ErrorBoundary>
 
       <DevelopmentInfo />
