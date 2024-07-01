@@ -3,7 +3,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
 import {
-  DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext, UPDATE_THEME 
+  DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext 
   // eslint-disable-next-line import/no-unresolved
 } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,7 @@ export default function CoreThemeProvider(props) {
   const storeDispatch = useDispatch();
   const dispatch = React.useContext(WrappidDispatchContext);
   
-  const { config, themes } = React.useContext(WrappidDataContext);
+  const { config, themes, pageThemeID } = React.useContext(WrappidDataContext);
   const { defaultTheme = "wrappidTheme" } = config || {};
   const { themes: storedThemes } = useSelector((state) => state?.theme);
   const { local: localThemes, server: serverThemes } = storedThemes;
@@ -64,16 +64,11 @@ export default function CoreThemeProvider(props) {
   React.useEffect(() => {
     let tempLocalThemes = processLocalThemes(localThemes);
     let tempServerThemes = processServerThemes(serverThemes);
-    let combinedThemes = [...tempLocalThemes, ...tempServerThemes];
+    let combinedTempThemes = [...tempLocalThemes, ...tempServerThemes];
 
-    const modifiedThemeObject = combinedThemes.reduce((acc, current) => {
-      acc[current.id] = { name: current.id, theme: { ...current.theme } };
-      return acc;
-    }, {});
-
-    dispatch({ payload: modifiedThemeObject, type: UPDATE_THEME });
-    storeDispatch({ payload: combinedThemes, type: SET_COMBINED_THEMES });
-    setCombinedThemes(combinedThemes);    
+    dispatch({ payload: { themes: combinedTempThemes }, type: "UPDATE_DATA" });
+    storeDispatch({ payload: combinedTempThemes, type: SET_COMBINED_THEMES });
+    setCombinedThemes(combinedTempThemes);    
   }, [localThemes, serverThemes]);
 
   const getTheme = (themeID) => {
@@ -101,31 +96,27 @@ export default function CoreThemeProvider(props) {
     if (defaultTheme && isThemeExist(defaultTheme)) {
       tempTheme = getThemeObj(defaultTheme);
     }
-    
-    /* user theme added */
-    if (userThemeID && isThemeExist(userThemeID)) {
-      tempTheme = getThemeObj(userThemeID);
-      // eslint-disable-next-line etc/no-commented-out-code
-      // dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
-    }else{
-      // eslint-disable-next-line etc/no-commented-out-code
-      // dispatch({ payload: defaultTheme, type: UPDATE_DEFAULT_THEME });
-    }
-    
-    /* page theme added */
     if (themeID && isThemeExist(themeID)) {
       tempTheme = getThemeObj(themeID);
-      // eslint-disable-next-line etc/no-commented-out-code
-      // dispatch({ payload: themeID, type: UPDATE_PAGE_THEME });
-    }else{
-      // eslint-disable-next-line etc/no-commented-out-code
-      // dispatch({ payload: null, type: UPDATE_PAGE_THEME });
+    } else if (pageThemeID && isThemeExist(pageThemeID)) {
+      /* page theme added */
+      tempTheme = getThemeObj(pageThemeID);
+    } else if (userThemeID && isThemeExist(userThemeID)) {
+      /* user theme added */
+      tempTheme = getThemeObj(userThemeID);
+    } else {
+      // do nothing
     }
+    
     let mergedTheme = mergeJSON(tempTheme, baseTheme);
 
     setCurrentTheme(mergedTheme);
-
-  }, [combinedThemes, defaultTheme, userThemeID, themeID]);
-
+  }, [
+    combinedThemes,
+    defaultTheme,
+    userThemeID,
+    themeID,
+    pageThemeID
+  ]);
   return <NativeThemeProvider theme={currentTheme}>{children}</NativeThemeProvider>;
 }

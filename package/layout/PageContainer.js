@@ -3,7 +3,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { StylesProvider, WrappidDataContext } from "@wrappid/styles";
+import { WrappidDataContext, WrappidDispatchContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreDialog from "../components/feedback/CoreDialog";
@@ -26,7 +26,6 @@ import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 // eslint-disable-next-line import/order
 import LayoutManager from "./LayoutManager";
-import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -35,9 +34,11 @@ export let validationsRegistry = {};
 export let formStore = {};
 
 export default function PageContainer(props) {
+  const wrappidDispatch = React.useContext(WrappidDispatchContext);
+
   const dispatch = useDispatch();
   const location = nativeUseLocation();
-  const { config, themes } = React.useContext(WrappidDataContext);
+  const { config, pageThemeID } = React.useContext(WrappidDataContext);
   const { defaultLayout, defaultAuthenticatedLayout } = config;
 
   /**
@@ -107,25 +108,21 @@ export default function PageContainer(props) {
     // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
   }, [helperButtonFlag]);
 
-  /**
-   * This function will return theme based on the route JSON schema
-   * 
-   * @returns themeID
-  */
-  // eslint-disable-next-line no-unused-vars
-  const pageTheme = () => {
-    if (themes[route?.Page?.theme]) {
-      return route?.Page?.theme;
-    } else {
-      return undefined;
+  React.useEffect(() => {
+    if(wrappidDispatch){
+      if(route?.Page?.theme){
+        wrappidDispatch({ payload: route.Page.theme || undefined, type: "UPDATE_PAGE_THEME" });
+      } else if (pageThemeID !== undefined) {
+        wrappidDispatch({ type: "RESET_PAGE_THEME" });
+      }
     }
-  };
+  }, [route, wrappidDispatch]);
+
   /**
    * This function will return layout component based on the route JSON schema
    * 
    * @returns Layout Component
   */
-  // eslint-disable-next-line no-unused-vars
   const pageLayout = () => {
     if (mergedComponentRegistry[route?.Page?.layout]?.layout) {
       return route?.Page?.layout;
@@ -133,6 +130,7 @@ export default function PageContainer(props) {
       return (uid ? defaultAuthenticatedLayout : defaultLayout) || AppContainerLayout.name;
     }
   };
+
   /**
    * This function will return page component based on the route JSON schema
    * 
@@ -153,28 +151,29 @@ export default function PageContainer(props) {
       {/* <CoreThemeProvider themeID={pageTheme()}> */}
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
 
-        <StylesProvider themeID={route?.Page?.theme}>
-          <CoreThemeProvider themeID={route?.Page?.theme}>
-            <CoreNetworkStatus/>
+        {/* <StylesProvider themeID={route?.Page?.theme}> */}
+        {/* <CoreThemeProvider themeID={route?.Page?.theme}> */}
+        <CoreNetworkStatus/>
 
-            <NativePageContainer
-              uid={uid}
-              route={route}
-              coreClasses={CoreClasses}>
-              <CoreModal open={true} />
+        <NativePageContainer
+          uid={uid}
+          route={route}
+          coreClasses={CoreClasses}>
+          <CoreModal open={true} />
 
-              <CoreDialogContext.Provider value={dialogStates}>
-                <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+          <CoreDialogContext.Provider value={dialogStates}>
+            <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-                {/** @todo testing purposes */}
-                {/* eslint-disable-next-line etc/no-commented-out-code */}
-                {/* <CoreComponent componentName={pageChild()} /> */}
+            {/** @todo testing purposes */}
+            {/* eslint-disable-next-line etc/no-commented-out-code */}
+            {/* <CoreComponent componentName={pageChild()} /> */}
                 
-                <CoreDialog />
-              </CoreDialogContext.Provider>
-            </NativePageContainer>
-          </CoreThemeProvider>
-        </StylesProvider>
+            <CoreDialog />
+          </CoreDialogContext.Provider>
+        </NativePageContainer>
+
+        {/* </CoreThemeProvider> */}
+        {/* </StylesProvider> */}
       </ErrorBoundary>
 
       <DevelopmentInfo />

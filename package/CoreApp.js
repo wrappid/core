@@ -32,7 +32,7 @@ export default function CoreApp(props) {
     <CoreAppStrictWrapper mode={applicationConfig?.environment}>
       <WrappidSyncer data={{
         config: applicationConfig,
-        themes: themesRegistry
+        themes: Object.values(themesRegistry)
       }}>
         <CoreProvider
           applicationConfig={{ ...(applicationConfig || {}) }}
