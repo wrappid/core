@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.493](https://github.com/wrappid/core/compare/v0.0.492...v0.0.493) (2024-07-01)
+
+
+### Features
+
+* **global:** :sparkles: page theme merge with default theme ([37840a2](https://github.com/wrappid/core/commit/37840a23f17161d026b74338f90b7c200af42c16)), closes [#255](https://github.com/wrappid/core/issues/255)
+
 ### [0.0.492](https://github.com/wrappid/core/compare/v0.0.491...v0.0.492) (2024-06-27)
 
 
