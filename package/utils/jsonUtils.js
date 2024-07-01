@@ -1,36 +1,31 @@
 /**
  * 
- * @param {*} objects 
- * @returns 
+ * @param {*} oldJSON  First JSOM
+ * @param {*} newJSON  Second JSON
+ * @returns  {*} Merged JSON
  */
-export const mergeJSON = (objectStruct, objects) => {
-  let mergedObject = {};
+export const mergeJSON = (oldJSON = {}, newJSON = {} ) => {
+  let convertedJSON = { ...oldJSON };
 
-  /**
-   * @todo
-   * 
-   * Case1
-   * object1 = {
-   *    a: [1,2,4]
-   *    b: "hello",
-   *    c: [[1,2],[a,b]]
-   *    d: {a1: "a1", b1: "b1"}
-   * }
-   * object1 = {
-   *    a: [1,2,4]
-   *    b: "hello",
-   *    e: [[1,2],[a,b]]
-   *    c: {d: "a1", b1: "b1"}
-   * }
-   * 
-   * Rules
-   * 1.1 only same level will be merged
-   * 1.2  
-   */
-  Object.keys(objectStruct)?.forEach((key) => {
-    let value = objects.map(eachObj => eachObj[key]);
+  if((Array.isArray(oldJSON) && !Array.isArray(newJSON)) || (!Array.isArray(oldJSON) && Array.isArray(newJSON)) ){
+    throw new Error("JSON value type mismatch");
+  }
+  if(Array.isArray(oldJSON) && Array.isArray(newJSON)){
+    return [...oldJSON, ...newJSON];
+  }
+  if(Object.keys(oldJSON).length <= 0){
+    return newJSON;
+  }
+  
+  for (const key in oldJSON) {
+    if(Object.prototype.hasOwnProperty.call(newJSON, key)){
 
-    mergedObject[key] = value;
-  });
-  return mergedObject;
+      let keyType = typeof oldJSON[key];
+
+      if(keyType === "object" ){
+        convertedJSON[key] = mergeJSON(oldJSON[key], newJSON[key]);
+      }
+    } 
+  }
+  return convertedJSON;
 };

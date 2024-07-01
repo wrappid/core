@@ -1,7 +1,4 @@
-import {
-  AUTHENTICATION_ERROR,
-  LOGOUT_SUCCESS
-} from "../types/authTypes";
+import { AUTHENTICATION_ERROR } from "../types/authTypes";
 import {
   GET_THEMES_FAILURE, GET_THEMES_SUCCESS, LOCAL_THEMES_SYNCED_FAILURE, LOCAL_THEMES_SYNCED_SUCCESS, SET_COMBINED_THEMES, SET_LOCAL_THEMES_SUCCESS 
 } from "../types/themeTypes";
@@ -46,8 +43,11 @@ const themeReducer = (state = initState, action) => {
         sync: false
       };
 
-    case LOGOUT_SUCCESS:
-      return { ...initState };
+      /**
+       * @todo review required 
+       */
+      // case LOGOUT_SUCCESS:
+      //   return { ...initState };
 
     case AUTHENTICATION_ERROR:
       return { ...initState };

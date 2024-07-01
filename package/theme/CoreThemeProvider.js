@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HTTP } from "../config/constants";
 import { apiRequestAction } from "../store/action/appActions";
 import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_LOCAL_THEMES_SUCCESS, SET_COMBINED_THEMES } from "../store/types/themeTypes";
+import { mergeJSON } from "../utils/jsonUtils";
 
 export default function CoreThemeProvider(props) {
   const { themeID = undefined, children } = props || {};
@@ -46,7 +47,7 @@ export default function CoreThemeProvider(props) {
   const processLocalThemes = (themes) => {
     return themes?.map(theme => {
       return {
-        id   : theme?.name,
+        id   : theme?.id,
         theme: theme?.theme
       };
     });
@@ -92,17 +93,18 @@ export default function CoreThemeProvider(props) {
   };
 
   React.useEffect(() => {
-    let mergedTheme = { ...DEFAULT_THEME };
+    let baseTheme = { ...DEFAULT_THEME };
     
+    let tempTheme = {};
+
     /* app theme added */
     if (defaultTheme && isThemeExist(defaultTheme)) {
-      mergedTheme = { ...mergedTheme, ...getThemeObj(defaultTheme) };
-      
+      tempTheme = getThemeObj(defaultTheme);
     }
     
     /* user theme added */
     if (userThemeID && isThemeExist(userThemeID)) {
-      mergedTheme = { ...mergedTheme, ...getThemeObj(userThemeID) };
+      tempTheme = getThemeObj(userThemeID);
       // eslint-disable-next-line etc/no-commented-out-code
       // dispatch({ payload: userThemeID, type: UPDATE_DEFAULT_THEME });
     }else{
@@ -112,13 +114,14 @@ export default function CoreThemeProvider(props) {
     
     /* page theme added */
     if (themeID && isThemeExist(themeID)) {
-      mergedTheme = { ...mergedTheme, ...getThemeObj(themeID) };
+      tempTheme = getThemeObj(themeID);
       // eslint-disable-next-line etc/no-commented-out-code
       // dispatch({ payload: themeID, type: UPDATE_PAGE_THEME });
     }else{
       // eslint-disable-next-line etc/no-commented-out-code
       // dispatch({ payload: null, type: UPDATE_PAGE_THEME });
     }
+    let mergedTheme = mergeJSON(tempTheme, baseTheme);
 
     setCurrentTheme(mergedTheme);
 
