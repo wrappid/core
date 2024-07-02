@@ -70,9 +70,9 @@ export default function PageContainer(props) {
 
   const { route = { Page: { appComponent: "", schema: {} } } } = props;
 
-  React.useEffect(()=>{
-    dispatch({ type: RESET_FROM_STATE });
-  }, [sessionExpired]);
+  // React.useEffect(()=>{
+  //   dispatch({ type: RESET_FROM_STATE });
+  // }, [sessionExpired]);
 
   React.useEffect(() => {
     if (sessionExpired && !sessionDetail) {
@@ -96,27 +96,29 @@ export default function PageContainer(props) {
     }
   }, []);
 
-  React.useEffect(() => {
-    // -- console.log("LOCATION SAVE______", location);
-    dispatch({
-      payload: { helperButtonFlag: false },
-      type   : UPDATE_HELPER_FLAG,
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   // -- console.log("LOCATION SAVE______", location);
+  //   dispatch({
+  //     payload: { helperButtonFlag: false },
+  //     type   : UPDATE_HELPER_FLAG,
+  //   });
+  // }, []);
 
-  React.useEffect(() => {
-    // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
-  }, [helperButtonFlag]);
+  // React.useEffect(() => {
+  //   // -- console.log("Current state of page container's helperButtonFlag = ", helperButtonFlag);
+  // }, [helperButtonFlag]);
 
   React.useEffect(() => {
     if(wrappidDispatch){
       if(route?.Page?.theme){
         wrappidDispatch({ payload: route.Page.theme || undefined, type: "UPDATE_PAGE_THEME" });
-      } else if (pageThemeID !== undefined) {
-        wrappidDispatch({ type: "RESET_PAGE_THEME" });
+      } else { 
+        if (pageThemeID !== undefined) {
+          wrappidDispatch({ type: "RESET_PAGE_THEME" });
+        }
       }
     }
-  }, [route, wrappidDispatch]);
+  }, [route]);
 
   /**
    * This function will return layout component based on the route JSON schema

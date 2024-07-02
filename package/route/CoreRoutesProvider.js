@@ -30,7 +30,7 @@ export default function CoreRoutesProvider(props) {
         GET_ROUTE_FAILURE
       )
     );
-  }, [sync, authenticated]);
+  }, [authenticated]);
 
   React.useEffect(() => {
     /**
