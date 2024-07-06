@@ -17,7 +17,7 @@ import CoreFormLabelCheckbox from "../components/inputs/CoreFormLabelCheckbox";
 import CoreImagePicker from "../components/inputs/CoreImagePicker";
 import CoreInput from "../components/inputs/CoreInput";
 import CoreInputPassword from "../components/inputs/CoreInputPassword";
-import CoreJSONInput from "../components/inputs/CoreJSONInput";
+import CoreJsonEditor from "../components/inputs/CoreJSONEditor";
 import CoreMultiTimeRangePicker from "../components/inputs/CoreMultiTimeRangePicker";
 import CoreOtpInput from "../components/inputs/CoreOtpInput";
 import CoreOutlinedButton from "../components/inputs/CoreOutlinedButton";
@@ -118,7 +118,7 @@ export const componentMap = {
   },
   
   json: {
-    comp: CoreJSONInput,
+    comp: CoreJsonEditor,
     // -- defaultValidation: defaultValidations.json,
   },
   
