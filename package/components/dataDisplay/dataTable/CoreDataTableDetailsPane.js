@@ -63,6 +63,7 @@ export default function CoreDataTableDetailsPane(props) {
     _expandedDevJSONSchema,
     set_expandedDevJSONSchema,
     _showDetailsPane,
+    afterEditCancel,
     afterEditSuccess,
     afterEditError,
     afterCreateSuccess,
@@ -71,6 +72,7 @@ export default function CoreDataTableDetailsPane(props) {
     afterDeleteError,
     hideAuditDataDetailPane,
     platform,
+    updateFormAPIMode // api mode
   } = props;
 
   const { config } = React.useContext(WrappidDataContext);
@@ -241,7 +243,7 @@ export default function CoreDataTableDetailsPane(props) {
                     <CoreDivider />
 
                     <CoreForm
-                      apiMode={"edit"}
+                      apiMode={updateFormAPIMode}
                       onMountRead={false}
                       formId={updateFormID}
                       mode={formMode}
@@ -249,6 +251,12 @@ export default function CoreDataTableDetailsPane(props) {
                       allowDelete={deletable}
                       initData={detailedRowData}
                       afterCancel={() => {
+                        if (
+                          afterEditCancel &&
+                        typeof afterEditCancel === "function"
+                        ) {
+                          afterEditCancel();
+                        }
                         setFormMode(FORM_VIEW_MODE);
                       }}
                       afterEditSuccess={() => {
