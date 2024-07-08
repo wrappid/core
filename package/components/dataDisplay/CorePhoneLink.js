@@ -94,6 +94,7 @@ CorePhoneLink.validProps = [
   { name: "tooltipPlacement", types: [{ default: "bottom", type: "string" }] },
   { name: "mask", types: [{ default: false, type: "boolean", validValues: [true, false] }] },
   { name: "iconButton", types: [{ default: false, type: "boolean", validValues: [true, false] }] },
+  { name: "phone", types: [{ type: "string" }] },
   {
     name : "sizes",
     types: [{ type: "string" }] 
