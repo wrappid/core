@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.496](https://github.com/wrappid/core/compare/v0.0.495...v0.0.496) (2024-07-11)
+
+
+### Bug Fixes
+
+* **core:** :bug: core json input changed to core json editor ([391d76b](https://github.com/wrappid/core/commit/391d76b5d2af6c0c65636b0e2966354e0608ad8d)), closes [#260](https://github.com/wrappid/core/issues/260)
+
 ### [0.0.495](https://github.com/wrappid/core/compare/v0.0.494...v0.0.495) (2024-07-08)
 
 
