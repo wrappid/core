@@ -170,6 +170,7 @@ export default function CoreDataTable(props) {
     hideForm = false,
     hideCreateForm = false,
     hideUpdateForm = false,
+    formMode: formModeProps = FORM_VIEW_MODE,
     createFormID = null,
     updateFormID = null,
     // table props
@@ -180,6 +181,7 @@ export default function CoreDataTable(props) {
     afterCreateError, // function to be called after successfull Create
     afterDeleteSuccess, // function to be called after successfull Delete
     afterDeleteError, // function to be called after successfull Delete
+    afterEditCancel, // function to be called after cancel button click on edit form
     hideAuditDataDetailPane, //flag for hiding audit info in details pane
     preOnCreate, //function to be called when create button in clicked
     openCreateOnMount, //if true the details pane will be opened and create form will be shown
@@ -245,7 +247,11 @@ export default function CoreDataTable(props) {
   const [selected, setSelected] = React.useState([]);
   const [detailedRowId, setDetailedRowId] = React.useState(null);
   const [detailedRowData, setDetailedRowData] = React.useState(null);
-  const [formMode, setFormMode] = React.useState(FORM_VIEW_MODE);
+  const [formMode, setFormMode] = React.useState(formModeProps);
+
+  React.useEffect(() => {
+    setFormMode(formModeProps);
+  }, [formModeProps]);
 
   React.useEffect(() => {
     if (detailedRowData)
@@ -914,6 +920,7 @@ export default function CoreDataTable(props) {
           afterCreateError={afterCreateError}
           afterDeleteSuccess={afterDeleteSuccess}
           afterDeleteError={afterDeleteError}
+          afterEditCancel={afterEditCancel}
           hideAuditDataDetailPane={hideAuditDataDetailPane}
           platform={platform}
         />

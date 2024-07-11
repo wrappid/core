@@ -27,5 +27,13 @@ export default function CoreSection(props) {
   );
 }
 
-CoreSection.validProps = [];
+CoreSection.validProps = [
+  ...CoreCardHeader.validProps,
+  {
+    description: "The content of the component.",
+    name       : "heading",
+    types      : [{ type: "string" }],
+  },
+  
+];
 CoreSection.invalidProps = [];

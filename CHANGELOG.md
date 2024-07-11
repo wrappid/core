@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.495](https://github.com/wrappid/core/compare/v0.0.494...v0.0.495) (2024-07-08)
+
+
+### Bug Fixes
+
+* **core:** :bug: coreSection heading ([4e65e91](https://github.com/wrappid/core/commit/4e65e9111ca8430790dcb6c1e840e1e771174799)), closes [#261](https://github.com/wrappid/core/issues/261)
+* **core:** :bug: email and phone links related components ([557bf92](https://github.com/wrappid/core/commit/557bf92e75017067c5a00884ed04c7bf1ed45373)), closes [#261](https://github.com/wrappid/core/issues/261)
+
+### [0.0.494](https://github.com/wrappid/core/compare/v0.0.493...v0.0.494) (2024-07-07)
+
+
+### Bug Fixes
+
+* **core:** :bug: coreForm data driven from props in CoreDataTableDetailsPane ([13820c1](https://github.com/wrappid/core/commit/13820c1b02fe603dc0324ba2858235765eec1c11)), closes [#258](https://github.com/wrappid/core/issues/258)
+
 ### [0.0.493](https://github.com/wrappid/core/compare/v0.0.492...v0.0.493) (2024-07-01)
 
 
