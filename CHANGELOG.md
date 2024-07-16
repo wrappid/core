@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.498](https://github.com/wrappid/core/compare/v0.0.497...v0.0.498) (2024-07-16)
+
+
+### Bug Fixes
+
+* **core:** :bug: coreForm read api not working with local formJson ([1a14e53](https://github.com/wrappid/core/commit/1a14e5355e67404aa858ea2e681b1233b070060a)), closes [#266](https://github.com/wrappid/core/issues/266)
+
 ### [0.0.497](https://github.com/wrappid/core/compare/v0.0.496...v0.0.497) (2024-07-11)
 
 ### [0.0.496](https://github.com/wrappid/core/compare/v0.0.495...v0.0.496) (2024-07-11)
