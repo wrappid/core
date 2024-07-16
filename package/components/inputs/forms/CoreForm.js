@@ -102,7 +102,6 @@ class CoreForm extends Component {
       if (formJson?.fields) {
         tempFields = formJson?.fields;
       }
-      formJson = formJson.formJson;
       if (tempFields) {
         formJson = { ...formJson, fields: tempFields };
       }
