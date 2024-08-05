@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.499](https://github.com/wrappid/core/compare/v0.0.498...v0.0.499) (2024-08-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: core component CoreMultiTimeRangePicker ([1c5eb38](https://github.com/wrappid/core/commit/1c5eb38d4e5bcd4dbd6d3bbca06b500c7737ab79)), closes [#269](https://github.com/wrappid/core/issues/269)
+
 ### [0.0.498](https://github.com/wrappid/core/compare/v0.0.497...v0.0.498) (2024-07-16)
 
 
