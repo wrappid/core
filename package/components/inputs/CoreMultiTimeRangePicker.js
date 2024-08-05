@@ -53,7 +53,7 @@ export default function CoreMultiTimeRangePicker(props) {
   const _handleChange = (i, v, type) => {
     let x = [...timeRanges];
 
-    x[i][type] = v.format("LLL");
+    x[i][type] = v?.format("LLL");
     formik.setFieldValue(props.id, x);
   };
 
