@@ -1,15 +1,17 @@
-/* eslint-disable import/no-unresolved */
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
 import { NativeListSubheader } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
-export default function CoreListItemSubheader(props) {
-  props = sanitizeComponentProps(CoreListItemSubheader, props);
+export default function CoreListSubheader(props) {
+  props = sanitizeComponentProps(CoreListSubheader, props);
   return <NativeListSubheader {...props} />;
 }
 
-CoreListItemSubheader.validProps = [
+CoreListSubheader.validProps = [
   {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
@@ -71,4 +73,4 @@ CoreListItemSubheader.validProps = [
   },
 ];
 
-CoreListItemSubheader.invalidProps = [];
+CoreListSubheader.invalidProps = [];
