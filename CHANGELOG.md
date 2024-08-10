@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.501](https://github.com/wrappid/core/compare/v0.0.500...v0.0.501) (2024-08-10)
+
+
+### Bug Fixes
+
+* **core:** :bug: there is bug that is happening in guide modules in corelist ([29488f0](https://github.com/wrappid/core/commit/29488f0ad76678aeb1126f4b5965012e40d384b7)), closes [#276](https://github.com/wrappid/core/issues/276)
+
 ### [0.0.500](https://github.com/wrappid/core/compare/v0.0.499...v0.0.500) (2024-08-05)
 
 ### [0.0.499](https://github.com/wrappid/core/compare/v0.0.498...v0.0.499) (2024-08-05)
