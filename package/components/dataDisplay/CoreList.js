@@ -8,24 +8,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreList(props) {
   props = sanitizeComponentProps(CoreList, props);
-
-  const {
-    children,
-    component,
-    dense,
-    disablePadding,
-    subheader,
-  } = props;
-
-  return(
-    <NativeList
-      component={component}
-      dense={dense}
-      disablePadding={disablePadding}
-      subheader={subheader}>
-      {children}
-    </NativeList>
-  );
+  return <NativeList {...props}/>;
 }
 
 CoreList.validProps = [
@@ -68,6 +51,82 @@ CoreList.validProps = [
     name : "subheader",
     types: [{ type: "node" }],
   },
+  {
+    description: "Enabling types of listStyle in list component without implementing StyleClasses ",
+    name       : "listType",
+    types      : [
+      {
+        default    : "DEFAULT",
+        type       : "string",
+        validValues: [
+          "DEFAULT",
+          "CJK_HEAVENLY_STEM",
+          "ARABIC_INDIC",
+          "DISC",
+          "CIRCLE",
+          "SQUARE",
+          "DECIMAL",
+          "DECIMAL_LEADING_ZERO",
+          "ARMENIAN",
+          "AUTO",
+          "BENGALI",
+          "CAMBODIAN",
+          "CJK_EARTHLY_BRANCH",
+          "CJK_IDEOGRAPHIC",
+          "DEVANAGARI",
+          "ETHIOPIC_HALEHAME",
+          "ETHIOPIC_HALEHAME_AM",
+          "ETHIOPIC_HALEHAME_TI_ER",
+          "ETHIOPIC_HALEHAME_TI_ET",
+          "GEORGIAN",
+          "GUJARATI",
+          "HANGUL",
+          "HANGUL_CONSONANT",
+          "HEBREW",
+          "HIRAGANA",
+          "HIRAGANAIROHA",
+          "INSIDE",
+          "KANNADA",
+          "KATAKANA",
+          "KATAKANA_IROHA",
+          "KHMER",
+          "KOREAN_HANJA_FORMAL",
+          "KOREAN_HANGUL_FORMAL",
+          "KOREAN_HANJA_INFORMAL",
+          "LAO",
+          "LOWER_ALPHA",
+          "LOWER_ARMENIAN",
+          "LOWER_LATIN",
+          "LOWER_GREEK",
+          "LOWER_ROMAN",
+          "MALAYALAM",
+          "MONGOLIAN",
+          "MYANMAR",
+          "ORIYA",
+          "OUTSIDE",
+          "PERSIAN",
+          "SIMP_CHINESE_FORMAL",
+          "SIMP_CHINESE_INFORMAL",
+          "TELUGU",
+          "THAI",
+          "TIBETAN",
+          "TRAD_CHINESE_FORMAL",
+          "TRAD_CHINESE_INFORMAL",
+          "UPPER_ALPHA",
+          "UPPER_ARMENIAN",
+          "UPPER_LATIN",
+          "UPPER_ROMAN",
+          "URDU",
+          "INHERIT",
+          "INITIAL",
+          "REVERT",
+          "REVERT_LAYER",
+          "UNSET",
+          "NONE"
+        ] 
+      }
+    ]
+  }
 ];
 
 CoreList.invalidProps = [];
