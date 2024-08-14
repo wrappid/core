@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.502](https://github.com/wrappid/core/compare/v0.0.501...v0.0.502) (2024-08-14)
+
+
+### Features
+
+* **core:** :sparkles: adding new props listType ([26bb7e3](https://github.com/wrappid/core/commit/26bb7e35ff1f8d4070787510b27c7b2774036983)), closes [#272](https://github.com/wrappid/core/issues/272)
+
 ### [0.0.501](https://github.com/wrappid/core/compare/v0.0.500...v0.0.501) (2024-08-10)
 
 
