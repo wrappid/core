@@ -9,37 +9,9 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreChip(props) {
   props = sanitizeComponentProps(CoreChip, props);
 
-  const {
-    avatar,
-    clickable,
-    color,
-    component,
-    deleteIcon,
-    showZero,
-    icon,
-    label,
-    onDelete,
-    size,
-    skipFocusWhenDisabled,
-    variant,
-    disabled
-  } = props;
-
   return (
-    <NativeChip 
-      avatar={avatar}
-      clickable={clickable}
-      color={color}
-      component={component}
-      deleteIcon={deleteIcon}
-      showZero={showZero}
-      icon={icon}
-      label={label}
-      onDelete={onDelete}
-      size={size}
-      skipFocusWhenDisabled={skipFocusWhenDisabled}
-      variant={variant}
-      disabled={disabled}
+    <NativeChip
+      {...props}
     />
   );
 }
@@ -55,8 +27,9 @@ CoreChip.validProps = [
     name       : "clickable",
     types      : [
       {
-        type       : "boolean",
-        validValues: [true, false],
+        isDefaultType: true,
+        type         : "boolean",
+        validValues  : [true, false],
       },
     ],
   },
