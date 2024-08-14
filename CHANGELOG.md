@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.503](https://github.com/wrappid/core/compare/v0.0.502...v0.0.503) (2024-08-14)
+
+
+### Features
+
+* **core:** :sparkles: clickable CoreChip on onClick ([8529f30](https://github.com/wrappid/core/commit/8529f307b7fbaa0aab2cfb28ce727c954d0f782a)), closes [#282](https://github.com/wrappid/core/issues/282)
+
 ### [0.0.502](https://github.com/wrappid/core/compare/v0.0.501...v0.0.502) (2024-08-14)
 
 
