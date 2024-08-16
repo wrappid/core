@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.505](https://github.com/wrappid/core/compare/v0.0.504...v0.0.505) (2024-08-16)
+
+
+### Features
+
+* **core:** :sparkles: alt text CoreImage ([c315f56](https://github.com/wrappid/core/commit/c315f5697d487442b8a30208cae747f9981f13ac)), closes [wrappid/guide-module#186](https://github.com/wrappid/guide-module/issues/186) [#286](https://github.com/wrappid/core/issues/286)
+
 ### [0.0.504](https://github.com/wrappid/core/compare/v0.0.503...v0.0.504) (2024-08-16)
 
 
