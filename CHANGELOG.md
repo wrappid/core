@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.504](https://github.com/wrappid/core/compare/v0.0.503...v0.0.504) (2024-08-16)
+
+
+### Features
+
+* **core:** :sparkles: adding new props and varient ([6cb0a1d](https://github.com/wrappid/core/commit/6cb0a1d79bd42e61798fddb702dc6e758572ef0b)), closes [#284](https://github.com/wrappid/core/issues/284)
+
 ### [0.0.503](https://github.com/wrappid/core/compare/v0.0.502...v0.0.503) (2024-08-14)
 
 
