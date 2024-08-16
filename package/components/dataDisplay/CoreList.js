@@ -126,6 +126,18 @@ CoreList.validProps = [
         ] 
       }
     ]
+  },
+  {
+    description:
+      "The content of the subheader, normally ListSubheader.",
+    name : "variant",
+    types: [
+      {
+        default    : "DEFAULT",
+        type       : "string",
+        validValues: ["DEFAULT", "HTML"] 
+      }
+    ],
   }
 ];
 
