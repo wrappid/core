@@ -10,18 +10,19 @@ export default function CoreImage(props) {
   props = sanitizeComponentProps(CoreImage, props);
   return <NativeImage {...props} />;
 }
+
+CoreImage.displayName = "CoreImage";
+
 CoreImage.validProps = [
   {
-    name : "src",
-    types: [{ type: "string" }]
+    description: "The source of the image.",
+    name       : "src",
+    types      : [{ type: "string" }]
   },
   {
-    name : "height",
-    types: [{ type: "number" }]
-  },
-  {
-    name : "width",
-    types: [{ type: "number" }]
+    description: "The alternative text of the image.",
+    name       : "alt",
+    types      : [{ type: "string" }]
   }
 ];
 CoreImage.invalidProps = ["style", "sx", "classes"];
