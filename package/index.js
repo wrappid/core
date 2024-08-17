@@ -4,6 +4,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { useNetworkStatus } from "@wrappid/native";
 
+import CoreAwayListner from "./components/CoreAwayListner";
 import CoreComponent from "./components/CoreComponent";
 import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
@@ -291,7 +292,7 @@ export {
   /**
    * Layout related component
    */
-  CoreLayoutPlaceholder, CoreLinearProgress, CoreLink,
+  CoreLayoutPlaceholder, CoreLinearProgress, CoreLink, CoreAwayListner,
   // CoreGridItem,
   CoreList,
   CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon,
