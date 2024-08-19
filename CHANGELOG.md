@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.507](https://github.com/wrappid/core/compare/v0.0.506...v0.0.507) (2024-08-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitemsecondaryaction is implemented ([5642d42](https://github.com/wrappid/core/commit/5642d42631fa55bc42c5c46b56888309a4f0e7ed)), closes [#295](https://github.com/wrappid/core/issues/295)
+
 ### [0.0.506](https://github.com/wrappid/core/compare/v0.0.505...v0.0.506) (2024-08-19)
 
 
