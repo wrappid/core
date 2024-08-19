@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.506](https://github.com/wrappid/core/compare/v0.0.505...v0.0.506) (2024-08-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitemtext validprops is named as invalidprops ([dfc88b3](https://github.com/wrappid/core/commit/dfc88b381a4ff442b11e517ad06d51413ccd3889)), closes [#293](https://github.com/wrappid/core/issues/293)
+
 ### [0.0.505](https://github.com/wrappid/core/compare/v0.0.504...v0.0.505) (2024-08-16)
 
 
