@@ -12,7 +12,7 @@ export default function CoreListItemText(props) {
   return <NativeListItemText {...props} />;
 }
 
-CoreListItemText.invalidProps = [
+CoreListItemText.validProps = [
   {
     description: "If true, the children won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the children (or primary) text, and optional secondary text with the Typography component.",
     name       : "disableTypography",
