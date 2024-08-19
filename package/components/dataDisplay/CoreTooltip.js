@@ -9,63 +9,10 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreTooltip(props) {
   props = sanitizeComponentProps(CoreTooltip, props);
 
-  const {
-    children,
-    arrow,
-    components,
-    componentsProps,
-    describeChild,
-    disableFocusListener,
-    disableHoverListener,
-    disableInteractive,
-    disableTouchListener,
-    enterDelay,
-    enterNextDelay,
-    enterTouchDelay,
-    followCursor,
-    id,
-    leaveDelay,
-    leaveTouchDelay,
-    onClose,
-    onOpen,
-    open,
-    PopperComponen,
-    PopperProp,
-    title,
-    TransitionComponen,
-    TransitionProp,
-    placement,
-    slots,
-  } = props;
+  const { children } = props;
 
   return (
-    <NativeTooltip
-      arrow={arrow}
-      components={components}
-      componentsProps={componentsProps}
-      describeChild={describeChild}
-      disableFocusListener={disableFocusListener}
-      disableHoverListener={disableHoverListener}
-      disableInteractive={disableInteractive}
-      disableTouchListener={disableTouchListener}
-      enterDelay={enterDelay}
-      enterNextDelay={enterNextDelay}
-      enterTouchDelay={enterTouchDelay}
-      followCursor={followCursor}
-      id={id}
-      leaveDelay={leaveDelay}
-      leaveTouchDelay={leaveTouchDelay}
-      onClose={onClose}
-      onOpen={onOpen}
-      open={open}
-      PopperComponen={PopperComponen}
-      PopperProp={PopperProp}
-      title={title}
-      TransitionComponen={TransitionComponen}
-      TransitionProp={TransitionProp}
-      placement={placement}
-      slots={slots}
-    >
+    <NativeTooltip {...props}>
       {children}
     </NativeTooltip>
   );
