@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.511](https://github.com/wrappid/core/compare/v0.0.510...v0.0.511) (2024-08-20)
+
+
+### Features
+
+* **global:** :sparkles: structure change CoreCircularProgress ([4b92915](https://github.com/wrappid/core/commit/4b929158b9a07e26effb0640e0d9e40c0bfd03ab)), closes [#302](https://github.com/wrappid/core/issues/302)
+* **global:** :sparkles: structure change CoreCircularProgress ([7168154](https://github.com/wrappid/core/commit/71681542505dee7122d28c15b94aec474fc6beb9)), closes [#302](https://github.com/wrappid/core/issues/302)
+
 ### [0.0.510](https://github.com/wrappid/core/compare/v0.0.509...v0.0.510) (2024-08-20)
 
 
