@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.510](https://github.com/wrappid/core/compare/v0.0.509...v0.0.510) (2024-08-20)
+
+
+### Features
+
+* **core:** :sparkles: structure change CoreTooltip ([82e4ab4](https://github.com/wrappid/core/commit/82e4ab4116c6a72315189b52d44fcf99289fcafe)), closes [#298](https://github.com/wrappid/core/issues/298)
+
 ### [0.0.509](https://github.com/wrappid/core/compare/v0.0.508...v0.0.509) (2024-08-20)
 
 
