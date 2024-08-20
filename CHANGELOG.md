@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.509](https://github.com/wrappid/core/compare/v0.0.508...v0.0.509) (2024-08-20)
+
+
+### Features
+
+* **global:** :sparkles: add CoreAwayListner ([41a25f1](https://github.com/wrappid/core/commit/41a25f1dc3d3d894d5a8cf9385b6b54c00d86a83)), closes [#291](https://github.com/wrappid/core/issues/291)
+
 ### [0.0.508](https://github.com/wrappid/core/compare/v0.0.507...v0.0.508) (2024-08-20)
 
 
