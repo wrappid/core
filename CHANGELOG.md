@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.512](https://github.com/wrappid/core/compare/v0.0.511...v0.0.512) (2024-08-20)
+
+
+### Features
+
+* **core:** :art: core component name added ([c028a0f](https://github.com/wrappid/core/commit/c028a0ff4dbccf9e9a346c90eb51d420e70a69ae)), closes [#305](https://github.com/wrappid/core/issues/305)
+
 ### [0.0.511](https://github.com/wrappid/core/compare/v0.0.510...v0.0.511) (2024-08-20)
 
 
