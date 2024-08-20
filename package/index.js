@@ -29,6 +29,7 @@ import CoreListItem from "./components/dataDisplay/CoreListItem";
 import CoreListItemAvatar from "./components/dataDisplay/CoreListItemAvatar";
 import CoreListItemButton from "./components/dataDisplay/CoreListItemButton";
 import CoreListItemIcon from "./components/dataDisplay/CoreListItemIcon";
+import CoreListItemSecondaryAction from "./components/dataDisplay/CoreListItemSecondaryAction";
 import CoreListItemText from "./components/dataDisplay/CoreListItemText";
 import CoreListSubheader from "./components/dataDisplay/CoreListSubheader";
 import CoreMarkdownViewer from "./components/dataDisplay/CoreMarkdownViewer";
@@ -294,7 +295,7 @@ export {
   CoreLayoutPlaceholder, CoreLinearProgress, CoreLink,
   // CoreGridItem,
   CoreList,
-  CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon,
+  CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon, CoreListItemSecondaryAction,
   CoreListItemText, CoreListSubheader, CoreLoginDetails, CoreMarkdownViewer, CoreMedicineSelector, CoreMenu, CoreMenuItem,
   CoreMenuList, CoreModal, CoreMultiTimeRangePicker, CoreNetworkStatus, coreOpenUrl, CoreOtpInput,
   CoreOutlinedButton, CorePaper, CorePhone, CorePhoneLink, CorePopover, CoreProfilePopOver, CoreProvider, CoreRating, CoreReactSelectInput, CoreResourceContext, CoreResponsiveButton,
