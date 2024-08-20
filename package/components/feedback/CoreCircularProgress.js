@@ -8,20 +8,8 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreCircularProgress(props) {
   props = sanitizeComponentProps(CoreCircularProgress, props);
-
-  const {
-    color, disableShrink, size, thickness, value, variant 
-  } = props;
-
   return (
-    <NativeCircularProgress
-      color={color}
-      disableShrink={disableShrink}
-      size={size}
-      thickness={thickness}
-      value={value}
-      variant={variant}
-    ></NativeCircularProgress>
+    <NativeCircularProgress {...props}>{props?.children}</NativeCircularProgress>
   );
 }
 CoreCircularProgress.validProps = [
