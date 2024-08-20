@@ -9,7 +9,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreCircularProgress(props) {
   props = sanitizeComponentProps(CoreCircularProgress, props);
   return (
-    <NativeCircularProgress {...props}>{props?.children}</NativeCircularProgress>
+    <NativeCircularProgress {...props} />
   );
 }
 CoreCircularProgress.validProps = [
