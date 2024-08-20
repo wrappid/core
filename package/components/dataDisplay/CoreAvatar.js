@@ -15,7 +15,7 @@ export default function CoreAvatar(props) {
 
   return <NativeAvatar {...props} src={src} />;
 }
-
+CoreAvatar.name = "CoreAvatar";
 CoreAvatar.validProps = [
   {
     description: "Used in combination with src or srcSet to provide an alt attribute for the rendered img element.",
