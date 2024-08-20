@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.509](https://github.com/wrappid/core/compare/v0.0.508...v0.0.509) (2024-08-20)
+
+
+### Features
+
+* **global:** :sparkles: add CoreAwayListner ([41a25f1](https://github.com/wrappid/core/commit/41a25f1dc3d3d894d5a8cf9385b6b54c00d86a83)), closes [#291](https://github.com/wrappid/core/issues/291)
+
+### [0.0.508](https://github.com/wrappid/core/compare/v0.0.507...v0.0.508) (2024-08-20)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: fix CoreBackdrop valid props ([293c881](https://github.com/wrappid/core/commit/293c8814ba1cf360207072d2ea7a5be281d98aca)), closes [#297](https://github.com/wrappid/core/issues/297)
+
 ### [0.0.507](https://github.com/wrappid/core/compare/v0.0.506...v0.0.507) (2024-08-19)
 
 

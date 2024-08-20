@@ -8,32 +8,14 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreBackdrop(props) {
   props = sanitizeComponentProps(CoreBackdrop, props);
-  const {
-    open, children, component, components, componentsProps, slotProps, slots, invisible, TransitionComponent, transitionDuration
-  } = props;
 
-  return (
-    <NativeBackdrop
-      open={open}
-      component={component}
-      components={components}
-      componentsProps={componentsProps}
-      slots={slots}
-      slotProps={slotProps}
-      invisible={invisible}
-      TransitionComponent={TransitionComponent}
-      transitionDuration={transitionDuration}
-    >
-      {children}
-    </NativeBackdrop>
-  );
-  // return <NativeBackdrop {...props}>{props.children}</NativeBackdrop>;
+  return <NativeBackdrop {...props} />;
 }
 
 CoreBackdrop.validProps = [
   {
     description: "If true, the component is shown.",
-    name       : "open*",
+    name       : "open",
     required   : true,
     types      : [
       { 
