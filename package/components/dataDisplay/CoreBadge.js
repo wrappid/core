@@ -8,42 +8,8 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreBadge(props) {
   props = sanitizeComponentProps(CoreBadge, props);
 
-  const {
-    anchorOrigin,
-    badgeContent,
-    children,
-    color,
-    component,
-    components,
-    componentsProps,
-    visible,
-    max,
-    overlap,
-    showZero,
-    slotProps,
-    slot,
-    variant,
-    size
-  } = props;
-
   return (
-    <NativeBadge
-      anchorOrigin={anchorOrigin}
-      badgeContent={badgeContent}
-      color={color}
-      component={component}
-      components={components}
-      componentsProps={componentsProps}
-      visible={visible}
-      max={max}
-      overlap={overlap}
-      showZero={showZero}
-      slotProps={slotProps}
-      slot={slot}
-      size={size}
-      variant={variant}>
-      {children}
-    </NativeBadge>
+    <NativeBadge {...props} />
   );
 }
 
@@ -110,7 +76,7 @@ CoreBadge.validProps = [
   },
   {
     description: "If true, the badge is visible.",
-    name       : "visible",
+    name       : "invisible",
     types      : [
       {
         default    : true,
