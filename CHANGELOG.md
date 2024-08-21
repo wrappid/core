@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.513](https://github.com/wrappid/core/compare/v0.0.512...v0.0.513) (2024-08-21)
+
+
+### Bug Fixes
+
+* **core:** :bug: name will be converted to displayName ([66e69d5](https://github.com/wrappid/core/commit/66e69d543d95f89a323d4f8ac18457b150ac96ae)), closes [#305](https://github.com/wrappid/core/issues/305)
+
 ### [0.0.512](https://github.com/wrappid/core/compare/v0.0.511...v0.0.512) (2024-08-20)
 
 
