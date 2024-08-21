@@ -1,4 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
+import { native_copyToClipboard } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
 import { WrappidData } from "@wrappid/styles";
 import moment from "moment";
 
@@ -91,4 +93,8 @@ export async function reloadToken(
         }
       });
   }
+}
+
+export async function copyToClipboard(text) {
+  return await native_copyToClipboard(text);
 }
