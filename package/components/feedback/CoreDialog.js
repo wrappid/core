@@ -17,51 +17,12 @@ export const CORE_DIALOG_TYPES = {
 export default function CoreDialog(props) {
   props = sanitizeComponentProps(CoreDialog, props);
 
-  const {
-    open,
-    // aria-describedby,
-    // aria-labelledby,
-    BackdropComponent,
-    children,
-    classes,
-    disableEscapeKeyDown,
-    fullScreen,
-    fullWidth,
-    maxWidth,
-    onBackdropClick,
-    onClose,
-    PaperComponent,
-    PaperProps,
-    scroll,
-    TransitionComponent,
-    TransitionProps,
-    transitionDuration,
-  } = props;
-
   return (
-    <NativeDialog
-      open={open}
-      // aria-describedby={aria-describedby}
-      // aria-labelledby={aria-labelledby}
-      BackdropComponent={BackdropComponent}
-      classes={classes}
-      disableEscapeKeyDown={disableEscapeKeyDown}
-      fullScreen={fullScreen}
-      fullWidth={fullWidth}
-      maxWidth={maxWidth}
-      onBackdropClick={onBackdropClick}
-      onClose={onClose}
-      PaperComponent={PaperComponent}
-      PaperProps={PaperProps}
-      scroll={scroll}
-      TransitionComponent={TransitionComponent}
-      TransitionProps={TransitionProps}
-      transitionDuration={transitionDuration}
-      dialogInitValue = { coreDialogInitValue }
-      DialogContext = { CoreDialogContext }
-    >
-      {children}
-    </NativeDialog>
+    <NativeDialog 
+      {...props}
+      dialogInitValue={coreDialogInitValue}
+      DialogContext={CoreDialogContext}
+    />
   );
 }
 
