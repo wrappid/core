@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.514](https://github.com/wrappid/core/compare/v0.0.513...v0.0.514) (2024-08-21)
+
+
+### Features
+
+* **core:** :zap: new utility function and component added ([75e700c](https://github.com/wrappid/core/commit/75e700c387981774ee1244c9761d114ee878b6b9)), closes [#306](https://github.com/wrappid/core/issues/306)
+
 ### [0.0.513](https://github.com/wrappid/core/compare/v0.0.512...v0.0.513) (2024-08-21)
 
 
