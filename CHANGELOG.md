@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.516](https://github.com/wrappid/core/compare/v0.0.515...v0.0.516) (2024-08-22)
+
+
+### Features
+
+* **global:** :sparkles: structure change in CoreBadge ([16f5285](https://github.com/wrappid/core/commit/16f52857b7ba2f1a014f6a941f589b9d98d0c8d2)), closes [#311](https://github.com/wrappid/core/issues/311)
+
 ### [0.0.515](https://github.com/wrappid/core/compare/v0.0.514...v0.0.515) (2024-08-21)
 
 ### [0.0.514](https://github.com/wrappid/core/compare/v0.0.513...v0.0.514) (2024-08-21)
