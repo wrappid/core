@@ -13,30 +13,30 @@ export default function StatusText(props) {
     <CoreTypographyCaption
       {...props}
       styleClasses={[getStatusTextColorClass(props?.status || ""), CoreClasses.TEXT.TEXT_WEIGHT_BOLD, CoreClasses.TEXT.TEXT_UPPERCASE]}>
-      {props?.status || "UNKNOWN"}
+      {props?.status || "unknown"}
     </CoreTypographyCaption>
   );
 }
 
 StatusText.validProps = [
   {
-    name: "status",
+    name : "status",
     types: [
       {
-        default: "UNKNOWN",
-        type: "string",
+        default    : "unknown",
+        type       : "string",
         validValues: [
-          "ACTIVE",
-          "DRAFT",
-          "NEW",
-          "APPROVED",
-          "PUBLISHED",
-          "INACTIVE",
-          "CHANGE_REQUESTED",
-          "REVIEW_REQUESTED",
-          "DELETED",
-          "REJECTED",
-          "UNKNOWN"
+          "active",
+          "draft",
+          "new",
+          "approved",
+          "published",
+          "inactive",
+          "change_requested",
+          "review_requested",
+          "deleted",
+          "rejected",
+          "unknown"
         ]
       }
     ],
