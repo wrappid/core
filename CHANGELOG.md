@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.520](https://github.com/wrappid/core/compare/v0.0.519...v0.0.520) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props CoreInput ([25ba406](https://github.com/wrappid/core/commit/25ba4064dcf9cda755e4c4f045b3f12b223a3f5d)), closes [#318](https://github.com/wrappid/core/issues/318)
+
 ### [0.0.519](https://github.com/wrappid/core/compare/v0.0.518...v0.0.519) (2024-08-24)
 
 
