@@ -3,38 +3,123 @@ import React, { useEffect, useState } from "react";
 
 import CoreTypographyBody2 from "./CoreTypographyBody2";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreTextButton from "../inputs/CoreTextButton";
 import CoreBox from "../layouts/CoreBox";
 
-export default function CoreTimer({ seconds, action, actionLabel, timerLabel }) {
-  /***
-     * Component should extend for hour and minutes
-     */
+function defaultAction() {
+  // eslint-disable-next-line no-console
+  console.warn("Action is missing");
+}
+
+/**
+ * CoreTimer component is used to show the timer
+ * @param {*} props 
+ * @returns 
+ */
+export default function CoreTimer(props) {
+  props = sanitizeComponentProps(CoreTimer, props);
+  const {
+    seconds,
+    action,
+    actionLabel,
+    timerLabel,
+    startOnButtonPress,
+  } = props;
+
+  /**
+    * Component should extend for hour and minutes
+    */
   const [timer, setTimer] = useState(seconds);
+  const [isTimerRunning, setIsTimerRunning] = useState(!startOnButtonPress);
 
   useEffect(() => {
-    if(timer > 0){
-      //Implementing the setInterval method
+    if (isTimerRunning && timer > 0) {
       const interval = setInterval(() => {
-        setTimer(timer - 1);
+        setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
-      
-      //Clearing the interval
+
       return () => clearInterval(interval);
     }
-  }, [timer]);
+  }, [isTimerRunning, timer]);
+
+  const handleStart = () => {
+    setIsTimerRunning(true);
+  };
 
   return (
-    timer === 0 ?
-      <CoreBox
-        styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1]}>
-        <CoreTextButton onClick={action} label={actionLabel} />
-      </CoreBox>
-      :
-      <CoreTypographyBody2 
-        styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1, CoreClasses.COLOR.TEXT_PRIMARY]}
-      >
-        {timerLabel ? timerLabel + "00:" + timer.toString().padStart(2, "0") : "00:" + timer.toString().padStart(2, "0")}
-      </CoreTypographyBody2>
+    <CoreBox styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1]}>
+      {!isTimerRunning && startOnButtonPress ? (
+        <CoreTextButton
+          onClick={handleStart}
+          label={actionLabel || "Start Timer"}
+        />
+      ) : timer === 0 ? (
+        <CoreTextButton onClick={action || defaultAction} label={actionLabel} />
+      ) : (
+        <CoreTypographyBody2
+          styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1, CoreClasses.COLOR.TEXT_PRIMARY]}
+        >
+          {timerLabel ? timerLabel + " 00:" + timer.toString().padStart(2, "0") : "00:" + timer.toString().padStart(2, "0")}
+        </CoreTypographyBody2>
+      )}
+    </CoreBox>
   );
 }
+
+CoreTimer.validProps = [
+  ...CoreBox.validProps,
+  ...CoreTypographyBody2.validProps,
+  {
+    description: "The number of seconds for the timer",
+    name       : "seconds",
+    types      : [
+      {
+        default: 0,
+        type   : "number",
+      }
+    ],
+  },
+  {
+    description: "The function to call on click of the button after the timer is complete",
+    name       : "action",
+    types      : [
+      {
+        default: null,
+        type   : "function",
+      }
+    ],
+  },
+  {
+    description: "The label for the button",
+    name       : "actionLabel",
+    types      : [
+      {
+        default: "",
+        type   : "string",
+      }
+    ],
+  },
+  {
+    description: "The label for the timer",
+    name       : "timerLabel",
+    types      : [
+      {
+        default: "",
+        type   : "string",
+      }
+    ],
+  },
+  {
+    description: "The timer will start when the button is pressed",
+    name       : "startOnButtonPress",
+    types      : [
+      {
+        default: false,
+        type   : "boolean",
+      }
+    ],
+  },
+];
+
+CoreTimer.invalidProps = [];
