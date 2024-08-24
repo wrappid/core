@@ -24,7 +24,7 @@ CoreCheckbox.validProps = [
   {
     description: "The icon to display when the component is checked.",
     name       : "checkedIcon",
-    types      : [{ default: <CoreIcon>check_box</CoreIcon>, type: "object" }],
+    types      : [{ default: <CoreIcon>check_box</CoreIcon>, type: "node" }],
   },
   
   {
@@ -66,7 +66,7 @@ CoreCheckbox.validProps = [
   {
     description: "The icon to display when the component is unchecked.",
     name       : "icon",
-    types      : [{ default: <CoreIcon>check_box_outline_blank</CoreIcon>, type: "object" }],
+    types      : [{ default: <CoreIcon>check_box_outline_blank</CoreIcon>, type: "node" }],
   },
   {
     description: "The id of the input element.",
@@ -93,7 +93,7 @@ CoreCheckbox.validProps = [
   {
     description: "The icon to display when the component is indeterminate.",
     name       : "indeterminateIcon",
-    types      : [{ default: <CoreIcon>indeterminate_check_box</CoreIcon>, type: "object" }],
+    types      : [{ default: <CoreIcon>indeterminate_check_box</CoreIcon>, type: "node" }],
   },
   {
     description: "Attributes applied to the input element.",
@@ -120,7 +120,13 @@ CoreCheckbox.validProps = [
     description:
       "The size of the component. small is equivalent to the dense checkbox styling.",
     name : "size",
-    types: [{ default: "medium'", type: "medium'| 'small'| string" }],
+    types: [
+      {
+        default    : "medium",
+        type       : "string",
+        validValues: ["medium", "small"],
+      },
+    ]
   },
   {
     description: "The value of the component. The DOM API casts this to a string. The browser uses \"on\" as the default value.",
