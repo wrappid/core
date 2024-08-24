@@ -95,7 +95,7 @@ CoreTimer.validProps = [
     name       : "actionLabel",
     types      : [
       {
-        default: "ACTION LABEL MISSING",
+        default: "",
         type   : "string",
       }
     ],
