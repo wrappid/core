@@ -8,17 +8,19 @@ import { getStatusTextColorClass } from "../../utils/tableUtils";
 
 export default function StatusText(props) {
   props = sanitizeComponentProps(StatusText, props);
+  const { status } = props;
 
   return (
     <CoreTypographyCaption
       {...props}
-      styleClasses={[getStatusTextColorClass(props?.status || ""), CoreClasses.TEXT.TEXT_WEIGHT_BOLD, CoreClasses.TEXT.TEXT_UPPERCASE]}>
-      {props?.status || "unknown"}
+      styleClasses={[getStatusTextColorClass(status || ""), CoreClasses.TEXT.TEXT_WEIGHT_BOLD, CoreClasses.TEXT.TEXT_UPPERCASE]}>
+      {status || "unknown"}
     </CoreTypographyCaption>
   );
 }
 
 StatusText.validProps = [
+  ...CoreTypographyCaption.validProps,
   {
     name : "status",
     types: [
