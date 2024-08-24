@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.517](https://github.com/wrappid/core/compare/v0.0.516...v0.0.517) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: add valid props for StatusText ([1ba18e6](https://github.com/wrappid/core/commit/1ba18e692cf8b6bc443f7da6a28dc368beae7ae2)), closes [#313](https://github.com/wrappid/core/issues/313)
+* **core:** :bug: fix StatusText ([2d75a2b](https://github.com/wrappid/core/commit/2d75a2bdb9966df582aeb0f94062be29e0c73093)), closes [#313](https://github.com/wrappid/core/issues/313)
+
 ### [0.0.516](https://github.com/wrappid/core/compare/v0.0.515...v0.0.516) (2024-08-22)
 
 
