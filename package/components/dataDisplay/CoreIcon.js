@@ -32,10 +32,7 @@ export default function CoreIcon(props) {
 
   const {
     baseClassName,
-    children,
-    color,
-    component,
-    fontSize
+    children
   } = props;
 
   return (
@@ -43,9 +40,6 @@ export default function CoreIcon(props) {
       type={tmpType}
       name={tmpIcon}
       baseClassName={baseClassName}
-      color={color}
-      component={component}
-      fontSize={fontSize}
       childrenFlag={
         tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
