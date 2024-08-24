@@ -25,15 +25,12 @@ export const __IconTypes = {
  */
 export default function CoreIcon(props) {
   props = sanitizeComponentProps(CoreIcon, props);
-  const { type, icon, options, sx, ...restProps } = props;
+  const {
+    baseClassName, type, icon, options, sx, ...restProps 
+  } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
   let tmpIcon = props.children || icon || options?.icon || "";
-
-  const {
-    baseClassName,
-    children
-  } = props;
 
   return (
     <NativeIcon
@@ -47,9 +44,7 @@ export default function CoreIcon(props) {
       }
       sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
       {...restProps}
-    >
-      {children}
-    </NativeIcon>
+    />
   );
 
   // return (
