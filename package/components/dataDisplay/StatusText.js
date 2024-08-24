@@ -3,16 +3,46 @@ import React from "react";
 
 import CoreTypographyCaption from "./CoreTypographyCaption";
 import CoreClasses from "../../styles/CoreClasses";
+import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { getStatusTextColorClass } from "../../utils/tableUtils";
 
 export default function StatusText(props) {
-  const { status, gridProps } = props;
+  props = sanitizeComponentProps(StatusText, props);
+  const { status } = props;
 
   return (
     <CoreTypographyCaption
-      gridProps={gridProps}
+      {...props}
       styleClasses={[getStatusTextColorClass(status || ""), CoreClasses.TEXT.TEXT_WEIGHT_BOLD, CoreClasses.TEXT.TEXT_UPPERCASE]}>
-      {status || "UNKNOWN"}
+      {status || "unknown"}
     </CoreTypographyCaption>
   );
 }
+
+StatusText.validProps = [
+  ...CoreTypographyCaption.validProps,
+  {
+    name : "status",
+    types: [
+      {
+        default    : "unknown",
+        type       : "string",
+        validValues: [
+          "active",
+          "draft",
+          "new",
+          "approved",
+          "published",
+          "inactive",
+          "change_requested",
+          "review_requested",
+          "deleted",
+          "rejected",
+          "unknown"
+        ]
+      }
+    ],
+  },
+];
+
+StatusText.invalidProps = [];
