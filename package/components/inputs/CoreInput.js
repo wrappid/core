@@ -203,6 +203,10 @@ CoreInput.validProps = [
   {
     name : "label",
     types: [{ types: "string" }]
+  },
+  {
+    name : "formik",
+    types: [{ types: "object" }]
   }
 ];
 CoreInput.invalidProps = [];

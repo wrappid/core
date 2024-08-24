@@ -10,3 +10,5 @@ export default function CoreLayoutPlaceholder(props) {
 
   return children;
 }
+
+CoreLayoutPlaceholder.wrappidType = "CoreLayoutPlaceholder";
