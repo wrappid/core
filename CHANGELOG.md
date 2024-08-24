@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.523](https://github.com/wrappid/core/compare/v0.0.522...v0.0.523) (2024-08-24)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix validProps of oreCheckbox ([c4ecaad](https://github.com/wrappid/core/commit/c4ecaad08999ce40047b3560abd80224bb86d835)), closes [#323](https://github.com/wrappid/core/issues/323)
+
 ### [0.0.522](https://github.com/wrappid/core/compare/v0.0.521...v0.0.522) (2024-08-24)
 
 
