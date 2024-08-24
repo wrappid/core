@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.524](https://github.com/wrappid/core/compare/v0.0.523...v0.0.524) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :wastebasket: remove unnecessary desturctring ([ae9a284](https://github.com/wrappid/core/commit/ae9a284136b79d217f96797393e4d0109ce213a5)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :bug: remove those from props destructuring ([06eeb5f](https://github.com/wrappid/core/commit/06eeb5fcfa96e7c222aaf8f2c3925e7b09f6a8a4)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :fire: remove unnecessary code ([5dcf053](https://github.com/wrappid/core/commit/5dcf053cf40b371d704ca54258e112891a2aa570)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :sparkles: in CoreIcon restProps sent to NativeIcon ([676fd30](https://github.com/wrappid/core/commit/676fd309d359885475d4062ea58d411e1272c136)), closes [#325](https://github.com/wrappid/core/issues/325)
+
 ### [0.0.523](https://github.com/wrappid/core/compare/v0.0.522...v0.0.523) (2024-08-24)
 
 
