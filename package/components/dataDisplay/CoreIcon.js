@@ -25,7 +25,6 @@ export const __IconTypes = {
  */
 export default function CoreIcon(props) {
   props = sanitizeComponentProps(CoreIcon, props);
-  // eslint-disable-next-line no-unused-vars
   const { type, icon, options, sx, ...restProps } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
@@ -36,9 +35,7 @@ export default function CoreIcon(props) {
     children,
     color,
     component,
-    size,
-    fontSize,
-    styleClasses
+    fontSize
   } = props;
 
   return (
@@ -49,14 +46,13 @@ export default function CoreIcon(props) {
       color={color}
       component={component}
       fontSize={fontSize}
-      size={size}
-      styleClasses={styleClasses}
       childrenFlag={
         tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
           : false
       }
       sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
+      {...restProps}
     >
       {children}
     </NativeIcon>
@@ -149,17 +145,6 @@ CoreIcon.validProps = [
         default    : "medium",
         type       : "string",
         validValues: ["inherit", "large", "medium", "small"],
-      },
-    ],
-  },
-  {
-    description:
-      "styleclass object",
-    name : "stylelasses",
-    types: [
-      {
-        default: [],
-        type   : "array",
       },
     ],
   },
