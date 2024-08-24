@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.522](https://github.com/wrappid/core/compare/v0.0.521...v0.0.522) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: apk build related issue ([b28eedb](https://github.com/wrappid/core/commit/b28eedbfeb776d14e5eb29af77d1f5cd33d7c59e)), closes [#211](https://github.com/wrappid/core/issues/211)
+
 ### [0.0.521](https://github.com/wrappid/core/compare/v0.0.520...v0.0.521) (2024-08-24)
 
 
