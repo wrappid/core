@@ -59,7 +59,8 @@ export default function CoreDataTableRow(props) {
     // _rowHoverIndex,
     page,
     setPage,
-    mobileHeight
+    mobileHeight,
+    loading
   } = props;
 
   const renderItem = (rowData, rowIndex) => {
@@ -240,9 +241,9 @@ export default function CoreDataTableRow(props) {
             }
           >
             <CoreBox
-              styleClasses={[UtilityClasses.PADDING.P5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+              styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses.PADDING.P5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
             >
-              <CoreTypographyBody1>Please select a column</CoreTypographyBody1>
+              <CoreTypographyBody1>{loading ? "Loading..." : "Please select a column"}</CoreTypographyBody1>
             </CoreBox>
           </CoreTableCell>
         </CoreTableRow>

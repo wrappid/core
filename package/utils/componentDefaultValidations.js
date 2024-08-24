@@ -80,7 +80,7 @@ export const defaultValidations = {
     notRequired: yup.lazy((value) => {
       switch (typeof value) {
         case "object":
-          return yup.object().notRequired().nullable(); // schema for object
+          return yup.mixed().notRequired().nullable(); // schema for object
 
         case "string":
           return yup.string().url().notRequired()
@@ -93,7 +93,7 @@ export const defaultValidations = {
     required: yup.lazy((value) => {
       switch (typeof value) {
         case "object":
-          return yup.object().required(); // schema for object
+          return yup.mixed().required(); // schema for object
 
         case "string":
           return yup.string().url().required(); // schema for string

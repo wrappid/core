@@ -5,7 +5,7 @@ import CoreDataTableRow from "./CoreDataTableRow";
 import CoreTableBody from "../CoreTableBody";
 
 export default function CoreDataTableBody(props) {
-  const { tableActions } = props;
+  const { tableActions, loading } = props;
   // popover action on hover
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [_rowHoverIndex, set_rowHoverIndex] = React.useState(null);
@@ -31,6 +31,7 @@ export default function CoreDataTableBody(props) {
         handlePopoverOpen={handlePopoverOpen}
         anchorEl={anchorEl}
         _rowHoverIndex={_rowHoverIndex}
+        loading={loading}
       />
     </CoreTableBody>
   );

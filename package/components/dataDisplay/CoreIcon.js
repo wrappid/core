@@ -36,7 +36,9 @@ export default function CoreIcon(props) {
     children,
     color,
     component,
-    fontSize
+    size,
+    fontSize,
+    styleClasses
   } = props;
 
   return (
@@ -47,6 +49,8 @@ export default function CoreIcon(props) {
       color={color}
       component={component}
       fontSize={fontSize}
+      size={size}
+      styleClasses={styleClasses}
       childrenFlag={
         tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
@@ -145,6 +149,17 @@ CoreIcon.validProps = [
         default    : "medium",
         type       : "string",
         validValues: ["inherit", "large", "medium", "small"],
+      },
+    ],
+  },
+  {
+    description:
+      "styleclass object",
+    name : "stylelasses",
+    types: [
+      {
+        default: [],
+        type   : "array",
       },
     ],
   },

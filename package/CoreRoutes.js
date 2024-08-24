@@ -3,17 +3,12 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { useSelector } from "react-redux";
 
-import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
-import Logout from "./components/navigation/Logout";
-import PageLoader from "./components/PageLoader";
 import { CoreRoutesContext } from "./config/contextHandler";
-import Error404 from "./error/Error404";
-import Error500 from "./error/Error500";
 import { CoreDomRoute, CoreDomRoutes } from "./helper/routerHelper";
 import PageContainer from "./layout/PageContainer";
 
 const DEFAULT_ROUTE = {
-  Page        : { appComponent: PageLoader.name, layout: CenteredBlankLayout.name },
+  Page        : { appComponent: "PageLoader", layout: "CenteredBlankLayout" },
   authRequired: false,
   entityRef   : "defaultAppRoute",
   url         : "defaultAppRoute"
@@ -74,7 +69,7 @@ export default function CoreRoutes() {
         path="/logout"
         element={
           <PageContainer
-            route={{ Page: { appComponent: Logout.name, layout: CenteredBlankLayout.name }, authRequired: true }}
+            route={{ Page: { appComponent: "Logout", layout: "CenteredBlankLayout" }, authRequired: true }}
           />
         }
       />
@@ -85,7 +80,7 @@ export default function CoreRoutes() {
         path="/error"
         element={
           <PageContainer
-            route={{ Page: { appComponent: Error500.name, layout: CenteredBlankLayout.name } }}
+            route={{ Page: { appComponent: "Error500", layout: "CenteredBlankLayout" } }}
           />
         }
       />
@@ -96,7 +91,7 @@ export default function CoreRoutes() {
         path="*"
         element={
           <PageContainer
-            route={{ Page: { appComponent: Error404.name, layout: CenteredBlankLayout.name } }}
+            route={{ Page: { appComponent: "Error404", layout: "CenteredBlankLayout" } }}
           />
         }
       />

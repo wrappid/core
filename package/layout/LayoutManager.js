@@ -11,12 +11,10 @@ import BlankLayout from "../components/layouts/_system/BlankLayout";
 import { ComponentRegistryContext } from "../config/contextHandler";
 import ComponentNotFound from "../error/ComponentNotFound";
 import CoreClasses from "../styles/CoreClasses";
-import CoreLayoutItem from "./CoreLayoutItem";
-import CoreLayoutPlaceholder from "./CoreLayoutPlaceholder";
 
 export const COMPONENT_TYPES = {
-  CORE_LAYOUT_ITEM       : CoreLayoutItem.name,
-  CORE_LAYOUT_PLACEHOLDER: CoreLayoutPlaceholder.name,
+  CORE_LAYOUT_ITEM       : "CoreLayoutItem",
+  CORE_LAYOUT_PLACEHOLDER: "CoreLayoutPlaceholder",
   REACT_FORWARD_REF      : React.forwardRef.$$typeof,
   REACT_FRAGMENT         : React.Fragment.$$typeof
 };
@@ -56,7 +54,8 @@ export default function LayoutManager(props) {
 
     if (pageChildren && pageChildren.length > 0) {
       // filter layout items from all child elements
-      let tempLayoutItems = pageChildren?.filter(elem => elem?.type?.name === CoreLayoutItem.name);
+      let tempLayoutItems = pageChildren?.filter(elem => elem?.type?.name === "CoreLayoutItem"
+                                                || elem?.type?.wrappidType === "CoreLayoutItem");
 
       // tempLayoutItems exists and length is > 0
       if (tempLayoutItems && tempLayoutItems?.length > 0) {
@@ -71,7 +70,8 @@ export default function LayoutManager(props) {
             compChildren = [compChildren];
           }
 
-          let compChildrenLI = compChildren?.filter(eachItem => eachItem?.type?.name !== CoreLayoutItem.name);
+          let compChildrenLI = compChildren?.filter(eachItem => eachItem?.type?.name !== "CoreLayoutItem" 
+                                                    && eachItem?.type?.wrappidType !== "CoreLayoutItem");
 
           console.log("---------------------------------------------------");
           console.log("compChildren");
@@ -86,7 +86,7 @@ export default function LayoutManager(props) {
           };
 
           // if layout item exist inside the another layout item
-          if (compChildren?.filter(elem => elem?.type?.name === CoreLayoutItem.name).length > 0) {
+          if (compChildren?.filter(elem => (elem?.type?.name === "CoreLayoutItem" || elem?.type?.wrappidType === "CoreLayoutItem")).length > 0) {
             prepareLayoutItems(eachLayoutItem);
           }
         });
@@ -115,7 +115,8 @@ export default function LayoutManager(props) {
   const getComponentType = (component) => {
     let componentType = null;
 
-    componentType = component?.type?.name
+    componentType = component?.type?.wrappidType
+      || component?.type?.name
       || component?.type?.displayName
       || component?.type?.toString()
       || typeof component;
@@ -138,7 +139,7 @@ export default function LayoutManager(props) {
 
     if (typeof children === "object"
       && !Array.isArray(children)
-      && getComponentType(children) === CoreLayoutPlaceholder.name) {
+      && getComponentType(children) === "CoreLayoutPlaceholder") {
       hasPlaceholder = true;
     } else if (typeof children === "object"
       && Array.isArray(children)) {
@@ -157,7 +158,7 @@ export default function LayoutManager(props) {
           childChildren = [childChildren];
         }
         
-        if (getComponentType(child) === CoreLayoutPlaceholder.name) {
+        if (getComponentType(child) === "CoreLayoutPlaceholder") {
           return true;
         } else {
           if (childChildren) {
@@ -322,6 +323,7 @@ export default function LayoutManager(props) {
       && Object.keys(componentRegistry).includes(layoutName)
       && componentRegistry[layoutName]?.layout === true
       && componentRegistry[layoutName]?.comp
+      && React.isValidElement( componentRegistry[layoutName]?.comp())
       /* check if it is a react layout element */
     ) {
       devData.layoutFound = true;
@@ -330,11 +332,11 @@ export default function LayoutManager(props) {
     } else {
       devData.layoutFound = false;
       devData.layout = layoutName || "Not Provided";
-      devData.renderedLayout = BlankLayout.name;
+      devData.renderedLayout = "BlankLayout";
     }
 
     if (!devData.layoutFound) {
-      return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
+      return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.layout, layout: true }));
     }
     /* mount root layout */
     let LayoutComponent = componentRegistry[devData?.renderedLayout]?.comp();
@@ -343,6 +345,7 @@ export default function LayoutManager(props) {
       if (pageName
         && Object.keys(componentRegistry).includes(pageName)
         && componentRegistry[pageName]?.comp
+        && React.isValidElement( componentRegistry[pageName]?.comp())
         /* check if it is a react element */
       ) {
         devData.pageFound = true;
@@ -351,11 +354,11 @@ export default function LayoutManager(props) {
       } else {
         devData.pageFound = false;
         devData.page = pageName || "Not Provided";
-        devData.renderedpage = ComponentNotFound.name;
+        devData.renderedPage = "ComponentNotFound";
       }
   
       if (!devData.pageFound) {
-        return React.createElement(BlankLayout(), {}, ComponentNotFound({ componentName: devData.page, layout: false }));
+        return React.createElement(BlankLayout, {}, ComponentNotFound({ componentName: devData.page, layout: false }));
       }
 
       /* mount root layout and page */
