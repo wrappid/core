@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.521](https://github.com/wrappid/core/compare/v0.0.520...v0.0.521) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props ([79024d0](https://github.com/wrappid/core/commit/79024d0951d35f3af9430d5baab1f419347ea01a)), closes [#321](https://github.com/wrappid/core/issues/321)
+
+### [0.0.520](https://github.com/wrappid/core/compare/v0.0.519...v0.0.520) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props CoreInput ([25ba406](https://github.com/wrappid/core/commit/25ba4064dcf9cda755e4c4f045b3f12b223a3f5d)), closes [#318](https://github.com/wrappid/core/issues/318)
+
+### [0.0.519](https://github.com/wrappid/core/compare/v0.0.518...v0.0.519) (2024-08-24)
+
+
+### Bug Fixes
+
+* **utils:** :bug: add valid props and error handling ([ff649af](https://github.com/wrappid/core/commit/ff649afa7f39a118209b15c2472bbb15aba24685)), closes [#316](https://github.com/wrappid/core/issues/316)
+* **utils:** :bug: remove default actionLabel value ([fc617f0](https://github.com/wrappid/core/commit/fc617f07d8cfeac5df5712d5479c57f17ad6acf0)), closes [#316](https://github.com/wrappid/core/issues/316)
+
 ### [0.0.518](https://github.com/wrappid/core/compare/v0.0.517...v0.0.518) (2024-08-24)
 
 ### [0.0.517](https://github.com/wrappid/core/compare/v0.0.516...v0.0.517) (2024-08-24)

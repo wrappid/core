@@ -9,22 +9,10 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreSkeleton(props) {
   props = sanitizeComponentProps(CoreSkeleton, props);
 
-  const {
-    animation, children, classes, component, height, variant, width 
-  } =
-    props;
-
   return (
     <NativeSkeleton
-      animation={animation}
-      classes={classes}
-      component={component}
-      height={height}
-      variant={variant}
-      width={width}
-    >
-      {children}
-    </NativeSkeleton>
+      {...props}
+    />
   );
 }
 
