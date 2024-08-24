@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.519](https://github.com/wrappid/core/compare/v0.0.518...v0.0.519) (2024-08-24)
+
+
+### Bug Fixes
+
+* **utils:** :bug: add valid props and error handling ([ff649af](https://github.com/wrappid/core/commit/ff649afa7f39a118209b15c2472bbb15aba24685)), closes [#316](https://github.com/wrappid/core/issues/316)
+* **utils:** :bug: remove default actionLabel value ([fc617f0](https://github.com/wrappid/core/commit/fc617f07d8cfeac5df5712d5479c57f17ad6acf0)), closes [#316](https://github.com/wrappid/core/issues/316)
+
 ### [0.0.518](https://github.com/wrappid/core/compare/v0.0.517...v0.0.518) (2024-08-24)
 
 ### [0.0.517](https://github.com/wrappid/core/compare/v0.0.516...v0.0.517) (2024-08-24)
