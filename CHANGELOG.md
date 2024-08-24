@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.521](https://github.com/wrappid/core/compare/v0.0.520...v0.0.521) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props ([79024d0](https://github.com/wrappid/core/commit/79024d0951d35f3af9430d5baab1f419347ea01a)), closes [#321](https://github.com/wrappid/core/issues/321)
+
 ### [0.0.520](https://github.com/wrappid/core/compare/v0.0.519...v0.0.520) (2024-08-24)
 
 
