@@ -112,7 +112,7 @@ CoreListItem.validProps = [
   {
     description: "The element to display at the end of ListItem.",
     name       : "secondaryAction",
-    types      : "node"
+    types      : ["node"]
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones. This prop is an alias for the componentsProps prop, which will be deprecated in the future.",
@@ -121,7 +121,7 @@ CoreListItem.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: "{ root?: elementType }"
+        validValues: ["{ root?: elementType }"]
       }
     ]
   },
@@ -132,7 +132,7 @@ CoreListItem.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: "{ root?: elementType }"
+        validValues: ["{ root?: elementType }"]
 
       }
     ]
