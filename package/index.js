@@ -4,6 +4,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { useNetworkStatus } from "@wrappid/native";
 
+import CoreAwayListner from "./components/CoreAwayListner";
 import CoreComponent from "./components/CoreComponent";
 import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
@@ -29,6 +30,7 @@ import CoreListItem from "./components/dataDisplay/CoreListItem";
 import CoreListItemAvatar from "./components/dataDisplay/CoreListItemAvatar";
 import CoreListItemButton from "./components/dataDisplay/CoreListItemButton";
 import CoreListItemIcon from "./components/dataDisplay/CoreListItemIcon";
+import CoreListItemSecondaryAction from "./components/dataDisplay/CoreListItemSecondaryAction";
 import CoreListItemText from "./components/dataDisplay/CoreListItemText";
 import CoreListSubheader from "./components/dataDisplay/CoreListSubheader";
 import CoreMarkdownViewer from "./components/dataDisplay/CoreMarkdownViewer";
@@ -173,6 +175,7 @@ import CoreFooter from "./components/surfaces/CoreFooter";
 import CorePaper from "./components/surfaces/CorePaper";
 import CoreRightDrawer from "./components/surfaces/CoreRightDrawer";
 import CoreToolbar from "./components/surfaces/CoreToolbar";
+import ClipboardCopyButton from "./components/utils/ClipboardCopyButton";
 import CoreApiVersion from "./components/utils/CoreApiVersion";
 import CoreFade from "./components/utils/CoreFade";
 import CoreLoginDetails from "./components/utils/CoreLoginDetails";
@@ -185,9 +188,9 @@ import { __EntityStatus, coreDialogInitValue, HTTP, urls } from "./config/consta
 import {
   ComponentRegistryContext,
   CoreDialogContext,
+  FunctionsRegistryContext as CoreFunctionsRegistryContext,
   CoreResourceContext, CoreRouteRegistryContext, CoreRoutesContext,
-  IconContext,
-  FunctionsRegistryContext as CoreFunctionsRegistryContext
+  IconContext
 } from "./config/contextHandler";
 import {
   MENU_HEADER_ITEM,
@@ -233,6 +236,7 @@ import XLargeCoreStyles from "./styles/XLargeCoreStyles";
 import XXLargeCoreStyles from "./styles/XXLargeCoreStyles";
 import CoreThemeProvider from "./theme/CoreThemeProvider";
 import ThemeSelector from "./theme/ThemeSelector";
+import { copyToClipboard } from "./utils/appUtils";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
 import { defaultInvalidProps, defaultValidProps } from "./utils/componentUtil";
 import { createApiMeta, getForm, getFormikRequiredMessage } from "./utils/formUtils";
@@ -250,14 +254,14 @@ import {
   detectPlatform,
   WEB_PLATFORM
 } from "./utils/themeUtil";
+
 export {
-  CoreFunctionsRegistryContext,
-  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ComplexLayout, ComponentNotFound, ComponentRegistryContext, CORE_DIALOG_TYPES, CoreAccordion,
+  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ClipboardCopyButton, ComplexLayout, ComponentNotFound, ComponentRegistryContext, copyToClipboard, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
   CoreAlertTitle, CoreApiVersion, CoreApp, CoreAppBar, CoreAsyncSelect,
   CoreAutocomplete, CoreAvatar,
-  CoreAvatarGroup, CoreBackdrop, CoreBadge,
+  CoreAvatarGroup, CoreAwayListner, CoreBackdrop, CoreBadge,
   // CoreAppDiv,
   CoreBox, CoreButton, CoreCard,
   CoreCardActionArea,
@@ -278,7 +282,7 @@ export {
   CoreDomRoutes, CoreDrawer, CoreEmailLink,
   CoreEmailOrPhoneLink, CoreFab,
   // CoreNavigation,
-  CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreGoogleButton, CoreGrid, CoreH,
+  CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreFunctionsRegistryContext, CoreGoogleButton, CoreGrid, CoreH,
   CoreH1,
   CoreH2,
   CoreH3,
@@ -294,7 +298,7 @@ export {
   CoreLayoutPlaceholder, CoreLinearProgress, CoreLink,
   // CoreGridItem,
   CoreList,
-  CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon,
+  CoreListItem, CoreListItemAvatar, CoreListItemButton, CoreListItemIcon, CoreListItemSecondaryAction,
   CoreListItemText, CoreListSubheader, CoreLoginDetails, CoreMarkdownViewer, CoreMedicineSelector, CoreMenu, CoreMenuItem,
   CoreMenuList, CoreModal, CoreMultiTimeRangePicker, CoreNetworkStatus, coreOpenUrl, CoreOtpInput,
   CoreOutlinedButton, CorePaper, CorePhone, CorePhoneLink, CorePopover, CoreProfilePopOver, CoreProvider, CoreRating, CoreReactSelectInput, CoreResourceContext, CoreResponsiveButton,

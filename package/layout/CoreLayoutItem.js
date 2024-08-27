@@ -16,3 +16,5 @@ export default function CoreLayoutItem(props) {
     </CoreBox>
   );
 }
+
+CoreLayoutItem.wrappidType = "CoreLayoutItem";

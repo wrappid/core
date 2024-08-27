@@ -2,6 +2,156 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.524](https://github.com/wrappid/core/compare/v0.0.523...v0.0.524) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :wastebasket: remove unnecessary desturctring ([ae9a284](https://github.com/wrappid/core/commit/ae9a284136b79d217f96797393e4d0109ce213a5)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :bug: remove those from props destructuring ([06eeb5f](https://github.com/wrappid/core/commit/06eeb5fcfa96e7c222aaf8f2c3925e7b09f6a8a4)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :fire: remove unnecessary code ([5dcf053](https://github.com/wrappid/core/commit/5dcf053cf40b371d704ca54258e112891a2aa570)), closes [#325](https://github.com/wrappid/core/issues/325)
+* **global:** :sparkles: in CoreIcon restProps sent to NativeIcon ([676fd30](https://github.com/wrappid/core/commit/676fd309d359885475d4062ea58d411e1272c136)), closes [#325](https://github.com/wrappid/core/issues/325)
+
+### [0.0.523](https://github.com/wrappid/core/compare/v0.0.522...v0.0.523) (2024-08-24)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix validProps of oreCheckbox ([c4ecaad](https://github.com/wrappid/core/commit/c4ecaad08999ce40047b3560abd80224bb86d835)), closes [#323](https://github.com/wrappid/core/issues/323)
+
+### [0.0.522](https://github.com/wrappid/core/compare/v0.0.521...v0.0.522) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: apk build related issue ([b28eedb](https://github.com/wrappid/core/commit/b28eedbfeb776d14e5eb29af77d1f5cd33d7c59e)), closes [#211](https://github.com/wrappid/core/issues/211)
+
+### [0.0.521](https://github.com/wrappid/core/compare/v0.0.520...v0.0.521) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props ([79024d0](https://github.com/wrappid/core/commit/79024d0951d35f3af9430d5baab1f419347ea01a)), closes [#321](https://github.com/wrappid/core/issues/321)
+
+### [0.0.520](https://github.com/wrappid/core/compare/v0.0.519...v0.0.520) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: pass all props CoreInput ([25ba406](https://github.com/wrappid/core/commit/25ba4064dcf9cda755e4c4f045b3f12b223a3f5d)), closes [#318](https://github.com/wrappid/core/issues/318)
+
+### [0.0.519](https://github.com/wrappid/core/compare/v0.0.518...v0.0.519) (2024-08-24)
+
+
+### Bug Fixes
+
+* **utils:** :bug: add valid props and error handling ([ff649af](https://github.com/wrappid/core/commit/ff649afa7f39a118209b15c2472bbb15aba24685)), closes [#316](https://github.com/wrappid/core/issues/316)
+* **utils:** :bug: remove default actionLabel value ([fc617f0](https://github.com/wrappid/core/commit/fc617f07d8cfeac5df5712d5479c57f17ad6acf0)), closes [#316](https://github.com/wrappid/core/issues/316)
+
+### [0.0.518](https://github.com/wrappid/core/compare/v0.0.517...v0.0.518) (2024-08-24)
+
+### [0.0.517](https://github.com/wrappid/core/compare/v0.0.516...v0.0.517) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: add valid props for StatusText ([1ba18e6](https://github.com/wrappid/core/commit/1ba18e692cf8b6bc443f7da6a28dc368beae7ae2)), closes [#313](https://github.com/wrappid/core/issues/313)
+* **core:** :bug: fix StatusText ([2d75a2b](https://github.com/wrappid/core/commit/2d75a2bdb9966df582aeb0f94062be29e0c73093)), closes [#313](https://github.com/wrappid/core/issues/313)
+
+### [0.0.516](https://github.com/wrappid/core/compare/v0.0.515...v0.0.516) (2024-08-22)
+
+
+### Features
+
+* **global:** :sparkles: structure change in CoreBadge ([16f5285](https://github.com/wrappid/core/commit/16f52857b7ba2f1a014f6a941f589b9d98d0c8d2)), closes [#311](https://github.com/wrappid/core/issues/311)
+
+### [0.0.515](https://github.com/wrappid/core/compare/v0.0.514...v0.0.515) (2024-08-21)
+
+### [0.0.514](https://github.com/wrappid/core/compare/v0.0.513...v0.0.514) (2024-08-21)
+
+
+### Features
+
+* **core:** :zap: new utility function and component added ([75e700c](https://github.com/wrappid/core/commit/75e700c387981774ee1244c9761d114ee878b6b9)), closes [#306](https://github.com/wrappid/core/issues/306)
+
+### [0.0.513](https://github.com/wrappid/core/compare/v0.0.512...v0.0.513) (2024-08-21)
+
+
+### Bug Fixes
+
+* **core:** :bug: name will be converted to displayName ([66e69d5](https://github.com/wrappid/core/commit/66e69d543d95f89a323d4f8ac18457b150ac96ae)), closes [#305](https://github.com/wrappid/core/issues/305)
+
+### [0.0.512](https://github.com/wrappid/core/compare/v0.0.511...v0.0.512) (2024-08-20)
+
+
+### Features
+
+* **core:** :art: core component name added ([c028a0f](https://github.com/wrappid/core/commit/c028a0ff4dbccf9e9a346c90eb51d420e70a69ae)), closes [#305](https://github.com/wrappid/core/issues/305)
+
+### [0.0.511](https://github.com/wrappid/core/compare/v0.0.510...v0.0.511) (2024-08-20)
+
+
+### Features
+
+* **global:** :sparkles: structure change CoreCircularProgress ([4b92915](https://github.com/wrappid/core/commit/4b929158b9a07e26effb0640e0d9e40c0bfd03ab)), closes [#302](https://github.com/wrappid/core/issues/302)
+* **global:** :sparkles: structure change CoreCircularProgress ([7168154](https://github.com/wrappid/core/commit/71681542505dee7122d28c15b94aec474fc6beb9)), closes [#302](https://github.com/wrappid/core/issues/302)
+
+### [0.0.510](https://github.com/wrappid/core/compare/v0.0.509...v0.0.510) (2024-08-20)
+
+
+### Features
+
+* **core:** :sparkles: structure change CoreTooltip ([82e4ab4](https://github.com/wrappid/core/commit/82e4ab4116c6a72315189b52d44fcf99289fcafe)), closes [#298](https://github.com/wrappid/core/issues/298)
+
+### [0.0.509](https://github.com/wrappid/core/compare/v0.0.508...v0.0.509) (2024-08-20)
+
+
+### Features
+
+* **global:** :sparkles: add CoreAwayListner ([41a25f1](https://github.com/wrappid/core/commit/41a25f1dc3d3d894d5a8cf9385b6b54c00d86a83)), closes [#291](https://github.com/wrappid/core/issues/291)
+
+### [0.0.508](https://github.com/wrappid/core/compare/v0.0.507...v0.0.508) (2024-08-20)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: fix CoreBackdrop valid props ([293c881](https://github.com/wrappid/core/commit/293c8814ba1cf360207072d2ea7a5be281d98aca)), closes [#297](https://github.com/wrappid/core/issues/297)
+
+### [0.0.507](https://github.com/wrappid/core/compare/v0.0.506...v0.0.507) (2024-08-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitemsecondaryaction is implemented ([5642d42](https://github.com/wrappid/core/commit/5642d42631fa55bc42c5c46b56888309a4f0e7ed)), closes [#295](https://github.com/wrappid/core/issues/295)
+
+### [0.0.506](https://github.com/wrappid/core/compare/v0.0.505...v0.0.506) (2024-08-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitemtext validprops is named as invalidprops ([dfc88b3](https://github.com/wrappid/core/commit/dfc88b381a4ff442b11e517ad06d51413ccd3889)), closes [#293](https://github.com/wrappid/core/issues/293)
+
+### [0.0.505](https://github.com/wrappid/core/compare/v0.0.504...v0.0.505) (2024-08-16)
+
+
+### Features
+
+* **core:** :sparkles: alt text CoreImage ([c315f56](https://github.com/wrappid/core/commit/c315f5697d487442b8a30208cae747f9981f13ac)), closes [wrappid/guide-module#186](https://github.com/wrappid/guide-module/issues/186) [#286](https://github.com/wrappid/core/issues/286)
+
+### [0.0.504](https://github.com/wrappid/core/compare/v0.0.503...v0.0.504) (2024-08-16)
+
+
+### Features
+
+* **core:** :sparkles: adding new props and varient ([6cb0a1d](https://github.com/wrappid/core/commit/6cb0a1d79bd42e61798fddb702dc6e758572ef0b)), closes [#284](https://github.com/wrappid/core/issues/284)
+
+### [0.0.503](https://github.com/wrappid/core/compare/v0.0.502...v0.0.503) (2024-08-14)
+
+
+### Features
+
+* **core:** :sparkles: clickable CoreChip on onClick ([8529f30](https://github.com/wrappid/core/commit/8529f307b7fbaa0aab2cfb28ce727c954d0f782a)), closes [#282](https://github.com/wrappid/core/issues/282)
+
 ### [0.0.502](https://github.com/wrappid/core/compare/v0.0.501...v0.0.502) (2024-08-14)
 
 

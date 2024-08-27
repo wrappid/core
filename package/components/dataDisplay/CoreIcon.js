@@ -25,54 +25,25 @@ export const __IconTypes = {
  */
 export default function CoreIcon(props) {
   props = sanitizeComponentProps(CoreIcon, props);
-  // eslint-disable-next-line no-unused-vars
   const { type, icon, options, sx, ...restProps } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
   let tmpIcon = props.children || icon || options?.icon || "";
 
-  const {
-    baseClassName,
-    children,
-    color,
-    component,
-    fontSize
-  } = props;
-
   return (
     <NativeIcon
       type={tmpType}
       name={tmpIcon}
-      baseClassName={baseClassName}
-      color={color}
-      component={component}
-      fontSize={fontSize}
       childrenFlag={
         tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
           ? true
           : false
       }
       sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
-    >
-      {children}
-    </NativeIcon>
+      {...restProps}
+    />
   );
 
-  // return (
-  //   <NativeIcon
-  //     type={tmpType}
-  //     name={tmpIcon}
-  //     size={props.size}
-  //     childrenFlag={
-  //       tmpType === __IconTypes.MATERIAL_ICON || tmpType === __IconTypes.MATERIAL_OUTLINED_ICON
-  //         ? true
-  //         : false
-  //     }
-  //     sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
-  //     styleClasses={props.styleClasses || []}
-  //     {...restProps}
-  //   />
-  // );
 }
 
 CoreIcon.validProps = [

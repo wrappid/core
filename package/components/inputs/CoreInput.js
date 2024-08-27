@@ -12,11 +12,11 @@ import CoreBox from "../layouts/CoreBox";
 
 export default function CoreInput(props) {
   props = sanitizeComponentProps(CoreInput, props);
-  const { error, helperText } = props;
+  const { error, helperText, ...restProps } = props;
 
   return (
     <CoreBox>
-      <NativeInput {...props} />
+      <NativeInput {...restProps} />
 
       {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
 
@@ -203,6 +203,10 @@ CoreInput.validProps = [
   {
     name : "label",
     types: [{ types: "string" }]
+  },
+  {
+    name : "formik",
+    types: [{ types: "object" }]
   }
 ];
 CoreInput.invalidProps = [];
