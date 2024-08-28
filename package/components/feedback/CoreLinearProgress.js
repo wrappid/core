@@ -8,7 +8,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreLinearProgress(props) {
   props = sanitizeComponentProps(CoreLinearProgress, props);
-  const { color, value, valueBuffer, variant } = props;
+  const { color, value, valueBuffer, variant, showPercentage } = props;
 
   return (
     <NativeLinearProgress
@@ -16,6 +16,7 @@ export default function CoreLinearProgress(props) {
       value={value}
       valueBuffer={valueBuffer}
       variant={variant}
+      showPercentage={showPercentage}
     ></NativeLinearProgress>
   );
 }
@@ -53,6 +54,16 @@ CoreLinearProgress.validProps = [
         default    : "indeterminate",
         type       : "string",
         validValues: ["sxbuffer", "determinate", "indeterminate", "query"],
+      },
+    ],
+  },
+  {
+    description: "Determines whether the percentage should be displayed next to the progress bar.",
+    name       : "showPercentage",
+    types      : [
+      {
+        default: false,
+        type   : "boolean",
       },
     ],
   },
