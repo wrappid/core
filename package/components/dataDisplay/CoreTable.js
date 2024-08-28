@@ -23,7 +23,7 @@ export default function CoreTable(props) {
   } = props;
 
   return (
-    <NativeTable 
+    <NativeTable
       component={component}
       padding={padding}
       size={size}
@@ -33,6 +33,8 @@ export default function CoreTable(props) {
     </NativeTable>
   );
 }
+
+CoreTable.displayName = "CoreTable";
 
 CoreTable.validProps = [
   {
