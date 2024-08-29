@@ -16,6 +16,8 @@ export default function CoreChip(props) {
   );
 }
 
+CoreChip.displayName = "CoreChip";
+
 CoreChip.validProps = [
   {
     description: "The Avatar element to display.",
@@ -139,6 +141,28 @@ CoreChip.validProps = [
       },
     ],
   },
+  {
+    description: "The href of the link.",
+    name       : "href",
+    types      : [{ type: "string" }],
+  },
+  {
+    description: "The target of the link.",
+    name       : "target",
+    types      : [
+      {
+        default    : "_self",
+        type       : "string",
+        validValues: [
+          "_blank",
+          "_parent",
+          "_top",
+          "_self",
+          "_unfencedTop"
+        ]
+      }
+    ],
+  }
 ];
 
 CoreChip.invalidProps = [];
