@@ -105,14 +105,9 @@ CoreBackdrop.validProps = [
     ]
   },
   {
-    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object like {appear?: number, enter?: number, exit?: number }.",
     name       : "transitionDuration",
-    types      : [
-      {
-        default: "Fade",
-        type   : "elementType",
-      }
-    ]
+    types      : [{ type: "number" }, { type: "object" }]
   },
 
 ];
