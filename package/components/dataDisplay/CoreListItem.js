@@ -48,9 +48,8 @@ CoreListItem.validProps = [
     name : "components",
     types: [
       {
-        default    : {},
-        type       : "object",
-        validValues: ["{ List?: elementType, Root?: elementType }"],
+        default: {},
+        type   : "object"
       },
     ],
   },
@@ -59,9 +58,8 @@ CoreListItem.validProps = [
     name       : "componentsProps",
     types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: ["{ List?: object }"],
+        default: {},
+        type   : "object"
       }
     ]
   }, 
@@ -119,9 +117,8 @@ CoreListItem.validProps = [
     name       : "slotProps",
     types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: ["{ root?: elementType }"]
+        default: {},
+        type   : "object"
       }
     ]
   },
@@ -130,9 +127,8 @@ CoreListItem.validProps = [
     name       : "slots",
     types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: ["{ root?: elementType }"]
+        default: {},
+        type   : "object"
 
       }
     ]
