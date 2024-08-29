@@ -8,7 +8,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTableContainer(props) {
   props = sanitizeComponentProps(CoreTableContainer, props);
-  return <NativeTableContainer {...props}>{props?.children}</NativeTableContainer>;
+  return <NativeTableContainer {...props} />;
 }
 
 CoreTableContainer.displayName = "CoreTableContainer";

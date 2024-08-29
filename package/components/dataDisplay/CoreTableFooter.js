@@ -8,7 +8,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTableFooter(props) {
   props = sanitizeComponentProps(CoreTableFooter, props);
-  return <NativeTableFooter {...props}>{props?.children}</NativeTableFooter>;
+  return <NativeTableFooter {...props} />;
 }
 CoreTableFooter.displayName = "CoreTableFooter";
 CoreTableFooter.validProps = [

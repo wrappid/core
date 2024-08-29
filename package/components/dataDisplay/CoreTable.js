@@ -4,33 +4,13 @@ import React from "react";
 
 import { NativeTable } from "@wrappid/native";
 
-import { getUUID } from "../../utils/appUtils";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTable(props) {
-  let _uuid = getUUID();
-  // eslint-disable-next-line no-unused-vars
-  let containerId = props?.coreId ? "tc_" + props.coreId : "tc_" + _uuid;
-
   props = sanitizeComponentProps(CoreTable, props);
 
-  const {
-    children,
-    component,
-    padding,
-    size,
-    stickyHeader,
-  } = props;
-
   return (
-    <NativeTable
-      component={component}
-      padding={padding}
-      size={size}
-      stickyHeader={stickyHeader}
-    >
-      {children}
-    </NativeTable>
+    <NativeTable {...props} />
   );
 }
 

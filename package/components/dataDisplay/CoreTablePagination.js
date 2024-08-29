@@ -8,14 +8,21 @@ import CoreTableCell from "./CoreTableCell";
 import { DATA_TABLE_CONST } from "../../config/dataTableConstants";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
+/**
+ * CoreTablePagination is a component that displays pagination controls for a table.
+ * @todo rowsPerPageOptions via wrappid style context.
+ * @param {*} props 
+ * @returns 
+ */
 export default function CoreTablePagination(props) {
   props = sanitizeComponentProps(CoreTablePagination, props);
+  const { rowsPerPageOptions, ...restProps } = props;
+
   return (
     <NativeTablePagination
-      component={"div"}
       labelRowsPerPage="" // make it clean
-      rowsPerPageOptions={DATA_TABLE_CONST.ROWS_PER_PAGE_OPTIONS}
-      {...props}
+      rowsPerPageOptions={rowsPerPageOptions || DATA_TABLE_CONST.ROWS_PER_PAGE_OPTIONS}
+      {...restProps}
     />
   );
 }

@@ -8,7 +8,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreTableBody(props) {
   props = sanitizeComponentProps(CoreTableBody, props);
-  return <NativeTableBody {...props}>{props?.children}</NativeTableBody>;
+  return <NativeTableBody {...props} />;
 }
 
 CoreTableBody.displayName = "CoreTableBody";
