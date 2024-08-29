@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.526](https://github.com/wrappid/core/compare/v0.0.525...v0.0.526) (2024-08-29)
+
+
+### Features
+
+* **global:** :fire: remove export CoreH and CoreTypography ([e67c438](https://github.com/wrappid/core/commit/e67c438eaac1cfab5363c6ba62336d585c764f94)), closes [#337](https://github.com/wrappid/core/issues/337)
+
 ### [0.0.525](https://github.com/wrappid/core/compare/v0.0.524...v0.0.525) (2024-08-29)
 
 
