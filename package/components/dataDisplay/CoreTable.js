@@ -6,6 +6,12 @@ import { NativeTable } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
+/**
+ * CoreTable component is used to display data in a tabular format.
+ * @todo implement React.useID 
+ * @param {*} props 
+ * @returns 
+ */
 export default function CoreTable(props) {
   props = sanitizeComponentProps(CoreTable, props);
 
