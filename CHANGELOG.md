@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.527](https://github.com/wrappid/core/compare/v0.0.526...v0.0.527) (2024-08-29)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix CoreBackDrop validProps ([387e383](https://github.com/wrappid/core/commit/387e3834cecbc52dfcbf7caea0b36c4d7c152864)), closes [#333](https://github.com/wrappid/core/issues/333)
+* **global:** :bug: fix validProps in CoreBackdrop ([d03ebdc](https://github.com/wrappid/core/commit/d03ebdc7450dc3a29f1e648ed93d052b0f575dfd)), closes [#333](https://github.com/wrappid/core/issues/333)
+
+### [0.0.526](https://github.com/wrappid/core/compare/v0.0.525...v0.0.526) (2024-08-29)
+
+
+### Features
+
+* **global:** :fire: remove export CoreH and CoreTypography ([e67c438](https://github.com/wrappid/core/commit/e67c438eaac1cfab5363c6ba62336d585c764f94)), closes [#337](https://github.com/wrappid/core/issues/337)
+
 ### [0.0.525](https://github.com/wrappid/core/compare/v0.0.524...v0.0.525) (2024-08-29)
 
 
