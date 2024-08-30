@@ -14,7 +14,6 @@ import CoreChip from "./components/dataDisplay/CoreChip";
 import CoreDivider from "./components/dataDisplay/CoreDivider";
 import CoreEmailLink from "./components/dataDisplay/CoreEmailLink";
 import CoreEmailOrPhoneLink from "./components/dataDisplay/CoreEmailOrPhoneLink";
-import CoreH from "./components/dataDisplay/CoreH";
 import CoreH1 from "./components/dataDisplay/CoreH1";
 import CoreH2 from "./components/dataDisplay/CoreH2";
 import CoreH3 from "./components/dataDisplay/CoreH3";
@@ -49,7 +48,6 @@ import CoreTableRow from "./components/dataDisplay/CoreTableRow";
 import CoreTableSortLabel from "./components/dataDisplay/CoreTableSortLabel";
 import CoreTimer from "./components/dataDisplay/CoreTimer";
 import CoreTooltip from "./components/dataDisplay/CoreTooltip";
-import CoreTypography from "./components/dataDisplay/CoreTypography";
 import CoreTypographyBody1 from "./components/dataDisplay/CoreTypographyBody1";
 import CoreTypographyBody2 from "./components/dataDisplay/CoreTypographyBody2";
 import CoreTypographyButton from "./components/dataDisplay/CoreTypographyButton";
@@ -282,7 +280,7 @@ export {
   CoreDomRoutes, CoreDrawer, CoreEmailLink,
   CoreEmailOrPhoneLink, CoreFab,
   // CoreNavigation,
-  CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreFunctionsRegistryContext, CoreGoogleButton, CoreGrid, CoreH,
+  CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreFunctionsRegistryContext, CoreGoogleButton, CoreGrid,
   CoreH1,
   CoreH2,
   CoreH3,
@@ -313,7 +311,7 @@ export {
   CoreTableSortLabel, CoreTabPanel,
   CoreTabs, CoreTextarea,
   CoreTextButton,
-  CoreTextField, CoreThemeProvider, CoreTimePicker, CoreTimer, CoreTimeRangePicker, CoreTOC, CoreToolbar, CoreTooltip, CoreTypography, CoreTypographyBody1,
+  CoreTextField, CoreThemeProvider, CoreTimePicker, CoreTimer, CoreTimeRangePicker, CoreTOC, CoreToolbar, CoreTooltip, CoreTypographyBody1,
   CoreTypographyBody2,
   CoreTypographyButton,
   CoreTypographyCaption,
