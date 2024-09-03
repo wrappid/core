@@ -18,7 +18,7 @@ CoreImageBackground.validProps = [
     description:
     "Image source path.",
     name : "source",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description: "Allows to set a reference to the inner Image component",

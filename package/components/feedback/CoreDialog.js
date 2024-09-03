@@ -35,12 +35,12 @@ CoreDialog.validProps = [
   {
     description: "The id(s) of the element(s) that describe the dialog.",
     name       : "aria-describedby",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "The id(s) of the element(s) that label the dialog.",
     name       : "aria-labelledby",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description:
@@ -58,14 +58,7 @@ CoreDialog.validProps = [
   {
     description: "Dialog children, usually the included sub-components.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
-  },
-  {
-    description:
-      "Override or extend the styles applied to the component.\
-    See CSS API below for more details.",
-    name : "classes",
-    types: [{ default: "", type: "object" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "If true, hitting escape will not fire the onClose callback.",
@@ -108,7 +101,7 @@ CoreDialog.validProps = [
       "Callback fired when the backdrop is clicked.\
     Deprecated - Use the onClose prop with the reason argument to handle the backdropClick events.",
     name : "onBackdropClick",
-    types: [{ default: "", type: "function" }],
+    types: [{ type: "function" }],
   },
   {
     description: `Callback fired when the component requests to be closed.

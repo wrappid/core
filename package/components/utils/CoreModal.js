@@ -142,7 +142,7 @@ CoreModal.validProps = [
   {
     description: "A function called when a transition has exited.",
     name       : "onTransitionExited",
-    types      : [{ default: "", type: "function" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "The props used for each slot inside the Modal.",

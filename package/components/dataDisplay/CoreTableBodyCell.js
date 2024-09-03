@@ -12,3 +12,6 @@ export default function CoreTableBodyCell(props) {
     </CoreTableCell>
   );
 }
+
+CoreTableBodyCell.validProps = [...CoreTableCell.validProps];
+CoreTableBodyCell.invalidProps = [];

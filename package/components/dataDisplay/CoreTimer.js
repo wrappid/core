@@ -93,22 +93,12 @@ CoreTimer.validProps = [
   {
     description: "The label for the button",
     name       : "actionLabel",
-    types      : [
-      {
-        default: "",
-        type   : "string",
-      }
-    ],
+    types      : [{ type: "string" }],
   },
   {
     description: "The label for the timer",
     name       : "timerLabel",
-    types      : [
-      {
-        default: "",
-        type   : "string",
-      }
-    ],
+    types      : [{ type: "string" }],
   },
   {
     description: "The timer will start when the button is pressed",

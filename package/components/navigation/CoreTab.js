@@ -25,10 +25,9 @@ CoreTab.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
-    name : "disableRipple",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
+    name       : "disableRipple",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "The icon to display.",
@@ -52,16 +51,14 @@ CoreTab.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "You can provide your own value. Otherwise, we fallback to the child position index.",
-    name : "value",
-    types: [{ default: "", type: "any" }],
+    description: "You can provide your own value. Otherwise, we fallback to the child position index.",
+    name       : "value",
+    types      : [{ type: "any" }],
   },
   {
-    description:
-      "Tab labels appear in a single row. They can use a second line if needed.",
-    name : "wrapped",
-    types: [{ default: false, type: "boolean" }],
+    description: "Tab labels appear in a single row. They can use a second line if needed.",
+    name       : "wrapped",
+    types      : [{ default: false, type: "boolean" }],
   },
 ];
 CoreTab.invalidProps = [];

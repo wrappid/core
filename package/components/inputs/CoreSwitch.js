@@ -15,7 +15,7 @@ CoreSwitch.validProps = [
   {
     description: "If true, the component is checked.",
     name       : "checked",
-    types      : [{ default: "", type: "boolean" }],
+    types      : [{ type: "boolean" }],
   },
   {
     description: "The icon to display when the component is checked.",
@@ -62,7 +62,7 @@ CoreSwitch.validProps = [
     description:
       "If given, uses a negative margin to counteract the padding on one side (this is often helpful for aligning the left or right side of the icon with content above or below, without ruining the border size and shape).",
     name : "edge",
-    types: [{ default: false, type: "'end'| 'start'| false" }],
+    types: [{ default: false, type: "false" }, { type: "string", validValues: ["end", "start"] }],
   },
   {
     description: "The icon to display when the component is unchecked.",
@@ -85,10 +85,9 @@ CoreSwitch.validProps = [
     types      : [{ type: "ref" }],
   },
   {
-    description:
-      "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string). You can pull out the new checked state by accessing event.target.checked (boolean).",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string). You can pull out the new checked state by accessing event.target.checked (boolean).",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, the input element is required.",
@@ -107,5 +106,9 @@ CoreSwitch.validProps = [
     name       : "value",
     types      : [{ type: "any" }],
   },
+  {
+    name : "name",
+    types: [{ type: "string" }]
+  }
 ];
 CoreSwitch.invalidProps = [];

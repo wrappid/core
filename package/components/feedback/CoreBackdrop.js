@@ -38,7 +38,7 @@ CoreBackdrop.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: { Root: "elementType" }
+        validValues: [{ Root: "elementType" }]
       },
       {
         default    : true,
@@ -55,7 +55,7 @@ CoreBackdrop.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: { Root: "object" }
+        validValues: [{ Root: "object" }]
       }
     ]
   },
@@ -78,7 +78,7 @@ CoreBackdrop.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: { root: "object" }
+        validValues: [{ root: "object" }]
       }
     ]
   },
@@ -90,7 +90,7 @@ CoreBackdrop.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: { root: "elementType" }
+        validValues: [{ root: "elementType" }]
       }
     ]
   },

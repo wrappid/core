@@ -66,7 +66,7 @@ CoreCheckbox.validProps = [
   {
     description: "The icon to display when the component is unchecked.",
     name       : "icon",
-    types      : [{ default: <CoreIcon>check_box_outline_blank</CoreIcon>, type: "node" }],
+    types      : [{ default: "<CoreIcon>check_box_outline_blank</CoreIcon>", type: "node" }],
   },
   {
     description: "The id of the input element.",
@@ -93,7 +93,7 @@ CoreCheckbox.validProps = [
   {
     description: "The icon to display when the component is indeterminate.",
     name       : "indeterminateIcon",
-    types      : [{ default: <CoreIcon>indeterminate_check_box</CoreIcon>, type: "node" }],
+    types      : [{ default: "<CoreIcon>indeterminate_check_box</CoreIcon>", type: "node" }],
   },
   {
     description: "Attributes applied to the input element.",
@@ -106,10 +106,9 @@ CoreCheckbox.validProps = [
     types      : [{ type: "ref" }],
   },
   {
-    description:
-      "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, the input element is required.",
@@ -117,10 +116,9 @@ CoreCheckbox.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "The size of the component. small is equivalent to the dense checkbox styling.",
-    name : "size",
-    types: [
+    description: "The size of the component. small is equivalent to the dense checkbox styling.",
+    name       : "size",
+    types      : [
       {
         default    : "medium",
         type       : "string",

@@ -41,26 +41,26 @@ CoreSkeleton.validProps = [
   {
     description: "Optional children to infer width and height from.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description:
       "Override or extend the styles applied to the component.\
     See CSS API below for more details.",
     name : "classes",
-    types: [{ default: "", type: "object" }],
+    types: [{ type: "object" }],
   },
   {
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.",
     name : "component",
-    types: [{ default: "", type: "elementType" }],
+    types: [{ type: "elementType" }],
   },
   {
     description:
       "Height of the skeleton. Useful when you don't want to adapt the skeleton to a text element but for instance a card.",
     name : "height",
-    types: [{ default: "", type: ["number", "string"] }],
+    types: [{ type: ["number", "string"] }],
   },
   {
     description: "The type of content that will be rendered.",

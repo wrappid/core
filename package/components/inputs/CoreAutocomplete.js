@@ -18,17 +18,15 @@ CoreAutocomplete.validProps = [
     types      : [{ type: "array" }],
   },
   {
-    description:
-      "Render the input.Signature:function(params: object) => ReactNode",
-    name    : "renderInput",
-    required: "true",
-    types   : [{ type: "function" }],
+    description: "Render the input.Signature:function(params: object) => ReactNode",
+    name       : "renderInput",
+    required   : "true",
+    types      : [{ type: "function" }],
   },
   {
-    description:
-      "If true, the portion of the selected suggestion that has not been typed by the user, known as the completion string, appears inline after the input cursor in the textbox. The inline completion string is visually highlighted and has a selected state.",
-    name : "autoComplete",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the portion of the selected suggestion that has not been typed by the user, known as the completion string, appears inline after the input cursor in the textbox. The inline completion string is visually highlighted and has a selected state.",
+    name       : "autoComplete",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "If true, the first option is automatically highlighted.",
@@ -36,16 +34,14 @@ CoreAutocomplete.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If true, the selected option becomes the value of the input when the Autocomplete loses focus unless the user chooses a different option or changes the character string in the input.When using freeSolo mode, the typed value will be the input value if the Autocomplete loses focus without highlighting an option.",
-    name : "autoSelect",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the selected option becomes the value of the input when the Autocomplete loses focus unless the user chooses a different option or changes the character string in the input.When using freeSolo mode, the typed value will be the input value if the Autocomplete loses focus without highlighting an option.",
+    name       : "autoSelect",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "Control if the input should be blurred when an option is selected:false the input is not blurred.true the input is always blurred.touch the input is blurred after a touch event.mouse the input is blurred after a mouse event.",
-    name : "blurOnSelect",
-    types: [{ default: false, type: "'mouse'| 'touch'| boolean " }],
+    description: "Control if the input should be blurred when an option is selected:false the input is not blurred.true the input is always blurred.touch the input is blurred after a touch event.mouse the input is blurred after a mouse event.",
+    name       : "blurOnSelect",
+    types      : [{ default: false, type: "'mouse'| 'touch'| boolean " }],
   },
   {
     description: "Props applied to the Chip element.",
@@ -55,13 +51,13 @@ CoreAutocomplete.validProps = [
   {
     description: "The icon to display in place of the default clear icon.",
     name       : "clearIcon",
-    types      : [{ default: "<ClearIcon fontSize=\"small\" />\",type:\"node\"", type: "node" }],
+    types      : [{ default: "<ClearIcon fontSize=\"small\" />\"", type: "node" }],
   },
   {
     description:
       "If true, the input's text is cleared on blur if no value is selected.Set to true if you want to help the user enter a new value. Set to false if you want to help the user resume their search.",
     name : "clearOnBlur",
-    types: [{ default: "!props.freeSolo", type: "boolean" }],
+    types: [{ type: "boolean" }],
   },
   {
     description:
@@ -82,12 +78,12 @@ CoreAutocomplete.validProps = [
     types: [{ default: "Close", type: "string" }],
   },
   {
-    description: "The props used for each slot inside.",
+    description: "The props used for each slot inside.Example: {clearIndicator?: object, paper?: object, popper?: object, popupIndicator?: object }",
     name       : "componentsProps",
     types      : [
       {
         default: {},
-        type   : "{ clearIndicator?: object, paper?: object, popper?: object, popupIndicator?: object }",
+        type   : "object",
       },
     ],
   },
@@ -141,7 +137,7 @@ CoreAutocomplete.validProps = [
   {
     description: "Force the visibility display of the popup icon.",
     name       : "forcePopupIcon",
-    types      : [{ default: "auto'", type: "auto'| boolean" }],
+    types      : [{ type: "boolean" }],
   },
   {
     description:
@@ -210,12 +206,12 @@ CoreAutocomplete.validProps = [
     description:
       "The maximum number of tags that will be visible when not focused. Set -1 to disable the limit.",
     name : "limitTags",
-    types: [{ default: "-1", type: "integer" }],
+    types: [{ default: -1, type: "number" }],
   },
   {
     description: "The component used to render the listbox.",
     name       : "ListboxComponent",
-    types      : [{ default: "ul'", type: "elementType" }],
+    types      : [{ default: "ul", type: "elementType" }],
   },
   {
     description: "Props applied to the Listbox element.",
@@ -223,16 +219,15 @@ CoreAutocomplete.validProps = [
     types      : [{ type: "object" }],
   },
   {
-    description:
-      "If true, the component is in a loading state. This shows the loadingText in place of suggestions (only if there are no suggestions to show, e.g. options are empty).",
-    name : "loading",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the component is in a loading state. This shows the loadingText in place of suggestions (only if there are no suggestions to show, e.g. options are empty).",
+    name       : "loading",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description:
       "Text to display when in a loading state.For localization purposes, you can use the provided translations.",
     name : "loadingText",
-    types: [{ default: "Loading…'", type: "node" }],
+    types: [{ default: "Loading…", type: "node" }],
   },
   {
     description:
@@ -244,7 +239,7 @@ CoreAutocomplete.validProps = [
     description:
       "Text to display when there are no options.For localization purposes, you can use the provided translations.",
     name : "noOptionsText",
-    types: [{ default: "No options'", type: "node" }],
+    types: [{ default: "No options", type: "node" }],
   },
   {
     description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
@@ -286,7 +281,7 @@ CoreAutocomplete.validProps = [
     description:
       "Override the default text for the open popup icon button.For localization purposes, you can use the provided translations.",
     name : "openText",
-    types: [{ default: "Open'", type: "string" }],
+    types: [{ default: "Open", type: "string" }],
   },
   {
     description: "The component used to render the body of the popup.",
@@ -313,7 +308,7 @@ CoreAutocomplete.validProps = [
     description:
       "Render the group.Signature:function(params: AutocompleteRenderGroupParams) => ReactNodeparams The group to render.",
     name : "renderGroup",
-    types: [{ default: "", type: "function" }],
+    types: [{ type: "function" }],
   },
   {
     description:
@@ -336,23 +331,17 @@ CoreAutocomplete.validProps = [
   {
     description: "The size of the component.",
     name       : "size",
-    types      : [{ default: "medium'", type: "small'| 'medium'| string" }],
+    types      : [{ default: "medium'", type: "string", validValues: ["small", "medium"] }],
   },
   {
-    description: "The props used for each slot inside.",
+    description: "The props used for each slot inside. Example: { clearIndicator?: object, paper?: object, popper?: object, popupIndicator?: object }",
     name       : "slotProps",
     types      : [
       {
         default: {},
-        type   : "{ clearIndicator?: object, paper?: object, popper?: object, popupIndicator?: object }",
-      },
-    ],
-  },
-  {
-    description:
-      "The system prop that allows defining system overrides as well as additional CSS styles.See the `sx` page for more details.",
-    name : "sx",
-    types: [{ default: "", type: "Array<func| object| bool>| func| object" }],
+        type   : "object",
+      }
+    ]
   },
   {
     description:

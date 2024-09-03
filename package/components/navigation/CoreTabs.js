@@ -58,10 +58,9 @@ CoreTabs.validProps = [
     ],
   },
   {
-    description:
-      "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: any) => voidevent The event source of the callback. Warning: This is a generic event not a change event.value We default to the index of the child (number)",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: any) => voidevent The event source of the callback. Warning: This is a generic event not a change event.value We default to the index of the child (number)",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
     description: "The component orientation (layout flow direction).",
@@ -80,10 +79,9 @@ CoreTabs.validProps = [
     types      : [{ default: "TabScrollButton", type: "elementType" }],
   },
   {
-    description:
-      "Determine behavior of scroll buttons when tabs are set to scroll:auto will only present them when not all the items are visible.true will always present them.false will never present them.By default the scroll buttons are hidden on mobile. This behavior can be disabled with allowScrollButtonsMobile.",
-    name : "scrollButtons",
-    types: [
+    description: "Determine behavior of scroll buttons when tabs are set to scroll:auto will only present them when not all the items are visible.true will always present them.false will never present them.By default the scroll buttons are hidden on mobile. This behavior can be disabled with allowScrollButtonsMobile.",
+    name       : "scrollButtons",
+    types      : [
       {
         default    : "auto'",
         type       : "string",
@@ -92,16 +90,14 @@ CoreTabs.validProps = [
     ],
   },
   {
-    description:
-      "If true the selected tab changes on focus. Otherwise it only changes on activation.",
-    name : "selectionFollowsFocus",
-    types: [{ default: "", type: "boolean" }],
+    description: "If true the selected tab changes on focus. Otherwise it only changes on activation.",
+    name       : "selectionFollowsFocus",
+    types      : [{ type: "boolean" }],
   },
   {
-    description:
-      "The extra props for the slot components. You can override the existing props or add new ones.",
-    name : "slotProps",
-    types: [
+    description: "The extra props for the slot components. You can override the existing props or add new ones.",
+    name       : "slotProps",
+    types      : [
       {
         default    : {},
         type       : "object",
@@ -142,16 +138,14 @@ CoreTabs.validProps = [
     ],
   },
   {
-    description:
-      "The value of the currently selected Tab. If you don't want any selected Tab, you can set this prop to false.",
-    name : "value",
-    types: [{ type: "any" }],
+    description: "The value of the currently selected Tab. If you don't want any selected Tab, you can set this prop to false.",
+    name       : "value",
+    types      : [{ type: "any" }],
   },
   {
-    description:
-      "Determines additional display behavior of the tabs:scrollable will invoke scrolling properties and allow for horizontally scrolling (or swiping) of the tab bar.fullWidth will make the tabs grow to use all the available space, which should be used for small views, like on mobile.standard will render the default state.",
-    name : "variant",
-    types: [
+    description: "Determines additional display behavior of the tabs:scrollable will invoke scrolling properties and allow for horizontally scrolling (or swiping) of the tab bar.fullWidth will make the tabs grow to use all the available space, which should be used for small views, like on mobile.standard will render the default state.",
+    name       : "variant",
+    types      : [
       {
         default    : "standard'",
         type       : "string",
@@ -160,10 +154,9 @@ CoreTabs.validProps = [
     ],
   },
   {
-    description:
-      "If true, the scrollbar is visible. It can be useful when displaying a long vertical list of tabs.",
-    name : "visibleScrollbar",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the scrollbar is visible. It can be useful when displaying a long vertical list of tabs.",
+    name       : "visibleScrollbar",
+    types      : [{ default: false, type: "boolean" }],
   },
 ];
 CoreTabs.invalidProps = [];

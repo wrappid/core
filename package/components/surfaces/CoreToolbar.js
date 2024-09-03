@@ -12,10 +12,9 @@ export default function CoreToolBar(props) {
 }
 CoreToolBar.validProps = [
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ default: "", type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "If true, disables gutter padding.",

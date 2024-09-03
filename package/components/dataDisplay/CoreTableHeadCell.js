@@ -4,6 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeTableHeadCell } from "@wrappid/native";
 
+import CoreTableCell from "./CoreTableCell";
 import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreTableHeadCell(props) {
@@ -16,3 +17,6 @@ export default function CoreTableHeadCell(props) {
     </NativeTableHeadCell>
   );
 }
+
+CoreTableHeadCell.validProps = [...CoreTableCell.validProps];
+CoreTableHeadCell.invalidProps = [];

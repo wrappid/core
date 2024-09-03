@@ -57,7 +57,7 @@ CoreFab.validProps = [
   {
     description: "The URL to link to when the button is clicked. If defined, an a element will be used as the root node.",
     name       : "href",
-    type       : "string"
+    type       : [{ type: "string" }],
   },
   {
     name : "onClick",

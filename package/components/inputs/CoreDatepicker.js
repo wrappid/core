@@ -30,23 +30,23 @@ CoreDatePicker.validProps = [
   {
     description: "The currently selected date.",
     name       : "value",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description:
       "The format of the date in the UI. The value for the bindings will always be in the YYYY-MM-DD format. Leave empty to let the end-user locale define the format.",
     name : "format",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description: "A default value for the date picker.",
     name       : "defaultValue",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "A label that describes the content of the date picker. e.g. \"Arrival date\".",
     name       : "label",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "Name of this input. Used as a reference in form data.",

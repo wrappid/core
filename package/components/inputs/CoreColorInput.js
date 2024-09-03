@@ -36,26 +36,23 @@ CoreColorInput.validProps = [
     types      : [{ type: "string" }],
   },
   {
-    description:
-      "If true, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
-    name : "error",
-    types: [{ type: "boolean" }],
+    description: "If true, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
+    name       : "error",
+    types      : [{ type: "boolean" }],
   },
   {
-    description:
-      "The value of the input element, required for a controlled component.",
-    name : "value",
-    types: [{ default: "#ffffff", type: "string" }],
+    description: "The value of the input element, required for a controlled component.",
+    name       : "value",
+    types      : [{ default: "#ffffff", type: "string" }],
   },
   {
     name : "label",
     types: [{ types: "string" }]
   },
   {
-    description:
-      "If true, the component is disabled. The prop defaults to the value (false) inherited from the parent FormControl component.",
-    name : "disabled",
-    types: [{ type: "boolean" }],
+    description: "If true, the component is disabled. The prop defaults to the value (false) inherited from the parent FormControl component.",
+    name       : "disabled",
+    types      : [{ type: "boolean" }],
   },
   {
     description:

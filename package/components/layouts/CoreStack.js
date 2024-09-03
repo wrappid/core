@@ -17,7 +17,7 @@ CoreStack.validProps = [
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.",
     name : "component",
-    types: [{ default: "", type: "elementType" }],
+    types: [{ type: "elementType" }],
   },
   {
     description:
@@ -32,10 +32,7 @@ CoreStack.validProps = [
           "column",
           "row-reverse",
           "row",
-          "Array<'column-reverse'",
-          "column",
-          "row-reverse",
-          "'row'>",
+          "Array<'column-reverse','column','row-reverse','row'>",
           "object"
         ],
       },
@@ -44,25 +41,19 @@ CoreStack.validProps = [
   {
     description: "Add an element between each child.",
     name       : "divider",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "Defines the space between immediate children.",
     name       : "spacing",
-    types      : [
-      {
-        default    : "", 
-        type       : "string",
-        validValues: "Array<number| string>| number| object| string" 
-      },
-    ],
+    types      : [{ type: "Array" }, { type: "number" }, { type: "object" }, { type: "string" }],
   },
  
   {
     description:
       "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
     name : "useFlexGap",
-    types: [{ default: "", type: "boolean" }],
+    types: [{ type: "boolean" }],
   },
   {
     name : "flexWrap",

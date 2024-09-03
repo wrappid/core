@@ -16,7 +16,7 @@ CoreTextField.validProps = [
     description:
       "This prop helps users to fill forms faster, especially on mobile devices. The name can be confusing, as it's more like an autofill. You can learn more about it following the specification.",
     name : "autoComplete",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description:
@@ -46,7 +46,7 @@ CoreTextField.validProps = [
   {
     description: "The default value. Use when the component is not controlled.",
     name       : "defaultValue",
-    types      : [{ default: "", type: "any" }],
+    types      : [{ type: "any" }],
   },
   {
     description: "If true, the component is disabled.",
@@ -123,13 +123,13 @@ CoreTextField.validProps = [
     description:
       "Maximum number of rows to display when multiline option is set to true.",
     name : "maxRows",
-    types: [{ default: "", type: "number| string" }],
+    types: [{ type: "string" }, { type: "number" }],
   },
   {
     description:
       "Minimum number of rows to display when multiline option is set to true.",
     name : "minRows",
-    types: [{ default: "", type: "number| string" }],
+    types: [{ type: "string" }, { type: "number" }],
   },
   {
     description: "If true, a textarea element is rendered instead of an input.",
@@ -142,40 +142,34 @@ CoreTextField.validProps = [
     types      : [{ type: "string" }],
   },
   {
-    description:
-      "Callback fired when the value is changed.Signature:function(event: object) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string).",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the value is changed.Signature:function(event: object) => voidevent The event source of the callback. You can pull out the new value by accessing event.target.value (string).",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
-    description:
-      "Callback fired when the keyDown event occurs.",
-    name : "onKeyDown",
-    types: [{ type: "function" }],
+    description: "Callback fired when the keyDown event occurs.",
+    name       : "onKeyDown",
+    types      : [{ type: "function" }],
   },
   {
-    description:
-      "The short hint displayed in the input before the user enters a value.",
-    name : "placeholder",
-    types: [{ type: "string" }],
+    description: "The short hint displayed in the input before the user enters a value.",
+    name       : "placeholder",
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "If true, the label is displayed as required and the input element is required.",
-    name : "required",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the label is displayed as required and the input element is required.",
+    name       : "required",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "Number of rows to display when multiline option is set to true.",
-    name : "rows",
-    types: [{ type: "number| string" }],
+    description: "Number of rows to display when multiline option is set to true.",
+    name       : "rows",
+    types      : [{ type: "string" }, { type: "number" }]
   },
   {
-    description:
-      "Render a Select element while passing the Input element to Select as input parameter. If this option is set you must pass the options of the select as children.",
-    name : "select",
-    types: [{ default: false, type: "boolean" }],
+    description: "Render a Select element while passing the Input element to Select as input parameter. If this option is set you must pass the options of the select as children.",
+    name       : "select",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Props applied to the Select element.",

@@ -53,7 +53,7 @@ CoreAlert.validProps = [
       {
         defaultValue: {},
         type        : "object",
-        validValues : { closeButton: "elementType", closeIcon: "elementType" }
+        validValues : [{ closeButton: "elementType", closeIcon: "elementType" }]
       }
     ]
   },
@@ -65,7 +65,7 @@ CoreAlert.validProps = [
       {
         defaultValue: {},
         type        : "object",
-        validValues : { closeButton: "object", closeIcon: "object" }
+        validValues : [{ closeButton: "object", closeIcon: "object" }]
       }
     ]
   },
@@ -80,7 +80,7 @@ CoreAlert.validProps = [
     types      : [
       {
         type       : "object",
-        validValues: { error: "node", info: "node", success: "node", warning: "node" }
+        validValues: [{ error: "node", info: "node", success: "node", warning: "node" }]
       }
     ]
   },
@@ -112,7 +112,7 @@ CoreAlert.validProps = [
       {
         defaultValue: {},
         type        : "object",
-        validValues : { closeButton: "object", closeIcon: "object" },
+        validValues : [{ closeButton: "object", closeIcon: "object" }],
       }
     ]
   },
@@ -123,7 +123,7 @@ CoreAlert.validProps = [
       {
         defaultValue: {},
         type        : "object",
-        validValues : { closeButton: "elementType", closeIcon: "elementType" },
+        validValues : [{ closeButton: "elementType", closeIcon: "elementType" }],
       }
     ]
   },

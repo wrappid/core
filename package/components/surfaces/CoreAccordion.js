@@ -75,7 +75,7 @@ CoreAccordion.validProps = [
     description:
       "Props applied to the transition element. By default, the element is based on this Transition component.",
     name : "TransitionProps",
-    types: [{ default: "", type: "stobjectring" }],
+    types: [{ type: "stobjectring" }],
   },
 ];
 

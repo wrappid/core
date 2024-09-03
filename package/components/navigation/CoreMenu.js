@@ -86,7 +86,7 @@ CoreMenu.validProps = [
     description:
       "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
     name : "anchorEl",
-    types: [{ default: "", type: "HTML element| func" }],
+    types: [{ type: "HTML element| func" }],
   },
   {
     description: "If true, the list item is focused during the first mount. Focus will also be triggered if the value changes from false to true.",
@@ -154,9 +154,12 @@ CoreMenu.validProps = [
     types: [
       {
         default: "auto",
-        type   : "number \
-      | { appear?: number, enter?: number, exit?: number }",
+        type   : "number"
       },
+      {
+        type        : "object",
+        vailidValues: ["{ appear?: number, enter?: number, exit?: number }"]
+      }
     ],
   },
   {

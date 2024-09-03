@@ -13,7 +13,7 @@ export default function CoreLink(props) {
 CoreLink.validProps = [
   {
     name : "title",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     name : "onClick",
@@ -21,11 +21,11 @@ CoreLink.validProps = [
   },
   {
     name : "href",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     name : "to",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     name : "titlePlacement",
@@ -44,12 +44,12 @@ CoreLink.validProps = [
     description:
       "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
     name : "component",
-    types: [{ default: "", type: "string" }],
+    types: [{ type: "string" }],
   },
   {
     description: "classes prop applied to the Typography element.",
     name       : "TypographyClasses",
-    types      : [{ default: "", type: "object" }],
+    types      : [{ type: "object" }],
   },
   {
     description: "Controls when the link should have an underline.",

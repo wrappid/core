@@ -21,7 +21,7 @@ CoreBadge.validProps = [
       {
         default    : { horizontal: "right", vertical: "top" },
         type       : "object",
-        validValues: { horizontal: ["left", "right"], vertical: ["bottom", "top"] },
+        validValues: [{ horizontal: ["left", "right"], vertical: ["bottom", "top"] }],
       },
     ],
   },
@@ -70,7 +70,7 @@ CoreBadge.validProps = [
       {
         default    : {},
         type       : "object",
-        validValues: { Root: "elementType", badge: "elementType" },
+        validValues: [{ Root: "elementType", badge: "elementType" }],
       },
     ],
   },

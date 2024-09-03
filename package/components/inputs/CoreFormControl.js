@@ -60,10 +60,9 @@ CoreFormControl.validProps = [
     types      : [{ default: false, type: "boolean" }]
   },
   {
-    description:
-      "If dense, will adjust vertical spacing. This is normally obtained via context from FormControl. The prop defaults to the value ('none') inherited from the parent FormControl component.",
-    name : "margin",
-    types: [{ default: "", type: "dense'| 'none'" }],
+    description: "If dense, will adjust vertical spacing. This is normally obtained via context from FormControl. The prop defaults to the value ('none') inherited from the parent FormControl component.",
+    name       : "margin",
+    types      : [{ type: "string", validValues: ["dense", "none"] }],
   },
   {
     name : "required",

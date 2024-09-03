@@ -53,12 +53,7 @@ CoreSnackbar.validProps = [
   {
     description: "Replace the SnackbarContent component.",
     name       : "children",
-    types      : [
-      {
-        default: "",
-        type   : "element",
-      },
-    ],
+    types      : [{ type: "element" }],
   },
   {
     description: "Props applied to the ClickAwayListener element.",
@@ -85,12 +80,7 @@ CoreSnackbar.validProps = [
     description:
       "When displaying multiple consecutive snackbars using a single parent-rendered <Snackbar/>, add the key prop to ensure independent treatment of each message. For instance, use <Snackbar key={message} />. Otherwise, messages might update in place, and features like autoHideDuration could be affected.",
     name : "key",
-    types: [
-      {
-        default: "",
-        type   : "any",
-      },
-    ],
+    types: [{ type: "any" }],
   },
   {
     description: "The message to display.",
@@ -101,12 +91,7 @@ CoreSnackbar.validProps = [
     Signature:function(event: React.SyntheticEvent | Event, reason: string) => voidevent The event source of the callback.
     reason Can be: ""timeout"" (autoHideDuration expired), ""clickaway"", or ""escapeKeyDown"".`,
     name : "onClose",
-    types: [
-      {
-        default: "",
-        type   : "function",
-      },
-    ],
+    types: [{ type: "function" }],
   },
   {
     description: "If true, the component is shown.",

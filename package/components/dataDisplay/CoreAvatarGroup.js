@@ -21,9 +21,9 @@ CoreAvatarGroup.validProps = [
     types      : [{ type: "elementType" }]
   },
   {
-    description: "The extra props for the slot components. You can override the existing props or add new ones.This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.",
+    description: "The extra props for the slot components. You can override the existing props or add new ones.This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future. Example: { additionalAvatar: object }",
     name       : "componentsProps",
-    types      : [{ default: {}, type: "{ additionalAvatar?: object }" }]
+    types      : [{ default: {}, type: "object" }]
   },
   {
     description: "Max avatars to show before +x.",
@@ -33,7 +33,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "custom renderer of extraAvatarsSignature:function(surplus: number) => React.ReactNodesurplus number of extra avatarsReturns: custom element to display",
     name       : "renderSurplus",
-    types      : [{ default: "", type: "function" }]
+    types      : [{ type: "function" }]
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones.This prop is an alias for the componentsProps prop, which will be deprecated in the future.",

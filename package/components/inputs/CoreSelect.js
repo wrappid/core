@@ -132,7 +132,7 @@ CoreSelect.validProps = [
     description:
       "Callback fired when the component requests to be opened. Use it in either controlled (see the open prop), or uncontrolled mode (to detect when the Select expands).Signature:function(event: object) => voidevent The event source of the callback.",
     name : "onOpen",
-    types: [{ default: "", type: "function" }],
+    types: [{ type: "function" }],
   },
   {
     description:

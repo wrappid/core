@@ -20,14 +20,9 @@ CoreIconButton.validProps = [
     types: [{ type: "function" }]
   },
   {
-    name : "onClick", /// we have already a onClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
-    types: [{ type: "function" }], 
-  },
-  {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "default",
         type       : "string",
@@ -64,7 +59,7 @@ CoreIconButton.validProps = [
     description:
       "If given, uses a negative margin to counteract the padding on one side (this is often helpful for aligning the left or right side of the icon with content above or below, without ruining the border size and shape).",
     name : "edge",
-    types: [{ default: false, type: "'end'| 'start'| false" }],
+    types: [{ default: false, type: "boolean" }, { type: "string", validValues: ["end", "start"] }],
   },
   {
     description:

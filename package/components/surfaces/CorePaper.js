@@ -13,16 +13,14 @@ export default function CorePaper(props) {
 }
 CorePaper.validProps = [
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ default: "", type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.",
-    name : "elevation",
-    types: [{ default: "1", type: "integer" }],
+    description: "Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.",
+    name       : "elevation",
+    types      : [{ default: 1, type: "number" }],
   },
   {
     description: "If true, rounded corners are disabled.",

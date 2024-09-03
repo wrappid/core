@@ -12,44 +12,40 @@ export default function CoreCollapse(props) {
 }
 CoreCollapse.validProps = [
   {
-    description:
-      "Add a custom transition end trigger. Called with the transitioning DOM node and a done callback. Allows for more fine grained transition end logic. Note: Timeouts are still used as a fallback if provided.",
-    name : "addEndListener",
-    types: [{ default: "", type: "function" }],
+    description: "Add a custom transition end trigger. Called with the transitioning DOM node and a done callback. Allows for more fine grained transition end logic. Note: Timeouts are still used as a fallback if provided.",
+    name       : "addEndListener",
+    types      : [{ type: "function" }],
   },
   {
     description: "The content node to be collapsed.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
-    description:
-      "Override or extend the styles applied to the component.See CSS API below for more details.",
-    name : "classes",
-    types: [{ default: "", type: "object" }],
+    description: "Override or extend the styles applied to the component.See CSS API below for more details.",
+    name       : "classes",
+    types      : [{ type: "object" }],
   },
   {
-    description:
-      "The width (horizontal) or height (vertical) of the container when collapsed.",
-    name : "collapsedSize",
-    types: [
+    description: "The width (horizontal) or height (vertical) of the container when collapsed.",
+    name       : "collapsedSize",
+    types      : [
       {
         default: "0px",
-        type   : "number, string ",
+        type   : "number",
       },
+      { type: "string" }
     ],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
-    name : "component",
-    types: [{ type: "string" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
+    name       : "component",
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "The transition timing function. You may specify a single easing or a object containing enter and exit values.",
-    name : "easing",
-    types: [
+    description: "The transition timing function. You may specify a single easing or a object containing enter and exit values.",
+    name       : "easing",
+    types      : [
       {
         default    : "",
         type       : "string",
@@ -74,15 +70,19 @@ CoreCollapse.validProps = [
     ],
   },
   {
-    description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Set to 'auto' to automatically calculate transition time based on height.",
-    name : "timeout",
-    types: [
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Set to 'auto' to automatically calculate transition time based on height.",
+    name       : "timeout",
+    types      : [
       {
         default    : "duration.standard",
         type       : "string",
-        validValues: ["'auto'| number| { appear?: number, enter?: number, exit?: number }"],
+        validValues: ["auto"],
       },
+      { type: "number" },
+      {
+        type       : "object",
+        validValues: ["{ appear?: number, enter?: number, exit?: number }"]
+      }
     ],
   },
 ];

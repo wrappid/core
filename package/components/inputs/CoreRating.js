@@ -14,7 +14,7 @@ CoreRating.validProps = [
   {
     description: "Default selected stars",
     name       : "defaultValue",
-    types      : [{ default: "3", type: "number" }],
+    types      : [{ default: 3, type: "number" }],
   },
   {
     description: "If true, the component is disabled.",
@@ -39,7 +39,7 @@ CoreRating.validProps = [
   {
     description: "The size of the component",
     name       : "size",
-    types      : [{ default: "medium", type: "'small'| 'medium'| 'large'| string " }],
+    types      : [{ default: "medium", defaultValues: ["small", "medium", "large"], type: "string" }],
   },
   {
     description: "The rating value, The ref is forwarded to the root element.",
