@@ -14,18 +14,25 @@ import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 
 export default function CoreMultiTimeRangePicker(props) {
-  const {
-    // eslint-disable-next-line no-unused-vars
-    id, label, onChange, value, formik, ampm 
-  } = props;
+  const { id, label, value, formik } = props;
   const [startTime, setStartTime] = React.useState(props?.value || "");
   const [endTime, setEndTime] = React.useState(props?.value || "");
   const onChangeStartTime = (value) => {
-    props?.onChange && props.onChange(value);
+    if(formik){
+      formik?.setFieldValue(id, value);
+    }
+    if(props?.onChange){
+      props?.onChange(value);
+    }
     setStartTime(value);
   };
   const onChangeEndTime = (value) => {
-    props?.onChange && props.onChange(value);
+    if(formik){
+      formik?.setFieldValue(id, value);
+    }
+    if(props?.onChange){
+      props?.onChange(value);
+    }
     setEndTime(value);
   };
 
@@ -126,3 +133,10 @@ export default function CoreMultiTimeRangePicker(props) {
     </CoreBox>
   );
 }
+CoreMultiTimeRangePicker.validProps = [
+  {
+    name : "formik",
+    types: [{ type: "object" }]
+  }
+];
+CoreMultiTimeRangePicker.invalidProps = [];

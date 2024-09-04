@@ -9,3 +9,10 @@ export default function CoreDateTimeRangePicker(props) {
     <NativeDateTimeRangePicker {...props} />
   );
 }
+CoreDateTimeRangePicker.validProps = [
+  {
+    name : "formik",
+    types: [{ type: "object" }]
+  }
+];
+CoreDateTimeRangePicker.invalidProps = [];

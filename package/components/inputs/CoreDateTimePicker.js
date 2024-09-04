@@ -4,12 +4,16 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDateTimePicker } from "@wrappid/native";
 
-import CoreBox from "../layouts/CoreBox";
-
 export default function CoreDateTimePicker(props) {
   return (
-    <CoreBox>
-      <NativeDateTimePicker {...props} />
-    </CoreBox>
+    <NativeDateTimePicker {...props} />
   );
 }
+
+CoreDateTimePicker.validProps = [
+  {
+    name : "formik",
+    types: [{ type: "object" }]
+  }
+];
+CoreDateTimePicker.invalidProps = [];

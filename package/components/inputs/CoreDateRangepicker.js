@@ -7,16 +7,17 @@ import { NativeDateRangepicker } from "@wrappid/native";
 
 // import CoreFormHelperText from "./CoreFormHelperText";
 // import CoreClasses from "../../styles/CoreClasses";
-import CoreBox from "../layouts/CoreBox";
 
 export default function CoreDateRangepicker(props) {
   return (
-    <CoreBox>
-      <NativeDateRangepicker {...props} />
-    </CoreBox>
+    <NativeDateRangepicker {...props} />
   );
 }
 CoreDateRangepicker.validProps = [
+  {
+    name : "formik",
+    types: [{ type: "object" }]
+  },
   {
     description: "If true, the main element is focused during the first mount. This main element is: - the element chosen by the visible view if any (i.e: the selected day on the day view). - the input element if there is a field rendered.",
     name       : "autoFocus",
@@ -25,7 +26,7 @@ CoreDateRangepicker.validProps = [
   {
     description: "The number of calendars to render on desktop.",
     name       : "calendars",
-    types      : [{ default: "2", type: "1 | 2 | 3", validValues: [] }],
+    types      : [{ default: "2", type: "number", validValues: [] }],
   },
   {
     description: "Class name applied to the root element.",
