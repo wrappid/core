@@ -6,8 +6,12 @@ import { NativePageContainer, nativeUseLocation } from "@wrappid/native";
 import { StylesProvider, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
+import CoreAlert from "../components/feedback/CoreAlert";
 import CoreDialog from "../components/feedback/CoreDialog";
+import CoreSnackbar from "../components/feedback/CoreSnackbar";
 import AppContainerLayout from "../components/layouts/_system/AppContainerLayout";
+import CoreBox from "../components/layouts/CoreBox";
+import CoreStack from "../components/layouts/CoreStack";
 import CoreModal from "../components/utils/CoreModal";
 import CoreNetworkStatus from "../components/utils/CoreNetworkStatus";
 import {
@@ -20,6 +24,7 @@ import {
 import DevelopmentInfo from "../development/DevelopmentInfo";
 import { CoreDomNavigate } from "../helper/routerHelper";
 import ErrorBoundary from "../middleware/ErrorBoundary";
+import { clearSnackMessages, messageShowed, removeSnackMessage } from "../store/action/appActions";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
@@ -58,6 +63,12 @@ export default function PageContainer(props) {
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
   const { uid, sessionExpired, sessionDetail } = useSelector((state) => state?.auth || {});
+  const snackMessages  = useSelector((state) => state?.app?.snackMessages || []);
+  const appState = useSelector((state) => state?.app || []);
+
+  // eslint-disable-next-line no-console
+  console.log(appState);
+  
   const { /* -- showHelperText = true, */ helperButtonFlag = true, rawForm, rawFormStatus } = useSelector(
     (state) => state?.forms
   );
@@ -146,6 +157,25 @@ export default function PageContainer(props) {
     }
   };
 
+  React.useEffect(() => {
+    // Clear snack messages on component mount
+    dispatch(clearSnackMessages());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    snackMessages.forEach(snack => {
+      if (!snack.shown) {
+        dispatch(messageShowed(snack._timestamp)); // Mark snackbar as shown
+
+        if (snack.autoHideDuration) {
+          setTimeout(() => {
+            dispatch(removeSnackMessage(snack._timestamp)); // Remove snackbar after duration
+          }, snack.autoHideDuration);
+        }
+      }
+    });
+  }, [snackMessages, dispatch]);
+
   return sessionExpired && !uid && route?.authRequired ? (
     <CoreDomNavigate to="checkUserExist" replace={true} />
   ) : (
@@ -164,7 +194,31 @@ export default function PageContainer(props) {
               <CoreModal open={true} />
 
               <CoreDialogContext.Provider value={dialogStates}>
-                <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+                <CoreBox>
+
+                  <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+
+                  <CoreStack spacing={2} direction="column" styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0]}>
+                    { Array.isArray(snackMessages) && snackMessages.map((snack) => (
+                      <CoreSnackbar 
+                        styleClasses={[CoreClasses.MARGIN.MT1, CoreClasses.POSITION.POSITION_STATIC]}
+                        key={snack._timestamp}
+                        open={snack.shown}
+                      ><CoreBox>
+                          <CoreAlert
+                            severity={snack.severity}
+                            variant={snack.variant}
+                            color={snack.color}
+                            width="100%"
+                          >
+                            {snack.message}
+                          </CoreAlert>
+                        </CoreBox>
+                      </CoreSnackbar>
+                    )) }
+
+                  </CoreStack>
+                </CoreBox>
 
                 {/** @todo testing purposes */}
                 {/* eslint-disable-next-line etc/no-commented-out-code */}
