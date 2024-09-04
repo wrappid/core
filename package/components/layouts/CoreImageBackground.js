@@ -15,10 +15,9 @@ export default function CoreImageBackground(props) {
  */
 CoreImageBackground.validProps = [
   {
-    description:
-    "Image source path.",
-    name : "source",
-    types: [{ type: "string" }],
+    description: "Image source path.",
+    name       : "source",
+    types      : [{ type: "string" }],
   },
   {
     description: "Allows to set a reference to the inner Image component",

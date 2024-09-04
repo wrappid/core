@@ -16,10 +16,9 @@ const CoreTypography = React.forwardRef((props, ref) => {
 CoreTypography.displayName = "CoreTypography";
 CoreTypography.validProps = [
   {
-    description:
-      "The content of the component need to show as it is like a code block.",
-    name : "code",
-    types: [
+    description: "The content of the component need to show as it is like a code block.",
+    name       : "code",
+    types      : [
       {
         default    : false,
         type       : "boolean",
@@ -45,10 +44,9 @@ CoreTypography.validProps = [
     ],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "If true, the text will have a bottom margin.",
@@ -62,8 +60,7 @@ CoreTypography.validProps = [
     ],
   },
   {
-    description:
-      "If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.\
+    description: "If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.\
     Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).",
     name : "noWrap",
     types: [
@@ -112,10 +109,9 @@ CoreTypography.validProps = [
     ],
   },
   {
-    description:
-      "The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop.",
-    name : "variantMapping",
-    types: [
+    description: "The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop.",
+    name       : "variantMapping",
+    types      : [
       {
         default: {
           body1    : "p",

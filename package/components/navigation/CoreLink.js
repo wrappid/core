@@ -32,19 +32,14 @@ CoreLink.validProps = [
     types: [{ default: "top", type: "string" }],
   },
   {
-    name : "titlePlacement",
-    types: [{ default: "top", type: "string" }],
-  },
-  {
     description: "The color of the link.",
     name       : "color",
     types      : [{ default: "primary'", type: "any" }],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
-    name : "component",
-    types: [{ type: "string" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.This needs to be able to hold a ref.",
+    name       : "component",
+    types      : [{ type: "string" }],
   },
   {
     description: "classes prop applied to the Typography element.",

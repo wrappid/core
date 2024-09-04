@@ -17,16 +17,14 @@ export default function CoreSnackbar(props) {
 }
 CoreSnackbar.validProps = [
   {
-    description:
-      "The action to display. It renders after the message, at the end of the snackbar.",
-    name : "action",
-    types: [{ type: "node" }],
+    description: "The action to display. It renders after the message, at the end of the snackbar.",
+    name       : "action",
+    types      : [{ type: "node" }],
   },
   {
-    description:
-      "The anchor of the Snackbar. On smaller screens, the component grows to occupy all the available width, the horizontal alignment is ignored.",
-    name : "anchorOrigin",
-    types: [
+    description: "The anchor of the Snackbar. On smaller screens, the component grows to occupy all the available width, the horizontal alignment is ignored.",
+    name       : "anchorOrigin",
+    types      : [
       {
         default    : { horizontal: "left", vertical: "bottom" },
         type       : "object",
@@ -40,10 +38,9 @@ CoreSnackbar.validProps = [
     ],
   },
   {
-    description:
-      "The number of milliseconds to wait before automatically calling the onClose function. onClose should then set the state of the open prop to hide the Snackbar. This behavior is disabled by default with the null value.",
-    name : "autoHideDuration",
-    types: [
+    description: "The number of milliseconds to wait before automatically calling the onClose function. onClose should then set the state of the open prop to hide the Snackbar. This behavior is disabled by default with the null value.",
+    name       : "autoHideDuration",
+    types      : [
       {
         default: "null",
         type   : "number",
@@ -66,10 +63,9 @@ CoreSnackbar.validProps = [
     types      : [{ type: "object" }],
   },
   {
-    description:
-      "If true, the autoHideDuration timer will expire even if the window is not focused.",
-    name : "disableWindowBlurListener",
-    types: [
+    description: "If true, the autoHideDuration timer will expire even if the window is not focused.",
+    name       : "disableWindowBlurListener",
+    types      : [
       {
         default: false,
         type   : "boolean",
@@ -77,10 +73,9 @@ CoreSnackbar.validProps = [
     ],
   },
   {
-    description:
-      "When displaying multiple consecutive snackbars using a single parent-rendered <Snackbar/>, add the key prop to ensure independent treatment of each message. For instance, use <Snackbar key={message} />. Otherwise, messages might update in place, and features like autoHideDuration could be affected.",
-    name : "key",
-    types: [{ type: "any" }],
+    description: "When displaying multiple consecutive snackbars using a single parent-rendered <Snackbar/>, add the key prop to ensure independent treatment of each message. For instance, use <Snackbar key={message} />. Otherwise, messages might update in place, and features like autoHideDuration could be affected.",
+    name       : "key",
+    types      : [{ type: "any" }],
   },
   {
     description: "The message to display.",
@@ -99,16 +94,14 @@ CoreSnackbar.validProps = [
     types      : [{ type: "boolean" }],
   },
   {
-    description:
-      "The number of milliseconds to wait before dismissing after user interaction. If autoHideDuration prop isn't specified, it does nothing. If autoHideDuration prop is specified but resumeHideDuration isn't, we default to autoHideDuration / 2 ms.",
-    name : "resumeHideDuration",
-    types: [{ type: "number" }],
+    description: "The number of milliseconds to wait before dismissing after user interaction. If autoHideDuration prop isn't specified, it does nothing. If autoHideDuration prop is specified but resumeHideDuration isn't, we default to autoHideDuration / 2 ms.",
+    name       : "resumeHideDuration",
+    types      : [{ type: "number" }],
   },
   {
-    description:
-      "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
-    name : "TransitionComponent",
-    types: [
+    description: "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
+    name       : "TransitionComponent",
+    types      : [
       {
         default: "Grow",
         type   : "elementType",
@@ -116,24 +109,14 @@ CoreSnackbar.validProps = [
     ],
   },
   {
-    description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
-    name : "transitionDuration",
-    types: [
-      {
-        default:
-          "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
-        type: "object",
-        validValues:
-          "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
-      },
-    ],
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Example: { enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
+    name       : "transitionDuration",
+    types      : [{ type: "object" }],
   },
   {
-    description:
-      "Props applied to the transition element. By default, the element is based on this Transition component.",
-    name : "TransitionProps",
-    types: [
+    description: "Props applied to the transition element. By default, the element is based on this Transition component.",
+    name       : "TransitionProps",
+    types      : [
       {
         default: {},
         type   : "object",

@@ -106,13 +106,12 @@ CoreTabs.validProps = [
     ],
   },
   {
-    description: "The components used for each slot inside.",
+    description: "The components used for each slot inside.Example:	{ EndScrollButtonIcon?: elementType, StartScrollButtonIcon?: elementType }",
     name       : "slots",
     types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: ["scrollButtons{ EndScrollButtonIcon?: elementType, StartScrollButtonIcon?: elementType }"],
+        default: {},
+        type   : "object",
       },
     ],
   },

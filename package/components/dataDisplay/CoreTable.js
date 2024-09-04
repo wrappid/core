@@ -41,10 +41,9 @@ CoreTable.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "Allows TableCells to inherit padding of the Table.",
@@ -69,10 +68,9 @@ CoreTable.validProps = [
     ],
   },
   {
-    description:
-      "Set the header sticky. ⚠️ It doesn't work with IE11.",
-    name : "stickyHeader",
-    types: [
+    description: "Set the header sticky. ⚠️ It doesn't work with IE11.",
+    name       : "stickyHeader",
+    types      : [
       {
         default    : false,
         type       : "boolean",

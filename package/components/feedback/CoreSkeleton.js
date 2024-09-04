@@ -51,16 +51,9 @@ CoreSkeleton.validProps = [
     types: [{ type: "object" }],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
-  },
-  {
-    description:
-      "Height of the skeleton. Useful when you don't want to adapt the skeleton to a text element but for instance a card.",
-    name : "height",
-    types: [{ type: ["number", "string"] }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "The type of content that will be rendered.",
@@ -70,18 +63,6 @@ CoreSkeleton.validProps = [
         default    : "text",
         type       : "string",
         validValues: ["circular", "rectangular", "rounded", "text"],
-      },
-    ],
-  },
-  {
-    description:
-      "Width of the skeleton. Useful when the skeleton is inside an inline element with no width of its own.",
-    name : "width",
-    types: [
-      {
-        default    : "",
-        type       : "string",
-        validValues: ["number", "string"],
       },
     ],
   },

@@ -29,7 +29,7 @@ export default function UserChip(props) {
   } = props;
 
   console.log("id", userid);
-   
+
   // eslint-disable-next-line no-console
   console.log("userchip", props);
 
@@ -54,14 +54,14 @@ export default function UserChip(props) {
           "/business/individual/UserBasicInfo?_defaultFilter=" +
           encodeURIComponent(JSON.stringify({ id: userid })),
       })
-        .then(response => {
+        .then((response) => {
           setFirstName(response?.data?.data?.data["Person.firstName"]);
           setMiddleName(response?.data?.data?.data["Person.middleName"]);
           setLastName(response?.data?.data?.data["Person.lastName"]);
           setEmail(response?.data?.data?.data["email"]);
           setPhotoUrl(response?.data?.data?.data["Person.photoUrl"]);
         })
-        .catch(error => {
+        .catch((error) => {
           throw error;
         });
     }
@@ -113,7 +113,10 @@ export default function UserChip(props) {
 }
 
 UserChip.validProps = [
-  { name: "titleVisible", types: [{ default: true, type: "boolean", validValue: [true, false] }] },
+  {
+    name : "titleVisible",
+    types: [{ default: true, type: "boolean", validValue: [true, false] }],
+  },
   { name: "userid", types: [{ type: "string" }] },
   { name: "firstName", types: [{ type: "string" }] },
   { name: "middleName", types: [{ type: "string" }] },

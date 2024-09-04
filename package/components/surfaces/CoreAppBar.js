@@ -22,10 +22,9 @@ export default function CoreAppBar(props) {
 
 CoreAppBar.validProps = [
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "primary'",
         type       : "string",
@@ -68,10 +67,9 @@ CoreAppBar.validProps = [
     types      : [{ type: "string" }],
   },
   {
-    description:
-      "The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.",
-    name : "position",
-    types: [
+    description: "The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.",
+    name       : "position",
+    types      : [
       {
         default    : "fixed'",
         type       : "string",

@@ -36,10 +36,9 @@ CoreChip.validProps = [
     ],
   },
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "default",
         type       : "string",
@@ -56,22 +55,19 @@ CoreChip.validProps = [
     ],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "Override the default delete icon element. Shown only if onDelete is set.",
-    name : "deleteIcon",
-    types: [{ type: "elementType" }],
+    description: "Override the default delete icon element. Shown only if onDelete is set.",
+    name       : "deleteIcon",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "If true, the component is disabled.",
-    name : "showZero",
-    types: [
+    description: "If true, the component is disabled.",
+    name       : "showZero",
+    types      : [
       {
         default    : false,
         type       : "boolean",
@@ -95,10 +91,9 @@ CoreChip.validProps = [
     types      : [{ type: "function" }],
   },
   {
-    description:
-      "The size of the component.",
-    name : "size",
-    types: [
+    description: "The size of the component.",
+    name       : "size",
+    types      : [
       {
         default    : "medium",
         type       : "string",
@@ -107,10 +102,9 @@ CoreChip.validProps = [
     ],
   },
   {
-    description:
-      "If true, allows the disabled chip to escape focus. If false, allows the disabled chip to receive focus.",
-    name : "skipFocusWhenDisabled",
-    types: [
+    description: "If true, allows the disabled chip to escape focus. If false, allows the disabled chip to receive focus.",
+    name       : "skipFocusWhenDisabled",
+    types      : [
       {
         default    : false,
         type       : "boolean",
@@ -119,10 +113,9 @@ CoreChip.validProps = [
     ],
   },
   {
-    description:
-      "The variant to use.",
-    name : "variant",
-    types: [
+    description: "The variant to use.",
+    name       : "variant",
+    types      : [
       {
         default    : "filled",
         type       : "string",

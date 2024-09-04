@@ -32,13 +32,12 @@ CoreBackdrop.validProps = [
   },
   {
     description: "The components used for each slot inside. \
-    This prop is an alias for the slots prop. It's recommended to use the slots prop instead.",
+    This prop is an alias for the slots prop. It's recommended to use the slots prop instead. Example: { Root: elementType }",
     name : "components",
     types: [
       {
-        default    : {},
-        type       : "object",
-        validValues: [{ Root: "elementType" }]
+        default: {},
+        type   : "object"
       },
       {
         default    : true,
@@ -49,13 +48,12 @@ CoreBackdrop.validProps = [
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones.\
-    This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.",
+    This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.Example: { Root: object }",
     name : "componentsProps",
     types: [
       {
-        default    : {},
-        type       : "object",
-        validValues: [{ Root: "object" }]
+        default: {},
+        type   : "object"
       }
     ]
   },
@@ -72,25 +70,24 @@ CoreBackdrop.validProps = [
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones. \
-    This prop is an alias for the componentsProps prop, which will be deprecated in the future.",
+    This prop is an alias for the componentsProps prop, which will be deprecated in the future.Example: { root: object }",
     name : "slotProps",
     types: [
       {
-        default    : {},
-        type       : "object",
-        validValues: [{ root: "object" }]
+        default: {},
+        type   : "object"
       }
     ]
   },
   {
     description: "The components used for each slot inside. \
-    This prop is an alias for the components prop, which will be deprecated in the future.",
+    This prop is an alias for the components prop, which will be deprecated in the future.Example: { root: elementType }",
     name : "slots",
     types: [
       {
         default    : {},
         type       : "object",
-        validValues: [{ root: "elementType" }]
+        validValues: []
       }
     ]
   },

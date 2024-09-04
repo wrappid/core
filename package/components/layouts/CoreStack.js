@@ -14,16 +14,14 @@ export default function CoreStack(props) {
 
 CoreStack.validProps = [
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "Defines the flex-direction style property. It is applied for all screen sizes.",
-    name : "direction",
-    types: [
+    description: "Defines the flex-direction style property. It is applied for all screen sizes.",
+    name       : "direction",
+    types      : [
       {
         default    : "",
         type       : "string",
@@ -50,10 +48,9 @@ CoreStack.validProps = [
   },
  
   {
-    description:
-      "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
-    name : "useFlexGap",
-    types: [{ type: "boolean" }],
+    description: "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
+    name       : "useFlexGap",
+    types      : [{ type: "boolean" }],
   },
   {
     name : "flexWrap",

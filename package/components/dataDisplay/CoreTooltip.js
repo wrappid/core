@@ -20,10 +20,9 @@ export default function CoreTooltip(props) {
 
 CoreTooltip.validProps = [
   {
-    description:
-      "Tooltip reference element. This needs to be able to hold a ref.",
-    name : "children",
-    types: [{ type: "node" }],
+    description: "Tooltip reference element. This needs to be able to hold a ref.",
+    name       : "children",
+    types      : [{ type: "node" }],
   },
   {
     description: "If true, adds an arrow to the tooltip.",
@@ -36,45 +35,30 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The components used for each slot inside.This prop is an alias for the slots prop. It's recommended to use the slots prop instead.",
-    name : "components",
-    types: [
+    description: "The components used for each slot inside.This prop is an alias for the slots prop. It's recommended to use the slots prop instead.Example:  { Arrow: elementType, Popper: elementType, Toolt: elementType, Trans: elementType}",
+    name       : "components",
+    types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: {
-          Arrow     : "elementType",
-          Popper    : "elementType",
-          Tooltip   : "elementType",
-          Transition: "elementType",
-        },
+        default: {},
+        type   : "object"
       },
     ],
   },
   {
-    description:
-      "The extra props for the slot components. You can override the existing props or add new ones.\
-      This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.",
+    description: "The extra props for the slot components. You can override the existing props or add new ones.\
+      This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.Example:  { Arrow: elementType, Popper: elementType, Toolt: elementType, Trans: elementType}",
     name : "componentsProps",
     types: [
       {
-        default    : {},
-        type       : "object",
-        validValues: {
-          arrow     : "object",
-          popper    : "object",
-          tooltip   : "object",
-          transition: "object",
-        },
+        default: {},
+        type   : "object"
       },
     ],
   },
   {
-    description:
-      "Set to true if the title acts as an accessible description. By default the title acts as an accessible label for the child.",
-    name : "describeChild",
-    types: [
+    description: "Set to true if the title acts as an accessible description. By default the title acts as an accessible label for the child.",
+    name       : "describeChild",
+    types      : [
       {
         default: false,
         type   : "boolean",
@@ -102,10 +86,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "Makes a tooltip not interactive, i.e. it will close when the user hovers over the tooltip before the leaveDelay is expired.",
-    name : "disableInteractive",
-    types: [
+    description: "Makes a tooltip not interactive, i.e. it will close when the user hovers over the tooltip before the leaveDelay is expired.",
+    name       : "disableInteractive",
+    types      : [
       {
         default: false,
         type   : "boolean",
@@ -123,10 +106,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The number of milliseconds to wait before showing the tooltip. This prop won't impact the enter touch delay (enterTouchDelay).",
-    name : "enterDelay",
-    types: [
+    description: "The number of milliseconds to wait before showing the tooltip. This prop won't impact the enter touch delay (enterTouchDelay).",
+    name       : "enterDelay",
+    types      : [
       {
         default: 100,
         type   : "number",
@@ -134,10 +116,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The number of milliseconds to wait before showing the tooltip when one was already recently opened.",
-    name : "enterNextDelay",
-    types: [
+    description: "The number of milliseconds to wait before showing the tooltip when one was already recently opened.",
+    name       : "enterNextDelay",
+    types      : [
       {
         default: 0,
         type   : "number",
@@ -145,10 +126,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The number of milliseconds a user must touch the element before showing the tooltip.",
-    name : "enterTouchDelay",
-    types: [
+    description: "The number of milliseconds a user must touch the element before showing the tooltip.",
+    name       : "enterTouchDelay",
+    types      : [
       {
         default: 700,
         type   : "number",
@@ -156,10 +136,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "If true, the tooltip follow the cursor over the wrapped element.",
-    name : "followCursor",
-    types: [
+    description: "If true, the tooltip follow the cursor over the wrapped element.",
+    name       : "followCursor",
+    types      : [
       {
         default: false,
         type   : "boolean",
@@ -167,16 +146,14 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "This prop is used to help implement the accessibility logic. If you don't provide this prop. It falls back to a randomly generated id.",
-    name : "id",
-    types: [{ type: "string" }],
+    description: "This prop is used to help implement the accessibility logic. If you don't provide this prop. It falls back to a randomly generated id.",
+    name       : "id",
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "The number of milliseconds to wait before hiding the tooltip. This prop won't impact the leave touch delay (leaveTouchDelay).",
-    name : "leaveDelay",
-    types: [
+    description: "The number of milliseconds to wait before hiding the tooltip. This prop won't impact the leave touch delay (leaveTouchDelay).",
+    name       : "leaveDelay",
+    types      : [
       {
         default: 0,
         type   : "number",
@@ -184,10 +161,9 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The number of milliseconds after the user stops touching an element before hiding the tooltip.",
-    name : "leaveTouchDelay",
-    types: [
+    description: "The number of milliseconds after the user stops touching an element before hiding the tooltip.",
+    name       : "leaveTouchDelay",
+    types      : [
       {
         default: 1500,
         type   : "number",
@@ -195,8 +171,7 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "Callback fired when the component requests to be closed.\
+    description: "Callback fired when the component requests to be closed.\
     Signature:\
     function(event: React.SyntheticEvent) => void\
     event The event source of the callback",
@@ -204,8 +179,7 @@ CoreTooltip.validProps = [
     types: [{ type: "function" }],
   },
   {
-    description:
-      "Callback fired when the component requests to be open.\
+    description: "Callback fired when the component requests to be open.\
     Signature:\
     function(event: React.SyntheticEvent) => void\
     event The event source of the callback",
@@ -228,22 +202,19 @@ CoreTooltip.validProps = [
     types      : [{ default: {}, type: "object" }],
   },
   {
-    description:
-      "Tooltip title. Zero-length titles string, undefined, null and false are never displayed.",
-    name : "title",
-    types: [{ type: "node" }],
+    description: "Tooltip title. Zero-length titles string, undefined, null and false are never displayed.",
+    name       : "title",
+    types      : [{ type: "node" }],
   },
   {
-    description:
-      "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
-    name : "TransitionComponent",
-    types: [{ default: "Grow", type: "elementType" }],
+    description: "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
+    name       : "TransitionComponent",
+    types      : [{ default: "Grow", type: "elementType" }],
   },
   {
-    description:
-      "Props applied to the transition element. By default, the element is based on this Transition component.",
-    name : "TransitionProps",
-    types: [{ type: "object" }],
+    description: "Props applied to the transition element. By default, the element is based on this Transition component.",
+    name       : "TransitionProps",
+    types      : [{ type: "object" }],
   },
   {
     description: "Tooltip placement.",
@@ -270,20 +241,13 @@ CoreTooltip.validProps = [
     ],
   },
   {
-    description:
-      "The components used for each slot inside.\
-        This prop is an alias for the components prop, which will be deprecated in the future.",
+    description: "The components used for each slot inside.\
+        This prop is an alias for the components prop, which will be deprecated in the future.Example: { arrow: elementType,  popper: elementType,  tooltip: elementType, transition: elementType}",
     name : "slots",
     types: [
       {
-        default    : { horizontal: "right", vertical: "top" },
-        type       : "object",
-        validValues: {
-          arrow     : "elementType",
-          popper    : "elementType",
-          tooltip   : "elementType",
-          transition: "elementType",
-        },
+        default: {},
+        type   : "object"
       },
     ],
   },

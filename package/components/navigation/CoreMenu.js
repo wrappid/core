@@ -83,10 +83,9 @@ CoreMenu.validProps = [
     types      : [{ type: "boolean" }],
   },
   {
-    description:
-      "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
-    name : "anchorEl",
-    types: [{ type: "HTML element| func" }],
+    description: "An HTML element, PopoverVirtualElement, or a function that returns either. It's used to set the position of the popover.",
+    name       : "anchorEl",
+    types      : [{ type: "HTML element| func" }],
   },
   {
     description: "If true, the list item is focused during the first mount. Focus will also be triggered if the value changes from false to true.",
@@ -136,43 +135,35 @@ CoreMenu.validProps = [
     ],
   },
   {
-    description:
-      "The components used for each slot inside the Badge. Either a string to use a HTML element or a component.",
-    name : "slot",
-    types: [
+    description: "The components used for each slot inside the Badge. Either a string to use a HTML element or a component.Example:{ badge: elementType, root: elementType }",
+    name       : "slot",
+    types      : [
       {
-        default    : {},
-        type       : "object",
-        validValues: [{ badge: "elementType", root: "elementType" }],
+        default: {},
+        type   : "object",
       },
     ],
   },
   {
-    description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
-    name : "transitionDuration",
-    types: [
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Example:{ appear?: number, enter?: number, exit?: number }",
+    name       : "transitionDuration",
+    types      : [
       {
         default: "auto",
         type   : "number"
       },
-      {
-        type        : "object",
-        vailidValues: ["{ appear?: number, enter?: number, exit?: number }"]
-      }
+      { type: "object" }
     ],
   },
   {
-    description:
-      "Props applied to the transition element. By default, the element is based on this Transition component.",
-    name : "TransitionProps",
-    types: [{ type: "object" }],
+    description: "Props applied to the transition element. By default, the element is based on this Transition component.",
+    name       : "TransitionProps",
+    types      : [{ type: "object" }],
   },
   {
-    description:
-      "Props applied to the menu item whether to display icon infront of menu item label. By default, the displayIcon is false",
-    name : "displayIcon",
-    types: [{ type: "boolean" }],
+    description: "Props applied to the menu item whether to display icon infront of menu item label. By default, the displayIcon is false",
+    name       : "displayIcon",
+    types      : [{ type: "boolean" }],
   }
 ];
 

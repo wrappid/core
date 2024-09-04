@@ -43,15 +43,13 @@ CoreDialog.validProps = [
     types      : [{ type: "string" }],
   },
   {
-    description:
-      "A backdrop component. This prop enables custom backdrop rendering.\
+    description: "A backdrop component. This prop enables custom backdrop rendering.\
     Deprecated - Use slots.backdrop instead. While this prop currently works, it will be removed in the next major version.",
     name : "BackdropComponent",
     types: [
       {
-        default:
-          "styled(Backdrop, { name: 'MuiModal', slot: 'Backdrop', overridesResolver: (props, styles) => { return styles.backdrop; }, })({ zIndex: -1, })",
-        type: "elementType",
+        default: "styled(Backdrop, { name: 'MuiModal', slot: 'Backdrop', overridesResolver: (props, styles) => { return styles.backdrop; }, })({ zIndex: -1, })",
+        type   : "elementType",
       },
     ],
   },
@@ -71,17 +69,15 @@ CoreDialog.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If true, the dialog stretches to maxWidth.\
+    description: "If true, the dialog stretches to maxWidth.\
     Notice that the dialog width grow is limited by the default margin.",
     name : "fullWidth",
     types: [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "Determine the max-width of the dialog. The dialog width grows with the size of the screen. Set to false to disable maxWidth.",
-    name : "maxWidth",
-    types: [
+    description: "Determine the max-width of the dialog. The dialog width grows with the size of the screen. Set to false to disable maxWidth.",
+    name       : "maxWidth",
+    types      : [
       {
         default    : "sm",
         type       : "string",
@@ -97,8 +93,7 @@ CoreDialog.validProps = [
     ],
   },
   {
-    description:
-      "Callback fired when the backdrop is clicked.\
+    description: "Callback fired when the backdrop is clicked.\
     Deprecated - Use the onClose prop with the reason argument to handle the backdropClick events.",
     name : "onBackdropClick",
     types: [{ type: "function" }],
@@ -139,15 +134,14 @@ CoreDialog.validProps = [
   },
   {
     description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
+      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Example: { appear?: number, enter?: number, exit?: number }",
     name : "transitionDuration",
     types: [
       {
-        default:
-          "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
-        type: "number \
-      | { appear?: number, enter?: number, exit?: number }",
+        default: "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
+        type   : "number"
       },
+      { type: "object" }
     ],
   },
 ];

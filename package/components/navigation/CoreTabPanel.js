@@ -26,7 +26,7 @@ export default function CoreTabPanel(props) {
 CoreTabPanel.validProps = [
   {
     description: "The value of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.",
-    name       : "value*",
+    name       : "value",
     required   : true,
     types      : [{ type: "string" }],
   },

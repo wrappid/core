@@ -17,10 +17,9 @@ CoreGrid.validProps = [
     types      : [{ default: 12, type: "Array<number>| number| object" }],
   },
   {
-    description:
-      "Defines the horizontal space between the type item components. It overrides the value of the spacing prop.",
-    name : "columnSpacing",
-    types: [{ type: "Array<number| string>| number| object| string" }],
+    description: "Defines the horizontal space between the type item components. It overrides the value of the spacing prop.",
+    name       : "columnSpacing",
+    types      : [{ type: "Array<number| string>| number| object| string" }],
   },
   {
     description: "",
@@ -28,16 +27,14 @@ CoreGrid.validProps = [
     types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "If true, the component will have the flex container behavior. You should be wrapping items with a container.",
-    name : "container",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the component will have the flex container behavior. You should be wrapping items with a container.",
+    name       : "container",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "Defines the flex-direction style property. It is applied for all screen sizes.",
-    name : "direction",
-    types: [
+    description: "Defines the flex-direction style property. It is applied for all screen sizes.",
+    name       : "direction",
+    types      : [
       {
         default    : "row'",
         type       : "string",
@@ -61,59 +58,30 @@ CoreGrid.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
-    name : "lg",
-    types: [{ type: "auto" }],
+    description: "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
+    name       : "lg",
+    types      : [{ type: "string", validValues: ["auto"] }, { type: "number" }, { default: false, type: "boolean" }],
   },
   {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
-    name : "lg",
-    types: [{ type: "number" }],
+    description: "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
+    name       : "md",
+    types      : [{ type: "string", validValues: ["auto"] }, { type: "number" }, { default: false, type: "boolean" }],
   },
   {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the lg breakpoint and wider screens if not overridden.",
-    name : "lg",
-    types: [{ default: false, type: "boolean" }],
+    description: "Defines the vertical space between the type item components. It overrides the value of the spacing prop.",
+    name       : "rowSpacing",
+    types      : [{ type: "Array" }, { type: "number" }, { type: "object" }, { type: "string" }],
   },
   {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
-    name : "md",
-    types: [{ default: false, type: "boolean" }],
-  },
-  {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
-    name : "md",
-    types: [{ type: "number" }],
-  },
-  {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the md breakpoint and wider screens if not overridden.",
-    name : "md",
-    types: [{ type: "auto" }],
-  },
-  {
-    description:
-      "Defines the vertical space between the type item components. It overrides the value of the spacing prop.",
-    name : "rowSpacing",
-    types: [{ type: "Array" }, { type: "number" }, { type: "object" }, { type: "string" }],
-  },
-  {
-    description:
-      "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
-    name : "sm",
-    types: [{ default: false, type: "boolean" }, { type: "number" }, { type: "string", validValues: ["auto"] }]
+    description: "If a number, it sets the number of columns the grid item uses. It can't be greater than the total number of columns of the container (12 by default). If 'auto', the grid item's width matches its content. If false, the prop is ignored. If true, the grid item's width grows to use the space available in the grid container. The value is applied for the sm breakpoint and wider screens if not overridden.",
+    name       : "sm",
+    types      : [{ default: false, type: "boolean" }, { type: "number" }, { type: "string", validValues: ["auto"] }]
 
   },
   {
-    description:
-      "Defines the space between the type item components. It can only be used on a type container component.",
-    name : "spacing",
-    types: [{ type: "Array" }, { type: "number" }, { type: "object" }, { type: "string" }],
+    description: "Defines the space between the type item components. It can only be used on a type container component.",
+    name       : "spacing",
+    types      : [{ type: "Array" }, { type: "number" }, { type: "object" }, { type: "string" }],
   },
 
   {

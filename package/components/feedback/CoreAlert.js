@@ -47,25 +47,23 @@ CoreAlert.validProps = [
     ]
   },
   {
-    description: "The components used for each slot inside. This prop is an alias for the slots prop. It's recommended to use the slots prop instead.",
+    description: "The components used for each slot inside. This prop is an alias for the slots prop. It's recommended to use the slots prop instead.Example: { closeButton: elementType, closeIcon: elementType }",
     name       : "components",
     types      : [
       {
         defaultValue: {},
-        type        : "object",
-        validValues : [{ closeButton: "elementType", closeIcon: "elementType" }]
+        type        : "object"
       }
     ]
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones.\
-    This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.",
+    This prop is an alias for the slotProps prop. It's recommended to use the slotProps prop instead, as componentsProps will be deprecated in the future.Example:{ closeButton: object, closeIcon: object}",
     name : "componentsProps",
     types: [
       {
         defaultValue: {},
-        type        : "object",
-        validValues : [{ closeButton: "object", closeIcon: "object" }]
+        type        : "object"
       }
     ]
   },
@@ -75,14 +73,9 @@ CoreAlert.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description: "The component maps the severity prop to a range of different icons, for instance success to <SuccessOutlined>. If you wish to change this mapping, you can provide your own. Alternatively, you can use the icon prop to override the icon displayed.",
+    description: "The component maps the severity prop to a range of different icons, for instance success to <SuccessOutlined>. If you wish to change this mapping, you can provide your own. Alternatively, you can use the icon prop to override the icon displayed.Example: { error: node, info: node, success: node, warning: node }",
     name       : "iconMapping",
-    types      : [
-      {
-        type       : "object",
-        validValues: [{ error: "node", info: "node", success: "node", warning: "node" }]
-      }
-    ]
+    types      : [{ type: "object" }]
   },
   {
     description: "Callback fired when the component requests to be closed. When provided and no action prop is set, a close icon button is displayed that triggers the callback when clicked.",
@@ -106,24 +99,22 @@ CoreAlert.validProps = [
     ]
   },
   {
-    description: "The extra props for the slot components. You can override the existing props or add new ones. This prop is an alias for the componentsProps prop, which will be deprecated in the future.",
+    description: "The extra props for the slot components. You can override the existing props or add new ones. This prop is an alias for the componentsProps prop, which will be deprecated in the future.Example: { closeButton: object, closeIcon: object }",
     name       : "slotProps",
     types      : [
       {
         defaultValue: {},
-        type        : "object",
-        validValues : [{ closeButton: "object", closeIcon: "object" }],
+        type        : "object"
       }
     ]
   },
   {
-    description: "The components used for each slot inside. This prop is an alias for the components prop, which will be deprecated in the future.",
+    description: "The components used for each slot inside. This prop is an alias for the components prop, which will be deprecated in the future.Example: { closeButton: elementType, closeIcon: elementType }",
     name       : "slots",
     types      : [
       {
         defaultValue: {},
-        type        : "object",
-        validValues : [{ closeButton: "elementType", closeIcon: "elementType" }],
+        type        : "object"
       }
     ]
   },
