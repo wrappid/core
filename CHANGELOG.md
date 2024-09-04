@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.530](https://github.com/wrappid/core/compare/v0.0.529...v0.0.530) (2024-09-04)
+
+
+### Bug Fixes
+
+* **global:** :bug: add valid props for all CoreTable related components ([c48b82e](https://github.com/wrappid/core/commit/c48b82e2e6f54b41d935ffbeb71da2679627b071)), closes [#336](https://github.com/wrappid/core/issues/336)
+
 ### [0.0.529](https://github.com/wrappid/core/compare/v0.0.528...v0.0.529) (2024-09-04)
 
 
