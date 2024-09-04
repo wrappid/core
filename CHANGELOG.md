@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.531](https://github.com/wrappid/core/compare/v0.0.530...v0.0.531) (2024-09-04)
+
+
+### Bug Fixes
+
+* **global:** :bug: corecontainer fixed props has been fixed ([45b793d](https://github.com/wrappid/core/commit/45b793da3e95ad24cb483657046bbb2c4b28386a)), closes [#340](https://github.com/wrappid/core/issues/340)
+
 ### [0.0.530](https://github.com/wrappid/core/compare/v0.0.529...v0.0.530) (2024-09-04)
 
 
