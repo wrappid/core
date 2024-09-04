@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.529](https://github.com/wrappid/core/compare/v0.0.528...v0.0.529) (2024-09-04)
+
+
+### Features
+
+* **core:** :sparkles: add prop ([6ea6088](https://github.com/wrappid/core/commit/6ea6088ecadb23e357d391f53c9034e58216760d)), closes [#332](https://github.com/wrappid/core/issues/332)
+* **core:** :sparkles: update code of CoreLinearProgress ([6792653](https://github.com/wrappid/core/commit/6792653bbea0fdddc84b759e68f36d3930e01b46)), closes [#332](https://github.com/wrappid/core/issues/332)
+
+### [0.0.528](https://github.com/wrappid/core/compare/v0.0.527...v0.0.528) (2024-09-04)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitem bugfix ([8567161](https://github.com/wrappid/core/commit/85671614d15304e4085d5f2f9784a0630d88680c)), closes [#328](https://github.com/wrappid/core/issues/328)
+* **core:** :bug: corelistitem validvalues are not in array ([dd719ca](https://github.com/wrappid/core/commit/dd719ca5c6b00efa180e2c38d02616a249bcb4dd)), closes [#328](https://github.com/wrappid/core/issues/328)
+
 ### [0.0.527](https://github.com/wrappid/core/compare/v0.0.526...v0.0.527) (2024-08-29)
 
 

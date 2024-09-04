@@ -8,14 +8,12 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreLinearProgress(props) {
   props = sanitizeComponentProps(CoreLinearProgress, props);
-  const { color, value, valueBuffer, variant } = props;
+  const { labelWidth = 35, ...restProps } = props;
 
   return (
     <NativeLinearProgress
-      color={color}
-      value={value}
-      valueBuffer={valueBuffer}
-      variant={variant}
+      {...restProps}
+      labelWidth={labelWidth}
     ></NativeLinearProgress>
   );
 }
@@ -52,6 +50,26 @@ CoreLinearProgress.validProps = [
         validValues: ["sxbuffer", "determinate", "indeterminate", "query"],
       },
     ],
+  },
+  {
+    description: "Determines whether the label should be displayed next to the progress bar.",
+    name       : "showLabel",
+    types      : [
+      {
+        default: false,
+        type   : "boolean",
+      },
+    ],
+  },
+  { 
+    description: "This prop allows you to set the width of progress width",
+    name       : "labelWidth",
+    types      : [
+      {
+        default: 35,
+        type   : "number" 
+      }
+    ]
   },
 ];
 CoreLinearProgress.invalidProps = [];
