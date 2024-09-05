@@ -73,10 +73,10 @@ CoreAppBar.validProps = [
     name : "position",
     types: [
       {
-        default    : "fixed'",
+        default    : "fixed",
         type       : "string",
         validValues: [
-          "alignabsolute",
+          "absolute",
           "fixed",
           "relative",
           "static",
@@ -92,4 +92,3 @@ CoreAppBar.validProps = [
 ];
 
 CoreAppBar.invalidProps = [];
-
