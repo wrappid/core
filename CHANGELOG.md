@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.536](https://github.com/wrappid/core/compare/v0.0.535...v0.0.536) (2024-09-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix props CoreFormControl ([9726ad5](https://github.com/wrappid/core/commit/9726ad5d04da0de13588611e01c650962b24e7aa)), closes [#354](https://github.com/wrappid/core/issues/354)
+
 ### [0.0.535](https://github.com/wrappid/core/compare/v0.0.534...v0.0.535) (2024-09-05)
 
 
