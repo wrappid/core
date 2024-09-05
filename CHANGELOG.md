@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.535](https://github.com/wrappid/core/compare/v0.0.534...v0.0.535) (2024-09-05)
+
+
+### Features
+
+* **global:** :sparkles: remove unnecessary code from CoreSelect ([41efc28](https://github.com/wrappid/core/commit/41efc2813f69b853e81f91cb172f03cb73caf5f6)), closes [#355](https://github.com/wrappid/core/issues/355)
+
 ### [0.0.534](https://github.com/wrappid/core/compare/v0.0.533...v0.0.534) (2024-09-05)
 
 
