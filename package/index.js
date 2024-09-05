@@ -218,7 +218,7 @@ import CoreLayoutPlaceholder from "./layout/CoreLayoutPlaceholder";
 import LayoutManager from "./layout/LayoutManager";
 import { getCoreAccessToken } from "./middleware/coreTokenProvider";
 import AppService from "./service/AppService";
-import { apiRequestAction, setUserTheme } from "./store/action/appActions";
+import { apiRequestAction, setUserTheme, pushSnackMessage } from "./store/action/appActions";
 import { reloadDataTableAction } from "./store/action/dataTableActions";
 import { cancelFormEdit, onEditForm } from "./store/action/formAction";
 import { toggleMenuItemState, toggleRightMenuState } from "./store/action/menuAction";
@@ -252,8 +252,8 @@ import {
   detectPlatform,
   WEB_PLATFORM
 } from "./utils/themeUtil";
-
 export {
+  pushSnackMessage,
   __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ClipboardCopyButton, ComplexLayout, ComponentNotFound, ComponentRegistryContext, copyToClipboard, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
