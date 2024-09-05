@@ -2,6 +2,7 @@ import {
   API_VERSION_ERROR,
   API_VERSION_LOADING,
   API_VERSION_SUCCESS,
+  REMOVE_SNACK_MESSAGE,
   CLEAR_SNACK_MESSAGE,
   GET_ROUTE_FAILURE,
   GET_ROUTE_SUCCESS,
@@ -113,6 +114,14 @@ const appReducer = (state = initState, action) => {
       return {
         ...state,
         snackMessages: [],
+      };
+    
+    case REMOVE_SNACK_MESSAGE:
+      // eslint-disable-next-line no-console
+      console.log("------REMOVE_SNACK_MESSAGE REDUCER TYPE CALLED------");
+      return {
+        ...state,
+        snackMessages: state.snackMessages.filter(snack => snack._timestamp !== action.payload._timestamp),
       };
 
     case GET_ROUTE_SUCCESS:
