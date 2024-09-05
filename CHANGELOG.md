@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.533](https://github.com/wrappid/core/compare/v0.0.532...v0.0.533) (2024-09-05)
+
+
+### Features
+
+* **core:** :sparkles: add pushSnackMessage functionality in CoreSnackbar ([4fc5253](https://github.com/wrappid/core/commit/4fc52536558d793f88ac608d889a6ef5d7be558c)), closes [#347](https://github.com/wrappid/core/issues/347)
+
 ### [0.0.532](https://github.com/wrappid/core/compare/v0.0.531...v0.0.532) (2024-09-05)
 
 
