@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.532](https://github.com/wrappid/core/compare/v0.0.531...v0.0.532) (2024-09-05)
+
+
+### Features
+
+* **global:** :recycle: fix remove CoreBox ([d09daae](https://github.com/wrappid/core/commit/d09daae5ce356f9e377a4854e030d77b3fff25e6)), closes [#344](https://github.com/wrappid/core/issues/344)
+* **global:** :sparkles: fix CoreDateRangepicker ([470f575](https://github.com/wrappid/core/commit/470f57585596b454ef19d938af22569c4296990e)), closes [#344](https://github.com/wrappid/core/issues/344)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix CoreDateTimeRangepicker,CoreTimePicker ,CoreMultiTimePicker ([bc3732d](https://github.com/wrappid/core/commit/bc3732dfb3ef46627ededcb3747e80faaeba7b93)), closes [#344](https://github.com/wrappid/core/issues/344)
+* **global:** :bug: fix CoreDateTimePicker ([003548f](https://github.com/wrappid/core/commit/003548f9f90f065462d412cb42c7bb391bc0e222)), closes [#344](https://github.com/wrappid/core/issues/344)
+
 ### [0.0.531](https://github.com/wrappid/core/compare/v0.0.530...v0.0.531) (2024-09-04)
 
 
