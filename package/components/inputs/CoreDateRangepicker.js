@@ -1,25 +1,23 @@
+/* eslint-disable etc/no-commented-out-code */
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeDateRangePicker } from "@wrappid/native";
+import { NativeDateRangepicker } from "@wrappid/native";
 
-import CoreFormHelperText from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
-import CoreBox from "../layouts/CoreBox";
+// import CoreFormHelperText from "./CoreFormHelperText";
+// import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreDateRangepicker(props) {
   return (
-    <CoreBox>
-      <NativeDateRangePicker {...props} />
-
-      <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-        {props.helperText}
-      </CoreFormHelperText>
-    </CoreBox>
+    <NativeDateRangepicker {...props} />
   );
 }
 CoreDateRangepicker.validProps = [
+  {
+    name : "formik",
+    types: [{ type: "object" }]
+  },
   {
     description: "If true, the main element is focused during the first mount. This main element is: - the element chosen by the visible view if any (i.e: the selected day on the day view). - the input element if there is a field rendered.",
     name       : "autoFocus",
@@ -28,7 +26,7 @@ CoreDateRangepicker.validProps = [
   {
     description: "The number of calendars to render on desktop.",
     name       : "calendars",
-    types      : [{ default: "2", type: "1 | 2 | 3", validValues: [] }],
+    types      : [{ default: "2", type: "number", validValues: [] }],
   },
   {
     description: "Class name applied to the root element.",
