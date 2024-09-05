@@ -10,6 +10,8 @@ import AppService from "../../service/AppService";
 import { getForm } from "../../utils/formUtils";
 import {
   CLEAR_SNACK_MESSAGE,
+  REMOVE_SNACK_MESSAGE,
+  MESSAGE_SHOWED,
   PUSH_SNACK_MESSAGE,
   RESET_LOADING,
   RESET_PROGRESS_BAR,
@@ -307,7 +309,7 @@ export const apiRequestAction =
 /**
  * Snack message related action
  */
-export const pushSnackMessage = (type, message) => dispatch => {
+export const pushSnackMessage = (type, message, snackProps = {}) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // enqueueSnackbar(message, { variant: type });
   dispatch({
@@ -315,10 +317,22 @@ export const pushSnackMessage = (type, message) => dispatch => {
       _timestamp: new Date().getTime(),
       message   : message || "Message not provided",
       type      : type,
+      ...snackProps
     },
     type: PUSH_SNACK_MESSAGE,
   });
 };
+
+export const messageShowed = (timestamp) => ({
+  payload: { _timestamp: timestamp },
+  type   : MESSAGE_SHOWED,
+});
+
+export const removeSnackMessage = (timestamp) => ({
+  payload: { _timestamp: timestamp },
+  type   : REMOVE_SNACK_MESSAGE,
+});
+
 export const clearSnackMessages = () => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // closeSnackbar();
