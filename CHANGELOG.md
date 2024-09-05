@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.534](https://github.com/wrappid/core/compare/v0.0.533...v0.0.534) (2024-09-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: update code in CoreAppBar ([09c1882](https://github.com/wrappid/core/commit/09c1882f9766547fc7e82754d8db30c542449529)), closes [#350](https://github.com/wrappid/core/issues/350)
+
 ### [0.0.533](https://github.com/wrappid/core/compare/v0.0.532...v0.0.533) (2024-09-05)
 
 
