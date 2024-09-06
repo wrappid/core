@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.538](https://github.com/wrappid/core/compare/v0.0.537...v0.0.538) (2024-09-06)
+
+
+### Features
+
+* **core:** :sparkles: add valid props in CoreRating ([e7f8d43](https://github.com/wrappid/core/commit/e7f8d4328204d4d20dd22349900c0aba789d221a)), closes [#360](https://github.com/wrappid/core/issues/360)
+
 ### [0.0.537](https://github.com/wrappid/core/compare/v0.0.536...v0.0.537) (2024-09-06)
 
 
