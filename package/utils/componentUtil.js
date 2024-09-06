@@ -111,8 +111,17 @@ export const defaultValidProps = [
   },
   {
     description: "Used to render node elements inside the node element. This can be an element, or just a string.",
-    name       : "children"
+    name       : "children",
+    types      : [{ type: "node" }]
   },
+];
+
+export const defaultFormControlProps = [
+  {
+    default: "true",
+    name   : "fullWidth",
+    types  : [{ type: "boolean", validValues: [true, false] }],
+  }
 ];
 
 export const defaultValidEvents = [
