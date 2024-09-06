@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.537](https://github.com/wrappid/core/compare/v0.0.536...v0.0.537) (2024-09-06)
+
+
+### Features
+
+* **core:** :sparkles: auto basic sample creation ([1c0e098](https://github.com/wrappid/core/commit/1c0e098553228d63b426b1a5ef7ced6da10f5485)), closes [#358](https://github.com/wrappid/core/issues/358)
+
 ### [0.0.536](https://github.com/wrappid/core/compare/v0.0.535...v0.0.536) (2024-09-05)
 
 
