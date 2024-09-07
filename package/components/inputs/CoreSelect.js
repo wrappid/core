@@ -5,22 +5,21 @@ import React from "react";
 import { NativeSelect } from "@wrappid/native";
 
 import CoreFormControl from "./CoreFormControl";
-import CoreInputLabel from "./CoreInputLabel";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreSelect(props) {
   props = sanitizeComponentProps(CoreSelect, props);
-  const { label } = props;
 
   return (
-    <CoreFormControl>
-      <CoreInputLabel id="demo-simple-select-label">{label}</CoreInputLabel>
-
-      <NativeSelect {...props} />
-    </CoreFormControl>
+    <NativeSelect {...props} />
   );
 }
 CoreSelect.validProps = [
+  ...CoreFormControl.validProps,
+  {
+    name : "helperText",
+    types: [{ type: "string" }]
+  },
   {
     description:
       "If true, the width of the popover will automatically be set according to the items inside the menu, otherwise it will be at least the width of the select input.",

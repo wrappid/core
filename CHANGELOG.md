@@ -2,6 +2,92 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.538](https://github.com/wrappid/core/compare/v0.0.537...v0.0.538) (2024-09-06)
+
+
+### Features
+
+* **core:** :sparkles: add valid props in CoreRating ([e7f8d43](https://github.com/wrappid/core/commit/e7f8d4328204d4d20dd22349900c0aba789d221a)), closes [#360](https://github.com/wrappid/core/issues/360)
+
+### [0.0.537](https://github.com/wrappid/core/compare/v0.0.536...v0.0.537) (2024-09-06)
+
+
+### Features
+
+* **core:** :sparkles: auto basic sample creation ([1c0e098](https://github.com/wrappid/core/commit/1c0e098553228d63b426b1a5ef7ced6da10f5485)), closes [#358](https://github.com/wrappid/core/issues/358)
+
+### [0.0.536](https://github.com/wrappid/core/compare/v0.0.535...v0.0.536) (2024-09-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix props CoreFormControl ([9726ad5](https://github.com/wrappid/core/commit/9726ad5d04da0de13588611e01c650962b24e7aa)), closes [#354](https://github.com/wrappid/core/issues/354)
+
+### [0.0.535](https://github.com/wrappid/core/compare/v0.0.534...v0.0.535) (2024-09-05)
+
+
+### Features
+
+* **global:** :sparkles: remove unnecessary code from CoreSelect ([41efc28](https://github.com/wrappid/core/commit/41efc2813f69b853e81f91cb172f03cb73caf5f6)), closes [#355](https://github.com/wrappid/core/issues/355)
+
+### [0.0.534](https://github.com/wrappid/core/compare/v0.0.533...v0.0.534) (2024-09-05)
+
+
+### Bug Fixes
+
+* **core:** :bug: update code in CoreAppBar ([09c1882](https://github.com/wrappid/core/commit/09c1882f9766547fc7e82754d8db30c542449529)), closes [#350](https://github.com/wrappid/core/issues/350)
+
+### [0.0.533](https://github.com/wrappid/core/compare/v0.0.532...v0.0.533) (2024-09-05)
+
+
+### Features
+
+* **core:** :sparkles: add pushSnackMessage functionality in CoreSnackbar ([4fc5253](https://github.com/wrappid/core/commit/4fc52536558d793f88ac608d889a6ef5d7be558c)), closes [#347](https://github.com/wrappid/core/issues/347)
+
+### [0.0.532](https://github.com/wrappid/core/compare/v0.0.531...v0.0.532) (2024-09-05)
+
+
+### Features
+
+* **global:** :recycle: fix remove CoreBox ([d09daae](https://github.com/wrappid/core/commit/d09daae5ce356f9e377a4854e030d77b3fff25e6)), closes [#344](https://github.com/wrappid/core/issues/344)
+* **global:** :sparkles: fix CoreDateRangepicker ([470f575](https://github.com/wrappid/core/commit/470f57585596b454ef19d938af22569c4296990e)), closes [#344](https://github.com/wrappid/core/issues/344)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix CoreDateTimeRangepicker,CoreTimePicker ,CoreMultiTimePicker ([bc3732d](https://github.com/wrappid/core/commit/bc3732dfb3ef46627ededcb3747e80faaeba7b93)), closes [#344](https://github.com/wrappid/core/issues/344)
+* **global:** :bug: fix CoreDateTimePicker ([003548f](https://github.com/wrappid/core/commit/003548f9f90f065462d412cb42c7bb391bc0e222)), closes [#344](https://github.com/wrappid/core/issues/344)
+
+### [0.0.531](https://github.com/wrappid/core/compare/v0.0.530...v0.0.531) (2024-09-04)
+
+
+### Bug Fixes
+
+* **global:** :bug: corecontainer fixed props has been fixed ([45b793d](https://github.com/wrappid/core/commit/45b793da3e95ad24cb483657046bbb2c4b28386a)), closes [#340](https://github.com/wrappid/core/issues/340)
+
+### [0.0.530](https://github.com/wrappid/core/compare/v0.0.529...v0.0.530) (2024-09-04)
+
+
+### Bug Fixes
+
+* **global:** :bug: add valid props for all CoreTable related components ([c48b82e](https://github.com/wrappid/core/commit/c48b82e2e6f54b41d935ffbeb71da2679627b071)), closes [#336](https://github.com/wrappid/core/issues/336)
+
+### [0.0.529](https://github.com/wrappid/core/compare/v0.0.528...v0.0.529) (2024-09-04)
+
+
+### Features
+
+* **core:** :sparkles: add prop ([6ea6088](https://github.com/wrappid/core/commit/6ea6088ecadb23e357d391f53c9034e58216760d)), closes [#332](https://github.com/wrappid/core/issues/332)
+* **core:** :sparkles: update code of CoreLinearProgress ([6792653](https://github.com/wrappid/core/commit/6792653bbea0fdddc84b759e68f36d3930e01b46)), closes [#332](https://github.com/wrappid/core/issues/332)
+
+### [0.0.528](https://github.com/wrappid/core/compare/v0.0.527...v0.0.528) (2024-09-04)
+
+
+### Bug Fixes
+
+* **core:** :bug: corelistitem bugfix ([8567161](https://github.com/wrappid/core/commit/85671614d15304e4085d5f2f9784a0630d88680c)), closes [#328](https://github.com/wrappid/core/issues/328)
+* **core:** :bug: corelistitem validvalues are not in array ([dd719ca](https://github.com/wrappid/core/commit/dd719ca5c6b00efa180e2c38d02616a249bcb4dd)), closes [#328](https://github.com/wrappid/core/issues/328)
+
 ### [0.0.527](https://github.com/wrappid/core/compare/v0.0.526...v0.0.527) (2024-08-29)
 
 

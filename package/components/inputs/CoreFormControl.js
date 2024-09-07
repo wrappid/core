@@ -40,34 +40,34 @@ CoreFormControl.validProps = [
   {
     description: "If true, the component is disabled.",
     name       : "disabled",
-    types      : [{ default: false, type: "boolean" }],
+    types      : [{ default: false, type: "boolean", validValues: [false, true] }],
   },
   {
     name : "error",
-    types: [{ default: false, type: "boolean" }]
+    types: [{ default: false, type: "boolean", validValues: [false, true] }]
   },
   {
     name : "focused",
     types: [{ type: "boolean" }]
   },
   {
-    name : "fulwidth",
-    types: [{ default: false, type: "boolean" }]
+    name : "fullWidth",
+    types: [{ default: false, type: "boolean", validValues: [false, true] }]
   },
   {
     description: "If true, the label is hidden. This is used to increase density for a FilledInput. Be sure to add aria-label to the input element.",
     name       : "hiddenLabel",
-    types      : [{ default: false, type: "boolean" }]
+    types      : [{ default: false, type: "boolean", validValues: [false, true] }]
   },
   {
     description:
       "If dense, will adjust vertical spacing. This is normally obtained via context from FormControl. The prop defaults to the value ('none') inherited from the parent FormControl component.",
     name : "margin",
-    types: [{ default: "", type: "dense'| 'none'" }],
+    types: [{ default: "none", type: "string", validValues: ["none", "normal", "dense"] }],
   },
   {
     name : "required",
-    types: [{ default: false, type: "boolean" }]
+    types: [{ default: false, type: "boolean", validValues: [false, true] }]
   },
   {
     description:
@@ -82,19 +82,14 @@ CoreFormControl.validProps = [
     ],
   },
   {
-    description: "The shape of the avatar.",
+    description: "The variant to use.",
     name       : "variant",
     types      : [
       {
-        default    : "circular",
+        default    : "outlined",
         type       : "string",
-        validValues: ["circular", "rounded", "square"]
+        validValues: ["outlined", "filled", "standard"]
       },
-      {
-        default    : true,
-        type       : "boolean",
-        validValues: [true, false]
-      }
     ]
   },
 ];
