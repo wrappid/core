@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.541](https://github.com/wrappid/core/compare/v0.0.540...v0.0.541) (2024-09-09)
+
+
+### Bug Fixes
+
+* **core:** :bug: component function name ([f762b97](https://github.com/wrappid/core/commit/f762b9768694990747462018c3f3bb8c0d7b726e)), closes [#366](https://github.com/wrappid/core/issues/366)
+
 ### [0.0.540](https://github.com/wrappid/core/compare/v0.0.539...v0.0.540) (2024-09-09)
 
 
