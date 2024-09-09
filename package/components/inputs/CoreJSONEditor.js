@@ -4,6 +4,6 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeJSONEditor } from "@wrappid/native";
 
-export default function CoreJsonEditor(props) {
+export default function CoreJSONEditor(props) {
   return <NativeJSONEditor {...props} />;
 }
