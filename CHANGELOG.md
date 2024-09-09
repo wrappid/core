@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.540](https://github.com/wrappid/core/compare/v0.0.539...v0.0.540) (2024-09-09)
+
+
+### Features
+
+* **global:** :recycle: clean up valid props of CoreAutoComplete ([71c7a92](https://github.com/wrappid/core/commit/71c7a92df0d08fd26933cc4090939efd1d439f04)), closes [#362](https://github.com/wrappid/core/issues/362)
+
 ### [0.0.539](https://github.com/wrappid/core/compare/v0.0.538...v0.0.539) (2024-09-09)
 
 
