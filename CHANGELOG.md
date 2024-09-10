@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.541](https://github.com/wrappid/core/compare/v0.0.540...v0.0.541) (2024-09-09)
+
+
+### Bug Fixes
+
+* **core:** :bug: component function name ([f762b97](https://github.com/wrappid/core/commit/f762b9768694990747462018c3f3bb8c0d7b726e)), closes [#366](https://github.com/wrappid/core/issues/366)
+
+### [0.0.540](https://github.com/wrappid/core/compare/v0.0.539...v0.0.540) (2024-09-09)
+
+
+### Features
+
+* **global:** :recycle: clean up valid props of CoreAutoComplete ([71c7a92](https://github.com/wrappid/core/commit/71c7a92df0d08fd26933cc4090939efd1d439f04)), closes [#362](https://github.com/wrappid/core/issues/362)
+
+### [0.0.539](https://github.com/wrappid/core/compare/v0.0.538...v0.0.539) (2024-09-09)
+
+
+### Features
+
+* **core:** :bug: add CoreDatepicker validProps ([efed94a](https://github.com/wrappid/core/commit/efed94a62a48646f767cb16afa690639a0986b2f)), closes [#342](https://github.com/wrappid/core/issues/342)
+* **global:** :sparkles: add formik as valid props ([9c496cf](https://github.com/wrappid/core/commit/9c496cf8daa1775fb066b15d923705a3cb7beecb)), closes [#342](https://github.com/wrappid/core/issues/342)
+* **global:** :sparkles: add sanitizeComponentProps in CoreDatePicker ([4c0fe86](https://github.com/wrappid/core/commit/4c0fe8684a0099dde99723851e79468f823f3402)), closes [#342](https://github.com/wrappid/core/issues/342)
+
 ### [0.0.538](https://github.com/wrappid/core/compare/v0.0.537...v0.0.538) (2024-09-06)
 
 
