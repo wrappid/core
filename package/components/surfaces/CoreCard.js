@@ -19,10 +19,6 @@ CoreCard.validProps = [
     name       : "raised",
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
   },
-  {
-    name : "onClick", 
-    types: [{ type: "function" }], 
-  },
 ];
 
 CoreCard.invalidProps = [];
