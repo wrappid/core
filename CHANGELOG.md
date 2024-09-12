@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.544](https://github.com/wrappid/core/compare/v0.0.543...v0.0.544) (2024-09-12)
+
+
+### Bug Fixes
+
+* **core:** :bug: navigation/CoreLink valid props ([a2e0879](https://github.com/wrappid/core/commit/a2e0879edd13a3a000a2bdd42579a1285e0d9245)), closes [#368](https://github.com/wrappid/core/issues/368)
+
 ### [0.0.543](https://github.com/wrappid/core/compare/v0.0.542...v0.0.543) (2024-09-12)
 
 
