@@ -16,10 +16,6 @@ CoreLink.validProps = [
     types: [{ default: "", type: "string" }],
   },
   {
-    name : "onClick",
-    types: [{ type: "function" }],
-  },
-  {
     name : "href",
     types: [{ default: "", type: "string" }],
   },
@@ -38,7 +34,22 @@ CoreLink.validProps = [
   {
     description: "The color of the link.",
     name       : "color",
-    types      : [{ default: "primary'", type: "any" }],
+    types      : [
+      { 
+        default    : "primary", 
+        type       : "string", 
+        validValues: [
+          "primary",
+          "secondary",
+          "success",
+          "error",
+          "warning",
+          "textPrimary",
+          "textSecondary",
+          "textDisabled"
+        ]
+      }
+    ],
   },
   {
     description:
@@ -56,9 +67,9 @@ CoreLink.validProps = [
     name       : "underline",
     types      : [
       {
-        default    : "always'",
+        default    : "none",
         type       : "string",
-        validValues: ["always", "hover", "none"],
+        validValues: ["none", "hover", "always"],
       },
     ],
   },
