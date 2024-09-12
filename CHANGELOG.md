@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.545](https://github.com/wrappid/core/compare/v0.0.544...v0.0.545) (2024-09-12)
+
+
+### Bug Fixes
+
+* **global:** :bug: coregrid same props are called multiple times fixed ([2a5b355](https://github.com/wrappid/core/commit/2a5b355b14ed8afeb03eb14399c9ec4f488c5533)), closes [#370](https://github.com/wrappid/core/issues/370)
+
 ### [0.0.544](https://github.com/wrappid/core/compare/v0.0.543...v0.0.544) (2024-09-12)
 
 
