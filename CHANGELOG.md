@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.544](https://github.com/wrappid/core/compare/v0.0.543...v0.0.544) (2024-09-12)
+
+
+### Bug Fixes
+
+* **core:** :bug: navigation/CoreLink valid props ([a2e0879](https://github.com/wrappid/core/commit/a2e0879edd13a3a000a2bdd42579a1285e0d9245)), closes [#368](https://github.com/wrappid/core/issues/368)
+
+### [0.0.543](https://github.com/wrappid/core/compare/v0.0.542...v0.0.543) (2024-09-12)
+
+
+### Features
+
+* **core:** :sparkles: update valid props of CoreCard ([775f41f](https://github.com/wrappid/core/commit/775f41fd62a2c8282492b9e676dc492a7f621e9b)), closes [#364](https://github.com/wrappid/core/issues/364)
+
+### [0.0.542](https://github.com/wrappid/core/compare/v0.0.541...v0.0.542) (2024-09-11)
+
 ### [0.0.541](https://github.com/wrappid/core/compare/v0.0.540...v0.0.541) (2024-09-09)
 
 

@@ -4,6 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeCard } from "@wrappid/native";
 
+import CorePaper from "./CorePaper";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CoreCard(props) {
@@ -12,14 +13,11 @@ export default function CoreCard(props) {
   return <NativeCard {...props} />;
 }
 CoreCard.validProps = [
+  ...CorePaper.validProps,
   {
     description: "If true, the card will use raised styling.",
     name       : "raised",
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
-  },
-  {
-    name : "onClick", /// we have already a onClick props available in CoreButton but it's starting with Capital 'O' that's need to be changed to present 'onClicl' props.
-    types: [{ type: "function" }], 
   },
 ];
 
