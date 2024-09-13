@@ -129,7 +129,7 @@ CoreInput.validProps = [
     description:
       "Minimum number of rows to display when multiline option is set to true.",
     name : "minRows",
-    types: [{ type: "number| string" }],
+    types: [{ type: "number" }, { type: "string"}],
   },
   {
     description: "If true, a TextareaAutosize element is rendered.",
