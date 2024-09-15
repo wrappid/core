@@ -20,10 +20,9 @@ export default function CoreLinearProgress(props) {
 
 CoreLinearProgress.validProps = [
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "primary",
         type       : "string",
@@ -32,10 +31,9 @@ CoreLinearProgress.validProps = [
     ],
   },
   {
-    description:
-      "The value of the progress indicator for the determinate and buffer variants. Value between 0 and 100.",
-    name : "value",
-    types: [{ type: "number" }],
+    description: "The value of the progress indicator for the determinate and buffer variants. Value between 0 and 100.",
+    name       : "value",
+    types      : [{ type: "number" }],
   },
   {
     description: "The value for the buffer variant. Value between 0 and 100.",
@@ -43,10 +41,9 @@ CoreLinearProgress.validProps = [
     types      : [{ type: "number" }],
   },
   {
-    description:
-      "The variant to use. Use indeterminate or query when there is no progress value.",
-    name : "variant",
-    types: [
+    description: "The variant to use. Use indeterminate or query when there is no progress value.",
+    name       : "variant",
+    types      : [
       {
         default    : "indeterminate",
         type       : "string",

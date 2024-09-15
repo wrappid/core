@@ -26,10 +26,6 @@ CoreButton.validProps = [
     types: [{ type: "string" }]
   },
   {
-    name : "onClick",
-    types: [{ type: "function" }],
-  },
-  {
     description:
       "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
     name : "color",
@@ -50,10 +46,9 @@ CoreButton.validProps = [
     ],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "If true, the component is disabled.",
@@ -71,10 +66,9 @@ CoreButton.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
-    name : "disableRipple",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the ripple effect is disabled.⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure to highlight the element by applying separate styles with the .Mui-focusVisible class.",
+    name       : "disableRipple",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "Element placed after the children.",
@@ -82,22 +76,19 @@ CoreButton.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "If true, the button will take up the full width of its container.",
-    name : "fullWidth",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, the button will take up the full width of its container.",
+    name       : "fullWidth",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "The URL to link to when the button is clicked. If defined, an a element will be used as the root node.",
-    name : "href",
-    types: [{ type: "string" }],
+    description: "The URL to link to when the button is clicked. If defined, an a element will be used as the root node.",
+    name       : "href",
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "The size of the component. small is equivalent to the dense button styling.",
-    name : "size",
-    types: [
+    description: "The size of the component. small is equivalent to the dense button styling.",
+    name       : "size",
+    types      : [
       {
         default    : "medium",
         type       : "string",

@@ -24,16 +24,14 @@ CoreCardHeader.validProps = [
   },
 
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "If true, subheader and title won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the title text, and optional subheader text with the Typography component.",
-    name : "disableTypography",
-    types: [{ default: false, type: "boolean" }],
+    description: "If true, subheader and title won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the title text, and optional subheader text with the Typography component.",
+    name       : "disableTypography",
+    types      : [{ default: false, type: "boolean" }],
   },
   {
     description: "The content of the component.",
@@ -41,10 +39,9 @@ CoreCardHeader.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "These props will be forwarded to the subheader (as long as disableTypography is not true).",
-    name : "subheaderTypographyProps",
-    types: [{ type: "object" }],
+    description: "These props will be forwarded to the subheader (as long as disableTypography is not true).",
+    name       : "subheaderTypographyProps",
+    types      : [{ type: "object" }],
   },
   {
     description: "The content of the component.",
@@ -52,15 +49,9 @@ CoreCardHeader.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "These props will be forwarded to the title (as long as disableTypography is not true).",
-    name : "titleTypographyProps",
-    types: [
-      {
-        default: "",
-        type   : "object",
-      },
-    ],
+    description: "These props will be forwarded to the title (as long as disableTypography is not true).",
+    name       : "titleTypographyProps",
+    types      : [{ type: "object" }],
   },
 ];
 CoreCardHeader.invalidProps = [];

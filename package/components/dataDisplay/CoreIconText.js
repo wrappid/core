@@ -160,7 +160,7 @@ CoreIconText.validProps = [
   },
   {
     name : "tailIconSize",
-    types: [{ type: "size" }],
+    types: [{ type: "string" }],
   },
   {
     name : "tailIconColor",

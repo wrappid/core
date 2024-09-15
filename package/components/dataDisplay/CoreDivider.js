@@ -91,7 +91,7 @@ CoreDivider.validProps = [
     ],
   },
   {
-    name : "leftInset ",
+    name : "leftInset",
     types: [
       {
         type       : "boolean",
@@ -100,7 +100,7 @@ CoreDivider.validProps = [
     ],
   },
   {
-    name : "horizontalInset ",
+    name : "horizontalInset",
     types: [
       {
         type       : "boolean",
@@ -109,7 +109,7 @@ CoreDivider.validProps = [
     ],
   },
   {
-    name : "bold ",
+    name : "bold",
     types: [
       {
         type       : "boolean",

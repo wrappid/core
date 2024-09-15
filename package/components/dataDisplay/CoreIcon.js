@@ -82,10 +82,9 @@ CoreIcon.validProps = [
     ],
   },
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "inherit",
         type       : "string",
@@ -108,10 +107,9 @@ CoreIcon.validProps = [
     types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.",
-    name : "fontSize",
-    types: [
+    description: "The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.",
+    name       : "fontSize",
+    types      : [
       {
         default    : "medium",
         type       : "string",

@@ -35,37 +35,28 @@ CoreDialog.validProps = [
   {
     description: "The id(s) of the element(s) that describe the dialog.",
     name       : "aria-describedby",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "The id(s) of the element(s) that label the dialog.",
     name       : "aria-labelledby",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "A backdrop component. This prop enables custom backdrop rendering.\
+    description: "A backdrop component. This prop enables custom backdrop rendering.\
     Deprecated - Use slots.backdrop instead. While this prop currently works, it will be removed in the next major version.",
     name : "BackdropComponent",
     types: [
       {
-        default:
-          "styled(Backdrop, { name: 'MuiModal', slot: 'Backdrop', overridesResolver: (props, styles) => { return styles.backdrop; }, })({ zIndex: -1, })",
-        type: "elementType",
+        default: "styled(Backdrop, { name: 'MuiModal', slot: 'Backdrop', overridesResolver: (props, styles) => { return styles.backdrop; }, })({ zIndex: -1, })",
+        type   : "elementType",
       },
     ],
   },
   {
     description: "Dialog children, usually the included sub-components.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
-  },
-  {
-    description:
-      "Override or extend the styles applied to the component.\
-    See CSS API below for more details.",
-    name : "classes",
-    types: [{ default: "", type: "object" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "If true, hitting escape will not fire the onClose callback.",
@@ -78,17 +69,15 @@ CoreDialog.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "If true, the dialog stretches to maxWidth.\
+    description: "If true, the dialog stretches to maxWidth.\
     Notice that the dialog width grow is limited by the default margin.",
     name : "fullWidth",
     types: [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "Determine the max-width of the dialog. The dialog width grows with the size of the screen. Set to false to disable maxWidth.",
-    name : "maxWidth",
-    types: [
+    description: "Determine the max-width of the dialog. The dialog width grows with the size of the screen. Set to false to disable maxWidth.",
+    name       : "maxWidth",
+    types      : [
       {
         default    : "sm",
         type       : "string",
@@ -104,11 +93,10 @@ CoreDialog.validProps = [
     ],
   },
   {
-    description:
-      "Callback fired when the backdrop is clicked.\
+    description: "Callback fired when the backdrop is clicked.\
     Deprecated - Use the onClose prop with the reason argument to handle the backdropClick events.",
     name : "onBackdropClick",
-    types: [{ default: "", type: "function" }],
+    types: [{ type: "function" }],
   },
   {
     description: `Callback fired when the component requests to be closed.
@@ -133,28 +121,24 @@ CoreDialog.validProps = [
     types      : [{ default: "paper", type: "string", validValues: ["body", "paper"] }],
   },
   {
-    description:
-      "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
-    name : "TransitionComponent",
-    types: [{ default: "Fade", type: "elementType" }],
+    description: "The component used for the transition. Follow this guide to learn more about the requirements for this component.",
+    name       : "TransitionComponent",
+    types      : [{ default: "Fade", type: "elementType" }],
   },
   {
-    description:
-      "Props applied to the transition element. By default, the element is based on this Transition component.",
-    name : "TransitionProps",
-    types: [{ default: {}, type: "object" }],
+    description: "Props applied to the transition element. By default, the element is based on this Transition component.",
+    name       : "TransitionProps",
+    types      : [{ default: {}, type: "object" }],
   },
   {
-    description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
-    name : "transitionDuration",
-    types: [
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.Exampl object: { appear?: number, enter?: number, exit?: number }",
+    name       : "transitionDuration",
+    types      : [
       {
-        default:
-          "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
-        type: "number \
-      | { appear?: number, enter?: number, exit?: number }",
+        default: "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
+        type   : "number"
       },
+      { type: "object" }
     ],
   },
 ];

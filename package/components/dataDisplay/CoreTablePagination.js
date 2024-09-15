@@ -33,7 +33,7 @@ CoreTablePagination.validProps = [
   {
     description: "The total number of rows. To enable server side pagination for an unknown number of items, provide -1.",
     name       : "count",
-    types      : [{ type: "integer" }]
+    types      : [{ type: "number" }]
   },
   {
     description: `Callback fired when the page is changed.
@@ -48,12 +48,12 @@ function(event: React.MouseEvent | null, page: number) => void
   {
     description: "The zero-based index of the current page.",
     name       : "page",
-    types      : [{ type: "integer" }]
+    types      : [{ type: "number" }]
   },
   {
     decription: "The number of rows per page. Set -1 to display all the rows.",
     name      : "rowsPerPage",
-    types     : [{ type: "integer" }]
+    types     : [{ type: "number" }]
   },
   {
     description: "The component used for displaying the actions. Either a string to use a HTML element or a component.",
@@ -83,34 +83,17 @@ function(type: string) => string
 
   - type The link or button type to format ('first' | 'last' | 'next' | 'previous').`,
     name : "getItemAriaLabel",
-    types: [
-      {
-        // eslint-disable-next-line etc/no-commented-out-code
-        // default: "function defaultGetAriaLabel(type) { return `Go to ${type} page`; }",
-        type: "function",
-      }
-    ]
+    types: [{ type: "function" }]
   },
   {
     description: "Customize the displayed rows label. Invoked with a { from, to, count, page } object.",
     name       : "labelDisplayedRows",
-    types      : [
-      {
-        // eslint-disable-next-line etc/no-commented-out-code
-        // default: "function defaultLabelDisplayedRows({ from, to, count }) { return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`; }",
-        type: "function"
-      }
-    ]
+    types      : [{ type: "function" }]
   },
   {
     description: "Customize the rows per page label",
     name       : "labelRowsPerPage",
-    types      : [
-      {
-        default: "Rows per page:",
-        type   : "node"
-      }
-    ]
+    types      : [{ type: "node" }]
   },
   {
     description: `Callback fired when the number of rows per page is changed.
@@ -122,12 +105,12 @@ function(event: React.ChangeEvent) => void
     types: [{ type: "function" }]
   },
   {
-    description: "Customizes the options of the rows per page select field. If less than two options are available, no select field will be displayed. Use -1 for the value with a custom label to show all the rows.",
+    description: "Customizes the options of the rows per page select field. If less than two options are available, no select field will be displayed. Use -1 for the value with a custom label to show all the rows.Array type: Array<number{ label: string, value: number }> ",
     name       : "rowsPerPageOptions",
     types      : [
       {
         default: DATA_TABLE_CONST.ROWS_PER_PAGE_OPTIONS,
-        type   : "any"
+        type   : "array"
       }
     ]
   },

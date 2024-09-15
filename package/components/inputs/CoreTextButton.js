@@ -16,7 +16,7 @@ CoreTextButton.validProps = [
     types: [{ default: 0.2, type: "number" }]
   },
   {
-    name : "nextFocusDown ",
+    name : "nextFocusDown",
     types: [{ type: "number" }]
   },
   {
@@ -24,15 +24,15 @@ CoreTextButton.validProps = [
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusLeft ",
+    name : "nextFocusLeft",
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusRight ",
+    name : "nextFocusRight",
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusUp  ",
+    name : "nextFocusUp",
     types: [{ type: "number" }]
   }
 ];

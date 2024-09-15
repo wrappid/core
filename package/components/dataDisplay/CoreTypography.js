@@ -16,10 +16,9 @@ const CoreTypography = React.forwardRef((props, ref) => {
 CoreTypography.displayName = "CoreTypography";
 CoreTypography.validProps = [
   {
-    description:
-      "The content of the component need to show as it is like a code block.",
-    name : "code",
-    types: [
+    description: "The content of the component need to show as it is like a code block.",
+    name       : "code",
+    types      : [
       {
         default    : false,
         type       : "boolean",
@@ -112,10 +111,9 @@ CoreTypography.validProps = [
     ],
   },
   {
-    description:
-      "The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop.",
-    name : "variantMapping",
-    types: [
+    description: "The component maps the variant prop to a range of different HTML element types. For instance, subtitle1 to <h6>. If you wish to change that mapping, you can provide your own. Alternatively, you can use the component prop.",
+    name       : "variantMapping",
+    types      : [
       {
         default: {
           body1    : "p",

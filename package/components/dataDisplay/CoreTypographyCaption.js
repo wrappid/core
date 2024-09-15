@@ -55,20 +55,17 @@ export default function CoreTypographyCaption(props) {
 CoreTypographyCaption.validProps = [
   ...CoreTypography.validProps,
   {
-    description:
-      "The content of the component need to show as it is like a code block.",
-    name : "code",
-    types: [{ default: false, type: "boolean", validValues: [true, false] }],
-  },
-  {
-    description: "",
-    name       : "limitChars",
-    types      : [{ type: "number" }],
-  },
-  {
-    description: "",
-    name       : "hideSeeMore",
+    description: "The content of the component need to show as it is like a code block.",
+    name       : "code",
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
+  },
+  {
+    name : "limitChars",
+    types: [{ type: "number" }],
+  },
+  {
+    name : "hideSeeMore",
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographyCaption.invalidProps = [];

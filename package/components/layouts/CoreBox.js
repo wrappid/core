@@ -14,10 +14,9 @@ const CoreBox = React.forwardRef((props, ref) => {
 CoreBox.displayName = "CoreBox";
 CoreBox.validProps = [
   {
-    description:
-        "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ default: "", type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
 ];
 export default CoreBox;

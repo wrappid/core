@@ -14,10 +14,9 @@ export default function CoreFab(props) {
 
 CoreFab.validProps = [
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "primary",
         type       : "string",
@@ -34,10 +33,9 @@ CoreFab.validProps = [
     ],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "If true, the component is disabled.",
@@ -60,14 +58,9 @@ CoreFab.validProps = [
     type       : "string"
   },
   {
-    name : "onClick",
-    types: [{ type: "function" }],
-  },
-  {
-    description:
-      "The size of the component.",
-    name : "size",
-    types: [
+    description: "The size of the component.",
+    name       : "size",
+    types      : [
       {
         default    : "medium",
         type       : "string",
@@ -76,10 +69,9 @@ CoreFab.validProps = [
     ],
   },
   {
-    description:
-      "The variant to use.",
-    name : "variant",
-    types: [
+    description: "The variant to use.",
+    name       : "variant",
+    types      : [
       {
         default    : "filled",
         type       : "string",

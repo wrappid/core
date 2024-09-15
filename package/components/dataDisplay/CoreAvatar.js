@@ -46,7 +46,7 @@ CoreAvatar.validProps = [
   {
     description: "The component used for the root node. Either a string to use a HTML element or a component.",
     name       : "component",
-    types      : [{ default: "", type: "elementType" }]
+    types      : [{ type: "elementType" }]
   },
   {
     description: "Attributes applied to the img element if the component is used to display an image. It can be used to listen for the loading error event.",
