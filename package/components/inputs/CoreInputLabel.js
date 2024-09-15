@@ -12,10 +12,9 @@ export default function CoreInputLabel(props) {
 }
 CoreInputLabel.validProps = [
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "default",
         type       : "string",
@@ -51,10 +50,9 @@ CoreInputLabel.validProps = [
     types: [{ type: "boolean" }] 
   },
   {
-    description:
-      "If dense, will adjust vertical spacing. This is normally obtained via context from FormControl. The prop defaults to the value ('none') inherited from the parent FormControl component.",
-    name : "margin",
-    types: [{ type: "dense" }],
+    description: "If dense, will adjust vertical spacing. This is normally obtained via context from FormControl. The prop defaults to the value ('none') inherited from the parent FormControl component.",
+    name       : "margin",
+    types      : [{ type: "dense" }],
   },
   {
     name : "required",
@@ -65,10 +63,9 @@ CoreInputLabel.validProps = [
     types: [{ type: "boolean" }] 
   },
   {
-    description:
-      "The size of the component.",
-    name : "size",
-    types: [
+    description: "The size of the component.",
+    name       : "size",
+    types      : [
       {
         default    : "normal",
         type       : "string",
@@ -77,10 +74,9 @@ CoreInputLabel.validProps = [
     ],
   },
   {
-    description:
-      "The variant to use.",
-    name : "variant",
-    types: [
+    description: "The variant to use.",
+    name       : "variant",
+    types      : [
       {
         type       : "string",
         validValues: ["filled", "outlined", "standard"],

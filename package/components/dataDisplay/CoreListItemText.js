@@ -37,16 +37,14 @@ CoreListItemText.validProps = [
     ]
   },
   {
-    description:
-    "The main content element.",
-    name : "primary",
-    types: [{ type: "node" }],
+    description: "The main content element.",
+    name       : "primary",
+    types      : [{ type: "node" }],
   },
   {
-    description:
-      "These props will be forwarded to the primary typography component (as long as disableTypography is not true).",
-    name : "primaryTypographyProps",
-    types: [
+    description: "These props will be forwarded to the primary typography component (as long as disableTypography is not true).",
+    name       : "primaryTypographyProps",
+    types      : [
       {
         default: {},
         type   : "object",

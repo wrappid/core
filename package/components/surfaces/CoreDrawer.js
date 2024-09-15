@@ -91,13 +91,13 @@ CoreDrawer.validProps = [
   {
     description: "The content of the component.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   
   {
     description: "The elevation of the drawer.",
     name       : "elevation",
-    types      : [{ default: "16", type: "integer" }],
+    types      : [{ default: 16, type: "number" }],
   },
   {
     description: "If true, the backdrop is not rendered.",
@@ -131,17 +131,9 @@ CoreDrawer.validProps = [
   },
   
   {
-    description:
-      "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
-    name : "transitionDuration",
-    types: [
-      {
-        default:
-          "{ enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
-        type       : "string",
-        validValues: ["PaperPropsnumber| { appear?: number, enter?: number, exit?: number }"],
-      },
-    ],
+    description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.\nExample Object: { appear?: number, enter?: number, exit?: number } and default Object: { enter: theme.transitions.duration.enteringScreen, exit: theme.transitions.duration.leavingScreen, }",
+    name       : "transitionDuration",
+    types      : [{ type: "number" }, { type: "object" }],
   },
   {
     description: "The variant to use.",

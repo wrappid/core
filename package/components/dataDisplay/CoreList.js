@@ -18,10 +18,9 @@ CoreList.validProps = [
     types      : [{ type: "node" }],
   },
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
     description: "If true, compact vertical padding designed for keyboard and mouse input is used for the list and list items. The prop is available to descendant components as the dense context.",
@@ -46,10 +45,9 @@ CoreList.validProps = [
     ],
   },
   {
-    description:
-      "The content of the subheader, normally ListSubheader.",
-    name : "subheader",
-    types: [{ type: "node" }],
+    description: "The content of the subheader, normally ListSubheader.",
+    name       : "subheader",
+    types      : [{ type: "node" }],
   },
   {
     description: "Enabling types of listStyle in list component without implementing StyleClasses ",
@@ -128,10 +126,9 @@ CoreList.validProps = [
     ]
   },
   {
-    description:
-      "The content of the subheader, normally ListSubheader.",
-    name : "variant",
-    types: [
+    description: "The content of the subheader, normally ListSubheader.",
+    name       : "variant",
+    types      : [
       {
         default    : "DEFAULT",
         type       : "string",

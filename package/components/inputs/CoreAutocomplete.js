@@ -221,7 +221,7 @@ CoreAutocomplete.validProps = [
   {
     description: "Text to display when there are no options.For localization purposes, you can use the provided translations.",
     name       : "noOptionsText",
-    types      : [{ default: "No options'", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "Callback fired when the value changes.Signature:function(event: React.SyntheticEvent, value: Value | Array, reason: string, details?: string) => voidevent The event source of the callback.value The new value of the component.reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".",
@@ -286,7 +286,7 @@ CoreAutocomplete.validProps = [
   {
     description: "Render the group.Signature:function(params: AutocompleteRenderGroupParams) => ReactNodeparams The group to render.",
     name       : "renderGroup",
-    types      : [{ default: "", type: "function" }],
+    types      : [{ type: "function" }],
   },
   {
     description: "Render the option, use getOptionLabel by default.Signature:function(props: object, option: Value, state: object, ownerState: object) => ReactNodeprops The props to apply on the li element.option The option to render.state The state of each option.ownerState The state of the Autocomplete component.",

@@ -14,55 +14,38 @@ export default function CoreStack(props) {
 
 CoreStack.validProps = [
   {
-    description:
-      "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ default: "", type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "Defines the flex-direction style property. It is applied for all screen sizes.",
-    name : "direction",
-    types: [
+    description: "Defines the flex-direction style property. It is applied for all screen sizes.",
+    name       : "direction",
+    types      : [
       {
-        default    : "",
+        default    : "row'",
         type       : "string",
-        validValues: [
-          "column-reverse",
-          "column",
-          "row-reverse",
-          "row",
-          "Array<'column-reverse'",
-          "column",
-          "row-reverse",
-          "'row'>",
-          "object"
-        ],
+        validValues: ["column-reverse", "column", "row-reverse", "row"],
       },
+      { type: "array" },
+      { type: "object" }
     ],
   },
   {
     description: "Add an element between each child.",
     name       : "divider",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "Defines the space between immediate children.",
     name       : "spacing",
-    types      : [
-      {
-        default    : "", 
-        type       : "string",
-        validValues: "Array<number| string>| number| object| string" 
-      },
-    ],
+    types      : [{ types: [{ type: "array" }, { type: "number" }, { type: "string" }, { type: "object" }] }],
   },
  
   {
-    description:
-      "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
-    name : "useFlexGap",
-    types: [{ default: "", type: "boolean" }],
+    description: "If true, the CSS flexbox gap is used instead of applying margin to children.While CSS gap removes the known limitations, it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.To enable this flag globally, follow the theme's default props configuration.",
+    name       : "useFlexGap",
+    types      : [{ type: "boolean" }],
   },
   {
     name : "flexWrap",

@@ -33,7 +33,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "custom renderer of extraAvatarsSignature:function(surplus: number) => React.ReactNodesurplus number of extra avatarsReturns: custom element to display",
     name       : "renderSurplus",
-    types      : [{ default: "", type: "function" }]
+    types      : [{ type: "function" }]
   },
   {
     description: "The extra props for the slot components. You can override the existing props or add new ones.This prop is an alias for the componentsProps prop, which will be deprecated in the future.",
@@ -53,7 +53,7 @@ CoreAvatarGroup.validProps = [
   {
     description: "The variant to use.",
     name       : "variant",
-    types      : [{ default: "circular", type: ["circular", "rounded", "square", "string"] }]
+    types      : [{ default: "circular", type: "string", validValues: ["circular", "rounded", "square"] }]
   }
 ];
 CoreAvatarGroup.invalidProps = [];

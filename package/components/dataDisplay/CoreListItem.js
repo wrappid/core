@@ -20,7 +20,7 @@ CoreListItem.validProps = [
       {
         default    : "center",
         type       : "string",
-        validValues: ["flex-start"]
+        validValues: ["center", "flex-start"]
       }
     ],
     
@@ -37,16 +37,14 @@ CoreListItem.validProps = [
     ]
   },
   {
-    description:
-    "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   },
   {
-    description:
-      "The components used for each slot inside. This prop is an alias for the slots prop. It's recommended to use the slots prop instead.",
-    name : "components",
-    types: [
+    description: "The components used for each slot inside. This prop is an alias for the slots prop. It's recommended to use the slots prop instead.",
+    name       : "components",
+    types      : [
       {
         default: {},
         type   : "object"

@@ -19,7 +19,7 @@ CoreListItemButton.validProps = [
       {
         default    : "center",
         type       : "string",
-        validValues: ["flex-start"]
+        validValues: ["center", "flex-start"]
       }
     ],
     
@@ -36,10 +36,9 @@ CoreListItemButton.validProps = [
     ]
   },
   {
-    description:
-    "The component used for the root node. Either a string to use a HTML element or a component.",
-    name : "component",
-    types: [{ type: "elementType" }],
+    description: "The component used for the root node. Either a string to use a HTML element or a component.",
+    name       : "component",
+    types      : [{ type: "elementType" }],
   }, 
   {
     description: "If true, compact vertical padding designed for keyboard and mouse input is used. The prop defaults to the value inherited from the parent List component.",
@@ -106,7 +105,7 @@ CoreListItemButton.validProps = [
     types: [{ default: 0.2, type: "number" }]
   },
   {
-    name : "nextFocusDown ",
+    name : "nextFocusDown",
     types: [{ type: "number" }]
   },
   {
@@ -114,15 +113,15 @@ CoreListItemButton.validProps = [
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusLeft ",
+    name : "nextFocusLeft",
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusRight ",
+    name : "nextFocusRight",
     types: [{ type: "number" }]
   },
   {
-    name : "nextFocusUp  ",
+    name : "nextFocusUp",
     types: [{ type: "number" }]
   }
 ];

@@ -32,16 +32,9 @@ CoreRating.validProps = [
     types      : [{ default: "Empty", type: "node" }],
   },
   {
-    description:
-      "Accepts a function which returns a string value that provides a user-friendly name for the current value of the rating. This is important for screen reader users.For localization purposes, you can use the provided translations.Signature:function(value: number) => stringvalue The rating label's value to format.",
-    name : "getLabelText",
-    types: [
-      {
-        default:
-          "function defaultLabelText(value) { return `${value || '0'} Star${value !== 1 ? 's' : ''}`; }",
-        type: "function",
-      },
-    ],
+    description: "Accepts a function which returns a string value that provides a user-friendly name for the current value of the rating. This is important for screen reader users.For localization purposes, you can use the provided translations.Signature:function(value: number) => stringvalue The rating label's value to format.",
+    name       : "getLabelText",
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, only the selected icon will be highlighted.",
@@ -56,13 +49,7 @@ CoreRating.validProps = [
   {
     description: "The component containing the icon.",
     name       : "IconContainerComponent",
-    types      : [
-      {
-        default:
-          "function IconContainer(props) { const { value, ...other } = props; return <span {...other} />; }",
-        type: "elementType",
-      },
-    ],
+    types      : [{ type: "elementType" }],
   },
   {
     description: "Maximum rating.",
@@ -70,22 +57,19 @@ CoreRating.validProps = [
     types      : [{ default: 5, type: "number" }],
   },
   {
-    description:
-      "The name attribute of the radio input elements. This input name should be unique within the page. Being unique within a form is insufficient since the name is used to generated IDs.",
-    name : "name",
-    types: [{ type: "string" }],
+    description: "The name attribute of the radio input elements. This input name should be unique within the page. Being unique within a form is insufficient since the name is used to generated IDs.",
+    name       : "name",
+    types      : [{ type: "string" }],
   },
   {
-    description:
-      "Callback fired when the value changes.Signature: function(event: React.SyntheticEvent, value: number | null) => void | event The event source of the callback | value The new value.",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the value changes.Signature: function(event: React.SyntheticEvent, value: number | null) => void | event The event source of the callback | value The new value.",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
-    description:
-      "Callback function that is fired when the hover state changes.Signature:function(event: React.SyntheticEvent, value: number) => void | event The event source of the callback | value The new value.",
-    name : "onChangeActive",
-    types: [{ type: "function" }],
+    description: "Callback function that is fired when the hover state changes.Signature:function(event: React.SyntheticEvent, value: number) => void | event The event source of the callback | value The new value.",
+    name       : "onChangeActive",
+    types      : [{ type: "function" }],
   },
   {
     description: "The minimum increment value change allowed.",

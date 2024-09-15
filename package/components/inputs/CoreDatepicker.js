@@ -41,22 +41,22 @@ CoreDatePicker.validProps = [
   {
     description: "The currently selected date.",
     name       : "value",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "The format of the date in the UI. The value for the bindings will always be in the YYYY-MM-DD format. Leave empty to let the end-user locale define the format.",
     name       : "format",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "A default value for the date picker.",
     name       : "defaultValue",
-    types      : [{ default: "", type: "string" }],
+    types      : [{ type: "string" }],
   },
   {
     description: "A label that describes the content of the date picker. e.g. \"Arrival date\".",
     name       : "label",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "Name of this input. Used as a reference in form data.",
@@ -238,24 +238,12 @@ CoreDatePicker.validProps = [
   {
     description: "If true, disable heavy animations.",
     name       : "reduceAnimations",
-    types      : [
-      {
-        default:
-          "`@media(prefers-reduced-motion: reduce)` || `navigator.userAgent` matches Android <10 or iOS <13",
-        type: "boolean",
-      },
-    ],
+    types      : [{ type: "boolean" }],
   },
   {
     description: "The date used to generate the new value when both value and defaultValue are empty.",
     name       : "referenceDate",
-    types      : [
-      {
-        default:
-  "The closest valid date-time using the validation props, except callbacks like `shouldDisable<...>`.",
-        type: "object",
-      },
-    ],
+    types      : [{ type: "object" }],
   },
   {
     description: "Component displaying when passed loading true.Signature:function() => React.ReactNodeReturns: The node to render when loading.",
@@ -302,12 +290,12 @@ CoreDatePicker.validProps = [
   {
     description: "The props used for each component slot.",
     name       : "slotProps",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description: "Overridable component slots.See Slots API below for more details.",
     name       : "slots",
-    types      : [{ default: "{}", type: "object" }],
+    types      : [{ default: {}, type: "object" }],
   },
   {
     description: "The selected value. Used when the component is controlled.",

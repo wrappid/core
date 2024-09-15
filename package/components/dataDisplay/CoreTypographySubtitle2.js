@@ -60,20 +60,17 @@ export default function CoreTypographySubtitle2(props) {
 CoreTypographySubtitle2.validProps = [
   ...CoreTypography.validProps,
   {
-    description:
-      "The content of the component need to show as it is like a code block.",
-    name : "code",
-    types: [{ default: false, type: "boolean", validValues: [true, false] }],
-  },
-  {
-    description: "",
-    name       : "limitChars",
-    types      : [{ type: "number" }],
-  },
-  {
-    description: "",
-    name       : "hideSeeMore",
+    description: "The content of the component need to show as it is like a code block.",
+    name       : "code",
     types      : [{ default: false, type: "boolean", validValues: [true, false] }],
+  },
+  {
+    name : "limitChars",
+    types: [{ type: "number" }],
+  },
+  {
+    name : "hideSeeMore",
+    types: [{ default: false, type: "boolean", validValues: [true, false] }],
   },
 ];
 CoreTypographySubtitle2.invalidProps = [];

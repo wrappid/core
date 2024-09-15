@@ -28,10 +28,9 @@ CoreCheckbox.validProps = [
   },
   
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "primary",
         type       : "string",
@@ -48,10 +47,9 @@ CoreCheckbox.validProps = [
     ],
   },
   {
-    description:
-      "The default checked state. Use when the component is not controlled.",
-    name : "defaultChecked",
-    types: [{ type: "boolean" }],
+    description: "The default checked state. Use when the component is not controlled.",
+    name       : "defaultChecked",
+    types      : [{ type: "boolean" }],
   },
   {
     description: "If true, the component is disabled.",
@@ -79,10 +77,9 @@ CoreCheckbox.validProps = [
     types      : [{ type: "string" }],
   },
   {
-    description:
-      "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
-    name : "indeterminate",
-    types: [
+    description: "If true, the component appears indeterminate. This does not set the native input element to indeterminate due to inconsistent behavior across browsers. However, we set a data-indeterminate attribute on the input.",
+    name       : "indeterminate",
+    types      : [
       {
         default    : false,
         type       : "boolean",
@@ -106,10 +103,9 @@ CoreCheckbox.validProps = [
     types      : [{ type: "ref" }],
   },
   {
-    description:
-      "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
-    name : "onChange",
-    types: [{ type: "function" }],
+    description: "Callback fired when the state is changed.Signature:function(event: React.ChangeEvent) => voidevent The event source of the callback. You can pull out the new checked state by accessing event.target.checked (boolean).",
+    name       : "onChange",
+    types      : [{ type: "function" }],
   },
   {
     description: "If true, the input element is required.",
@@ -117,10 +113,9 @@ CoreCheckbox.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "The size of the component. small is equivalent to the dense checkbox styling.",
-    name : "size",
-    types: [
+    description: "The size of the component. small is equivalent to the dense checkbox styling.",
+    name       : "size",
+    types      : [
       {
         default    : "medium",
         type       : "string",

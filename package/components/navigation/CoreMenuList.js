@@ -24,7 +24,7 @@ CoreMenuList.validProps = [
   {
     description: "MenuList contents, normally MenuItems.",
     name       : "children",
-    types      : [{ default: "", type: "node" }],
+    types      : [{ type: "node" }],
   },
   {
     description: "If true, will allow focus on disabled items.",
@@ -37,10 +37,9 @@ CoreMenuList.validProps = [
     types      : [{ default: false, type: "boolean" }],
   },
   {
-    description:
-      "The variant to use. Use menu to prevent selected items from impacting the initial focus and the vertical alignment relative to the anchor element.",
-    name : "variant",
-    types: [
+    description: "The variant to use. Use menu to prevent selected items from impacting the initial focus and the vertical alignment relative to the anchor element.",
+    name       : "variant",
+    types      : [
       {
         default    : "selectedMenu'",
         type       : "string",

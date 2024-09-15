@@ -14,10 +14,9 @@ export default function CoreCircularProgress(props) {
 }
 CoreCircularProgress.validProps = [
   {
-    description:
-      "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
-    name : "color",
-    types: [
+    description: "The color of the component. It supports both default and custom theme colors, which can be added as shown in the palette customization guide.",
+    name       : "color",
+    types      : [
       {
         default    : "primary",
         type       : "string",
@@ -34,10 +33,9 @@ CoreCircularProgress.validProps = [
     ],
   },
   {
-    description:
-      "If true, the shrink animation is disabled. This only works if variant is indeterminate.",
-    name : "disableShrink",
-    types: [
+    description: "If true, the shrink animation is disabled. This only works if variant is indeterminate.",
+    name       : "disableShrink",
+    types      : [
       {
         default: false,
         type   : "boolean",
@@ -45,10 +43,9 @@ CoreCircularProgress.validProps = [
     ],
   },
   {
-    description:
-      "The size of the component. If using a number, the pixel unit is assumed. If using a string, you need to provide the CSS unit, e.g. '3rem'.",
-    name : "size",
-    types: [
+    description: "The size of the component. If using a number, the pixel unit is assumed. If using a string, you need to provide the CSS unit, e.g. '3rem'.",
+    name       : "size",
+    types      : [
       {
         default: 40,
         type   : "number",
@@ -66,10 +63,9 @@ CoreCircularProgress.validProps = [
     ],
   },
   {
-    description:
-      "The value of the progress indicator for the determinate variant. Value between 0 and 100.",
-    name : "value",
-    types: [
+    description: "The value of the progress indicator for the determinate variant. Value between 0 and 100.",
+    name       : "value",
+    types      : [
       {
         default: 0,
         type   : "nuumber",
@@ -77,10 +73,9 @@ CoreCircularProgress.validProps = [
     ],
   },
   {
-    description:
-      "The variant to use. Use indeterminate when there is no progress value.",
-    name : "variant",
-    types: [
+    description: "The variant to use. Use indeterminate when there is no progress value.",
+    name       : "variant",
+    types      : [
       {
         default    : "indeterminate",
         type       : "string",

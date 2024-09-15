@@ -47,9 +47,8 @@ CoreRightDrawer.validProps = [
     name       : "elevation",
     types      : [
       { 
-        default    : "16",
-        type       : "integer",
-        validValues: ["left", "top", "right", "bottom"],
+        default: 16,
+        type   : "number",
       }
     ],
   },
@@ -58,7 +57,7 @@ CoreRightDrawer.validProps = [
     name       : "hideBackdrop",
     types      : [
       { 
-        default    : "false",
+        default    : false,
         type       : "boolean",
         validValues: [true, false],
       }
@@ -79,7 +78,7 @@ CoreRightDrawer.validProps = [
     name       : "open",
     types      : [
       { 
-        default    : "false",
+        default    : false,
         type       : "boolean",
         validValues: [true, false],
       }
@@ -108,20 +107,16 @@ CoreRightDrawer.validProps = [
   {
     description: "The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object.",
     name       : "SlideProps",
-    types      : [
-      { 
-        default: "enter: theme.transitions.duration.enteringScreen exit: theme.transitions.duration.leavingScreen",
-        type   : "object",
-      }
-    ],
+    types      : [{ type: "object" }],
   },
   {
     description: "The variant to use.",
     name       : "variant",
     types      : [
       { 
-        default: "temporary",
-        type   : "permanent' | 'persistent' | 'temporary",
+        default    : "temporary",
+        type       : "string",
+        validValues: ["permanent", "persistent", "temporary"]
       }
     ],
   },
