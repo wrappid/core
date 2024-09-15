@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.546](https://github.com/wrappid/core/compare/v0.0.545...v0.0.546) (2024-09-15)
+
+
+### Bug Fixes
+
+* **core:** :zap: all components validProps syntax fix ([df4684b](https://github.com/wrappid/core/commit/df4684b06069856b983c41c56881ccbe866a41c5)), closes [#346](https://github.com/wrappid/core/issues/346)
+
 ### [0.0.545](https://github.com/wrappid/core/compare/v0.0.544...v0.0.545) (2024-09-12)
 
 
