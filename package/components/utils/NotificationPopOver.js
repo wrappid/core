@@ -13,17 +13,18 @@ export default function NotificationPopOver() {
     <>
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreBox
-          styleClasses={[CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.LAYOUT.VERTICAL_CENTER]}
+          styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
-          <CoreTypographyBody1>Notifications</CoreTypographyBody1>
+          <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.MB0]}>Notifications</CoreTypographyBody1>
 
           <CoreIconButton disabled>
-            <CoreIcon>clear_all</CoreIcon>
+            <CoreIcon>more_horiz</CoreIcon>
           </CoreIconButton>
         </CoreBox>
 
-        <CoreDivider />
       </CoreBox>
+
+      <CoreDivider styleClasses={[CoreClasses.MARGIN.M0]}/>
 
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreTypographyBody1
