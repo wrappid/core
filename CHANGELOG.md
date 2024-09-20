@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.547](https://github.com/wrappid/core/compare/v0.0.546...v0.0.547) (2024-09-20)
+
+
+### Bug Fixes
+
+* **global:** :ambulance: impact handling due to app-builder models structure change ([a3c5ffe](https://github.com/wrappid/core/commit/a3c5ffe9c688820c0a26afe44218a8186ecaf8eb)), closes [#375](https://github.com/wrappid/core/issues/375)
+
 ### [0.0.546](https://github.com/wrappid/core/compare/v0.0.545...v0.0.546) (2024-09-15)
 
 
