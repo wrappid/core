@@ -25,7 +25,7 @@ export default function CoreRoutesProvider(props) {
         HTTP.GET,
         `${!authenticated ? "/noauth/" : "/"}business/all/RoutePages`,
         authenticated,
-        { _defaultFilter: encodeURIComponent(JSON.stringify({ authRequired: authenticated })) },
+        { _defaultFilter: encodeURIComponent(JSON.stringify({ "extraInfo.authRequired": authenticated })) },
         GET_ROUTE_SUCCESS,
         GET_ROUTE_FAILURE
       )

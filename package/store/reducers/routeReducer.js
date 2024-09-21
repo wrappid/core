@@ -10,12 +10,29 @@ import {
 
 const initState = { routes: [], sync: false };
 
+function transformData(input) {
+  return input.map(item => {
+    const { schema, extraInfo, Page, ...rest } = item;
+    
+    return {
+      ...rest,
+      ...schema,
+      ...extraInfo,
+      Page: Page ? {
+        ...Page,
+        ...Page.schema,
+        ...Page.extraInfo
+      } : null
+    };
+  });
+}
+
 const routeReducer = (state = initState, action) => {
   switch (action.type) {
     case GET_ROUTE_SUCCESS:
       return {
         ...state,
-        routes: [...(action?.payload?.data?.rows || [])],
+        routes: [...(transformData(action?.payload?.data?.rows) || [])],
       };
 
     case GET_ROUTE_FAILURE:
