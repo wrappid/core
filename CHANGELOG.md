@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.548](https://github.com/wrappid/core/compare/v0.0.547...v0.0.548) (2024-09-21)
+
+
+### Features
+
+* **global:** :sparkles: corelist sub components comes in a grid format ([6c41566](https://github.com/wrappid/core/commit/6c4156669d11e89071e6862d1ba1885313980f92)), closes [#377](https://github.com/wrappid/core/issues/377)
+
 ### [0.0.547](https://github.com/wrappid/core/compare/v0.0.546...v0.0.547) (2024-09-20)
 
 
