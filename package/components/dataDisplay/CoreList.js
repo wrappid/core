@@ -141,9 +141,27 @@ CoreList.validProps = [
     name       : "gridItemComponent",
     types      : [
       {
-        default    : "2",
+        default    : "default",
         type       : "string",
-        validValues: ["2", "3", "4", "6"] 
+        validValues: [
+          "default",
+          "xs",
+          "s",
+          "m",
+          "l",
+          "xl"
+        ] 
+      }
+    ],
+  },
+  {
+    description: "The content of the subheader, normally ListSubheader.",
+    name       : "borderList",
+    types      : [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false]
       }
     ],
   }
