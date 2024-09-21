@@ -132,38 +132,14 @@ CoreList.validProps = [
       {
         default    : "DEFAULT",
         type       : "string",
-        validValues: ["DEFAULT", "HTML", "GRID"] 
+        validValues: ["DEFAULT", "HTML", "grid"] 
       }
     ],
   },
   {
-    description: "The content of the subheader, normally ListSubheader.",
-    name       : "gridItemComponent",
-    types      : [
-      {
-        default    : "default",
-        type       : "string",
-        validValues: [
-          "default",
-          "xs",
-          "s",
-          "m",
-          "l",
-          "xl"
-        ] 
-      }
-    ],
-  },
-  {
-    description: "The content of the subheader, normally ListSubheader.",
-    name       : "borderList",
-    types      : [
-      {
-        default    : false,
-        type       : "boolean",
-        validValues: [true, false]
-      }
-    ],
+    description: "This helps to add gridProps into the children of corelist.",
+    name       : "itemGridProps",
+    types      : [{ type: "object" }],
   }
 ];
 
