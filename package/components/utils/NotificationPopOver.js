@@ -18,7 +18,7 @@ export default function NotificationPopOver() {
           <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.MB0]}>Notifications</CoreTypographyBody1>
 
           <CoreIconButton disabled>
-            <CoreIcon>more_horiz</CoreIcon>
+            <CoreIcon>clear_all</CoreIcon>
           </CoreIconButton>
         </CoreBox>
 
