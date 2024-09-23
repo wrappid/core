@@ -140,6 +140,11 @@ CoreList.validProps = [
     description: "This helps to add gridProps into the children of corelist.",
     name       : "itemGridProps",
     types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add StyleClasses into the children of corelist.",
+    name       : "itemStylesProps",
+    types      : [{ type: "object" }],
   }
 ];
 
