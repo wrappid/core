@@ -33,7 +33,7 @@ function createFullStore(appReducer, persistFlag = true) {
     finalReducer[keys[i]] = persistReducer(
       {
         key    : keys[i],
-        storage: nativeStorage,
+        storage: nativeStorage
       },
       coreReducer[keys[i]]
     );
@@ -46,7 +46,7 @@ function createFullStore(appReducer, persistFlag = true) {
       appReducer[appReducerKeys[i]] = persistReducer(
         {
           key    : appReducerKeys[i],
-          storage: nativeStorage,
+          storage: nativeStorage
         },
         appReducer[appReducerKeys[i]]
       );
@@ -58,7 +58,7 @@ function createFullStore(appReducer, persistFlag = true) {
   const store = configureStore({
     devTools  : true,
     middleware: [thunk],
-    reducer   : combineReducers(finalReducer),
+    reducer   : combineReducers(finalReducer)
   });
 
   const persistor = persistStore(store);
@@ -102,32 +102,35 @@ export default function CoreProvider(props) {
       medium : MediumCoreStyles,
       small  : SmallCoreStyles,
       xLarge : XLargeCoreStyles,
-      xxLarge: XXLargeCoreStyles,
-    },
+      xxLarge: XXLargeCoreStyles
+    }
   };
 
-  return store && persistor && (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
-          <CoreContextProvider
-            appStyles={appStyles}
-            applicationRegistry={applicationRegistry}
-            routesRegistry={routesRegistry}
-            menusRegistry={menusRegistry}
-            componentsRegistry={componentsRegistry}
-            resourcesRegistry={resourcesRegistry}
-            functionsRegistry={functionsRegistry}
-            validationsRegistry={validationsRegistry}
-          >
-            <CoreThemeProvider>
-              <IconContext.Provider value={customIcons}>
-                {children}
-              </IconContext.Provider>
-            </CoreThemeProvider>
-          </CoreContextProvider>
-        </StylesProvider>
-      </PersistGate>
-    </Provider>);
+  return (
+    store &&
+    persistor && (
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <CoreThemeProvider>
+            <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
+              <CoreContextProvider
+                appStyles={appStyles}
+                applicationRegistry={applicationRegistry}
+                routesRegistry={routesRegistry}
+                menusRegistry={menusRegistry}
+                componentsRegistry={componentsRegistry}
+                resourcesRegistry={resourcesRegistry}
+                functionsRegistry={functionsRegistry}
+                validationsRegistry={validationsRegistry}
+              >
+                <IconContext.Provider value={customIcons}>
+                  {children}
+                </IconContext.Provider>
+              </CoreContextProvider>
+            </StylesProvider>
+          </CoreThemeProvider>
+        </PersistGate>
+      </Provider>
+    )
+  );
 }
-
