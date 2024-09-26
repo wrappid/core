@@ -145,6 +145,17 @@ CoreList.validProps = [
     description: "This helps to add StyleClasses into the children of corelist.",
     name       : "itemStylesProps",
     types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add StyleClasses into the children of corelist.",
+    name       : "toolbox",
+    types      : [
+      {
+        default    : true,
+        type       : "boolean",
+        validValues: [true, false]
+      }
+    ],
   }
 ];
 
