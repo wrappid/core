@@ -186,9 +186,9 @@ import CoreH1 from "./dataDisplay/CoreH1.js";
 // import HelpAndSupportPopOver from "./utils/HelpAndSupportPopOver.js";
 // import NotificationPopOver from "./utils/NotificationPopOver.js";
 // import QuickAddPopOver from "./utils/QuickAddPopOver.js";
-import PageLoader from "./PageLoader.js";
+// import PageLoader from "./PageLoader.js";
 
-export const coreComponentsRegistry = {
+const CoreComponentsRegistry = {
   // eslint-disable-next-line etc/no-commented-out-code
   // "ChildMap"                     : { comp: ChildMap },
   // "CoreAccordion"                : { comp: CoreAccordion },
@@ -264,7 +264,7 @@ export const coreComponentsRegistry = {
   // "CoreGrid"                     : { comp: CoreGrid },
   // "CoreGridItem"                 : { comp: CoreGridItem },
   // "CoreH"                        : { comp: CoreH },
-  "CoreH1"    : { comp: CoreH1 },
+  "CoreH1": { comp: CoreH1 },
   // eslint-disable-next-line etc/no-commented-out-code
   // "CoreH2"                       : { comp: CoreH2 },
   // "CoreH3"                       : { comp: CoreH3 },
@@ -377,5 +377,7 @@ export const coreComponentsRegistry = {
   // "TableDensity"                 : { comp: TableDensity },
   // "TableRowAuditData"            : { comp: TableRowAuditData },
   // "UserChip"                     : { comp: UserChip },
-  "PageLoader": { comp: PageLoader }
+  // "PageLoader": { comp: PageLoader }
 };
+
+export default CoreComponentsRegistry;
