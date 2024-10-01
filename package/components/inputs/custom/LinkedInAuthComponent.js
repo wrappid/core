@@ -14,7 +14,7 @@ const fetchUserData = async (authCode) => {
   try {
     // Send access token to backend to exchange for long-lived token
     console.log("Currently in fetchUserData");
-    const response = await fetch("http://localhost:8080/accesscode", {
+    const response = await fetch("http://localhost:8080/social/login/linkedin", {
       body   : JSON.stringify({ authCode }),
       headers: { "Content-Type": "application/json" },
       method : "POST",
@@ -33,7 +33,6 @@ export default function LinkedInAuthComponent(props){
   const { config } = React.useContext(WrappidDataContext);
 
   const clientId = config?.wrappid?.socialLogin?.linkedin?.apiKey;
- 
   const redirectUri = config?.wrappid?.socialLogin?.linkedin?.callbackURL;
   const scopes = "profile w_member_social email openid";
   const state = "4b1a92d8c1e7a9";
