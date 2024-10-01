@@ -11,22 +11,16 @@ import CoreButton from "./../CoreButton";
 import CoreBox from "../../layouts/CoreBox";
 
 const fetchUserData = async (authCode) => {
-  try {
-    // Send access token to backend to exchange for long-lived token
-    // console.log("Currently in fetchUserData");
-    const response = await fetch("http://localhost:8080/social/login/linkedin", {
-      body   : JSON.stringify({ authCode }),
-      headers: { "Content-Type": "application/json" },
-      method : "POST",
-    });
+  // Send access token to backend to exchange for long-lived token
+  const response = await fetch("http://localhost:8080/social/login/linkedin", {
+    body   : JSON.stringify({ authCode }),
+    headers: { "Content-Type": "application/json" },
+    method : "POST",
+  });
     
-    const data = await response.json();
-
-    console.log("FrontEnd Response:-->", data);
+  // eslint-disable-next-line no-unused-vars
+  const data = await response.json();
     
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-  }
 };
 
 export default function LinkedInAuthComponent(props){
@@ -51,8 +45,6 @@ export default function LinkedInAuthComponent(props){
     // Extract the authorization code from the URL
     const queryParams = new URLSearchParams(window.location.search);
     const code = queryParams.get("code");
-
-    console.log("AuthCode from url", code);
 
     if (code) {
       setAuthCode(code);
