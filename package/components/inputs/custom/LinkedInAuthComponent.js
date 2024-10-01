@@ -13,7 +13,7 @@ import CoreBox from "../../layouts/CoreBox";
 const fetchUserData = async (authCode) => {
   try {
     // Send access token to backend to exchange for long-lived token
-    console.log("Currently in fetchUserData");
+    // console.log("Currently in fetchUserData");
     const response = await fetch("http://localhost:8080/social/login/linkedin", {
       body   : JSON.stringify({ authCode }),
       headers: { "Content-Type": "application/json" },
