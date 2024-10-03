@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.551](https://github.com/wrappid/core/compare/v0.0.550...v0.0.551) (2024-10-03)
+
+
+### Features
+
+* **core:** :sparkles: facebook auth component implementation ([5ac126f](https://github.com/wrappid/core/commit/5ac126f7158db442c339521bcf11450c07fdee3a)), closes [#383](https://github.com/wrappid/core/issues/383)
+
 ### [0.0.550](https://github.com/wrappid/core/compare/v0.0.549...v0.0.550) (2024-09-26)
 
 ### [0.0.549](https://github.com/wrappid/core/compare/v0.0.548...v0.0.549) (2024-09-25)
