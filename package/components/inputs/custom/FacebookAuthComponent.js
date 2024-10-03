@@ -5,10 +5,14 @@ import React, { useEffect } from "react";
 import { NativeFacebookAuthComponent } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
+import { useDispatch } from "react-redux";
 
+import { HTTP } from "../../../config/constants";
+import { apiRequestAction } from "../../../store/action/appActions";
 import CoreButton from "../CoreButton";
 
 const FacebookAuthComponent = (props) => {
+  const dispatch = useDispatch();
   const { config } = React.useContext(WrappidDataContext);
 
   useEffect(() => {
@@ -49,18 +53,24 @@ const FacebookAuthComponent = (props) => {
   };
 
   const fetchUserData = (accessToken) => {
-    // Send access token to backend to exchange for long-lived token
-    fetch("http://localhost:8080/social/login/facebook", {
-      body   : JSON.stringify({ accessToken }),
-      headers: { "Content-Type": "application/json" },
-      method : "POST",
-    })
-      .then((res) => res.json());
+    const data = { platformToken: accessToken };
+
+    dispatch(
+      apiRequestAction(
+        HTTP.POST,
+        "/login/social/facebook",
+        false,
+        data,
+        "LOGIN_SUCCESS",
+        "LOGIN_ERROR"
+      )
+    );
   };
 
   return (
     <NativeFacebookAuthComponent
       onClick={() => handleFacebookLogin()}
+      label="Facebook"
       {...props}
     />
   );
