@@ -19,7 +19,7 @@ const FacebookAuthComponent = (props) => {
     // Load the Facebook SDK
     window.fbAsyncInit = function () {
       window.FB.init({
-        appId  : config?.wrappid?.socialLogin?.facebook?.apiKey, // Replace with your Facebook App ID
+        appId  : config?.wrappid?.socialLogin?.facebook?.appId, // Replace with your Facebook App ID
         cookie : true,
         version: "v20.0",
         xfbml  : true,
@@ -46,8 +46,8 @@ const FacebookAuthComponent = (props) => {
         }
       },
       {
-        scope:
-          "pages_manage_posts,pages_read_engagement,pages_manage_engagement",
+        config_id: config?.wrappid?.socialLogin?.facebook?.configId,
+        scope    : "public_profile,email",
       }
     );
   };
