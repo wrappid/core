@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.555](https://github.com/wrappid/core/compare/v0.0.554...v0.0.555) (2024-10-03)
+
+### [0.0.554](https://github.com/wrappid/core/compare/v0.0.553...v0.0.554) (2024-10-03)
+
+### [0.0.553](https://github.com/wrappid/core/compare/v0.0.552...v0.0.553) (2024-10-03)
+
+
+### Bug Fixes
+
+* **core:** :bug: facebook login fix ([2c85db2](https://github.com/wrappid/core/commit/2c85db2f9c0199825de9ec9e76a04c46c2ebb20a)), closes [#383](https://github.com/wrappid/core/issues/383)
+
+### [0.0.552](https://github.com/wrappid/core/compare/v0.0.551...v0.0.552) (2024-10-03)
+
+### [0.0.551](https://github.com/wrappid/core/compare/v0.0.550...v0.0.551) (2024-10-03)
+
+
+### Features
+
+* **core:** :sparkles: facebook auth component implementation ([5ac126f](https://github.com/wrappid/core/commit/5ac126f7158db442c339521bcf11450c07fdee3a)), closes [#383](https://github.com/wrappid/core/issues/383)
+
+### [0.0.550](https://github.com/wrappid/core/compare/v0.0.549...v0.0.550) (2024-09-26)
+
+### [0.0.549](https://github.com/wrappid/core/compare/v0.0.548...v0.0.549) (2024-09-25)
+
+
+### Bug Fixes
+
+* **core:** :bug: theme reflection from both styles classes and theme context ([1b00e4d](https://github.com/wrappid/core/commit/1b00e4dc1459bf34a9066d2a6937b285f7a481e2)), closes [#384](https://github.com/wrappid/core/issues/384)
+
 ### [0.0.548](https://github.com/wrappid/core/compare/v0.0.547...v0.0.548) (2024-09-21)
 
 
