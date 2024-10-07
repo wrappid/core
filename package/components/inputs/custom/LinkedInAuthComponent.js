@@ -6,25 +6,16 @@ import React, { useState, useEffect } from "react";
 import { NativeLinkedInAuthComponent } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { WrappidDataContext } from "@wrappid/styles";
+import { useDispatch } from "react-redux";
 
 import CoreButton from "./../CoreButton";
+import { HTTP } from "../../../config/constants";
+import { apiRequestAction } from "../../../store/action/appActions";
 import CoreBox from "../../layouts/CoreBox";
-
-const fetchUserData = async (authCode) => {
-  // Send access token to backend to exchange for long-lived token
-  const response = await fetch("http://localhost:8080/social/login/linkedin", {
-    body   : JSON.stringify({ authCode }),
-    headers: { "Content-Type": "application/json" },
-    method : "POST",
-  });
-    
-  // eslint-disable-next-line no-unused-vars
-  const data = await response.json();
-    
-};
 
 export default function LinkedInAuthComponent(props){
   const { config } = React.useContext(WrappidDataContext);
+  const dispatch = useDispatch();
 
   const clientId = config?.wrappid?.socialLogin?.linkedin?.apiKey;
   const redirectUri = config?.wrappid?.socialLogin?.linkedin?.callbackURL;
@@ -39,6 +30,20 @@ export default function LinkedInAuthComponent(props){
     // Redirect user to LinkedIn auth URL
     window.location.href = authUrl;
   };
+  const fetchUserData = (authCode) => {
+    const data = { platformToken: authCode };
+
+    dispatch(
+      apiRequestAction(
+        HTTP.POST,
+        "/login/social/linkedin",
+        false,
+        data,
+        "LOGIN_SUCCESS",
+        "LOGIN_ERROR"
+      )
+    );
+  };
   const [authCode, setAuthCode] = useState(null);
 
   useEffect(() => {
@@ -46,21 +51,19 @@ export default function LinkedInAuthComponent(props){
     const queryParams = new URLSearchParams(window.location.search);
     const code = queryParams.get("code");
 
-    if (code) {
+    if (code != null) {
       setAuthCode(code);
     }
 
-    console.log("AuthCode from useState", authCode);
-    if(authCode){
+    if(authCode !== null){
       // eslint-disable-next-line no-unused-vars
-      
       fetchUserData(authCode);
     }
   }, [authCode]);
 
   return (
     <CoreBox>
-      <NativeLinkedInAuthComponent onClick={handleClick} {...props}/>
+      <NativeLinkedInAuthComponent onClick={handleClick} {...props} label="LinkedIn"/>
     </CoreBox>
   );
 }
