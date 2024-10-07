@@ -28,6 +28,7 @@ export default function LinkedInAuthComponent(props){
 
   const handleClick = () => {
     // Redirect user to LinkedIn auth URL
+    console.log(authUrl);
     window.location.href = authUrl;
   };
   const fetchUserData = (authCode) => {
