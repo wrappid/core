@@ -112,6 +112,7 @@ import CoreTextField from "./components/inputs/CoreTextField";
 import CoreTimePicker from "./components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "./components/inputs/CoreTimeRangePicker";
 import FacebookAuthComponent from "./components/inputs/custom/FacebookAuthComponent";
+import GithubAuthComponent from "./components/inputs/custom/GithubAuthComponent";
 import LinkedInAuthComponent from "./components/inputs/custom/LinkedInAuthComponent";
 import CoreForm from "./components/inputs/forms/CoreForm";
 import {
@@ -339,6 +340,6 @@ export {
   ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs,
   // Network status custom hook
   useNetworkStatus, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
-  XXLargeCoreStyles, FacebookAuthComponent, LinkedInAuthComponent
+  XXLargeCoreStyles, FacebookAuthComponent, GithubAuthComponent, LinkedInAuthComponent
 };
 
