@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.556](https://github.com/wrappid/core/compare/v0.0.555...v0.0.556) (2024-10-10)
+
+
+### Features
+
+* **core:** :sparkles: added a linkedinAuthComponent ([b5ef953](https://github.com/wrappid/core/commit/b5ef953967c33f7ad7e0ba5860311d194aadd219)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: added a login with linkedIn flow ([ba7c929](https://github.com/wrappid/core/commit/ba7c929652e4c00680aa1407216e12e868075809)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: added linkedin auth component ([d92959b](https://github.com/wrappid/core/commit/d92959b8429ee7f5a62b080d74b0ad83c3829a79)), closes [#97](https://github.com/wrappid/core/issues/97)
+* **core:** :sparkles: added linkedin auth component ([582fec1](https://github.com/wrappid/core/commit/582fec15063ca4370b7007093ad84fe7ab2260e3)), closes [#97](https://github.com/wrappid/core/issues/97)
+* **core:** :sparkles: implemented a feature which will allow users to login with linkedIn ([9461e3b](https://github.com/wrappid/core/commit/9461e3bad00e58b42eb87ec4a060d522eabb5435)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: implemented a login with linkedin feature ([ee2708e](https://github.com/wrappid/core/commit/ee2708e381788c613227e1aa951d1fb8563ec234)), closes [#382](https://github.com/wrappid/core/issues/382)
+
+
+### Bug Fixes
+
+* **global:** :bug: facbooklogin fix ([fe0a4a0](https://github.com/wrappid/core/commit/fe0a4a0f468cc91c19998920db4224d4703eb639)), closes [#383](https://github.com/wrappid/core/issues/383)
+
 ### [0.0.555](https://github.com/wrappid/core/compare/v0.0.554...v0.0.555) (2024-10-03)
 
 ### [0.0.554](https://github.com/wrappid/core/compare/v0.0.553...v0.0.554) (2024-10-03)
