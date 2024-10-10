@@ -19,10 +19,12 @@ const FacebookAuthComponent = (props) => {
     // Load the Facebook SDK
     window.fbAsyncInit = function () {
       window.FB.init({
-        appId  : config?.wrappid?.socialLogin?.facebook?.appId, // Replace with your Facebook App ID
-        cookie : true,
-        version: "v20.0",
-        xfbml  : true,
+        appId    : config?.wrappid?.socialLogin?.facebook?.appId, 
+        config_id: config?.wrappid?.socialLogin?.facebook?.configId,
+        cookie   : true,
+        version  : "v20.0",
+        xfbml    : true,
+
       });
     };
 
@@ -45,9 +47,10 @@ const FacebookAuthComponent = (props) => {
           fetchUserData(response.authResponse.accessToken);
         }
       },
-      {
-        config_id: config?.wrappid?.socialLogin?.facebook?.configId,
-        scope    : "public_profile,email",
+      { 
+        config_id    : config?.wrappid?.socialLogin?.facebook?.configId,
+        response_type: "code",   
+        scope        : "public_profile,email",
       }
     );
   };
