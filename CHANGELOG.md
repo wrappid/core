@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.557](https://github.com/wrappid/core/compare/v0.0.556...v0.0.557) (2024-10-10)
+
+
+### Features
+
+* **core:** :sparkles: add the github auth ([8b4e883](https://github.com/wrappid/core/commit/8b4e883b265555d7250d75528a805a18d99d50bf)), closes [#381](https://github.com/wrappid/core/issues/381)
+* **core:** :sparkles: adds the github auth component ([e2d65e6](https://github.com/wrappid/core/commit/e2d65e60a05f783712856e19e452f31375748256)), closes [#381](https://github.com/wrappid/core/issues/381)
+* **core:** :sparkles: github auth component added ([a3e934e](https://github.com/wrappid/core/commit/a3e934ef1560b68a98b048832b5abe46813f23a4)), closes [#381](https://github.com/wrappid/core/issues/381)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix GitHub and LinkedIn call automatically ([137fe4e](https://github.com/wrappid/core/commit/137fe4eaae80b027216b1c3e1e538b77d9b52f1d)), closes [#394](https://github.com/wrappid/core/issues/394)
+
 ### [0.0.556](https://github.com/wrappid/core/compare/v0.0.555...v0.0.556) (2024-10-10)
 
 
