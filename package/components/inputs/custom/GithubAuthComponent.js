@@ -30,15 +30,13 @@ export default function GithubAuthComponent(props) {
     dispatch(
       apiRequestAction(HTTP.POST, backend_Endpoint, false, { "platformToken": github_code }, "LOGIN_SUCCESS",
         "LOGIN_ERROR"));
-    dispatch({ "github_code": "", "type": "GITHUB_CODE" });
-    
   }, [github_code]);
 
   const handleAuthoriseGithub = () => {
 
     const github_client_id = config.wrappid.socialLogin.github.github_client_id;
 
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${github_client_id}&scope=read:user user:email`;
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${github_client_id}&scope=repo,discussions,read:user user:email `;
     return;
   };
 
