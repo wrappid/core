@@ -15,7 +15,9 @@ export default function GithubAuthComponent(props) {
   useEffect(() => {
     const currentUrl = window.location.href;
 
-    if (currentUrl.includes("checkuserexist?code=")) {
+    const state = new URLSearchParams(window.location.search).get("state"); 
+
+    if (currentUrl.includes("checkuserexist?code=") && state === null) {
       const urlParams = new URLSearchParams(window.location.search);
       const extractedCode = urlParams.get("code");
 
@@ -30,13 +32,14 @@ export default function GithubAuthComponent(props) {
     dispatch(
       apiRequestAction(HTTP.POST, backend_Endpoint, false, { "platformToken": github_code }, "LOGIN_SUCCESS",
         "LOGIN_ERROR"));
+    setGithub_code("");
   }, [github_code]);
 
   const handleAuthoriseGithub = () => {
 
-    const github_client_id = config.wrappid.socialLogin.github.github_client_id;
+    const clientId = config.wrappid.socialLogin.github.clientId;
 
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${github_client_id}&scope=repo,discussions,read:user user:email `;
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo,discussions,read:user,user:email `;
     return;
   };
 
