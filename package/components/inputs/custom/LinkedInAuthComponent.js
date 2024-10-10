@@ -50,9 +50,11 @@ export default function LinkedInAuthComponent(props){
   useEffect(() => {
     // Extract the authorization code from the URL
     const queryParams = new URLSearchParams(window.location.search);
+    const state = new URLSearchParams(window.location.search).get("state"); 
+
     const code = queryParams.get("code");
 
-    if (code != null) {
+    if ((code != null) && (state != null)) {
       setAuthCode(code);
     }
 
