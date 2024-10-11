@@ -17,7 +17,7 @@ export default function GithubAuthComponent(props) {
 
     const state = new URLSearchParams(window.location.search).get("state"); 
 
-    if (currentUrl.includes("checkuserexist?code=") && state === null) {
+    if (currentUrl.includes("checkUserExist?code=") && state === null) {
       const urlParams = new URLSearchParams(window.location.search);
       const extractedCode = urlParams.get("code");
 
