@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.559](https://github.com/wrappid/core/compare/v0.0.558...v0.0.559) (2024-10-11)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix github login ([a777c19](https://github.com/wrappid/core/commit/a777c19856e20ff11a62f775d31ea0217a0ee315)), closes [#394](https://github.com/wrappid/core/issues/394)
+
 ### [0.0.558](https://github.com/wrappid/core/compare/v0.0.557...v0.0.558) (2024-10-10)
 
 ### [0.0.557](https://github.com/wrappid/core/compare/v0.0.556...v0.0.557) (2024-10-10)
