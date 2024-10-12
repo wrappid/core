@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.560](https://github.com/wrappid/core/compare/v0.0.559...v0.0.560) (2024-10-12)
+
+
+### Features
+
+* **core:** :sparkles: google sign-in implementaion ([53dc5a2](https://github.com/wrappid/core/commit/53dc5a2e102825c1c9666539b24c26b1a3ed08c8)), closes [#397](https://github.com/wrappid/core/issues/397)
+
 ### [0.0.559](https://github.com/wrappid/core/compare/v0.0.558...v0.0.559) (2024-10-11)
 
 
