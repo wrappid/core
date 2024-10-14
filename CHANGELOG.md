@@ -2,6 +2,82 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.560](https://github.com/wrappid/core/compare/v0.0.559...v0.0.560) (2024-10-12)
+
+
+### Features
+
+* **core:** :sparkles: google sign-in implementaion ([53dc5a2](https://github.com/wrappid/core/commit/53dc5a2e102825c1c9666539b24c26b1a3ed08c8)), closes [#397](https://github.com/wrappid/core/issues/397)
+
+### [0.0.559](https://github.com/wrappid/core/compare/v0.0.558...v0.0.559) (2024-10-11)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix github login ([a777c19](https://github.com/wrappid/core/commit/a777c19856e20ff11a62f775d31ea0217a0ee315)), closes [#394](https://github.com/wrappid/core/issues/394)
+
+### [0.0.558](https://github.com/wrappid/core/compare/v0.0.557...v0.0.558) (2024-10-10)
+
+### [0.0.557](https://github.com/wrappid/core/compare/v0.0.556...v0.0.557) (2024-10-10)
+
+
+### Features
+
+* **core:** :sparkles: add the github auth ([8b4e883](https://github.com/wrappid/core/commit/8b4e883b265555d7250d75528a805a18d99d50bf)), closes [#381](https://github.com/wrappid/core/issues/381)
+* **core:** :sparkles: adds the github auth component ([e2d65e6](https://github.com/wrappid/core/commit/e2d65e60a05f783712856e19e452f31375748256)), closes [#381](https://github.com/wrappid/core/issues/381)
+* **core:** :sparkles: github auth component added ([a3e934e](https://github.com/wrappid/core/commit/a3e934ef1560b68a98b048832b5abe46813f23a4)), closes [#381](https://github.com/wrappid/core/issues/381)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix GitHub and LinkedIn call automatically ([137fe4e](https://github.com/wrappid/core/commit/137fe4eaae80b027216b1c3e1e538b77d9b52f1d)), closes [#394](https://github.com/wrappid/core/issues/394)
+
+### [0.0.556](https://github.com/wrappid/core/compare/v0.0.555...v0.0.556) (2024-10-10)
+
+
+### Features
+
+* **core:** :sparkles: added a linkedinAuthComponent ([b5ef953](https://github.com/wrappid/core/commit/b5ef953967c33f7ad7e0ba5860311d194aadd219)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: added a login with linkedIn flow ([ba7c929](https://github.com/wrappid/core/commit/ba7c929652e4c00680aa1407216e12e868075809)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: added linkedin auth component ([d92959b](https://github.com/wrappid/core/commit/d92959b8429ee7f5a62b080d74b0ad83c3829a79)), closes [#97](https://github.com/wrappid/core/issues/97)
+* **core:** :sparkles: added linkedin auth component ([582fec1](https://github.com/wrappid/core/commit/582fec15063ca4370b7007093ad84fe7ab2260e3)), closes [#97](https://github.com/wrappid/core/issues/97)
+* **core:** :sparkles: implemented a feature which will allow users to login with linkedIn ([9461e3b](https://github.com/wrappid/core/commit/9461e3bad00e58b42eb87ec4a060d522eabb5435)), closes [#382](https://github.com/wrappid/core/issues/382)
+* **core:** :sparkles: implemented a login with linkedin feature ([ee2708e](https://github.com/wrappid/core/commit/ee2708e381788c613227e1aa951d1fb8563ec234)), closes [#382](https://github.com/wrappid/core/issues/382)
+
+
+### Bug Fixes
+
+* **global:** :bug: facbooklogin fix ([fe0a4a0](https://github.com/wrappid/core/commit/fe0a4a0f468cc91c19998920db4224d4703eb639)), closes [#383](https://github.com/wrappid/core/issues/383)
+
+### [0.0.555](https://github.com/wrappid/core/compare/v0.0.554...v0.0.555) (2024-10-03)
+
+### [0.0.554](https://github.com/wrappid/core/compare/v0.0.553...v0.0.554) (2024-10-03)
+
+### [0.0.553](https://github.com/wrappid/core/compare/v0.0.552...v0.0.553) (2024-10-03)
+
+
+### Bug Fixes
+
+* **core:** :bug: facebook login fix ([2c85db2](https://github.com/wrappid/core/commit/2c85db2f9c0199825de9ec9e76a04c46c2ebb20a)), closes [#383](https://github.com/wrappid/core/issues/383)
+
+### [0.0.552](https://github.com/wrappid/core/compare/v0.0.551...v0.0.552) (2024-10-03)
+
+### [0.0.551](https://github.com/wrappid/core/compare/v0.0.550...v0.0.551) (2024-10-03)
+
+
+### Features
+
+* **core:** :sparkles: facebook auth component implementation ([5ac126f](https://github.com/wrappid/core/commit/5ac126f7158db442c339521bcf11450c07fdee3a)), closes [#383](https://github.com/wrappid/core/issues/383)
+
+### [0.0.550](https://github.com/wrappid/core/compare/v0.0.549...v0.0.550) (2024-09-26)
+
+### [0.0.549](https://github.com/wrappid/core/compare/v0.0.548...v0.0.549) (2024-09-25)
+
+
+### Bug Fixes
+
+* **core:** :bug: theme reflection from both styles classes and theme context ([1b00e4d](https://github.com/wrappid/core/commit/1b00e4dc1459bf34a9066d2a6937b285f7a481e2)), closes [#384](https://github.com/wrappid/core/issues/384)
+
 ### [0.0.548](https://github.com/wrappid/core/compare/v0.0.547...v0.0.548) (2024-09-21)
 
 
