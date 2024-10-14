@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.561](https://github.com/wrappid/core/compare/v0.0.560...v0.0.561) (2024-10-14)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix CoreDatePicker not working ([d74472b](https://github.com/wrappid/core/commit/d74472bb14bdbdabbc58c4d5f6ec0db0c28615fe)), closes [#344](https://github.com/wrappid/core/issues/344)
+
 ### [0.0.560](https://github.com/wrappid/core/compare/v0.0.559...v0.0.560) (2024-10-12)
 
 
