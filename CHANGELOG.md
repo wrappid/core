@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.562](https://github.com/wrappid/core/compare/v0.0.561...v0.0.562) (2024-10-15)
+
+
+### Features
+
+* **core:** :sparkles: add valid events ([c6c23d8](https://github.com/wrappid/core/commit/c6c23d813c8a72174201d0be567fe700ffbc3be1)), closes [#401](https://github.com/wrappid/core/issues/401)
+* **core:** :zap: add components in CoreComponent registry ([2bd1085](https://github.com/wrappid/core/commit/2bd1085bc588c0f8f9619ccbc7e6d2f292f48234)), closes [#380](https://github.com/wrappid/core/issues/380)
+* **core:** :zap: add components in CoreComponent registry ([f9360eb](https://github.com/wrappid/core/commit/f9360eb6a94fe106700531ab9f40e16632c9d663)), closes [#380](https://github.com/wrappid/core/issues/380)
+* **global:** :sparkles: created core tool box ([a1c722b](https://github.com/wrappid/core/commit/a1c722bb77d295230ee88a0b54d38e90905736d0)), closes [#380](https://github.com/wrappid/core/issues/380)
+
+
+### Bug Fixes
+
+* **core:** :bug: added defaultValidEvents in index.js ([b956808](https://github.com/wrappid/core/commit/b956808328adb5615c98aa5bf2f54bb87ae06218)), closes [#401](https://github.com/wrappid/core/issues/401)
+* **core:** :bug: updated ([4a049d0](https://github.com/wrappid/core/commit/4a049d0bd405454a106698a88a425fe1e569b8ae)), closes [#380](https://github.com/wrappid/core/issues/380)
+
 ### [0.0.561](https://github.com/wrappid/core/compare/v0.0.560...v0.0.561) (2024-10-14)
 
 
