@@ -241,7 +241,7 @@ import CoreThemeProvider from "./theme/CoreThemeProvider";
 import ThemeSelector from "./theme/ThemeSelector";
 import { copyToClipboard } from "./utils/appUtils";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
-import { defaultInvalidProps, defaultValidProps } from "./utils/componentUtil";
+import { defaultInvalidProps, defaultValidProps, defaultValidEvents } from "./utils/componentUtil";
 import { createApiMeta, getForm, getFormikRequiredMessage } from "./utils/formUtils";
 import {
   createFormData,
@@ -322,7 +322,7 @@ export {
   CoreTypographyCaption,
   CoreTypographyOverline,
   CoreTypographySubtitle1,
-  CoreTypographySubtitle2, coreUseLocation, coreUseNavigate, coreUseParams, coreUseSearchParams, createApiMeta, createFormData, createFullStore, DefaultCoreStyles, defaultInvalidProps, defaultValidProps, detectPlatform, FixedFooterLayout,
+  CoreTypographySubtitle2, coreUseLocation, coreUseNavigate, coreUseParams, coreUseSearchParams, createApiMeta, createFormData, createFullStore, DefaultCoreStyles, defaultInvalidProps, defaultValidProps, defaultValidEvents, detectPlatform, FixedFooterLayout,
   FixedHeaderFooterLayout,
   FixedHeaderLayout,
   FooterLayout, FORM_EDIT_MODE,
