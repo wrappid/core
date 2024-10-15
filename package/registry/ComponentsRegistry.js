@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppContainer } from "@wrappid/native";
 
-import { coreComponentsRegistry } from "../components/CoreComponentsRegistry";
+import CoreComponentsRegistry from "../components/CoreComponentsRegistry";
 import Logout from "../components/navigation/Logout";
 import SplashComponent from "../components/navigation/SplashComponent";
 import PageLoader from "../components/PageLoader";
@@ -20,7 +20,7 @@ let ComponentsRegistry = {
    * componentMap is form specific map for elements
    */
   ...componentMap,
-  ...coreComponentsRegistry,
+  ...CoreComponentsRegistry,
   ...LayoutComponentsRegistry,
   ComponentNotFound    : { comp: ComponentNotFound },
   CoreLayoutItem       : { comp: CoreLayoutItem },
