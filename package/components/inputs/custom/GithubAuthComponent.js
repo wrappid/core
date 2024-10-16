@@ -13,15 +13,13 @@ export default function GithubAuthComponent(props) {
   const [github_code, setGithub_code] = useState("");
 
   useEffect(() => {
-    const currentUrl = window.location.href;
+    // const currentUrl = window.location.href;
 
     const state = new URLSearchParams(window.location.search).get("state"); 
+    const code = new URLSearchParams(window.location.search).get("code"); 
 
-    if (currentUrl.includes("checkUserExist?code=") && state === null) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const extractedCode = urlParams.get("code");
-
-      setGithub_code(extractedCode);
+    if ((code != null) && state === null) {
+      setGithub_code(code);
     }
   }, []);
 
