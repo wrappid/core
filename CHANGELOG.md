@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.563](https://github.com/wrappid/core/compare/v0.0.562...v0.0.563) (2024-10-16)
+
+
+### Features
+
+* **global:** :sparkles: in the AppService queryBuilder section add appID in the query parameter ([de7c572](https://github.com/wrappid/core/commit/de7c572293a5ea81f0604f00d0748bca581f49d4)), closes [#403](https://github.com/wrappid/core/issues/403)
+
 ### [0.0.562](https://github.com/wrappid/core/compare/v0.0.561...v0.0.562) (2024-10-15)
 
 
