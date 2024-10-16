@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.564](https://github.com/wrappid/core/compare/v0.0.563...v0.0.564) (2024-10-16)
+
+
+### Bug Fixes
+
+* **core:** :bug: google onetap auto login off ([ad5b989](https://github.com/wrappid/core/commit/ad5b98938dbf23f59808d0067ce633b231eac182)), closes [#405](https://github.com/wrappid/core/issues/405)
+
 ### [0.0.563](https://github.com/wrappid/core/compare/v0.0.562...v0.0.563) (2024-10-16)
 
 
