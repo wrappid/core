@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.565](https://github.com/wrappid/core/compare/v0.0.564...v0.0.565) (2024-10-16)
+
+
+### Features
+
+* **config:** :bug: fix github login api faild to call ([5b7c75e](https://github.com/wrappid/core/commit/5b7c75eb8f710bdf2a3125f84be9260e6419e715)), closes [#407](https://github.com/wrappid/core/issues/407)
+
 ### [0.0.564](https://github.com/wrappid/core/compare/v0.0.563...v0.0.564) (2024-10-16)
 
 
