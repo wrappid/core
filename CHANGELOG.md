@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.568](https://github.com/wrappid/core/compare/v0.0.567...v0.0.568) (2024-10-17)
+
+
+### Features
+
+* **global:** :sparkles: more than 2 icon replace with 3 dot ([eec0eac](https://github.com/wrappid/core/commit/eec0eac7af990e76d4eed5e42cc956effac0cf8e)), closes [#380](https://github.com/wrappid/core/issues/380)
+
 ### [0.0.567](https://github.com/wrappid/core/compare/v0.0.566...v0.0.567) (2024-10-17)
 
 ### [0.0.566](https://github.com/wrappid/core/compare/v0.0.565...v0.0.566) (2024-10-16)
