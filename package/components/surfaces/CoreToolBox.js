@@ -58,6 +58,21 @@ CoreToolBox.validProps = [
         validValues: [] 
       }
     ]
+  },
+  {
+    description: "This is for expand handelling",
+    name       : "expandProp",
+    types      : [
+      {
+        default: true,
+        type   : "boolean"
+      }
+    ]
+  },
+  {
+    description: "The toolboxActionButton to display in the card header.",
+    name       : "toolboxActionButton",
+    types      : [{ type: "node" }],
   }
 ];
 
