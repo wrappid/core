@@ -49,7 +49,7 @@ const GoogleAuthComponent = () => {
     if (window.google) {
       window.google.accounts.id.initialize({
         
-        auto_select: true, 
+        auto_select: false, 
         // Replace with your actual client ID
         callback   : handleCredentialResponse,
         client_id  : config.wrappid.socialLogin.google.clientId
