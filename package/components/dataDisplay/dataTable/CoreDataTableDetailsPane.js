@@ -8,7 +8,7 @@ import { WrappidDataContext } from "@wrappid/styles";
 import CoreDataTableDetailsPaneContainer from "./CoreDataTableDetailsPaneContainer";
 import CoreTableAction from "./CoreTableAction";
 import TableRowAuditData from "./TableRowAuditData";
-import { ENV_DEV_MODE, MEDIUM_WINDOW_WIDTH } from "../../../config/constants";
+import { ENV_DEV_MODE, SMALL_WINDOW_WIDTH } from "../../../config/constants";
 import CoreClasses from "../../../styles/CoreClasses";
 import { getLabel } from "../../../utils/stringUtils";
 import { APP_PLATFORM } from "../../../utils/themeUtil";
@@ -122,7 +122,7 @@ export default function CoreDataTableDetailsPane(props) {
                 rowActions.length > 0 && (
                   <CoreTableAction
                     gridProps={
-                      window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                      window.innerWidth < SMALL_WINDOW_WIDTH ||
                       config?.wrappid?.platform === APP_PLATFORM
                         ? { gridSize: 10 }
                         : { gridSize: 12 }
@@ -139,7 +139,7 @@ export default function CoreDataTableDetailsPane(props) {
                   />
                 )}
 
-                {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                {(window.innerWidth < SMALL_WINDOW_WIDTH ||
                 config?.wrappid?.platform === APP_PLATFORM) && (
                   <CoreIconButton
                     gridProps={detailedRowData ? { gridSize: 2 } : { gridSize: 12 }}
@@ -161,7 +161,7 @@ export default function CoreDataTableDetailsPane(props) {
                 rowActions.length > 0 && (
                   <CoreTableAction
                     gridProps={
-                      window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                      window.innerWidth < SMALL_WINDOW_WIDTH ||
                       config?.wrappid?.platform === APP_PLATFORM
                         ? { gridSize: 10 }
                         : { gridSize: 12 }
@@ -178,7 +178,7 @@ export default function CoreDataTableDetailsPane(props) {
                   />
                 )}
 
-                {(window.windowWidth < MEDIUM_WINDOW_WIDTH ||
+                {(window.innerWidth < SMALL_WINDOW_WIDTH ||
                 config?.wrappid?.platform === APP_PLATFORM) && (
                   <CoreIconButton
                     gridProps={detailedRowData ? { gridSize: 2 } : { gridSize: 12 }}

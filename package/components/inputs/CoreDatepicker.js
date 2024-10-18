@@ -7,11 +7,13 @@ import { NativeDatepicker } from "@wrappid/native";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreClasses from "../../styles/CoreClasses";
-import { sanitizeComponentProps } from "../../utils/componentUtil";
+// eslint-disable-next-line etc/no-commented-out-code
+// import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreDatePicker(props) {
-  props = sanitizeComponentProps(CoreDatePicker, props);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // props = sanitizeComponentProps(CoreDatePicker, props);
 
   const { error, helperText } = props;
 
@@ -99,7 +101,7 @@ CoreDatePicker.validProps = [
   },
   {
     name : "view",
-    types: [{ type: "day" }, { type: "month" }, { type: "year" }],
+    types: [{ type: "number" }],
   },
   {
     name : "closeOnSelect",

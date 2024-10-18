@@ -23,7 +23,12 @@ export function queryBuilder(url, query) {
     Object.keys(query).length > 0 /* &&
     Object.values(query).find((v) => v && v !== "") */
   ) {
-    newUrl += "?";
+    // if (newUrl.indexOf("?") === -1) { // no query string
+    if (newUrl.indexOf("?") === -1) {
+      newUrl += "?";
+    } else {
+      newUrl += "&";
+    } 
     let keys = Object.keys(query);
 
     for (let index = 0; index < keys.length; index++) {

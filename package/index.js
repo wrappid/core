@@ -6,7 +6,7 @@ import { useNetworkStatus } from "@wrappid/native";
 
 import CoreAwayListner from "./components/CoreAwayListner";
 import CoreComponent from "./components/CoreComponent";
-import { coreComponentsRegistry as CoreComponentsRegistry } from "./components/CoreComponentsRegistry";
+import CoreComponentsRegistry from "./components/CoreComponentsRegistry";
 import CoreAvatar from "./components/dataDisplay/CoreAvatar";
 import CoreAvatarGroup from "./components/dataDisplay/CoreAvatarGroup";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
@@ -111,6 +111,10 @@ import CoreTextButton from "./components/inputs/CoreTextButton";
 import CoreTextField from "./components/inputs/CoreTextField";
 import CoreTimePicker from "./components/inputs/CoreTimePicker";
 import CoreTimeRangePicker from "./components/inputs/CoreTimeRangePicker";
+import FacebookAuthComponent from "./components/inputs/custom/FacebookAuthComponent";
+import GithubAuthComponent from "./components/inputs/custom/GithubAuthComponent";
+import GoogleAuthComponent from "./components/inputs/custom/GoogleAuthComponent";
+import LinkedInAuthComponent from "./components/inputs/custom/LinkedInAuthComponent";
 import CoreForm from "./components/inputs/forms/CoreForm";
 import {
   FORM_EDIT_MODE,
@@ -173,6 +177,7 @@ import CoreFooter from "./components/surfaces/CoreFooter";
 import CorePaper from "./components/surfaces/CorePaper";
 import CoreRightDrawer from "./components/surfaces/CoreRightDrawer";
 import CoreToolbar from "./components/surfaces/CoreToolbar";
+import CoreToolBox from "./components/surfaces/CoreToolBox";
 import ClipboardCopyButton from "./components/utils/ClipboardCopyButton";
 import CoreApiVersion from "./components/utils/CoreApiVersion";
 import CoreFade from "./components/utils/CoreFade";
@@ -236,7 +241,7 @@ import CoreThemeProvider from "./theme/CoreThemeProvider";
 import ThemeSelector from "./theme/ThemeSelector";
 import { copyToClipboard } from "./utils/appUtils";
 import { clearValidatePhoneEmail } from "./utils/componentDefaultValidations";
-import { defaultInvalidProps, defaultValidProps } from "./utils/componentUtil";
+import { defaultInvalidProps, defaultValidProps, defaultValidEvents } from "./utils/componentUtil";
 import { createApiMeta, getForm, getFormikRequiredMessage } from "./utils/formUtils";
 import {
   createFormData,
@@ -261,7 +266,7 @@ export {
   CoreAutocomplete, CoreAvatar,
   CoreAvatarGroup, CoreAwayListner, CoreBackdrop, CoreBadge,
   // CoreAppDiv,
-  CoreBox, CoreButton, CoreCard,
+  CoreBox, CoreButton, CoreCard, CoreToolBox,
   CoreCardActionArea,
   CoreCardActions,
   CoreCardContent,
@@ -317,7 +322,7 @@ export {
   CoreTypographyCaption,
   CoreTypographyOverline,
   CoreTypographySubtitle1,
-  CoreTypographySubtitle2, coreUseLocation, coreUseNavigate, coreUseParams, coreUseSearchParams, createApiMeta, createFormData, createFullStore, DefaultCoreStyles, defaultInvalidProps, defaultValidProps, detectPlatform, FixedFooterLayout,
+  CoreTypographySubtitle2, coreUseLocation, coreUseNavigate, coreUseParams, coreUseSearchParams, createApiMeta, createFormData, createFullStore, DefaultCoreStyles, defaultInvalidProps, defaultValidProps, defaultValidEvents, detectPlatform, FixedFooterLayout,
   FixedHeaderFooterLayout,
   FixedHeaderLayout,
   FooterLayout, FORM_EDIT_MODE,
@@ -337,6 +342,6 @@ export {
   ThemeSelector, ThreeColumnLayout, toggleMenuItemState, toggleRightMenuState, TwoColumnLayout, urls, useDynamicRefs,
   // Network status custom hook
   useNetworkStatus, UserChip, VCenteredBlankLayout, viewFormattedDate, WEB_PLATFORM, XLargeCoreStyles,
-  XXLargeCoreStyles
+  XXLargeCoreStyles, FacebookAuthComponent, GithubAuthComponent, LinkedInAuthComponent, GoogleAuthComponent
 };
 

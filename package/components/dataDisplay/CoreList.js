@@ -147,15 +147,30 @@ CoreList.validProps = [
     types      : [{ type: "object" }],
   },
   {
-    description: "This helps to add StyleClasses into the children of corelist.",
-    name       : "toolbox",
+    description: "This helps to add toolbox to selaect the size in the corelist.",
+    name       : "toolbar",
     types      : [
       {
-        default    : true,
+        default    : false,
         type       : "boolean",
         validValues: [true, false]
       }
     ],
+  },
+  {
+    description: "This helps to add Searchbar in the toolbar of corelist.",
+    name       : "search",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add Searchbar in the toolbar of corelist.",
+    name       : "items",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add Searchbar in the toolbar of corelist.",
+    name       : "JSONOptions",
+    types      : [{ type: "object" }],
   }
 ];
 
