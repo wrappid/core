@@ -28,7 +28,7 @@ export default function NotificationPopOver() {
 
       <CoreBox styleClasses={[CoreClasses.POPOVER.CONTENT]}>
         <CoreTypographyBody1
-          sx={{ minWidth: "350px" }}
+          minWidth={350}
           styleClasses={[CoreClasses.MARGIN.MY4, CoreClasses.PADDING.PX5]}
         >
           No new notifications
