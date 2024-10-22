@@ -148,7 +148,7 @@ CoreList.validProps = [
   },
   {
     description: "This helps to add toolbox to selaect the size in the corelist.",
-    name       : "toolbar",
+    name       : "enableToolbar",
     types      : [
       {
         default    : false,
@@ -159,11 +159,17 @@ CoreList.validProps = [
   },
   {
     description: "This helps to add Searchbar in the toolbar of corelist.",
-    name       : "search",
-    types      : [{ type: "object" }],
+    name       : "enableSearch",
+    types      : [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false]
+      }
+    ] 
   },
   {
-    description: "This helps to add Searchbar in the toolbar of corelist.",
+    description: "This helps to take json file of corelist.",
     name       : "items",
     types      : [{ type: "object" }],
   },
