@@ -1,381 +1,347 @@
-// eslint-disable-next-line etc/no-commented-out-code
-// import CoreAvatar from "./dataDisplay/CoreAvatar.js";
-// import CoreBadge from "./dataDisplay/CoreBadge.js";
-// import CoreChip from "./dataDisplay/CoreChip.js";
-// import CoreDivider from "./dataDisplay/CoreDivider.js";
-// import CoreEmailLink from "./dataDisplay/CoreEmailLink.js";
-// import CoreEmailOrPhoneLink from "./dataDisplay/CoreEmailOrPhoneLink.js";
-// import CoreH from "./dataDisplay/CoreH.js";
-import CoreH1 from "./dataDisplay/CoreH1.js";
-// eslint-disable-next-line etc/no-commented-out-code
-// import CoreH2 from "./dataDisplay/CoreH2.js";
-// import CoreH3 from "./dataDisplay/CoreH3.js";
-// import CoreH4 from "./dataDisplay/CoreH4.js";
-// import CoreH5 from "./dataDisplay/CoreH5.js";
-// import CoreH6 from "./dataDisplay/CoreH6.js";
-// import CoreIcon from "./dataDisplay/CoreIcon.js";
-// import CoreIconText from "./dataDisplay/CoreIconText.js";
-// import CoreImage from "./dataDisplay/CoreImage.js";
-// import CoreLabel from "./dataDisplay/CoreLabel.js";
-// import CoreList from "./dataDisplay/CoreList.js";
-// import CoreListItem from "./dataDisplay/CoreListItem.js";
-// import CoreListItemButton from "./dataDisplay/CoreListItemButton.js";
-// import CoreListItemIcon from "./dataDisplay/CoreListItemIcon.js";
-// import CoreListItemText from "./dataDisplay/CoreListItemText.js";
-// import CoreMarkdownViewer from "./dataDisplay/CoreMarkdownViewer.js";
-// import CorePhoneLink from "./dataDisplay/CorePhoneLink.js";
-// import CoreTable from "./dataDisplay/CoreTable.js";
-// import CoreTableBody from "./dataDisplay/CoreTableBody.js";
-// import CoreTableBodyCell from "./dataDisplay/CoreTableBodyCell.js";
-// import CoreTableCell from "./dataDisplay/CoreTableCell.js";
-// import CoreTableContainer from "./dataDisplay/CoreTableContainer.js";
-// import CoreTableFooter from "./dataDisplay/CoreTableFooter.js";
-// import CoreTableHead from "./dataDisplay/CoreTableHead.js";
-// import CoreTableHeadCell from "./dataDisplay/CoreTableHeadCell.js";
-// import CoreTableHeadRow from "./dataDisplay/CoreTableHeadRow.js";
-// import CoreTablePagination from "./dataDisplay/CoreTablePagination.js";
-// import CoreTableRow from "./dataDisplay/CoreTableRow.js";
-// import CoreTableSortLabel from "./dataDisplay/CoreTableSortLabel.js";
-// import CoreTooltip from "./dataDisplay/CoreTooltip.js";
-// import CoreTypography from "./dataDisplay/CoreTypography.js";
-// import CoreTypographyBody1 from "./dataDisplay/CoreTypographyBody1.js";
-// import CoreTypographyBody2 from "./dataDisplay/CoreTypographyBody2.js";
-// import CoreTypographyButton from "./dataDisplay/CoreTypographyButton.js";
-// import CoreTypographyCaption from "./dataDisplay/CoreTypographyCaption.js";
-// import CoreTypographyOverline from "./dataDisplay/CoreTypographyOverline.js";
-// import CoreTypographySubtitle1 from "./dataDisplay/CoreTypographySubtitle1.js";
-// import CoreTypographySubtitle2 from "./dataDisplay/CoreTypographySubtitle2.js";
-// import CoreDataTable from "./dataDisplay/dataTable/CoreDataTable.js";
-// import CoreDataTableBody from "./dataDisplay/dataTable/CoreDataTableBody.js";
-// import CoreDataTableDetailsPane from "./dataDisplay/dataTable/CoreDataTableDetailsPane.js";
-// import CoreDataTableFooter from "./dataDisplay/dataTable/CoreDataTableFooter.js";
-// import CoreDataTableHead from "./dataDisplay/dataTable/CoreDataTableHead.js";
-// import CoreDataTableRow from "./dataDisplay/dataTable/CoreDataTableRow.js";
-// import CoreDataTableRowActionPopover from "./dataDisplay/dataTable/CoreDataTableRowActionPopover.js";
-// import CoreDataTableRowContent from "./dataDisplay/dataTable/CoreDataTableRowContent.js";
-// import CoreDataTableRowSummary from "./dataDisplay/dataTable/CoreDataTableRowSummary.js";
-// import CoreDataTableToolbar from "./dataDisplay/dataTable/CoreDataTableToolbar.js";
-// import CoreFlatList from "./dataDisplay/dataTable/CoreFlatList.js";
-// import CoreTableAction from "./dataDisplay/dataTable/CoreTableAction.js";
-// import CoreTableBulkAction from "./dataDisplay/dataTable/CoreTableBulkAction.js";
-// import CoreTableCollapsible from "./dataDisplay/dataTable/CoreTableCollapsible.js";
-// import CoreTableFilter from "./dataDisplay/dataTable/CoreTableFilter.js";
-// import CoreTableSkeleton from "./dataDisplay/dataTable/CoreTableSkeleton.js";
-// import CoreTableToolBar from "./dataDisplay/dataTable/CoreTableToolBar.js";
-// import DevCoreDataTable from "./dataDisplay/dataTable/DevCoreDataTable.js";
-// import ExportData from "./dataDisplay/dataTable/ExportData.js";
-// import FilterColumn from "./dataDisplay/dataTable/FilterColumn.js";
-// import FilterData from "./dataDisplay/dataTable/FilterData.js";
-// import SortTableData from "./dataDisplay/dataTable/SortTableData.js";
-// import TableDensity from "./dataDisplay/dataTable/TableDensity.js";
-// import TableRowAuditData from "./dataDisplay/dataTable/TableRowAuditData.js";
-// import StatusText from "./dataDisplay/StatusText.js";
-// import UserChip from "./dataDisplay/UserChip.js";
-// import CoreAlert from "./feedback/CoreAlert.js";
-// import CoreBackdrop from "./feedback/CoreBackdrop.js";
-// import CoreCircularProgress from "./feedback/CoreCircularProgress.js";
-// import CoreDialog from "./feedback/CoreDialog.js";
-// import CoreLinearProgress from "./feedback/CoreLinearProgress.js";
-// import CoreRequestProgressBar from "./feedback/CoreRequestProgressBar.js";
-// import CoreSkeleton from "./feedback/CoreSkeleton.js";
-// import CoreSnackbar from "./feedback/CoreSnackbar.js";
-// import ChildMap from "./inputs/ChildMap.js";
-// import CoreAsyncSelect from "./inputs/CoreAsyncSelect.js";
-// import CoreAutocomplete from "./inputs/CoreAutocomplete.js";
-// import CoreButton from "./inputs/CoreButton.js";
-// import CoreCheckbox from "./inputs/CoreCheckbox.js";
-// import CoreConfirmPassword from "./inputs/CoreConfirmPassword.js";
-// import CoreConfirmPasswordField from "./inputs/CoreConfirmPasswordField.js";
-// import CoreContainedButton from "./inputs/CoreContainedButton.js";
-// import CoreDatepicker from "./inputs/CoreDatepicker.js";
-// import CoreDateRangepicker from "./inputs/CoreDateRangepicker.js";
-// import CoreDateTimePicker from "./inputs/CoreDateTimePicker.js";
-// import CoreDateTimeRangePicker from "./inputs/CoreDateTimeRangePicker.js";
-// import CoreFab from "./inputs/CoreFab.js";
-// import CoreFilePicker from "./inputs/CoreFilePicker.js";
-// import CoreFormControl from "./inputs/CoreFormControl.js";
-// import CoreFormErrorText from "./inputs/CoreFormErrorText.js";
-// import CoreFormHelperText from "./inputs/CoreFormHelperText.js";
-// import CoreFormLabelCheckbox from "./inputs/CoreFormLabelCheckbox.js";
-// import CoreGoogleButton from "./inputs/CoreGoogleButton.js";
-// import CoreIconButton from "./inputs/CoreIconButton.js";
-// import CoreImagePicker from "./inputs/CoreImagePicker.js";
-// import CoreInput from "./inputs/CoreInput.js";
-// import CoreInputAdornment from "./inputs/CoreInputAdornment.js";
-// import CoreInputLabel from "./inputs/CoreInputLabel.js";
-// import CoreInputPassword from "./inputs/CoreInputPassword.js";
-// import CoreJSONEditor from "./inputs/CoreJSONEditor.js";
-// import CoreJSONInput from "./inputs/CoreJSONInput.js";
-// import CoreMedicineSelector from "./inputs/CoreMedicineSelector.js";
-// import CoreMultiTimeRangePicker from "./inputs/CoreMultiTimeRangePicker.js";
-// import CoreOtpInput from "./inputs/CoreOtpInput.js";
-// import CoreOutlinedButton from "./inputs/CoreOutlinedButton.js";
-// import CorePhone from "./inputs/CorePhone.js";
-// import CoreRating from "./inputs/CoreRating.js";
-// import CoreReactSelectInput from "./inputs/CoreReactSelectInput.js";
-// import CoreResponsiveButton from "./inputs/CoreResponsiveButton.js";
-// import CoreRichTextEditor from "./inputs/CoreRichTextEditor.js";
-// import CoreSelect from "./inputs/CoreSelect.js";
-// import CoreSwitch from "./inputs/CoreSwitch.js";
-// import CoreTextarea from "./inputs/CoreTextarea.js";
-// import CoreTextButton from "./inputs/CoreTextButton.js";
-// import CoreTextField from "./inputs/CoreTextField.js";
-// import CoreTimePicker from "./inputs/CoreTimePicker.js";
-// import CoreTimeRangePicker from "./inputs/CoreTimeRangePicker.js";
-// import CoreEditForm from "./inputs/forms/CoreEditForm.js";
-// import CoreFieldButton from "./inputs/forms/CoreFieldButton.js";
-// import CoreForm from "./inputs/forms/CoreForm.js";
-// import CoreFormButton from "./inputs/forms/CoreFormButton.js";
-// import CoreFormContainer from "./inputs/forms/CoreFormContainer.js";
-// import CoreFormGroupLabel from "./inputs/forms/CoreFormControlLabel.js";
-// import CoreFormDialogs from "./inputs/forms/CoreFormDialogs.js";
-// import CoreFormField from "./inputs/forms/CoreFormField.js";
-// import CoreFormGroup from "./inputs/forms/CoreFormGroup.js";
-// import CoreFormHeader from "./inputs/forms/CoreFormHeader.js";
-// import CoreFormHeaderActions from "./inputs/forms/CoreFormHeaderActions.js";
-// import CoreSpecificForm from "./inputs/forms/CoreSpecificForm.js";
-// import CoreViewField from "./inputs/forms/CoreViewField.js";
-// import CoreViewForm from "./inputs/forms/CoreViewForm.js";
-// import ParentChildMap from "./inputs/ParentChildMap.js";
-// import CoreAppDiv from "./layouts/CoreAppDiv.js";
-// import CoreBox from "./layouts/CoreBox.js";
-// import CoreContainer from "./layouts/CoreContainer.js";
-// import CoreGrid from "./layouts/CoreGrid.js";
-// import CoreGridItem from "./layouts/CoreGridItem.js";
-// import CoreImageBackground from "./layouts/CoreImageBackground.js";
-// import CoreSection from "./layouts/CoreSection.js";
-// import CoreSpan from "./layouts/CoreSpan.js";
-// import CoreStack from "./layouts/CoreStack.js";
-// import CoreCustomTabs from "./navigation/CoreCustomTabs.js";
-// import CoreLink from "./navigation/CoreLink.js";
-// import CoreMenu from "./navigation/CoreMenu.js";
-// import CoreMenuItem from "./navigation/CoreMenuItem.js";
-// import CoreMenuList from "./navigation/CoreMenuList.js";
-// import CoreNavigation from "./navigation/CoreNavigation.js";
-// import CoreScrollTop from "./navigation/CoreScrollTop.js";
-// import CoreTab from "./navigation/CoreTab.js";
-// import CoreTabHead from "./navigation/CoreTabHead.js";
-// import CoreTabPanel from "./navigation/CoreTabPanel.js";
-// import CoreTabs from "./navigation/CoreTabs.js";
-// import Logout from "./navigation/Logout.js";
-// import SplashComponent from "./navigation/SplashComponent.js";
-// import CoreAccordion from "./surfaces/CoreAccordion.js";
-// import CoreAccordionDetail from "./surfaces/CoreAccordionDetail.js";
-// import CoreAccordionSummary from "./surfaces/CoreAccordionSummary.js";
-// import CoreAppBar from "./surfaces/CoreAppBar.js";
-// import CoreCard from "./surfaces/CoreCard.js";
-// import CoreCardActionArea from "./surfaces/CoreCardActionArea.js";
-// import CoreCardActions from "./surfaces/CoreCardActions.js";
-// import CoreCardContent from "./surfaces/CoreCardContent.js";
-// import CoreCardHeader from "./surfaces/CoreCardHeader.js";
-// import CoreCardMedia from "./surfaces/CoreCardMedia.js";
-// import CoreCollapse from "./surfaces/CoreCollapse.js";
-// import CoreDrawer from "./surfaces/CoreDrawer.js";
-// import CoreFooter from "./surfaces/CoreFooter.js";
-// import CorePaper from "./surfaces/CorePaper.js";
-// import CoreRightDrawer from "./surfaces/CoreRightDrawer.js";
-// import CoreToolbar from "./surfaces/CoreToolbar.js";
-// import CoreApiVersion from "./utils/CoreApiVersion.js";
-// import CoreAppVersion from "./utils/CoreAppVersion.js";
-// import CoreFade from "./utils/CoreFade.js";
-// import CoreLoginDetails from "./utils/CoreLoginDetails.js";
-// import CoreModal from "./utils/CoreModal.js";
-// import CorePopover from "./utils/CorePopover.js";
-// import CoreProfilePopOver from "./utils/CoreProfilePopOver.js";
-// import CoreTermsPrivacyLink from "./utils/CoreTermsPrivacyLink.js";
-// import HelpAndSupportPopOver from "./utils/HelpAndSupportPopOver.js";
-// import NotificationPopOver from "./utils/NotificationPopOver.js";
-// import QuickAddPopOver from "./utils/QuickAddPopOver.js";
-import PageLoader from "./PageLoader.js";
+import CoreAwayListner from "./CoreAwayListner";
+import CoreComponent from "./CoreComponent";
+import CoreAvatar from "./dataDisplay/CoreAvatar";
+import CoreAvatarGroup from "./dataDisplay/CoreAvatarGroup";
+import CoreBadge from "./dataDisplay/CoreBadge";
+import CoreChip from "./dataDisplay/CoreChip";
+import CoreDivider from "./dataDisplay/CoreDivider";
+import CoreEmailLink from "./dataDisplay/CoreEmailLink";
+import CoreEmailOrPhoneLink from "./dataDisplay/CoreEmailOrPhoneLink";
+import CoreH1 from "./dataDisplay/CoreH1";
+import CoreH2 from "./dataDisplay/CoreH2";
+import CoreH3 from "./dataDisplay/CoreH3";
+import CoreH4 from "./dataDisplay/CoreH4";
+import CoreH5 from "./dataDisplay/CoreH5";
+import CoreH6 from "./dataDisplay/CoreH6";
+import CoreIcon from "./dataDisplay/CoreIcon";
+import CoreIconText from "./dataDisplay/CoreIconText";
+import CoreImage from "./dataDisplay/CoreImage";
+import CoreLabel from "./dataDisplay/CoreLabel";
+import CoreList from "./dataDisplay/CoreList";
+import CoreListItem from "./dataDisplay/CoreListItem";
+import CoreListItemAvatar from "./dataDisplay/CoreListItemAvatar";
+import CoreListItemButton from "./dataDisplay/CoreListItemButton";
+import CoreListItemIcon from "./dataDisplay/CoreListItemIcon";
+import CoreListItemSecondaryAction from "./dataDisplay/CoreListItemSecondaryAction";
+import CoreListItemText from "./dataDisplay/CoreListItemText";
+import CoreListSubheader from "./dataDisplay/CoreListSubheader";
+import CoreMarkdownViewer from "./dataDisplay/CoreMarkdownViewer";
+import CorePhoneLink from "./dataDisplay/CorePhoneLink";
+import CoreTable from "./dataDisplay/CoreTable";
+import CoreTableBody from "./dataDisplay/CoreTableBody";
+import CoreTableBodyCell from "./dataDisplay/CoreTableBodyCell";
+import CoreTableCell from "./dataDisplay/CoreTableCell";
+import CoreTableContainer from "./dataDisplay/CoreTableContainer";
+import CoreTableFooter from "./dataDisplay/CoreTableFooter";
+import CoreTableHead from "./dataDisplay/CoreTableHead";
+import CoreTableHeadCell from "./dataDisplay/CoreTableHeadCell";
+import CoreTableHeadRow from "./dataDisplay/CoreTableHeadRow";
+import CoreTablePagination from "./dataDisplay/CoreTablePagination";
+import CoreTableRow from "./dataDisplay/CoreTableRow";
+import CoreTableSortLabel from "./dataDisplay/CoreTableSortLabel";
+import CoreTimer from "./dataDisplay/CoreTimer";
+import CoreTooltip from "./dataDisplay/CoreTooltip";
+import CoreTypographyBody1 from "./dataDisplay/CoreTypographyBody1";
+import CoreTypographyBody2 from "./dataDisplay/CoreTypographyBody2";
+import CoreTypographyButton from "./dataDisplay/CoreTypographyButton";
+import CoreTypographyCaption from "./dataDisplay/CoreTypographyCaption";
+import CoreTypographyOverline from "./dataDisplay/CoreTypographyOverline";
+import CoreTypographySubtitle1 from "./dataDisplay/CoreTypographySubtitle1";
+import CoreTypographySubtitle2 from "./dataDisplay/CoreTypographySubtitle2";
+import CoreDataTable from "./dataDisplay/dataTable/CoreDataTable";
+import CoreFlatList from "./dataDisplay/dataTable/CoreFlatList";
+import StatusText from "./dataDisplay/StatusText";
+import UserChip from "./dataDisplay/UserChip";
+import CoreAlert from "./feedback/CoreAlert";
+import CoreAlertTitle from "./feedback/CoreAlertTitle";
+import CoreBackdrop from "./feedback/CoreBackdrop";
+import CoreCircularProgress from "./feedback/CoreCircularProgress";
+import CoreDialog from "./feedback/CoreDialog";
+import CoreLinearProgress from "./feedback/CoreLinearProgress";
+import CoreSkeleton from "./feedback/CoreSkeleton";
+import CoreSnackbar from "./feedback/CoreSnackbar";
+import ChildMap from "./inputs/ChildMap";
+import CoreAsyncSelect from "./inputs/CoreAsyncSelect";
+import CoreAutocomplete from "./inputs/CoreAutocomplete";
+import CoreButton from "./inputs/CoreButton";
+import CoreCheckbox from "./inputs/CoreCheckbox";
+import CoreColorInput from "./inputs/CoreColorInput";
+import CoreConfirmPasswordField from "./inputs/CoreConfirmPasswordField";
+import CoreContainedButton from "./inputs/CoreContainedButton";
+import CoreDatepicker from "./inputs/CoreDatepicker";
+import CoreDateRangepicker from "./inputs/CoreDateRangepicker";
+import CoreDateTimePicker from "./inputs/CoreDateTimePicker";
+import CoreDateTimeRangePicker from "./inputs/CoreDateTimeRangePicker";
+import CoreFab from "./inputs/CoreFab";
+import CoreFilePicker from "./inputs/CoreFilePicker";
+import CoreFormControl from "./inputs/CoreFormControl";
+import CoreFormErrorText from "./inputs/CoreFormErrorText";
+import CoreFormHelperText from "./inputs/CoreFormHelperText";
+import CoreFormLabelCheckbox from "./inputs/CoreFormLabelCheckbox";
+import CoreGoogleButton from "./inputs/CoreGoogleButton";
+import CoreIconButton from "./inputs/CoreIconButton";
+import CoreImagePicker from "./inputs/CoreImagePicker";
+import CoreInput from "./inputs/CoreInput";
+import CoreInputAdornment from "./inputs/CoreInputAdornment";
+import CoreInputLabel from "./inputs/CoreInputLabel";
+import CoreInputPassword from "./inputs/CoreInputPassword";
+import CoreJSONEditor from "./inputs/CoreJSONEditor";
+import CoreJSONInput from "./inputs/CoreJSONInput";
+import CoreMedicineSelector from "./inputs/CoreMedicineSelector";
+import CoreMultiTimeRangePicker from "./inputs/CoreMultiTimeRangePicker";
+import CoreOtpInput from "./inputs/CoreOtpInput";
+import CoreOutlinedButton from "./inputs/CoreOutlinedButton";
+import CorePhone from "./inputs/CorePhone";
+import CoreRating from "./inputs/CoreRating";
+import CoreReactSelectInput from "./inputs/CoreReactSelectInput";
+import CoreResponsiveButton from "./inputs/CoreResponsiveButton";
+import CoreRichTextEditor from "./inputs/CoreRichTextEditor";
+import CoreSelect from "./inputs/CoreSelect";
+import CoreSpeechToText from "./inputs/CoreSpeechToText";
+import CoreSwitch from "./inputs/CoreSwitch";
+import CoreTextarea from "./inputs/CoreTextarea";
+import CoreTextButton from "./inputs/CoreTextButton";
+import CoreTextField from "./inputs/CoreTextField";
+import CoreTimePicker from "./inputs/CoreTimePicker";
+import CoreTimeRangePicker from "./inputs/CoreTimeRangePicker";
+import CoreForm from "./inputs/forms/CoreForm";
+import CoreFormControlLabel from "./inputs/forms/CoreFormControlLabel";
+import CoreFormGroup from "./inputs/forms/CoreFormGroup";
+import ParentChildMap from "./inputs/ParentChildMap";
+import AppContainerLayout from "./layouts/_system/AppContainerLayout";
+import BlankLayout from "./layouts/_system/BlankLayout";
+import CenteredBlankLayout from "./layouts/_system/CenteredBlankLayout";
+import ComplexLayout from "./layouts/_system/ComplexLayout";
+import FixedFooterLayout from "./layouts/_system/FixedFooterLayout";
+import FixedHeaderFooterLayout from "./layouts/_system/FixedHeaderFooterLayout";
+import FixedHeaderLayout from "./layouts/_system/FixedHeaderLayout";
+import FooterLayout from "./layouts/_system/FooterLayout";
+import HCenteredBlankLayout from "./layouts/_system/HCenteredBlankLayout";
+import HeaderFooterLayout from "./layouts/_system/HeaderFooterLayout";
+import HeaderLayout from "./layouts/_system/HeaderLayout";
+import LeftDrawerLayout from "./layouts/_system/LeftDrawerLayout";
+import LeftRightDrawerLayout from "./layouts/_system/LeftRightDrawerLayout";
+import RightDrawerLayout from "./layouts/_system/RightDrawerLayout";
+import ThreeColumnLayout from "./layouts/_system/ThreeColumnLayout";
+import TwoColumnLayout from "./layouts/_system/TwoColumnLayout";
+import VCenteredBlankLayout from "./layouts/_system/VCenteredBlankLayout";
+import CoreBox from "./layouts/CoreBox";
+import CoreContainer from "./layouts/CoreContainer";
+import CoreGrid from "./layouts/CoreGrid";
+import CoreImageBackground from "./layouts/CoreImageBackground";
+import CoreSection from "./layouts/CoreSection";
+import CoreSpan from "./layouts/CoreSpan";
+import CoreStack from "./layouts/CoreStack";
+import CoreCustomTabs from "./navigation/CoreCustomTabs";
+import CoreLink from "./navigation/CoreLink";
+import CoreMenu from "./navigation/CoreMenu";
+import CoreMenuItem from "./navigation/CoreMenuItem";
+import CoreMenuList from "./navigation/CoreMenuList";
+import CoreScrollTop from "./navigation/CoreScrollTop";
+import CoreTab from "./navigation/CoreTab";
+import CoreTabHead from "./navigation/CoreTabHead";
+import CoreTabPanel from "./navigation/CoreTabPanel";
+import CoreTabs from "./navigation/CoreTabs";
+import CoreTOC from "./navigation/CoreTOC";
+import CoreAccordion from "./surfaces/CoreAccordion";
+import CoreAccordionDetail from "./surfaces/CoreAccordionDetail";
+import CoreAccordionSummary from "./surfaces/CoreAccordionSummary";
+import CoreAppBar from "./surfaces/CoreAppBar";
+import CoreCard from "./surfaces/CoreCard";
+import CoreCardActionArea from "./surfaces/CoreCardActionArea";
+import CoreCardActions from "./surfaces/CoreCardActions";
+import CoreCardContent from "./surfaces/CoreCardContent";
+import CoreCardHeader from "./surfaces/CoreCardHeader";
+import CoreCardMedia from "./surfaces/CoreCardMedia";
+import CoreCollapse from "./surfaces/CoreCollapse";
+import CoreDrawer from "./surfaces/CoreDrawer";
+import CoreFooter from "./surfaces/CoreFooter";
+import CorePaper from "./surfaces/CorePaper";
+import CoreRightDrawer from "./surfaces/CoreRightDrawer";
+import CoreToolbar from "./surfaces/CoreToolbar";
+import CoreToolBox from "./surfaces/CoreToolBox";
+import ClipboardCopyButton from "./utils/ClipboardCopyButton";
+import CoreApiVersion from "./utils/CoreApiVersion";
+import CoreFade from "./utils/CoreFade";
+import CoreLoginDetails from "./utils/CoreLoginDetails";
+import CoreModal from "./utils/CoreModal";
+import CoreNetworkStatus from "./utils/CoreNetworkStatus";
+import CorePopover from "./utils/CorePopover";
+import CoreProfilePopOver from "./utils/CoreProfilePopOver";
+import NotificationPopOver from "./utils/NotificationPopOver";
 
-export const coreComponentsRegistry = {
-  // eslint-disable-next-line etc/no-commented-out-code
-  // "ChildMap"                     : { comp: ChildMap },
-  // "CoreAccordion"                : { comp: CoreAccordion },
-  // "CoreAccordionDetail"          : { comp: CoreAccordionDetail },
-  // "CoreAccordionSummary"         : { comp: CoreAccordionSummary },
-  // "CoreAlert"                    : { comp: CoreAlert },
-  // "CoreApiVersion"               : { comp: CoreApiVersion },
-  // "CoreAppBar"                   : { comp: CoreAppBar },
-  // "CoreAppDiv"                   : { comp: CoreAppDiv },
-  // "CoreAppVersion"               : { comp: CoreAppVersion },
-  // "CoreAsyncSelect"              : { comp: CoreAsyncSelect },
-  // "CoreAutocomplete"             : { comp: CoreAutocomplete },
-  // "CoreAvatar"                   : { comp: CoreAvatar },
-  // "CoreBackdrop"                 : { comp: CoreBackdrop },
-  // "CoreBadge"                    : { comp: CoreBadge },
-  // "CoreBox"                      : { comp: CoreBox },
-  // "CoreButton"                   : { comp: CoreButton },
-  // "CoreCard"                     : { comp: CoreCard },
-  // "CoreCardActionArea"           : { comp: CoreCardActionArea },
-  // "CoreCardActions"              : { comp: CoreCardActions },
-  // "CoreCardContent"              : { comp: CoreCardContent },
-  // "CoreCardHeader"               : { comp: CoreCardHeader },
-  // "CoreCardMedia"                : { comp: CoreCardMedia },
-  // "CoreCheckbox"                 : { comp: CoreCheckbox },
-  // "CoreChip"                     : { comp: CoreChip },
-  // "CoreCircularProgress"         : { comp: CoreCircularProgress },
-  // "CoreCollapse"                 : { comp: CoreCollapse },
-  // "CoreConfirmPassword"          : { comp: CoreConfirmPassword },
-  // "CoreConfirmPasswordField"     : { comp: CoreConfirmPasswordField },
-  // "CoreContainedButton"          : { comp: CoreContainedButton },
-  // "CoreContainer"                : { comp: CoreContainer },
-  // "CoreCustomTabs"               : { comp: CoreCustomTabs },
-  // "CoreDataTable"                : { comp: CoreDataTable },
-  // "CoreDataTableBody"            : { comp: CoreDataTableBody },
-  // "CoreDataTableDetailsPane"     : { comp: CoreDataTableDetailsPane },
-  // "CoreDataTableFooter"          : { comp: CoreDataTableFooter },
-  // "CoreDataTableHead"            : { comp: CoreDataTableHead },
-  // "CoreDataTableRow"             : { comp: CoreDataTableRow },
-  // "CoreDataTableRowActionPopover": { comp: CoreDataTableRowActionPopover },
-  // "CoreDataTableRowContent"      : { comp: CoreDataTableRowContent },
-  // "CoreDataTableRowSummary"      : { comp: CoreDataTableRowSummary },
-  // "CoreDataTableToolbar"         : { comp: CoreDataTableToolbar },
-  // "CoreDateRangepicker"          : { comp: CoreDateRangepicker },
-  // "CoreDateTimePicker"           : { comp: CoreDateTimePicker },
-  // "CoreDateTimeRangePicker"      : { comp: CoreDateTimeRangePicker },
-  // "CoreDatepicker"               : { comp: CoreDatepicker },
-  // "CoreDialog"                   : { comp: CoreDialog },
-  // "CoreDivider"                  : { comp: CoreDivider },
-  // "CoreDrawer"                   : { comp: CoreDrawer },
-  // "CoreEditForm"                 : { comp: CoreEditForm },
-  // "CoreEmailLink"                : { comp: CoreEmailLink },
-  // "CoreEmailOrPhoneLink"         : { comp: CoreEmailOrPhoneLink },
-  // "CoreFab"                      : { comp: CoreFab },
-  // "CoreFade"                     : { comp: CoreFade },
-  // "CoreFieldButton"              : { comp: CoreFieldButton },
-  // "CoreFilePicker"               : { comp: CoreFilePicker },
-  // "CoreFlatList"                 : { comp: CoreFlatList },
-  // "CoreFooter"                   : { comp: CoreFooter },
-  // "CoreForm"                     : { comp: CoreForm },
-  // "CoreFormButton"               : { comp: CoreFormButton },
-  // "CoreFormContainer"            : { comp: CoreFormContainer },
-  // "CoreFormControl"              : { comp: CoreFormControl },
-  // "CoreFormDialogs"              : { comp: CoreFormDialogs },
-  // "CoreFormErrorText"            : { comp: CoreFormErrorText },
-  // "CoreFormField"                : { comp: CoreFormField },
-  // "CoreFormGroup"                : { comp: CoreFormGroup },
-  // "CoreFormGroupLabel"           : { comp: CoreFormGroupLabel },
-  // "CoreFormHeader"               : { comp: CoreFormHeader },
-  // "CoreFormHeaderActions"        : { comp: CoreFormHeaderActions },
-  // "CoreFormHelperText"           : { comp: CoreFormHelperText },
-  // "CoreFormLabelCheckbox"        : { comp: CoreFormLabelCheckbox },
-  // "CoreGoogleButton"             : { comp: CoreGoogleButton },
-  // "CoreGrid"                     : { comp: CoreGrid },
-  // "CoreGridItem"                 : { comp: CoreGridItem },
-  // "CoreH"                        : { comp: CoreH },
-  "CoreH1"    : { comp: CoreH1 },
-  // eslint-disable-next-line etc/no-commented-out-code
-  // "CoreH2"                       : { comp: CoreH2 },
-  // "CoreH3"                       : { comp: CoreH3 },
-  // "CoreH4"                       : { comp: CoreH4 },
-  // "CoreH5"                       : { comp: CoreH5 },
-  // "CoreH6"                       : { comp: CoreH6 },
-  // "CoreIcon"                     : { comp: CoreIcon },
-  // "CoreIconButton"               : { comp: CoreIconButton },
-  // "CoreIconText"                 : { comp: CoreIconText },
-  // "CoreImage"                    : { comp: CoreImage },
-  // "CoreImageBackground"          : { comp: CoreImageBackground },
-  // "CoreImagePicker"              : { comp: CoreImagePicker },
-  // "CoreInput"                    : { comp: CoreInput },
-  // "CoreInputAdornment"           : { comp: CoreInputAdornment },
-  // "CoreInputLabel"               : { comp: CoreInputLabel },
-  // "CoreInputPassword"            : { comp: CoreInputPassword },
-  // "CoreJSONEditor"               : { comp: CoreJSONEditor },
-  // "CoreJSONInput"                : { comp: CoreJSONInput },
-  // "CoreLabel"                    : { comp: CoreLabel },
-  // "CoreLinearProgress"           : { comp: CoreLinearProgress },
-  // "CoreLink"                     : { comp: CoreLink },
-  // "CoreList"                     : { comp: CoreList },
-  // "CoreListItem"                 : { comp: CoreListItem },
-  // "CoreListItemButton"           : { comp: CoreListItemButton },
-  // "CoreListItemIcon"             : { comp: CoreListItemIcon },
-  // "CoreListItemText"             : { comp: CoreListItemText },
-  // "CoreLoginDetails"             : { comp: CoreLoginDetails },
-  // "CoreMarkdownViewer"           : { comp: CoreMarkdownViewer },
-  // "CoreMedicineSelector"         : { comp: CoreMedicineSelector },
-  // "CoreMenu"                     : { comp: CoreMenu },
-  // "CoreMenuItem"                 : { comp: CoreMenuItem },
-  // "CoreMenuList"                 : { comp: CoreMenuList },
-  // "CoreModal"                    : { comp: CoreModal },
-  // "CoreMultiTimeRangePicker"     : { comp: CoreMultiTimeRangePicker },
-  // "CoreNavigation"               : { comp: CoreNavigation },
-  // "CoreOtpInput"                 : { comp: CoreOtpInput },
-  // "CoreOutlinedButton"           : { comp: CoreOutlinedButton },
-  // "CorePaper"                    : { comp: CorePaper },
-  // "CorePhone"                    : { comp: CorePhone },
-  // "CorePhoneLink"                : { comp: CorePhoneLink },
-  // "CorePopover"                  : { comp: CorePopover },
-  // "CoreProfilePopOver"           : { comp: CoreProfilePopOver },
-  // "CoreRating"                   : { comp: CoreRating },
-  // "CoreReactSelectInput"         : { comp: CoreReactSelectInput },
-  // "CoreRequestProgressBar"       : { comp: CoreRequestProgressBar },
-  // "CoreResponsiveButton"         : { comp: CoreResponsiveButton },
-  // "CoreRichTextEditor"           : { comp: CoreRichTextEditor },
-  // "CoreRightDrawer"              : { comp: CoreRightDrawer },
-  // "CoreScrollTop"                : { comp: CoreScrollTop },
-  // "CoreSection"                  : { comp: CoreSection },
-  // "CoreSelect"                   : { comp: CoreSelect },
-  // "CoreSkeleton"                 : { comp: CoreSkeleton },
-  // "CoreSnackbar"                 : { comp: CoreSnackbar },
-  // "CoreSpan"                     : { comp: CoreSpan },
-  // "CoreSpecificForm"             : { comp: CoreSpecificForm },
-  // "CoreStack"                    : { comp: CoreStack },
-  // "CoreSwitch"                   : { comp: CoreSwitch },
-  // "CoreTab"                      : { comp: CoreTab },
-  // "CoreTabHead"                  : { comp: CoreTabHead },
-  // "CoreTabPanel"                 : { comp: CoreTabPanel },
-  // "CoreTable"                    : { comp: CoreTable },
-  // "CoreTableAction"              : { comp: CoreTableAction },
-  // "CoreTableBody"                : { comp: CoreTableBody },
-  // "CoreTableBodyCell"            : { comp: CoreTableBodyCell },
-  // "CoreTableBulkAction"          : { comp: CoreTableBulkAction },
-  // "CoreTableCell"                : { comp: CoreTableCell },
-  // "CoreTableCollapsible"         : { comp: CoreTableCollapsible },
-  // "CoreTableContainer"           : { comp: CoreTableContainer },
-  // "CoreTableFilter"              : { comp: CoreTableFilter },
-  // "CoreTableFooter"              : { comp: CoreTableFooter },
-  // "CoreTableHead"                : { comp: CoreTableHead },
-  // "CoreTableHeadCell"            : { comp: CoreTableHeadCell },
-  // "CoreTableHeadRow"             : { comp: CoreTableHeadRow },
-  // "CoreTablePagination"          : { comp: CoreTablePagination },
-  // "CoreTableRow"                 : { comp: CoreTableRow },
-  // "CoreTableSkeleton"            : { comp: CoreTableSkeleton },
-  // "CoreTableSortLabel"           : { comp: CoreTableSortLabel },
-  // "CoreTableToolBar"             : { comp: CoreTableToolBar },
-  // "CoreTabs"                     : { comp: CoreTabs },
-  // "CoreTermsPrivacyLink"         : { comp: CoreTermsPrivacyLink },
-  // "CoreTextButton"               : { comp: CoreTextButton },
-  // "CoreTextField"                : { comp: CoreTextField },
-  // "CoreTextarea"                 : { comp: CoreTextarea },
-  // "CoreTimePicker"               : { comp: CoreTimePicker },
-  // "CoreTimeRangePicker"          : { comp: CoreTimeRangePicker },
-  // "CoreToolbar"                  : { comp: CoreToolbar },
-  // "CoreTooltip"                  : { comp: CoreTooltip },
-  // "CoreTypography"               : { comp: CoreTypography },
-  // "CoreTypographyBody1"          : { comp: CoreTypographyBody1 },
-  // "CoreTypographyBody2"          : { comp: CoreTypographyBody2 },
-  // "CoreTypographyButton"         : { comp: CoreTypographyButton },
-  // "CoreTypographyCaption"        : { comp: CoreTypographyCaption },
-  // "CoreTypographyOverline"       : { comp: CoreTypographyOverline },
-  // "CoreTypographySubtitle1"      : { comp: CoreTypographySubtitle1 },
-  // "CoreTypographySubtitle2"      : { comp: CoreTypographySubtitle2 },
-  // "CoreViewField"                : { comp: CoreViewField },
-  // "CoreViewForm"                 : { comp: CoreViewForm },
-  // "DevCoreDataTable"             : { comp: DevCoreDataTable },
-  // "ExportData"                   : { comp: ExportData },
-  // "FilterColumn"                 : { comp: FilterColumn },
-  // "FilterData"                   : { comp: FilterData },
-  // "HelpAndSupportPopOver"        : { comp: HelpAndSupportPopOver },
-  // "Logout"                       : { comp: Logout },
-  // "NotificationPopOver"          : { comp: NotificationPopOver },
-  // "ParentChildMap"               : { comp: ParentChildMap },
-  // "QuickAddPopOver"              : { comp: QuickAddPopOver },
-  // "SortTableData"                : { comp: SortTableData },
-  // "SplashComponent"              : { comp: SplashComponent },
-  // "StatusText"                   : { comp: StatusText },
-  // "TableDensity"                 : { comp: TableDensity },
-  // "TableRowAuditData"            : { comp: TableRowAuditData },
-  // "UserChip"                     : { comp: UserChip },
-  "PageLoader": { comp: PageLoader }
+const CoreComponentsRegistry = {
+  AppContainerLayout         : { category: "layouts", comp: AppContainerLayout, layout: true },
+  BlankLayout                : { category: "layouts", comp: BlankLayout, layout: true },
+  CenteredBlankLayout        : { category: "layouts", comp: CenteredBlankLayout, layout: true },
+  ChildMap                   : { category: "inputs", comp: ChildMap },
+  ClipboardCopyButton        : { category: "utils", comp: ClipboardCopyButton },
+  ComplexLayout              : { category: "layouts", comp: ComplexLayout, layout: true },
+  CoreAccordion              : { category: "surfaces", comp: CoreAccordion },
+  CoreAccordionDetail        : { category: "surfaces", comp: CoreAccordionDetail },
+  CoreAccordionSummary       : { category: "surfaces", comp: CoreAccordionSummary },
+  CoreAlert                  : { category: "feedback", comp: CoreAlert },
+  CoreAlertTitle             : { category: "feedback", comp: CoreAlertTitle },
+  CoreApiVersion             : { category: "utils", comp: CoreApiVersion },
+  CoreAppBar                 : { category: "surfaces", comp: CoreAppBar },
+  CoreAsyncSelect            : { category: "inputs", comp: CoreAsyncSelect },
+  CoreAutocomplete           : { category: "inputs", comp: CoreAutocomplete },
+  CoreAvatar                 : { category: "dataDisplay", comp: CoreAvatar },
+  CoreAvatarGroup            : { category: "dataDisplay", comp: CoreAvatarGroup },
+  CoreAwayListner            : { category: "utils", comp: CoreAwayListner },
+  CoreBackdrop               : { category: "feedback", comp: CoreBackdrop },
+  CoreBadge                  : { category: "dataDisplay", comp: CoreBadge },
+  CoreBox                    : { category: "layouts", comp: CoreBox },
+  CoreButton                 : { category: "inputs", comp: CoreButton },
+  CoreCard                   : { category: "surfaces", comp: CoreCard },
+  CoreCardActionArea         : { category: "surfaces", comp: CoreCardActionArea },
+  CoreCardActions            : { category: "surfaces", comp: CoreCardActions },
+  CoreCardContent            : { category: "surfaces", comp: CoreCardContent },
+  CoreCardHeader             : { category: "surfaces", comp: CoreCardHeader },
+  CoreCardMedia              : { category: "surfaces", comp: CoreCardMedia },
+  CoreCheckbox               : { category: "inputs", comp: CoreCheckbox },
+  CoreChip                   : { category: "dataDisplay", comp: CoreChip },
+  CoreCircularProgress       : { category: "feedback", comp: CoreCircularProgress },
+  CoreCollapse               : { category: "surfaces", comp: CoreCollapse },
+  CoreColorInput             : { category: "inputs", comp: CoreColorInput },
+  CoreComponent              : { category: "utils", comp: CoreComponent },
+  CoreConfirmPasswordField   : { category: "inputs", comp: CoreConfirmPasswordField },
+  CoreContainedButton        : { category: "inputs", comp: CoreContainedButton },
+  CoreContainer              : { category: "layouts", comp: CoreContainer },
+  CoreCustomTabs             : { category: "navigation", comp: CoreCustomTabs },
+  CoreDataTable              : { category: "dataDisplay", comp: CoreDataTable },
+  CoreDateRangepicker        : { category: "inputs", comp: CoreDateRangepicker },
+  CoreDateTimePicker         : { category: "inputs", comp: CoreDateTimePicker },
+  CoreDateTimeRangePicker    : { category: "inputs", comp: CoreDateTimeRangePicker },
+  CoreDatepicker             : { category: "inputs", comp: CoreDatepicker },
+  CoreDialog                 : { category: "feedback", comp: CoreDialog },
+  CoreDivider                : { category: "dataDisplay", comp: CoreDivider },
+  CoreDrawer                 : { category: "surfaces", comp: CoreDrawer },
+  CoreEmailLink              : { category: "dataDisplay", comp: CoreEmailLink },
+  CoreEmailOrPhoneLink       : { category: "dataDisplay", comp: CoreEmailOrPhoneLink },
+  CoreFab                    : { category: "inputs", comp: CoreFab },
+  CoreFade                   : { category: "utils", comp: CoreFade },
+  CoreFilePicker             : { category: "inputs", comp: CoreFilePicker },
+  CoreFlatList               : { category: "dataDisplay", comp: CoreFlatList },
+  CoreFooter                 : { category: "surfaces", comp: CoreFooter },
+  CoreForm                   : { category: "inputs", comp: CoreForm },
+  CoreFormControl            : { category: "inputs", comp: CoreFormControl },
+  CoreFormControlLabel       : { category: "inputs", comp: CoreFormControlLabel },
+  CoreFormErrorText          : { category: "inputs", comp: CoreFormErrorText },
+  CoreFormGroup              : { category: "inputs", comp: CoreFormGroup },
+  CoreFormHelperText         : { category: "inputs", comp: CoreFormHelperText },
+  CoreFormLabelCheckbox      : { category: "inputs", comp: CoreFormLabelCheckbox },
+  CoreGoogleButton           : { category: "inputs", comp: CoreGoogleButton },
+  CoreGrid                   : { category: "layouts", comp: CoreGrid },
+  CoreH1                     : { category: "dataDisplay", comp: CoreH1 },
+  CoreH2                     : { category: "dataDisplay", comp: CoreH2 },
+  CoreH3                     : { category: "dataDisplay", comp: CoreH3 },
+  CoreH4                     : { category: "dataDisplay", comp: CoreH4 },
+  CoreH5                     : { category: "dataDisplay", comp: CoreH5 },
+  CoreH6                     : { category: "dataDisplay", comp: CoreH6 },
+  CoreIcon                   : { category: "dataDisplay", comp: CoreIcon },
+  CoreIconButton             : { category: "inputs", comp: CoreIconButton },
+  CoreIconText               : { category: "dataDisplay", comp: CoreIconText },
+  CoreImage                  : { category: "dataDisplay", comp: CoreImage },
+  CoreImageBackground        : { category: "layouts", comp: CoreImageBackground },
+  CoreImagePicker            : { category: "inputs", comp: CoreImagePicker },
+  CoreInput                  : { category: "inputs", comp: CoreInput },
+  CoreInputAdornment         : { category: "inputs", comp: CoreInputAdornment },
+  CoreInputLabel             : { category: "inputs", comp: CoreInputLabel },
+  CoreInputPassword          : { category: "inputs", comp: CoreInputPassword },
+  CoreJSONEditor             : { category: "inputs", comp: CoreJSONEditor },
+  CoreJSONInput              : { category: "inputs", comp: CoreJSONInput },
+  CoreLabel                  : { category: "dataDisplay", comp: CoreLabel },
+  CoreLinearProgress         : { category: "feedback", comp: CoreLinearProgress },
+  CoreLink                   : { category: "navigation", comp: CoreLink },
+  CoreList                   : { category: "dataDisplay", comp: CoreList },
+  CoreListItem               : { category: "dataDisplay", comp: CoreListItem },
+  CoreListItemAvatar         : { category: "dataDisplay", comp: CoreListItemAvatar },
+  CoreListItemButton         : { category: "dataDisplay", comp: CoreListItemButton },
+  CoreListItemIcon           : { category: "dataDisplay", comp: CoreListItemIcon },
+  CoreListItemSecondaryAction: { category: "dataDisplay", comp: CoreListItemSecondaryAction },
+  CoreListItemText           : { category: "dataDisplay", comp: CoreListItemText },
+  CoreListSubheader          : { category: "dataDisplay", comp: CoreListSubheader },
+  CoreLoginDetails           : { category: "utils", comp: CoreLoginDetails },
+  CoreMarkdownViewer         : { category: "dataDisplay", comp: CoreMarkdownViewer },
+  CoreMedicineSelector       : { category: "inputs", comp: CoreMedicineSelector },
+  CoreMenu                   : { category: "navigation", comp: CoreMenu },
+  CoreMenuItem               : { category: "navigation", comp: CoreMenuItem },
+  CoreMenuList               : { category: "navigation", comp: CoreMenuList },
+  CoreModal                  : { category: "utils", comp: CoreModal },
+  CoreMultiTimeRangePicker   : { category: "inputs", comp: CoreMultiTimeRangePicker },
+  CoreNetworkStatus          : { category: "utils", comp: CoreNetworkStatus },
+  CoreOtpInput               : { category: "inputs", comp: CoreOtpInput },
+  CoreOutlinedButton         : { category: "inputs", comp: CoreOutlinedButton },
+  CorePaper                  : { category: "surfaces", comp: CorePaper },
+  CorePhone                  : { category: "inputs", comp: CorePhone },
+  CorePhoneLink              : { category: "dataDisplay", comp: CorePhoneLink },
+  CorePopover                : { category: "utils", comp: CorePopover },
+  CoreProfilePopOver         : { category: "utils", comp: CoreProfilePopOver },
+  CoreRating                 : { category: "inputs", comp: CoreRating },
+  CoreReactSelectInput       : { category: "inputs", comp: CoreReactSelectInput },
+  CoreResponsiveButton       : { category: "inputs", comp: CoreResponsiveButton },
+  CoreRichTextEditor         : { category: "inputs", comp: CoreRichTextEditor },
+  CoreRightDrawer            : { category: "surfaces", comp: CoreRightDrawer },
+  CoreScrollTop              : { category: "navigation", comp: CoreScrollTop },
+  CoreSection                : { category: "layouts", comp: CoreSection },
+  CoreSelect                 : { category: "inputs", comp: CoreSelect },
+  CoreSkeleton               : { category: "feedback", comp: CoreSkeleton },
+  CoreSnackbar               : { category: "feedback", comp: CoreSnackbar },
+  CoreSpan                   : { category: "layouts", comp: CoreSpan },
+  CoreSpeechToText           : { category: "inputs", comp: CoreSpeechToText },
+  CoreStack                  : { category: "layouts", comp: CoreStack },
+  CoreSwitch                 : { category: "inputs", comp: CoreSwitch },
+  CoreTOC                    : { category: "navigation", comp: CoreTOC },
+  CoreTab                    : { category: "navigation", comp: CoreTab },
+  CoreTabHead                : { category: "navigation", comp: CoreTabHead },
+  CoreTabPanel               : { category: "navigation", comp: CoreTabPanel },
+  CoreTable                  : { category: "dataDisplay", comp: CoreTable },
+  CoreTableBody              : { category: "dataDisplay", comp: CoreTableBody },
+  CoreTableBodyCell          : { category: "dataDisplay", comp: CoreTableBodyCell },
+  CoreTableCell              : { category: "dataDisplay", comp: CoreTableCell },
+  CoreTableContainer         : { category: "dataDisplay", comp: CoreTableContainer },
+  CoreTableFooter            : { category: "dataDisplay", comp: CoreTableFooter },
+  CoreTableHead              : { category: "dataDisplay", comp: CoreTableHead },
+  CoreTableHeadCell          : { category: "dataDisplay", comp: CoreTableHeadCell },
+  CoreTableHeadRow           : { category: "dataDisplay", comp: CoreTableHeadRow },
+  CoreTablePagination        : { category: "dataDisplay", comp: CoreTablePagination },
+  CoreTableRow               : { category: "dataDisplay", comp: CoreTableRow },
+  CoreTableSortLabel         : { category: "dataDisplay", comp: CoreTableSortLabel },
+  CoreTabs                   : { category: "navigation", comp: CoreTabs },
+  CoreTextButton             : { category: "inputs", comp: CoreTextButton },
+  CoreTextField              : { category: "inputs", comp: CoreTextField },
+  CoreTextarea               : { category: "inputs", comp: CoreTextarea },
+  CoreTimePicker             : { category: "inputs", comp: CoreTimePicker },
+  CoreTimeRangePicker        : { category: "inputs", comp: CoreTimeRangePicker },
+  CoreTimer                  : { category: "dataDisplay", comp: CoreTimer },
+  CoreToolBox                : { category: "surfaces", comp: CoreToolBox },
+  CoreToolbar                : { category: "surfaces", comp: CoreToolbar },
+  CoreTooltip                : { category: "dataDisplay", comp: CoreTooltip },
+  CoreTypographyBody1        : { category: "dataDisplay", comp: CoreTypographyBody1 },
+  CoreTypographyBody2        : { category: "dataDisplay", comp: CoreTypographyBody2 },
+  CoreTypographyButton       : { category: "dataDisplay", comp: CoreTypographyButton },
+  CoreTypographyCaption      : { category: "dataDisplay", comp: CoreTypographyCaption },
+  CoreTypographyOverline     : { category: "dataDisplay", comp: CoreTypographyOverline },
+  CoreTypographySubtitle1    : { category: "dataDisplay", comp: CoreTypographySubtitle1 },
+  CoreTypographySubtitle2    : { category: "dataDisplay", comp: CoreTypographySubtitle2 },
+  FixedFooterLayout          : { category: "layouts", comp: FixedFooterLayout, layout: true },
+  FixedHeaderFooterLayout    : { category: "layouts", comp: FixedHeaderFooterLayout, layout: true },
+  FixedHeaderLayout          : { category: "layouts", comp: FixedHeaderLayout, layout: true },
+  FooterLayout               : { category: "layouts", comp: FooterLayout, layout: true },
+  HCenteredBlankLayout       : { category: "layouts", comp: HCenteredBlankLayout, layout: true },
+  HeaderFooterLayout         : { category: "layouts", comp: HeaderFooterLayout, layout: true },
+  HeaderLayout               : { category: "layouts", comp: HeaderLayout, layout: true },
+  LeftDrawerLayout           : { category: "layouts", comp: LeftDrawerLayout, layout: true },
+  LeftRightDrawerLayout      : { category: "layouts", comp: LeftRightDrawerLayout, layout: true },
+  NotificationPopOver        : { category: "utils", comp: NotificationPopOver },
+  ParentChildMap             : { category: "inputs", comp: ParentChildMap },
+  RightDrawerLayout          : { category: "layouts", comp: RightDrawerLayout, layout: true },
+  StatusText                 : { category: "dataDisplay", comp: StatusText },
+  ThreeColumnLayout          : { category: "layouts", comp: ThreeColumnLayout, layout: true },
+  TwoColumnLayout            : { category: "layouts", comp: TwoColumnLayout, layout: true },
+  UserChip                   : { category: "dataDisplay", comp: UserChip },
+  VCenteredBlankLayout       : { category: "layouts", comp: VCenteredBlankLayout, layout: true },
 };
+
+export default CoreComponentsRegistry;

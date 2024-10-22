@@ -1,3 +1,4 @@
+/* eslint-disable etc/no-commented-out-code */
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
 import React, { useEffect, useRef } from "react";
 
@@ -49,7 +50,7 @@ const GoogleAuthComponent = () => {
     if (window.google) {
       window.google.accounts.id.initialize({
         
-        auto_select: true, 
+        auto_select: false, 
         // Replace with your actual client ID
         callback   : handleCredentialResponse,
         client_id  : config.wrappid.socialLogin.google.clientId
@@ -57,14 +58,21 @@ const GoogleAuthComponent = () => {
 
       window.google.accounts.id.renderButton(
         buttonRef.current,
-        { size: "large", theme: "outline" } // customization attributes
+        {
+          logo_alignment: "center",
+          shape         : "circle",
+          size          : "large",
+          theme         : "filled_grey",
+          type          : "icon"
+        } // customization attributes
       );
       window.google.accounts.id.prompt(); // also display the One Tap dialog
     }
   };
 
   return (
-    <CoreBox ref={buttonRef}></CoreBox>
+
+    <CoreBox ref={buttonRef} />
   );
 };
 

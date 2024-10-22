@@ -69,15 +69,23 @@ class AppService {
 
   async getEndpoint(method, endpoint, data) {
 
-    if(await this.isUrl(endpoint)){
-      return endpoint;
-    }else{
+    let processEndpoint = endpoint;
+
+    (processEndpoint.indexOf("?") === -1) ? processEndpoint += "?" : processEndpoint += "&";
+
+    processEndpoint += `appID=${WrappidData?.config?.appID || ""}`;
+
+    if(!await this.isUrl(processEndpoint))
+    // return endpoint;
+    // }else
+    {
       let backendUrl = WrappidData?.config?.backendUrl;
 
       return method === HTTP.GET
-        ? queryBuilder(backendUrl + endpoint, data)
-        : backendUrl + endpoint;
+        ? queryBuilder(backendUrl + processEndpoint, data)
+        : backendUrl + processEndpoint;
     }
+    return processEndpoint;
   }
 }
 
