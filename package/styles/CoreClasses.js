@@ -181,17 +181,6 @@ const CoreClasses = {
     HEADER : "popoverHeader",
   },
   
-  RX: {
-    RX_ALERT_WALLET_ICON  : "rxAlertWalletIcon",
-    RX_CASH_CARD          : "rxCashCard",
-    RX_CASH_CARD_CASH     : "rxCashCardCash",
-    RX_RECHARGE_DISCLAIMER: "rxRechargeDisclaimer",
-    RX_RECHARGE_DISCLAIMER_TERMS_AND_CONDITIONS:
-      "rxRechargeDisclaimerTermsAndConditions",
-    RX_SUCCESS_AMOUNT     : "rxSuccessAmount",
-    RX_SUCCESS_AMOUNT_CARD: "rxSuccessAmountCard",
-  },
-  
   SC_APP_DIV: "scAppDiv",
   
   /**
