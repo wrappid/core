@@ -43,15 +43,17 @@ export default function AppContainerLayout() {
   const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
   const { recall: recallState, requests: allPendingReq } = useSelector((state) => state?.pendingRequests);
-  const { uid, accessToken } = useSelector((state) => state?.auth || {});
+  const { accessToken } = useSelector((state) => state?.auth || {});
   
+  let authenticated = accessToken ? true : false;
+
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
   
   const windowWidth = window.innerWidth;
   const { reload } = useSelector((state) => state?.settings);
 
   React.useEffect(() => {
-    if (accessToken) {
+    if (authenticated) {
       dispatch(
         apiRequestAction(
           HTTP.GET,
@@ -73,10 +75,10 @@ export default function AppContainerLayout() {
         )
       );
     }
-  }, [reload, accessToken]);
+  }, [reload, authenticated]);
 
   React.useEffect(() => {
-    if (accessToken)
+    if (authenticated)
       dispatch(
         apiRequestAction(
           HTTP.GET,
@@ -87,7 +89,7 @@ export default function AppContainerLayout() {
           GET_ROLE_PERMISSION_ERROR
         )
       );
-  }, [uid, accessToken]);
+  }, [authenticated]);
 
   const [hasError, setHasError] = React.useState(false);
 
@@ -142,7 +144,7 @@ export default function AppContainerLayout() {
       dispatch({ type: REMOVE_PENDING_REQUESTS });
     }
 
-  }, [accessToken]);
+  }, [authenticated]);
 
   React.useEffect(() => {
     let components =
@@ -183,12 +185,10 @@ export default function AppContainerLayout() {
         rightDrawer={getRightDrawer}
         footer={getFooter}
         coreClasses={CoreClasses}
-        uid={uid}
-      >
+      >  
         <CoreRequestProgressBar />
 
         <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
-
       </NativeAppContainer>
 
     </>
