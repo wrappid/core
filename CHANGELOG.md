@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.583](https://github.com/wrappid/core/compare/v0.0.582...v0.0.583) (2024-11-16)
+
+
+### Bug Fixes
+
+* **core:** :zap: core multi time range and app container code cleanup ([48945ce](https://github.com/wrappid/core/commit/48945ce128acfaef92e96b9835d0e48fe4c8707c))
+
 ### [0.0.582](https://github.com/wrappid/core/compare/v0.0.581...v0.0.582) (2024-11-15)
 
 ### [0.0.581](https://github.com/wrappid/core/compare/v0.0.580...v0.0.581) (2024-11-14)
