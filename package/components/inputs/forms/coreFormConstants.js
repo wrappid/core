@@ -1,54 +1,4 @@
-import {
-  SanAddEmailOrPhone,
-  SanAddEmailOrPhoneRemoveConfirmPassword,
-  SanBasicEditUrlChange,
-  SanChangePrimaryContact,
-  SanClinicAddUrlChange,
-  SanClinicDeleteUrlChange,
-  SanClinicEditUrlChange,
-  SanClinicReadUrlChange,
-  SanContactEmailsCreate,
-  SanContactPhonesCreate,
-  SanContactsRead,
-  SanContactsReadUrlChange,
-  SanContactWapCreate,
-  SanCoreFormCancelFormId,
-  SanCreateAppointment,
-  SanDoctorCreate,
-  SanEditAppointment,
-  SanEducationAddUrlChange,
-  SanEducationEditUrlChange,
-  SanEducationReadUrlChange,
-  SanExperienceAddUrlChange,
-  SanExperienceEditUrlChange,
-  SanExperienceReadUrlChange,
-  SanPatientCreate,
-  SanPatientRelativeCreate,
-  SanPrescription,
-  SanProfileBasicRead,
-  SanProfileClinicRead,
-  SanProfileEducationRead,
-  SanProfileExperienceRead,
-  SanProfileRegistrationRead,
-  SanReadPrimaryEmail,
-  SanReadPrimaryPhone,
-  SanRegistrationReadUrlChange,
-  SanRxRexharge,
-  San_URL_ADD_PATH_PARAM_ID,
-  SanStringValueAdd,
-  SanStringValueEdit,
-  DefaultLangEditDel,
-  SanChemDeptReadMap,
-  SanChemDeptMap,
-  SanRolePermissionReadMap,
-  SanRolePermission,
-  SanCreateCommunicationTemplate,
-  SanEditCommunicationTemplate,
-  SanTestCommunicationTemplate,
-  SanStatusUpdate,
-  getBmi,
-  SanReadAppointment
-} from "../../../utils/formSubmitSanitizations";
+import { } from "../../../utils/formSubmitSanitizations";
 
 export const FORM_EDIT_MODE = "edit";
 export const FORM_VIEW_MODE = "view";
@@ -315,112 +265,101 @@ export const FORM_ARRAY_EDIT_DEL_FUNCTION_IDS = { __DEFAULT_LANG_NOT_EDIT_DELETE
 
 export const FORM_SELECT_DATA_FUNCTION_IDS = { __SPECILIZATION: "SanAddEmailOrPhone" };
 
+// eslint-disable-next-line object-curly-newline
 export const FORM_SANITIZATOIN_FUNCTION_MAP = {
-  [FORM_SANITIZATION_FUNCTION_IDS.__URL_ADD_PATH_PARAM_ID]:
-    San_URL_ADD_PATH_PARAM_ID,
-  [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAIL_OR_PHONE]: SanAddEmailOrPhone,
-  [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAIL_OR_PHONE_REMOVE_CONFIRM_PASSWORD]:
-    SanAddEmailOrPhoneRemoveConfirmPassword,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_ADD_URL_CHANGE]:
-    SanClinicAddUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_EDIT_URL_CHANGE]:
-    SanClinicEditUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_DELETE_URL_CHANGE]:
-    SanClinicDeleteUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_READ]: SanProfileClinicRead,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_ADD_URL_CHANGE]:
-    SanEducationAddUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_EDIT_URL_CHANGE]:
-    SanEducationEditUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_READ_URL_CHANGE]:
-    SanEducationReadUrlChange,
-
-  //function to transform response data to form specific data
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_READ]:
-    SanProfileEducationRead,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_ADD_URL_CHANGE]:
-    SanExperienceAddUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_EDIT_URL_CHANGE]:
-    SanExperienceEditUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_READ_URL_CHANGE]:
-    SanExperienceReadUrlChange,
-
-  //function to transform response data to form specific data
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_READ]:
-    SanProfileExperienceRead,
-
-  //FORM RELATED
-  [FORM_SANITIZATION_FUNCTION_IDS.__CORE_FORM_CANCEL_FORM_ID]:
-    SanCoreFormCancelFormId,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_READ_URL_CHANGE]:
-    SanClinicReadUrlChange,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_BASIC_EDIT_URL_CHANGE]:
-    SanBasicEditUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_BASIC_READ]: SanProfileBasicRead,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_REGISTRATION_READ]:
-    SanProfileRegistrationRead,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_REGISTRATION_READ_URL_CHANGE]:
-    SanRegistrationReadUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PRESCRIPTION_DATA]: SanPrescription,
-
-  //settings related
-  [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAILS]: SanContactEmailsCreate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__ADD_PHONES]: SanContactPhonesCreate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__ADD_WAP]   : SanContactWapCreate,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__READ_CONTACTS]: SanContactsRead,
-  [FORM_SANITIZATION_FUNCTION_IDS.__READ_CONTACTS_URL_CHANGE]:
-    SanContactsReadUrlChange,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PRIMARY_CONTACT_CHANGE]:
-    SanChangePrimaryContact,
-  [FORM_SANITIZATION_FUNCTION_IDS.__READ_PRIMARY_PHONE]: SanReadPrimaryPhone,
-  [FORM_SANITIZATION_FUNCTION_IDS.__READ_PRIMARY_EMAIL]: SanReadPrimaryEmail,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PATIENT_CREATE]    : SanPatientCreate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__PATIENT_RELATIVE_CREATE]:
-    SanPatientRelativeCreate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__DOCTOR_CREATE]: SanDoctorCreate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__RX_RECHARGE]  : SanRxRexharge,
-
-  //Appointment related
-  [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_APPOINTMENT]    : SanCreateAppointment,
-  [FORM_SANITIZATION_FUNCTION_IDS.__RESCHEDULE_APPOINTMENT]: SanEditAppointment,
-  [FORM_SANITIZATION_FUNCTION_IDS.__READ_APPOINTMENT]      : SanReadAppointment,
-
-  //language
-  [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_LOCALE]: SanStringValueAdd,
-  [FORM_SANITIZATION_FUNCTION_IDS.__UPDATE_LOCALE]: SanStringValueEdit,
-
-  //chem department
-  [FORM_SANITIZATION_FUNCTION_IDS.__SAN_CHEM_DEPT_READ_MAP]: SanChemDeptReadMap,
-  [FORM_SANITIZATION_FUNCTION_IDS.__SAN_CHEM_DEPT_MAP]     : SanChemDeptMap,
-
-  //Role Permission
-  [FORM_SANITIZATION_FUNCTION_IDS.__ROLE_PERMISSION_READ_MAP]:
-    SanRolePermissionReadMap,
-  [FORM_SANITIZATION_FUNCTION_IDS.__ROLE_PERMISSION_MAP]: SanRolePermission,
-
-  [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_CREATE]:
-    SanCreateCommunicationTemplate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_EDIT]:
-    SanEditCommunicationTemplate,
-  [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_TEST]:
-    SanTestCommunicationTemplate,
-
-  // app builder status update form 
-  [FORM_SANITIZATION_FUNCTION_IDS.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate,
-
-  /**
-   * form dependency functions
-   */
-  [FORM_SANITIZATION_FUNCTION_IDS.__GET_BMI]: getBmi
-
+  // eslint-disable-next-line etc/no-commented-out-code
+  // [FORM_SANITIZATION_FUNCTION_IDS.__URL_ADD_PATH_PARAM_ID]:
+  //   San_URL_ADD_PATH_PARAM_ID,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAIL_OR_PHONE]: SanAddEmailOrPhone,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAIL_OR_PHONE_REMOVE_CONFIRM_PASSWORD]:
+  //   SanAddEmailOrPhoneRemoveConfirmPassword,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_ADD_URL_CHANGE]:
+  //   SanClinicAddUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_EDIT_URL_CHANGE]:
+  //   SanClinicEditUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_DELETE_URL_CHANGE]:
+  //   SanClinicDeleteUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_READ]: SanProfileClinicRead,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_ADD_URL_CHANGE]:
+  //   SanEducationAddUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_EDIT_URL_CHANGE]:
+  //   SanEducationEditUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_READ_URL_CHANGE]:
+  //   SanEducationReadUrlChange,
+  // //function to transform response data to form specific data
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EDUCATION_READ]:
+  //   SanProfileEducationRead,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_ADD_URL_CHANGE]:
+  //   SanExperienceAddUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_EDIT_URL_CHANGE]:
+  //   SanExperienceEditUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_READ_URL_CHANGE]:
+  //   SanExperienceReadUrlChange,
+  // //function to transform response data to form specific data
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_EXPERIENCE_READ]:
+  //   SanProfileExperienceRead,
+  // //FORM RELATED
+  // [FORM_SANITIZATION_FUNCTION_IDS.__CORE_FORM_CANCEL_FORM_ID]:
+  //   SanCoreFormCancelFormId,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_CLINIC_READ_URL_CHANGE]:
+  //   SanClinicReadUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_BASIC_EDIT_URL_CHANGE]:
+  //   SanBasicEditUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_BASIC_READ]: SanProfileBasicRead,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_REGISTRATION_READ]:
+  //   SanProfileRegistrationRead,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PROFILE_REGISTRATION_READ_URL_CHANGE]:
+  //   SanRegistrationReadUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PRESCRIPTION_DATA]: SanPrescription,
+  // //settings related
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ADD_EMAILS]: SanContactEmailsCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ADD_PHONES]: SanContactPhonesCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ADD_WAP]   : SanContactWapCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__READ_CONTACTS]: SanContactsRead,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__READ_CONTACTS_URL_CHANGE]:
+  //   SanContactsReadUrlChange,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PRIMARY_CONTACT_CHANGE]:
+  //   SanChangePrimaryContact,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__READ_PRIMARY_PHONE]: SanReadPrimaryPhone,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__READ_PRIMARY_EMAIL]: SanReadPrimaryEmail,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PATIENT_CREATE]    : SanPatientCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__PATIENT_RELATIVE_CREATE]:
+  //   SanPatientRelativeCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__DOCTOR_CREATE]: SanDoctorCreate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__RX_RECHARGE]  : SanRxRexharge,
+  // //Appointment related
+  // [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_APPOINTMENT]    : SanCreateAppointment,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__RESCHEDULE_APPOINTMENT]: SanEditAppointment,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__READ_APPOINTMENT]      : SanReadAppointment,
+  // //language
+  // [FORM_SANITIZATION_FUNCTION_IDS.__CREATE_LOCALE]: SanStringValueAdd,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__UPDATE_LOCALE]: SanStringValueEdit,
+  // //chem department
+  // [FORM_SANITIZATION_FUNCTION_IDS.__SAN_CHEM_DEPT_READ_MAP]: SanChemDeptReadMap,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__SAN_CHEM_DEPT_MAP]     : SanChemDeptMap,
+  // //Role Permission
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ROLE_PERMISSION_READ_MAP]:
+  //   SanRolePermissionReadMap,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__ROLE_PERMISSION_MAP]: SanRolePermission,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_CREATE]:
+  //   SanCreateCommunicationTemplate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_EDIT]:
+  //   SanEditCommunicationTemplate,
+  // [FORM_SANITIZATION_FUNCTION_IDS.__COMMUNICATION_TEMPLATE_TEST]:
+  //   SanTestCommunicationTemplate,
+  // // app builder status update form 
+  // [FORM_SANITIZATION_FUNCTION_IDS.__STATUS_UPDATE_APP_BUILDER_ENTITY]: SanStatusUpdate,
+  // /**
+  //  * form dependency functions
+  //  */
+  // [FORM_SANITIZATION_FUNCTION_IDS.__GET_BMI]: getBmi
+// eslint-disable-next-line object-curly-newline
 };
 
+// eslint-disable-next-line object-curly-newline
 export const FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP = {
-  [FORM_ARRAY_EDIT_DEL_FUNCTION_IDS.__DEFAULT_LANG_NOT_EDIT_DELETE]:
-    DefaultLangEditDel,
+  // eslint-disable-next-line etc/no-commented-out-code
+  // [FORM_ARRAY_EDIT_DEL_FUNCTION_IDS.__DEFAULT_LANG_NOT_EDIT_DELETE]:
+  //   DefaultLangEditDel,
+// eslint-disable-next-line object-curly-newline
 };
