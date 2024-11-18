@@ -99,24 +99,30 @@ export default class DefaultCoreStyles extends BaseStyle {
       dataTableHeadTop: {},
 
       dataTableMiniWidthPane: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderRight,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderRight,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.positionSticky,
         ...this.defaultUtilityStyles.overflowYAuto,
         ...this.defaultUtilityStyles.overflowXHidden,
         height: "calc(100vh - 118px)" + IMPORTANT,
-        top   : "53px" + IMPORTANT
+        top   : "64px" + IMPORTANT
       },
-
+      
       dataTableToolbar: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderBottom,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderBottom,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.pr1,
       },
 
-      dataTableToolbarContainer: { ...this.defaultUtilityStyles.bgWhite },
+      dataTableToolbarContainer: {
+        ...this.defaultUtilityStyles.bgWhite,
+        ...this.defaultUtilityStyles.positionSticky,
+        top: "64px" + IMPORTANT
+      },
 
       devBorder: { ...this.defaultUtilityStyles.border },
 

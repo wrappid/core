@@ -308,7 +308,7 @@ export default function CoreDataTable(props) {
       currentRows : (rows && rows.length) || 0,
       maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
       page        : 0,
-      pagesToCache: pagesToCache,
+      pagesToCache: pagesToCache
     },
   } = dataStore[tableUUID] || {};
 

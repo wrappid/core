@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { HTTP } from "../config/constants";
 import { CoreRoutesContext } from "../config/contextHandler";
+import { RoutesRegistry } from "../registry/RoutesRegistry";
 import { apiRequestAction } from "../store/action/appActions";
 import { GET_ROUTE_FAILURE, GET_ROUTE_SUCCESS } from "../store/types/appTypes";
 
@@ -58,7 +59,7 @@ export default function CoreRoutesProvider(props) {
       _storedRoutes[route?.entityRef] = route;
     });
 
-    setRoutesList({ ...localRoutes, ..._storedRoutes });
+    setRoutesList({ ...RoutesRegistry, ...localRoutes, ..._storedRoutes });
   }, [localRoutes, storedRoutes]);
     
   return (
