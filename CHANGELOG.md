@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.585](https://github.com/wrappid/core/compare/v0.0.584...v0.0.585) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: remove sanity functions from core ([da3809e](https://github.com/wrappid/core/commit/da3809e553adfd49ac0e70b6e79b041a5514b4e6))
+
+### [0.0.584](https://github.com/wrappid/core/compare/v0.0.583...v0.0.584) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix core related issues and cleanup ([7ff1787](https://github.com/wrappid/core/commit/7ff1787d736e1cf2aa2686861d87c782a79737f1))
+
 ### [0.0.583](https://github.com/wrappid/core/compare/v0.0.582...v0.0.583) (2024-11-16)
 
 

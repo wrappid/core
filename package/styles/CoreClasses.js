@@ -107,6 +107,7 @@ const CoreClasses = {
     /*
      * Container related classes
      */
+    MAIN_CONTAINER              : "apc_mainContainer",
     APPBAR_HEIGHT               : "appbarHeight",
     FULL_WIDTH                  : "fullWidth",
     FULL_WIDTH_HEIGHT           : "fullWidthHeight",

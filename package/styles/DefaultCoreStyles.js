@@ -6,7 +6,7 @@ import { BaseStyle, DEFAULT_PADDING, DefaultUtilityStyles, IMPORTANT, PX_TAG } f
 /**
  * @todo: have to calculate manually nav height varying depending on screen size
  */
-const HEADING_TOP_MARGIN = "56px";
+const HEADING_TOP_MARGIN = "64px";
 
 export const DEFAULT_SPACING = 1;
 
@@ -39,6 +39,8 @@ export default class DefaultCoreStyles extends BaseStyle {
       avatarXXLarge: { height: "120px" + IMPORTANT, width: "120px" + IMPORTANT },
 
       basicInfoCard: {},
+
+      apc_mainContainer: { minHeight: "calc(100vh - 109px)" },
 
       contentContainer: {
         ...this.defaultUtilityStyles.w100,
@@ -99,24 +101,30 @@ export default class DefaultCoreStyles extends BaseStyle {
       dataTableHeadTop: {},
 
       dataTableMiniWidthPane: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderRight,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderRight,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.positionSticky,
         ...this.defaultUtilityStyles.overflowYAuto,
         ...this.defaultUtilityStyles.overflowXHidden,
         height: "calc(100vh - 118px)" + IMPORTANT,
-        top   : "53px" + IMPORTANT
+        top   : "64px" + IMPORTANT
       },
-
+      
       dataTableToolbar: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderBottom,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderBottom,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.pr1,
       },
 
-      dataTableToolbarContainer: { ...this.defaultUtilityStyles.bgWhite },
+      dataTableToolbarContainer: {
+        ...this.defaultUtilityStyles.bgWhite,
+        ...this.defaultUtilityStyles.positionSticky,
+        top: "64px" + IMPORTANT
+      },
 
       devBorder: { ...this.defaultUtilityStyles.border },
 
