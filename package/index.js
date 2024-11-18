@@ -11,6 +11,7 @@ import CoreAvatar from "./components/dataDisplay/CoreAvatar";
 import CoreAvatarGroup from "./components/dataDisplay/CoreAvatarGroup";
 import CoreBadge from "./components/dataDisplay/CoreBadge";
 import CoreChip from "./components/dataDisplay/CoreChip";
+import CoreContactLink from "./components/dataDisplay/CoreContactLink";
 import CoreDivider from "./components/dataDisplay/CoreDivider";
 import CoreEmailLink from "./components/dataDisplay/CoreEmailLink";
 import CoreEmailOrPhoneLink from "./components/dataDisplay/CoreEmailOrPhoneLink";
@@ -280,7 +281,7 @@ export {
   CoreDialogContext,
   coreDialogInitValue, CoreDivider, CoreDomNavigate, CoreDomRoute,
   // route
-  CoreDomRoutes, CoreDrawer, CoreEmailLink,
+  CoreDomRoutes, CoreDrawer, CoreEmailLink, CoreContactLink,
   CoreEmailOrPhoneLink, CoreFab,
   // CoreNavigation,
   CoreFade, CoreFilePicker, CoreFlatList, CoreFooter, CoreForm, CoreFormControl, CoreFormControlLabel, CoreFormErrorText, CoreFormGroup, CoreFormHelperText, CoreFormLabelCheckbox, CoreFunctionsRegistryContext, CoreGoogleButton, CoreGrid,
