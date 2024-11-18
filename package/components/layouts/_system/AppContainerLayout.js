@@ -34,6 +34,7 @@ import CoreRequestProgressBar from "../../feedback/CoreRequestProgressBar";
 import CoreAppBar from "../../surfaces/CoreAppBar";
 import CoreDrawer from "../../surfaces/CoreDrawer";
 import CoreFooter from "../../surfaces/CoreFooter";
+import CoreBox from "../CoreBox";
 
 export default function AppContainerLayout() {
   const dispatch = useDispatch();
@@ -188,7 +189,9 @@ export default function AppContainerLayout() {
       >  
         <CoreRequestProgressBar />
 
-        <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
+        <CoreBox styleClasses={[CoreClasses.LAYOUT.MAIN_CONTAINER]}>
+          <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
+        </CoreBox>
       </NativeAppContainer>
 
     </>

@@ -6,7 +6,7 @@ import { BaseStyle, DEFAULT_PADDING, DefaultUtilityStyles, IMPORTANT, PX_TAG } f
 /**
  * @todo: have to calculate manually nav height varying depending on screen size
  */
-const HEADING_TOP_MARGIN = "56px";
+const HEADING_TOP_MARGIN = "64px";
 
 export const DEFAULT_SPACING = 1;
 
@@ -39,6 +39,8 @@ export default class DefaultCoreStyles extends BaseStyle {
       avatarXXLarge: { height: "120px" + IMPORTANT, width: "120px" + IMPORTANT },
 
       basicInfoCard: {},
+
+      apc_mainContainer: { minHeight: "calc(100vh - 109px)" },
 
       contentContainer: {
         ...this.defaultUtilityStyles.w100,
