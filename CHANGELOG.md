@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.586](https://github.com/wrappid/core/compare/v0.0.585...v0.0.586) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :bug: app container layout fix ([15d74e2](https://github.com/wrappid/core/commit/15d74e2609fd608dcfc1acca0557dc0c5961179b))
+* **core:** :bug: auth impact handle ([f262605](https://github.com/wrappid/core/commit/f26260586f27abe4c76845755e6584f5e376e403))
+
 ### [0.0.585](https://github.com/wrappid/core/compare/v0.0.584...v0.0.585) (2024-11-18)
 
 
