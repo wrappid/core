@@ -4,7 +4,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CoreRoutesContext } from "./config/contextHandler";
-import { CoreDomRoute, CoreDomRoutes, coreUseLocation, coreUseNavigate } from "./helper/routerHelper";
+import { CoreDomRoute, CoreDomRoutes, coreUseNavigate } from "./helper/routerHelper";
 import PageContainer from "./layout/PageContainer";
 
 const DEFAULT_ROUTE = {
