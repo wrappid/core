@@ -17,8 +17,8 @@ export default class DefaultCoreStyles extends BaseStyle {
     super();
 
     this.style = {
-      appBarLogo: { height: "30px" + IMPORTANT },
-
+      appBarLogo          : { height: "30px" + IMPORTANT },
+      appContainerDrawer  : { top: HEADING_TOP_MARGIN },
       appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
       /**
        * Core App Bar Styles
