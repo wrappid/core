@@ -2,6 +2,9 @@
 import { WrappidData } from "@wrappid/styles";
 import * as yup from "yup";
 
+import { defaultValidations } from "./componentDefaultValidations";
+import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
+import { queryBuilder } from "./helper";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import CoreInput from "../components/inputs/CoreInput";
 import {
@@ -31,9 +34,6 @@ import {
 } from "../store/types/dataManagementTypes";
 import { SET_PENDING_REQUESTS } from "../store/types/pendingRequestTypes";
 import CoreClasses from "../styles/CoreClasses";
-import { defaultValidations } from "./componentDefaultValidations";
-import { FORM_DATA_TABLE_FUNCTION_MAP } from "./formDataTableFunctionMap";
-import { queryBuilder } from "./helper";
 
 export function getFormikRequiredMessage(name = "", isShort = false) {
   let message = "";

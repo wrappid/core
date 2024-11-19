@@ -88,7 +88,8 @@ export default function CoreIconText(props) {
     >
       <CoreIcon
         size={size}
-        styleClasses={getIconStyleClass(iconColor)}
+        color={iconColor}
+        // styleClasses={getIconStyleClass(iconColor)}
         type={type}
       >
         {icon}

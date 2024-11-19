@@ -1,17 +1,17 @@
 import {
-  DefaultUtilityStyles,
   DEFAULT_PADDING,
   IMPORTANT,
-  BaseStyle,
   MediumUtilityStyles
-// eslint-disable-next-line import/no-unresolved
+  // eslint-disable-next-line import/no-unresolved
 } from "@wrappid/styles";
+
+import DefaultCoreStyles from "./DefaultCoreStyles";
 
 // -- const MIN_WIDTH = MEDIUM_WINDOW_WIDTH;
 // -- const MAX_WIDTH = LARGE_WINDOW_WIDTH - 1;
 // const HEADING_TOP_MARGIN = "64px";
 
-export default class MediumCoreStyles extends BaseStyle {
+export default class MediumCoreStyles extends DefaultCoreStyles {
   mediumUtilityStyles = new MediumUtilityStyles().style;
   
   constructor() {
@@ -28,36 +28,24 @@ export default class MediumCoreStyles extends BaseStyle {
       contentContainer: {},
   
       dataTable: {
-        ...new DefaultUtilityStyles().style.mtN1,
-        ...new DefaultUtilityStyles().style.mlN1,
+        ...this.defaultUtilityStyles.mtN1,
+        ...this.defaultUtilityStyles.mlN1,
         width: "calc(100% + 8px)" + IMPORTANT,
       },
   
       dataTableBody         : {},
       // ----------Data Table Styles Starts----------
-      dataTableContainer    : { /* -- ...new DefaultUtilityStyles().style.bgWarningLight, */ },
+      dataTableContainer    : { /* -- ...this.defaultUtilityStyles.bgWarningLight, */ },
       dataTableFoot         : {},
       dataTableFullWidthPane: {},
-      dataTableHead         : { top: "-8px" + IMPORTANT },
-      dataTableHeadTop      : { top: "53px" + IMPORTANT },
-      dataTableMiniWidthPane: {
-        ...new DefaultUtilityStyles().style.border,
-        ...new DefaultUtilityStyles().style.borderRight,
-        ...new DefaultUtilityStyles().style.borderPrimaryLight,
-        ...new DefaultUtilityStyles().style.positionSticky,
-        ...new DefaultUtilityStyles().style.overflowYAuto,
-        ...new DefaultUtilityStyles().style.overflowXHidden,
-        height: "calc(100vh - 118px)" + IMPORTANT,
-        top   : "53px" + IMPORTANT,
+      dataTableHead         : { top: "0px" + IMPORTANT },
+      dataTableHeadTop      : { top: "64px" + IMPORTANT },
+      dataTableMiniWidthPane: {},
+      dataTableToolbar      : {
+        ...this.defaultUtilityStyles.mtN2,
+        ...this.defaultUtilityStyles.pr0,
       },
-      dataTableToolbar: {
-        ...new DefaultUtilityStyles().style.mtN2,
-        ...new DefaultUtilityStyles().style.pr0,
-      },
-      dataTableToolbarContainer: {
-        ...new DefaultUtilityStyles().style.stickyTop,
-        zIndex: "1025" + IMPORTANT,
-      },
+      dataTableToolbarContainer: { zIndex: "1025" + IMPORTANT },
   
       devBorder: { boxShadow: "inset 0px 0px 1px 1px cyan" },
   
@@ -65,7 +53,7 @@ export default class MediumCoreStyles extends BaseStyle {
 
       profileBarWidth: { maxWidth: "40vw" + IMPORTANT },
   
-      tableCell: { ...new DefaultUtilityStyles().style.px1 },
+      tableCell: { ...this.defaultUtilityStyles.px1 },
   
       tableFilterColumnBox: {
         maxHeight: "70vh" + IMPORTANT,
@@ -77,9 +65,9 @@ export default class MediumCoreStyles extends BaseStyle {
        * Table
        */
       tableHeadCell: {
-        ...new DefaultUtilityStyles().style.bgSecondaryLight,
-        ...new DefaultUtilityStyles().style.textPrimaryDark,
-        ...new DefaultUtilityStyles().style.px1,
+        ...this.defaultUtilityStyles.bgSecondaryLight,
+        ...this.defaultUtilityStyles.textPrimaryDark,
+        ...this.defaultUtilityStyles.px1,
       },
 
       /**

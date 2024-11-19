@@ -15,12 +15,12 @@ import { apiRequestAction } from "../../store/action/appActions";
 import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/types/appTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreTimer from "../dataDisplay/CoreTimer";
-import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
-  const { sendOtpLoading } = useSelector((state) => state?.app);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // const { sendOtpLoading } = useSelector((state) => state?.app);
   const { navData: { userID }, accessToken } = useSelector((state) => state?.auth);
   let { config: appConfig } = React.useContext(WrappidDataContext);
 
@@ -68,9 +68,11 @@ export default function CoreOtpInput(props) {
     }
   };
 
-  return sendOtpLoading ? (
+  /* sendOtpLoading ? (
     <CoreSkeleton variant="rectangular" />
-  ) : (
+  ) :
+  */
+  return (
     <CoreBox>
       <NativeOtpInput {...props} />
 
