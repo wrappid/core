@@ -12,14 +12,14 @@ export const refreshInterval = 15 * 60 * 1000; // 15 minutes
 // -- export const XX_LARGE_WINDOW_WIDTH = "1400";
 
 // mui - BREAKPOINTS
-export const SMALL_WINDOW_WIDTH = "600";
-export const MEDIUM_WINDOW_WIDTH = "900";
-export const LARGE_WINDOW_WIDTH = "1200";
-export const X_LARGE_WINDOW_WIDTH = "1536";
+export const SMALL_WINDOW_WIDTH = 600;
+export const MEDIUM_WINDOW_WIDTH = 900;
+export const LARGE_WINDOW_WIDTH = 1200;
+export const X_LARGE_WINDOW_WIDTH = 1536;
 // applying same width of XLARGE
 // since it's not present in MUI-Breakpoints
 // so it could be supported later on
-export const XX_LARGE_WINDOW_WIDTH = "1536";
+export const XX_LARGE_WINDOW_WIDTH = 1536;
 
 export const PALETTE_PRIMARY = "primary";
 export const PALETTE_SECONDARY = "secondary";

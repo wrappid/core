@@ -354,7 +354,7 @@ export default function CoreDataTable(props) {
         set_showDetailsPane(false);
       }
     } else {
-      if (window.innerWidth < MEDIUM_WINDOW_WIDTH) {
+      if (window.outerWidth < MEDIUM_WINDOW_WIDTH) {
         set_showDetailsPane(false);
       } else {
         set_showDetailsPane(true);
@@ -794,7 +794,7 @@ export default function CoreDataTable(props) {
               : 12
           }
           gridProps={{
-            gridSize    : { sm: __TableLeftPanelGridSize },
+            gridSize    : { md: __TableLeftPanelGridSize },
             styleClasses: [
               CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE,
               /* || enableDetailsPane && _showDetailsPane
@@ -874,7 +874,7 @@ export default function CoreDataTable(props) {
 
       {enableDetailsPane && _showDetailsPane && (
         <CoreDataTableDetailsPane
-          gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}
+          gridProps={{ gridSize: { md: __TableRightPanelGridSize } }}
           tableUUID={tableUUID}
           createFormID={detailsPaneCreateFormID}
           updateFormID={detailsPaneUpdateFormID}

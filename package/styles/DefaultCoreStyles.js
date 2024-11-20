@@ -109,7 +109,7 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.overflowYAuto,
         ...this.defaultUtilityStyles.overflowXHidden,
         height: "calc(100vh - 108px)" + IMPORTANT,
-        top   : "64px" + IMPORTANT
+        top   : "108px" + IMPORTANT
       },
       
       dataTableToolbar: {
@@ -123,7 +123,8 @@ export default class DefaultCoreStyles extends BaseStyle {
       dataTableToolbarContainer: {
         ...this.defaultUtilityStyles.bgWhite,
         ...this.defaultUtilityStyles.positionSticky,
-        top: "64px" + IMPORTANT
+        top   : "64px" + IMPORTANT,
+        zIndex: 1024 + IMPORTANT
       },
 
       devBorder: { ...this.defaultUtilityStyles.border },
