@@ -47,7 +47,7 @@ export default class DefaultCoreStyles extends BaseStyle {
         // eslint-disable-next-line etc/no-commented-out-code
         // ...this.defaultUtilityStyles.overflowYAuto,
         // ...this.defaultUtilityStyles.mxN1,
-        ...this.defaultUtilityStyles.pt1,
+        // ...this.defaultUtilityStyles.pt1,
         marginTop: HEADING_TOP_MARGIN + IMPORTANT,
       },
 
@@ -108,7 +108,7 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.positionSticky,
         ...this.defaultUtilityStyles.overflowYAuto,
         ...this.defaultUtilityStyles.overflowXHidden,
-        height: "calc(100vh - 118px)" + IMPORTANT,
+        height: "calc(100vh - 108px)" + IMPORTANT,
         top   : "64px" + IMPORTANT
       },
       

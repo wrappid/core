@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.587](https://github.com/wrappid/core/compare/v0.0.586...v0.0.587) (2024-11-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: some basic fix ([3d562c1](https://github.com/wrappid/core/commit/3d562c1e883de26dc52b603e562d0ca44a711240))
+
 ### [0.0.586](https://github.com/wrappid/core/compare/v0.0.585...v0.0.586) (2024-11-18)
 
 

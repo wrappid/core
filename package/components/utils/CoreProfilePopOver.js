@@ -34,6 +34,16 @@ export default function CoreProfilePopOver(props) {
       phoneVerified = false,
     } 
   } = useSelector((state) => state?.auth || {});
+
+  const {
+    basic: {
+      firstName = null,
+      middleName = null,
+      lastName = null,
+      photo: basicPhoto = null
+    } 
+  } = useSelector((state) => state?.profile || {});
+  const basicName = [firstName, middleName, lastName].filter((item) => item).join(" ");
   
   const { onClose } = props;
   const profileCardMenu = [
@@ -75,16 +85,16 @@ export default function CoreProfilePopOver(props) {
               <CoreAvatar
                 gridProps={{ gridSize: { md: 4, sm: 3, xs: 3 } }}
                 styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
-                src={photo}
+                src={basicPhoto || photo}
               />
             ) : (
               <CoreAvatar
                 gridProps={{ gridSize: { md: 4, sm: 3, xs: 3 } }}
                 styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
-              >{(name || "Unknown User").at(0)}</CoreAvatar>
+              >{(basicName || name || "Unknown User").at(0)}</CoreAvatar>
             ) 
           }
-          title={name || "Unknown User"}
+          title={basicName || name || "Unknown User"}
           subheader={
             <>              
               <CoreEmailLink email={email} verified={emailVerified} limitChars={15} />

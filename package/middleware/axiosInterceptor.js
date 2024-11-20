@@ -46,7 +46,10 @@ async function tempFetch(apiConfig) {
         },
       };
     } else if (res.status === 204) {
-      return { data: {}, status: res.status };
+      return {
+        data  : { message: res?.message || "No Content" },
+        status: res.status 
+      };
     } else {
       let data = await res.json();
 
