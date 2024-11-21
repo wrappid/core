@@ -118,8 +118,8 @@ export const componentMap = {
   },
   
   json: {
-    comp: CoreJsonEditor,
-    // -- defaultValidation: defaultValidations.json,
+    comp             : CoreJsonEditor,
+    defaultValidation: defaultValidations.json,
   },
   
   multiTimeRange: {
