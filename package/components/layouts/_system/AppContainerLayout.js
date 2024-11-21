@@ -3,7 +3,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
-import { SMALL_WINDOW_WIDTH } from "@wrappid/styles";
+import { SMALL_WINDOW_WIDTH, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -30,6 +30,7 @@ import {
   USER_SETTINGS_UPDATE_SUCCESS
 } from "../../../store/types/settingsTypes";
 import CoreClasses from "../../../styles/CoreClasses";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
 import CoreRequestProgressBar from "../../feedback/CoreRequestProgressBar";
 import CoreAppBar from "../../surfaces/CoreAppBar";
 import CoreDrawer from "../../surfaces/CoreDrawer";
@@ -40,6 +41,8 @@ export default function AppContainerLayout() {
   const dispatch = useDispatch();
   const location = nativeUseLocation();
   
+  const { config } = React.useContext(WrappidDataContext);
+
   // eslint-disable-next-line etc/no-commented-out-code
   const { leftMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
@@ -170,6 +173,7 @@ export default function AppContainerLayout() {
     return <CoreDrawer
       open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
       toggleDrawer={handleDrawer}
+      styleClasses={(config?.platform === APP_PLATFORM ? [CoreClasses.LAYOUT.APP_CONTAINER_DRAWER] : [])}
     />; 
   };
 

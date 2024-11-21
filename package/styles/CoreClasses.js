@@ -126,6 +126,7 @@ const CoreClasses = {
     TABLE_ROW_ACTION_POPOVER    : "tableRowActionPopover",
     VERTICAL_CENTER             : "verticalCenter",
     VERTICAL_HORIZONTAL_CENTER  : "verticalHorizontalCenter",
+    APP_CONTAINER_DRAWER        : "appContainerDrawer"
   },
   
   MENU: {
