@@ -47,7 +47,7 @@ export const apiRequestAction =
     formId = null,
     reload = false,
     reduxData = {},
-    pushSnack = false,
+    pushSnack = true,
     loadingType = SET_LOADING,
     resetLoadingType = RESET_LOADING,
     reloadForm
@@ -315,14 +315,17 @@ export const apiRequestAction =
 /**
  * Snack message related action
  */
-export const pushSnackMessage = (type, message, snackProps = {}) => dispatch => {
+export const pushSnackMessage = (type, message, autoHideDuration, snackProps = {}) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // enqueueSnackbar(message, { variant: type });
+  const time = new Date().getTime();
+
   dispatch({
     payload: {
-      _timestamp: new Date().getTime(),
-      message   : message || "Message not provided",
-      type      : type,
+      _timestamp      : time,
+      autoHideDuration: autoHideDuration,
+      message         : message || "Message not provided",
+      type            : type,
       ...snackProps
     },
     type: PUSH_SNACK_MESSAGE,

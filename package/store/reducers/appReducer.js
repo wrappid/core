@@ -26,9 +26,10 @@ const initState = {
     success: false,
     version: "N/A",
   },
+  autoHideDuration     : 5000,
   errorMsg             : false,
   loading              : false,
-  requestProgress      : { visible: false },
+  requestProgress      : { visible: true },
   routes               : [],
   sendOtpError         : false,
   sendOtpLoading       : false,
@@ -85,6 +86,13 @@ const appReducer = (state = initState, action) => {
       console.log("------PUSH_MESSAGE REDUCER TYPE CALLED------");
       // eslint-disable-next-line no-console
       console.log("WITH PAYLOAD = ", action?.payload);
+      if(state?.snackMessagesMaxCount && state?.snackMessages?.length >= state?.snackMessagesMaxCount) {
+        return {
+          ...state,
+          autoHideDuration: state.autoHideDuration,
+          snackMessages   : [...(state?.snackMessages || []).slice(1), { ...action?.payload, shown: false }],
+        };
+      }
       return {
         ...state,
         snackMessages: [...(state?.snackMessages || []), { ...action?.payload, shown: false }],
