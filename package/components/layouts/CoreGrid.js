@@ -10,7 +10,13 @@ export default function CoreGrid(props) {
   props = sanitizeComponentProps(CoreGrid, props);
   return <NativeGrid {...props} />;
 }
+
 CoreGrid.validProps = [
+  {
+    description: "This is to define the identifier",
+    name       : "NativeId",
+    types      : [{ type: "string" }],
+  },
   {
     description: "The number of columns.",
     name       : "columns",

@@ -10,11 +10,11 @@ import CoreClasses from "../../styles/CoreClasses";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreJSONEditor(props) {
-  const { error, helperText } = props;
+  const { error, helperText, ...restProps } = props;
   
   return (
     <CoreBox>
-      <NativeJSONEditor {...props} />
+      <NativeJSONEditor {...restProps} />
 
       {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
