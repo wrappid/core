@@ -179,7 +179,7 @@ export default function PageContainer(props) {
       }
     });
   }, [snackMessages, dispatch]);
-
+  
   return (
     <>
       <ErrorBoundary hasError={hasError} setHasError={setHasError}>
@@ -198,18 +198,25 @@ export default function PageContainer(props) {
 
                   <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-                  <CoreStack spacing={2} direction="column" styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0]}>
-                    { Array.isArray(snackMessages) && snackMessages.map((snack) => (
+                  {authenticated && <CoreStack spacing={2} direction="column" styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0]}>
+                    { Array.isArray(snackMessages) && snackMessages.map((snack) =>(
                       <CoreSnackbar 
                         styleClasses={[CoreClasses.MARGIN.MT1, CoreClasses.POSITION.POSITION_STATIC]}
                         key={snack._timestamp}
                         open={snack.shown}
-                      ><CoreBox>
+                        autoHideDuration={snack.autoHideDuration}
+                        onClose={() => {
+                          dispatch(removeSnackMessage(snack._timestamp)); 
+                        }}
+                      ><CoreBox ref={snack.ref}>
                           <CoreAlert
                             severity={snack.severity}
                             variant={snack.variant}
                             color={snack.color}
                             width="100%"
+                            onClose={() => {
+                              dispatch(removeSnackMessage(snack._timestamp)); 
+                            }}
                           >
                             {snack.message}
                           </CoreAlert>
@@ -217,7 +224,7 @@ export default function PageContainer(props) {
                       </CoreSnackbar>
                     )) }
 
-                  </CoreStack>
+                  </CoreStack>}
                 </CoreBox>
 
                 {/** @todo testing purposes */}
