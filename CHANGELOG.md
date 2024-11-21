@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.589](https://github.com/wrappid/core/compare/v0.0.588...v0.0.589) (2024-11-21)
+
+
+### Bug Fixes
+
+* **core:** :art: menu design fix ([1cd53b3](https://github.com/wrappid/core/commit/1cd53b301c9b7300a3c86e5abd27d2bb2542b720))
+* **core:** :bug: fix stylling related issue in CoreDataTable and related component ([9410ab1](https://github.com/wrappid/core/commit/9410ab1f8606654f629294b2a16c980313f7130d)), closes [#424](https://github.com/wrappid/core/issues/424)
+* **core:** :bug: fixes the snackabr ([74f137e](https://github.com/wrappid/core/commit/74f137e45c000e30f015c12d70478ffbc205e7d8)), closes [#423](https://github.com/wrappid/core/issues/423)
+* **core:** :bug: json component fix ([e50a16e](https://github.com/wrappid/core/commit/e50a16e9947b4bd4a18c691929c3019f8ca66543))
+
 ### [0.0.588](https://github.com/wrappid/core/compare/v0.0.587...v0.0.588) (2024-11-21)
 
 
