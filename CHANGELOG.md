@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.588](https://github.com/wrappid/core/compare/v0.0.587...v0.0.588) (2024-11-21)
+
+
+### Features
+
+* **core:** :sparkles: made CoreContactLink component ([3ae6ea2](https://github.com/wrappid/core/commit/3ae6ea2699aec556f97057214efbba075b3ebbbb)), closes [#421](https://github.com/wrappid/core/issues/421)
+
+
+### Bug Fixes
+
+* **core:** :bug: fixed eslint error ([5fd5460](https://github.com/wrappid/core/commit/5fd54600b781b2d3c1ecba3de058d537b7dc829b)), closes [#421](https://github.com/wrappid/core/issues/421)
+* **core:** :bug: mobile related changes ([a826458](https://github.com/wrappid/core/commit/a826458d2485243a12f443563bb2aa36a2826d99)), closes [#421](https://github.com/wrappid/core/issues/421)
+
 ### [0.0.587](https://github.com/wrappid/core/compare/v0.0.586...v0.0.587) (2024-11-19)
 
 

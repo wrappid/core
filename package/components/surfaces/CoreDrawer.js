@@ -49,6 +49,7 @@ export default function CoreDrawer(props) {
 
   return (
     <NativeDrawer
+      {...props}
       anchor={props.anchor ? props.anchor : "left"}
       variant="permanent"
       open={open}

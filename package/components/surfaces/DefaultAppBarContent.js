@@ -15,7 +15,7 @@ import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreIconButton from "../inputs/CoreIconButton";
-import CoreStack from "../layouts/CoreStack";
+import CoreBox from "../layouts/CoreBox";
 import CoreLink from "../navigation/CoreLink";
 import CorePopover from "../utils/CorePopover";
 import CoreProfilePopOver from "../utils/CoreProfilePopOver";
@@ -109,13 +109,12 @@ export default function DefaultAppBarContent(props) {
         styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
 
-        <CoreStack
-          direction="row"
-          styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        <CoreBox
+          styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}
         >
           {leftMenuEnabled && (
             <CoreIconButton
-              styleClasses={[...appBarTextStyle, CoreClasses.MARGIN.ML_N2]}
+              styleClasses={[...appBarTextStyle]}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
@@ -134,14 +133,13 @@ export default function DefaultAppBarContent(props) {
                 alt="WRAPPID" />
             </CoreLink>
           )}
-        </CoreStack>
+        </CoreBox>
 
         {/* authenticated user content */}
         {authenticated && (
-          <CoreStack
-            direction="row"
+          <CoreBox
             NativeId="appBarMenuGrid"
-            styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+            styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}
           >
             {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
               ?.flag && (
@@ -199,7 +197,7 @@ export default function DefaultAppBarContent(props) {
                 styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
               />
             </CoreIconButton>
-          </CoreStack>
+          </CoreBox>
         )}
       </CoreToolbar>
 
