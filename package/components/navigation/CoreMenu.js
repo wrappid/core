@@ -46,7 +46,9 @@ export default function CoreMenu(props) {
     <CoreStack
       direction="column"
       styleClasses={
-        miniDrawer && !open && [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START, CoreClasses.PADDING.PL1]
+        miniDrawer && open
+          ? [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START]
+          : [CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]
       }
     >
       {createMultiLevelMenu(

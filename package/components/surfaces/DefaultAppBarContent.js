@@ -4,7 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { WEB_PLATFORM } from "@wrappid/core";
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreToolbar from "./CoreToolbar";
@@ -106,7 +106,7 @@ export default function DefaultAppBarContent(props) {
   return (
     <>
       <CoreToolbar
-        styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        styleClasses={[CoreClasses.PADDING.PX2, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
 
         <CoreBox
