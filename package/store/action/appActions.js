@@ -323,7 +323,7 @@ export const pushSnackMessage = (type, message, autoHideDuration, snackProps = {
   dispatch({
     payload: {
       _timestamp      : time,
-      autoHideDuration: autoHideDuration,
+      autoHideDuration: autoHideDuration || 5000,
       message         : message || "Message not provided",
       type            : type,
       ...snackProps
