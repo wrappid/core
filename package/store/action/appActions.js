@@ -47,7 +47,7 @@ export const apiRequestAction =
     formId = null,
     reload = false,
     reduxData = {},
-    pushSnack = true,
+    pushSnack = false,
     loadingType = SET_LOADING,
     resetLoadingType = RESET_LOADING,
     reloadForm
