@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { urls } from "../../../config/constants";
 import CoreEditForm from "./CoreEditForm";
 import {
   FORM_ARRAY_EDIT_DELETE_FUNCTION_MAP,
@@ -11,6 +10,7 @@ import {
 import CoreFormDialogs from "./CoreFormDialogs";
 import CoreFormHeader from "./CoreFormHeader";
 import CoreFormHeaderActions from "./CoreFormHeaderActions";
+import { urls } from "../../../config/constants";
 // eslint-disable-next-line import/namespace
 import { functionsRegistry } from "../../../layout/PageContainer";
 import { apiRequestAction } from "../../../store/action/appActions";
