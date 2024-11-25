@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.590](https://github.com/wrappid/core/compare/v0.0.589...v0.0.590) (2024-11-25)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: only form crud operation snack will appear ([c3e6541](https://github.com/wrappid/core/commit/c3e6541889d3f4866ba542b43c8f2fc92217bdf6))
+* **core:** :bug: addes the min and max width ([ca52ceb](https://github.com/wrappid/core/commit/ca52cebf944f26c51ebfbd206654121fa3d71551)), closes [#423](https://github.com/wrappid/core/issues/423)
+* **core:** :bug: fixed appbar spacing related issue ([634ee6b](https://github.com/wrappid/core/commit/634ee6b3deae59c4e5420f7294bf897907572949)), closes [#426](https://github.com/wrappid/core/issues/426)
+* **core:** :bug: resolve coreicon issue ([dcb92d3](https://github.com/wrappid/core/commit/dcb92d3d922e9bfd5f5ae66885e29219decdf0f9))
+* **core:** :rotating_light: linting issue resolve ([0601dd5](https://github.com/wrappid/core/commit/0601dd5f42c95d0c0d506e8494ecfa3c837a0db0))
+
 ### [0.0.589](https://github.com/wrappid/core/compare/v0.0.588...v0.0.589) (2024-11-21)
 
 
