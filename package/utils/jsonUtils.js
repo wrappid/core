@@ -29,3 +29,12 @@ export const mergeJSON = (oldJSON = {}, newJSON = {} ) => {
   }
   return convertedJSON;
 };
+
+export function convertMetaToJSON(data) {
+  const transformedData = {};
+    
+  data.forEach((datum) => {
+    transformedData[datum.key] = datum.value;
+  });
+  return transformedData;
+}
