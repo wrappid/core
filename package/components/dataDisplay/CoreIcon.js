@@ -4,6 +4,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeIcon } from "@wrappid/native";
 
+import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export const __IconTypes = {
@@ -25,13 +26,14 @@ export const __IconTypes = {
  */
 export default function CoreIcon(props) {
   props = sanitizeComponentProps(CoreIcon, props);
-  const { type, icon, options, sx, ...restProps } = props;
+  const { type, icon, options, styleClasses = [], ...restProps } = props;
 
   let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
   let tmpIcon = props.children || icon || options?.icon || "";
 
   return (
     <NativeIcon
+      {...restProps}
       type={tmpType}
       name={tmpIcon}
       childrenFlag={
@@ -39,8 +41,10 @@ export default function CoreIcon(props) {
           ? true
           : false
       }
-      sx={type === __IconTypes.MATERIAL_ICON ? sx : { ...sx, overflow: "unset" }}
-      {...restProps}
+      styleClasses={
+        type === __IconTypes.MATERIAL_ICON
+          ? [...(styleClasses)]
+          : [...(styleClasses), CoreClasses.OVERFLOW.OVERFLOW_UNSET]}
     />
   );
 

@@ -89,13 +89,13 @@ const appReducer = (state = initState, action) => {
       if(state?.snackMessagesMaxCount && state?.snackMessages?.length >= state?.snackMessagesMaxCount) {
         return {
           ...state,
-          autoHideDuration: state.autoHideDuration,
-          snackMessages   : [...(state?.snackMessages || []).slice(1), { ...action?.payload, shown: false }],
+          
+          snackMessages: [...(state?.snackMessages || []).slice(1), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
         };
       }
       return {
         ...state,
-        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, shown: false }],
+        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
       };
 
     case MESSAGE_SHOWED:

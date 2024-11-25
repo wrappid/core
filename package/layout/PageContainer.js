@@ -198,10 +198,21 @@ export default function PageContainer(props) {
 
                   <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-                  {authenticated && <CoreStack spacing={2} direction="column" styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0]}>
+                  {authenticated && <CoreStack
+                    spacing={2}
+                    direction="column"
+                    styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0, CoreClasses.POSITION.END_0, CoreClasses.ALIGNMENT.ALIGN_ITEMS_END]}>
                     { Array.isArray(snackMessages) && snackMessages.map((snack) =>(
                       <CoreSnackbar 
-                        styleClasses={[CoreClasses.MARGIN.MT1, CoreClasses.POSITION.POSITION_STATIC]}
+                        styleClasses={[
+                          CoreClasses.MARGIN.MT1,
+                          CoreClasses.PADDING.PR5,
+                          CoreClasses.POSITION.POSITION_RELATIVE,
+                          CoreClasses.POSITION.BOTTOM_0,
+                          CoreClasses.POSITION.END_0,
+                          CoreClasses.WIDTH.MIN_VW_25,
+                          CoreClasses.WIDTH.MAX_VW_75
+                        ]}
                         key={snack._timestamp}
                         open={snack.shown}
                         autoHideDuration={snack.autoHideDuration}

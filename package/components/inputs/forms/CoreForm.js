@@ -1231,7 +1231,7 @@ const mapDispatchToProps = dispatch => {
       formId,
       reload,
       reduxData,
-      pushSnack,
+      pushSnack = true,
       loadingType,
       resetLoadingType,
       reloadForm
