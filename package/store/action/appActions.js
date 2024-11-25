@@ -47,7 +47,7 @@ export const apiRequestAction =
     formId = null,
     reload = false,
     reduxData = {},
-    pushSnack = true,
+    pushSnack = false,
     loadingType = SET_LOADING,
     resetLoadingType = RESET_LOADING,
     reloadForm
@@ -323,7 +323,7 @@ export const pushSnackMessage = (type, message, autoHideDuration, snackProps = {
   dispatch({
     payload: {
       _timestamp      : time,
-      autoHideDuration: autoHideDuration,
+      autoHideDuration: autoHideDuration || 5000,
       message         : message || "Message not provided",
       type            : type,
       ...snackProps
