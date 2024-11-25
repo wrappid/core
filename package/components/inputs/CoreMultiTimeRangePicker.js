@@ -88,7 +88,7 @@ export default function CoreMultiTimeRangePicker(props) {
             />
           </CoreGrid>
 
-          <CoreBox gridProps={{ gridSize: 1, styleClasses: [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_END] }} >
+          <CoreBox gridProps={{ gridSize: 1, styleClasses: [CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_END] }} >
             {index < 1 ? (
               <CoreIconButton
                 onClick={addRange}

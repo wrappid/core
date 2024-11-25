@@ -22,13 +22,13 @@ export default function CoreFooter(props) {
     ]}>
       <CoreBox
         gridProps={{ gridSize: { md: 4 } }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}>
         <CoreAppVersion noTitle={true} />
       </CoreBox>
 
       <CoreBox
         gridProps={{ gridSize: { md: 4 } }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         <CoreTypographyCaption>
           {`${config?.wrappid?.footerText || "Wrappid Default Footer"} © ${new Date().getFullYear()}`}
         </CoreTypographyCaption>
@@ -37,13 +37,13 @@ export default function CoreFooter(props) {
       {/* eslint-disable-next-line etc/no-commented-out-code */}
       {/* <CoreBox
         gridProps={{ gridSize: { md: 3 } }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         <ThemeSelector />
       </CoreBox> */}
 
       <CoreBox
         gridProps={{ gridSize: { md: 4 } }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
         <CoreTermsPrivacyLink />
       </CoreBox>
     </CoreGrid>

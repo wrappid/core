@@ -969,7 +969,7 @@ class CoreForm extends Component {
                           {!editForm[formId]?.editing && (
                             <CoreBox
                               gridProps={{ gridSize: 2 }}
-                              styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
+                              styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
                               {formDataReadLoading[formId] ? null : (
                                 <CoreFormHeaderActions
                                   key={`${formId}-cfh-act-${index}`}
@@ -1088,7 +1088,7 @@ class CoreForm extends Component {
                     this.state.hideFlag && (
                     <CoreBox
                       key={`cf-show-${formId}`}
-                      styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}>
+                      styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}>
                       <CoreLink
                         key={`cf-show-link-${formId}`}
                         href={

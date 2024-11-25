@@ -136,7 +136,7 @@ export default function CoreDataTableRowSummary(props) {
               <CoreStack
                 direction="row"
                 spacing={1}
-                styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+                styleClasses={[UtilityClasses.DISPLAY.FLEX, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
               >
                 {/* hasId &&  */ getIdComponent()}
                 {/* hasStatus &&  */ getStatusComponent()}

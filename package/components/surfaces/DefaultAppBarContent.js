@@ -107,11 +107,17 @@ export default function DefaultAppBarContent(props) {
     <>
       <CoreToolbar
         disableGutters={true}
-        styleClasses={[platform === WEB_PLATFORM ? CoreClasses.PADDING.PX2 : CoreClasses.PADDING.PX0, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        styleClasses={[
+          platform === WEB_PLATFORM ? CoreClasses.PADDING.PX2 : CoreClasses.PADDING.PX0,
+          CoreClasses.DISPLAY.FLEX,
+          CoreClasses.FLEX.DIRECTION_ROW,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+        ]}
       >
 
         <CoreBox
-          styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}
+          styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           {leftMenuEnabled && (
             <CoreIconButton
@@ -140,7 +146,7 @@ export default function DefaultAppBarContent(props) {
         {authenticated && (
           <CoreBox
             NativeId="appBarMenuGrid"
-            styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}
+            styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
           >
             {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
               ?.flag && (

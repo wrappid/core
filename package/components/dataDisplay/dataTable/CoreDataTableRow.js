@@ -214,7 +214,7 @@ export default function CoreDataTableRow(props) {
             >
               <CoreStack
                 direction="column"
-                styleClasses={[UtilityClasses.PADDING.PY5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, UtilityClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                styleClasses={[UtilityClasses.PADDING.PY5, CoreClasses.DISPLAY.FLEX, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, UtilityClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
               >
                 <CoreTypographyBody1>
                 No {getLabel(tableUUID).toLocaleLowerCase()}(s) available
@@ -252,7 +252,7 @@ export default function CoreDataTableRow(props) {
             }
           >
             <CoreBox
-              styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses.PADDING.P5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+              styleClasses={[UtilityClasses?.DISPLAY?.FLEX, UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER, UtilityClasses?.PADDING?.P5]}
             >
               <CoreTypographyBody1>{loading ? "Loading..." : "Please select a column"}</CoreTypographyBody1>
             </CoreBox>

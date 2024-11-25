@@ -154,7 +154,7 @@ export default function CoreFormInputs(props) {
             <CoreBox
               key={`cf-stt-container-${formId}-${element?.id || element?.name}`}
               gridProps={{ gridSize: 1 }}
-              styleClasses={[CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
+              styleClasses={[CoreClasses?.DISPLAY?.FLEX, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
             >
               <CoreSpeechToText
                 key={`cf-stt-${formId}-${element?.id || element?.name}`}
