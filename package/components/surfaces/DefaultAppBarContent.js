@@ -106,7 +106,8 @@ export default function DefaultAppBarContent(props) {
   return (
     <>
       <CoreToolbar
-        styleClasses={[CoreClasses.PADDING.PX2, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        disableGutters={true}
+        styleClasses={[platform === WEB_PLATFORM ? CoreClasses.PADDING.PX2 : CoreClasses.PADDING.PX0, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
       >
 
         <CoreBox
