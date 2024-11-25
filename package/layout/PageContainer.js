@@ -210,8 +210,7 @@ export default function PageContainer(props) {
                           CoreClasses.POSITION.POSITION_RELATIVE,
                           CoreClasses.POSITION.BOTTOM_0,
                           CoreClasses.POSITION.END_0,
-                          CoreClasses.WIDTH.MIN_VW_25,
-                          CoreClasses.WIDTH.MAX_VW_75
+                          CoreClasses.WIDTH.MAX_VW_50
                         ]}
                         key={snack._timestamp}
                         open={snack.shown}
