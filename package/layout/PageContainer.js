@@ -201,7 +201,13 @@ export default function PageContainer(props) {
                   {authenticated && <CoreStack
                     spacing={2}
                     direction="column"
-                    styleClasses={[CoreClasses.POSITION.POSITION_FIXED, CoreClasses.POSITION.BOTTOM_0, CoreClasses.POSITION.END_0, CoreClasses.ALIGNMENT.ALIGN_ITEMS_END]}>
+                    styleClasses={[
+                      CoreClasses.POSITION.POSITION_FIXED,
+                      CoreClasses.POSITION.BOTTOM_0,
+                      CoreClasses.POSITION.END_0,
+                      CoreClasses.DISPLAY.FLEX,
+                      CoreClasses.ALIGNMENT.ALIGN_ITEMS_END
+                    ]}>
                     { Array.isArray(snackMessages) && snackMessages.map((snack) =>(
                       <CoreSnackbar 
                         styleClasses={[

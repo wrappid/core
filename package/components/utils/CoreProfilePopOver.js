@@ -109,6 +109,7 @@ export default function CoreProfilePopOver(props) {
       {/* <CoreGrid
         styleClasses={[
           CoreClasses.PADDING.P1,
+          CoreClasses.DISPLAY.FLEX,
           CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
           CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
           CoreClasses.LAYOUT.FULL_WIDTH,
@@ -123,7 +124,7 @@ export default function CoreProfilePopOver(props) {
 
         <CoreBox
           gridProps={{ gridSize: 8 }}
-          // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+          // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
         >
           <CoreTypographyBody2>
             {name}

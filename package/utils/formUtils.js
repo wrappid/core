@@ -477,7 +477,7 @@ export function createFormActionProps(element) {
   ) {
     styleProps["styleClasses"] = element.actionContainerStyle;
   } else {
-    styleProps["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
+    styleProps["styleClasses"] = [CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END];
   }
 
   return styleProps;

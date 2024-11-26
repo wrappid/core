@@ -40,7 +40,7 @@ function AuditDataComponent({ type, rowData }) {
   return (
     rowData?.[`${type}At`] &&
     rowData?.[`${type}By`] && (
-      <CoreGrid styleClasses={[CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+      <CoreGrid styleClasses={[CoreClasses?.DISPLAY?.FLEX, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
         <CoreTypographyCaption gridProps={{ gridSize: 8 }}>
           {`${getLabel(type)} at ${
             (rowData[`${type}At`] &&

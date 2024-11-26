@@ -56,7 +56,7 @@ export default function CoreLoginDetails() {
         <CoreAccordionDetail>
           <CoreBox
             styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
             <CoreTypographyCaption>Role:</CoreTypographyCaption>
 
@@ -65,14 +65,14 @@ export default function CoreLoginDetails() {
 
           <CoreBox
             styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
             <CoreLabel>Login Information :-</CoreLabel>
           </CoreBox>
 
           <CoreBox
             styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
             <CoreTypographyCaption>Device:</CoreTypographyCaption>
 
@@ -81,7 +81,7 @@ export default function CoreLoginDetails() {
 
           <CoreBox
             styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
             <CoreTypographyCaption>Last Login time:</CoreTypographyCaption>
 
@@ -93,7 +93,7 @@ export default function CoreLoginDetails() {
 
           <CoreBox
             styleClasses={[CoreClasses.PADDING.PL1]}
-            // styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+            // styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}
           >
             <CoreTypographyCaption>Location IP:</CoreTypographyCaption>
 

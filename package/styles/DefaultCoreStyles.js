@@ -67,6 +67,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       counterWidgetCounter: {
+        ...this.defaultUtilityStyles.displayFlex,
         ...this.defaultUtilityStyles.flexDirectionColumn,
         ...this.defaultUtilityStyles.justifyContentFlexEnd,
         ...this.defaultUtilityStyles.alignItemsCenter,
@@ -133,15 +134,15 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       fitContentHeight: {},
 
-      flexBox: { display: "flex" + IMPORTANT },
+      flexBox: { ...this.defaultUtilityStyles.displayFlex },
 
       /**
        * App Styles
        */
       footer: {
         backgroundColor: this.defaultUtilityStyles.bgSecondaryLight + IMPORTANT,
-        padding        : DEFAULT_PADDING + PX_TAG + IMPORTANT,
-        textAlign      : "center" + IMPORTANT,
+        ...this.defaultUtilityStyles.p1,
+        ...this.defaultUtilityStyles.textCenter,
       },
 
       fullHeight: { height: "100%" + IMPORTANT },
@@ -167,9 +168,9 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       includedModelCard: {
-        borderLeft : `1px solid ${this.defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
-        margin     : "8px" + IMPORTANT,
-        paddingLeft: "8px" + IMPORTANT,
+        borderLeft: `1px solid ${this.defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
+        ...this.defaultUtilityStyles.m1,
+        ...this.defaultUtilityStyles.pl1
       },
 
       listItem: {},
@@ -195,7 +196,7 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       menuItemTextItem: {},
 
-      menuPopover: { minWidth: "75vw" },
+      menuPopover: { ...this.defaultUtilityStyles.minVw75 },
 
       miniDrawerListItemButton: {},
 
@@ -204,16 +205,16 @@ export default class DefaultCoreStyles extends BaseStyle {
       modalBody: { padding: 40 + IMPORTANT },
 
       modalContainer: {
-        borderRadius: "8px" + IMPORTANT,
-        boxShadow   : 24 + IMPORTANT,
-        left        : "50%" + IMPORTANT,
-        minHeight   : "60%" + IMPORTANT,
-        outline     : 0 + IMPORTANT,
-        padding     : DEFAULT_PADDING,
-        position    : "absolute" + IMPORTANT,
-        top         : "50%" + IMPORTANT,
-        transform   : "translate(-50%, -50%)" + IMPORTANT,
-        width       : "30%" + IMPORTANT,
+        ...this.defaultUtilityStyles.borderRounded1,
+        ...this.defaultUtilityStyles.p1,
+        ...this.defaultUtilityStyles.positionAbsolute,
+        boxShadow: 24 + IMPORTANT,
+        left     : "50%" + IMPORTANT,
+        minHeight: "60%" + IMPORTANT,
+        outline  : 0 + IMPORTANT,
+        top      : "50%" + IMPORTANT,
+        transform: "translate(-50%, -50%)" + IMPORTANT,
+        width    : "30%" + IMPORTANT,
       },
 
       modalHeader: { padding: 20 + IMPORTANT },
@@ -235,12 +236,12 @@ export default class DefaultCoreStyles extends BaseStyle {
         maxWidth : "70vw" + IMPORTANT,
         minWidth : "300px" + IMPORTANT,
         overflowY: "auto" + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
 
       popoverFooter: {
         maxWidth: "70vw" + IMPORTANT,
-        padding : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
 
       popoverHeader: {
@@ -261,7 +262,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       seperatorIconItem: {
-        display  : "none" + IMPORTANT,
+        ...this.defaultUtilityStyles.displayNone,
         height   : 0 + IMPORTANT,
         minHeight: 0 + IMPORTANT,
       },
@@ -278,11 +279,11 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.px1,
       },
 
-      tableRowActionPopover                 : { backgroundColor: "transparent" + IMPORTANT },
+      tableRowActionPopover                 : { ...this.defaultUtilityStyles.bgTransparent },
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
       ucImg          : { width: "50%" + IMPORTANT },
       verifiedSuccess: {

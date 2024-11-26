@@ -18,7 +18,7 @@ export default function CoreFormHeaderActions(props) {
   return props.action ? (
     Array.isArray(props.action) ? (
       <CoreBox
-        styleClasses={[CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_START]}>
+        styleClasses={[CoreClasses?.DISPLAY?.FLEX, CoreClasses?.FLEX?.DIRECTION_ROW, CoreClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_START]}>
         {props.action.map((action, i) => (
           <CoreIconButton
             style={

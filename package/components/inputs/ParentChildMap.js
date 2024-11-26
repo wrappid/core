@@ -153,7 +153,7 @@ export default function ParentChildMap(props) {
           styleClasses={[CoreClasses.FLEX.DIRECTION_ROW_REVERSE, CoreClasses.PADDING.PX1, CoreClasses.MARGIN.MY0]}
         >
           <CoreGrid
-            styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.MARGIN.ML0]}
+            styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.MARGIN.ML0]}
           >
             <CoreBox gridProps={{ gridSize: 10 }}>
               <CoreCheckbox

@@ -19,7 +19,7 @@ export default function Error404() {
           alt="404"
         />
 
-        <CoreH6 styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
+        <CoreH6 styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
         Page not found!
         </CoreH6>
 

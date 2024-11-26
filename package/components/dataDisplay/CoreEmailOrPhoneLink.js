@@ -57,7 +57,7 @@ export default function CoreEmailOrPhoneLink(props) {
     <>
       {props.data && (
         <CoreTypographyBody1
-          styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
+          styleClasses={[UtilityClasses?.DISPLAY?.FLEX, UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
           noWrap={true}
         >
           {
