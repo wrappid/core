@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.592](https://github.com/wrappid/core/compare/v0.0.591...v0.0.592) (2024-11-26)
+
+
+### Bug Fixes
+
+* **core:** :bug: changes related to fix mobile application ([2d8518a](https://github.com/wrappid/core/commit/2d8518a62c1de1a7a85e13ed38953a2d2a9451db)), closes [#424](https://github.com/wrappid/core/issues/424)
+
 ### [0.0.591](https://github.com/wrappid/core/compare/v0.0.590...v0.0.591) (2024-11-26)
 
 
