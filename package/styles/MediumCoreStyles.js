@@ -1,5 +1,4 @@
 import {
-  DEFAULT_PADDING,
   IMPORTANT,
   MediumUtilityStyles
   // eslint-disable-next-line import/no-unresolved
@@ -58,7 +57,7 @@ export default class MediumCoreStyles extends DefaultCoreStyles {
       tableFilterColumnBox: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "25vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + IMPORTANT,
+        ...this.mediumUtilityStyles.mdP1
       },
   
       /**
@@ -77,7 +76,7 @@ export default class MediumCoreStyles extends DefaultCoreStyles {
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + IMPORTANT,
+        ...this.mediumUtilityStyles.mdP1
       },
 
       // ----------Data Table Styles Ends------------

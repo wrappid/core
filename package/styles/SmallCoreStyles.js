@@ -1,8 +1,6 @@
 import {
   DefaultUtilityStyles,
-  DEFAULT_PADDING,
   IMPORTANT,
-  PX_TAG,
   SmallUtilityStyles,
   BaseStyle
 // eslint-disable-next-line import/no-unresolved
@@ -63,7 +61,7 @@ export default class SmallCoreStyles extends BaseStyle {
   
       pageContainer: {
         minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.smallUtilityStyles.smP1
       },
   
       profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
@@ -86,7 +84,7 @@ export default class SmallCoreStyles extends BaseStyle {
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + IMPORTANT,
+        ...this.smallUtilityStyles.smP1
       }
     };
   }
