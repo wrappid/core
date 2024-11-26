@@ -97,11 +97,11 @@ export default function SortTableData(props) {
             !auditColumnsKey.includes(col.id) && (
               <CoreStack
                 direction="row"
-                styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
               >
                 <CoreStack
                   direction="row"
-                  styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                  styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
                 >
                   <CoreTypographyBody1 styleClasses={[CoreClasses.MARGIN.MB0]}>
                     {col?.label || getLabel(col?.id || "Unknown")}&nbsp;
@@ -124,7 +124,7 @@ export default function SortTableData(props) {
 
                 <CoreStack
                   direction="row"
-                  styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                  styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
                 >
                   <CoreIconButton
                     onClick={(event) => {

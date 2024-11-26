@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.591](https://github.com/wrappid/core/compare/v0.0.590...v0.0.591) (2024-11-26)
+
+
+### Bug Fixes
+
+* **core:** :bug: handle impact of style package ([c43264e](https://github.com/wrappid/core/commit/c43264ecad0dc0b8feb600589bd5a8939dff71cd)), closes [#430](https://github.com/wrappid/core/issues/430)
+* **core:** :fire: core user chip working ([c07d1fc](https://github.com/wrappid/core/commit/c07d1fcb48b027a839f62c451a1454977e1e8ee2))
+* **core:** 🐛 handle impact of style package ([0d87ea0](https://github.com/wrappid/core/commit/0d87ea0cc46f550306e7acd661117206484feb70)), closes [#430](https://github.com/wrappid/core/issues/430)
+
 ### [0.0.590](https://github.com/wrappid/core/compare/v0.0.589...v0.0.590) (2024-11-25)
 
 

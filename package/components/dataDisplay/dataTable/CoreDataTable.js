@@ -121,7 +121,7 @@ export default function CoreDataTable(props) {
     entity = null, // data store entity name must be unique [default: null]
     filterQuery = {
       filter: {}, // this filter automatically applied on the API query
-      order : {}, // this order automatically applied on the API query
+      order : [], // this order automatically applied on the API query
     },
     api = null, // get data api [default: null]
     reduxType = {}, // here we can have crud operation specific reducer type

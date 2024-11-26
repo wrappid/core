@@ -12,6 +12,7 @@ export default function CoreTypographyBody2(props) {
   const {
     hideSeeMore = false,
     limitChars,
+    paragraph = true,
     styleClasses,
     ...restProps
   } = props;
@@ -23,7 +24,7 @@ export default function CoreTypographyBody2(props) {
   return props?.limitChars ? (
     <CoreTypography
       variant="body2"
-      paragraph={true}
+      paragraph={paragraph}
       styleClasses={styleClasses}
       {...restProps}
     >

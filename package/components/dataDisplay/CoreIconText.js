@@ -84,7 +84,7 @@ export default function CoreIconText(props) {
     <CoreStack
       direction="row"
       spacing={1}
-      styleClasses={[...(styleClasses || []), CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+      styleClasses={[...(styleClasses || []), CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
     >
       <CoreIcon
         size={size}

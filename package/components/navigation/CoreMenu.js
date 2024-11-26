@@ -47,8 +47,8 @@ export default function CoreMenu(props) {
       direction="column"
       styleClasses={
         miniDrawer && open
-          ? [CoreClasses.ALIGNMENT.ALIGN_ITEMS_START]
-          : [CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]
+          ? [CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_START]
+          : [CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]
       }
     >
       {createMultiLevelMenu(
