@@ -121,13 +121,18 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.pr1,
       },
 
-      dataTableToolbarContainer: {
+      dataTableToolbarContainerWeb: {
         ...this.defaultUtilityStyles.bgWhite,
         ...this.defaultUtilityStyles.positionSticky,
         top   : "64px" + IMPORTANT,
         zIndex: 1024 + IMPORTANT
       },
-
+      dataTableToolbarContainerMobile: {
+        ...this.defaultUtilityStyles.bgWhite,
+        ...this.defaultUtilityStyles.positionSticky,
+        top   : "45px" + IMPORTANT,
+        zIndex: 1024 + IMPORTANT
+      },
       devBorder: { ...this.defaultUtilityStyles.border },
 
       fiContentWidth: {},

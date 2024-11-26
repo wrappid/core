@@ -719,9 +719,9 @@ export default function CoreDataTable(props) {
           coreId="sam-data-table-toolbar"
           gridProps={{
             gridSize    : 12,
-            styleClasses: [CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER],
+            styleClasses: [platform === WEB_PLATFORM ? CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER_WEB : CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER_MOBILE],
           }}
-          styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR]}
+          styleClasses={[platform === WEB_PLATFORM ? CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR : CoreClasses.PADDING.PR0]}
           tableUUID={tableUUID}
           tableColumns={tableColumns}
           // table density

@@ -32,16 +32,17 @@ const CoreClasses = {
   
   // ----------Data Table Styles Starts----------
   DATA_TABLE: {
-    DATA_TABLE                  : "dataTable",
-    DATA_TABLE_BODY             : "dataTableBody",
-    DATA_TABLE_CONTAINER        : "dataTableContainer",
-    DATA_TABLE_FOOT             : "dataTableFoot",
-    DATA_TABLE_FULL_WIDTH_PANE  : "dataTableFullWidthPane",
-    DATA_TABLE_HEAD             : "dataTableHead",
-    DATA_TABLE_HEAD_TOP         : "dataTableHeadTop",
-    DATA_TABLE_MINI_WIDTH_PANE  : "dataTableMiniWidthPane",
-    DATA_TABLE_TOOLBAR          : "dataTableToolbar",
-    DATA_TABLE_TOOLBAR_CONTAINER: "dataTableToolbarContainer",
+    DATA_TABLE                         : "dataTable",
+    DATA_TABLE_BODY                    : "dataTableBody",
+    DATA_TABLE_CONTAINER               : "dataTableContainer",
+    DATA_TABLE_FOOT                    : "dataTableFoot",
+    DATA_TABLE_FULL_WIDTH_PANE         : "dataTableFullWidthPane",
+    DATA_TABLE_HEAD                    : "dataTableHead",
+    DATA_TABLE_HEAD_TOP                : "dataTableHeadTop",
+    DATA_TABLE_MINI_WIDTH_PANE         : "dataTableMiniWidthPane",
+    DATA_TABLE_TOOLBAR                 : "dataTableToolbar",
+    DATA_TABLE_TOOLBAR_CONTAINER_WEB   : "dataTableToolbarContainerWeb",
+    DATA_TABLE_TOOLBAR_CONTAINER_MOBILE: "dataTableToolbarContainerMobile"
   },
   
   FRAMEWORK: { CORE_FOOTER: "coreFooter" },
