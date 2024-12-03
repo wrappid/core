@@ -19,6 +19,8 @@ export default function CoreAppVersion(props) {
     <CoreLink
       styleClasses={authenticated ? [] : [CoreClasses.COLOR.TEXT_WHITE]}
       href={"/about"}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <CoreTypographyCaption>{!noTitle && "Application Version: "}{`v${version || "unknown"}`}</CoreTypographyCaption>
     </CoreLink>
