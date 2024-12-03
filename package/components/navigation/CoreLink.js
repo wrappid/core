@@ -5,12 +5,19 @@ import React from "react";
 import { NativeLink } from "@wrappid/native";
 
 import { sanitizeComponentProps } from "../../utils/componentUtil";
-
 export default function CoreLink(props) {
   props = sanitizeComponentProps(CoreLink, props);
   return <NativeLink {...props} />;
 }
 CoreLink.validProps = [
+  {
+    name : "rel",
+    types: [{ type: "string" }],
+  },
+  {
+    name : "target",
+    types: [{ type: "string" }],
+  },
   {
     name : "title",
     types: [{ type: "string" }],
