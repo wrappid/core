@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.593](https://github.com/wrappid/core/compare/v0.0.592...v0.0.593) (2024-12-09)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix app version comp open link in new tab ([ecf2d11](https://github.com/wrappid/core/commit/ecf2d11737d9e74f87cbc35f03bf8d6074486bdb))
+* **core:** :bug: link open in new tab props missing in valid props ([1bfc4c3](https://github.com/wrappid/core/commit/1bfc4c32051da58ab8f0c7be216abe4bb56f2052))
+* **core:** :bug: terms and privacy link fix in app container ([ba6c668](https://github.com/wrappid/core/commit/ba6c668f5e9b13636b64dd7941bc7ee86c3ed488))
+
 ### [0.0.592](https://github.com/wrappid/core/compare/v0.0.591...v0.0.592) (2024-11-26)
 
 
