@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.594](https://github.com/wrappid/core/compare/v0.0.593...v0.0.594) (2024-12-13)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: async select styleClasses added and menu routes registry context fix ([283763c](https://github.com/wrappid/core/commit/283763c3a55ad6b683894cce0fa8d94c422340ac))
+
 ### [0.0.593](https://github.com/wrappid/core/compare/v0.0.592...v0.0.593) (2024-12-09)
 
 
