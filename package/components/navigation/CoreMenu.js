@@ -5,7 +5,7 @@ import { nativeUseLocation } from "@wrappid/native";
 // eslint-disable-next-line import/no-unresolved
 import { ThemeContext } from "@wrappid/styles";
 
-import { CoreRouteRegistryContext } from "../../config/contextHandler";
+import { CoreRoutesContext } from "../../config/contextHandler";
 import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { createMultiLevelMenu } from "../../utils/menuUtil";
@@ -23,10 +23,9 @@ export default function CoreMenu(props) {
     openCollapse = {}, //item level collapse open on close
     defaultSelection = null, // this is default selection for the item to be pre select
     noNavigation = false,
-    
   } = props;
 
-  const routeRegistry = useContext(CoreRouteRegistryContext);
+  const routeRegistry = useContext(CoreRoutesContext);
 
   let location = {};
 

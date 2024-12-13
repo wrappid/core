@@ -73,6 +73,7 @@ export default function CoreAsyncSelect(props) {
     dependentQuery,
     mountValueMatch,
     freeSolo,
+    styleClasses
   } = props;
 
   const options = useSelector(state => state?.selectOptions?.options);
@@ -403,6 +404,7 @@ export default function CoreAsyncSelect(props) {
   return (
     <>
       <CoreAutocomplete
+        styleClasses={styleClasses}
         _topLabel={label} //required for mobile layer
         _inputValue={inputValue} //required for mobile layer
         _optionComp={optionComp} //required for mobile layer
