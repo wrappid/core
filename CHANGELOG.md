@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.595](https://github.com/wrappid/core/compare/v0.0.594...v0.0.595) (2024-12-26)
+
+
+### Bug Fixes
+
+* **config:** :heavy_minus_sign: remove react-scripts ([7df949a](https://github.com/wrappid/core/commit/7df949a59fd1776f7afa8cc3d85c3e54f41c930d)), closes [#432](https://github.com/wrappid/core/issues/432)
+
 ### [0.0.594](https://github.com/wrappid/core/compare/v0.0.593...v0.0.594) (2024-12-13)
 
 
