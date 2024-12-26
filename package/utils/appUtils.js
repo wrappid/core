@@ -19,6 +19,9 @@ import {
 
 // -- const AUTH_STORE = "persist:auth";
 
+const LITERAL_WRAPPID = "wrappid";
+const LITERAL_UNDERSCORE = "_";
+
 export const getUUID = () => {
   let date = new Date().getTime();
   let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -33,6 +36,18 @@ export const getUUID = () => {
 
   return uuid;
   // return window.self.crypto.randomUUID();
+};
+
+export const getWrappidUUID = () => {
+  return getPrefixedUUID(LITERAL_WRAPPID + LITERAL_UNDERSCORE);
+};
+
+export const getPrefixedUUID = (prefix) => {
+  return prefix + getUUID();
+};
+
+export const getSuffixedUUID = (suffix) => {
+  return getUUID() + suffix;
 };
 
 export const getTimestamp = () => {
