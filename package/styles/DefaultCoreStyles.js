@@ -347,7 +347,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       leftDrawerLayoutHeader          : {},
       leftDrawerLayoutLeftDrawer      : {},
       leftDrawerLayoutRightContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
-      rightDrawerLayoutHeader         : {},
+      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 99999 },
       rightDrawerLayoutRightDrawer    : {},
       rightDrawerLayoutLeftContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
       leftRightDrawerLayoutHeader     : {},

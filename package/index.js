@@ -127,6 +127,7 @@ import {
 import CoreFormControlLabel from "./components/inputs/forms/CoreFormControlLabel";
 import CoreFormGroup from "./components/inputs/forms/CoreFormGroup";
 import ParentChildMap from "./components/inputs/ParentChildMap";
+import AppBuilderContainerLayout from "./components/layouts/_system/AppBuilderContainerLayout";
 import AppContainerLayout from "./components/layouts/_system/AppContainerLayout";
 import BlankLayout from "./components/layouts/_system/BlankLayout";
 import CenteredBlankLayout from "./components/layouts/_system/CenteredBlankLayout";
@@ -259,7 +260,7 @@ import {
   WEB_PLATFORM
 } from "./utils/themeUtil";
 export {
-  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ClipboardCopyButton, ComplexLayout, ComponentNotFound, ComponentRegistryContext, copyToClipboard, CORE_DIALOG_TYPES, CoreAccordion,
+  __EntityStatus, __IconTypes, apiRequestAction, APP_PLATFORM, AppBuilderContainerLayout, AppContainerLayout, AppService, BlankLayout, cancelFormEdit, CenteredBlankLayout, ChildMap, clearValidatePhoneEmail, ClipboardCopyButton, ComplexLayout, ComponentNotFound, ComponentRegistryContext, copyToClipboard, CORE_DIALOG_TYPES, CoreAccordion,
   CoreAccordionDetail,
   CoreAccordionSummary, CoreAlert,
   CoreAlertTitle, CoreApiVersion, CoreApp, CoreAppBar, CoreAsyncSelect,
