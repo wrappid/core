@@ -1,0 +1,221 @@
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { NativeAppContainer, nativeUseLocation } from "@wrappid/native";
+// eslint-disable-next-line import/no-unresolved
+import { SMALL_WINDOW_WIDTH, WrappidDataContext } from "@wrappid/styles";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  GET_ROLE_PERMISSIONS_API,
+  GET_SETTINGS_META_API,
+  GET_USER_SETTINGS,
+  UPDATE_USER_SETTINGS
+} from "../../../config/api";
+import { HTTP, userSettingsConstants } from "../../../config/constants";
+import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
+import ComponentsRegistry from "../../../registry/ComponentsRegistry";
+import { apiRequestAction } from "../../../store/action/appActions";
+import { toggleLeftMenuState } from "../../../store/action/menuAction";
+import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../../../store/types/authTypes";
+import { BUILD_MENU_ROLE_PERMISSIONS } from "../../../store/types/menuTypes";
+import { REMOVE_PENDING_REQUESTS } from "../../../store/types/pendingRequestTypes";
+import { SELECT_OPTION_SUCCESS } from "../../../store/types/selectOptionsTypes";
+import {
+  GET_SETTING_META_ERROR,
+  GET_SETTING_META_SUCCESS,
+  GET_USER_SETTINGS_ERROR,
+  GET_USER_SETTINGS_SUCCESS,
+  USER_SETTINGS_UPDATE_ERROR,
+  USER_SETTINGS_UPDATE_SUCCESS
+} from "../../../store/types/settingsTypes";
+import CoreClasses from "../../../styles/CoreClasses";
+import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreRequestProgressBar from "../../feedback/CoreRequestProgressBar";
+import CoreAppBar from "../../surfaces/CoreAppBar";
+import CoreDrawer from "../../surfaces/CoreDrawer";
+import CoreFooter from "../../surfaces/CoreFooter";
+import CoreBox from "../CoreBox";
+import CoreGrid from "../CoreGrid";
+
+export default function AppBuilderContainerLayout() {
+  const dispatch = useDispatch();
+  const location = nativeUseLocation();
+  
+  const { config } = React.useContext(WrappidDataContext);
+
+  // eslint-disable-next-line etc/no-commented-out-code
+  const { leftMenuOpen } = useSelector((state) => state?.menu);
+  const { routes: _routes } = useSelector((state) => state?.route);
+  const { recall: recallState, requests: allPendingReq } = useSelector((state) => state?.pendingRequests);
+  const { accessToken } = useSelector((state) => state?.auth || {});
+  
+  let authenticated = accessToken ? true : false;
+
+  const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
+  
+  const windowWidth = window.innerWidth;
+  const { reload } = useSelector((state) => state?.settings);
+
+  React.useEffect(() => {
+    if (authenticated) {
+      dispatch(
+        apiRequestAction(
+          HTTP.GET,
+          GET_USER_SETTINGS,
+          true,
+          {},
+          GET_USER_SETTINGS_SUCCESS,
+          GET_USER_SETTINGS_ERROR
+        )
+      );
+      dispatch(
+        apiRequestAction(
+          HTTP.GET,
+          GET_SETTINGS_META_API,
+          true,
+          {},
+          GET_SETTING_META_SUCCESS,
+          GET_SETTING_META_ERROR
+        )
+      );
+    }
+  }, [reload, authenticated]);
+
+  React.useEffect(() => {
+    if (authenticated)
+      dispatch(
+        apiRequestAction(
+          HTTP.GET,
+          GET_ROLE_PERMISSIONS_API,
+          true,
+          {},
+          [BUILD_MENU_ROLE_PERMISSIONS, GET_ROLE_PERMISSION_SUCCESS],
+          GET_ROLE_PERMISSION_ERROR
+        )
+      );
+  }, [authenticated]);
+
+  const [hasError, setHasError] = React.useState(false);
+
+  React.useEffect(() => {
+    if (hasError) {
+      setHasError(false);
+    }
+  }, [location]);
+
+  const handleDrawer = () => {
+    if (windowWidth <= SMALL_WINDOW_WIDTH) {
+      setLeftDrawerSmallScreen(!leftMenuOpenSmallScreen);
+    } else dispatch(toggleLeftMenuState());
+    dispatch(
+      apiRequestAction(
+        HTTP.POST,
+        UPDATE_USER_SETTINGS,
+        true,
+        {
+          name : userSettingsConstants.LEFT_DRAWER_STATE,
+          value: { open: !leftMenuOpen },
+        },
+        USER_SETTINGS_UPDATE_SUCCESS,
+        USER_SETTINGS_UPDATE_ERROR
+      )
+    );
+  };
+
+  React.useEffect(() => {
+    if (allPendingReq?.length > 0 && recallState === "rejuvinated") {
+      allPendingReq.forEach(currentPendingRequest => {
+        dispatch(
+          apiRequestAction(
+            currentPendingRequest.method,
+            currentPendingRequest.endpoint,
+            currentPendingRequest.authRequired,
+            currentPendingRequest.data,
+            currentPendingRequest.successType,
+            currentPendingRequest.errorType,
+            currentPendingRequest.localAction,
+            currentPendingRequest.includeFile,
+            currentPendingRequest.file,
+            currentPendingRequest.formId,
+            currentPendingRequest.reload,
+            currentPendingRequest.reduxData,
+            currentPendingRequest.pushSnack,
+            currentPendingRequest.loadingType,
+            currentPendingRequest.resetLoadingType
+          )
+        );
+      });
+      dispatch({ type: REMOVE_PENDING_REQUESTS });
+    }
+
+  }, [authenticated]);
+
+  React.useEffect(() => {
+    let components =
+      ComponentsRegistry &&
+      Object.keys(ComponentsRegistry).map((key) => {
+        return { id: key, label: key, value: key };
+      });
+
+    dispatch({
+      payload: { data: components, key: "ComponentsRegistry" },
+      type   : SELECT_OPTION_SUCCESS,
+    });
+  }, []);
+
+  const getAppBar = () => {
+    return <CoreAppBar handleDrawer={handleDrawer} routes={_routes} />;
+  };
+  const getFooter = () => {
+    return <CoreFooter />;
+  };
+  const getLeftDrawer = () => {
+    return <CoreDrawer
+      open={windowWidth <= SMALL_WINDOW_WIDTH ? leftMenuOpenSmallScreen : leftMenuOpen}
+      toggleDrawer={handleDrawer}
+      styleClasses={(config?.platform === APP_PLATFORM ? [CoreClasses.LAYOUT.APP_CONTAINER_DRAWER] : [])}
+    />; 
+  };
+
+  const getRightDrawer = () => {
+    return null;
+  };
+
+  return (
+    <>
+      {/* eslint-disable-next-line etc/no-commented-out-code */}
+      <NativeAppContainer
+        appBar={getAppBar}
+        leftDrawer={getLeftDrawer}
+        rightDrawer={getRightDrawer}
+        footer={getFooter}
+        coreClasses={CoreClasses}
+      >  
+        <CoreRequestProgressBar />
+
+        <CoreBox styleClasses={[CoreClasses.LAYOUT.MAIN_CONTAINER]}>
+          <CoreLayoutPlaceholder 
+            styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_HEADER]} 
+            id={AppBuilderContainerLayout.PLACEHOLDER.Header} />
+
+          <CoreGrid>
+            <CoreBox gridProps={{ gridSize: 9 }}>
+              <CoreLayoutPlaceholder
+                styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER]} 
+                id={AppBuilderContainerLayout.PLACEHOLDER.Content} />
+            </CoreBox>
+
+            <CoreBox gridProps={{ gridSize: 3 }}>
+              <CoreLayoutPlaceholder
+                styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_LEFT_CONTENT]} 
+                id={AppBuilderContainerLayout.PLACEHOLDER.RightDrawer} />
+            </CoreBox>
+          </CoreGrid>
+        </CoreBox>
+      </NativeAppContainer>
+    </>
+  );
+}
+
+AppBuilderContainerLayout.PLACEHOLDER = { Content: "rightDrawerContent", Header: "header", RightDrawer: "rightDrawer" };

@@ -1,3 +1,4 @@
+import AppBuilderContainerLayout from "../components/layouts/_system/AppBuilderContainerLayout";
 import AppContainerLayout from "../components/layouts/_system/AppContainerLayout";
 import BlankLayout from "../components/layouts/_system/BlankLayout";
 import CenteredBlankLayout from "../components/layouts/_system/CenteredBlankLayout";
@@ -17,6 +18,10 @@ import TwoColumnLayout from "../components/layouts/_system/TwoColumnLayout";
 import VCenteredBlankLayout from "../components/layouts/_system/VCenteredBlankLayout";
 
 const LayoutComponentsRegistry = {
+  AppBuilderContainerLayout: {
+    comp  : AppBuilderContainerLayout,
+    layout: true
+  },
   AppContainerLayout: {
     comp  : AppContainerLayout,
     layout: true
