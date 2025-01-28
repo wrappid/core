@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.596](https://github.com/wrappid/core/compare/v0.0.595...v0.0.596) (2025-01-28)
+
+
+### Features
+
+* **core:** :sparkles: made a layout for app-builder ([e2ae6d8](https://github.com/wrappid/core/commit/e2ae6d849d28c6438d77c89f26416ad8ac3ecf36)), closes [#380](https://github.com/wrappid/core/issues/380)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: version mismatch and routes sync status handling ([cb8f2b7](https://github.com/wrappid/core/commit/cb8f2b7c80201556d2fa864949cadf263f18b60f))
+* **core:** :bug: fix Es lint related problem ([3458c26](https://github.com/wrappid/core/commit/3458c260a25e27a59dc6dcc71beecc3ea348bd97)), closes [#380](https://github.com/wrappid/core/issues/380)
+* **global:** :bug: app builder related files changes ([b76c543](https://github.com/wrappid/core/commit/b76c543418ff762a943e833fad9959494a26c154)), closes [#380](https://github.com/wrappid/core/issues/380)
+
 ### [0.0.595](https://github.com/wrappid/core/compare/v0.0.594...v0.0.595) (2024-12-26)
 
 
