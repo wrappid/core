@@ -6,7 +6,6 @@ import { NativePageContainer } from "@wrappid/native";
 import { StylesProvider, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
-import LayoutManager from "./LayoutManager";
 import CoreAlert from "../components/feedback/CoreAlert";
 import CoreDialog from "../components/feedback/CoreDialog";
 import CoreSnackbar from "../components/feedback/CoreSnackbar";
@@ -23,7 +22,7 @@ import {
   ValidationsRegistryContext
 } from "../config/contextHandler";
 import DevelopmentInfo from "../development/DevelopmentInfo";
-import { coreUseLocation } from "../helper/routerHelper";
+import { CoreDomNavigate, coreUseLocation } from "../helper/routerHelper";
 import ErrorBoundary from "../middleware/ErrorBoundary";
 import { clearSnackMessages, messageShowed, removeSnackMessage } from "../store/action/appActions";
 import { RESET_LOADING } from "../store/types/appTypes";
@@ -31,6 +30,7 @@ import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes
 import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
 import CoreClasses from "../styles/CoreClasses";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
+import LayoutManager from "./LayoutManager";
 
 export let mergedComponentRegistry = {};
 export let mergedResourceRegistry = {};
@@ -41,6 +41,7 @@ export let formStore = {};
 export default function PageContainer(props) {
   const dispatch = useDispatch();
   const location = coreUseLocation();
+
   const { config, themes } = React.useContext(WrappidDataContext);
   const { defaultLayout, defaultAuthenticatedLayout } = config;
 
@@ -182,80 +183,86 @@ export default function PageContainer(props) {
   
   return (
     <>
-      <ErrorBoundary hasError={hasError} setHasError={setHasError}>
+      {route?.authRequired === true && !authenticated ? (
+        <CoreDomNavigate to="/" />
+      ) : (
+        <>
+          <ErrorBoundary hasError={hasError} setHasError={setHasError}>
 
-        <StylesProvider themeID={route?.Page?.theme}>
-          <CoreThemeProvider themeID={route?.Page?.theme}>
-            <CoreNetworkStatus/>
+            <StylesProvider themeID={route?.Page?.theme}>
+              <CoreThemeProvider themeID={route?.Page?.theme}>
+                <CoreNetworkStatus/>
 
-            <NativePageContainer
-              authenticated={authenticated}
-              route={route}>
-              <CoreModal open={true} />
+                <NativePageContainer
+                  authenticated={authenticated}
+                  route={route}>
+                  <CoreModal open={true} />
 
-              <CoreDialogContext.Provider value={dialogStates}>
-                <CoreBox>
+                  <CoreDialogContext.Provider value={dialogStates}>
+                    <CoreBox>
 
-                  <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
+                      <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-                  {authenticated && <CoreStack
-                    spacing={2}
-                    direction="column"
-                    styleClasses={[
-                      CoreClasses.POSITION.POSITION_FIXED,
-                      CoreClasses.POSITION.BOTTOM_0,
-                      CoreClasses.POSITION.END_0,
-                      CoreClasses.DISPLAY.FLEX,
-                      CoreClasses.ALIGNMENT.ALIGN_ITEMS_END
-                    ]}>
-                    { Array.isArray(snackMessages) && snackMessages.map((snack) =>(
-                      <CoreSnackbar 
+                      {authenticated && <CoreStack
+                        spacing={2}
+                        direction="column"
                         styleClasses={[
-                          CoreClasses.MARGIN.MT1,
-                          CoreClasses.PADDING.PR5,
-                          CoreClasses.POSITION.POSITION_RELATIVE,
+                          CoreClasses.POSITION.POSITION_FIXED,
                           CoreClasses.POSITION.BOTTOM_0,
                           CoreClasses.POSITION.END_0,
-                          CoreClasses.WIDTH.MIN_VW_25,
-                          CoreClasses.WIDTH.MAX_VW_75
-                        ]}
-                        key={snack._timestamp}
-                        open={snack.shown}
-                        autoHideDuration={snack.autoHideDuration}
-                        onClose={() => {
-                          dispatch(removeSnackMessage(snack._timestamp)); 
-                        }}
-                      ><CoreBox ref={snack.ref}>
-                          <CoreAlert
-                            severity={snack.severity}
-                            variant={snack.variant}
-                            color={snack.color}
-                            width="100%"
+                          CoreClasses.DISPLAY.FLEX,
+                          CoreClasses.ALIGNMENT.ALIGN_ITEMS_END
+                        ]}>
+                        { Array.isArray(snackMessages) && snackMessages.map((snack) =>(
+                          <CoreSnackbar 
+                            styleClasses={[
+                              CoreClasses.MARGIN.MT1,
+                              CoreClasses.PADDING.PR5,
+                              CoreClasses.POSITION.POSITION_RELATIVE,
+                              CoreClasses.POSITION.BOTTOM_0,
+                              CoreClasses.POSITION.END_0,
+                              CoreClasses.WIDTH.MIN_VW_25,
+                              CoreClasses.WIDTH.MAX_VW_75
+                            ]}
+                            key={snack._timestamp}
+                            open={snack.shown}
+                            autoHideDuration={snack.autoHideDuration}
                             onClose={() => {
                               dispatch(removeSnackMessage(snack._timestamp)); 
                             }}
-                          >
-                            {snack.message}
-                          </CoreAlert>
-                        </CoreBox>
-                      </CoreSnackbar>
-                    )) }
+                          ><CoreBox ref={snack.ref}>
+                              <CoreAlert
+                                severity={snack.severity}
+                                variant={snack.variant}
+                                color={snack.color}
+                                width="100%"
+                                onClose={() => {
+                                  dispatch(removeSnackMessage(snack._timestamp)); 
+                                }}
+                              >
+                                {snack.message}
+                              </CoreAlert>
+                            </CoreBox>
+                          </CoreSnackbar>
+                        )) }
 
-                  </CoreStack>}
-                </CoreBox>
+                      </CoreStack>}
+                    </CoreBox>
 
-                {/** @todo testing purposes */}
-                {/* eslint-disable-next-line etc/no-commented-out-code */}
-                {/* <CoreComponent componentName={pageChild()} /> */}
-                
-                <CoreDialog />
-              </CoreDialogContext.Provider>
-            </NativePageContainer>
-          </CoreThemeProvider>
-        </StylesProvider>
-      </ErrorBoundary>
+                    {/** @todo testing purposes */}
+                    {/* eslint-disable-next-line etc/no-commented-out-code */}
+                    {/* <CoreComponent componentName={pageChild()} /> */}
+                      
+                    <CoreDialog />
+                  </CoreDialogContext.Provider>
+                </NativePageContainer>
+              </CoreThemeProvider>
+            </StylesProvider>
+          </ErrorBoundary>
 
-      <DevelopmentInfo />
+          <DevelopmentInfo />
+        </>
+      )}
     </>
   );
 }

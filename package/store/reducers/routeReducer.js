@@ -8,22 +8,32 @@ import {
   LOGOUT_SUCCESS
 } from "../types/authTypes";
 
-const initState = { routes: [], sync: false };
+const initState = { routes: [], sync: { local: false, server: false } };
 
-function transformData(input) {
+function checkIfRoutesExist(existingRoutes, eachRoute) {
+  existingRoutes.forEach((route) => {
+    if (route.url === eachRoute.url) {
+      return true;
+    }
+  });
+}
+
+function transformData(existingRoutes, input) {
   return input.map(item => {
-    const { schema, extraInfo, Page, ...rest } = item;
-    
-    return {
-      ...rest,
-      ...schema,
-      ...extraInfo,
-      Page: Page ? {
-        ...Page,
-        ...Page.schema,
-        ...Page.extraInfo
-      } : null
-    };
+    if (!checkIfRoutesExist(existingRoutes, item)) {
+      const { schema, extraInfo, Page, ...rest } = item;
+      
+      return {
+        ...rest,
+        ...schema,
+        ...extraInfo,
+        Page: Page ? {
+          ...Page,
+          ...Page.schema,
+          ...Page.extraInfo
+        } : null
+      };
+    }
   });
 }
 
@@ -32,25 +42,40 @@ const routeReducer = (state = initState, action) => {
     case GET_ROUTE_SUCCESS:
       return {
         ...state,
-        routes: [...(transformData(action?.payload?.data?.rows) || [])],
+        routes: [...(transformData(state.routes, action?.payload?.data?.rows) || [])],
+        sync  : {
+          ...state.sync,
+          server: true,
+        }
       };
 
     case GET_ROUTE_FAILURE:
       return {
         ...state,
         routes: [],
+        sync  : {
+          ...state.sync,
+          server: false,
+        }
       };
 
     case LOCAL_ROUTES_SYNCED_SUCCESS:
       return {
         ...state,
-        sync: true
+        routes: [...state.routes, ...(Object.values(action?.payload || {}))],
+        sync  : {
+          ...state.sync,
+          local: true,
+        }
       };
 
     case LOCAL_ROUTES_SYNCED_FAILURE:
       return {
         ...state,
-        sync: false
+        sync: {
+          ...state.sync,
+          local: false,
+        }
       };
 
     case LOGOUT_SUCCESS:
