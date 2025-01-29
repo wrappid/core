@@ -42,7 +42,7 @@ const routeReducer = (state = initState, action) => {
     case GET_ROUTE_SUCCESS:
       return {
         ...state,
-        routes: [...(transformData(state.routes, action?.payload?.data?.rows) || [])],
+        routes: [...state.routes, ...(transformData(state.routes, action?.payload?.data?.rows) || [])],
         sync  : {
           ...state.sync,
           server: true,
