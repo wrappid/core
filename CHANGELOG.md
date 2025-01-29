@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.597](https://github.com/wrappid/core/compare/v0.0.596...v0.0.597) (2025-01-29)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix bug related to local route ([6898996](https://github.com/wrappid/core/commit/68989961872de7512d452b040b5748a86e9909ca)), closes [#380](https://github.com/wrappid/core/issues/380)
+
 ### [0.0.596](https://github.com/wrappid/core/compare/v0.0.595...v0.0.596) (2025-01-28)
 
 
