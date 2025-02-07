@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.598](https://github.com/wrappid/core/compare/v0.0.597...v0.0.598) (2025-02-07)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix bug of restart timmer ([a731872](https://github.com/wrappid/core/commit/a731872f3cb4c0f0d9c099feae381c480784d775)), closes [#316](https://github.com/wrappid/core/issues/316)
+
 ### [0.0.597](https://github.com/wrappid/core/compare/v0.0.596...v0.0.597) (2025-01-29)
 
 
