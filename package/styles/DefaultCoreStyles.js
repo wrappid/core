@@ -28,6 +28,13 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       avatar: {},
 
+      requestProgressBar: {
+        top   : HEADING_TOP_MARGIN,
+        zIndex: "100000" + IMPORTANT,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.positionFixed
+      },
+
       avatarLarge: { height: "72px" + IMPORTANT, width: "72px" + IMPORTANT },
 
       avatarMedium: { height: "48px" + IMPORTANT, width: "48px" + IMPORTANT },
