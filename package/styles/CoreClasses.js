@@ -120,6 +120,7 @@ const CoreClasses = {
     LOGGED_OUT_CONTENT_CONTAINER: "loggedOutContentContainer",
     LOGGED_OUT_PAGE_CONTAINER   : "loggedOutPageContainer",
     MENU_POPOVER                : "menuPopover",
+    POPOVER                     : "popover",
     NO_MARGIN_P                 : "noMarginP",
     PAGE_CONTAINER              : "pageContainer",
     PROFILE_BAR_WIDTH           : "profileBarWidth",

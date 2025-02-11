@@ -30,7 +30,7 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       requestProgressBar: {
         top   : HEADING_TOP_MARGIN,
-        zIndex: "100000" + IMPORTANT,
+        zIndex: "11" + IMPORTANT,
         ...this.defaultUtilityStyles.vw100,
         ...this.defaultUtilityStyles.positionFixed
       },
@@ -209,6 +209,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       menuItemTextItem: {},
 
       menuPopover: { ...this.defaultUtilityStyles.minVw75 },
+      popover    : {},
 
       miniDrawerListItemButton: {},
 
@@ -354,7 +355,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       leftDrawerLayoutHeader          : {},
       leftDrawerLayoutLeftDrawer      : {},
       leftDrawerLayoutRightContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
-      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 99999 },
+      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 10 },
       rightDrawerLayoutRightDrawer    : {},
       rightDrawerLayoutLeftContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
       leftRightDrawerLayoutHeader     : {},
