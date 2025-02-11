@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.599](https://github.com/wrappid/core/compare/v0.0.598...v0.0.599) (2025-02-11)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix jarring effect ([0e64b65](https://github.com/wrappid/core/commit/0e64b656d9eaf0d8c15587992a1985a93620198a)), closes [#437](https://github.com/wrappid/core/issues/437)
+* **global:** :bug: fix the problem of profile card ([bae53f5](https://github.com/wrappid/core/commit/bae53f5de5397fe4ad2c2a532a7432493c62fc56)), closes [#437](https://github.com/wrappid/core/issues/437)
+
 ### [0.0.598](https://github.com/wrappid/core/compare/v0.0.597...v0.0.598) (2025-02-07)
 
 
