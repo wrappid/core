@@ -5,12 +5,13 @@ import { UtilityClasses } from "@wrappid/styles";
 
 const CoreClasses = {
   ...UtilityClasses,
-  
+
+  REQUEST_PROGRESS_BAR: "requestProgressBar",
   // ----------Widget Style Constants Ends-------
   /**
    * Business Entity Component
    */
-  BUSINESS_ENTITY: { INCLUDED_MODEL_CARD: "includedModelCard" },
+  BUSINESS_ENTITY     : { INCLUDED_MODEL_CARD: "includedModelCard" },
   
   DATA_DISPLAY: {
     AVATAR             : "avatar",
@@ -119,6 +120,7 @@ const CoreClasses = {
     LOGGED_OUT_CONTENT_CONTAINER: "loggedOutContentContainer",
     LOGGED_OUT_PAGE_CONTAINER   : "loggedOutPageContainer",
     MENU_POPOVER                : "menuPopover",
+    POPOVER                     : "popover",
     NO_MARGIN_P                 : "noMarginP",
     PAGE_CONTAINER              : "pageContainer",
     PROFILE_BAR_WIDTH           : "profileBarWidth",

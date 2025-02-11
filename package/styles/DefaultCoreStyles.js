@@ -28,6 +28,13 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       avatar: {},
 
+      requestProgressBar: {
+        top   : HEADING_TOP_MARGIN,
+        zIndex: "11" + IMPORTANT,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.positionFixed
+      },
+
       avatarLarge: { height: "72px" + IMPORTANT, width: "72px" + IMPORTANT },
 
       avatarMedium: { height: "48px" + IMPORTANT, width: "48px" + IMPORTANT },
@@ -202,6 +209,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       menuItemTextItem: {},
 
       menuPopover: { ...this.defaultUtilityStyles.minVw75 },
+      popover    : {},
 
       miniDrawerListItemButton: {},
 
@@ -347,7 +355,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       leftDrawerLayoutHeader          : {},
       leftDrawerLayoutLeftDrawer      : {},
       leftDrawerLayoutRightContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
-      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 99999 },
+      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 10 },
       rightDrawerLayoutRightDrawer    : {},
       rightDrawerLayoutLeftContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
       leftRightDrawerLayoutHeader     : {},
