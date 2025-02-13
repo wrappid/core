@@ -4,7 +4,6 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeIcon } from "@wrappid/native";
 
-import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export const __IconTypes = {
@@ -44,7 +43,7 @@ export default function CoreIcon(props) {
       styleClasses={
         type === __IconTypes.MATERIAL_ICON
           ? [...(styleClasses)]
-          : [...(styleClasses), CoreClasses.OVERFLOW.OVERFLOW_UNSET]}
+          : [...(styleClasses)]}
     />
   );
 
