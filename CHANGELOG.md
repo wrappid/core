@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.600](https://github.com/wrappid/core/compare/v0.0.599...v0.0.600) (2025-02-13)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix overflow of coreicon ([a3df588](https://github.com/wrappid/core/commit/a3df58812cb1f58cf1afeb9ef182dda03ec4e45f)), closes [#439](https://github.com/wrappid/core/issues/439)
+
 ### [0.0.599](https://github.com/wrappid/core/compare/v0.0.598...v0.0.599) (2025-02-11)
 
 
