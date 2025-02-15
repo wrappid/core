@@ -2,7 +2,7 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { NativeToolBox } from "@wrappid/native";
+import { NativeToolbox } from "@wrappid/native";
 
 import CoreCard from "./CoreCard";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
@@ -10,7 +10,7 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 export default function CoreToolBox(props) {
   props = sanitizeComponentProps(CoreToolBox, props);
 
-  return <NativeToolBox {...props} />;
+  return <NativeToolbox {...props} />;
 }
 
 CoreToolBox.validProps = [
