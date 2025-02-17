@@ -36,7 +36,6 @@ import CoreAppBar from "../../surfaces/CoreAppBar";
 import CoreDrawer from "../../surfaces/CoreDrawer";
 import CoreFooter from "../../surfaces/CoreFooter";
 import CoreBox from "../CoreBox";
-import CoreGrid from "../CoreGrid";
 
 export default function AppBuilderContainerLayout() {
   const dispatch = useDispatch();
@@ -199,19 +198,19 @@ export default function AppBuilderContainerLayout() {
             styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_HEADER]} 
             id={AppBuilderContainerLayout.PLACEHOLDER.Header} />
 
-          <CoreGrid>
-            <CoreBox gridProps={{ gridSize: 9 }}>
+          <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX]}>
+            <CoreBox styleClasses={[CoreClasses.WIDTH.W_75, CoreClasses.BORDER.BORDER_END, CoreClasses.BORDER.BORDER_COLOR_GREY_300]}>
               <CoreLayoutPlaceholder
                 styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER]} 
                 id={AppBuilderContainerLayout.PLACEHOLDER.Content} />
             </CoreBox>
 
-            <CoreBox gridProps={{ gridSize: 3 }}>
+            <CoreBox styleClasses={[CoreClasses.WIDTH.W_25]}>
               <CoreLayoutPlaceholder
                 styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_LEFT_CONTENT]} 
                 id={AppBuilderContainerLayout.PLACEHOLDER.RightDrawer} />
             </CoreBox>
-          </CoreGrid>
+          </CoreBox>
         </CoreBox>
       </NativeAppContainer>
     </>
