@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.601](https://github.com/wrappid/core/compare/v0.0.600...v0.0.601) (2025-02-17)
+
+
+### Bug Fixes
+
+* **global:** :bug: change layout content grid to box ([ea5c066](https://github.com/wrappid/core/commit/ea5c066b1f36c471098f3452132042595af9ffde)), closes [#54](https://github.com/wrappid/core/issues/54)
+
 ### [0.0.600](https://github.com/wrappid/core/compare/v0.0.599...v0.0.600) (2025-02-13)
 
 
