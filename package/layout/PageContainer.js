@@ -62,7 +62,7 @@ export default function PageContainer(props) {
   validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const { user: { id: userID }, accessToken, sessionExpired, sessionDetail } = useSelector((state) => state?.auth || {});
+  const { user: { id: userID = {} }, accessToken, sessionExpired, sessionDetail } = useSelector((state) => state?.auth || {});
   
   let authenticated = accessToken ? true : false;
 
