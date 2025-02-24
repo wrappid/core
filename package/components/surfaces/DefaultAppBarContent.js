@@ -37,9 +37,11 @@ export default function DefaultAppBarContent(props) {
 
   const {
     handleDrawer,
+    handleRightDrawer,
     logo = null,
     logoEnabled: _logoEnabled = true,
     leftMenuEnabled: _leftMenuEnabled = true,
+    rightMenuEnabled: _rightMenuEnabled = true,
   } = props;
   /**
    * state driven component enablement of the app bar content
@@ -48,6 +50,8 @@ export default function DefaultAppBarContent(props) {
   const [logoEnabled, setLogoEnabled] = React.useState(_logoEnabled);
   // eslint-disable-next-line no-unused-vars
   const [leftMenuEnabled, setLeftMenuEnabled] = React.useState(_leftMenuEnabled);
+  // eslint-disable-next-line no-unused-vars
+  const [rightMenuEnabled, setRightMenuEnabled] = React.useState(_rightMenuEnabled);
 
   React.useEffect(() => {
     /**
@@ -142,70 +146,84 @@ export default function DefaultAppBarContent(props) {
           )}
         </CoreBox>
 
-        {/* authenticated user content */}
-        {authenticated && (
-          <CoreBox
-            NativeId="appBarMenuGrid"
-            styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
-          >
-            {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
-              ?.flag && (
-              <CoreIconButton styleClasses={appBarTextStyle}>
-                <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
-              </CoreIconButton>
-            )}
-
-            {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
-              ?.flag && (
-              <CoreIconButton
-                styleClasses={appBarTextStyle}
-                title={"Help & Support"}
-                onClick={(e) => {
-                  handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
-                }}
-              >
-                <CoreIcon>help_outline</CoreIcon>
-              </CoreIconButton>
-            )}
-
-            {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
-              ?.value?.flag && (
-              <CoreIconButton
-                styleClasses={appBarTextStyle}
-                title={"Show Notification"}
-                onClick={(e) => {
-                  handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
-                }}
-              >
-                <CoreIcon>notifications_none_outlined</CoreIcon>
-              </CoreIconButton>
-            )}
-
-            {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
-              ?.flag && (
-              <CoreIconButton
-                styleClasses={appBarTextStyle}
-                title={"Quick Menu"}
-                onClick={(e) => {
-                  handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
-                }}
-              >
-                <CoreIcon>add_circle_outlined</CoreIcon>
-              </CoreIconButton>
-            )}
-
-            <CoreIconButton
-              onClick={(e) => {
-                handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
-              }}
+        <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}>
+          {/* authenticated user content */}
+          {authenticated && (
+            <CoreBox
+              NativeId="appBarMenuGrid"
+              styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
-              <CoreAvatar
-                src={photo}
-                styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
-              />
+              {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
+                ?.flag && (
+                <CoreIconButton styleClasses={appBarTextStyle}>
+                  <CoreIcon>account_balance_wallet_outlinedIcon</CoreIcon>
+                </CoreIconButton>
+              )}
+
+              {mdm?.settingMeta?.find((f) => f.name === "appBarHelp")?.value
+                ?.flag && (
+                <CoreIconButton
+                  styleClasses={appBarTextStyle}
+                  title={"Help & Support"}
+                  onClick={(e) => {
+                    handleAppbarPopOverOpen(e, appbarPopOver.HELP_SUPPORT);
+                  }}
+                >
+                  <CoreIcon>help_outline</CoreIcon>
+                </CoreIconButton>
+              )}
+
+              {mdm?.settingMeta?.find((f) => f.name === "appBarNotification")
+                ?.value?.flag && (
+                <CoreIconButton
+                  styleClasses={appBarTextStyle}
+                  title={"Show Notification"}
+                  onClick={(e) => {
+                    handleAppbarPopOverOpen(e, appbarPopOver.NOTIFICATION);
+                  }}
+                >
+                  <CoreIcon>notifications_none_outlined</CoreIcon>
+                </CoreIconButton>
+              )}
+
+              {mdm?.settingMeta?.find((f) => f.name === "appBarAdd")?.value
+                ?.flag && (
+                <CoreIconButton
+                  styleClasses={appBarTextStyle}
+                  title={"Quick Menu"}
+                  onClick={(e) => {
+                    handleAppbarPopOverOpen(e, appbarPopOver.QUICK_MENU);
+                  }}
+                >
+                  <CoreIcon>add_circle_outlined</CoreIcon>
+                </CoreIconButton>
+              )}
+
+              <CoreIconButton
+                onClick={(e) => {
+                  handleAppbarPopOverOpen(e, appbarPopOver.PROFILE);
+                }}
+              >
+                <CoreAvatar
+                  src={photo}
+                  styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
+                />
+              </CoreIconButton>
+            </CoreBox>
+          )}
+
+          {rightMenuEnabled && (
+            <CoreIconButton
+              styleClasses={[...appBarTextStyle]}
+              title="Open Right Drawer"
+              onClick={handleRightDrawer}
+              disabled={!authenticated}
+            >
+              <CoreIcon>menu_open</CoreIcon>
             </CoreIconButton>
-          </CoreBox>
-        )}
+          )}
+        </CoreBox>
+        
       </CoreToolbar>
 
       {/* AppBar PopOver */}

@@ -87,6 +87,10 @@ CoreAppBar.validProps = [
     name : "handleDrawer",
     types: [{ type: "function" }], 
   },
+  {
+    name : "handleRightDrawer",
+    types: [{ type: "function" }], 
+  },
 ];
 
 CoreAppBar.invalidProps = [];

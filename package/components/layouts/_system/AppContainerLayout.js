@@ -16,7 +16,7 @@ import { HTTP, userSettingsConstants } from "../../../config/constants";
 import CoreLayoutPlaceholder from "../../../layout/CoreLayoutPlaceholder";
 import ComponentsRegistry from "../../../registry/ComponentsRegistry";
 import { apiRequestAction } from "../../../store/action/appActions";
-import { toggleLeftMenuState } from "../../../store/action/menuAction";
+import { toggleLeftMenuState, toggleRightMenuState } from "../../../store/action/menuAction";
 import { GET_ROLE_PERMISSION_ERROR, GET_ROLE_PERMISSION_SUCCESS } from "../../../store/types/authTypes";
 import { BUILD_MENU_ROLE_PERMISSIONS } from "../../../store/types/menuTypes";
 import { REMOVE_PENDING_REQUESTS } from "../../../store/types/pendingRequestTypes";
@@ -31,6 +31,7 @@ import {
 } from "../../../store/types/settingsTypes";
 import CoreClasses from "../../../styles/CoreClasses";
 import { APP_PLATFORM } from "../../../utils/themeUtil";
+import CoreH3 from "../../dataDisplay/CoreH3";
 import CoreRequestProgressBar from "../../feedback/CoreRequestProgressBar";
 import CoreAppBar from "../../surfaces/CoreAppBar";
 import CoreDrawer from "../../surfaces/CoreDrawer";
@@ -45,6 +46,7 @@ export default function AppContainerLayout() {
 
   // eslint-disable-next-line etc/no-commented-out-code
   const { leftMenuOpen } = useSelector((state) => state?.menu);
+  const { rightMenuOpen } = useSelector((state) => state?.menu);
   const { routes: _routes } = useSelector((state) => state?.route);
   const { recall: recallState, requests: allPendingReq } = useSelector((state) => state?.pendingRequests);
   const { accessToken } = useSelector((state) => state?.auth || {});
@@ -52,6 +54,7 @@ export default function AppContainerLayout() {
   let authenticated = accessToken ? true : false;
 
   const [leftMenuOpenSmallScreen, setLeftDrawerSmallScreen] = React.useState(false);
+  const [rightMenuOpenSmallScreen, setRightDrawerSmallScreen] = React.useState(false);
   
   const windowWidth = window.innerWidth;
   const { reload } = useSelector((state) => state?.settings);
@@ -103,7 +106,7 @@ export default function AppContainerLayout() {
     }
   }, [location]);
 
-  const handleDrawer = () => {
+  const handleDrawer = (event) => {
     if (windowWidth <= SMALL_WINDOW_WIDTH) {
       setLeftDrawerSmallScreen(!leftMenuOpenSmallScreen);
     } else dispatch(toggleLeftMenuState());
@@ -120,6 +123,17 @@ export default function AppContainerLayout() {
         USER_SETTINGS_UPDATE_ERROR
       )
     );
+    event.stopPropagation();
+  };
+
+  const handleRightDrawer = (event) => {
+    // eslint-disable-next-line no-console
+    console.log("Right Drawer clicked");
+    
+    if (windowWidth <= SMALL_WINDOW_WIDTH) {
+      setRightDrawerSmallScreen(!rightMenuOpenSmallScreen);
+    } else dispatch(toggleRightMenuState());
+    event.stopPropagation();
   };
 
   React.useEffect(() => {
@@ -164,7 +178,7 @@ export default function AppContainerLayout() {
   }, []);
 
   const getAppBar = () => {
-    return <CoreAppBar handleDrawer={handleDrawer} routes={_routes} />;
+    return <CoreAppBar handleDrawer={handleDrawer} handleRightDrawer={handleRightDrawer} routes={_routes}/>;
   };
   const getFooter = () => {
     return <CoreFooter />;
@@ -178,7 +192,17 @@ export default function AppContainerLayout() {
   };
 
   const getRightDrawer = () => {
-    return null;
+    return (
+      <CoreDrawer
+        open={windowWidth <= SMALL_WINDOW_WIDTH ? rightMenuOpenSmallScreen : rightMenuOpen}
+        anchor="right"
+        toggleDrawer={handleRightDrawer}
+        disableMenu={true}
+        styleClasses={config?.platform === APP_PLATFORM ? [CoreClasses.LAYOUT.APP_CONTAINER_DRAWER] : []}
+      >
+        <CoreH3>Right Drawer Content</CoreH3>
+      </CoreDrawer>
+    );
   };
 
   return (

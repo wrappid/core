@@ -10,9 +10,9 @@ export const toggleLeftMenuState = (menuState) => {
   };
 };
 
-export const toggleRightMenuState = () => {
+export const toggleRightMenuState = (menuState) => {
   return (dispatch) => {
-    dispatch({ type: TOGGLE_RIGHT_MENU });
+    dispatch({ payload: menuState, type: TOGGLE_RIGHT_MENU });
   };
 };
 

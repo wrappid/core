@@ -10,7 +10,7 @@ const initState = {
   collapse     : {},
   leftMenuOpen : true,
   menu         : [],
-  rightMenuOpen: false,
+  rightMenuOpen: true,
 };
 
 const menuReducer = (state = initState, action) => {
@@ -50,7 +50,10 @@ const menuReducer = (state = initState, action) => {
     case TOGGLE_RIGHT_MENU:
       return {
         ...state,
-        rightMenuOpen: !state.rightMenuOpen,
+        rightMenuOpen:
+          action.payload !== null && action.payload !== undefined
+            ? action.payload
+            : !state.rightMenuOpen,
       };
 
     case LOGOUT_SUCCESS:

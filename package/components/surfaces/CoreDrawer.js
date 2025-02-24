@@ -23,7 +23,7 @@ export default function CoreDrawer(props) {
   const { menu, collapse } = useSelector((state) => state?.menu);
   const theme = useContext(ThemeContext);
 
-  const { open, toggleDrawer } = props;
+  const { open, disableMenu, toggleDrawer } = props;
 
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
 
@@ -55,15 +55,20 @@ export default function CoreDrawer(props) {
       open={open}
       theme={theme}
     >
-      <CoreMenu
-        menu={menu}
-        miniDrawer={true}
-        multiLevel={true}
-        open={open}
-        openCollapse={collapse}
-        OnMenuClick={OnMenuClick}
-        displayIcon={true}
-      />
+      {!disableMenu && (
+        <CoreMenu
+          menu={menu}
+          miniDrawer={true}
+          multiLevel={true}
+          open={open}
+          openCollapse={collapse}
+          OnMenuClick={OnMenuClick}
+          displayIcon={true}
+        />
+      )}
+
+      {/* Render custom children if provided */}
+      {props.children}
     </NativeDrawer>
   );
 }
@@ -78,7 +83,7 @@ CoreDrawer.validProps = [
     name       : "anchor",
     types      : [
       {
-        default    : "left'",
+        default    : "left",
         type       : "string",
         validValues: ["bottom", "left", "right", "top"],
       },
@@ -139,6 +144,15 @@ CoreDrawer.validProps = [
         default    : "temporary'",
         type       : "string",
         validValues: ["permanent", "persistent", "temporary"],
+      },
+    ],
+  },
+  {
+    name : "disableMenu",
+    types: [
+      {
+        default: "false'",
+        type   : "boolean"
       },
     ],
   },
