@@ -7,6 +7,7 @@ import { NativeSelect } from "@wrappid/native";
 import CoreFormControl from "./CoreFormControl";
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
+import CoreInput from "./CoreInput";
 import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreBox from "../layouts/CoreBox";
@@ -31,6 +32,7 @@ export default function CoreSelect(props) {
 }
 CoreSelect.validProps = [
   ...CoreFormControl.validProps,
+  ...CoreInput.validProps,
   {
     name : "helperText",
     types: [{ type: "string" }]

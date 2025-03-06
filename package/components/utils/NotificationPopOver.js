@@ -2,11 +2,11 @@
 import React from "react";
 
 import CoreClasses from "../../styles/CoreClasses";
-import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreIconButton from "../inputs/CoreIconButton";
 import CoreBox from "../layouts/CoreBox";
+import CoreDivider from "../POC/CoreDivider.tsx";
 
 export default function NotificationPopOver() {
   return (

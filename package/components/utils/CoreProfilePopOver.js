@@ -9,7 +9,6 @@ import CoreApiVersion from "./CoreApiVersion";
 import CoreAppVersion from "./CoreAppVersion";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
-import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreEmailLink from "../dataDisplay/CoreEmailLink";
 import { __IconTypes } from "../dataDisplay/CoreIcon";
 import CorePhoneLink from "../dataDisplay/CorePhoneLink";
@@ -17,6 +16,7 @@ import CoreButton from "../inputs/CoreButton";
 import CoreBox from "../layouts/CoreBox";
 import CoreStack from "../layouts/CoreStack";
 import CoreMenu from "../navigation/CoreMenu";
+import CoreDivider from "../POC/CoreDivider.tsx";
 import CoreCard from "../surfaces/CoreCard";
 import CoreCardHeader from "../surfaces/CoreCardHeader";
 

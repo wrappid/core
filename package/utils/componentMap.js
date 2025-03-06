@@ -1,6 +1,5 @@
 import { defaultValidations } from "./componentDefaultValidations";
 import CoreAvatar from "../components/dataDisplay/CoreAvatar";
-import CoreDivider from "../components/dataDisplay/CoreDivider";
 import CoreEmailOrPhoneLink from "../components/dataDisplay/CoreEmailOrPhoneLink";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import CoreDataTable from "../components/dataDisplay/dataTable/CoreDataTable";
@@ -31,6 +30,7 @@ import CoreTimeRangePicker from "../components/inputs/CoreTimeRangePicker";
 import CoreSpecificForm from "../components/inputs/forms/CoreSpecificForm";
 import ParentChildMap from "../components/inputs/ParentChildMap";
 import CoreSpan from "../components/layouts/CoreSpan";
+import CoreDivider from "../components/POC/CoreDivider.tsx";
 
 /* com key will have component reference, 
 defaultValidation will have object with 

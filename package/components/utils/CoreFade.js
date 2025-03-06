@@ -10,11 +10,11 @@ import { MENU_SEPERATOR } from "../../config/menuConstants";
 import CoreClasses from "../../styles/CoreClasses";
 import { getFullName } from "../../utils/helper";
 import CoreAvatar from "../dataDisplay/CoreAvatar";
-import CoreDivider from "../dataDisplay/CoreDivider";
 import CoreTypographyBody1 from "../dataDisplay/CoreTypographyBody1";
 import CoreBox from "../layouts/CoreBox";
 import CoreGrid from "../layouts/CoreGrid";
 import CoreMenu from "../navigation/CoreMenu";
+import CoreDivider from "../POC/CoreDivider.tsx";
 
 export default function CoreProfilePopOver(props) {
   const navigate = nativeUseNavigate();

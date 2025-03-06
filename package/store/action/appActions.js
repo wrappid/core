@@ -1,3 +1,4 @@
+import { pushSnackMessage } from "../../components/feedback/CoreSnackbar.action.ts";
 import {
   LOGIN_WITH_OTP_API,
   LOGIN_WITH_PASSWORD_API,
@@ -9,10 +10,6 @@ import { formStore } from "../../layout/PageContainer";
 import AppService from "../../service/AppService";
 import { getForm } from "../../utils/formUtils";
 import {
-  CLEAR_SNACK_MESSAGE,
-  MESSAGE_SHOWED,
-  PUSH_SNACK_MESSAGE,
-  REMOVE_SNACK_MESSAGE,
   RESET_LOADING,
   RESET_PROGRESS_BAR,
   SET_LOADING,
@@ -311,42 +308,6 @@ export const apiRequestAction =
         dispatch({ type: RESET_PROGRESS_BAR });
       }
     };
-
-/**
- * Snack message related action
- */
-export const pushSnackMessage = (type, message, autoHideDuration, snackProps = {}) => dispatch => {
-  // eslint-disable-next-line etc/no-commented-out-code
-  // enqueueSnackbar(message, { variant: type });
-  const time = new Date().getTime();
-
-  dispatch({
-    payload: {
-      _timestamp      : time,
-      autoHideDuration: autoHideDuration || 5000,
-      message         : message || "Message not provided",
-      type            : type,
-      ...snackProps
-    },
-    type: PUSH_SNACK_MESSAGE,
-  });
-};
-
-export const messageShowed = (timestamp) => ({
-  payload: { _timestamp: timestamp },
-  type   : MESSAGE_SHOWED,
-});
-
-export const removeSnackMessage = (timestamp) => ({
-  payload: { _timestamp: timestamp },
-  type   : REMOVE_SNACK_MESSAGE,
-});
-
-export const clearSnackMessages = () => dispatch => {
-  // eslint-disable-next-line etc/no-commented-out-code
-  // closeSnackbar();
-  dispatch({ type: CLEAR_SNACK_MESSAGE });
-};
 
 export const setUserTheme = (themeName) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code

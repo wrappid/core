@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import React from "react";
 
-import CoreDivider from "../components/dataDisplay/CoreDivider";
 import CoreH6 from "../components/dataDisplay/CoreH6";
 import CoreTypographyBody1 from "../components/dataDisplay/CoreTypographyBody1";
 import CoreTypographyCaption from "../components/dataDisplay/CoreTypographyCaption";
 import CoreBox from "../components/layouts/CoreBox";
+import CoreDivider from "../components/POC/CoreDivider.tsx";
 import CoreAccordion from "../components/surfaces/CoreAccordion";
 import CoreAccordionDetail from "../components/surfaces/CoreAccordionDetail";
 import CoreAccordionSummary from "../components/surfaces/CoreAccordionSummary";

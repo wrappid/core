@@ -99,12 +99,12 @@ const appReducer = (state = initState, action) => {
         return {
           ...state,
           
-          snackMessages: [...(state?.snackMessages || []).slice(1), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
+          snackMessages: [...(state?.snackMessages || []).slice(1), { ...action?.payload, autoHideDuration: action?.payload?.autoHideDuration ?? state.autoHideDuration, shown: false }],
         };
       }
       return {
         ...state,
-        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
+        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, autoHideDuration: action?.payload?.autoHideDuration ?? state.autoHideDuration, shown: false }],
       };
 
     case MESSAGE_SHOWED:

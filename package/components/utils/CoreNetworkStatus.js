@@ -1,49 +1,29 @@
-/* eslint-disable etc/no-commented-out-code */
-// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
+import { useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { useNetworkStatus } from "@wrappid/native";
+import { useDispatch } from "react-redux";
 
-import CoreAlert from "../feedback/CoreAlert";
-import CoreSnackbar from "../feedback/CoreSnackbar";
-import CoreBox from "../layouts/CoreBox";
-// import { sanitizeComponentProps } from "../../utils/componentUtil";
+import { pushSnackMessage } from "../feedback/CoreSnackbar.action.ts";
 
 export default function CoreNetworkStatus() {
-//   props = sanitizeComponentProps(CoreSnackbar, props);
   const isOnline = useNetworkStatus();
+  const dispatch = useDispatch();
+  const prevIsOnline = useRef(isOnline);
 
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  useEffect(() => {
+    if (prevIsOnline.current !== isOnline) {
+      const message = isOnline
+        ? "You are connected to the internet."
+        : "You are not connected to the internet.";
 
-  React.useEffect(() => {
-    if (!isOnline) {
-      setOpenSnackbar(true);
-    } 
-  }, [isOnline]);
+      dispatch(
+        pushSnackMessage( message, { autoHideDuration: 20000 })
+      );
+    }
 
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  };
+    prevIsOnline.current = isOnline; // Update previous status
+  }, [isOnline, dispatch]);
 
-  return (
-    <CoreSnackbar
-      open={openSnackbar}
-      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      autoHideDuration={isOnline ? 6000 : null}
-      onClose={handleCloseSnackbar}
-    >
-      <CoreBox>
-        <CoreAlert
-          severity={isOnline ? "success" : "error" }
-          variant="filled"
-          action={handleCloseSnackbar}
-        >
-          {`${isOnline ? "You are connected" : "You are not connected"} to the internet.`}
-
-        </CoreAlert>
-      </CoreBox>
-    </CoreSnackbar>
-  );
+  return null; // No UI rendering needed
 }
-  

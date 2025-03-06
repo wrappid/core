@@ -36,7 +36,7 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import CoreTextButton from "../../inputs/CoreTextButton";
 import CoreTextField from "../../inputs/CoreTextField";
 import CoreMenu from "../../navigation/CoreMenu";
-import CoreDivider from "../CoreDivider";
+import CoreDivider from "../../POC/CoreDivider.tsx";
 import CoreIcon, { __IconTypes } from "../CoreIcon";
 import CoreTablePagination from "../CoreTablePagination";
 

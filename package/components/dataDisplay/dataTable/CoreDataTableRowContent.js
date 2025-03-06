@@ -21,8 +21,8 @@ import {
   WEB_PLATFORM,
   detectPlatform
 } from "../../../utils/themeUtil";
+import CoreDivider from "../../POC/CoreDivider.tsx";
 import CoreAvatar from "../CoreAvatar";
-import CoreDivider from "../CoreDivider";
 import CoreIcon from "../CoreIcon";
 import CoreTableBodyCell from "../CoreTableBodyCell";
 import CoreTableCell from "../CoreTableCell";

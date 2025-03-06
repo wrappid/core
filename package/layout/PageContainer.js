@@ -1,3 +1,4 @@
+/* eslint-disable etc/no-commented-out-code */
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -7,9 +8,9 @@ import { StylesProvider, WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import LayoutManager from "./LayoutManager";
-import CoreAlert from "../components/feedback/CoreAlert";
 import CoreDialog from "../components/feedback/CoreDialog";
-import CoreSnackbar from "../components/feedback/CoreSnackbar";
+import { clearSnackMessages, messageShowed, removeSnackMessage } from "../components/feedback/CoreSnackbar.action.ts";
+import { CoreSnackbar } from "../components/feedback/CoreSnackbar.tsx";
 import AppContainerLayout from "../components/layouts/_system/AppContainerLayout";
 import CoreBox from "../components/layouts/CoreBox";
 import CoreStack from "../components/layouts/CoreStack";
@@ -25,11 +26,9 @@ import {
 import DevelopmentInfo from "../development/DevelopmentInfo";
 import { CoreDomNavigate, coreUseLocation } from "../helper/routerHelper";
 import ErrorBoundary from "../middleware/ErrorBoundary";
-import { clearSnackMessages, messageShowed, removeSnackMessage } from "../store/action/appActions";
 import { RESET_LOADING } from "../store/types/appTypes";
 import { SAVE_EXPIRED_SESSION, SESSION_RECALLED } from "../store/types/authTypes";
 import { RESET_FROM_STATE, UPDATE_HELPER_FLAG } from "../store/types/formTypes";
-import CoreClasses from "../styles/CoreClasses";
 import CoreThemeProvider from "../theme/CoreThemeProvider";
 
 export let mergedComponentRegistry = {};
@@ -203,7 +202,7 @@ export default function PageContainer(props) {
 
                       <LayoutManager key={pageLayout() + "-" + pageChild()} pageName={pageChild()} layoutName={pageLayout()} />
 
-                      {authenticated && <CoreStack
+                      {/* {authenticated && <CoreStack
                         spacing={2}
                         direction="column"
                         styleClasses={[
@@ -246,7 +245,23 @@ export default function PageContainer(props) {
                           </CoreSnackbar>
                         )) }
 
-                      </CoreStack>}
+                      </CoreStack>} */}
+
+                      {snackMessages.length > 0 && (
+                        <CoreStack spacing={2} direction="column">
+                          {snackMessages.map((snack) => (
+                            <CoreSnackbar
+                              key={snack._timestamp}
+                              open={snack.shown}
+                              autoHideDuration={snack.autoHideDuration}
+                              onClose={() => dispatch(removeSnackMessage(snack._timestamp))}
+                              message={snack.message}
+                            />
+                              
+                          ))}
+                        </CoreStack>
+                      )}
+
                     </CoreBox>
 
                     {/** @todo testing purposes */}

@@ -44,7 +44,7 @@ import {
 import { FORM_VIEW_MODE } from "../../inputs/forms/coreFormConstants";
 import CoreBox from "../../layouts/CoreBox";
 import CoreGrid from "../../layouts/CoreGrid";
-import CoreDivider from "../CoreDivider";
+import CoreDivider from "../../POC/CoreDivider.tsx";
 import CoreTable from "../CoreTable";
 import CoreTypographyBody1 from "../CoreTypographyBody1";
 

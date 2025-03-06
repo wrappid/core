@@ -9,7 +9,7 @@ import CoreInputAdornment from "../../inputs/CoreInputAdornment";
 import CoreTextField from "../../inputs/CoreTextField";
 import CoreBox from "../../layouts/CoreBox";
 import CoreStack from "../../layouts/CoreStack";
-import CoreDivider from "../CoreDivider";
+import CoreDivider from "../../POC/CoreDivider.tsx";
 import CoreIcon, { __IconTypes } from "../CoreIcon";
 import CoreTypographyBody1 from "../CoreTypographyBody1";
 
