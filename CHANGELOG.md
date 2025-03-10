@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.603](https://github.com/wrappid/core/compare/v0.0.602...v0.0.603) (2025-03-10)
+
+
+### Bug Fixes
+
+* **core:** :bug: correct state selection and destructuring ([6c3cdb7](https://github.com/wrappid/core/commit/6c3cdb7bc596dc464599a2bf2824c8e3d57231b4)), closes [#447](https://github.com/wrappid/core/issues/447)
+
 ### [0.0.602](https://github.com/wrappid/core/compare/v0.0.601...v0.0.602) (2025-02-18)
 
 ### [0.0.601](https://github.com/wrappid/core/compare/v0.0.600...v0.0.601) (2025-02-17)
