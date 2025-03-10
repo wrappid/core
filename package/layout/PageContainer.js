@@ -62,8 +62,9 @@ export default function PageContainer(props) {
   validationsRegistry = React.useContext(ValidationsRegistryContext);
 
   // -- console.log("mergedComponentRegistry", mergedComponentRegistry, mergedResourceRegistry);
-  const { user: { id: userID }, accessToken, sessionExpired, sessionDetail } = useSelector((state) => state?.auth || {});
-  
+  const authReducerValues =  useSelector((state) => state?.auth || {});
+  const userID = authReducerValues?.user?.id || {};
+  const { accessToken, sessionExpired, sessionDetail } = authReducerValues || {};
   let authenticated = accessToken ? true : false;
 
   const snackMessages = useSelector((state) => state?.app?.snackMessages || []);
