@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.605](https://github.com/wrappid/core/compare/v0.0.604...v0.0.605) (2025-03-15)
+
+
+### Bug Fixes
+
+* **core:** :bug: reset contextSync after API call when serverSync changes ([5e83c6b](https://github.com/wrappid/core/commit/5e83c6b48ea928921514948eb8a3da39f204f554)), closes [#447](https://github.com/wrappid/core/issues/447)
+
 ### [0.0.604](https://github.com/wrappid/core/compare/v0.0.603...v0.0.604) (2025-03-15)
 
 
