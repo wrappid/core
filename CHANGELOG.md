@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.604](https://github.com/wrappid/core/compare/v0.0.603...v0.0.604) (2025-03-15)
+
+
+### Bug Fixes
+
+* **core:** :bug: handle undefined user photo and simplify auth state check ([ec14175](https://github.com/wrappid/core/commit/ec14175581676e596f5910d1da13d3de8f68e51e)), closes [#447](https://github.com/wrappid/core/issues/447)
+
 ### [0.0.603](https://github.com/wrappid/core/compare/v0.0.602...v0.0.603) (2025-03-10)
 
 
