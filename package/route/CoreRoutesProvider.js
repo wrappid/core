@@ -24,7 +24,6 @@ export default function CoreRoutesProvider(props) {
   const { local: localSync = false, server: serverSync = false } = sync;
   const { accessToken } = useSelector((state) => state?.auth || {});
   let authenticated = !!accessToken;
-
   const [contextSync, setContextSync] = React.useState(false);
   const [routesList, setRoutesList] = React.useState({});
   const { dynamic: isDynamic } = config || {};
@@ -63,14 +62,21 @@ export default function CoreRoutesProvider(props) {
 
     if ((localSync || serverSync) && !contextSync) {
       setContextSync(true);
-
       storedRoutes.forEach((route) => {
         _storedRoutes[route?.entityRef] = route;
       });
-
       setRoutesList(_storedRoutes);
     }
   }, [storedRoutes, localSync, serverSync, contextSync]);
+
+  // effect to set contextSync to false after API call
+  // if serverSync changes from false to true, API call has completed.
+  React.useEffect(() => {
+    if (serverSync) {
+      // reset contextSync to allow re-sync after API call completion.
+      setContextSync(false);
+    }
+  }, [serverSync]);
 
   return (
     <CoreRoutesContext.Provider value={routesList}>
