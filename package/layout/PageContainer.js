@@ -65,7 +65,7 @@ export default function PageContainer(props) {
   const authReducerValues =  useSelector((state) => state?.auth || {});
   const userID = authReducerValues?.user?.id || {};
   const { accessToken, sessionExpired, sessionDetail } = authReducerValues || {};
-  let authenticated = accessToken ? true : false;
+  let authenticated = !!accessToken;
 
   const snackMessages = useSelector((state) => state?.app?.snackMessages || []);
   const appState = useSelector((state) => state?.app || []);
