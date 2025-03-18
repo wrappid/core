@@ -1,61 +1,140 @@
-import React, { ReactNode } from 'react';
-import { BaseComponentData, GenericProps } from './Types';
+import React, { ReactNode } from "react";
 
-// Abstract base class for all components
-export abstract class BaseComponent<T extends BaseComponentData> {
+// 🎉 Extract all event handlers from React's built-in types
+export type AllValidEvents = Pick<
+  React.DOMAttributes<HTMLElement>,
+  | "onClick"
+  | "onContextMenu"
+  | "onDoubleClick"
+  | "onMouseDown"
+  | "onMouseEnter"
+  | "onMouseLeave"
+  | "onMouseMove"
+  | "onMouseOut"
+  | "onMouseOver"
+  | "onMouseUp"
+  | "onKeyDown"
+  | "onKeyPress"
+  | "onKeyUp"
+  | "onChange"
+  | "onInput"
+  | "onSubmit"
+  | "onReset"
+  | "onFocus"
+  | "onBlur"
+  | "onTouchCancel"
+  | "onTouchEnd"
+  | "onTouchMove"
+  | "onTouchStart"
+  | "onScroll"
+  | "onWheel"
+  | "onCopy"
+  | "onCut"
+  | "onPaste"
+  | "onDrag"
+  | "onDragEnd"
+  | "onDragEnter"
+  | "onDragExit"
+  | "onDragLeave"
+  | "onDragOver"
+  | "onDragStart"
+  | "onDrop"
+  | "onAnimationStart"
+  | "onAnimationEnd"
+  | "onAnimationIteration"
+  | "onTransitionEnd"
+  | "onAbort"
+  | "onCanPlay"
+  | "onCanPlayThrough"
+  | "onDurationChange"
+  | "onEmptied"
+  | "onEncrypted"
+  | "onEnded"
+  | "onError"
+  | "onLoadedData"
+  | "onLoadedMetadata"
+  | "onLoadStart"
+  | "onPause"
+  | "onPlay"
+  | "onPlaying"
+  | "onProgress"
+  | "onRateChange"
+  | "onSeeked"
+  | "onSeeking"
+  | "onStalled"
+  | "onSuspend"
+  | "onTimeUpdate"
+  | "onVolumeChange"
+  | "onWaiting"
+>;
+
+// ✅ Define prop types and structure
+export interface PropType {
+  default?: any;
+  type: string;
+  validValues?: any[];
+}
+
+export interface Prop {
+  description: string;
+  name: string;
+  types: PropType[];
+  value: any; // ✅ Ensure `value` is never undefined
+}
+
+// ✅ Extend with standard React props and events
+export interface BaseComponentProps extends AllValidEvents {
+  height?: number;
+  width?: number;
+  styleClasses?: string;
+  children?: ReactNode;
+  key?: React.Key;
+  ref?: React.Ref<any>;
+}
+
+// ✅ Base Data Class — Ensures all props have `Prop` type, no undefined
+export abstract class BaseComponentData {
+  [key: string]: Prop;
+
+  height: Prop = { name: "height", description: "Height of the component", types: [{ type: "number" }], value: 0 };
+  width: Prop = { name: "width", description: "Width of the component", types: [{ type: "number" }], value: 0 };
+  styleClasses: Prop = { name: "styleClasses", description: "CSS classes", types: [{ type: "string" }], value: "" };
+  children: Prop = { name: "children", description: "Component children", types: [{ type: "node" }], value: null };
+}
+
+// ✅ BaseComponent class — Supports rendering and prop handling
+export abstract class BaseComponent<T extends Record<string, Prop>> {
   protected props: T;
 
-  constructor(_props: GenericProps) {
-    this.props = this.createComponentData();
+  constructor(initialProps: Partial<BaseComponentProps>) {
+    this.props = {} as T;
 
-    Object.keys(_props).forEach((_prop) => {
-      this.setPropValue(_prop, _props[_prop]);
+    // ✅ Initialize props
+    Object.entries(initialProps).forEach(([key, value]) => {
+      this.setPropValue(key, value);
     });
   }
 
-  abstract createComponentData(): T;
-
-  abstract render(): JSX.Element;
-
-  /**
-   * Convert raw props into structured data
-   */
-  convert(props: GenericProps): T {
-    Object.keys(props).forEach((_prop) => {
-      this.setPropValue(_prop, props[_prop]);
-    });
-    return this.props;
+  // ✅ Ensure "value" is accessible with proper typing
+  getPropValue<K extends keyof T>(propName: K): T[K]["value"] {
+    const prop = this.props[propName];
+    return prop.value;
   }
 
-  /**
-   * Extract plain prop values
-   */
-  extractPropValues(): Record<string, any> {
-    const values: Record<string, any> = {};
-    Object.keys(this.props).forEach((key) => {
-      const prop = (this.props as any)[key];
-      if (prop && typeof prop === 'object' && 'value' in prop) {
-        values[key] = prop.value;
-      }
-    });
-    return values;
-  }
+  // ✅ Set and validate a prop's value
+  setPropValue<K extends keyof T>(propName: K, value: any): void {
+    const prop = this.props[propName];
 
-  /**
-   * Set a specific prop's value
-   */
-  setPropValue(propName: string, value: any): void {
-    if (this.props && propName in this.props) {
-      (this.props as any)[propName].value = value;
+    if (!prop) return;
+
+    const expectedType = prop.types[0].type;
+    if (typeof value !== expectedType && expectedType !== "node" && expectedType !== "function") {
+      throw new Error(`Invalid type for prop "${String(propName)}". Expected ${expectedType}, got ${typeof value}`);
     }
+
+    prop.value = value;
   }
-}
 
-// Functional component wrapper interface
-export interface BaseComponentFC<T extends BaseComponentData> extends React.FunctionComponent {
-  (props: GenericProps): ReactNode;
-  componentType: new (props: GenericProps) => BaseComponent<T>;
+  // ✅ Force child components to define render()
+  abstract render(): JSX.Element;
 }
-
-// Alias for convenience
-export type WFC<T extends BaseComponentData> = BaseComponentFC<T>;
