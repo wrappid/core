@@ -27,13 +27,13 @@ export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
   let { appLogo } = React.useContext(CoreResourceContext);
-  const { accessToken, user: { photo } } = useSelector((state) => state?.auth || {});
+  const { accessToken = null, user: { photo = null } = {} } = useSelector((state) => state?.auth || {});
   const mdm = useSelector((state) => state.mdm);
   const [getSettingMetaFlag, setGetSettingMetaFlag] = React.useState(false);
   const [platform, setPlatform] = React.useState(null);
   const [appbarType, setAppbarType] = React.useState("primary");
 
-  const authenticated = accessToken ? true : false;
+  const authenticated = !!accessToken;
 
   const {
     handleDrawer,

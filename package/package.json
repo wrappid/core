@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.602",
+  "version": "0.0.605",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {},
@@ -17,7 +17,11 @@
     "react-native-paper",
     "redux"
   ],
-  "author": "wrappid",
+  "author": {
+    "name": "Wrappid",
+    "email": "wrappid.framework@gmail.com",
+    "url": "https://www.github.com/wrappid/core"
+  },
   "bugs": {
     "url": "https://github.com/wrappid/core/issues"
   },
