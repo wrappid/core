@@ -12,6 +12,7 @@ export function withBaseComponent<T extends BaseComponentData>(
   ComponentClass: new (props: BaseComponentProps) => BaseComponent<T>
 ): WrappedComponentFC<T> {
   return (props: BaseComponentProps) => {
+    console.log("Received props:", props);
     const componentInstance = new ComponentClass(props);
     return componentInstance.render();
   };

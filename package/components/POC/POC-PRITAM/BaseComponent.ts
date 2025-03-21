@@ -96,26 +96,40 @@ export interface BaseComponentProps extends AllValidEvents {
 export abstract class BaseComponentData {
   [key: string]: Prop;
 
-  height: Prop = { name: "height", description: "Height of the component", types: [{ type: "number" }], value: 0 };
-  width: Prop = { name: "width", description: "Width of the component", types: [{ type: "number" }], value: 0 };
-  styleClasses: Prop = { name: "styleClasses", description: "CSS classes", types: [{ type: "string" }], value: "" };
-  children: Prop = { name: "children", description: "Component children", types: [{ type: "node" }], value: null };
+  height: Prop = { name: 'height', description: 'Height of the component', types: [{ type: 'number' }], value:0 };
+  width: Prop = { name: 'width', description: 'Width of the component', types: [{ type: 'number' }], value:0 };
+  styleClasses: Prop = { name: 'styleClasses', description: 'CSS classes', types: [{ type: 'string' }], value:'' };
+  children: Prop = { name: 'children', description: 'Component children', types: [{ type: 'node' }], value:null }; // Explicitly define children
 }
 
 // ✅ BaseComponent class — Supports rendering and prop handling
-export abstract class BaseComponent<T extends Record<string, Prop>> {
+export abstract class BaseComponent<T extends BaseComponentData> {
   protected props: T;
 
   constructor(initialProps: Partial<BaseComponentProps>) {
     this.props = {} as T;
 
-    // ✅ Initialize props
     Object.entries(initialProps).forEach(([key, value]) => {
-      this.setPropValue(key, value);
+      if (key in this.props) {
+        this.setPropValue(key as keyof T, value);
+      } else {
+        // Handle dynamic props like children
+        (this.props as any)[key] = { value };
+      }
     });
+
+    // Ensure default values for missing props
+    if (!this.props.children) {
+      this.props.children = {
+        name: "children",
+        description: "Default children",
+        types: [{ type: "node" }],
+        value: null // Default children to null
+      }; // Provide all required fields for Prop
+    }
   }
 
-  // ✅ Ensure "value" is accessible with proper typing
+  // Ensure "value" is accessible with proper typing
   getPropValue<K extends keyof T>(propName: K): T[K]["value"] {
     const prop = this.props[propName];
     return prop.value;
