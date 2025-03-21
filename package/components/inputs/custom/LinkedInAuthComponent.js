@@ -11,7 +11,6 @@ import { useDispatch } from "react-redux";
 import CoreButton from "./../CoreButton";
 import { HTTP } from "../../../config/constants";
 import { apiRequestAction } from "../../../store/action/appActions";
-import CoreClasses from "../../../styles/CoreClasses";
 import CoreBox from "../../layouts/CoreBox";
 
 export default function LinkedInAuthComponent(props){
@@ -66,10 +65,7 @@ export default function LinkedInAuthComponent(props){
   }, [authCode]);
 
   return (
-    <CoreBox 
-      height={40}
-      width={40}
-      styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.DISPLAY.FLEX]}>
+    <CoreBox >
       <NativeLinkedInAuthComponent onClick={handleClick} {...props} label="LinkedIn"/>
     </CoreBox>
   );
