@@ -70,6 +70,7 @@ export default function LinkedInAuthComponent(props){
       height={40}
       width={40}
       styleClasses={[
+        CoreClasses.DISPLAY.FLEX,
         CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
         CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
         CoreClasses.BG.BG_WHITE,
