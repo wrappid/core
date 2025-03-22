@@ -51,47 +51,54 @@ export default function CoreEditForm(props) {
         enableReinitialize={true}
         initialValues={Array.isArray(formData) ? formData[index] : formData}
         validationSchema={forms[formId]?.formValidationOb}
+        // validateOnMount={true} // need to check
         onSubmit={props.handleSubmit}
         innerRef={formRef}
       >
         {(formikprops) => (
-          <CoreFormContainer onSubmit={formikprops.handleSubmit}>
-            <CoreGrid coreId="coreEditForm">
+          <CoreFormContainer
+            key={`cfc-${formId}`}
+            onSubmit={formikprops.handleSubmit}>
+            <CoreGrid
+              key={`cfc-grid-${formId}`}
+              coreId="coreEditForm">
               {/* Showing Form Elements */}
               {forms[formId]?.formElements?.map((element, elementIndex) =>
-                formDataReadLoading && formDataReadLoading[formId] ? (
-                  <CoreSkeleton
-                    {...createFieldSkeletonProps(element)}
-                    key={`core-skeleton-${formId}-${elementIndex}`}
-                  />
-                ) : (
-                  <CoreFormInputs
-                    gridProps={{ gridSize: getGridSizeProps(element?.gridSize, true) }}
-                    key={"form-input-" + elementIndex}
-                    type={INPUT_TYPE}
-                    forms={forms}
-                    formId={formId}
-                    element={element}
-                    formikprops={formikprops}
-                    initProps={initProps}
-                    preview={preview}
-                    handleButtonCLick={handleButtonCLick}
-                    submitLoading={submitLoading}
-                    submitSuccess={submitSuccess}
-                    OnEditClick={OnEditClick}
-                    editFormId={editFormId}
-                    allowEdit={allowEdit}
-                    onFormFocus={onFormFocus}
-                    OnCancelClick={OnCancelClick}
-                    mode={mode}
-                  /> 
-                )
+                (!element?.status || element?.status === "active") ? (
+                  formDataReadLoading && formDataReadLoading[formId] ? (
+                    <CoreSkeleton
+                      key={`cfc-item-skel-${formId}-${elementIndex}`}
+                      {...createFieldSkeletonProps(element)}
+                    />
+                  ) : (
+                    <CoreFormInputs
+                      key={`cf-input-${formId}-${elementIndex}`}
+                      gridProps={{ gridSize: getGridSizeProps(element?.gridSize, true) }}
+                      type={INPUT_TYPE}
+                      forms={forms}
+                      formId={formId}
+                      element={element}
+                      formikprops={formikprops}
+                      initProps={initProps}
+                      preview={preview}
+                      handleButtonCLick={handleButtonCLick}
+                      submitLoading={submitLoading}
+                      submitSuccess={submitSuccess}
+                      OnEditClick={OnEditClick}
+                      editFormId={editFormId}
+                      allowEdit={allowEdit}
+                      onFormFocus={onFormFocus}
+                      OnCancelClick={OnCancelClick}
+                      mode={mode}
+                    /> 
+                  )
+                ) : null 
               )}
 
               {/* Showing Action Elements. Inline actions are written on input components */}
               {mode && forms[formId] && !forms[formId].inlineAction ? (
                 <CoreFormInputs
-                  key={"form-actions"}
+                  key={`cf-action-input-${formId}`}
                   type={BUTTON_TYPE}
                   formId={formId}
                   element={null}

@@ -273,7 +273,8 @@ export default function CoreDataTableToolbar(props) {
                 ) : (
                   <CoreTextButton
                     size="small"
-                    label={`${createEntityButtonText || getLabel(tableUUID)}`}
+                    // label={`${createEntityButtonText || getLabel(tableUUID)}`}
+                    label="Add"
                     variant="outlined"
                     startIcon={<CoreIcon>add</CoreIcon>}
                     onClick={() => {

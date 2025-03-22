@@ -37,7 +37,7 @@ import CoreDrawer from "../../surfaces/CoreDrawer";
 import CoreFooter from "../../surfaces/CoreFooter";
 import CoreBox from "../CoreBox";
 
-export default function AppContainerLayout() {
+export default function AppBuilderContainerLayout() {
   const dispatch = useDispatch();
   const location = nativeUseLocation();
   
@@ -194,12 +194,27 @@ export default function AppContainerLayout() {
         <CoreRequestProgressBar />
 
         <CoreBox styleClasses={[CoreClasses.LAYOUT.MAIN_CONTAINER]}>
-          <CoreLayoutPlaceholder id={AppContainerLayout.PLACEHOLDER.CONTENT} />
+          <CoreLayoutPlaceholder 
+            styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_HEADER]} 
+            id={AppBuilderContainerLayout.PLACEHOLDER.Header} />
+
+          <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX]}>
+            <CoreBox styleClasses={[CoreClasses.WIDTH.W_75, CoreClasses.BORDER.BORDER_END, CoreClasses.BORDER.BORDER_COLOR_GREY_300]}>
+              <CoreLayoutPlaceholder
+                styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_RIGHT_DRAWER]} 
+                id={AppBuilderContainerLayout.PLACEHOLDER.Content} />
+            </CoreBox>
+
+            <CoreBox styleClasses={[CoreClasses.WIDTH.W_25]}>
+              <CoreLayoutPlaceholder
+                styleClasses={[CoreClasses.LAYOUT.RIGHT_DRAWER_LAYOUT_LEFT_CONTENT]} 
+                id={AppBuilderContainerLayout.PLACEHOLDER.RightDrawer} />
+            </CoreBox>
+          </CoreBox>
         </CoreBox>
       </NativeAppContainer>
-
     </>
   );
 }
 
-AppContainerLayout.PLACEHOLDER = { CONTENT: "content" };
+AppBuilderContainerLayout.PLACEHOLDER = { Content: "rightDrawerContent", Header: "header", RightDrawer: "rightDrawer" };

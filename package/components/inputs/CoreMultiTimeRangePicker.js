@@ -2,8 +2,7 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
-import moment from "moment";
-
+import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
 import CoreIconButton from "./CoreIconButton";
 import CoreTimePicker from "./CoreTimePicker";
@@ -16,13 +15,13 @@ import CoreGrid from "../layouts/CoreGrid";
 export default function CoreMultiTimeRangePicker(props) {
   const {
     // eslint-disable-next-line no-unused-vars
-    id, label, onChange, value, formik, ampm 
+    error, helperText, label, value, formik, ...restProps
   } = props;
   const [timeRanges, setTimeRanges] = React.useState([
     {
       endTime  : null,
       startTime: null,
-    },
+    }
   ]);
 
   // -- console.log("Timeranges", timeRanges, value);
@@ -53,11 +52,9 @@ export default function CoreMultiTimeRangePicker(props) {
   const _handleChange = (i, v, type) => {
     let x = [...timeRanges];
 
-    x[i][type] = v?.format("LLL");
+    x[i][type] = v;
     formik.setFieldValue(props.id, x);
   };
-
-  // -- console.log("END VALUE", id, spValue, value);
 
   return (
     <CoreBox>
@@ -65,57 +62,59 @@ export default function CoreMultiTimeRangePicker(props) {
 
       {timeRanges.map((timeRange, index) => (
         <CoreGrid key={`timeRange-${index}`}>
-          <CoreTimePicker
-            readOnly={props.readOnly}
-            gridProps={{ gridSize: 5 }}
-            label={props.startTimeLabel ? props.startTimeLabel : "Start Time"}
-            inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
-            ampm={props.ampm ? true : false}
-            value={timeRange.startTime ? moment(timeRange.startTime) : null}
-            onChange={(v) => {
-              _handleChange(index, v, "startTime");
-            }}
-            touched={props.touched}
-            error={props.error}
-          />
-
-          <CoreTimePicker
-            readOnly={props.readOnly}
-            gridProps={{ gridSize: 5 }}
-            label={props.endTimeLabel ? props.endTimeLabel : "End Time"}
-            inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
-            ampm={props.ampm ? true : false}
-            value={timeRange.endTime ? moment(timeRange.endTime) : null}
-            onChange={(v) => {
-              _handleChange(index, v, "endTime");
-            }}
-            touched={props.touched}
-            error={props.error}
-          />
-
-          {index < 1 ? (
-            <CoreIconButton
-              gridProps={{ gridSize: 2 }}
-              onClick={addRange}
-            >
-              <CoreIcon>add</CoreIcon>
-            </CoreIconButton>
-          ) : (
-            <CoreIconButton
-              gridProps={{ gridSize: 2 }}
-              onClick={() => {
-                deleteRange(index);
+          <CoreGrid gridProps={{ gridSize: 11 }}>
+            <CoreTimePicker
+              readOnly={props.readOnly}
+              gridProps={{ gridSize: 6 }}
+              label={props.startTimeLabel ? props.startTimeLabel : "Start Time"}
+              inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
+              ampm={props.ampm ? true : false}
+              value={timeRange.startTime ? timeRange.startTime : null}
+              onChange={(v) => {
+                _handleChange(index, v, "startTime");
               }}
-            >
-              <CoreIcon>delete_outline</CoreIcon>
-            </CoreIconButton>
-          )}
+            />
+
+            <CoreTimePicker
+              readOnly={props.readOnly}
+              gridProps={{ gridSize: 6 }}
+              label={props.endTimeLabel ? props.endTimeLabel : "End Time"}
+              inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
+              ampm={props.ampm ? true : false}
+              value={timeRange.endTime ? timeRange.endTime : null}
+              onChange={(v) => {
+                _handleChange(index, v, "endTime");
+              }}
+            />
+          </CoreGrid>
+
+          <CoreBox gridProps={{ gridSize: 1, styleClasses: [CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_END] }} >
+            {index < 1 ? (
+              <CoreIconButton
+                onClick={addRange}
+              >
+                <CoreIcon>add</CoreIcon>
+              </CoreIconButton>
+            ) : (
+              <CoreIconButton
+                onClick={() => {
+                  deleteRange(index);
+                }}
+              >
+                <CoreIcon>delete_outline</CoreIcon>
+              </CoreIconButton>
+            )}
+          </CoreBox>
         </CoreGrid>
       ))}
 
-      <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
-        {props.helperText}
-      </CoreFormHelperText>
+      {helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {helperText}
+        </CoreFormHelperText>
+      )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
     </CoreBox>
   );
 }

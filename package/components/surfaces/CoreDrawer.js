@@ -20,7 +20,6 @@ export default function CoreDrawer(props) {
 
   const dispatch = useDispatch();
   const navigate = nativeUseNavigate();
-  const auth = useSelector((state) => state?.auth || {});
   const { menu, collapse } = useSelector((state) => state?.menu);
   const theme = useContext(ThemeContext);
 
@@ -49,26 +48,23 @@ export default function CoreDrawer(props) {
   };
 
   return (
-    <>
-      {auth && auth.uid && (
-        <NativeDrawer
-          anchor={props.anchor ? props.anchor : "left"}
-          variant="permanent"
-          open={open}
-          theme={theme}
-        >
-          <CoreMenu
-            menu={menu}
-            miniDrawer={true}
-            multiLevel={true}
-            open={open}
-            openCollapse={collapse}
-            OnMenuClick={OnMenuClick}
-            displayIcon={true}
-          />
-        </NativeDrawer>
-      )}
-    </>
+    <NativeDrawer
+      {...props}
+      anchor={props.anchor ? props.anchor : "left"}
+      variant="permanent"
+      open={open}
+      theme={theme}
+    >
+      <CoreMenu
+        menu={menu}
+        miniDrawer={true}
+        multiLevel={true}
+        open={open}
+        openCollapse={collapse}
+        OnMenuClick={OnMenuClick}
+        displayIcon={true}
+      />
+    </NativeDrawer>
   );
 }
 

@@ -4,14 +4,42 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeCheckbox } from "@wrappid/native";
 
+import CoreFormErrorText from "./CoreFormErrorText";
+import CoreFormHelperText from "./CoreFormHelperText";
+import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import CoreIcon from "../dataDisplay/CoreIcon";
+import CoreBox from "../layouts/CoreBox";
 
 export default function CoreCheckbox(props) {
   props = sanitizeComponentProps(CoreCheckbox, props);
-  return <NativeCheckbox {...props} />;
+  const { error, helperText } = props;
+  
+  return (
+    <CoreBox>
+      <NativeCheckbox {...props} />
+      
+      {helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {helperText}
+        </CoreFormHelperText>
+      )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
+    </CoreBox>
+  );
 }
 CoreCheckbox.validProps = [
+  {
+    description: "This prop helps users to fill forms field data",
+    name       : "helperText",
+    types      : [{ type: "string" }],
+  },
+  {
+    description: "If true or string, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
+    name       : "error",
+    types      : [{ type: "boolean" }, { type: "string" }],
+  },
   {
     description: "formik props.",
     name       : "formik",

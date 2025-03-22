@@ -37,7 +37,7 @@
 //   }
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -48,7 +48,7 @@
 //   )?.id;
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -77,7 +77,7 @@
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -117,7 +117,7 @@
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -133,7 +133,7 @@
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -159,7 +159,7 @@
 //   // console.log("SANITING", apiMeta.endpoint, others);
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -175,7 +175,7 @@
 //   // console.log("SANITING", apiMeta, others);
 //   return {
 //     values: formData,
-//     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.personID),
 //   };
 // }
 
@@ -256,7 +256,7 @@
 //     data["id"] = prescriptionInStore.id;
 //   }
 
-//--   data["doctorId"] = state?.profile?.basic?.id;
+//--   data["doctorId"] = state?.auth?.user?.personID;
 //   data["patientId"] = state?.prescription?.navData?.Person?.id;
 //   data["clinicId"] = state?.prescription?.clinic?.Clinic?.id;
 //   data["templateId"] = state?.prescription?.template?.id;
@@ -440,7 +440,7 @@
 
 // --export function SanRxRexharge(formData, apiMeta, state, others) {
 //   console.error("formData", formData);
-//   console.error("endpoint", apiMeta.endpoint.replace(":id", state?.auth?.uid));
+//   console.error("endpoint", apiMeta.endpoint.replace(":id", state?.auth?.user?.id));
 //   console.error("reduxData", apiMeta.reduxData);
 //   console.error("state", state);
 //   // var amountWithTax = formData.rxPackages + formData.rxPackages * 0.1;
@@ -456,7 +456,7 @@
 //           ?.ratio,
 //       amount: amountWithTax * 100,
 //     },
-//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.uid),
+//     endpoint: apiMeta.endpoint.replace(":id", state?.auth?.user?.id),
 //     reduxData: apiMeta.reduxData,
 //   };
 // }
@@ -471,7 +471,7 @@
 //           ? null
 //           : Number(formData?.clinicId?.Clinic?.id),
 //       patientId: state?.appointment?.patient?.Person?.id,
-//       doctorId: state?.profile?.basic?.id,
+//       doctorId: state?.auth?.user?.personID,
 //     },
 //     endpoint: apiMeta.endpoint,
 //     reduxData: apiMeta.reduxData,
@@ -502,7 +502,7 @@
 //           ? null
 //           : Number(formData?.clinicId?.Clinic?.id),
 //       patientId: formData["Patient.id"],
-//       doctorId: state?.profile?.basic?.id,
+//       doctorId: state?.auth?.user?.personID,
 //     },
 //     endpoint: endpoint,
 //     reduxData: apiMeta.reduxData,

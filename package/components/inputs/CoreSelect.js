@@ -5,13 +5,28 @@ import React from "react";
 import { NativeSelect } from "@wrappid/native";
 
 import CoreFormControl from "./CoreFormControl";
+import CoreFormErrorText from "./CoreFormErrorText";
+import CoreFormHelperText from "./CoreFormHelperText";
+import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
+import CoreBox from "../layouts/CoreBox";
 
 export default function CoreSelect(props) {
   props = sanitizeComponentProps(CoreSelect, props);
+  const { helperText, error } = props;
 
   return (
-    <NativeSelect {...props} />
+    <CoreBox>
+      <NativeSelect {...props} />
+
+      {helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {helperText}
+        </CoreFormHelperText>
+      )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
+    </CoreBox>
   );
 }
 CoreSelect.validProps = [

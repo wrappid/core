@@ -5,12 +5,13 @@ import { UtilityClasses } from "@wrappid/styles";
 
 const CoreClasses = {
   ...UtilityClasses,
-  
+
+  REQUEST_PROGRESS_BAR: "requestProgressBar",
   // ----------Widget Style Constants Ends-------
   /**
    * Business Entity Component
    */
-  BUSINESS_ENTITY: { INCLUDED_MODEL_CARD: "includedModelCard" },
+  BUSINESS_ENTITY     : { INCLUDED_MODEL_CARD: "includedModelCard" },
   
   DATA_DISPLAY: {
     AVATAR             : "avatar",
@@ -32,16 +33,17 @@ const CoreClasses = {
   
   // ----------Data Table Styles Starts----------
   DATA_TABLE: {
-    DATA_TABLE                  : "dataTable",
-    DATA_TABLE_BODY             : "dataTableBody",
-    DATA_TABLE_CONTAINER        : "dataTableContainer",
-    DATA_TABLE_FOOT             : "dataTableFoot",
-    DATA_TABLE_FULL_WIDTH_PANE  : "dataTableFullWidthPane",
-    DATA_TABLE_HEAD             : "dataTableHead",
-    DATA_TABLE_HEAD_TOP         : "dataTableHeadTop",
-    DATA_TABLE_MINI_WIDTH_PANE  : "dataTableMiniWidthPane",
-    DATA_TABLE_TOOLBAR          : "dataTableToolbar",
-    DATA_TABLE_TOOLBAR_CONTAINER: "dataTableToolbarContainer",
+    DATA_TABLE                         : "dataTable",
+    DATA_TABLE_BODY                    : "dataTableBody",
+    DATA_TABLE_CONTAINER               : "dataTableContainer",
+    DATA_TABLE_FOOT                    : "dataTableFoot",
+    DATA_TABLE_FULL_WIDTH_PANE         : "dataTableFullWidthPane",
+    DATA_TABLE_HEAD                    : "dataTableHead",
+    DATA_TABLE_HEAD_TOP                : "dataTableHeadTop",
+    DATA_TABLE_MINI_WIDTH_PANE         : "dataTableMiniWidthPane",
+    DATA_TABLE_TOOLBAR                 : "dataTableToolbar",
+    DATA_TABLE_TOOLBAR_CONTAINER_WEB   : "dataTableToolbarContainerWeb",
+    DATA_TABLE_TOOLBAR_CONTAINER_MOBILE: "dataTableToolbarContainerMobile"
   },
   
   FRAMEWORK: { CORE_FOOTER: "coreFooter" },
@@ -107,6 +109,7 @@ const CoreClasses = {
     /*
      * Container related classes
      */
+    MAIN_CONTAINER              : "apc_mainContainer",
     APPBAR_HEIGHT               : "appbarHeight",
     FULL_WIDTH                  : "fullWidth",
     FULL_WIDTH_HEIGHT           : "fullWidthHeight",
@@ -117,6 +120,7 @@ const CoreClasses = {
     LOGGED_OUT_CONTENT_CONTAINER: "loggedOutContentContainer",
     LOGGED_OUT_PAGE_CONTAINER   : "loggedOutPageContainer",
     MENU_POPOVER                : "menuPopover",
+    POPOVER                     : "popover",
     NO_MARGIN_P                 : "noMarginP",
     PAGE_CONTAINER              : "pageContainer",
     PROFILE_BAR_WIDTH           : "profileBarWidth",
@@ -125,6 +129,7 @@ const CoreClasses = {
     TABLE_ROW_ACTION_POPOVER    : "tableRowActionPopover",
     VERTICAL_CENTER             : "verticalCenter",
     VERTICAL_HORIZONTAL_CENTER  : "verticalHorizontalCenter",
+    APP_CONTAINER_DRAWER        : "appContainerDrawer"
   },
   
   MENU: {

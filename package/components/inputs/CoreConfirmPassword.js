@@ -14,13 +14,13 @@ export default function CoreConfirmPassword(props) {
     <CoreBox>
       <NativeConfirmPassword {...props} />
 
-      {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
-
       {props.helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {props.helperText}
         </CoreFormHelperText>
       )}
+      
+      {props.error && <CoreFormErrorText>{props.error}</CoreFormErrorText>}
     </CoreBox>
   );
 }

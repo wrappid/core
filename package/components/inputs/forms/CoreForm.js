@@ -810,12 +810,14 @@ class CoreForm extends Component {
     return (
       <>
         <CoreFormDialogs
+          key={`${formId}-core-form-dialog`}
           dialogset={this.state.dialogSet}
           content={this.state.dialogContent}
         />
 
         {rawFormSchema && !rawFormSchema[formId]?.inlineAction && (
           <CoreFormHeader
+            key={`${formId}-core-form-header`}
             mode={
               mode === FORM_EDIT_MODE ||
               (editForm[formId] && editForm[formId].editing)
@@ -889,9 +891,12 @@ class CoreForm extends Component {
           />
         )}
 
-        <CoreGrid coreId="coreFormGrid" {...this.props.designProps}>
+        <CoreGrid 
+          key={`${formId}-core-form-grid`}
+          {...this.props.designProps}>
           {addForm && addForm[formId] && addForm[formId].add && (
             <CoreEditForm
+              key={`${formId}-cf-edit`}
               styleClasses={this.props.styleClasses}
               forms={addForm}
               formId={formId}
@@ -932,6 +937,7 @@ class CoreForm extends Component {
                           <CoreBox
                             gridProps={{ gridSize: !editForm[formId]?.editing ? 10 : 12 }}>
                             <CoreEditForm
+                              key={`${formId}-cf-edit-${index}`}
                               styleClasses={this.props.styleClasses}
                               index={index}
                               forms={processedForms}
@@ -963,9 +969,10 @@ class CoreForm extends Component {
                           {!editForm[formId]?.editing && (
                             <CoreBox
                               gridProps={{ gridSize: 2 }}
-                              styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
+                              styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}>
                               {formDataReadLoading[formId] ? null : (
                                 <CoreFormHeaderActions
+                                  key={`${formId}-cfh-act-${index}`}
                                   mode={mode}
                                   index={index}
                                   id={initDataOb.id}
@@ -1080,8 +1087,10 @@ class CoreForm extends Component {
                     initData?.length > arrayDataLimit &&
                     this.state.hideFlag && (
                     <CoreBox
-                      styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}>
+                      key={`cf-show-${formId}`}
+                      styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.FLEX.DIRECTION_ROW]}>
                       <CoreLink
+                        key={`cf-show-link-${formId}`}
                         href={
                           !this.props.query
                             ? urls.SHOW_SPECIFIC.replace(":formId", formId)
@@ -1108,6 +1117,7 @@ class CoreForm extends Component {
             </>
           ) : allowEdit === false ? (
             <CoreEditForm
+              key={`${formId}-cf-edit`}
               styleClasses={this.props.styleClasses}
               forms={processedForms}
               formId={formId}
@@ -1221,7 +1231,7 @@ const mapDispatchToProps = dispatch => {
       formId,
       reload,
       reduxData,
-      pushSnack,
+      pushSnack = true,
       loadingType,
       resetLoadingType,
       reloadForm

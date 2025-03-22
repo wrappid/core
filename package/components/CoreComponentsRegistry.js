@@ -68,7 +68,7 @@ import CoreCheckbox from "./inputs/CoreCheckbox";
 import CoreColorInput from "./inputs/CoreColorInput";
 import CoreConfirmPasswordField from "./inputs/CoreConfirmPasswordField";
 import CoreContainedButton from "./inputs/CoreContainedButton";
-import CoreDatepicker from "./inputs/CoreDatepicker";
+import CoreDatePicker from "./inputs/CoreDatePicker";
 import CoreDateRangepicker from "./inputs/CoreDateRangepicker";
 import CoreDateTimePicker from "./inputs/CoreDateTimePicker";
 import CoreDateTimeRangePicker from "./inputs/CoreDateTimeRangePicker";
@@ -210,10 +210,10 @@ const CoreComponentsRegistry = {
   CoreContainer              : { category: "layouts", comp: CoreContainer },
   CoreCustomTabs             : { category: "navigation", comp: CoreCustomTabs },
   CoreDataTable              : { category: "dataDisplay", comp: CoreDataTable },
+  CoreDatePicker             : { category: "inputs", comp: CoreDatePicker },
   CoreDateRangepicker        : { category: "inputs", comp: CoreDateRangepicker },
   CoreDateTimePicker         : { category: "inputs", comp: CoreDateTimePicker },
   CoreDateTimeRangePicker    : { category: "inputs", comp: CoreDateTimeRangePicker },
-  CoreDatepicker             : { category: "inputs", comp: CoreDatepicker },
   CoreDialog                 : { category: "feedback", comp: CoreDialog },
   CoreDivider                : { category: "dataDisplay", comp: CoreDivider },
   CoreDrawer                 : { category: "surfaces", comp: CoreDrawer },

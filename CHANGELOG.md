@@ -2,6 +2,282 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.605](https://github.com/wrappid/core/compare/v0.0.604...v0.0.605) (2025-03-15)
+
+
+### Bug Fixes
+
+* **core:** :bug: reset contextSync after API call when serverSync changes ([5e83c6b](https://github.com/wrappid/core/commit/5e83c6b48ea928921514948eb8a3da39f204f554)), closes [#447](https://github.com/wrappid/core/issues/447)
+
+### [0.0.604](https://github.com/wrappid/core/compare/v0.0.603...v0.0.604) (2025-03-15)
+
+
+### Bug Fixes
+
+* **core:** :bug: handle undefined user photo and simplify auth state check ([ec14175](https://github.com/wrappid/core/commit/ec14175581676e596f5910d1da13d3de8f68e51e)), closes [#447](https://github.com/wrappid/core/issues/447)
+
+### [0.0.603](https://github.com/wrappid/core/compare/v0.0.602...v0.0.603) (2025-03-10)
+
+
+### Bug Fixes
+
+* **core:** :bug: correct state selection and destructuring ([6c3cdb7](https://github.com/wrappid/core/commit/6c3cdb7bc596dc464599a2bf2824c8e3d57231b4)), closes [#447](https://github.com/wrappid/core/issues/447)
+
+### [0.0.602](https://github.com/wrappid/core/compare/v0.0.601...v0.0.602) (2025-02-18)
+
+### [0.0.601](https://github.com/wrappid/core/compare/v0.0.600...v0.0.601) (2025-02-17)
+
+
+### Bug Fixes
+
+* **global:** :bug: change layout content grid to box ([ea5c066](https://github.com/wrappid/core/commit/ea5c066b1f36c471098f3452132042595af9ffde)), closes [#54](https://github.com/wrappid/core/issues/54)
+
+### [0.0.600](https://github.com/wrappid/core/compare/v0.0.599...v0.0.600) (2025-02-13)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix overflow of coreicon ([a3df588](https://github.com/wrappid/core/commit/a3df58812cb1f58cf1afeb9ef182dda03ec4e45f)), closes [#439](https://github.com/wrappid/core/issues/439)
+
+### [0.0.599](https://github.com/wrappid/core/compare/v0.0.598...v0.0.599) (2025-02-11)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix jarring effect ([0e64b65](https://github.com/wrappid/core/commit/0e64b656d9eaf0d8c15587992a1985a93620198a)), closes [#437](https://github.com/wrappid/core/issues/437)
+* **global:** :bug: fix the problem of profile card ([bae53f5](https://github.com/wrappid/core/commit/bae53f5de5397fe4ad2c2a532a7432493c62fc56)), closes [#437](https://github.com/wrappid/core/issues/437)
+
+### [0.0.598](https://github.com/wrappid/core/compare/v0.0.597...v0.0.598) (2025-02-07)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix bug of restart timmer ([a731872](https://github.com/wrappid/core/commit/a731872f3cb4c0f0d9c099feae381c480784d775)), closes [#316](https://github.com/wrappid/core/issues/316)
+
+### [0.0.597](https://github.com/wrappid/core/compare/v0.0.596...v0.0.597) (2025-01-29)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix bug related to local route ([6898996](https://github.com/wrappid/core/commit/68989961872de7512d452b040b5748a86e9909ca)), closes [#380](https://github.com/wrappid/core/issues/380)
+
+### [0.0.596](https://github.com/wrappid/core/compare/v0.0.595...v0.0.596) (2025-01-28)
+
+
+### Features
+
+* **core:** :sparkles: made a layout for app-builder ([e2ae6d8](https://github.com/wrappid/core/commit/e2ae6d849d28c6438d77c89f26416ad8ac3ecf36)), closes [#380](https://github.com/wrappid/core/issues/380)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: version mismatch and routes sync status handling ([cb8f2b7](https://github.com/wrappid/core/commit/cb8f2b7c80201556d2fa864949cadf263f18b60f))
+* **core:** :bug: fix Es lint related problem ([3458c26](https://github.com/wrappid/core/commit/3458c260a25e27a59dc6dcc71beecc3ea348bd97)), closes [#380](https://github.com/wrappid/core/issues/380)
+* **global:** :bug: app builder related files changes ([b76c543](https://github.com/wrappid/core/commit/b76c543418ff762a943e833fad9959494a26c154)), closes [#380](https://github.com/wrappid/core/issues/380)
+
+### [0.0.595](https://github.com/wrappid/core/compare/v0.0.594...v0.0.595) (2024-12-26)
+
+
+### Bug Fixes
+
+* **config:** :heavy_minus_sign: remove react-scripts ([7df949a](https://github.com/wrappid/core/commit/7df949a59fd1776f7afa8cc3d85c3e54f41c930d)), closes [#432](https://github.com/wrappid/core/issues/432)
+
+### [0.0.594](https://github.com/wrappid/core/compare/v0.0.593...v0.0.594) (2024-12-13)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: async select styleClasses added and menu routes registry context fix ([283763c](https://github.com/wrappid/core/commit/283763c3a55ad6b683894cce0fa8d94c422340ac))
+
+### [0.0.593](https://github.com/wrappid/core/compare/v0.0.592...v0.0.593) (2024-12-09)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix app version comp open link in new tab ([ecf2d11](https://github.com/wrappid/core/commit/ecf2d11737d9e74f87cbc35f03bf8d6074486bdb))
+* **core:** :bug: link open in new tab props missing in valid props ([1bfc4c3](https://github.com/wrappid/core/commit/1bfc4c32051da58ab8f0c7be216abe4bb56f2052))
+* **core:** :bug: terms and privacy link fix in app container ([ba6c668](https://github.com/wrappid/core/commit/ba6c668f5e9b13636b64dd7941bc7ee86c3ed488))
+
+### [0.0.592](https://github.com/wrappid/core/compare/v0.0.591...v0.0.592) (2024-11-26)
+
+
+### Bug Fixes
+
+* **core:** :bug: changes related to fix mobile application ([2d8518a](https://github.com/wrappid/core/commit/2d8518a62c1de1a7a85e13ed38953a2d2a9451db)), closes [#424](https://github.com/wrappid/core/issues/424)
+
+### [0.0.591](https://github.com/wrappid/core/compare/v0.0.590...v0.0.591) (2024-11-26)
+
+
+### Bug Fixes
+
+* **core:** :bug: handle impact of style package ([c43264e](https://github.com/wrappid/core/commit/c43264ecad0dc0b8feb600589bd5a8939dff71cd)), closes [#430](https://github.com/wrappid/core/issues/430)
+* **core:** :fire: core user chip working ([c07d1fc](https://github.com/wrappid/core/commit/c07d1fcb48b027a839f62c451a1454977e1e8ee2))
+* **core:** 🐛 handle impact of style package ([0d87ea0](https://github.com/wrappid/core/commit/0d87ea0cc46f550306e7acd661117206484feb70)), closes [#430](https://github.com/wrappid/core/issues/430)
+
+### [0.0.590](https://github.com/wrappid/core/compare/v0.0.589...v0.0.590) (2024-11-25)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: only form crud operation snack will appear ([c3e6541](https://github.com/wrappid/core/commit/c3e6541889d3f4866ba542b43c8f2fc92217bdf6))
+* **core:** :bug: addes the min and max width ([ca52ceb](https://github.com/wrappid/core/commit/ca52cebf944f26c51ebfbd206654121fa3d71551)), closes [#423](https://github.com/wrappid/core/issues/423)
+* **core:** :bug: fixed appbar spacing related issue ([634ee6b](https://github.com/wrappid/core/commit/634ee6b3deae59c4e5420f7294bf897907572949)), closes [#426](https://github.com/wrappid/core/issues/426)
+* **core:** :bug: resolve coreicon issue ([dcb92d3](https://github.com/wrappid/core/commit/dcb92d3d922e9bfd5f5ae66885e29219decdf0f9))
+* **core:** :rotating_light: linting issue resolve ([0601dd5](https://github.com/wrappid/core/commit/0601dd5f42c95d0c0d506e8494ecfa3c837a0db0))
+
+### [0.0.589](https://github.com/wrappid/core/compare/v0.0.588...v0.0.589) (2024-11-21)
+
+
+### Bug Fixes
+
+* **core:** :art: menu design fix ([1cd53b3](https://github.com/wrappid/core/commit/1cd53b301c9b7300a3c86e5abd27d2bb2542b720))
+* **core:** :bug: fix stylling related issue in CoreDataTable and related component ([9410ab1](https://github.com/wrappid/core/commit/9410ab1f8606654f629294b2a16c980313f7130d)), closes [#424](https://github.com/wrappid/core/issues/424)
+* **core:** :bug: fixes the snackabr ([74f137e](https://github.com/wrappid/core/commit/74f137e45c000e30f015c12d70478ffbc205e7d8)), closes [#423](https://github.com/wrappid/core/issues/423)
+* **core:** :bug: json component fix ([e50a16e](https://github.com/wrappid/core/commit/e50a16e9947b4bd4a18c691929c3019f8ca66543))
+
+### [0.0.588](https://github.com/wrappid/core/compare/v0.0.587...v0.0.588) (2024-11-21)
+
+
+### Features
+
+* **core:** :sparkles: made CoreContactLink component ([3ae6ea2](https://github.com/wrappid/core/commit/3ae6ea2699aec556f97057214efbba075b3ebbbb)), closes [#421](https://github.com/wrappid/core/issues/421)
+
+
+### Bug Fixes
+
+* **core:** :bug: fixed eslint error ([5fd5460](https://github.com/wrappid/core/commit/5fd54600b781b2d3c1ecba3de058d537b7dc829b)), closes [#421](https://github.com/wrappid/core/issues/421)
+* **core:** :bug: mobile related changes ([a826458](https://github.com/wrappid/core/commit/a826458d2485243a12f443563bb2aa36a2826d99)), closes [#421](https://github.com/wrappid/core/issues/421)
+
+### [0.0.587](https://github.com/wrappid/core/compare/v0.0.586...v0.0.587) (2024-11-19)
+
+
+### Bug Fixes
+
+* **core:** :bug: some basic fix ([3d562c1](https://github.com/wrappid/core/commit/3d562c1e883de26dc52b603e562d0ca44a711240))
+
+### [0.0.586](https://github.com/wrappid/core/compare/v0.0.585...v0.0.586) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :bug: app container layout fix ([15d74e2](https://github.com/wrappid/core/commit/15d74e2609fd608dcfc1acca0557dc0c5961179b))
+* **core:** :bug: auth impact handle ([f262605](https://github.com/wrappid/core/commit/f26260586f27abe4c76845755e6584f5e376e403))
+
+### [0.0.585](https://github.com/wrappid/core/compare/v0.0.584...v0.0.585) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :ambulance: remove sanity functions from core ([da3809e](https://github.com/wrappid/core/commit/da3809e553adfd49ac0e70b6e79b041a5514b4e6))
+
+### [0.0.584](https://github.com/wrappid/core/compare/v0.0.583...v0.0.584) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix core related issues and cleanup ([7ff1787](https://github.com/wrappid/core/commit/7ff1787d736e1cf2aa2686861d87c782a79737f1))
+
+### [0.0.583](https://github.com/wrappid/core/compare/v0.0.582...v0.0.583) (2024-11-16)
+
+
+### Bug Fixes
+
+* **core:** :zap: core multi time range and app container code cleanup ([48945ce](https://github.com/wrappid/core/commit/48945ce128acfaef92e96b9835d0e48fe4c8707c))
+
+### [0.0.582](https://github.com/wrappid/core/compare/v0.0.581...v0.0.582) (2024-11-15)
+
+### [0.0.581](https://github.com/wrappid/core/compare/v0.0.580...v0.0.581) (2024-11-14)
+
+
+### Bug Fixes
+
+* **core:** :adhesive_bandage: datatable and time picker fix ([ffab293](https://github.com/wrappid/core/commit/ffab293c6ae1b9a34a5675be2cd0139d34c1dbfe))
+* **global:** :bug: some border style property name changed, update this to resolve style changes ([bebc385](https://github.com/wrappid/core/commit/bebc385bece5fb45ca264981ca83dbd34d5ade77))
+
+### [0.0.580](https://github.com/wrappid/core/compare/v0.0.579...v0.0.580) (2024-11-12)
+
+
+### Bug Fixes
+
+* **core:** :art: sanity fix ([fba35c7](https://github.com/wrappid/core/commit/fba35c7f0f72fcaa28c2022d472a4e40850ba49c))
+* **core:** :bug: core form id attachment ([080710b](https://github.com/wrappid/core/commit/080710b738e40abc1f2ab5657d0bcdefe2880e20))
+
+### [0.0.579](https://github.com/wrappid/core/compare/v0.0.578...v0.0.579) (2024-11-08)
+
+
+### Bug Fixes
+
+* **core:** :fire: content container fix provided ([e128cdf](https://github.com/wrappid/core/commit/e128cdf758351654573124a9f4a7f6453d5e3de8))
+* **core:** :zap: linting fix ([c7b5684](https://github.com/wrappid/core/commit/c7b5684fa98b106e6808477a7dfba3ed221905f5))
+
+### [0.0.578](https://github.com/wrappid/core/compare/v0.0.577...v0.0.578) (2024-11-08)
+
+
+### Bug Fixes
+
+* **core:** :fire: core container fix ([5786fe9](https://github.com/wrappid/core/commit/5786fe9daf04454c0b2c6b4c4150973536e0c0a0))
+* **core:** :fire: core data table specific form and otp input fix ([661dc6a](https://github.com/wrappid/core/commit/661dc6aadebc3f3d6b702484fcbd6be571480115))
+* **core:** :fire: verified icons padding removal ([c1cac71](https://github.com/wrappid/core/commit/c1cac7190a15b57dd8ec17d903a0585197ad4afe))
+* **core:** :zap: data table form data manipulation hook ([17341c7](https://github.com/wrappid/core/commit/17341c71c01b2a091e6f209b80b618ba827344e4))
+* **core:** :zap: otp related issues and component specific issues ([9fb20e9](https://github.com/wrappid/core/commit/9fb20e992ad2d6f43eb0be005dc7892cce0e6550))
+
+### [0.0.577](https://github.com/wrappid/core/compare/v0.0.576...v0.0.577) (2024-11-08)
+
+
+### Features
+
+* **global:** :sparkles: add dimension component ([34f1a20](https://github.com/wrappid/core/commit/34f1a20f4afd83073f04683b84c0a7ece47f418a)), closes [#417](https://github.com/wrappid/core/issues/417)
+
+### [0.0.576](https://github.com/wrappid/core/compare/v0.0.575...v0.0.576) (2024-11-06)
+
+
+### Bug Fixes
+
+* **core:** :art: code cleanup ([2ad0c9a](https://github.com/wrappid/core/commit/2ad0c9aad09147683f45b464c1c03e7a421b1043))
+* **core:** :zap: handling local action ([da109a2](https://github.com/wrappid/core/commit/da109a281dad3ff3b37482d36b6fdac6ea49c5e7))
+
+### [0.0.575](https://github.com/wrappid/core/compare/v0.0.574...v0.0.575) (2024-11-06)
+
+
+### Features
+
+* **core:** :fire: component DatePicker supports minDateFunc and maxDateFunc and special values ([f58dd48](https://github.com/wrappid/core/commit/f58dd48c0a6b8dc9fdc2e80fb122bda0ac7f4512))
+
+
+### Bug Fixes
+
+* **core:** :art: core input consistency and linting fix ([507d1f0](https://github.com/wrappid/core/commit/507d1f017a526271252cea136d567c2c55e20b30))
+
+### [0.0.574](https://github.com/wrappid/core/compare/v0.0.573...v0.0.574) (2024-11-05)
+
+
+### Bug Fixes
+
+* **core:** :zap: profile popover fix ([b709056](https://github.com/wrappid/core/commit/b7090568f3eabdd4768cf734d74da46bd8706a74))
+
+### [0.0.573](https://github.com/wrappid/core/compare/v0.0.572...v0.0.573) (2024-11-04)
+
+### [0.0.572](https://github.com/wrappid/core/compare/v0.0.571...v0.0.572) (2024-11-04)
+
+
+### Bug Fixes
+
+* **core:** :bug: mask email fix ([7f92c92](https://github.com/wrappid/core/commit/7f92c922e8ce1ca4ba94d70382258ba22574f74f))
+
+### [0.0.571](https://github.com/wrappid/core/compare/v0.0.569...v0.0.571) (2024-11-02)
+
+
+### Bug Fixes
+
+* **core:** :bug: auth impact handle ([b7d223f](https://github.com/wrappid/core/commit/b7d223facc10734f1eb217f027cc93ded4f7583b))
+
+### [0.0.570](https://github.com/wrappid/core/compare/v0.0.569...v0.0.570) (2024-11-02)
+
+
+### Bug Fixes
+
+* **core:** :bug: auth impact handle ([b7d223f](https://github.com/wrappid/core/commit/b7d223facc10734f1eb217f027cc93ded4f7583b))
+
 ### [0.0.569](https://github.com/wrappid/core/compare/v0.0.568...v0.0.569) (2024-10-28)
 
 ### [0.0.568](https://github.com/wrappid/core/compare/v0.0.567...v0.0.568) (2024-10-17)

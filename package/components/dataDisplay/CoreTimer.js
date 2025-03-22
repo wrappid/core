@@ -44,7 +44,18 @@ export default function CoreTimer(props) {
   }, [isTimerRunning, timer]);
 
   const handleStart = () => {
+    setTimer(seconds);
     setIsTimerRunning(true);
+  };
+
+  const handleAction = () => {
+    if (action) {
+      action();
+    } else {
+      defaultAction();
+    }
+    setTimer(seconds); // Reset timer after action
+    setIsTimerRunning(true); // Reset running state
   };
 
   return (
@@ -55,7 +66,7 @@ export default function CoreTimer(props) {
           label={actionLabel || "Start Timer"}
         />
       ) : timer === 0 ? (
-        <CoreTextButton onClick={action || defaultAction} label={actionLabel} />
+        <CoreTextButton onClick={handleAction} label={actionLabel} />
       ) : (
         <CoreTypographyBody2
           styleClasses={[CoreClasses.TEXT.TEXT_CENTER, CoreClasses.MARGIN.MT1, CoreClasses.COLOR.TEXT_PRIMARY]}

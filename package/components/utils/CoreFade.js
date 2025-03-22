@@ -53,7 +53,13 @@ export default function CoreProfilePopOver(props) {
   return (
     <CoreBox sx={{ width: "400px" }}>
       <CoreGrid
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.LAYOUT.FULL_WIDTH, CoreClasses.PADDING.P1]}
+        styleClasses={[
+          CoreClasses.DISPLAY.FLEX,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+          CoreClasses.LAYOUT.FULL_WIDTH,
+          CoreClasses.PADDING.P1
+        ]}
       >
         <CoreAvatar
           gridProps={{ gridSize: 2 }}

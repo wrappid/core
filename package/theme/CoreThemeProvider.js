@@ -3,14 +3,16 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeThemeProvider } from "@wrappid/native";
 import {
-  DEFAULT_THEME, WrappidDataContext, WrappidDispatchContext, UPDATE_THEME 
+  DEFAULT_THEME,
+  UPDATE_THEME,
+  WrappidDataContext, WrappidDispatchContext
   // eslint-disable-next-line import/no-unresolved
 } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import { HTTP } from "../config/constants";
 import { apiRequestAction } from "../store/action/appActions";
-import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_LOCAL_THEMES_SUCCESS, SET_COMBINED_THEMES } from "../store/types/themeTypes";
+import { GET_THEMES_FAILURE, GET_THEMES_SUCCESS, SET_COMBINED_THEMES, SET_LOCAL_THEMES_SUCCESS } from "../store/types/themeTypes";
 import { mergeJSON } from "../utils/jsonUtils";
 
 export default function CoreThemeProvider(props) {
@@ -24,8 +26,8 @@ export default function CoreThemeProvider(props) {
   const { themes: storedThemes } = useSelector((state) => state?.theme);
   const { local: localThemes, server: serverThemes } = storedThemes;
   const { userThemeID } = useSelector((state) => state?.app);
-  const { uid, accessToken } = useSelector((state) => state?.auth || {});
-  let authenticated = uid && accessToken ? true : false;
+  const { accessToken } = useSelector((state) => state?.auth || {});
+  let authenticated = accessToken ? true : false;
 
   const [combinedThemes, setCombinedThemes] = React.useState([]);
   const [currentTheme, setCurrentTheme] = React.useState(DEFAULT_THEME);

@@ -24,7 +24,7 @@ export default function CoreTypographyOverline(props) {
 
   return props?.limitChars ? (
     <CoreTypography
-      variant="caption"
+      variant="overline"
       paragraph={true}
       gutterBottom={true}
       styleClasses={styleClasses}

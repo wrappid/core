@@ -24,7 +24,7 @@ export default function CoreTypographySubtitle2(props) {
 
   return props?.limitChars ? (
     <CoreTypography
-      variant="caption"
+      variant="subtitle2"
       paragraph={true}
       gutterBottom={true}
       styleClasses={styleClasses}

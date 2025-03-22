@@ -2,13 +2,14 @@
 import React, { useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { UtilityClasses, ThemeContext } from "@wrappid/styles";
+import { ThemeContext, UtilityClasses } from "@wrappid/styles";
 import { useDispatch } from "react-redux";
 
 import CoreDataTableRowContent from "./CoreDataTableRowContent";
 import CoreFlatList from "./CoreFlatList";
 // eslint-disable-next-line import/no-unresolved
 import { UPDATE_QUERY_PAGE_DATA } from "../../../store/types/dataManagementTypes";
+import CoreClasses from "../../../styles/CoreClasses";
 import { getLabel } from "../../../utils/stringUtils";
 import CoreCheckbox from "../../inputs/CoreCheckbox";
 import CoreTextButton from "../../inputs/CoreTextButton";
@@ -93,6 +94,16 @@ export default function CoreDataTableRow(props) {
 
         {/* Table Row Data */}
         <CoreTableRow
+          styleClasses={[
+            ...(
+              enableDetailsPane &&
+              _showDetailsPane &&
+              detailedRowId === rowData.id
+                ? [CoreClasses.BORDER.BORDER_LEFT, CoreClasses.BORDER.BORDER_PRIMARY]
+                : []
+            ),
+            CoreClasses.CURSOR.CURSOR_POINTER
+          ]}
           sx={{
             borderLeft: enableDetailsPane &&
             _showDetailsPane &&
@@ -203,7 +214,7 @@ export default function CoreDataTableRow(props) {
             >
               <CoreStack
                 direction="column"
-                styleClasses={[UtilityClasses.PADDING.PY5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, UtilityClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+                styleClasses={[UtilityClasses.PADDING.PY5, CoreClasses.DISPLAY.FLEX, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, UtilityClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
               >
                 <CoreTypographyBody1>
                 No {getLabel(tableUUID).toLocaleLowerCase()}(s) available
@@ -241,7 +252,7 @@ export default function CoreDataTableRow(props) {
             }
           >
             <CoreBox
-              styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses.PADDING.P5, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+              styleClasses={[UtilityClasses?.DISPLAY?.FLEX, UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER, UtilityClasses?.PADDING?.P5]}
             >
               <CoreTypographyBody1>{loading ? "Loading..." : "Please select a column"}</CoreTypographyBody1>
             </CoreBox>

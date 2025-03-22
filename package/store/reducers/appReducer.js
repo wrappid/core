@@ -2,14 +2,16 @@ import {
   API_VERSION_ERROR,
   API_VERSION_LOADING,
   API_VERSION_SUCCESS,
-  REMOVE_SNACK_MESSAGE,
+  APP_VERSION_SET,
   CLEAR_SNACK_MESSAGE,
   GET_ROUTE_FAILURE,
   GET_ROUTE_SUCCESS,
   MESSAGE_SHOWED,
   PUSH_SNACK_MESSAGE,
+  REMOVE_SNACK_MESSAGE,
   RESET_LOADING,
   RESET_PROGRESS_BAR,
+  RESET_STATE,
   SEND_OTP_ERROR,
   SEND_OTP_LOADING,
   SEND_OTP_SUCCESS,
@@ -24,11 +26,13 @@ const initState = {
     error  : false,
     loading: false,
     success: false,
-    version: "N/A",
+    version: null,
   },
+  appVersion           : null,
+  autoHideDuration     : 5000,
   errorMsg             : false,
   loading              : false,
-  requestProgress      : { visible: false },
+  requestProgress      : { visible: true },
   routes               : [],
   sendOtpError         : false,
   sendOtpLoading       : false,
@@ -40,6 +44,12 @@ const initState = {
 
 const appReducer = (state = initState, action) => {
   switch (action.type) {
+    case APP_VERSION_SET:
+      return {
+        ...state,
+        appVersion: action?.payload
+      };
+
     case API_VERSION_LOADING:
       // eslint-disable-next-line no-console
       console.log("------API_VERSION_LOADING REDUCER TYPE CALLED------");
@@ -85,9 +95,16 @@ const appReducer = (state = initState, action) => {
       console.log("------PUSH_MESSAGE REDUCER TYPE CALLED------");
       // eslint-disable-next-line no-console
       console.log("WITH PAYLOAD = ", action?.payload);
+      if(state?.snackMessagesMaxCount && state?.snackMessages?.length >= state?.snackMessagesMaxCount) {
+        return {
+          ...state,
+          
+          snackMessages: [...(state?.snackMessages || []).slice(1), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
+        };
+      }
       return {
         ...state,
-        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, shown: false }],
+        snackMessages: [...(state?.snackMessages || []), { ...action?.payload, autoHideDuration: state.autoHideDuration, shown: false }],
       };
 
     case MESSAGE_SHOWED:
@@ -179,6 +196,9 @@ const appReducer = (state = initState, action) => {
         userThemeID: action.payload
       };
 
+    case RESET_STATE:
+      return initState;
+    
     default:
       return state;
   }

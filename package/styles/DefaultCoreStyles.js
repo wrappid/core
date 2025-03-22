@@ -17,8 +17,8 @@ export default class DefaultCoreStyles extends BaseStyle {
     super();
 
     this.style = {
-      appBarLogo: { height: "30px" + IMPORTANT },
-
+      appBarLogo          : { height: "30px" + IMPORTANT },
+      appContainerDrawer  : { top: HEADING_TOP_MARGIN },
       appDrawerPaperHeight: { height: `calc(100% - ${HEADING_TOP_MARGIN})` + IMPORTANT },
       /**
        * Core App Bar Styles
@@ -27,6 +27,13 @@ export default class DefaultCoreStyles extends BaseStyle {
       auditData           : {},
 
       avatar: {},
+
+      requestProgressBar: {
+        top   : HEADING_TOP_MARGIN,
+        zIndex: "11" + IMPORTANT,
+        ...this.defaultUtilityStyles.vw100,
+        ...this.defaultUtilityStyles.positionFixed
+      },
 
       avatarLarge: { height: "72px" + IMPORTANT, width: "72px" + IMPORTANT },
 
@@ -40,10 +47,14 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       basicInfoCard: {},
 
+      apc_mainContainer: { minHeight: "calc(100vh - 109px)" },
+
       contentContainer: {
         ...this.defaultUtilityStyles.w100,
-        ...this.defaultUtilityStyles.overflowYAuto,
-        ...this.defaultUtilityStyles.mxN1,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.overflowYAuto,
+        // ...this.defaultUtilityStyles.mxN1,
+        // ...this.defaultUtilityStyles.pt1,
         marginTop: HEADING_TOP_MARGIN + IMPORTANT,
       },
 
@@ -63,6 +74,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       counterWidgetCounter: {
+        ...this.defaultUtilityStyles.displayFlex,
         ...this.defaultUtilityStyles.flexDirectionColumn,
         ...this.defaultUtilityStyles.justifyContentFlexEnd,
         ...this.defaultUtilityStyles.alignItemsCenter,
@@ -97,40 +109,52 @@ export default class DefaultCoreStyles extends BaseStyle {
       dataTableHeadTop: {},
 
       dataTableMiniWidthPane: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderRight,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderRight,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.positionSticky,
         ...this.defaultUtilityStyles.overflowYAuto,
         ...this.defaultUtilityStyles.overflowXHidden,
-        height: "calc(100vh - 118px)" + IMPORTANT,
-        top   : "53px" + IMPORTANT
+        height: "calc(100vh - 108px)" + IMPORTANT,
+        top   : "108px" + IMPORTANT
       },
-
+      
       dataTableToolbar: {
-        ...this.defaultUtilityStyles.border,
-        ...this.defaultUtilityStyles.borderBottom,
-        ...this.defaultUtilityStyles.borderPrimaryLight,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.border,
+        // ...this.defaultUtilityStyles.borderBottom,
+        // ...this.defaultUtilityStyles.borderPrimaryLight,
         ...this.defaultUtilityStyles.pr1,
       },
 
-      dataTableToolbarContainer: { ...this.defaultUtilityStyles.bgWhite },
-
+      dataTableToolbarContainerWeb: {
+        ...this.defaultUtilityStyles.bgWhite,
+        ...this.defaultUtilityStyles.positionSticky,
+        top   : "64px" + IMPORTANT,
+        zIndex: 1024 + IMPORTANT
+      },
+      dataTableToolbarContainerMobile: {
+        ...this.defaultUtilityStyles.bgWhite,
+        ...this.defaultUtilityStyles.positionSticky,
+        top   : "45px" + IMPORTANT,
+        zIndex: 1024 + IMPORTANT
+      },
       devBorder: { ...this.defaultUtilityStyles.border },
 
       fiContentWidth: {},
 
       fitContentHeight: {},
 
-      flexBox: { display: "flex" + IMPORTANT },
+      flexBox: { ...this.defaultUtilityStyles.displayFlex },
 
       /**
        * App Styles
        */
       footer: {
         backgroundColor: this.defaultUtilityStyles.bgSecondaryLight + IMPORTANT,
-        padding        : DEFAULT_PADDING + PX_TAG + IMPORTANT,
-        textAlign      : "center" + IMPORTANT,
+        ...this.defaultUtilityStyles.p1,
+        ...this.defaultUtilityStyles.textCenter,
       },
 
       fullHeight: { height: "100%" + IMPORTANT },
@@ -156,9 +180,9 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       includedModelCard: {
-        borderLeft : `1px solid ${this.defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
-        margin     : "8px" + IMPORTANT,
-        paddingLeft: "8px" + IMPORTANT,
+        borderLeft: `1px solid ${this.defaultUtilityStyles.bgPrimaryLight}` + IMPORTANT,
+        ...this.defaultUtilityStyles.m1,
+        ...this.defaultUtilityStyles.pl1
       },
 
       listItem: {},
@@ -184,7 +208,8 @@ export default class DefaultCoreStyles extends BaseStyle {
 
       menuItemTextItem: {},
 
-      menuPopover: { minWidth: "75vw" },
+      menuPopover: { ...this.defaultUtilityStyles.minVw75 },
+      popover    : {},
 
       miniDrawerListItemButton: {},
 
@@ -193,16 +218,16 @@ export default class DefaultCoreStyles extends BaseStyle {
       modalBody: { padding: 40 + IMPORTANT },
 
       modalContainer: {
-        borderRadius: "8px" + IMPORTANT,
-        boxShadow   : 24 + IMPORTANT,
-        left        : "50%" + IMPORTANT,
-        minHeight   : "60%" + IMPORTANT,
-        outline     : 0 + IMPORTANT,
-        padding     : DEFAULT_PADDING,
-        position    : "absolute" + IMPORTANT,
-        top         : "50%" + IMPORTANT,
-        transform   : "translate(-50%, -50%)" + IMPORTANT,
-        width       : "30%" + IMPORTANT,
+        ...this.defaultUtilityStyles.borderRounded1,
+        ...this.defaultUtilityStyles.p1,
+        ...this.defaultUtilityStyles.positionAbsolute,
+        boxShadow: 24 + IMPORTANT,
+        left     : "50%" + IMPORTANT,
+        minHeight: "60%" + IMPORTANT,
+        outline  : 0 + IMPORTANT,
+        top      : "50%" + IMPORTANT,
+        transform: "translate(-50%, -50%)" + IMPORTANT,
+        width    : "30%" + IMPORTANT,
       },
 
       modalHeader: { padding: 20 + IMPORTANT },
@@ -224,12 +249,12 @@ export default class DefaultCoreStyles extends BaseStyle {
         maxWidth : "70vw" + IMPORTANT,
         minWidth : "300px" + IMPORTANT,
         overflowY: "auto" + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
 
       popoverFooter: {
         maxWidth: "70vw" + IMPORTANT,
-        padding : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
 
       popoverHeader: {
@@ -250,7 +275,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       },
 
       seperatorIconItem: {
-        display  : "none" + IMPORTANT,
+        ...this.defaultUtilityStyles.displayNone,
         height   : 0 + IMPORTANT,
         minHeight: 0 + IMPORTANT,
       },
@@ -267,21 +292,23 @@ export default class DefaultCoreStyles extends BaseStyle {
         ...this.defaultUtilityStyles.px1,
       },
 
-      tableRowActionPopover                 : { backgroundColor: "transparent" + IMPORTANT },
+      tableRowActionPopover                 : { ...this.defaultUtilityStyles.bgTransparent },
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.defaultUtilityStyles.p1
       },
       ucImg          : { width: "50%" + IMPORTANT },
       verifiedSuccess: {
         ...this.defaultUtilityStyles.textSuccessDark,
-        ...this.defaultUtilityStyles.pl1,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
       },
       verifiedWarning: {
         ...this.defaultUtilityStyles.textWarningDark,
-        ...this.defaultUtilityStyles.pl1,
+        // eslint-disable-next-line etc/no-commented-out-code
+        // ...this.defaultUtilityStyles.pl1,
         fontSize: "0.9rem" + IMPORTANT,
       },
       /**
@@ -328,7 +355,7 @@ export default class DefaultCoreStyles extends BaseStyle {
       leftDrawerLayoutHeader          : {},
       leftDrawerLayoutLeftDrawer      : {},
       leftDrawerLayoutRightContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
-      rightDrawerLayoutHeader         : {},
+      rightDrawerLayoutHeader         : { ...this.defaultUtilityStyles.positionSticky, top: "64px", zIndex: 10 },
       rightDrawerLayoutRightDrawer    : {},
       rightDrawerLayoutLeftContent    : { ...this.defaultUtilityStyles.displayFlex, ...this.defaultUtilityStyles.flexDirectionColumn },
       leftRightDrawerLayoutHeader     : {},

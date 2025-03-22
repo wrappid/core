@@ -1,11 +1,10 @@
 /* eslint-disable id-length */
-import React, { useState } from "react";
+import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { WEB_PLATFORM } from "@wrappid/core";
 // eslint-disable-next-line import/no-unresolved
-// eslint-disable-next-line import/no-unresolved
-import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
+import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 import CoreToolbar from "./CoreToolbar";
@@ -16,7 +15,7 @@ import CoreAvatar from "../dataDisplay/CoreAvatar";
 import CoreIcon from "../dataDisplay/CoreIcon";
 import CoreImage from "../dataDisplay/CoreImage";
 import CoreIconButton from "../inputs/CoreIconButton";
-import CoreStack from "../layouts/CoreStack";
+import CoreBox from "../layouts/CoreBox";
 import CoreLink from "../navigation/CoreLink";
 import CorePopover from "../utils/CorePopover";
 import CoreProfilePopOver from "../utils/CoreProfilePopOver";
@@ -28,11 +27,13 @@ export default function DefaultAppBarContent(props) {
   const dispatch = useDispatch();
   let { config } = React.useContext(WrappidDataContext);
   let { appLogo } = React.useContext(CoreResourceContext);
-  const auth = useSelector((state) => state?.auth || {});
+  const { accessToken = null, user: { photo = null } = {} } = useSelector((state) => state?.auth || {});
   const mdm = useSelector((state) => state.mdm);
-  const [getSettingMetaFlag, setGetSettingMetaFlag] = useState(false);
-  const [platform, setPlatform] = useState(null);
-  const [appbarType, setAppbarType] = useState("primary");
+  const [getSettingMetaFlag, setGetSettingMetaFlag] = React.useState(false);
+  const [platform, setPlatform] = React.useState(null);
+  const [appbarType, setAppbarType] = React.useState("primary");
+
+  const authenticated = !!accessToken;
 
   const {
     handleDrawer,
@@ -44,9 +45,9 @@ export default function DefaultAppBarContent(props) {
    * state driven component enablement of the app bar content
    */
   // eslint-disable-next-line no-unused-vars
-  const [logoEnabled, setLogoEnabled] = useState(_logoEnabled);
+  const [logoEnabled, setLogoEnabled] = React.useState(_logoEnabled);
   // eslint-disable-next-line no-unused-vars
-  const [leftMenuEnabled, setLeftMenuEnabled] = useState(_leftMenuEnabled);
+  const [leftMenuEnabled, setLeftMenuEnabled] = React.useState(_leftMenuEnabled);
 
   React.useEffect(() => {
     /**
@@ -73,9 +74,9 @@ export default function DefaultAppBarContent(props) {
       if (mdm.getSettingMetaSuccess) {
         setGetSettingMetaFlag(false);
       }
-      dispatch(getSettingMeta(null, auth.accessToken));
+      dispatch(getSettingMeta(null, accessToken));
     }
-  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, auth.accessToken]);
+  }, [getSettingMetaFlag, mdm.getSettingMetaSuccess, dispatch, accessToken]);
 
   /* AppBar PopOver */
   const [_appbarPopOverAnchorEl, set_appbarPopOverAnchorEl] =
@@ -105,20 +106,26 @@ export default function DefaultAppBarContent(props) {
   return (
     <>
       <CoreToolbar
-        styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        disableGutters={true}
+        styleClasses={[
+          platform === WEB_PLATFORM ? CoreClasses.PADDING.PX2 : CoreClasses.PADDING.PX0,
+          CoreClasses.DISPLAY.FLEX,
+          CoreClasses.FLEX.DIRECTION_ROW,
+          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+          CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER
+        ]}
       >
 
-        <CoreStack
-          direction="row"
-          styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+        <CoreBox
+          styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
         >
           {leftMenuEnabled && (
             <CoreIconButton
-              styleClasses={[...appBarTextStyle, CoreClasses.MARGIN.ML_N2]}
+              styleClasses={[...appBarTextStyle]}
               aria-label="open drawer"
               onClick={handleDrawer}
               edge="start"
-              disabled={!auth?.uid}
+              disabled={!authenticated}
             >
               <CoreIcon>menu</CoreIcon>
             </CoreIconButton>
@@ -133,14 +140,13 @@ export default function DefaultAppBarContent(props) {
                 alt="WRAPPID" />
             </CoreLink>
           )}
-        </CoreStack>
+        </CoreBox>
 
         {/* authenticated user content */}
-        {auth && auth.uid && (
-          <CoreStack
-            direction="row"
+        {authenticated && (
+          <CoreBox
             NativeId="appBarMenuGrid"
-            styleClasses={[CoreClasses.WIDTH.W_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+            styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
           >
             {mdm?.settingMeta?.find((f) => f.name === "appBarWalet")?.value
               ?.flag && (
@@ -194,11 +200,11 @@ export default function DefaultAppBarContent(props) {
               }}
             >
               <CoreAvatar
-                src={auth?.photo}
+                src={photo}
                 styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_SMALL]}
               />
             </CoreIconButton>
-          </CoreStack>
+          </CoreBox>
         )}
       </CoreToolbar>
 

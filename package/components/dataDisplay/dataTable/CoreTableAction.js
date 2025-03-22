@@ -2,12 +2,13 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate, NativeFlatList } from "@wrappid/native";
+import { NativeFlatList } from "@wrappid/native";
 
+import { coreUseNavigate } from "../../../helper/routerHelper";
 import CoreResponsiveButton from "../../inputs/CoreResponsiveButton";
 
 export default function CoreTableAction(props) {
-  const navigation = nativeUseNavigate();
+  const navigation = coreUseNavigate();
   const {
     tableUUID,
     actions = [],

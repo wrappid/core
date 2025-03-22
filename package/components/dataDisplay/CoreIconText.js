@@ -21,7 +21,7 @@ export default function CoreIconText(props) {
     tailIcon,
     tailIconType,
     size,
-    tailIconSize,
+    // tailIconSize,
     tailIconColor,
     limitChars,
     hideSeeMore,
@@ -32,9 +32,10 @@ export default function CoreIconText(props) {
     if (size === "small") {
       return (
         <CoreTypographyCaption
-          styleClasses={[...(styleClasses || [])]}
           hideSeeMore={hideSeeMore}
           limitChars={limitChars}
+          gutterBottom={false}
+          paragraph={false}
         >
           {text}
         </CoreTypographyCaption>
@@ -42,9 +43,10 @@ export default function CoreIconText(props) {
     } else {
       return (
         <CoreTypographyBody2
-          styleClasses={[...(styleClasses || [])]}
           hideSeeMore={hideSeeMore}
           limitChars={limitChars}
+          gutterBottom={false}
+          paragraph={false}
         >
           {text}
         </CoreTypographyBody2>
@@ -79,10 +81,15 @@ export default function CoreIconText(props) {
   };
 
   return (
-    <CoreStack direction="row" spacing={1}>
+    <CoreStack
+      direction="row"
+      spacing={1}
+      styleClasses={[...(styleClasses || []), CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+    >
       <CoreIcon
         size={size}
-        styleClasses={getIconStyleClass(iconColor)}
+        color={iconColor}
+        // styleClasses={getIconStyleClass(iconColor)}
         type={type}
       >
         {icon}
@@ -103,7 +110,7 @@ export default function CoreIconText(props) {
 
       {tailIcon && (
         <CoreIcon
-          size={tailIconSize || size}
+          size={size}
           styleClasses={getIconStyleClass(tailIconColor)}
           type={tailIconType || type}
         >

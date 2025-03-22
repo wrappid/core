@@ -5,12 +5,13 @@ import React from "react";
 import { UtilityClasses } from "@wrappid/styles";
 
 import { DATA_TABLE_CONST } from "../../../config/dataTableConstants";
+import CoreClasses from "../../../styles/CoreClasses";
 import CoreStack from "../../layouts/CoreStack";
 import CoreCardHeader from "../../surfaces/CoreCardHeader";
 import CoreDivider from "../CoreDivider";
-import CoreTypographyBody1 from "../CoreTypographyBody1";
 import CoreTypographyCaption from "../CoreTypographyCaption";
 import CoreTypographySubtitle1 from "../CoreTypographySubtitle1";
+import CoreTypographySubtitle2 from "../CoreTypographySubtitle2";
 
 export default function CoreDataTableRowSummary(props) {
   const {
@@ -32,26 +33,29 @@ export default function CoreDataTableRowSummary(props) {
 
   const getTitleComponent = () => {
     return priority1Data ? (
-      <CoreTypographySubtitle1
+      <CoreTypographySubtitle2
+        styleClasses={[CoreClasses.MARGIN.MB0]}
         limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
         hideSeeMore={true}
       >
         {priority1Data.data}
-      </CoreTypographySubtitle1>
+      </CoreTypographySubtitle2>
     ) : (
       ""
     );
+    // return priority1Data && (priority1Data?.data || "");
   };
   const getSubheaderComponent = () => {
     return (
       <>
         {priority2Data ? (
-          <CoreTypographyBody1
+          <CoreTypographySubtitle1
+            styleClasses={[CoreClasses.MARGIN.MB0]}
             limitChars={DATA_TABLE_CONST.TABLE_CELL_MAX_CHARS}
             hideSeeMore={true}
           >
             {priority2Data.data}
-          </CoreTypographyBody1>
+          </CoreTypographySubtitle1>
         ) : (
           ""
         )}
@@ -101,6 +105,17 @@ export default function CoreDataTableRowSummary(props) {
     );
   };
 
+  const getHeaderProps = () => {
+    let headerProps = {
+      avatar      : getImageComponent(),
+      styleClasses: [UtilityClasses.PADDING.P0],
+      subheader   : getSubheaderComponent(),
+      title       : getTitleComponent(),
+    };
+
+    return headerProps;
+  };
+
   return (
     <>
       {summaryRendererComponent ? (
@@ -111,10 +126,7 @@ export default function CoreDataTableRowSummary(props) {
       ) : (
         <>
           <CoreCardHeader
-            avatar={getImageComponent()}
-            title={getTitleComponent()}
-            subheader={getSubheaderComponent()}
-            styleClasses={[UtilityClasses.PADDING.P0]}
+            {...getHeaderProps()}
           />
 
           {
@@ -124,7 +136,7 @@ export default function CoreDataTableRowSummary(props) {
               <CoreStack
                 direction="row"
                 spacing={1}
-                styleClasses={[UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
+                styleClasses={[UtilityClasses.DISPLAY.FLEX, UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END]}
               >
                 {/* hasId &&  */ getIdComponent()}
                 {/* hasStatus &&  */ getStatusComponent()}

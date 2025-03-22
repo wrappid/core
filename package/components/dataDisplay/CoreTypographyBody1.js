@@ -12,12 +12,12 @@ import CoreLink from "../navigation/CoreLink";
 export default function CoreTypographyBody1(props) {
   props = sanitizeComponentProps(CoreTypographyBody1, props);
   const {
-    hideSeeMore = false,
+    hideSeeMore = true,
     limitChars,
     styleClasses,
     ...restProps
   } = props;
-  const [seeMore, setSeeMore] = useState(true);
+  const [seeMore, setSeeMore] = useState(!hideSeeMore);
   const toggleSeeMore = () => {
     setSeeMore(!seeMore);
   };
@@ -31,20 +31,26 @@ export default function CoreTypographyBody1(props) {
       {...restProps}
     >
       <CoreSpan>
-        {typeof props?.children === "string" && seeMore
-          ? limitChars > props?.children?.length
-            ? props?.children
-            : props?.children.slice(0, limitChars) + "..."
-          : props?.children}
+        {typeof props?.children === "string" && (
+          seeMore
+            ? limitChars > props?.children?.length
+              ? props?.children
+              : props?.children.slice(0, limitChars) + "..."
+            : props?.children
+        )}
       </CoreSpan>
 
-      {!hideSeeMore && limitChars < props?.children?.length && (
-        <CoreLink
-          onClick={toggleSeeMore}
-          styleClasses={[CoreClasses.CURSOR.CURSOR_POINTER]}
-        >
-          {seeMore ? " See more" : " See less"}
-        </CoreLink>
+      {!hideSeeMore && typeof props?.children === "string" && (
+        limitChars > props?.children?.length
+          ? null
+          : (
+            <CoreLink
+              onClick={toggleSeeMore}
+              styleClasses={[CoreClasses.CURSOR.CURSOR_POINTER]}
+            >
+              {seeMore ? " see more" : " see less"}
+            </CoreLink>
+          )
       )}
     </CoreTypography>
   ) : (

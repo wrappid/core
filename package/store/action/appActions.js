@@ -10,9 +10,9 @@ import AppService from "../../service/AppService";
 import { getForm } from "../../utils/formUtils";
 import {
   CLEAR_SNACK_MESSAGE,
-  REMOVE_SNACK_MESSAGE,
   MESSAGE_SHOWED,
   PUSH_SNACK_MESSAGE,
+  REMOVE_SNACK_MESSAGE,
   RESET_LOADING,
   RESET_PROGRESS_BAR,
   SET_LOADING,
@@ -116,12 +116,18 @@ export const apiRequestAction =
                 });
               }
 
-              if (localAction) {
+              /**
+               * Handling Local Action Type and Function
+               */
+              if (typeof localAction === "string") {
                 dispatch({
                   payload: { ...reduxData, ...data },
                   type   : localAction,
                 });
+              }else if(typeof localAction === "function"){
+                localAction(response?.data);
               }
+
               if (typeof successType === "string") {
                 dispatch({
                   payload: { ...reduxData, ...response.data },
@@ -309,14 +315,17 @@ export const apiRequestAction =
 /**
  * Snack message related action
  */
-export const pushSnackMessage = (type, message, snackProps = {}) => dispatch => {
+export const pushSnackMessage = (type, message, autoHideDuration, snackProps = {}) => dispatch => {
   // eslint-disable-next-line etc/no-commented-out-code
   // enqueueSnackbar(message, { variant: type });
+  const time = new Date().getTime();
+
   dispatch({
     payload: {
-      _timestamp: new Date().getTime(),
-      message   : message || "Message not provided",
-      type      : type,
+      _timestamp      : time,
+      autoHideDuration: autoHideDuration || 5000,
+      message         : message || "Message not provided",
+      type            : type,
       ...snackProps
     },
     type: PUSH_SNACK_MESSAGE,

@@ -89,7 +89,7 @@ export default function FilterData(props) {
       })}
 
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.PADDING.PT2]}
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN, CoreClasses.PADDING.PT2]}
       >
         <CoreTextButton
           label={

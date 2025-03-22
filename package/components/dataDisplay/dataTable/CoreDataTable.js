@@ -121,7 +121,7 @@ export default function CoreDataTable(props) {
     entity = null, // data store entity name must be unique [default: null]
     filterQuery = {
       filter: {}, // this filter automatically applied on the API query
-      order : {}, // this order automatically applied on the API query
+      order : [], // this order automatically applied on the API query
     },
     api = null, // get data api [default: null]
     reduxType = {}, // here we can have crud operation specific reducer type
@@ -173,6 +173,7 @@ export default function CoreDataTable(props) {
     formMode: formModeProps = FORM_VIEW_MODE,
     createFormID = null,
     updateFormID = null,
+    updateForm_restruct = null,
     // table props
     tableHeadProps,
     afterEditSuccess, // function to be called after successfull Edit
@@ -307,7 +308,7 @@ export default function CoreDataTable(props) {
       currentRows : (rows && rows.length) || 0,
       maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
       page        : 0,
-      pagesToCache: pagesToCache,
+      pagesToCache: pagesToCache
     },
   } = dataStore[tableUUID] || {};
 
@@ -353,7 +354,7 @@ export default function CoreDataTable(props) {
         set_showDetailsPane(false);
       }
     } else {
-      if (window.innerWidth < MEDIUM_WINDOW_WIDTH) {
+      if (window.outerWidth < MEDIUM_WINDOW_WIDTH) {
         set_showDetailsPane(false);
       } else {
         set_showDetailsPane(true);
@@ -702,14 +703,14 @@ export default function CoreDataTable(props) {
     console.log(".........................................");
   }, [props]); */
 
-  /* -- React.useEffect(() => {
-    // filterData();
-  }, [_filterQuery]); */
+  React.useEffect(() => {
+    filterData();
+  }, [_filterQuery]);
 
   return (
     <CoreGrid
       coreId="sam-data-table-container"
-      spacing={platform === APP_PLATFORM && 0}
+      spacing={platform === APP_PLATFORM ? 0 : ""}
       // styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_CONTAINER]}
     >
       {(window.innerWidth >= MEDIUM_WINDOW_WIDTH || !_showDetailsPane) &&
@@ -718,9 +719,9 @@ export default function CoreDataTable(props) {
           coreId="sam-data-table-toolbar"
           gridProps={{
             gridSize    : 12,
-            styleClasses: [CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER],
+            styleClasses: [platform === WEB_PLATFORM ? CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER_WEB : CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR_CONTAINER_MOBILE],
           }}
-          styleClasses={[CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR]}
+          styleClasses={[platform === WEB_PLATFORM ? CoreClasses.DATA_TABLE.DATA_TABLE_TOOLBAR : CoreClasses.PADDING.PR0]}
           tableUUID={tableUUID}
           tableColumns={tableColumns}
           // table density
@@ -793,7 +794,7 @@ export default function CoreDataTable(props) {
               : 12
           }
           gridProps={{
-            gridSize    : { sm: __TableLeftPanelGridSize },
+            gridSize    : { md: __TableLeftPanelGridSize },
             styleClasses: [
               CoreClasses.DATA_TABLE.DATA_TABLE_MINI_WIDTH_PANE,
               /* || enableDetailsPane && _showDetailsPane
@@ -873,10 +874,11 @@ export default function CoreDataTable(props) {
 
       {enableDetailsPane && _showDetailsPane && (
         <CoreDataTableDetailsPane
-          gridProps={{ gridSize: { sm: __TableRightPanelGridSize } }}
+          gridProps={{ gridSize: { md: __TableRightPanelGridSize } }}
           tableUUID={tableUUID}
           createFormID={detailsPaneCreateFormID}
           updateFormID={detailsPaneUpdateFormID}
+          updateForm_restruct={updateForm_restruct}
           hideForm={hideForm}
           hideCreateForm={hideCreateForm}
           hideUpdateForm={hideUpdateForm}

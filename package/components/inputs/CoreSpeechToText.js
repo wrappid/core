@@ -14,7 +14,7 @@ export default function CoreSpeechToText(props) {
   const [dynamicFormId, setDynamicFormId] = useState("dynamicForm");
   const [processComplete, setProcessComplete] = useState(false);
   const [formProps, setFormProps] = useState(null);
-  const uid = useSelector(state => state?.auth?.uid);
+  const { user: { id: userID } } = useSelector(state => state?.auth);
   const {
     element, formikprops, mode, preview, beforeSpeechStart, ...restProps
   } =
@@ -139,9 +139,9 @@ export default function CoreSpeechToText(props) {
       disabled={!mode || preview || element?.readOnly}
       generateCoreForm={getDynamicForm}
       processComplete={processComplete}
-      mode={uid ? "light" : "dark"}
+      mode={userID ? "light" : "dark"}
       setProcessComplete={setProcessComplete}
-      buttonStyle={uid ? [] : [CoreClasses?.COLOR?.TEXT_WHITE]}
+      buttonStyle={userID ? [] : [CoreClasses?.COLOR?.TEXT_WHITE]}
       beforeSpeechStart={event => {
         beforeSpeechStart && beforeSpeechStart(event);
         setFormProps(null);

@@ -35,7 +35,7 @@ export default function CoreFormInputs(props) {
     handleButtonCLick,
     submitLoading,
     OnCancelClick,
-    mode,
+    mode
   } = props;
 
   const { config } = React.useContext(WrappidDataContext);
@@ -131,26 +131,33 @@ export default function CoreFormInputs(props) {
   return type === INPUT_TYPE ? (
     element?.speechToText ? (
       config?.platform === APP_PLATFORM && (
-        <CoreGrid coreId="speecToText">
+        <CoreGrid
+          key={`cf-stt-input-gc-${formId}-${element?.id || element?.name}`}
+          coreId="speecToText">
           {element?.comp && !checkDependencies(element, formikprops)?.hide
             ? React.createElement(
               element?.comp ? element?.comp : CoreInput,
-              element?.dependencies
-                ? elementProps
-                : {
-                  ...createFormFieldProps(props, "edit"),
-                  gridProps: { gridSize: 11 },
-                },
+              {
+                key: `cf-stt-${formId}-${element?.id || element?.name}`,
+                ...(element?.dependencies
+                  ? elementProps
+                  : {
+                    ...createFormFieldProps(props, "edit"),
+                    gridProps: { gridSize: 11 },
+                  })
+              },
               element?.onlyView ? element?.label : null
             )
             : null}
 
           {element?.speechToText && (
             <CoreBox
+              key={`cf-stt-container-${formId}-${element?.id || element?.name}`}
               gridProps={{ gridSize: 1 }}
-              styleClasses={[CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
+              styleClasses={[CoreClasses?.DISPLAY?.FLEX, CoreClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
             >
               <CoreSpeechToText
+                key={`cf-stt-${formId}-${element?.id || element?.name}`}
                 element={element}
                 formikprops={formikprops}
                 mode={mode}
@@ -163,9 +170,12 @@ export default function CoreFormInputs(props) {
     ) : element?.comp && !checkDependencies(element, formikprops)?.hide ? (
       React.createElement(
         element?.comp ? element?.comp : CoreInput,
-        element?.dependencies
-          ? elementProps
-          : createFormFieldProps(props, "edit"),
+        {
+          key: `cf-input-${formId}-${element?.id || element?.name}`,
+          ...(element?.dependencies
+            ? elementProps
+            : createFormFieldProps(props, "edit"))
+        },
         element?.onlyView ? element?.label : null
       )
     ) : null
@@ -173,7 +183,7 @@ export default function CoreFormInputs(props) {
     <CoreBox xs={12} {...createFormActionProps(forms[formId])}>
       {forms[formId]?.formActions?.map((actionElement, i) => (
         <CoreFormButton
-          key={"form-action-" + i}
+          key={`cf-btn-${formId}-${i}`}
           element={actionElement}
           formikprops={formikprops}
           handleButtonCLick={handleButtonCLick}
@@ -183,7 +193,7 @@ export default function CoreFormInputs(props) {
 
       {forms[formId]?.allowCancel !== false && (
         <CoreOutlinedButton
-          key={"form-cancel"}
+          key={`cf-cancel-btn-${formId}`}
           label={
             forms[formId]?.cancelButtonLabel
               ? forms[formId].cancelButtonLabel
@@ -196,7 +206,7 @@ export default function CoreFormInputs(props) {
 
       {forms[formId]?.allowSubmit !== false && (
         <CoreContainedButton
-          key={"form-edit"}
+          key={`cf-submit-btn-${formId}`}
           label={
             forms[formId]?.submitButtonLabel
               ? forms[formId].submitButtonLabel

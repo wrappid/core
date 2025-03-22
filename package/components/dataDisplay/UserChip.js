@@ -15,6 +15,7 @@ import authHeader from "../../service/DataService";
 import CoreClasses from "../../styles/CoreClasses";
 import { sanitizeComponentProps } from "../../utils/componentUtil";
 import { getFullName } from "../../utils/helper";
+import { convertMetaToJSON } from "../../utils/jsonUtils";
 
 export default function UserChip(props) {
   props = sanitizeComponentProps(UserChip, props);
@@ -51,15 +52,17 @@ export default function UserChip(props) {
         method : HTTP.GET,
         url:
           backendUrl +
-          "/business/individual/UserBasicInfo?_defaultFilter=" +
+          "/business/all/UserBasicInfo?_defaultFilter=" +
           encodeURIComponent(JSON.stringify({ id: userid })),
       })
         .then(response => {
-          setFirstName(response?.data?.data?.data["Person.firstName"]);
-          setMiddleName(response?.data?.data?.data["Person.middleName"]);
-          setLastName(response?.data?.data?.data["Person.lastName"]);
-          setEmail(response?.data?.data?.data["email"]);
-          setPhotoUrl(response?.data?.data?.data["Person.photoUrl"]);
+          const personMeta = convertMetaToJSON(response?.data?.data?.rows[0]?.Person?.PersonMetas);
+
+          setFirstName(personMeta["firstName"]);
+          setMiddleName(personMeta["middleName"]);
+          setLastName(personMeta["lastName"]);
+          setEmail(response?.data?.data?.rows[0]?.email);
+          setPhotoUrl(personMeta["photoUrl"]);
         })
         .catch(error => {
           throw error;

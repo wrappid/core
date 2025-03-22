@@ -15,12 +15,13 @@ import { apiRequestAction } from "../../store/action/appActions";
 import { SEND_OTP_ERROR, SEND_OTP_LOADING, SEND_OTP_SUCCESS } from "../../store/types/appTypes";
 import CoreClasses from "../../styles/CoreClasses";
 import CoreTimer from "../dataDisplay/CoreTimer";
-import CoreSkeleton from "../feedback/CoreSkeleton";
 import CoreBox from "../layouts/CoreBox";
 
 export default function CoreOtpInput(props) {
   const dispatch = useDispatch();
-  const { sendOtpLoading } = useSelector((state) => state?.app);
+  // eslint-disable-next-line etc/no-commented-out-code
+  // const { sendOtpLoading } = useSelector((state) => state?.app);
+  const { navData: { userID }, accessToken } = useSelector((state) => state?.auth);
   let { config: appConfig } = React.useContext(WrappidDataContext);
 
   useEffect(() => {
@@ -30,27 +31,35 @@ export default function CoreOtpInput(props) {
   const sendOtp = () => {
     if (props.to) {
       if (props.sendOtp !== false) {
-        let data = { data: props.to, service: props.editId };
-
-        dispatch(
-          apiRequestAction(
-            HTTP.POST,
-            SENT_OTP_API,
-            true,
-            data,
-            SEND_OTP_SUCCESS,
-            SEND_OTP_ERROR,
-            null, //localAction,
-            null, //includeFile,
-            null, //file,
-            null, //formId,
-            null, //reload,
-            null, //reduxData,
-            null, //pushSnack,
-            SEND_OTP_LOADING, //loadingType,
-            null //resetLoadingType,
-          )
-        );
+        // eslint-disable-next-line etc/no-commented-out-code
+        // let data = { data: props.to, service: props.editId };
+        let data = { identifier: props.to, service: props.query };
+        
+        if (userID) {
+          data = { ...data, userID };
+        }
+        
+        if (!accessToken) {
+          dispatch(
+            apiRequestAction(
+              HTTP.POST,
+              SENT_OTP_API,
+              true,
+              data,
+              SEND_OTP_SUCCESS,
+              SEND_OTP_ERROR,
+              null, //localAction,
+              null, //includeFile,
+              null, //file,
+              null, //formId,
+              null, //reload,
+              null, //reduxData,
+              null, //pushSnack,
+              SEND_OTP_LOADING, //loadingType,
+              null //resetLoadingType,
+            )
+          );
+        }
       } else {
         // -- console.log("Not sending otp");
       }
@@ -59,9 +68,11 @@ export default function CoreOtpInput(props) {
     }
   };
 
-  return sendOtpLoading ? (
+  /* sendOtpLoading ? (
     <CoreSkeleton variant="rectangular" />
-  ) : (
+  ) :
+  */
+  return (
     <CoreBox>
       <NativeOtpInput {...props} />
 

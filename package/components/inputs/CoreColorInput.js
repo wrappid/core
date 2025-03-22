@@ -17,19 +17,24 @@ export default function CoreColorInput(props) {
     <>
       <NativeColorInput {...props} />
 
-      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
-
       {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {helperText}
         </CoreFormHelperText>
       )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
     </>
 
   );
 }
 
 CoreColorInput.validProps = [
+  {
+    description: "This prop helps users to fill forms field data",
+    name       : "helperText",
+    types      : [{ type: "string" }],
+  },
   {
     description: "The id of the input element.",
     name       : "id",

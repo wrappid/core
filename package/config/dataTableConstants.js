@@ -62,7 +62,7 @@ export const DATA_TABLE_CONST = {
     { id: "personId", order: 4, priority: 5 },
   ],
   
-  DEFAULT_DATA: { "-1": __EntityStatus.UNKNOWN, 0: "no_image.png" },
+  DEFAULT_DATA: { "-1": __EntityStatus.UNKNOWN, 0: "help" },
   
   // COLUMNS PRIORITY
   DEFAULT_MAX_COLUMNS_COUNT: 5,

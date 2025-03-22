@@ -8,7 +8,7 @@ import CoreAsyncSelect from "../components/inputs/CoreAsyncSelect";
 import CoreCheckbox from "../components/inputs/CoreCheckbox";
 import CoreConfirmPassword from "../components/inputs/CoreConfirmPassword";
 import CoreContainedButton from "../components/inputs/CoreContainedButton";
-import CoreDatePicker from "../components/inputs/CoreDatepicker";
+import CoreDatePicker from "../components/inputs/CoreDatePicker";
 import CoreDateRangepicker from "../components/inputs/CoreDateRangepicker";
 import CoreDateTimePicker from "../components/inputs/CoreDateTimePicker";
 import CoreDateTimeRangePicker from "../components/inputs/CoreDateTimeRangePicker";
@@ -118,8 +118,8 @@ export const componentMap = {
   },
   
   json: {
-    comp: CoreJsonEditor,
-    // -- defaultValidation: defaultValidations.json,
+    comp             : CoreJsonEditor,
+    defaultValidation: defaultValidations.json,
   },
   
   multiTimeRange: {

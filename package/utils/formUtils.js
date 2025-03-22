@@ -11,6 +11,7 @@ import {
   FORM_LG_DEFAULT_GRID_SIZE,
   FORM_MD_DEFAULT_GRID_SIZE,
   FORM_SM_DEFAULT_GRID_SIZE,
+  FORM_VIEW_MODE,
   FORM_XL_DEFAULT_GRID_SIZE,
   FORM_XS_DEFAULT_GRID_SIZE,
   INPUT_TYPE
@@ -311,7 +312,7 @@ export function createFormFieldProps(props, type) {
     OnEditClick,
     editFormId,
     allowEdit,
-    onFormFocus,
+    onFormFocus
   } = props;
 
   if (type === "edit") {
@@ -323,8 +324,8 @@ export function createFormFieldProps(props, type) {
         styleClasses: element?.styleClasses,
         ...(initProps[element?.id] || {}),
       };
-    } else
-      return {
+    } else {
+      let _props = {
         OnEditClick : OnEditClick,
         allowEdit   : allowEdit,
         asyncLoading: element?.asyncLoading,
@@ -441,6 +442,18 @@ export function createFormFieldProps(props, type) {
         value        : formikprops?.values ? formikprops?.values[element?.id] : "",
         ...(initProps[element?.id] || {}),
       };
+
+      if (mode === FORM_VIEW_MODE) {
+        _props.shrink = true;
+        _props.InputLabelProps = { ..._props.InputLabelProps, shrink: true };
+      }
+
+      if (element?.autoComplete) {
+        _props.autoComplete = element?.autoComplete;
+        _props.inputProps.autoComplete = element?.autoComplete;
+      }
+      return _props;
+    }
   } else {
     return {
       id   : element?.id ? String(element?.id) : "",
@@ -464,7 +477,7 @@ export function createFormActionProps(element) {
   ) {
     styleProps["styleClasses"] = element.actionContainerStyle;
   } else {
-    styleProps["styleClasses"] = [CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END, CoreClasses.FLEX.DIRECTION_ROW];
+    styleProps["styleClasses"] = [CoreClasses.DISPLAY.FLEX, CoreClasses.FLEX.DIRECTION_ROW, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END];
   }
 
   return styleProps;

@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 
 import { configureStore } from "@reduxjs/toolkit";
 // eslint-disable-next-line import/no-unresolved
@@ -15,6 +15,7 @@ import thunk from "redux-thunk";
 import CoreContextProvider from "./CoreContextProvider";
 import coreReducer from "./reducers/rootReducer";
 import { IconContext } from "../config/contextHandler";
+import CoreDimension from "../CoreDimension";
 import CoreClasses from "../styles/CoreClasses";
 import DefaultCoreStyles from "../styles/DefaultCoreStyles";
 import LargeCoreStyles from "../styles/LargeCoreStyles";
@@ -83,6 +84,7 @@ export default function CoreProvider(props) {
 
   const [store, setStore] = React.useState(null);
   const [persistor, setPersistor] = React.useState(null);
+  const [dimensions, setDimensions] = useState({});
 
   React.useEffect(() => {
     let { store, persistor } = createFullStore(
@@ -109,24 +111,26 @@ export default function CoreProvider(props) {
   return store && persistor && (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <StylesProvider appStyles={appStyles} coreStyles={coreStyles}>
-          <CoreContextProvider
-            appStyles={appStyles}
-            applicationRegistry={applicationRegistry}
-            routesRegistry={routesRegistry}
-            menusRegistry={menusRegistry}
-            componentsRegistry={componentsRegistry}
-            resourcesRegistry={resourcesRegistry}
-            functionsRegistry={functionsRegistry}
-            validationsRegistry={validationsRegistry}
-          >
-            <CoreThemeProvider>
-              <IconContext.Provider value={customIcons}>
-                {children}
-              </IconContext.Provider>
-            </CoreThemeProvider>
-          </CoreContextProvider>
-        </StylesProvider>
+        <CoreDimension setDimensions={setDimensions}>
+          <StylesProvider appStyles={appStyles} coreStyles={coreStyles} dimensions={dimensions}>
+            <CoreContextProvider
+              appStyles={appStyles}
+              applicationRegistry={applicationRegistry}
+              routesRegistry={routesRegistry}
+              menusRegistry={menusRegistry}
+              componentsRegistry={componentsRegistry}
+              resourcesRegistry={resourcesRegistry}
+              functionsRegistry={functionsRegistry}
+              validationsRegistry={validationsRegistry}
+            >
+              <CoreThemeProvider>
+                <IconContext.Provider value={customIcons}>
+                  {children}
+                </IconContext.Provider>
+              </CoreThemeProvider>
+            </CoreContextProvider>
+          </StylesProvider>
+        </CoreDimension>
       </PersistGate>
     </Provider>);
 }

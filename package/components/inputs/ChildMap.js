@@ -10,7 +10,7 @@ import CoreGrid from "../layouts/CoreGrid";
 
 export default function ChildMap({ parentOb, handleChange, formData, label }) {
   return parentOb?.__children?.map((childOb) => (
-    <CoreGrid key={childOb.id} styleClasses={[CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
+    <CoreGrid key={childOb.id} styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}>
       <CoreBox
         gridProps={{ gridSize: 10 }}
         styleClasses={[CoreClasses.MARGIN.ML5, CoreClasses.PADDING.PL3]}

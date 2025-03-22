@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { nativeUseNavigate, nativeFilterOptions } from "@wrappid/native";
+import { nativeFilterOptions, nativeUseNavigate } from "@wrappid/native";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -59,7 +59,6 @@ export default function CoreAsyncSelect(props) {
     optionCompProps,
     multiple,
     value,
-    touched,
     error,
     helperText,
     readOnly,
@@ -74,6 +73,7 @@ export default function CoreAsyncSelect(props) {
     dependentQuery,
     mountValueMatch,
     freeSolo,
+    styleClasses
   } = props;
 
   const options = useSelector(state => state?.selectOptions?.options);
@@ -404,6 +404,7 @@ export default function CoreAsyncSelect(props) {
   return (
     <>
       <CoreAutocomplete
+        styleClasses={styleClasses}
         _topLabel={label} //required for mobile layer
         _inputValue={inputValue} //required for mobile layer
         _optionComp={optionComp} //required for mobile layer
@@ -611,7 +612,7 @@ export default function CoreAsyncSelect(props) {
           <CoreTextField
             {...params}
             label={label}
-            InputLabelProps={{ ...params.InputLabelProps, shrink: true }}
+            InputLabelProps={{ ...params.InputLabelProps }}
             InputProps={{
               ...params.InputProps,
               endAdornment: getEndAdornment(params),
@@ -620,16 +621,16 @@ export default function CoreAsyncSelect(props) {
         )}
       />
 
-      {touched && error && (
-        <CoreFormErrorText styleClasses={[CoreClasses.MARGIN.MT1]}>
-          {touched && error}
-        </CoreFormErrorText>
-      )}
-
       {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.MARGIN.MT1]}>
           {helperText}
         </CoreFormHelperText>
+      )}
+      
+      {error && (
+        <CoreFormErrorText styleClasses={[CoreClasses.MARGIN.MT1]}>
+          {error}
+        </CoreFormErrorText>
       )}
     </>
   );

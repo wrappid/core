@@ -25,13 +25,29 @@ export function maskEmailOrPhone(userLogin) {
   if (!isNaN(String(userLogin))) type = "phone";
 
   if (type === "email") {
-    return (
-      userLogin?.replace(
-        /^(.)(.*)(@.)([a-z].)([a-z0-9]*)(.)([a-z0-9]*)([a-z].)$/,
-        (tmp, tmpA, tmpB, tmpC, tmpD, tmpE, tmpF, tmpG, tmpH) =>
-          tmpA + tmpB.replace(/./g, "*") + tmpC + tmpD + tmpE.replace(/./g, "*") + tmpF + tmpG.replace(/./g, "*") + tmpH
-      ) || ""
-    );
+    if (!userLogin || !userLogin.includes("@")) {
+      return userLogin;
+    }
+
+    const [localPart, domain] = userLogin.split("@");
+    const [domainName, ...tld] = domain.split(".");
+
+    // Special handling for very short emails
+    if (localPart.length === 1) {
+      // Mask domain with same number of stars as original characters
+      const maskedDomain = domainName.charAt(0) + 
+          "*".repeat(Math.max(1, domainName.length - 1));
+
+      return `${localPart}@${maskedDomain}.${tld.join(".")}`;
+    }
+
+    // For regular length emails
+    const maskedLocal = localPart.charAt(0) + 
+      "*".repeat(localPart.length - 1);
+    const maskedDomain = domainName.charAt(0) + 
+      "*".repeat(domainName.length - 1);
+
+    return `${maskedLocal}@${maskedDomain}.${tld.join(".")}`;
   } else if (type === "phone") {
     return (
       userLogin?.replace(

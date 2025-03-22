@@ -1,10 +1,10 @@
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { CoreRoutesContext } from "./config/contextHandler";
-import { CoreDomRoute, CoreDomRoutes } from "./helper/routerHelper";
+import { CoreDomRoute, CoreDomRoutes, coreUseNavigate } from "./helper/routerHelper";
 import PageContainer from "./layout/PageContainer";
 
 const DEFAULT_ROUTE = {
@@ -20,7 +20,9 @@ export let globalTokenRequested = null;
 export let globalTokenRequestTimeStamp = null;
 
 export default function CoreRoutes() {
-  const { accessToken, refreshToken } = useSelector((state) => state?.auth || {});
+  const navigate = coreUseNavigate();
+  const dispatch = useDispatch();
+  const { accessToken, refreshToken, redirect } = useSelector((state) => state?.auth || {});
   
   const contextRoutes = React.useContext(CoreRoutesContext);
   
@@ -28,10 +30,23 @@ export default function CoreRoutes() {
     (state) => state?.pendingRequests
   );
 
+  const authenticated = accessToken ? true : false;
+
   globalAccessToken = accessToken;
   globalRefreshToken = refreshToken;
   globalTokenRequested = tokenRequested;
   globalTokenRequestTimeStamp = tokenRequestTimeStamp;
+
+  React.useEffect(() => {
+    // eslint-disable-next-line etc/no-commented-out-code
+    // if (authenticated && currentPage === Object.keys(contextRoutes).includes(defaultAuthenticatedRoute).url) {
+    //   navigate(defaultAuthenticatedRoute);
+    // }
+    if (authenticated && redirect) {
+      dispatch({ type: "RESET_AUTH_REDIRECT" });
+      navigate("");
+    }
+  }, [authenticated, redirect]);
 
   return (
     <CoreDomRoutes>

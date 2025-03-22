@@ -8,7 +8,7 @@ import { WrappidDataContext } from "@wrappid/styles";
 
 import {
   CoreMenuContext,
-  CoreRouteRegistryContext
+  CoreRoutesContext
 } from "../../config/contextHandler";
 import { MENU_ITEM } from "../../config/menuConstants";
 import { queryBuilder } from "../../utils/helper";
@@ -18,21 +18,21 @@ import CoreMenu from "../navigation/CoreMenu";
 export default function QuickAddPopOver(props) {
   const navigate = nativeUseNavigate();
   const menuData = useContext(CoreMenuContext);
-  const routeRegistry = useContext(CoreRouteRegistryContext);
+  const contextRoutes = useContext(CoreRoutesContext);
   
   let { config } = React.useContext(WrappidDataContext);
   
   const { onClose } = props;
 
-  function getLink(menuItem, routeRegistry) {
+  function getLink(menuItem, contextRoutes) {
     if (menuItem?.type === MENU_ITEM || !menuItem?.type) {
-      if (menuItem?.route && routeRegistry) {
+      if (menuItem?.route && contextRoutes && Object.keys(contextRoutes).includes(menuItem?.route)) {
         if (menuItem.params) {
           if (typeof menuItem.params === "string") {
-            return routeRegistry[menuItem.route] + menuItem.params;
+            return contextRoutes[menuItem.route].route + menuItem.params;
           } else {
             let url = queryBuilder(
-              routeRegistry[menuItem.route],
+              contextRoutes[menuItem.route].route,
               menuItem.params
             );
 
@@ -42,7 +42,7 @@ export default function QuickAddPopOver(props) {
             return url;
           }
         } else {
-          let url = routeRegistry[menuItem.route];
+          let url = contextRoutes[menuItem.route].route;
 
           if (typeof url === "string" && !url.startsWith("/")) {
             url = "/" + url;
@@ -52,19 +52,16 @@ export default function QuickAddPopOver(props) {
       } else {
         if (menuItem.link) {
           return menuItem.link;
-        } else {
-          return "";
         }
       }
-    } else {
-      return "javascript:void(0)";
     }
+    return "javascript:void(0)";
   }
 
   const OnMenuClick = item => {
 
     if (config?.wrappid?.platform === APP_PLATFORM) {
-      navigate(getLink(item, routeRegistry));
+      navigate(getLink(item, contextRoutes));
     }
     onClose();
   };

@@ -1,8 +1,6 @@
 import {
   DefaultUtilityStyles,
-  DEFAULT_PADDING,
   IMPORTANT,
-  PX_TAG,
   SmallUtilityStyles,
   BaseStyle
 // eslint-disable-next-line import/no-unresolved
@@ -44,23 +42,14 @@ export default class SmallCoreStyles extends BaseStyle {
         width: "calc(100% + 8px)" + IMPORTANT,
       },
   
-      dataTableBody         : {},
+      dataTableBody            : {},
       // ----------Data Table Styles Starts----------
-      dataTableContainer    : {},
-      dataTableFoot         : {},
-      dataTableFullWidthPane: {},
-      dataTableHead         : {},
-      dataTableHeadTop      : {},
-      dataTableMiniWidthPane: {
-        ...new DefaultUtilityStyles().style.border,
-        ...new DefaultUtilityStyles().style.borderRight,
-        ...new DefaultUtilityStyles().style.borderPrimaryLight,
-        ...new DefaultUtilityStyles().style.positionSticky,
-        ...new DefaultUtilityStyles().style.overflowYAuto,
-        ...new DefaultUtilityStyles().style.overflowXHidden,
-        height: "calc(100vh - 118px)" + IMPORTANT,
-        top   : "53px" + IMPORTANT,
-      },
+      dataTableContainer       : {},
+      dataTableFoot            : {},
+      dataTableFullWidthPane   : {},
+      dataTableHead            : {},
+      dataTableHeadTop         : {},
+      dataTableMiniWidthPane   : {},
       dataTableToolbar         : {},
       dataTableToolbarContainer: {},
       devBorder                : { ...new DefaultUtilityStyles().style.borderError },
@@ -72,7 +61,7 @@ export default class SmallCoreStyles extends BaseStyle {
   
       pageContainer: {
         minHeight: `calc(100vh - ${HEADING_TOP_MARGIN})` + IMPORTANT,
-        padding  : DEFAULT_PADDING + PX_TAG + IMPORTANT,
+        ...this.smallUtilityStyles.smP1
       },
   
       profileBarWidth: { maxWidth: "80vw" + IMPORTANT },
@@ -95,7 +84,7 @@ export default class SmallCoreStyles extends BaseStyle {
       tableToolbarPopoverScrollableContainer: {
         maxHeight: "70vh" + IMPORTANT,
         maxWidth : "80vw" + IMPORTANT,
-        padding  : DEFAULT_PADDING + IMPORTANT,
+        ...this.smallUtilityStyles.smP1
       }
     };
   }

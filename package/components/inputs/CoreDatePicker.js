@@ -6,32 +6,122 @@ import { NativeDatepicker } from "@wrappid/native";
 
 import CoreFormErrorText from "./CoreFormErrorText";
 import CoreFormHelperText from "./CoreFormHelperText";
-import CoreClasses from "../../styles/CoreClasses";
 // eslint-disable-next-line etc/no-commented-out-code
 // import { sanitizeComponentProps } from "../../utils/componentUtil";
+import { functionsRegistry } from "../../layout/PageContainer";
+import CoreClasses from "../../styles/CoreClasses";
 import CoreBox from "../layouts/CoreBox";
+
+export const DATE_DEFAULT_CONST = {
+  CURRENT  : "current",
+  TODAY    : "today",
+  TOMORROW : "tomorrow",
+  YESTERDAY: "yesterday"
+};
+
+export const DATE_DEFAULT = {
+  "current"  : new Date(),
+  "today"    : new Date(),
+  "tomorrow" : new Date(new Date().setDate(new Date().getDate() + 1)),
+  "yesterday": new Date(new Date().setDate(new Date().getDate() - 1)),
+};
 
 export default function CoreDatePicker(props) {
   // eslint-disable-next-line etc/no-commented-out-code
   // props = sanitizeComponentProps(CoreDatePicker, props);
 
-  const { error, helperText } = props;
+  const {
+    maxDate, minDate, maxDateFunc, minDateFunc, error, helperText, ..._restProps
+  } = props;
+
+  let restProps = _restProps;
+
+  React.useEffect(() => {
+    if (maxDateFunc && functionsRegistry.includes(maxDateFunc)) {
+      const _maxDate = functionsRegistry[maxDateFunc]();
+
+      if (_maxDate) {
+        restProps = { ...restProps, maxDate: _maxDate };
+      }
+    }
+
+    if (maxDate) {
+      switch (maxDate) {
+        case DATE_DEFAULT_CONST.CURRENT:
+          restProps = { ...restProps, maxDate: DATE_DEFAULT.current };
+          break;
+
+        case DATE_DEFAULT_CONST.TODAY:
+          restProps = { ...restProps, maxDate: DATE_DEFAULT.today };
+          break;
+
+        case DATE_DEFAULT_CONST.TOMORROW:
+          restProps = { ...restProps, maxDate: DATE_DEFAULT.tomorrow };
+          break;
+
+        case DATE_DEFAULT_CONST.YESTERDAY:
+          restProps = { ...restProps, maxDate: DATE_DEFAULT.yesterday };
+          break;
+      
+        default:
+          break;
+      }
+    }
+  }, [maxDate, maxDateFunc]);
+
+  React.useEffect(() => {
+    if (minDateFunc && functionsRegistry.includes(minDateFunc)) {
+      const _minDate = functionsRegistry[minDateFunc]();
+
+      if (_minDate) {
+        restProps = { ...restProps, _minDate };
+      }
+    }
+
+    if (minDate) {
+      switch (minDate) {
+        case DATE_DEFAULT_CONST.CURRENT:
+          restProps = { ...restProps, minDate: DATE_DEFAULT.current };
+          break;
+
+        case DATE_DEFAULT_CONST.TODAY:
+          restProps = { ...restProps, minDate: DATE_DEFAULT.today };
+          break;
+
+        case DATE_DEFAULT_CONST.TOMORROW:
+          restProps = { ...restProps, minDate: DATE_DEFAULT.tomorrow };
+          break;
+
+        case DATE_DEFAULT_CONST.YESTERDAY:
+          restProps = { ...restProps, minDate: DATE_DEFAULT.yesterday };
+          break;
+      
+        default:
+          break;
+      }
+    }
+  }, [minDate, minDateFunc]);
 
   return (
     <CoreBox>
-      <NativeDatepicker {...props} />
-
-      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
+      <NativeDatepicker {...restProps} />
 
       {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {helperText}
         </CoreFormHelperText>
       )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
     </CoreBox>
   );
 }
 CoreDatePicker.validProps = [
+  {
+    description: "This prop helps users to fill forms field data",
+    name       : "helperText",
+    types      : [{ type: "string" }],
+  },
   {
     name : "formik",
     types: [{ type: "object" }]

@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/core",
-  "version": "0.0.569",
+  "version": "0.0.605",
   "description": "Multi platform app builder core package.",
   "main": "index.js",
   "scripts": {},
@@ -17,7 +17,11 @@
     "react-native-paper",
     "redux"
   ],
-  "author": "wrappid",
+  "author": {
+    "name": "Wrappid",
+    "email": "wrappid.framework@gmail.com",
+    "url": "https://www.github.com/wrappid/core"
+  },
   "bugs": {
     "url": "https://github.com/wrappid/core/issues"
   },
@@ -25,15 +29,17 @@
   "homepage": "https://github.com/wrappid/core#readme",
   "peerDependencies": {
     "@reduxjs/toolkit": "1.9.1",
+    "dompurify": "3.2.4",
     "formik": "2.2.9",
     "mdi": "2.2.43",
     "moment": "2.29.4",
+    "prettier": "3.5.1",
     "react": "18.2.0",
     "react-device-detect": "2.2.3",
     "react-dom": "18.2.0",
     "react-infinite-scroll-component": "6.1.0",
+    "react-syntax-highlighter": "15.6.1",
     "react-redux": "8.0.2",
-    "react-scripts": "5.0.1",
     "redux": "4.2.0",
     "redux-persist": "6.0.0",
     "redux-thunk": "2.4.1",

@@ -2,8 +2,8 @@
 import { NativeAppContainer } from "@wrappid/native";
 
 import CoreComponentsRegistry from "../components/CoreComponentsRegistry";
+import ModelData from "../components/dataDisplay/dataTable/ModelData";
 import Logout from "../components/navigation/Logout";
-import SplashComponent from "../components/navigation/SplashComponent";
 import PageLoader from "../components/PageLoader";
 import ComponentNotFound from "../error/ComponentNotFound";
 import Error404 from "../error/Error404";
@@ -29,9 +29,9 @@ let ComponentsRegistry = {
   Error500             : { comp: Error500 },
   LayoutMismatch       : { comp: LayoutMismatch },
   Logout               : { comp: Logout },
+  ModelData            : { comp: ModelData },
   NativeAppContainer   : { comp: NativeAppContainer },
   PageLoader           : { comp: PageLoader },
-  SplashComponent      : { comp: SplashComponent },
 };
 
 export default ComponentsRegistry;

@@ -18,26 +18,31 @@ import CoreBox from "../layouts/CoreBox";
 export default function Logout() {
   const dispatch = useDispatch();
   let location = nativeUseLocation();
-  const auth = useSelector((state) => state?.auth || {});
+  const { acceessToken, sessionExpired } = useSelector((state) => state?.auth || {});
+  const authenticated = acceessToken ? true : false;
 
   // -- console.log("LOCALTION", location);
 
   React.useEffect(() => {
-    if (location?.state?.logout !== false) dispatch({ type: LOGOUT_SUCCESS });
-    dispatch(apiRequestAction(HTTP.POST, LOGOUT_API, true, {}, LOGOUT_SUCCESS, LOGOUT_ERROR));
+    if (location?.state?.logout !== false) {
+      dispatch({ type: LOGOUT_SUCCESS });
+      dispatch(apiRequestAction(HTTP.POST, LOGOUT_API, true, {}, LOGOUT_SUCCESS, LOGOUT_ERROR));
+    }
   }, []);
 
   return (
     <>
       <CoreLayoutItem id={CenteredBlankLayout.PLACEHOLDER.CONTENT}>
         {
-          !auth?.uid ? auth?.sessionExpired ? (
-            <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />
-          ) : (
-            <NativeDomNavigate to={"/"} />
+          !authenticated ? (
+            sessionExpired ? (
+              <NativeDomNavigate to={"/"} state={{ sessionExpired: true }} />
+            ) : (
+              <NativeDomNavigate to={"/"} />
+            )
           ) : (
             <CoreBox
-              styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
+              styleClasses={[CoreClasses.HEIGHT.VH_100, CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER]}
             >
               <CoreTypographyBody1>Signing Off...</CoreTypographyBody1>
             </CoreBox>

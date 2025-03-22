@@ -30,7 +30,7 @@ export const prepareTableAPIQuery = (
   notifyFilterChange,
   query = {
     _filter     : {},
-    _order      : {},
+    _order      : [],
     _searchValue: "",
     currentRows : 0,
     maxRowInPage: DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
@@ -39,7 +39,7 @@ export const prepareTableAPIQuery = (
   },
   filterQuery = {
     filter: {},
-    order : {},
+    order : [],
   },
   // eslint-disable-next-line no-unused-vars
   totalRecords = 0
@@ -50,7 +50,7 @@ export const prepareTableAPIQuery = (
     page = 0,
     maxRowInPage = DATA_TABLE_CONST.MAX_ROWS_IN_PAGE,
     pagesToCache = DATA_TABLE_CONST.PAGES_TO_CACHE,
-    _order = {},
+    _order = [],
     // eslint-disable-next-line no-unused-vars
     _filter = {},
     _searchValue = "",
@@ -71,7 +71,7 @@ export const prepareTableAPIQuery = (
 
     _filter: "",
 
-    _order: "",
+    _order: [],
 
     _searchValue: "",
 

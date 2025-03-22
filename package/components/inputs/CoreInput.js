@@ -18,17 +18,22 @@ export default function CoreInput(props) {
     <CoreBox>
       <NativeInput {...restProps} />
 
-      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
-
       {helperText && (
         <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
           {helperText}
         </CoreFormHelperText>
       )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
     </CoreBox>
   );
 }
 CoreInput.validProps = [
+  {
+    description: "This prop helps users to fill forms field data",
+    name       : "helperText",
+    types      : [{ type: "string" }],
+  },
   {
     description: "This prop helps users to fill forms faster, especially on mobile devices. The name can be confusing, as it's more like an autofill. You can learn more about it following the specification.",
     name       : "autoComplete",
@@ -76,8 +81,13 @@ CoreInput.validProps = [
   },
   {
     description: "If true, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
+    name       : "touched",
+    types      : [{ type: "boolean" }, { type: "string" }],
+  },
+  {
+    description: "If true or string, the input will indicate an error. The prop defaults to the value (false) inherited from the parent FormControl component.",
     name       : "error",
-    types      : [{ type: "boolean" }],
+    types      : [{ type: "boolean" }, { type: "string" }],
   },
   {
     description: "If true, the input will take up the full width of its container.",
@@ -182,6 +192,10 @@ CoreInput.validProps = [
   {
     name : "label",
     types: [{ types: "string" }]
+  },
+  {
+    name : "formik",
+    types: [{ types: "object" }]
   },
   {
     name : "formik",

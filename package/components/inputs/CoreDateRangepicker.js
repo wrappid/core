@@ -5,15 +5,37 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import { NativeDateRangepicker } from "@wrappid/native";
 
+import CoreFormErrorText from "./CoreFormErrorText";
+import CoreFormHelperText from "./CoreFormHelperText";
+import CoreClasses from "../../styles/CoreClasses";
+import CoreBox from "../layouts/CoreBox";
+
 // import CoreFormHelperText from "./CoreFormHelperText";
 // import CoreClasses from "../../styles/CoreClasses";
 
 export default function CoreDateRangepicker(props) {
+  const { error, helperText } = props;
+
   return (
-    <NativeDateRangepicker {...props} />
+    <CoreBox>
+      <NativeDateRangepicker {...props} />
+
+      {helperText && (
+        <CoreFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+          {helperText}
+        </CoreFormHelperText>
+      )}
+      
+      {error && <CoreFormErrorText>{error}</CoreFormErrorText>}
+    </CoreBox>
   );
 }
 CoreDateRangepicker.validProps = [
+  {
+    description: "This prop helps users to fill forms field data",
+    name       : "helperText",
+    types      : [{ type: "string" }],
+  },
   {
     name : "formik",
     types: [{ type: "object" }]

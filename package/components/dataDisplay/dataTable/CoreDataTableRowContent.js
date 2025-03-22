@@ -152,11 +152,12 @@ export default function CoreDataTableRowContent(props) {
               ? JSON.parse(imageData.data)
               : { icon: imageData.data }
           }
+          fontSize="large"
         />
       )
     ) : imageData?.column?.id?.includes("photoUrl") ? (
       <CoreAvatar
-        src={imageData?.data || "no_image.png"}
+        src={imageData?.data || "https://dummyimage.com/400x400/000000/fff.png&text=%3F"}
         styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
       ></CoreAvatar>
     ) : null;
@@ -171,7 +172,11 @@ export default function CoreDataTableRowContent(props) {
     return (
       <>
         {hasId ? (
-          <CoreDivider orientation="vertical" variant="middle" flexItem />
+          <CoreDivider
+            styleClasses={[UtilityClasses.MARGIN.MY0]}
+            orientation="vertical"
+            variant="middle"
+            flexItem />
         ) : (
           ""
         )}
