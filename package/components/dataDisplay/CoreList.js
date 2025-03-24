@@ -132,20 +132,51 @@ CoreList.validProps = [
       {
         default    : "DEFAULT",
         type       : "string",
-        validValues: ["DEFAULT", "HTML", "GRID"] 
+        validValues: ["DEFAULT", "HTML", "grid"] 
       }
     ],
   },
   {
-    description: "The content of the subheader, normally ListSubheader.",
-    name       : "gridItemComponent",
+    description: "This helps to add gridProps into the children of corelist.",
+    name       : "itemGridProps",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add StyleClasses into the children of corelist.",
+    name       : "itemStylesProps",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add toolbox to selaect the size in the corelist.",
+    name       : "enableToolbar",
     types      : [
       {
-        default    : "2",
-        type       : "string",
-        validValues: ["2", "3", "4", "6"] 
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false]
       }
     ],
+  },
+  {
+    description: "This helps to add Searchbar in the toolbar of corelist.",
+    name       : "enableSearch",
+    types      : [
+      {
+        default    : false,
+        type       : "boolean",
+        validValues: [true, false]
+      }
+    ] 
+  },
+  {
+    description: "This helps to take json file of corelist.",
+    name       : "items",
+    types      : [{ type: "object" }],
+  },
+  {
+    description: "This helps to add Searchbar in the toolbar of corelist.",
+    name       : "JSONOptions",
+    types      : [{ type: "object" }],
   }
 ];
 
