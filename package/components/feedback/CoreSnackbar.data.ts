@@ -1,133 +1,99 @@
-export interface ValidPropType {
-  default?: any;
-  type: string;
-  validValues?: any[];
-}
+import { BaseComponentData, Prop } from "../POC/POC-PRITAM/BaseComponent";
 
-export interface ValidProp {
-  description: string;
-  name: string;
-  types: ValidPropType[];
-}
+export class CoreSnackbarData extends BaseComponentData {
+  action: Prop = {
+    name: "action",
+    description: "The action to display.",
+    types: [{ type: "node" }],
+    value: null,
+  };
 
-class ValidPropBuilder {
-  private description: string;
-  private name: string;
-  private types: ValidPropType[] = [];
-
-  constructor(name: string, description: string) {
-    this.name = name;
-    this.description = description;
-  }
-
-  addType(type: ValidPropType): ValidPropBuilder {
-    this.types.push(type);
-    return this;
-  }
-
-  build(): ValidProp {
-    return {
-      description: this.description,
-      name: this.name,
-      types: this.types,
-    };
-  }
-}
-
-export class CoreSnackbarData {
-  validProps: ValidProp[] = [];
-  invalidProps: string[] = [];
-
-  constructor() {
-    this.buildValidProps();
-  }
-
-  private buildValidProps(): void {
-    this.validProps.push(
-      new ValidPropBuilder(
-        "action",
-        "The action to display. It renders after the message, at the end of the snackbar."
-      ).addType({ type: "node" }).build()
-    );
-
-    this.validProps.push(
-      new ValidPropBuilder(
-        "anchorOrigin",
-        "The anchor position of the Snackbar."
-      ).addType({
+  anchorOrigin: Prop = {
+    name: "anchorOrigin",
+    description: "The anchor position of the Snackbar.",
+    types: [
+      {
         type: "object",
-        default: { horizontal: "left", vertical: "bottom" },
-        validValues: [{ horizontal: ["center", "left", "right"], vertical: ["bottom", "top"] }],
-      }).build()
-    );
+        validValues: [
+          {
+            horizontal: ["center", "left", "right"],
+            vertical: ["bottom", "top"],
+          },
+        ],
+      },
+    ],
+    value: { horizontal: "left", vertical: "bottom" },
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "autoHideDuration",
-        "The number of milliseconds before auto-hiding the Snackbar."
-      ).addType({ type: "number" }).build()
-    );
+  autoHideDuration: Prop = {
+    name: "autoHideDuration",
+    description: "The number of milliseconds before auto-hiding the Snackbar.",
+    types: [{ type: "number" }],
+    value: 5000,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "children",
-        "Replace the SnackbarContent component."
-      ).addType({ type: "element" }).build()
-    );
+  children: Prop = {
+    name: "children",
+    description: "Replace the SnackbarContent component.",
+    types: [{ type: "element" }],
+    value: null,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "disableWindowBlurListener",
-        "If true, the auto-hide duration will expire even if the window is not focused."
-      ).addType({ type: "boolean", default: false }).build()
-    );
+  disableWindowBlurListener: Prop = {
+    name: "disableWindowBlurListener",
+    description:
+      "If true, the auto-hide duration will expire even if the window is not focused.",
+    types: [{ type: "boolean", validValues: [true, false] }],
+    value: false,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder("message", "The message to display.")
-        .addType({ type: "string" })
-        .build()
-    );
+  message: Prop = {
+    name: "message",
+    description: "The message to display.",
+    types: [{ type: "string" }],
+    value: "",
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "onClose",
-        "Callback fired when the component requests to be closed."
-      ).addType({ type: "function" }).build()
-    );
+  onClose: Prop = {
+    name: "onClose",
+    description: "Callback fired when the component requests to be closed.",
+    types: [{ type: "function" }],
+    value: undefined,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "open",
-        "If true, the component is shown."
-      ).addType({ type: "boolean" }).build()
-    );
+  open: Prop = {
+    name: "open",
+    description: "If true, the component is shown.",
+    types: [{ type: "boolean" }],
+    value: false,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "resumeHideDuration",
-        "The number of milliseconds before dismissing after user interaction."
-      ).addType({ type: "number" }).build()
-    );
+  resumeHideDuration: Prop = {
+    name: "resumeHideDuration",
+    description:
+      "The number of milliseconds before dismissing after user interaction.",
+    types: [{ type: "number" }],
+    value: undefined,
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "TransitionComponent",
-        "The component used for the transition."
-      ).addType({ type: "elementType", default: "Grow" }).build()
-    );
+  TransitionComponent: Prop = {
+    name: "TransitionComponent",
+    description: "The component used for the transition.",
+    types: [{ type: "elementType", validValues: ["Grow"] }],
+    value: "Grow",
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "transitionDuration",
-        "The duration for the transition, in milliseconds."
-      ).addType({ type: "object" }).build()
-    );
+  transitionDuration: Prop = {
+    name: "transitionDuration",
+    description: "The duration for the transition, in milliseconds.",
+    types: [{ type: "object" }],
+    value: {},
+  };
 
-    this.validProps.push(
-      new ValidPropBuilder(
-        "TransitionProps",
-        "Props applied to the transition element."
-      ).addType({ type: "object", default: {} }).build()
-    );
-  }
+  TransitionProps: Prop = {
+    name: "TransitionProps",
+    description: "Props applied to the transition element.",
+    types: [{ type: "object", validValues: [] }],
+    value: {},
+  };
 }
