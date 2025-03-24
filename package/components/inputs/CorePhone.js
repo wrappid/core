@@ -6,7 +6,19 @@ import { sanitizeComponentProps } from "../../utils/componentUtil";
 
 export default function CorePhone(props) {
   props = sanitizeComponentProps(CorePhone, props);
-  return <CoreInput {...props} type="number" />;
+  return <CoreInput
+    {...props}
+    tyope = "text"
+    inputProps={{
+      inputMode: "numeric",
+      max      : 999999999999,
+      
+      min: 1000000,
+      
+      pattern: "[0-9]*",
+    }}
+  />;
 }
 CorePhone.validProps = [...CoreInput.validProps];
 CorePhone.invalidProps = [];
+
