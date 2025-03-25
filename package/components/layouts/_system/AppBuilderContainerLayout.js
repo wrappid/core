@@ -191,7 +191,7 @@ export default function AppBuilderContainerLayout() {
         footer={getFooter}
         coreClasses={CoreClasses}
       >  
-        <CoreRequestProgressBar />
+        <CoreRequestProgressBar styleClasses={[CoreClasses.REQUEST_PROGRESS_BAR]} />
 
         <CoreBox styleClasses={[CoreClasses.LAYOUT.MAIN_CONTAINER]}>
           <CoreLayoutPlaceholder 
