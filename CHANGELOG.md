@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.606](https://github.com/wrappid/core/compare/v0.0.605...v0.0.606) (2025-03-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix the ui desgin of login with linkedin button ([22a03f0](https://github.com/wrappid/core/commit/22a03f00a35fbd7635a6702e5e8dac11ff0b4c4f)), closes [#382](https://github.com/wrappid/core/issues/382)
+
 ### [0.0.605](https://github.com/wrappid/core/compare/v0.0.604...v0.0.605) (2025-03-15)
 
 
