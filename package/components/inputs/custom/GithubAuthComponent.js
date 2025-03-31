@@ -7,6 +7,9 @@ import { NativeGithubAuthComponent } from "@wrappid/native";
 import { WrappidDataContext } from "@wrappid/styles";
 import { useDispatch } from "react-redux";
 
+import CoreClasses from "../../../styles/CoreClasses";
+import CoreBox from "../../layouts/CoreBox";
+
 export default function GithubAuthComponent(props) {
   const { config } = React.useContext(WrappidDataContext);
   const dispatch = useDispatch();
@@ -41,5 +44,18 @@ export default function GithubAuthComponent(props) {
     return;
   };
 
-  return (<NativeGithubAuthComponent onClick={handleAuthoriseGithub} {...props} label="Github"/>);
-}
+  return (
+    <CoreBox
+      height={40}
+      width={40}
+      styleClasses={[
+        CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
+        CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+        CoreClasses.BG.BG_WHITE,
+        CoreClasses.BORDER.BORDER,
+        CoreClasses.BORDER.BORDER_GREY_300,
+        CoreClasses.BORDER.BORDER_ROUNDED_CIRCLE
+      ]}>
+      <NativeGithubAuthComponent onClick={handleAuthoriseGithub} {...props} label="Github"/>
+    </CoreBox>
+  );}
